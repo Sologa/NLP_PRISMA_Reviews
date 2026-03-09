@@ -1,0 +1,43 @@
+# ==== Core files to exclude for GitHub upload ====
+*.pdf
+*.zip
+*.log
+*.pyc
+
+# Bytecode/cache
+__pycache__/
+
+# Secrets / environment
+.env
+
+# Keep refs mostly as metadata only (json/jsonl)
+refs/
+!refs/*/
+!refs/*/metadata/
+!refs/*/metadata/*.jsonl
+!refs/*/metadata/*.json
+
+# Exclude markdown outputs and generated content under refs
+refs/*/mds/
+refs/*/tex_src/
+
+# Exclude LaTeX / style sources and build artifacts
+*.tex
+*.sty
+*.cls
+*.bst
+*.bbx
+*.cbx
+*.ins
+*.dtx
+*.bbl
+
+# Exclude legacy/legacy-style scratch data
+refs_old/
+
+# Exclude generated/vendor temp outputs
+results/
+arxiv_tex_source_attempt/
+
+# Local tool/project metadata
+.specstory/
