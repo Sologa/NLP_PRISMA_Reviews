@@ -1,6 +1,6 @@
 {
   "topic": "Preference-Based Learning in Audio Applications: A Systematic Analysis",
-  "topic_definition": "Preference-Based Learning in Audio Applications: A Systematic Analysis",
+  "topic_definition": "Preference learning is counted when a paper involves ranking or A/B comparison of two or more audio clips (including preference signals expressed as pairwise/relative preferences). If only numeric ratings are provided (e.g., 1–5 MOS), they are counted only when they are explicitly converted into rankings/pairwise preferences. Preference signals can be from human judgments or synthetic preferences. Even without explicit pairwise comparisons, papers with an RL training loop for an audio model are included when optimization is preference-driven. Preference-only-for-evaluation papers are excluded. Audio-domain inclusion also applies when audio is a core modality in multi-modal work (audio + other modalities).",
   "summary": "Parsed screening criteria from criteria_mds/2511.13936.md",
   "summary_topics": [
     {
@@ -11,14 +11,21 @@
   "inclusion_criteria": {
     "required": [
       {
-        "criterion": "Centered on audio-based preference learning.",
+        "criterion": "Preference-learning component exists: the paper includes comparisons/rankings of audio items (ranking, A/B comparison, pairwise preference), or explicitly defines preference signals that are used for learning.",
         "source": "criteria_mds/2511.13936.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Matches the final search string: (“audio” OR “music” OR “acoustic”) AND (“preference learning” OR “RLHF” OR “DPO” OR “KTO”).",
+        "criterion": "Audio-domain application is present. For multi-modal works, this includes any paper where audio is a core modality.",
+        "source": "criteria_mds/2511.13936.md",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "Paper is not a survey/review article.",
         "source": "criteria_mds/2511.13936.md",
         "topic_ids": [
           "S1"
@@ -28,7 +35,28 @@
   },
   "exclusion_criteria": [
     {
-      "criterion": "Does not meet the predefined inclusion criteria for audio-based preference learning (as applied by the reviewers).",
+      "criterion": "Preferences are used only for evaluation, with no learning/optimization/training component.",
+      "source": "criteria_mds/2511.13936.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Paper is not preference learning (fails the operational definition below).",
+      "source": "criteria_mds/2511.13936.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Paper is not an audio-domain work.",
+      "source": "criteria_mds/2511.13936.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Paper is a survey/review article.",
       "source": "criteria_mds/2511.13936.md",
       "topic_ids": [
         "S1"

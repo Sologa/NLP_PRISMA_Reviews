@@ -4,7 +4,7 @@
   "time_policy": {
     "enabled": true,
     "date_field": "published",
-    "start_date": null,
+    "start_date": "2020-01-01",
     "start_inclusive": true,
     "end_date": "2025-11-17",
     "end_inclusive": true,
@@ -12,13 +12,13 @@
   },
   "evidence": [
     {
-      "section": "Manual no-time mapping from metadata",
+      "section": "Time-policy from explicit retrieval scope",
       "criterion_id": "N/A",
-      "text": "No explicit publication-time restriction in criteria. Applied the review paper's own publication date as the upper bound: 2025-11-17T21:42:01Z in refs/2511.13936/metadata.json."
+      "text": "2021-stage retrieval is scoped to recent work (2020 onward), and review publication boundary is used as an upper bound: 2025-11-17T21:42:01Z in refs/2511.13936/metadata.json."
     }
   ],
   "normalization_notes": [
-    "No explicit year/date constraints were found in criteria JSON.",
-    "Manual fallback: map no-time case to paper publication date as end_date."
+    "Stage-2 criteria does not explicitly express date bounds, but the review text implies an explicit lower bound (2020 onward).",
+    "Upper bound uses the review paper's publication date as a practical cutoff for reproducibility in this pipeline."
   ]
 }

@@ -4,6 +4,8 @@
 
 - `scripts/screening/prepare_review_smoke_inputs.py`
 - `scripts/screening/run_review_smoke5.sh`
+- `scripts/screening/run_review_full_and_f1.sh`
+- `scripts/screening/evaluate_review_f1.py`
 
 這兩支都是 screening 用，不在 `scripts/` 根目錄。
 
@@ -14,14 +16,13 @@
   - `screening/data/source/cads/criteria.json`
 - Smoke data (`top-k=5`):
   - `screening/data/cads_smoke5/arxiv_metadata.top5.json`
-  - `screening/data/cads_smoke5/criteria.json`
   - `screening/data/cads_smoke5/manifest.json`
 - Review output:
   - `screening/results/cads_smoke5/latte_review_results.json`
 
 也可直接用既有 paper（不需先手動轉檔）：
 - Metadata source: `refs/<PAPER_ID>/metadata/title_abstracts_metadata.jsonl`
-- Criteria source: `criteria_corrected_3papers/<PAPER_ID>.md`（若不存在，fallback 到 `criteria_mds/<PAPER_ID>.md`）
+- Criteria source: `criteria_jsons/<PAPER_ID>.json`
 - Prepared input: `screening/data/<PAPER_ID>_smoke<TOP_K>/`
 - Output: `screening/results/<PAPER_ID>_smoke<TOP_K>/`
 
@@ -31,6 +32,12 @@
 python3 scripts/screening/prepare_review_smoke_inputs.py --top-k 5
 bash scripts/screening/run_review_smoke5.sh
 python3 scripts/screening/review_results_debug.py
+```
+
+直接跑既有 paper：
+
+```bash
+bash scripts/screening/run_review_full_and_f1.sh 2511.13936
 ```
 
 直接跑既有 paper：
@@ -64,15 +71,14 @@ PIPELINE_PYTHON=/path/to/python bash scripts/screening/run_review_smoke5.sh
 `arxiv_metadata.top5.json`
 - 型別：`list[object]`
 - 筆數：`5`
-- 常見欄位：`key`, `title`, `abstract`, `summary`, `year`, `source`, `source_id`, `arxiv_id`, `metadata`
+- 常見欄位：保留來源原始 metadata 欄位；流程只要求有 `title` 與 `abstract` 可做 title/abstract screening。
 
 `criteria.json`
-- 型別：`object`
-- 核心欄位：`topic`, `topic_definition`, `summary`, `summary_topics`, `inclusion_criteria`, `exclusion_criteria`, `sources`
+  - 核心欄位：`topic`, `topic_definition`, `summary`, `summary_topics`, `inclusion_criteria`, `exclusion_criteria`, `sources`
 
 `prepare_review_smoke_inputs.py` 支援：
 - metadata: `.json`（list）或 `.jsonl`
-- criteria: `.json` 或 `.md`（會解析 Inclusion/Exclusion Criteria）
+- criteria: `.json`（手動轉好的 structured criteria）
 
 ## 5) 快速檢查
 

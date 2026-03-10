@@ -4578,6 +4578,17 @@ def run_latte_review(
     resolved_start_date = _parse_date_bound(resolved_start, label="--start-date") if resolved_start else None
     discard_after_date = resolved_end
     cutoff_date = _parse_date_bound(discard_after_date, label="discard_after_date") if discard_after_date else None
+
+    def _get_record_key(record_metadata: Dict[str, object], fallback_title: str, fallback_arxiv_id: str) -> str:
+        key = record_metadata.get("key")
+        if isinstance(key, str) and key.strip():
+            return key.strip()
+        if fallback_arxiv_id:
+            return fallback_arxiv_id
+        if isinstance(fallback_title, str):
+            return fallback_title.strip()
+        return ""
+
     for entry in payload:
         if not isinstance(entry, dict):
             continue
@@ -4591,6 +4602,7 @@ def run_latte_review(
         arxiv_id = trim_arxiv_id(arxiv_id) or arxiv_id
         title = str(metadata.get("title") or "").strip()
         abstract = str(metadata.get("summary") or metadata.get("abstract") or "").strip()
+        record_key = _get_record_key(metadata, title, arxiv_id)
         if not title:
             continue
         if arxiv_id and arxiv_id in forced_ids and arxiv_id not in forced_seen:
@@ -4599,7 +4611,7 @@ def run_latte_review(
                 {
                     "title": " ".join(title.split()),
                     "abstract": " ".join(abstract.split()) if abstract else "",
-                    "metadata": metadata,
+                    "key": record_key,
                     "final_verdict": "include (seed_filter)",
                     "review_skipped": True,
                     "discard_reason": None,
@@ -4626,7 +4638,7 @@ def run_latte_review(
                 {
                     "title": cleaned_title,
                     "abstract": cleaned_abstract,
-                    "metadata": metadata,
+                    "key": record_key,
                     "discard_reason": discard_reason,
                 }
             )
@@ -4636,13 +4648,13 @@ def run_latte_review(
         if skip_token and skip_token in cleaned_title.lower():
             continue
         if top_k is None or len(rows) < top_k:
-            rows.append({"title": cleaned_title, "abstract": cleaned_abstract, "metadata": metadata})
+            rows.append({"title": cleaned_title, "abstract": cleaned_abstract, "key": record_key})
 
     if not rows and not discarded:
         raise RuntimeError("找不到任何可供 LatteReview 審查或標記的條目（請確認 metadata/skip 條件）。")
 
     review_records: List[Dict[str, object]] = []
-    result_columns: List[str] = ["title", "abstract", "metadata", "final_verdict"]
+    result_columns: List[str] = ["title", "abstract", "key", "final_verdict"]
 
     if rows:
         df = pd.DataFrame(rows)
@@ -4774,12 +4786,12 @@ def run_latte_review(
         result_df["final_verdict"] = result_df.apply(_derive_verdict, axis=1)
 
         result_columns = list(result_df.columns)
+        if "metadata" in result_columns:
+            result_columns.remove("metadata")
         for index, row in result_df.iterrows():
-            record = {column: row[column] for column in result_df.columns}
-            metadata_value = row.get("metadata") if "metadata" in row else None
-            if metadata_value is None:
-                metadata_value = df.loc[index, "metadata"]
-            record["metadata"] = metadata_value
+            record = {column: row[column] for column in result_df.columns if column != "metadata"}
+            if "key" not in record:
+                record["key"] = row.get("key") if "key" in row else df.loc[index].get("key")
             record["review_skipped"] = False
             verdict = str(record.get("final_verdict") or "")
             if verdict.startswith("exclude"):
@@ -4799,7 +4811,7 @@ def run_latte_review(
             record = dict(base_record)
             record["title"] = item.get("title")
             record["abstract"] = item.get("abstract")
-            record["metadata"] = item.get("metadata")
+            record["key"] = item.get("key")
             discard_reason = str(item.get("discard_reason") or "discard_rule")
             record["final_verdict"] = f"discard ({discard_reason})"
             record["review_skipped"] = True

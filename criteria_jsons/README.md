@@ -96,14 +96,11 @@ else EXCLUDE/MAYBE
 
 ---
 
-## 3) 目前 `criteria_mds -> criteria_jsons` 轉換規則
+## 3) `criteria_mds -> criteria_jsons` 轉換規則（歷史記錄）
 
-目前實作在：
+本 repo 的 screening 入口已不再自動轉換 markdown；此節保留為歷史規則參考。
 
-- `scripts/screening/prepare_review_smoke_inputs.py`
-  - `_parse_criteria_markdown()`
-  - `_clean_criterion_line()`
-  - `_load_criteria_payload()`
+若需轉換新檔，請先在 `criteria_jsons` 內手動補齊對應 `*.json`，再納入流程。
 
 ### 3.1 Topic 來源
 
@@ -167,9 +164,9 @@ else EXCLUDE/MAYBE
 2. Screening Question Set（Q1, Q2...）。
 3. Notes、補充說明、非 item 行敘述文字。
 
-### 3.7 產出結構（目前 parser 的實際輸出）
+### 3.7 產出結構（legacy parser 的參考輸出）
 
-`_parse_criteria_markdown()` 會產生：
+原先的自動 parser（已退場）曾輸出：
 
 1. `summary_topics` 固定單一 topic id：`S1`。
 2. `inclusion_criteria` 目前只產生 `required`。
@@ -196,46 +193,15 @@ review 階段會做以下轉換：
 
 ## 5) 轉換命令（單檔與批次）
 
-以下命令可把 `criteria_mds` 轉成 `criteria_jsons`（不依賴 metadata）：
+目前本 repo 的 screening pipeline 已不提供可直接執行的自動轉換命令（`prepare_review_smoke_inputs.py` 已移除 md 解析）。
 
-### 5.1 單檔
+建議流程：
 
-```bash
-python3 - <<'PY'
-import json
-from pathlib import Path
-from scripts.screening.prepare_review_smoke_inputs import _parse_criteria_markdown
+1. 先手動建立 `criteria_jsons/<paper_id>.json`（或使用你自己的轉檔工具）。
+2. 對照本文件第 6 節人工檢查，確認格式與欄位。
+3. 將完成的 JSON 放進流程使用。
 
-src = Path("criteria_mds/2409.13738.md")
-dst = Path("criteria_jsons/2409.13738.json")
-payload = _parse_criteria_markdown(src)
-dst.parent.mkdir(parents=True, exist_ok=True)
-dst.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-print(f"[ok] {src} -> {dst}")
-PY
-```
-
-### 5.2 批次
-
-```bash
-python3 - <<'PY'
-import json
-from pathlib import Path
-from scripts.screening.prepare_review_smoke_inputs import _parse_criteria_markdown
-
-src_dir = Path("criteria_mds")
-dst_dir = Path("criteria_jsons")
-dst_dir.mkdir(parents=True, exist_ok=True)
-
-for src in sorted(src_dir.glob("*.md")):
-    if src.name.startswith("README") or src.name.startswith("AGENT_PROMPT"):
-        continue
-    dst = dst_dir / f"{src.stem}.json"
-    payload = _parse_criteria_markdown(src)
-    dst.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"[ok] {src} -> {dst}")
-PY
-```
+這樣可以保證 `criteria` 來源清楚、可被使用者審核，不依賴自動 parser 的猜測邏輯。
 
 ---
 
@@ -247,5 +213,4 @@ PY
 2. `required` 是否完整且沒有漏掉關鍵條件。
 3. `exclusion_criteria` 是否完整且沒有誤把說明行當條件。
 4. `source/topic_ids` 是否正確。
-5. 是否有需要手動改成 `any_of` 群組的條件（目前 parser 不自動分組）。
-
+5. 是否有需要手動改成 `any_of` 群組的條件（legacy parser 不會自動分組）。
