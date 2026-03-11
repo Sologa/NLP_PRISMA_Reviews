@@ -1,0 +1,1571 @@
+    NLP_PRISMA_Reviews false‑negative analysis report
+
+
+
+
+Repository diagnosis report
+
+
+NLP_PRISMA_Reviews Screening Workflow False‑Negative 診斷報告
+與重設計計畫
+
+聚焦 title + abstract 階段過多 false negatives。依 handoff 指定順序對照 repo 內分析文件、criteria、
+runtime code、vendor prompts 與公開 metadata snapshot，目標是將本地結論驗證、補強或修正
+到可實作的程度。
+
+RepositorySologa / NLP_PRISMA_Reviews（public master snapshot）
+
+分析焦點 Screening workflow 中 Stage 1 false negatives 的主要根因與修法
+
+核心任務驗證本地分析、區分五大 root‑cause buckets、提出具體 redesign
+
+關 鍵 檔 案 docs/ *.md、criteria_jsons/ *.json、criteria_mds/ *.md、topic_pipeline.py、vendor
+reviewer prompts
+
+
+一句話結論
+
+目前 pipeline 的主要問題不是單一 reviewer，而是 serialization + generic Stage 1 prompt +
+recall‑hostile arbitration 的交互作用。尤其在 2307.05527 中，topic_definition 被混進 inclusion
+text 後，scope 被錯收窄成「必須顯式談 ethics」    ；在 2409.13738 與 2601.19926 中，證據不足被過早
+視為排除證據；在 2511.13936 中，operational definition 本身也確實過窄。
+
+
+最優先三項修法
+
+第一，修改 topic_pipeline.py 的 Stage 1 aggregation policy，將 disagreement 與 uncertainty 預
+設轉為 maybe。第二，重做 criteria serialization，停止把 topic_definition prepend 到 inclusion
+string。第三，用 Stage 1 專用 prompt 取代目前 generic vendor prompt，明寫 lack of evidence !
+= evidence of exclusion。
+
+
+Executive summary
+
+這份報告是把我先前的中文分析與後續實作計畫整理成一份可直接執行的設計文件。核心結論很
+明確：目前 screening workflow 的主要失血點不是單一 reviewer，而是 Stage 1 把不適合在 title
++ abstract 階 段 硬 判的條 件， 以 過 度 扁 平的 criteria serialization 與 過 度 generic 的 runtime
+prompt 交給一個 recall‑hostile 的 aggregation policy 來做最終 gate。依 handoff 與 repo 內本
+地分析，四篇 review 合計 final FN = 153，其中 117 個在 Stage 1 就流失，約占 76%。這意味著，若
+Stage 1 不被重設為真正的 high‑recall gate，後面任何 full‑text reviewer 改進都只能補救少部分損
+失。
+
+                                          1
+ 更重要的是，Stage 1 的 117 個 false negatives 並不是單純「兩個 junior 都看錯」。repo 內分析顯
+ 示，59 個案例是兩位 junior 都給負面判定，但另外 58 個案例其實至少有一位 junior 已經 positive 或
+ unclear，最終仍被壓成 exclude。這個結構直接指向兩個並行問題：第一，reviewer 在證據不足時過
+ 度保守；第二，SeniorLead 與 final aggregation 的決策規則，把原本可挽回的 disagreement case
+ 系統性地壓成 false negative。
+
+ 我的整體判斷如下。第一，2307.05527 的首要問題不是原始 criteria paper 真的要求「paper 必須明
+ 確討論 ethics」，而是 machine‑facing representation 錯把 ethics‑heavy 的 topic_definition 序列
+ 化成 reviewer 眼中的硬 inclusion。第二，2409.13738 的主問題不是 criteria 寫壞，而是 Stage 1 把
+「abstract 沒明寫 validation」  過早映射為 exclude。第三，2511.13936 是四篇裡最像 genuine criteria
+ operationalization problem 的一篇，因為 preference learning 與 audio‑domain 的邊界確實被寫
+ 得過窄。第四，2601.19926 是混合型問題：sparse metadata、Stage 1 保守排除、disagreement 被
+ 壓掉，以及 missing_fulltext 被錯誤編碼成 semantic exclusion。
+
+ 若 只 選 三 個 最 優 先 的 修 法， 我 會 建 議 立 即 做 這 三 件 事。 其 一， 修 改 topic_pipeline.py 的 Stage
+ 1 aggregation policy， 將 disagreement 與 uncertainty 預 設 轉 為 maybe， 並 只 在 存 在 明 確
+ exclusion evidence 時 才 allow hard exclude。 其 二， 重 做 criteria serialization， 停 止 把
+ topic_definition prepend 到 inclusion string，改成分層的 reviewer‑facing payload。其三，將
+ title_abstract_reviewer.py 由 generic prompt 改為 Stage 1 專用 prompt，明寫 lack of evidence !
+ = evidence of exclusion 與 sparse‑metadata fallback。這三項一起動，才是解決 title + abstract 階
+ 段 false negatives 的真正高槓桿組合。
+
+ 直接可用的決策訊號： repo 內 counterfactual 顯示，若 Stage 1 改成「只有兩位 junior 都 negative
+ 才 exclude」，四篇 aggregate Stage 1 recall 可由 0.7899 提升到 0.8941，而 precision 只由 0.9628
+ 輕微下降到 0.9559。這表示目前設計不是必要的 precision‑recall tradeoff，而是 policy 過度保守。
+
+
+ 1. 分析方法、閱讀順序與證據範圍
+
+ 本節先交代本報告如何使用 handoff 指定的閱讀順序，以及我如何處理「公開 snapshot 與本地分析文
+ 件之間」的可見性差異。這個方法說明很重要，因為它決定了哪些結論是直接由公開 code/criteria 驗
+ 證得出，哪些結論是建立在 repo 內本地分析文件提供的 run‑level summary 上。
+
+ 本報告依 handoff 指定順序閱讀並交叉比對下列材料：handoff 文件、三份本地分析文件、四篇
+ review 的 criteria JSON、四篇 review 的 criteria source markdown、runtime pipeline 及 vendor
+ reviewer 實作、兩份 markdown prompt templates，以及公開 snapshot 中可見的 screening/data/
+ <review>_full/arxiv_metadata.full.json。這些檔案足以驗證多數 root cause 的方向，尤其是 prompt
+ / serialization / aggregation / retrieval policy 相關問題。
+
+ 需要誠實說明的一點是：handoff 指定要讀的 screening/results/...run01... 原始 JSON，於目前公開
+ master snapshot 並未以同一路徑公開；公開 tree 下 screening/ 可直接看見的是 data/ 與 workspaces/，
+ 而 handoff 所列的 raw result 路徑在外部檢查時回傳 404。因此，本報告把 repo 自身的三份本地分析
+ 文件視為 empirical baseline，再以 criteria、prompt、pipeline code 與 metadata 逐項驗證、補
+ 強或修正那些本地結論。這不影響我們對主要系統缺陷的判讀，因為最關鍵的結構性問題都能直接在公
+ 開 code 與 criteria representation 中看到。
+
+
+ 1.1 本報告實際使用的證據文件
+
+ Evidence file                                               Why it matters
+
+ docs/chatgpt_gpt54pro_handoff.md                            總體任務、閱讀順序、整體數字、問題框
+
+
+                                           2
+Evidence file                                                        Why it matters
+
+docs/reviewer_error_analysis.md                                      reviewer‑oriented baseline
+docs/detailed_reviewer_fn_analysis.md                                taxonomy、counterfactual policy、23
+docs/taxonomy_root_cause_qa.md                                       把 taxonomy 連到 prompt / criteria / s
+criteria_jsons/*.json                                                實際 runtime criteria payload
+criteria_mds/*.md                                                    source criteria 與可程式化條件
+topic_pipeline.py                                                    目前 runtime policy 的關鍵根源
+title_abstract_reviewer.py / fulltext_reviewer.py                    實際 vendor prompt
+03_stage1_2_criteria_review.md / 05_stage2_criteria_review.md        repo 內較安全的模板對照組
+screening/data/*/arxiv_metadata.full.json                            代表性 record 的 title / abstract
+
+
+表 1 說明：這張表不是單純的檔案清單，而是把每類證據在本報告中的角色切開。最重要的區別是：
+三份 docs/*.md 提供 empirical baseline 與 taxonomy；criteria 與 source markdown 用來檢查
+scope 如何被 operationalize；runtime code 與 vendor prompts 用來驗證 false negatives 是否
+來自 prompt / serialization / arbitration / retrieval policy；公開 metadata 則用來做代表性個案
+sanity check。
+
+
+2. 問題的基線：false negatives 到底在哪一層流失？
+
+若不先把總體數字釘住，後面的 bucket 分析就容易變成印象推論。這一節先用 handoff 與本地分析文
+件裡的彙總數字，建立這個 repo 目前最基本的損失結構：哪些 review 損失最多、Stage 1 與 Stage 2
+各占多少、Stage 1 裡又有多少其實是 aggregation 才把 case 壓死。
+
+
+2.1 四篇 review 的最終結果
+
+    Review       TP    FP   TN   FN   Precision    Recall   F1        Stage1 FN   Stage2 FN
+
+    2307.05527   116   3    44   55   0.9748       0.6784   0.8000    33          22
+    2409.13738   17    7    50   4    0.7083       0.8095   0.7556    4           0
+    2511.13936   20    1    53   10   0.9524       0.6667   0.7843    10          0
+    2601.19926   251   0    23   84   1.0000       0.7493   0.8567    70          14
+
+
+表 2 解讀：2307.05527 與 2601.19926 是總體 FN 的主要來源；2409.13738 的 precision 顯著低於
+其他三篇，但其 false‑negative 問題相對小；2511.13936 的 precision 很高但 recall 偏低，典型是
+boundary 定義太窄造成的「保守而乾淨」型錯誤。
+
+
+
+
+                                               3
+圖 1．各篇 review 的 final false negatives 在 Stage 1 與 Stage 2 的分布。
+
+圖 1 的重點不是單純告訴我們 Stage 1 比 Stage 2 大，而是幫我們看到各篇的結構差異。2307.05527
+與 2601.19926 同時有明顯的 Stage 1 與 Stage 2 損失，表示它們不只是 title + abstract policy 過嚴，
+也包含後續 full‑text / retrieval 層面的問題。相反地，2409.13738 與 2511.13936 幾乎所有 FN 都在
+Stage 1，說明其主戰場就是 Stage 1 的 criteria observability、prompt 和 reviewer boundary。
+
+
+2.2 Stage 1 的錯誤，到底是 reviewer 看不懂，還是 aggregation 壓掉？
+
+Review       Stage1 FN   Both juniors negative   At least one junior positive/unclear but final exclude
+
+2307.05527   33          6                       27
+2409.13738   4           2                       2
+2511.13936   10          8                       2
+2601.19926   70          43                      27
+Aggregate    117         59                      58
+
+
+表 3 解讀：這張表非常關鍵。四篇 aggregate Stage 1 FN = 117，其中 59 個是兩位 junior 都 negative，
+58 個是至少一位 junior positive 或 unclear，但 final 仍被壓成 exclude。也就是說，系統的 Stage
+1 損失幾乎剛好一半是 reviewer‑understanding / criteria‑boundary 問題，另一半是 aggregation /
+senior override 問題。任何只盯著一位 reviewer 或只盯著 criteria wording 的解法，都會漏掉另一
+半損失來源。
+
+
+
+
+                                             4
+圖 2．Stage 1 false negatives 的兩類來源：雙 junior 都判負，與至少一位 junior 正向/unclear 卻仍
+final exclude。
+
+圖 2 可以直接看出為什麼 2307.05527 與 2601.19926 不能只怪 reviewer。兩篇都有很大的橘色區塊，
+表示大量 false negatives 是在 disagreement / uncertainty 經過 final decision 後才變成 exclude。
+相反地，2511.13936 幾乎是藍色主導，表示問題比較像 shared operational definition 太窄；這也是
+為什麼 2511 的首修應該是 criteria surgery，而不是 arbitration hotfix。
+
+
+2.3 Reviewer 本身的表現：JuniorMini 是否真的更安全？
+
+Stage 1 reviewer performance
+
+             Reviewer     TP    FP   TN    FN    Unclear   Precision   Recall
+
+             JuniorNano   386   16   161   121   54        0.960       0.761
+             JuniorMini   384   13   160   80    101       0.967       0.828
+             SeniorLead   60    1    6     58    613       0.984       0.508
+
+
+Stage 2 reviewer performance
+
+             Reviewer     TP    FP   TN    FN    Unclear   Precision   Recall
+
+             JuniorNano   411   11   1     24    10        0.974       0.945
+             JuniorMini   403   11   1     26    16        0.973       0.939
+             SeniorLead   17    0    0     25    415       1.000       0.405
+
+
+表 4 與表 5 解讀：如果只比較兩位 junior，JuniorMini 在 Stage 1 的 aggregate recall 明顯優於
+JuniorNano（0.828 vs 0.761），而 precision 還略高。到了 Stage 2，兩位 junior 的 recall 都接近
+0.94–0.95。這個落差說明真正的 recall bottleneck 不是「模型讀全文能力差」，而是「太多 paper 在
+Stage 1 就被過早排掉」   。SeniorLead 的 precision 很高，但 coverage 非常低；一旦它以 override 的
+方式介入，實際效果更像是把分歧案例向 exclude 偏移。
+
+                                            5
+2.4 Counterfactual：若只改 Stage 1 policy，理論上能拿回多少 recall？
+
+   Policy                                      TP        FP   TN    FN      Precision   Recall   F1
+
+   Current Stage1                              440       17   164   117     0.9628      0.7899   0.8679
+   Exclude only if both juniors negative       498       23   158   59      0.9559      0.8941   0.9239
+
+
+表 6 解讀：這張表是本報告中最強的實作優先級證據。只改 Stage 1 決策規則，不動模型、不重寫
+criteria、不增添新資料來源，就能把 aggregate recall 從 0.7899 拉到 0.8941，precision 只下降
+0.0069。這代表 arbitration logic 本身就是第一級缺陷。
+
+    Review         Actual Recall    CF Recall    FN Recover         Actual Precision     CF Precision
+
+    2307.05527     0.807            0.965        27                 0.979                0.976
+    2409.13738     0.810            0.905        2                  0.680                0.633
+    2511.13936     0.667            0.733        2                  0.952                0.957
+    2601.19926     0.791            0.872        27                 0.981                0.977
+
+
+表 7 解讀：收益最大的是 2307.05527 與 2601.19926，各可 recover 27 個 Stage 1 FN；2511.13936 的
+收益有限，進一步支持它更像 criteria‑boundary 問題；2409.13738 也會改善，但 precision 下滑相
+對明顯，因此更需要透過 prompt guardrail 把「高主題相關但 validation 未明示」穩定送到 maybe，
+而不是完全放寬。
+
+
+3. 目前 runtime pipeline 到底如何放大 false negatives
+
+這一節直接對照 runtime code，而不是只討論高層概念。因為目前 false negatives 的多數根因，不
+是抽象的「模型太保守」，而是已經具體寫在程式裡：criteria 被怎麼序列化、senior 何時介入、final
+verdict 怎麼導出、missing full text 怎麼記錄。只要把這些程式邏輯攤開，很多本地分析中的觀察都
+會變得更可檢驗。
+
+
+3.1 Criteria serialization：為什麼 2307 會被收窄成「paper 必須明談 ethics」
+
+在 topic_pipeline.py 的 _criteria_payload_to_strings 中， 程 式 先 讀 取 topic_definition， 再 把
+它直接 prepend 到 reviewer 看到的 inclusion text。這個動作本身就把背景 framing 與 formal
+eligibility criteria 混 成 同 一 層。 對 一 般 topic 也 許 只 是 語 義 上 不 乾 淨； 對 2307.05527 這 種
+topic_definition 本身高度 ethics‑heavy 的 review，則會直接把 scope 壓窄成 reviewer 眼中必須滿
+足的條件。
+4438: def _criteria_payload_to_strings(payload: Dict[str, object]) ‑> Tuple[str, str]:
+4439:     """Convert structured criteria JSON into LatteReview‑friendly strings."""
+4440:
+4441:     topic_definition = str(payload.get("topic_definition") or "").strip()
+4442:     inclusion = payload.get("inclusion_criteria")
+4443:     exclusion = payload.get("exclusion_criteria")
+4444:
+4445:     inclusion_lines: List[str] = []
+4446:     if topic_definition:
+4447:         inclusion_lines.append(f" 主題定義：{topic_definition}")
+4448:
+
+
+                                                     6
+ 4449:     if isinstance(inclusion, dict):
+ 4450:         required = inclusion.get("required") or []
+
+ 程式片段 1 解讀：第 4441–4447 行就是這個問題的核心。只要 topic_definition 有值，就會新增一條
+ 主題定義：... 到 inclusion_lines 的最前面。接下來 reviewer 讀到的不是「背景 + criteria」，而是
+「混在一起的 criteria 字串」 。因此，若 topic_definition 寫的是“ethical implications of generative
+ audio models”
+             ，模型很自然會把「explicit ethics mention」視為 inclusion evidence 的必要部分。
+
+
+ 3.2 Runtime Stage 1 prompt：為什麼證據不足時會偏向 exclude
+
+ title_abstract_reviewer.py 的 runtime prompt 幾乎是最精簡的 generic formulation：把 input
+ item 貼上、把 inclusion/exclusion criteria 貼上、要求滿足全部 inclusion 且不碰任何 exclusion
+ 才 include，再給 1–5 分。這種寫法的問題不是它「邏輯上錯」，而是它沒有任何 Stage 1 specific
+ guardrail： 沒 有 說 Stage 1 僅 是 high‑recall gate、 沒 有 說 lack of evidence 不 等 於 exclusion
+ evidence、沒有說 sparse metadata 要偏 maybe、也沒有說 topic_definition 只是背景。
+ 8: generic_prompt_all = """
+ 9:
+ 10: **Review the title and abstract below and evaluate whether they should be included based on the
+ ↪ following inclusion and exclusion criteria (if any).**
+ 11: **Note that the study should be included only and only if it meets ALL inclusion criteria and NONE of
+ ↪ the exclusion criteria.**
+ 12:
+ 13: ‑‑‑
+ 14:
+ 15: **Input item:**
+ 16: <<${item}$>>
+ 17:
+ 18: ‑‑‑
+ 19:
+ 20: **Inclusion criteria:**
+ 21: ${inclusion_criteria}$
+ 22:
+ 23: **Exclusion criteria:**
+ 24: ${exclusion_criteria}$
+ 25:
+
+ 程式片段 2 解讀：第 10–11 行的核心命令是「只有在滿足全部 inclusion 且不滿足任何 exclusion 時
+ 才 include」。若 reviewer 沒有更精細的 uncertainty policy，最自然的行為就是把 not observed in
+ abstract 近似成 criterion false。這就是 2409.13738 與 2601.19926 中「證據不足就直接排除」的機
+ 制基礎。
+
+
+ 3.3 Repo 內 template 其實比較安全，但 runtime 沒有採用
+
+ 這 個 repo 裡 的 markdown prompt templates 比 runtime vendor prompt 明 顯 更 安 全。
+ 03_stage1_2_criteria_review.md 明 寫 Stage 1 只 看 title + abstract、 允 許 maybe、 沒 有 證
+ 據 就 給 3（UNCLEAR） 、 禁 止 臆 測；05_stage2_criteria_review.md 則 要 求 Stage 2 輸 出
+ criterion‑by‑criterion YES/ NO/ UNCLEAR 與 evidence， 並 把 unresolved UNCLEAR 標 為
+ needs_manual_review=true。問題是：目前實際運行的是 vendor reviewer 類別，而不是這套較完
+ 整的模板。
+
+
+
+
+                                                    7
+Stage 1 template 的關鍵 guardrails 1. 只看 Title + Abstract。
+
+2. 允許 maybe。
+
+3. 沒有證據就給 3（UNCLEAR）
+                   。
+
+4. 禁止臆測。
+
+5. 任一 criterion.status == UNCLEAR 時，verdict 可為 MAYBE。
+
+
+Stage 2 template 的關鍵 guardrails 1. 不允許 maybe，但要求逐條 criteria 狀態。
+
+2. UNCLEAR 需要被顯式標記，而不是隱藏在單一整體分數裡。
+
+3. 若因 UNCLEAR 而保守排除，要標 needs_manual_review=true。
+
+對照意義：repo 內 template 已經隱含一個更合理的 design direction：Stage 1 應該是 evidence‑
+aware、uncertainty‑aware 的 gate；Stage 2 應該是可稽核的 criterion‑level final decision。現在
+真正缺的是把這些 guardrails 落到 runtime reviewer 與 aggregation policy，而不是僅作為 repo 裡
+的參考模板存在。
+
+
+3.4 SeniorLead override：為什麼 disagreement case 會被壓成 exclude
+
+目前 topic_pipeline.py 內的 final verdict 不是三方投票，而是「若 senior 有分數，直接使用 senior
+分數；若 senior 沒分數，才用兩個 junior 分數平均後 round」。而 _senior_filter 的條件又會在大
+量 disagreement / uncertainty case 上把 senior 拉進來。兩者合起來的實際效果是：只要 senior 出
+手，整體決策就高度偏向 senior 的判斷。
+4708:   senior_eval = row.get("round‑B_SeniorLead_evaluation")
+4709:   source = "junior"
+4710:   score: Optional[int] = None
+4711:   if senior_eval is not None and not _is_missing(senior_eval):
+4712:       try:
+4713:           score = int(senior_eval)
+4714:           source = "senior"
+4715:       except (TypeError, ValueError):
+4716:           score = None
+4717:   if score is None:
+4718:       candidates: List[int] = []
+4719:       for value in (
+4720:           row.get("round‑A_JuniorNano_evaluation"),
+4721:           row.get("round‑A_JuniorMini_evaluation"),
+4722:       ):
+4723:           if value is None or _is_missing(value):
+4724:               continue
+4725:           try:
+4726:               candidates.append(int(value))
+4727:           except (TypeError, ValueError):
+4728:               continue
+4729:       if not candidates:
+4730:           return " 需再評估 (no_score)"
+4731:       score = int(round(sum(candidates) / len(candidates)))
+4732:   if score >= 4:
+4733:       return f"include ({source}:{score})"
+4734:   if score <= 2:
+
+
+                                                 8
+4735:      return f"exclude ({source}:{score})"
+
+4965:      def _senior_filter(row: "pd.Series") ‑> bool: # type: ignore[name‑defined]
+4966:          eval_1 = row.get("round‑A_JuniorNano_evaluation")
+4967:          eval_2 = row.get("round‑A_JuniorMini_evaluation")
+4968:          if pd.isna(eval_1) or pd.isna(eval_2):
+4969:              return False
+4970:          try:
+4971:              score1 = int(eval_1)
+4972:              score2 = int(eval_2)
+4973:          except (TypeError, ValueError):
+4974:              return False
+4975:          if score1 != score2:
+4976:              if score1 >= 4 and score2 >= 4:
+4977:                  return False
+4978:              if score1 >= 3 or score2 >= 3:
+4979:                  return True
+4980:          elif score1 == score2 == 3:
+
+程式片段 3 與 4 解讀：_senior_filter 會把 5 vs 1、4 vs 2、5 vs 3、3 vs 3 這類案例送進 senior；
+而 _derive_final_verdict_from_row 則在第 4708–4715 行顯示，只要 senior_eval 存在，就直接用
+senior score 作 final source。這就是為什麼許多「至少一位 junior 已經看對」的 case 仍會被壓成
+exclude：它不是平均掉，而是被更保守的 senior 直接覆蓋。
+
+
+3.5 Missing full‑text handling：為什麼 retrieval failure 被記成 semantic exclusion
+
+在 full‑text review pipeline 裡，若 key 缺失，或 fulltext path {key}.md 不存在，程式會把這個 case
+直接寫成 final_verdict = ”exclude (missing_fulltext)”。這代表 operational failure 被直接編碼
+進 semantic verdict。對 error analysis 來說，這種記法會污染 confusion matrix；對系統行為來
+說，則等於讓 pipeline 失敗被誤認成 reviewer 排除。
+5180:      fulltext_path = resolved_fulltext_root / f"{key}.md"
+5181:      if (not fulltext_path.exists()) or (not fulltext_path.is_file()):
+5182:          skipped_records.append(
+5183:              {
+5184:                  "key": key,
+5185:                  "title": title,
+5186:                  "base_final_verdict": base_final_verdict,
+5187:                  "fulltext_review_mode": review_mode,
+5188:                  "fulltext_source_path": str(fulltext_path),
+5189:                  "fulltext_chars_total": 0,
+5190:                  "fulltext_chars_used": 0,
+5191:                  "reference_cut_applied": False,
+5192:                  "reference_cut_method": "none",
+5193:                  "reference_cut_marker": None,
+5194:                  "reference_cut_line_no": None,
+5195:                  "fulltext_missing_or_unmatched": True,
+5196:                  "review_skipped": True,
+5197:                  "discard_reason": "missing_fulltext",
+5198:                  "final_verdict": "exclude (missing_fulltext)",
+
+程式片段 5 解讀：第 5180–5198 行明確展示了這個問題。這裡不只是在 log 裡記錄 missing_fulltext，
+而是把它 materialize 成最終的 exclude (missing_fulltext)。因此，像 2601.19926 中 handoff 指出
+
+
+
+                                                  9
+的幾個 gold‑positive missing_fulltext case，就不應被當作 reviewer semantic failure，而應先被
+歸類為 retrieval / path‑resolution failure。
+
+
+
+
+圖 3．目前 workflow 與建議 redesign 的對照流程圖。
+
+圖 3 的左半部總結了目前 false negatives 被放大的路徑：先把 topic_definition 與 eligibility 混在
+一起，再用 generic prompt 要求 Stage 1 像 final gate 那樣判斷，接著把 disagreement 交給一位更
+保守的 senior 覆蓋，最後還把 missing full text 寫成 exclude。右半部則是本報告的核心 redesign：
+criteria 分層、Stage 1 明確 recall‑first、disagreement 與 sparse metadata 預設 maybe、retrieval
+failure 轉成 operational state。這張流程圖的重要性不在於畫面本身，而在於把「哪一段該改哪個檔
+案」清楚對應起來。
+
+
+4. Root‑cause buckets：我如何驗證、補強與修正 repo 內本地分析
+
+本 節 依 使 用 者 要 求， 清 楚 區 分 criteria 問 題、prompt 問 題、reviewer 行 為 問 題、arbitration /
+aggregation 問題與 retrieval / full‑text 問題，並直接對應到 repo 內本地分析所提出的五大 root‑
+cause buckets。我的整體立場是：本地分析的方向大體正確，但有幾個地方需要更精細地分層，不然
+容易把 representation bug 誤說成 criteria writing bug，或把 operational failure 混進 reviewer
+semantic failure。
+
+
+1. criteria 寫不好   我方判斷：主要集中於 2511.13936；其餘三篇多半不是原始 eligibility 本身壞掉。
+
+主 要 造 成 機 制： 2511 的 preference learning / audio‑domain 邊 界 過 窄， 易 把 ordinal、rank‑
+based、speech emotion、relative‑label 案例排掉。
+
+最相關檔案： criteria_jsons/2511.13936.json；criteria_mds/2511.13936.md
+
+預期 recall 改善 / 複雜度：中等 / 中
+
+
+2. prompt 設計不好     我方判斷：全局成立，尤其 Stage 1。
+
+
+
+                                         10
+主要造成機制： runtime vendor prompt 過度 generic；沒有把 uncertainty、sparse metadata、
+topic_definition 背景化等規則講清楚。
+
+最相關檔案： title_abstract_reviewer.py；fulltext_reviewer.py
+
+預期 recall 改善 / 複雜度：很高 / 低
+
+
+3. criteria serialization 有問題   我方判斷： 2307 最嚴重，也影響其他 review 的 observability
+mismatch。
+
+主要造成機制： topic_definition 被 prepend 到 inclusion string，背景 framing 被 reviewer 誤當
+硬規則。
+
+最相關檔案： topic_pipeline.py:_criteria_payload_to_strings
+
+預期 recall 改善 / 複雜度：很高 / 中
+
+
+4. runtime workflow policy 有問題    我方判斷：全局成立。
+
+主 要 造 成 機 制： SeniorLead override + disagreement case 壓 成 exclude；Stage 1 並 未 作 為 高
+recall gate。
+
+最相關檔案： topic_pipeline.py:_senior_filter；_derive_final_verdict_from_row
+
+預期 recall 改善 / 複雜度：最高 / 低到中
+
+
+5. missing full‑text retrieval 我方判斷： 2601 最明顯。
+
+主要造成機制： pipeline 把 key 缺失或 md path 缺失直接記成 exclude (missing_fulltext)，把
+operational failure 誤記成 semantic exclusion。
+
+最相關檔案： topic_pipeline.py: missing_fulltext handling
+
+預期 recall 改善 / 複雜度：中高 / 低到中
+
+表 8 解讀：五大 bucket 並不是彼此排斥的「資料分類」，而是五種最主要的 engineering failure
+modes。這張表的重點，是把每個 bucket 對應到最可能的結構根因與最應該修改的檔案。以 2307
+為例，真正最該修的是 topic_pipeline.py 的 serialization，而不是先回去改 review paper 的原始
+criteria 文字。
+
+
+4.1 Bucket 一：criteria 寫不好
+
+我不同意把四篇都 broadly 說成「criteria 寫不好」             。更精確地說，只有 2511.13936 明顯屬於 criteria
+wording / operational definition 本身就不足以支撐 gold boundary。在這篇裡，JSON 與 source
+markdown 都把 preference learning 寫成 ranking / A‑B / pairwise comparison of audio items，
+numeric ratings 又只有在明確轉成 pairwise/ranking 才算，這會自然地把 ordinal learning、rank‑
+based emotion classification、relative‑label learning 等 case 推向 out‑of‑scope。相反地，2307
+與 2409 的問題多半不在 review paper 原始 eligibility 本身，而在 machine‑facing representation
+與 Stage 1 operationalization。
+
+
+
+
+                                         11
+4.2 Bucket 二：prompt 設計不好
+
+這是全局問題，但要明講：問題主要出在 runtime vendor prompt，不是 repo 內的 markdown
+templates。repo 內 03_stage1_2_criteria_review.md 已經把 Stage 1 寫成只看 title + abstract、允
+許 maybe、沒有證據就給 UNCLEAR、禁止臆測；然而實際 runtime title_abstract_reviewer.py 卻
+只給了 generic 的「滿足全部 inclusion 才 include」框架。當 reviewer 沒有被告知 uncertainty
+policy，就會自然採用保守 heuristic：沒看到，就當沒有。這是 2409 與 2601 尤其明顯的共通機制。
+
+
+4.3 Bucket 三：reviewer 行為問題
+
+repo 內 本 地 分 析 把 reviewer‑specific signal 與 system‑level signal 分 開， 這 一 點 我 是 同 意 的。
+JuniorMini 在 Stage 1 的 aggregate recall 明顯優於 JuniorNano，因此 reviewer calibration 的確有
+價值；但如果把焦點停在 reviewer ranking，本質上只是在描述 symptom，而不是修掉 architecture
+問題。因為即便 JuniorMini 較好，2307 與 2601 的大量損失仍然來自 arbitration 被壓掉。換句話說，
+reviewer 行為問題是真實存在，但不是 primary design lever。
+
+
+4.4 Bucket 四：arbitration / aggregation 問題
+
+這是我認為最應優先處理的 bucket。原因很直接：handoff 內的 counterfactual 已經告訴我們，只
+改 Stage 1 decision rule 就能大幅提升 recall。這不是 speculative guess，而是同一批 reviewer 分
+數下的政策模擬。更重要的是，這個 bucket 幾乎與 reviewer model identity 正交：無論你用哪個
+junior，若 disagreement case 的預設處置仍是由 senior 單點 override，系統就會繼續把可挽回案
+例壓成 exclude。
+
+
+4.5 Bucket 五：retrieval / full‑text 問題
+
+本地 analysis 已經把 missing_fulltext 從 reviewer semantic reasoning 中拆出來，我同意這個方
+向，但我會再推進一步：missing_fulltext 不應進 semantic confusion matrix。當 key 不存在、
+path 對不到、或全文根本沒 resolve 成 md 時，這是 operational state，不應被 materialize 成
+semantic exclude。尤其在 2601，這類 case 很容易讓人誤以為 reviewer 在 full‑text 階段把 syntax
+papers 排掉，其實是全文根本沒被成功送進 reviewer。
+
+
+4.6 我補充的一個更底層根因：criteria observability mismatch
+
+如果只用五大 bucket，很容易忽略一個更底層的設計缺陷：Stage 1 與 Stage 2 沒有使用不同層次的
+criteria。更準確地說，現在系統沒有把 criteria 分成「title/abstract 可觀察」「full‑text 才能穩定觀
+察」「metadata 可程式化」三類。結果是，像 2409 的 experiments to validate、2307 的 evidence
+scope main text + appendices、2601 的 publication type / empirical component，這些本來就不
+該在 title+abstract stage 硬判的條件，被扁平化成 Stage 1 reviewer 必須一起滿足的 inclusion。這
+個 observability mismatch，是我認為比單改 prompt wording 更根本的設計缺陷。
+
+
+5. 逐篇分析：四個 review 的具體診斷
+
+下面四個小節不再只講抽象 bucket，而是逐篇回到 review 本身：它的 criteria 怎麼寫、runtime 如
+何把它 operationalize、repo 內本地分析哪裡說得對、哪裡需要修正，以及最該先動哪個檔案。這一
+部分同時也是整個 implementation plan 的需求分解來源。
+
+
+
+
+                                         12
+1. Review 2307.05527   主因排序： criteria serialization > Stage 1 prompt > arbitration
+
+診斷摘要： topic_definition 的 ethics framing 被 runtime 當作硬 inclusion；大量 recoverable
+disagreement 被 senior 壓掉。
+
+優先修法：不要把 topic_definition 放進 inclusion；Stage 1 明寫「未明示 ethics 不等於排除」；
+disagreement 預設 maybe。
+
+
+2. Review 2409.13738    主 因 排 序： Stage 1 uncertainty handling > prompt > observability
+mismatch
+
+診 斷 摘 要： abstract 未 明 示 validation 時 過 早 exclude； 本 質 上 是 full‑text criterion 被 硬 套 到
+title+abstract。
+
+優先修法： Stage 1 對 validation‑not‑explicit case 一律偏 maybe；僅在明確非 process extraction
+時排除。
+
+
+3. Review 2511.13936   主因排序： criteria operationalization > reviewer behavior
+
+診斷摘要： preference learning / audio‑domain 定義過窄；兩位 junior 都沿著過窄邊界判讀。
+
+優先修法：重寫 criteria，明示 ordinal / rank‑based / speech emotion / relative labels 都可屬於
+scope。
+
+
+4. Review 2601.19926 主因排序： sparse metadata + arbitration + missing fulltext
+
+診斷摘要： citation‑like abstract 容易被 Stage 1 排除；另有 retrieval/path failure 被記成 semantic
+exclude。
+
+優先修法：加 sparse metadata fallback；missing_fulltext 改成 manual_review / retrieval_failed；
+disagreement 預設 maybe。
+
+表 9 解 讀： 這 張 表 濃 縮 了 四 篇 review 的 主 因 排 序。2307 是 representation bug 為 主，2409 是
+uncertainty handling 為主，2511 是 criteria surgery 為主，2601 則是 sparse metadata + retrieval
+handling 的混合型問題。這也說明為什麼不該用一個單一 fix 嘗試覆蓋全部 review。
+
+
+5.1 2307.05527：為什麼看起來被收窄成「paper 必須明確談 ethics 才能納入」
+
+我 對 2307 的 判 斷 非 常 明 確： 它 是 四 篇 裡 最 典 型 的 criteria / prompt misalignment 經 由
+serialization 被 硬 化 的 例 子。source criteria markdown 寫 得 很 清 楚，atomic inclusion 是
+generative audio primary focus、output entirely audio、full paper、時間窗與 evidence scope；
+並沒有要求「paper 必須直接討論 ethics」         。但 JSON 的 topic_definition 採的是 ethics framing，而
+runtime 又把這段文字 prepend 到 inclusion string，於是 reviewer 很自然就會把「explicit ethics
+discussion」當作 eligibility 的一部分。
+
+這也是為什麼本地 taxonomy 會出現像 topic_narrowed_to_explicit_ethics 這樣高頻的 tag。當
+reviewer 以 generic prompt 去讀一串混合了背景與條件的 inclusion text，再配上 senior override
+機制，系統就會傾向用最容易抓到的 framing 當決策支點。在 2307 裡，那個 framing 正是 ethics。
+這不是 reviewer 憑空亂想，而是 pipeline 給了它一個錯誤的 machine‑facing target。
+
+從 reviewer / aggregation 角度看，2307 又是所有 review 中最值得優先修 arbitration 的一篇。依
+本地分析，Stage 1 final FN = 33，其中只有 6 個是兩位 junior 都 negative，另外 27 個是至少一
+
+
+                                           13
+位 junior 已 positive/unclear 仍被 final exclude。換句話說，就算不碰 reviewer prompt，光是把
+disagreement case 由 senior override 改成 maybe，就能拿回 2307 中大部分 Stage 1 損失。這也是
+counterfactual 顯示 2307 Stage 1 recall 可由 0.807 拉到 0.965 的原因。
+
+公 開 metadata 也 支 持 這 種 判 斷。 像 huang2020ai 的 abstract 明 確 談 human‑AI co‑creation
+in songwriting、 生 成 模 型、 樣 本 產 生 與 後 續 策 展；Suh2021AI 明 確 是 deep generative AI
+during social music composition；zhou2018voice 則 是 voice conversion with conditional
+SampleRNN。 這 些 案 例 並 不 是 topic 上 模 糊 或 離 題； 真 正 的 問 題 是 reviewer 被 迫 去 找 explicit
+ethics mention，於是把本來屬於 generative audio scope 的技術論文推成 exclude。
+
+我與本地分析的主要差異：我不同意把 2307 首要歸因到「criteria paper 本身寫不好」。更合理的
+說法是：原始 eligibility 不壞，壞的是 machine‑facing representation。換句話說，首修應該是
+topic_pipeline.py 的 serialization，而不是先回去重寫 2307 的 criteria paper 摘要。
+
+
+2307 的代表性 metadata 例子
+
+
+案 例 1 ‑ 2307.05527 / huang2020ai 標 題： AI Song Contest: Human‑AI Co‑Creation in
+Songwriting
+
+Abstract 摘 要 片 段： Machine learning is challenging the way we make music. Although
+research in deep generative models has dramatically improved the capability and fluency of
+music models, recent work...
+
+為何重要： Generative audio / human‑AI music / voice conversion clearly in scope, but likely
+excluded for lacking explicit ethics framing.
+
+
+案 例 2 ‑ 2307.05527 / Suh2021AI 標 題： AI as Social Glue: Uncovering the Roles of Deep
+Generative AI during Social Music Composition
+
+Abstract 摘 要 片 段： Recent advances in deep generative neural networks have made it
+possible for artificial intelligence to actively collaborate with human beings in co‑creating
+novel content (e.g. mu...
+
+為何重要： Generative audio / human‑AI music / voice conversion clearly in scope, but likely
+excluded for lacking explicit ethics framing.
+
+
+案例 3 ‑ 2307.05527 / zhou2018voice 標題： Voice Conversion with Conditional SampleRNN
+
+Abstract 摘 要 片 段： Here we present a novel approach to conditioning the SampleRNN
+generative model for voice conversion (VC). Conventional methods for VC modify the
+perceived speaker identity by conv...
+
+為何重要： Generative audio / human‑AI music / voice conversion clearly in scope, but likely
+excluded for lacking explicit ethics framing.
+
+表 10 解讀：這些 paper 的 abstract 共同點是都明確落在 generative audio / human‑AI music / voice
+conversion 的主題附近，卻不一定在 abstract 層直接展開 ethics/legal/social implications。若系
+統要求 abstract 必須 already 顯式談 ethics，實際上就是把 2307 的 scope 由「ethical implications
+of generative audio models 的 evidence base」誤縮成「paper 本身必須是 ethics 論文」。
+
+
+
+
+                                             14
+5.2 2409.13738：為什麼 Stage 1 在證據不足時過度使用 exclude
+
+2409 的關鍵不是 criteria 壞，而是 Stage 1 把 final/full‑text level 的條件過早當成 title+abstract
+hard gate。source criteria markdown 很 明 確：inclusion 裡 有 full research paper、full
+text available、written in English、primary research、specifically covers NLP for process
+extraction、concrete method、experiments to empirically validate the method。若在 full text
+final decision 階段看，這些條件大致合理；但到了 Stage 1，特別是 I8 experiments to validate，就
+不再是穩定可觀察條件。
+
+本 地 分 析 把 2409 的 taxonomy 主 軸 命 名 成 validation_not_explicit_in_abstract， 我 認 為 非 常
+準。像 etikala2021extracting、goncalves2011let、honkisz2018concept 的 metadata 都顯示它們
+明顯接近 NLP‑to‑process/model extraction 方向，但 abstract 並不一定明講 dataset、metrics、
+baselines、evaluation tables。當 runtime prompt 又要求「滿足全部 inclusion 才 include」，模
+型就會把「未在 abstract 中看到 validation」自動近似成「不符合 criteria」，於是直接打低分。
+
+因此，2409 最合理的修法不是先大幅重寫 criteria，而是做 Stage 1‑specific criterion projection。
+也就是說，Stage 1 只應要求 reviewer 去判斷：這篇 paper 是否明顯是 NLP for process extraction
+from natural‑language text？是否提供 concrete method 的初步跡象？是否存在明確 out‑of‑scope
+signal？至於 full‑text availability、peer‑review status、validation experiment 等條件，應保留
+給 Stage 2 或 metadata rule。如此一來，abstract 沒寫 validation 的高主題相關 paper 就會進入
+maybe，而不是提早死在 exclude。
+
+
+2409 的代表性 metadata 例子
+
+
+案例 1 ‑ 2409.13738 / etikala2021extracting 標題： Extracting Decision Model Components
+from Natural Language Text for Automated Business Decision Modelling.
+
+Abstract 摘要片段： The decision model in the DMN (Decision Model and Notation) standard
+is a declarative representation of decision knowledge, which is favored across industry and
+academia to represe...
+
+為 何 重 要： Looks like NLP‑to‑process extraction, but abstract‑level validation signal is not
+explicit.
+
+
+案 例 2 ‑ 2409.13738 / goncalves2011let 標 題： Let Me Tell You a Story ‑ On How to Build
+Process Models
+
+Abstract 摘要片段： Process Modeling has been a very active research topic for the last decades.
+One of its main issues is the externalization of knowledge and its acquisition for further use,
+as this...
+
+為 何 重 要： Looks like NLP‑to‑process extraction, but abstract‑level validation signal is not
+explicit.
+
+
+案例 3 ‑ 2409.13738 / honkisz2018concept 標題： A Concept for Generating Business Process
+Models from Natural Language Description
+
+Abstract 摘 要 片 段： Manual extraction of business process models from technical
+documentation is a time‑consuming task. Several approaches to generating such process
+models have been proposed. We pres...
+
+
+                                              15
+為 何 重 要： Looks like NLP‑to‑process extraction, but abstract‑level validation signal is not
+explicit.
+
+表 11 解讀：這三篇 paper 的共通點是 task fit 很強，但 validation signal 不一定在 abstract 顯性化。
+這正是典型的 Stage 1 observability mismatch：如果 reviewer 被允許把「沒看到 validation」映射
+成「validation 不存在」
+                ，它們就會被排；如果 reviewer 被要求把這種情況標為 UNCLEAR / MAYBE，
+它們就會進入較合適的後續審查。
+
+
+5.3 2511.13936：為什麼它更像 genuinely too‑narrow operational definition
+
+2511 是 四 篇 裡 最 接 近 genuine criteria problem 的 一 篇。JSON 與 source markdown 都 把
+preference learning 的定義綁得很緊：paper 涉及 ranking 或 A/B comparisons of two or more
+audio clips； 若 只 有 numeric ratings， 必 須 明 確 轉 成 ranking/ pairwise preferences 才 算；
+audio‑domain 對 multi‑modal 的包含雖有提到，但 reviewer‑facing operational boundary 並沒
+有 明 確 覆 蓋 speech emotion、customer service calls、rank‑based formulations、qualitative
+agreement derived rankings 等情境。於是，reviewer 很容易採用一個過窄、但又完全符合字面理
+解的 operational definition。
+
+本 地 reviewer analysis 也 支 持 這 一 點：2511 Stage 1 final FN = 10， 其 中 8 個 是 兩 位 junior 都
+negative，只有 2 個是 arbitration 壓掉。這表示 2511 不是主要的 senior‑override 問題，也不是某
+一位 junior 特別差，而是兩位 junior 都沿著同一個過窄邊界在判。這與 2307 或 2601 的結構完全不
+同。
+
+公 開 metadata 對 這 個 判 斷 很 有 幫 助。lotfian2016retrieving 的 abstract 直 接 寫 出 preference
+learning、pairwise comparisons 與 affective recognition；parthasarathy2016using 寫 的 是
+rank‑based emotion classifiers；han2020ordinal 明 講 ordinal speech emotion recognition
+in customer service calls；parthasarathy2018preference 又 是 preference learning with
+qualitative agreement。 若 gold 把 這 些 視 為 in‑scope， 則 現 有 criteria 的 machine‑facing
+operational boundary 顯然沒有把它們明確納入。
+
+因 此，2511 的 首 修 不 是 arbitration hotfix， 而 是 criteria surgery。 應 明 示 下 列 幾 件 事： 第
+一，ordinal formulations 可 以 算 preference learning； 第 二，rank‑based learning 可 以 算
+preference learning；第三，relative labels 與 qualitative agreement derived rankings 可以算
+preference signal；第四，speech emotion、customer service calls、canonical speech datasets
+可以視為 audio‑domain evidence；第五，若 audio 是 core modality，multi‑modal work 仍可納
+入。只要這些邊界被明寫，reviewer 的 shared under‑inclusion 就會大幅下降。
+
+
+2511 的代表性 metadata 例子
+
+
+案例 1 ‑ 2511.13936 / lotfian2016retrieving 標題： Retrieving Categorical Emotions Using a
+Probabilistic Framework to Define Preference Learning Samples
+
+Abstract 摘要片段： Preference learning is an appealing approach for affective recognition.
+Instead of predicting the underlying emotional class of a sample, this framework relies on
+pairwise comparis...
+
+為 何 重 要： Preference/ rank/ ordinal emotion‑learning signal exists, yet reviewer likely
+demanded explicit audio or explicit pairwise wording.
+
+
+
+
+                                           16
+案例 2 ‑ 2511.13936 / parthasarathy2016using    標題： Using agreement on direction of change
+to build rank‑based emotion classifiers
+
+Abstract 摘要片段： Automatic emotion recognition in realistic domains is a challenging task
+given the subtle expressive behaviors that occur during human interactions. The challenges
+start with noisy...
+
+為 何 重 要： Preference/ rank/ ordinal emotion‑learning signal exists, yet reviewer likely
+demanded explicit audio or explicit pairwise wording.
+
+
+案 例 3 ‑ 2511.13936 / han2020ordinal 標 題： Ordinal learning for emotion recognition in
+customer service calls
+
+Abstract 摘要片段： Approaches toward ordinal speech emotion recognition (SER) tasks are
+commonly based on the categorical classification algorithms, where the rank‑order emotions
+are arbitrarily trea...
+
+為 何 重 要： Preference/ rank/ ordinal emotion‑learning signal exists, yet reviewer likely
+demanded explicit audio or explicit pairwise wording.
+
+表 12 解讀：這幾個案例共同說明了同一個問題：gold 的 operational boundary 顯然比 reviewer 依
+criteria 字面採用的 boundary 更寬。若 criteria 不明寫 ordinal、rank‑based、speech emotion、
+relative‑label 這些情境，reviewer 採用 explicit audio + explicit pairwise 的窄定義並不奇怪。
+
+
+5.4 2601.19926：為什麼這篇是 sparse metadata、over‑conservative Stage 1 與 missing full
+text 的混合型問題
+
+2601 是 四 篇 裡 最 混 合 的 一 篇。 從 criteria markdown 看，review 自 身 已 明 確 寫 出 relevance
+assessment primarily via title, then abstract/ full text when necessary， 並 把 cutoff date 與
+publication type 等 metadata 條件分開。可是 runtime pipeline 在 Stage 1 並沒有利用這個「when
+necessary」 的 設 計 精 神， 而 是 仍 把 扁 平 化 criteria 丟 給 title+abstract reviewer。 當 metadata
+本身又常是 citation‑like 或極短 abstract 時，reviewer 若沒在表面看到 Transformer、syntax、
+probing 等強詞，就很容易保守排除。
+
+mccoy_right_2019 就是最典型的 sparse metadata 例子：metadata 幾乎只有 bibliographic line，
+沒有足夠 abstract 讓 reviewer 判定 syntactic heuristics / NLI 與 Transformer/syntax probing 的
+關係。相反地，Tenney:etal:2019b 與 Warstadt:etal:2020 的 abstract 已明確顯示 contextualized
+representation、BERT、sentence structure、grammatical phenomena 等訊號；它們若在後續
+被 標 記 成 exclude (missing_fulltext)， 那 就 是 retrieval/ path resolution 問 題， 而 不 是 Stage 1
+semantic misunderstanding。
+
+本地分析對 2601 的本質描述相當準：它是一半 reviewer 在 sparse metadata 上過度保守，一半是
+arbitration / aggregation 放大了保守傾向，外加少量 full‑text retrieval failure。我的補充是：2601
+其實是最能凸顯「semantic failure 與 operational failure 必須分開記錄」的一篇。因為只要仍把
+missing_fulltext 直接記成 exclude，就會混淆你到底該優先去修 prompt policy，還是該優先去修
+full‑text path resolution。
+
+
+2601 的代表性 metadata 例子
+
+
+
+
+                                             17
+案 例 1 ‑ 2601.19926 / mccoy_right_2019 標 題： Right for the Wrong Reasons: Diagnosing
+Syntactic Heuristics in Natural Language Inference
+
+Abstract 摘 要 片 段： R. Thomas McCoy, Ellie Pavlick, Tal Linzen. Proceedings of the 57th
+Annual Meeting of the Association for Computational Linguistics. 2019....
+
+為何重要： Shows the mix of sparse metadata, clear syntax cases, and later missing_fulltext
+issues.
+
+
+案例 2 ‑ 2601.19926 / Tenney:etal:2019b 標題： What do you learn from context? Probing for
+sentence structure in contextualized word representations
+
+Abstract 摘要片段： Contextualized representation models such as ELMo (Peters et al., 2018a)
+and BERT (Devlin et al., 2018) have recently achieved state‑of‑the‑art results on a diverse array
+of downst...
+
+為何重要： Shows the mix of sparse metadata, clear syntax cases, and later missing_fulltext
+issues.
+
+
+案 例 3 ‑ 2601.19926 / Warstadt:etal:2020 標 題： BLiMP: The Benchmark of Linguistic
+Minimal Pairs for English
+
+Abstract 摘 要 片 段： We introduce The Benchmark of Linguistic Minimal Pairs (BLiMP), 1
+a challenge set for evaluating the linguistic knowledge of language models (LMs) on major
+grammatical phenomena in...
+
+為何重要： Shows the mix of sparse metadata, clear syntax cases, and later missing_fulltext
+issues.
+
+表 13 解讀：這張表同時放了 citation‑like metadata 與 clear syntax papers。它說明 2601 不是單一
+問題：有些 record 是因為 metadata 太稀疏，Stage 1 本來就不該 hard exclude；另一些 record 則
+已經明確 in‑scope，但在 full‑text lookup 失敗時被誤寫成 semantic exclude。
+
+
+6. 我不同意或要補強本地分析的地方
+
+整體上，我大致同意 repo 內本地分析的方向。不過若要把它變成一份真正可實作的 engineering
+diagnosis，還有幾個地方需要講得更精準。以下列出我最明確的三項修正。
+
+第一，我不同意把 2307 首要歸因到「criteria 寫不好」。更合理的說法是：原始 source criteria
+並 沒 有 要 求 explicit ethics discussion； 真 正 把 scope 收 窄 成 「paper 必 須 談 ethics」 的 是
+machine‑facing serialization。這個差別很重要，因為它決定你應該先改 criteria_jsons 還是先改
+topic_pipeline.py。我的答案是：先改 pipeline。
+
+第 二， 我 不 建 議 把 JuniorMini anchor 當 成 長 期 設 計。 它 可 以 作 為 短 期 hotfix， 因 為 Stage 1
+aggregate recall 的確較好；但它無法根治 2511 的 criteria‑boundary 問題，也無法修掉 2307 的
+serialization bug。長期上應修 decision rule、prompt 與 criteria projection，而不是把 recall 依
+賴在單一 reviewer personality 上。
+
+第三，我會把「同一套 criteria 被直接套到 Stage 1 與 Stage 2」升級成第一級 architecture 缺陷。
+本地分析已經指出這點，但我認為它應該被明確命名為 criteria observability mismatch。因為這不
+只是 reviewer 行為保守，而是系統根本沒有區分哪些條件在 title+abstract 可觀察、哪些條件只能在
+full text 或 metadata 層穩定判定。
+
+
+                                               18
+7. 具體 implementation recommendations
+
+以下所有建議都不是泛泛的高層原則，而是可以直接對應到 repo 中應修改的檔案與函式。排序依「預
+期 recall 改善幅度 / 實作複雜度」而定，並且把 hotfix 與 structural fix 分開講清楚。
+
+
+7.1 先改 Stage 1 aggregation policy
+
+這是最先該做的改動，因為收益最大、複雜度低，而且已有 repo 內 counterfactual 作為直接支
+持。建議在 topic_pipeline.py 中把 Stage 1 final gate 改成 recall‑first policy：只有在存在明確
+exclusion evidence 且兩位 junior 都傾向 negative 時，才允許 hard exclude；其餘 disagreement
+與 uncertainty 一律進 maybe。若要保留 senior，應讓 senior 成為 tie‑break annotator，而非 hard
+override authority。
+def stage1_gate(junior_nano, junior_mini, sparse_metadata, explicit_exclusion_evidence):
+    s1 = normalize(junior_nano)
+    s2 = normalize(junior_mini)
+
+      if explicit_exclusion_evidence and s1 in {"neg", "unclear"} and s2 in {"neg", "unclear"} and not
+↪     sparse_metadata:
+          return "exclude"
+
+      if s1 == "pos" and s2 == "pos":
+          return "include"
+
+      # disagreement, uncertainty, or sparse metadata
+      if sparse_metadata:
+          return "maybe"
+
+      return "maybe"
+
+
+
+def fulltext_resolution(key, fulltext_path):
+    if key is None:
+        return "manual_review", "missing_key_for_fulltext_lookup"
+    if not exists(fulltext_path):
+        return "manual_review", "retrieval_failed"
+    return "ready", None
+
+
+7.2 重做 criteria serialization
+
+這 項 改 動 對 2307 是 首 修， 對 2409 / 2601 也 能 順 便 修 掉 observability mismatch。 最 小 可 行
+做 法 是 把 reviewer‑facing payload 改 成 分 層 schema， 而 不 是 單 一 inclusion/ exclusion 字
+串。topic_definition 應 進 入 background_context， 僅 作 方 向 說 明；Stage 1 reviewer 只 看
+stage1_assessable_criteria；Stage 2 reviewer 才 看 stage2_fulltext_criteria； 年 份、 出 版 型 態、
+full‑text availability 等則放進 programmable_filters。
+{
+    "background_context": "<topic_definition only for orientation>",
+    "stage1_assessable_criteria": [
+       {"id": "I_core_topic", "text": "...", "stage": "title_abstract"},
+       {"id": "E_clear_out_of_scope", "text": "...", "stage": "title_abstract"}
+    ],
+    "stage2_fulltext_criteria": [
+
+
+                                                        19
+      {"id": "I_experiment", "text": "...", "stage": "full_text"},
+      {"id": "I_evidence_scope", "text": "...", "stage": "full_text"}
+    ],
+    "programmable_filters": [
+       {"id": "P_year_window", "text": "...", "source": "metadata"},
+       {"id": "P_pub_type", "text": "...", "source": "metadata"}
+    ]
+}
+
+
+7.3 用 Stage 1 專用 prompt 取代目前 generic vendor prompt
+
+建 議 直 接 重 寫 title_abstract_reviewer.py 的 generic_prompt_all / generic_prompt_any， 把
+repo 內 template 的 guardrails 搬 進 runtime。 最 少 要 補 進 四 條 規 則： 只 看 title+abstract；
+topic_definition 只是背景；沒有證據就給 UNCLEAR / MAYBE；sparse metadata 不得直接 hard
+exclude。 若 reviewer 回 傳 schema 能 擴 張， 最 好 同 時 回 傳 criterion‑level status 與 evidence
+quotes。
+你現在執行的是 Stage 1（title + abstract gate），目標是高 recall 篩選，而不是最終排除。
+
+請嚴格遵守下列規則：
+1. 你只能依據 title 與 abstract 判斷；不得假設全文內容。
+2. topic_definition 只是背景說明，不是硬性 inclusion criterion。
+3. 若某條 criterion 在 title/abstract 中不可觀察，請標記為 UNCLEAR，不得因此直接判定為 NO。
+4. lack of evidence for inclusion != evidence for exclusion。
+5. 若 paper 看起來與 review topic 高度相關，但證據不足，請偏向 MAYBE。
+6. 若 metadata 稀疏、abstract 近似 citation text，除非有明確 exclusion evidence，否則請給 MAYBE。
+7. 只有在你能指出明確的 exclusion evidence 或明確不符合核心 topic 時，才可給低分排除。
+
+輸出 JSON：
+{
+    "evaluation": 1‑5,
+    "verdict": "include￨maybe￨exclude",
+    "criterion_status": {
+       "<criterion_id>": {
+         "status": "YES￨NO￨UNCLEAR",
+         "evidence_quotes": [...],
+         "reason": "..."
+       }
+    },
+    "overall_reasoning": "..."
+}
+
+
+7.4 重寫 Stage 2 prompt，但把目標定義為「可稽核」而不是再次保守
+
+Stage 2 並不一定要允許 maybe，但應該要求 reviewer 逐條輸出 YES/NO/UNCLEAR、evidence
+quote 與 uncertainty 類 型。 這 樣 做 的 價 值 有 兩 個： 第 一， 可 以 區 分 semantic unclear 與 text‑
+missing unclear； 第 二， 可 以 避 免 目 前 那 種 「單 一 1–5 分 數 + 最 終 exclude」 卻 無 法 追 查 是 哪
+條 criterion 出問題的狀況。這部分主要影響 fulltext_reviewer.py、basic_reviewer.py 與可能的
+downstream schema handling。
+你現在執行的是 Stage 2（full‑text final review）。
+
+請逐條輸出 criteria 狀態，而不是只給單一整體分數：
+
+
+                                                     20
+1. 對每條 inclusion / exclusion 回傳 YES / NO / UNCLEAR。
+2. 每條都要附 evidence quote 與定位。
+3. 若為 UNCLEAR，必須區分：
+   a. semantic_unclear：全文存在但語義仍不確定
+   b. text_missing：關鍵頁面或全文缺失
+4. 只有在所有 inclusion == YES 且所有 exclusion == NO 時才可 INCLUDE。
+5. text_missing 不應直接寫成 exclude (missing_fulltext)；請標成 retrieval_failed / needs_manual_review。
+
+
+7.5 為 sparse metadata 加一個 fallback lane
+
+建議在送入 Stage 1 reviewer 前，在 topic_pipeline.py 先計算幾個簡單指標：abstract 長度、是否
+近似 citation‑only text、是否缺乏主動詞或任務描述、是否只剩 bibliographic string。若 metadata
+過稀而又沒有明確 exclusion evidence，則強制 route 到 maybe。這個改動對 2601 的收益特別大，
+但對所有含有短摘要或不完整 metadata 的 review 都有保護作用。
+
+
+7.6 將 missing full text 改成 operational state，而不是 semantic verdict
+
+只要 key 缺失、fulltext path 不存在、或全文解析失敗，就應輸出類似 status=”retrieval_failed”、
+final_state=”manual_review”，並且從 semantic confusion matrix 中排除。這項改動不只對
+recall 有好處，也能讓 error analysis 乾淨到足以區分「模型判錯」與「系統沒把全文送進模型」。
+
+
+7.7 專門重寫 2511 的 criteria
+
+2511 是唯一我認為不能只靠 prompt 或 arbitration 修好的 review。建議直接重寫 criteria_jsons/
+2511.13936.json 與 criteria_mds/2511.13936.md 的 operational definition，明示 ordinal、rank‑
+based、relative‑label、qualitative agreement derived rankings、speech emotion、customer
+service calls、audio‑core multimodal 等邊界。沒有這一步，2511 會持續讓兩位 junior 共享過
+窄定義。
+
+
+7.8 檔案層級的修改地圖
+
+1. scripts/ screening/ vendor/ src/ pipelines/ topic_pipeline.py 建 議 變 更： 1) 停 止 把
+topic_definition prepend 到 inclusion string。2) Stage 1 改為 recall‑first gate。3) disagreement
+default maybe。4) missing_fulltext 改為 retrieval_failed/manual_review。5) sparse metadata
+fallback。
+
+
+2. scripts/screening/vendor/resources/LatteReview/lattereview/agents/title_abstract_reviewer.py
+建議變更：用 Stage1‑specific prompt 取代 generic prompt_all/any；輸出 criterion‑level status、
+evidence、uncertainty 原因。
+
+
+3. scripts/screening/vendor/resources/LatteReview/lattereview/agents/fulltext_reviewer.py
+建 議 變 更： 要 求 criterion‑by‑criterion YES/NO/UNCLEAR 與 evidence quote； 區 分 semantic
+unclear 與 text‑missing unclear。
+
+
+4. scripts/screening/vendor/resources/LatteReview/lattereview/agents/basic_reviewer.py
+建議變更：擴充 response_format 與 prompt substitution，使 reviewer 回傳結構化 criteria_status
+/ evidence。
+
+
+
+                                             21
+5. scripts/screening/vendor/resources/LatteReview/lattereview/workflows/review_workflow.py
+建議變更：如果 reviewer 輸出 schema 擴張，這裡要同步保存 nested JSON 欄位與 downstream
+joins。
+
+
+6. criteria_jsons/2511.13936.json；criteria_mds/2511.13936.md 建議變更：重寫 operational
+definition，明示 ordinal/rank‑based/relative‑label/speech‑emotion 等邊界。
+
+表 14 解讀：這張表的目的不是列出所有可能修改點，而是把最小必要改動集中到真正會影響 Stage
+1 false negatives 的檔案。若要採「先 hotfix、再 structural refactor」策略，實作重心應先落在
+topic_pipeline.py 與 title_abstract_reviewer.py。
+
+
+8. 依 recall gain / complexity 排序的優先級
+
+Priority 1 ‑ 改 Stage 1 arbitration / aggregation 對應檔案： topic_pipeline.py
+
+預期 recall gain： Very high
+
+複雜度： Low‑Medium
+
+理由： Handoff counterfactual 顯示 aggregate recall 0.7899 ‑> 0.8941，precision 只小幅下降。
+
+
+Priority 2 ‑ 改 criteria serialization   對應檔案： topic_pipeline.py
+
+預期 recall gain： Very high
+
+複雜度： Medium
+
+理由：直接消除 2307 最嚴重的 topic_definition hardening 問題。
+
+
+Priority 3 ‑ 重寫 Stage 1 runtime prompt 對應檔案： title_abstract_reviewer.py；basic_reviewer.py
+
+預期 recall gain： Very high
+
+複雜度： Low
+
+理由：可立即把「lack of evidence」改回 maybe/unclear，而不是 exclude。
+
+
+Priority 4 ‑ 把 missing_fulltext 改成 operational state   對應檔案： topic_pipeline.py
+
+預期 recall gain： Medium‑High
+
+複雜度： Low‑Medium
+
+理由：避免 retrieval failure 被當 semantic FN，對 2601 尤其重要。
+
+
+Priority 5 ‑ 新增 sparse metadata fallback 對應檔案： topic_pipeline.py
+
+預期 recall gain： Medium
+
+複雜度： Low
+
+理由：可減少 citation‑like / minimal abstract 的誤殺。
+
+
+
+
+                                              22
+Priority 6 ‑ 重 寫 2511 criteria   對 應 檔 案： criteria_jsons/ 2511.13936.json；criteria_mds/
+2511.13936.md
+
+預期 recall gain： Medium
+
+複雜度： Medium
+
+理由：這是唯一明顯需要 criteria surgery 的 review。
+
+
+Priority 7 ‑ 重寫 Stage 2 prompt + structured evidence schema 對應檔案： fulltext_reviewer.py；
+basic_reviewer.py；review_workflow.py
+
+預期 recall gain： Medium
+
+複雜度： Medium
+
+理由：可提升 full‑text auditability，但對 Stage 1 recall 幫助次於前五項。
+
+
+Priority 8 ‑ 短期 hotfix: 以 JuniorMini 作為 Stage 1 anchor 對應檔案： topic_pipeline.py
+
+預期 recall gain： Medium
+
+複雜度： Low
+
+理由：可作過渡方案，但不是長期結構修復。
+
+表 15 解讀：第一優先級是 Stage 1 arbitration / aggregation，因為這是唯一已被 counterfactual
+強力驗證、且不需要等待 criteria surgery 才能發揮效果的改動。第二與第三優先級分別是 criteria
+serialization 與 Stage 1 runtime prompt，兩者一起做才能根治 2307 與 2409 類型的錯誤。2511
+criteria rewrite 雖然重要，但由於它主要影響單一 review，應排在整體 structural hotfix 之後。
+
+
+8.1 分階段 rollout 計畫
+
+  1. Phase A（最短路徑 hotfix，1–2 天）：修改 Stage 1 arbitration；把 missing_fulltext 改為
+     operational state；若需要短期回收 recall，可暫時用 JuniorMini 作 Stage 1 anchor。
+  2. Phase B（prompt / policy hardening，2–4 天）：重寫 title_abstract_reviewer.py；加入
+     sparse metadata fallback；把 Stage 1 reviewer output 擴成 criterion‑level status。
+  3. Phase C （structural refactor，3–5 天）：重做 criteria serialization；把 background / stage1
+     / stage2 / programmable filters 分層；更新 downstream logging schema。
+  4. Phase D（review‑specific surgery，1–2 天 / review）  ：優先重寫 2511 的 criteria；視需要再
+     為 2307 加入更明確的 ethics‑framing guardrail。
+  5. Phase E（evaluation and audit）：重新跑四篇 benchmark，分別報告 Stage 1 FN、Stage
+     2 FN、retrieval_failed cases、needs_manual_review counts，以及 per‑review confusion
+     matrix。
+
+
+8.2 建議新增的觀測指標
+
+  1. Stage 1 中 maybe 的比例，以及其中最終在 Stage 2 轉成 include 的比例。
+  2. Stage 1 disagreement cases 的數量、其最終去向，以及由 senior 直接覆蓋的比例。
+  3. retrieval_failed / missing_key_for_fulltext_lookup / fulltext_not_found 的獨立數量。
+  4. per‑review 的 criterion‑level NO / UNCLEAR 分布，避免單一 scalar score 隱藏真正的根因。
+
+
+
+
+                                           23
+  5. 針 對 2511 的 boundary audit：ordinal、rank‑based、speech emotion、relative‑label 類
+     case 的納入率。
+
+
+Appendix A. 關鍵 runtime 證據摘錄
+
+A1. title_abstract reviewer 目前的 generic prompt
+
+8: generic_prompt_all = """
+9:
+10: **Review the title and abstract below and evaluate whether they should be included based on the
+↪ following inclusion and exclusion criteria (if any).**
+11: **Note that the study should be included only and only if it meets ALL inclusion criteria and NONE of
+↪ the exclusion criteria.**
+12:
+13: ‑‑‑
+14:
+15: **Input item:**
+16: <<${item}$>>
+17:
+18: ‑‑‑
+19:
+20: **Inclusion criteria:**
+21: ${inclusion_criteria}$
+22:
+23: **Exclusion criteria:**
+24: ${exclusion_criteria}$
+25:
+
+
+A2. full‑text reviewer 目前的 generic prompt
+
+9: generic_prompt_all = """
+10:
+11: **Review the full text below and evaluate whether it should be included based on the following
+↪ inclusion and exclusion criteria (if any).**
+12: **Note that the study should be included only and only if it meets ALL inclusion criteria and NONE of
+↪ the exclusion criteria.**
+13:
+14: ‑‑‑
+15:
+16: **Input item:**
+17: <<${item}$>>
+18:
+19: ‑‑‑
+20:
+
+
+A3. criteria serialization 的關鍵片段
+
+4438: def _criteria_payload_to_strings(payload: Dict[str, object]) ‑> Tuple[str, str]:
+4439:     """Convert structured criteria JSON into LatteReview‑friendly strings."""
+4440:
+4441:     topic_definition = str(payload.get("topic_definition") or "").strip()
+4442:     inclusion = payload.get("inclusion_criteria")
+4443:     exclusion = payload.get("exclusion_criteria")
+
+
+                                                   24
+4444:
+4445:   inclusion_lines: List[str] = []
+4446:   if topic_definition:
+4447:       inclusion_lines.append(f" 主題定義：{topic_definition}")
+4448:
+4449:   if isinstance(inclusion, dict):
+4450:       required = inclusion.get("required") or []
+
+
+A4. final verdict 與 senior override 的關鍵片段
+
+4708:   senior_eval = row.get("round‑B_SeniorLead_evaluation")
+4709:   source = "junior"
+4710:   score: Optional[int] = None
+4711:   if senior_eval is not None and not _is_missing(senior_eval):
+4712:       try:
+4713:           score = int(senior_eval)
+4714:           source = "senior"
+4715:       except (TypeError, ValueError):
+4716:           score = None
+4717:   if score is None:
+4718:       candidates: List[int] = []
+4719:       for value in (
+4720:           row.get("round‑A_JuniorNano_evaluation"),
+4721:           row.get("round‑A_JuniorMini_evaluation"),
+4722:       ):
+4723:           if value is None or _is_missing(value):
+4724:               continue
+4725:           try:
+4726:               candidates.append(int(value))
+4727:           except (TypeError, ValueError):
+4728:               continue
+4729:       if not candidates:
+4730:           return " 需再評估 (no_score)"
+4731:       score = int(round(sum(candidates) / len(candidates)))
+4732:   if score >= 4:
+4733:       return f"include ({source}:{score})"
+4734:   if score <= 2:
+4735:       return f"exclude ({source}:{score})"
+
+4965:       def _senior_filter(row: "pd.Series") ‑> bool: # type: ignore[name‑defined]
+4966:           eval_1 = row.get("round‑A_JuniorNano_evaluation")
+4967:           eval_2 = row.get("round‑A_JuniorMini_evaluation")
+4968:           if pd.isna(eval_1) or pd.isna(eval_2):
+4969:               return False
+4970:           try:
+4971:               score1 = int(eval_1)
+4972:               score2 = int(eval_2)
+4973:           except (TypeError, ValueError):
+4974:               return False
+4975:           if score1 != score2:
+4976:               if score1 >= 4 and score2 >= 4:
+4977:                   return False
+4978:               if score1 >= 3 or score2 >= 3:
+4979:                   return True
+
+
+                                                 25
+4980:           elif score1 == score2 == 3:
+
+
+A5. missing full text 直接被寫成 exclude 的片段
+
+5180:       fulltext_path = resolved_fulltext_root / f"{key}.md"
+5181:       if (not fulltext_path.exists()) or (not fulltext_path.is_file()):
+5182:           skipped_records.append(
+5183:               {
+5184:                   "key": key,
+5185:                   "title": title,
+5186:                   "base_final_verdict": base_final_verdict,
+5187:                   "fulltext_review_mode": review_mode,
+5188:                   "fulltext_source_path": str(fulltext_path),
+5189:                   "fulltext_chars_total": 0,
+5190:                   "fulltext_chars_used": 0,
+5191:                   "reference_cut_applied": False,
+5192:                   "reference_cut_method": "none",
+5193:                   "reference_cut_marker": None,
+5194:                   "reference_cut_line_no": None,
+5195:                   "fulltext_missing_or_unmatched": True,
+5196:                   "review_skipped": True,
+5197:                   "discard_reason": "missing_fulltext",
+5198:                   "final_verdict": "exclude (missing_fulltext)",
+
+
+Appendix B. Stage 1 可觀察性 mismatch 摘要
+
+1. Review 2307.05527 Stage 1 弱 可 觀 測 條 件： Evidence scope includes main text +
+appendices; publication form
+
+為 何 重 要： Stage 1 abstract often cannot certify these conditions, but current prompt still
+forces all‑inclusion logic.
+
+
+2. Review 2409.13738     Stage 1 弱可觀測條件： Full text available; experiments to empirically
+validate the method
+
+為何重要： These are reasonable final criteria, but too strong for title+abstract‑only gating.
+
+
+3. Review 2511.13936 Stage 1 弱可觀測條件： Less about observability; more about boundary
+definition
+
+為何重要： The key issue is not hidden evidence but an overly narrow operational definition.
+
+
+4. Review 2601.19926 Stage 1 弱可觀測條件： Publication type; empirical component; syntax
+focus when metadata is citation‑like
+
+為何重要： Sparse or bibliographic abstracts make even core topic signals hard to observe.
+
+表 B1 解讀：這張表特別重要，因為它把本報告新增的底層診斷——criteria observability mismatch
+——具體化。真正應該進 Stage 1 的，只應是 reviewer 在 title+abstract 能穩定觀察到的核心 topic fit
+與明確 out‑of‑scope evidence；其餘條件應分流到 metadata 或 Stage 2。
+
+
+
+
+                                                 26
+Appendix C. 代表性 metadata 個案
+
+案 例 1 ‑ 2307.05527 / huang2020ai 標 題： AI Song Contest: Human‑AI Co‑Creation in
+Songwriting
+
+Abstract 摘 要 片 段： Machine learning is challenging the way we make music. Although
+research in deep generative models has dramatically improved the capability and fluency of
+music models, recent work...
+
+為何重要： Generative audio / human‑AI music / voice conversion clearly in scope, but likely
+excluded for lacking explicit ethics framing.
+
+
+案 例 2 ‑ 2307.05527 / Suh2021AI 標 題： AI as Social Glue: Uncovering the Roles of Deep
+Generative AI during Social Music Composition
+
+Abstract 摘 要 片 段： Recent advances in deep generative neural networks have made it
+possible for artificial intelligence to actively collaborate with human beings in co‑creating
+novel content (e.g. mu...
+
+為何重要： Generative audio / human‑AI music / voice conversion clearly in scope, but likely
+excluded for lacking explicit ethics framing.
+
+
+案例 3 ‑ 2307.05527 / zhou2018voice 標題： Voice Conversion with Conditional SampleRNN
+
+Abstract 摘 要 片 段： Here we present a novel approach to conditioning the SampleRNN
+generative model for voice conversion (VC). Conventional methods for VC modify the
+perceived speaker identity by conv...
+
+為何重要： Generative audio / human‑AI music / voice conversion clearly in scope, but likely
+excluded for lacking explicit ethics framing.
+
+
+案例 4 ‑ 2409.13738 / etikala2021extracting 標題： Extracting Decision Model Components
+from Natural Language Text for Automated Business Decision Modelling.
+
+Abstract 摘要片段： The decision model in the DMN (Decision Model and Notation) standard
+is a declarative representation of decision knowledge, which is favored across industry and
+academia to represe...
+
+為 何 重 要： Looks like NLP‑to‑process extraction, but abstract‑level validation signal is not
+explicit.
+
+
+案 例 5 ‑ 2409.13738 / goncalves2011let 標 題： Let Me Tell You a Story ‑ On How to Build
+Process Models
+
+Abstract 摘要片段： Process Modeling has been a very active research topic for the last decades.
+One of its main issues is the externalization of knowledge and its acquisition for further use,
+as this...
+
+為 何 重 要： Looks like NLP‑to‑process extraction, but abstract‑level validation signal is not
+explicit.
+
+
+
+
+                                              27
+案例 6 ‑ 2409.13738 / honkisz2018concept 標題： A Concept for Generating Business Process
+Models from Natural Language Description
+
+Abstract 摘 要 片 段： Manual extraction of business process models from technical
+documentation is a time‑consuming task. Several approaches to generating such process
+models have been proposed. We pres...
+
+為 何 重 要： Looks like NLP‑to‑process extraction, but abstract‑level validation signal is not
+explicit.
+
+
+案例 7 ‑ 2511.13936 / lotfian2016retrieving 標題： Retrieving Categorical Emotions Using a
+Probabilistic Framework to Define Preference Learning Samples
+
+Abstract 摘要片段： Preference learning is an appealing approach for affective recognition.
+Instead of predicting the underlying emotional class of a sample, this framework relies on
+pairwise comparis...
+
+為 何 重 要： Preference/ rank/ ordinal emotion‑learning signal exists, yet reviewer likely
+demanded explicit audio or explicit pairwise wording.
+
+
+案例 8 ‑ 2511.13936 / parthasarathy2016using    標題： Using agreement on direction of change
+to build rank‑based emotion classifiers
+
+Abstract 摘要片段： Automatic emotion recognition in realistic domains is a challenging task
+given the subtle expressive behaviors that occur during human interactions. The challenges
+start with noisy...
+
+為 何 重 要： Preference/ rank/ ordinal emotion‑learning signal exists, yet reviewer likely
+demanded explicit audio or explicit pairwise wording.
+
+
+案 例 9 ‑ 2511.13936 / han2020ordinal 標 題： Ordinal learning for emotion recognition in
+customer service calls
+
+Abstract 摘要片段： Approaches toward ordinal speech emotion recognition (SER) tasks are
+commonly based on the categorical classification algorithms, where the rank‑order emotions
+are arbitrarily trea...
+
+為 何 重 要： Preference/ rank/ ordinal emotion‑learning signal exists, yet reviewer likely
+demanded explicit audio or explicit pairwise wording.
+
+
+案例 10 ‑ 2601.19926 / mccoy_right_2019 標題： Right for the Wrong Reasons: Diagnosing
+Syntactic Heuristics in Natural Language Inference
+
+Abstract 摘 要 片 段： R. Thomas McCoy, Ellie Pavlick, Tal Linzen. Proceedings of the 57th
+Annual Meeting of the Association for Computational Linguistics. 2019....
+
+為何重要： Shows the mix of sparse metadata, clear syntax cases, and later missing_fulltext
+issues.
+
+
+
+
+                                             28
+案例 11 ‑ 2601.19926 / Tenney:etal:2019b 標題： What do you learn from context? Probing for
+sentence structure in contextualized word representations
+
+Abstract 摘要片段： Contextualized representation models such as ELMo (Peters et al., 2018a)
+and BERT (Devlin et al., 2018) have recently achieved state‑of‑the‑art results on a diverse array
+of downst...
+
+為何重要： Shows the mix of sparse metadata, clear syntax cases, and later missing_fulltext
+issues.
+
+
+案 例 12 ‑ 2601.19926 / Warstadt:etal:2020 標 題： BLiMP: The Benchmark of Linguistic
+Minimal Pairs for English
+
+Abstract 摘 要 片 段： We introduce The Benchmark of Linguistic Minimal Pairs (BLiMP), 1
+a challenge set for evaluating the linguistic knowledge of language models (LMs) on major
+grammatical phenomena in...
+
+為何重要： Shows the mix of sparse metadata, clear syntax cases, and later missing_fulltext
+issues.
+
+表 C1 解讀：這張表把四篇 review 的代表性案例集中在一起，目的是讓實作者在改 prompt 或 criteria
+後，能用少量但高代表性的個案做 regression test。只要新系統仍把這些 case 以舊理由錯殺，就表示
+redesign 尚未真正修到問題核心。
+
+
+Appendix D. 最後總結
+
+若要把這份報告壓縮成一句最可執行的工程指令，就是：先把 Stage 1 改成真正的 high‑recall gate，
+再把 criteria 依可觀察性分層，最後才談 reviewer 微調。2307 的第一刀是 serialization；2409
+的第一刀是 uncertainty handling；2511 的第一刀是 criteria surgery；2601 的第一刀是 sparse
+metadata fallback 加 missing_fulltext state separation。只要這個順序抓對，這個 repo 目前最傷
+recall 的 title + abstract false negatives，會有非常明顯的下降空間。
+
+
+
+
+                                               29
+

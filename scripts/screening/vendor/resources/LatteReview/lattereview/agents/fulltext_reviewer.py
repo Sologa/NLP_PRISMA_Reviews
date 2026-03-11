@@ -8,8 +8,10 @@ DEFAULT_MAX_RETRIES = 3
 
 generic_prompt_all = """
 
-**Review the full text below and evaluate whether it should be included based on the following inclusion and exclusion criteria (if any).**
-**Note that the study should be included only and only if it meets ALL inclusion criteria and NONE of the exclusion criteria.**
+**Stage 2 Review (Full Text)**
+You are reviewing the provided full text to make the final criteria decision for this paper.
+Evaluate against all inclusion and exclusion criteria using the text itself, not general impressions.
+For exclusion claims and inclusion claims, base each judgment only on text evidence.
 
 ---
 
@@ -29,11 +31,17 @@ ${exclusion_criteria}$
 **Instructions**
 
 1. Output your evaluation as an integer between 1 and 5, where:
-   - 1 means absolutely to exclude.
-   - 2 means better to exclude.
-   - 3 Not sure if to include or exclude.
-   - 4 means better to include.
-   - 5 means absolutely to include.
+   - 1 means strongly not include
+   - 2 means likely not include
+   - 3 means uncertain / need more evidence
+   - 4 means likely include
+   - 5 means strongly include
+2. Prefer explicit evidence from the full text:
+   - quote or paraphrase the exact signals for I1/I2/I3/E1/E2/E3/E4/E5 when deciding your score.
+   - if a claim is not stated or is only implied, do not over-interpret it.
+3. Your reasoning must be concise and explain the key pieces of evidence that drove inclusion vs exclusion.
+4. Do not invent findings not present in the full text; if evidence is missing, use a conservative score (`3`) rather than guessing.
+5. Keep the rationale focused on criteria-level evidence, not writing style or reputation.
 ---
 
 ${reasoning}$
@@ -46,8 +54,10 @@ ${examples}$
 
 generic_prompt_any = """
 
-**Review the full text below and evaluate whether it should be included based on the following inclusion and exclusion criteria (if any).**
-**Note that the study should be included only and only if it meets ANY of the inclusion criteria and NONE of the exclusion criteria.**
+**Stage 2 Review (Full Text)**
+You are reviewing the provided full text to make the final criteria decision for this paper.
+Evaluate against all inclusion and exclusion criteria using the text itself, not general impressions.
+For exclusion claims and inclusion claims, base each judgment only on text evidence.
 
 ---
 
@@ -67,11 +77,17 @@ ${exclusion_criteria}$
 **Instructions**
 
 1. Output your evaluation as an integer between 1 and 5, where:
-   - 1 means absolutely to exclude.
-   - 2 means better to exclude.
-   - 3 Not sure if to include or exclude.
-   - 4 means better to include.
-   - 5 means absolutely to include.
+   - 1 means strongly not include
+   - 2 means likely not include
+   - 3 means uncertain / need more evidence
+   - 4 means likely include
+   - 5 means strongly include
+2. Prefer explicit evidence from the full text:
+   - quote or paraphrase the exact signals for I1/I2/I3/E1/E2/E3/E4/E5 when deciding your score.
+   - if a claim is not stated or is only implied, do not over-interpret it.
+3. Your reasoning must be concise and explain the key pieces of evidence that drove inclusion vs exclusion.
+4. Do not invent findings not present in the full text; if evidence is missing, use a conservative score (`3`) rather than guessing.
+5. Keep the rationale focused on criteria-level evidence, not writing style or reputation.
 ---
 
 ${reasoning}$
