@@ -1180,6 +1180,11 @@ class TopicWorkspace:
         return self.review_dir / "latte_review_results.json"
 
     @property
+    def fulltext_review_results_path(self) -> Path:
+        """Path to LatteReview full-text review results JSON."""
+        return self.review_dir / "latte_fulltext_review_results.json"
+
+    @property
     def asreview_dir(self) -> Path:
         """Legacy directory for ASReview outputs."""
         return self.root / "asreview"
@@ -4486,6 +4491,251 @@ def _criteria_payload_to_strings(payload: Dict[str, object]) -> Tuple[str, str]:
     return inclusion_text, exclusion_text
 
 
+_REFERENCE_HEADING_RE = re.compile(
+    r"""
+    ^\s{0,3}
+    (?:\#{1,6}\s*)?
+    (?:
+      (?:
+        appendix\s+[A-Za-z0-9IVXLC]+
+        |
+        [IVXLC]+
+        |
+        \d+(?:\.\d+)*
+      )
+      [\.\)]?\s+
+    )?
+    (?:
+      references(?:\s+and\s+notes)?
+      |
+      bibliography
+      |
+      works\s+cited
+      |
+      literature\s+cited
+      |
+      reference\s+list
+      |
+      citations
+    )
+    \s*[:.]?\s*$
+    """,
+    flags=re.IGNORECASE | re.VERBOSE,
+)
+_CITATION_MARKER_RE = re.compile(r"^\s*(?:\[\d{1,4}\]|(?:\d{1,4}[.)]))\s+\S+")
+_CITATION_YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
+_CITATION_VENUE_RE = re.compile(
+    r"\b(?:doi|arxiv|proc\.?|conference|journal|transactions|pp\.?|interspeech|icassp|neurips|iclr)\b",
+    flags=re.IGNORECASE,
+)
+_ARXIV_ID_RE = re.compile(r"\b(\d{4}\.\d{4,5})(?:v\d+)?\b")
+
+
+def _extract_verdict_label(value: Any) -> str:
+    text = str(value or "").strip().lower()
+    if not text:
+        return ""
+    match = re.match(r"^\s*([a-z]+)", text)
+    return match.group(1) if match else ""
+
+
+def _load_review_metadata_records(path: Path) -> List[Dict[str, object]]:
+    if not path.exists():
+        raise FileNotFoundError(f"找不到 metadata 檔案：{path}")
+    if path.suffix.lower() == ".jsonl":
+        rows: List[Dict[str, object]] = []
+        for index, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+            stripped = line.strip()
+            if not stripped:
+                continue
+            try:
+                payload = json.loads(stripped)
+            except json.JSONDecodeError as exc:
+                raise ValueError(f"Invalid JSONL at {path}:{index}: {exc}") from exc
+            if isinstance(payload, dict):
+                rows.append(payload)
+        return rows
+
+    payload = _read_json(path)
+    if isinstance(payload, list):
+        return [row for row in payload if isinstance(row, dict)]
+    if isinstance(payload, dict):
+        for key in ("records", "items", "data"):
+            value = payload.get(key)
+            if isinstance(value, list):
+                return [row for row in value if isinstance(row, dict)]
+    raise ValueError(f"Unsupported metadata payload format: {path}")
+
+
+def _metadata_rows_by_key(records: List[Dict[str, object]]) -> Dict[str, Dict[str, object]]:
+    rows: Dict[str, Dict[str, object]] = {}
+    for entry in records:
+        if not isinstance(entry, dict):
+            continue
+        metadata = _normalize_review_metadata(entry)
+        key = str(
+            metadata.get("key")
+            or entry.get("key")
+            or metadata.get("arxiv_id")
+            or entry.get("arxiv_id")
+            or extract_arxiv_id_from_record(entry)
+            or ""
+        ).strip()
+        if not key:
+            continue
+        rows[key] = entry
+    return rows
+
+
+def _normalize_fulltext_text(raw_text: str) -> str:
+    text = str(raw_text or "").replace("\x00", "")
+    text = text.replace("\r\n", "\n").replace("\r", "\n")
+    return text
+
+
+def _find_reference_cut_line(lines: List[str]) -> Tuple[Optional[int], str, str]:
+    for index, line in enumerate(lines):
+        if _REFERENCE_HEADING_RE.match(line):
+            return index, "heading", line.strip()
+
+    start_index = max(0, len(lines) - 300)
+    window_size = 12
+    for start in range(start_index, max(start_index, len(lines) - window_size + 1)):
+        window = lines[start : start + window_size]
+        citation_markers = 0
+        years = 0
+        score = 0
+        for line in window:
+            stripped = line.strip()
+            if not stripped:
+                continue
+            if _CITATION_MARKER_RE.search(stripped):
+                citation_markers += 1
+                score += 2
+            if _CITATION_YEAR_RE.search(stripped):
+                years += 1
+                score += 1
+            if _CITATION_VENUE_RE.search(stripped):
+                score += 1
+        if citation_markers >= 4 and years >= 4 and score >= 18:
+            marker = lines[start].strip() if start < len(lines) else "citation_block"
+            return start, "fallback", marker or "citation_block"
+    return None, "none", ""
+
+
+def _truncate_fulltext_before_references(text: str) -> Dict[str, object]:
+    normalized = _normalize_fulltext_text(text)
+    lines = normalized.splitlines()
+    cut_line_index, method, marker = _find_reference_cut_line(lines)
+    if cut_line_index is None:
+        return {
+            "normalized_text": normalized,
+            "text_after_reference_cut": normalized,
+            "reference_cut_applied": False,
+            "reference_cut_method": "none",
+            "reference_cut_marker": None,
+            "reference_cut_line_no": None,
+            "fulltext_chars_total": len(normalized),
+        }
+
+    trimmed = "\n".join(lines[:cut_line_index]).rstrip()
+    return {
+        "normalized_text": normalized,
+        "text_after_reference_cut": trimmed,
+        "reference_cut_applied": True,
+        "reference_cut_method": method,
+        "reference_cut_marker": marker or None,
+        "reference_cut_line_no": cut_line_index + 1,
+        "fulltext_chars_total": len(normalized),
+    }
+
+
+def _apply_head_tail_limit(text: str, *, head_chars: int, tail_chars: int) -> str:
+    payload = text or ""
+    marker = "\n\n[...TRUNCATED_FOR_CONTEXT_LIMIT...]\n\n"
+    threshold = head_chars + tail_chars + len(marker)
+    if head_chars < 0 or tail_chars < 0:
+        raise ValueError("head_chars and tail_chars must be non-negative.")
+    if len(payload) <= threshold:
+        return payload
+    if tail_chars == 0:
+        return payload[:head_chars] + marker
+    return payload[:head_chars] + marker + payload[-tail_chars:]
+
+
+def _infer_fulltext_root(*, explicit_root: Optional[Path], metadata_path: Path, workspace: TopicWorkspace) -> Path:
+    if explicit_root is not None:
+        return Path(explicit_root)
+    if metadata_path.parent.name == "metadata":
+        return metadata_path.parent.parent / "mds"
+
+    candidates: List[str] = []
+    for token in (
+        workspace.topic,
+        metadata_path.name,
+        metadata_path.stem,
+        str(metadata_path),
+    ):
+        if not token:
+            continue
+        matches = _ARXIV_ID_RE.findall(str(token))
+        for match in matches:
+            if match not in candidates:
+                candidates.append(match)
+
+    # Prefer repository-style refs/<paper_id>/mds when a paper id can be inferred.
+    for paper_id in candidates:
+        guessed = workspace.root.parent.parent.parent / "refs" / paper_id / "mds"
+        if guessed.exists():
+            return guessed
+
+    # Fall back to the first inferred paper id path even if it does not exist yet.
+    if candidates:
+        return workspace.root.parent.parent.parent / "refs" / candidates[0] / "mds"
+
+    raise ValueError("無法推斷 fulltext_root（預期 refs/<paper_id>/mds），請顯式提供 --fulltext-root。")
+
+
+def _derive_final_verdict_from_row(row: "Any") -> str:
+    def _is_missing(value: Any) -> bool:
+        if value is None:
+            return True
+        try:
+            return bool(value != value)
+        except Exception:
+            return False
+
+    senior_eval = row.get("round-B_SeniorLead_evaluation")
+    source = "junior"
+    score: Optional[int] = None
+    if senior_eval is not None and not _is_missing(senior_eval):
+        try:
+            score = int(senior_eval)
+            source = "senior"
+        except (TypeError, ValueError):
+            score = None
+    if score is None:
+        candidates: List[int] = []
+        for value in (
+            row.get("round-A_JuniorNano_evaluation"),
+            row.get("round-A_JuniorMini_evaluation"),
+        ):
+            if value is None or _is_missing(value):
+                continue
+            try:
+                candidates.append(int(value))
+            except (TypeError, ValueError):
+                continue
+        if not candidates:
+            return "需再評估 (no_score)"
+        score = int(round(sum(candidates) / len(candidates)))
+    if score >= 4:
+        return f"include ({source}:{score})"
+    if score <= 2:
+        return f"exclude ({source}:{score})"
+    return f"maybe ({source}:{score})"
+
+
 def run_latte_review(
     workspace: TopicWorkspace,
     *,
@@ -4731,37 +4981,6 @@ def run_latte_review(
                 return True
             return False
 
-        def _derive_verdict(row: "pd.Series") -> str:  # type: ignore[name-defined]
-            senior_eval = row.get("round-B_SeniorLead_evaluation")
-            source = "junior"
-            score: Optional[int] = None
-            if senior_eval is not None and not pd.isna(senior_eval):
-                try:
-                    score = int(senior_eval)
-                    source = "senior"
-                except (TypeError, ValueError):
-                    score = None
-            if score is None:
-                candidates: List[int] = []
-                for value in (
-                    row.get("round-A_JuniorNano_evaluation"),
-                    row.get("round-A_JuniorMini_evaluation"),
-                ):
-                    if value is None or pd.isna(value):
-                        continue
-                    try:
-                        candidates.append(int(value))
-                    except (TypeError, ValueError):
-                        continue
-                if not candidates:
-                    return "需再評估 (no_score)"
-                score = int(round(sum(candidates) / len(candidates)))
-            if score >= 4:
-                return f"include ({source}:{score})"
-            if score <= 2:
-                return f"exclude ({source}:{score})"
-            return f"maybe ({source}:{score})"
-
         workflow_schema = [
             {"round": "A", "reviewers": [junior_nano, junior_mini], "text_inputs": ["title", "abstract"]},
             {
@@ -4783,7 +5002,7 @@ def run_latte_review(
             {"workflow_schema": workflow_schema, "verbose": False}, context={"data": df}
         )
         result_df = asyncio.run(workflow.run(df))
-        result_df["final_verdict"] = result_df.apply(_derive_verdict, axis=1)
+        result_df["final_verdict"] = result_df.apply(_derive_final_verdict_from_row, axis=1)
 
         result_columns = list(result_df.columns)
         if "metadata" in result_columns:
@@ -4831,6 +5050,335 @@ def run_latte_review(
         "end_date": resolved_end,
         "start_date_source": resolved_window.get("source_start_date"),
         "end_date_source": resolved_window.get("source_end_date"),
+    }
+
+
+def run_latte_fulltext_review(
+    workspace: TopicWorkspace,
+    *,
+    base_review_results_path: Optional[Path] = None,
+    arxiv_metadata_path: Optional[Path] = None,
+    criteria_path: Optional[Path] = None,
+    fulltext_root: Optional[Path] = None,
+    output_path: Optional[Path] = None,
+    fulltext_review_mode: str = "inline",
+    fulltext_inline_head_chars: int = 24000,
+    fulltext_inline_tail_chars: int = 12000,
+    junior_nano_model: str = "gpt-5-nano",
+    junior_mini_model: str = "gpt-4.1-mini",
+    senior_model: str = "gpt-5-mini",
+    junior_nano_reasoning_effort: Optional[str] = None,
+    junior_mini_reasoning_effort: Optional[str] = None,
+    senior_reasoning_effort: str = "medium",
+) -> Dict[str, object]:
+    """Run LatteReview full-text workflow and write results JSON."""
+
+    load_env_file()
+    if not os.environ.get("OPENAI_API_KEY"):
+        raise RuntimeError("OPENAI_API_KEY 未設定，無法執行 LatteReview。")
+
+    _ensure_latte_review_importable()
+
+    review_mode = (fulltext_review_mode or "inline").strip().lower()
+    if review_mode in {"file_search", "hybrid"}:
+        raise NotImplementedError(f"fulltext review mode `{review_mode}` 尚未實作。")
+    if review_mode != "inline":
+        raise ValueError("fulltext review mode 僅支援 inline|file_search|hybrid。")
+
+    import asyncio
+
+    import pandas as pd
+
+    from resources.LatteReview.lattereview.agents import FullTextReviewer
+    from resources.LatteReview.lattereview.providers.openai_provider import OpenAIProvider
+    from resources.LatteReview.lattereview.workflows import ReviewWorkflow
+
+    metadata_path = Path(arxiv_metadata_path) if arxiv_metadata_path else workspace.arxiv_metadata_path
+    metadata_records = _load_review_metadata_records(metadata_path)
+    metadata_by_key = _metadata_rows_by_key(metadata_records)
+
+    base_results = Path(base_review_results_path) if base_review_results_path else workspace.review_results_path
+    if not base_results.exists():
+        raise FileNotFoundError(f"找不到 base review results：{base_results}")
+    loaded_base = _read_json(base_results)
+    if not isinstance(loaded_base, list):
+        raise ValueError("base review results payload must be a list")
+
+    criteria_payload: Dict[str, object] = {}
+    if criteria_path:
+        loaded = _read_json(Path(criteria_path))
+        if isinstance(loaded, dict):
+            structured = loaded.get("structured_payload")
+            if isinstance(structured, dict):
+                criteria_payload = structured
+            elif isinstance(loaded.get("topic_definition"), (str, dict, list)):
+                criteria_payload = loaded
+    elif workspace.criteria_path.exists():
+        loaded = _read_json(workspace.criteria_path)
+        if isinstance(loaded, dict):
+            structured = loaded.get("structured_payload")
+            if isinstance(structured, dict):
+                criteria_payload = structured
+
+    inclusion_criteria, exclusion_criteria = _criteria_payload_to_strings(criteria_payload)
+    if not inclusion_criteria:
+        inclusion_criteria = "論文需與指定主題高度相關，且提供可用於評估的英文內容（全文或摘要/方法）。"
+    if not exclusion_criteria:
+        exclusion_criteria = "論文若與主題無關，或缺乏可判斷的英文題名/摘要/方法描述則排除。"
+
+    resolved_fulltext_root = _infer_fulltext_root(
+        explicit_root=fulltext_root,
+        metadata_path=metadata_path,
+        workspace=workspace,
+    )
+    if not resolved_fulltext_root.exists():
+        raise FileNotFoundError(f"找不到 fulltext 目錄：{resolved_fulltext_root}")
+    if not resolved_fulltext_root.is_dir():
+        raise NotADirectoryError(f"fulltext_root 不是資料夾：{resolved_fulltext_root}")
+
+    review_inputs: List[Dict[str, object]] = []
+    skipped_records: List[Dict[str, object]] = []
+
+    for row in loaded_base:
+        if not isinstance(row, dict):
+            continue
+        verdict_label = _extract_verdict_label(row.get("final_verdict"))
+        if verdict_label not in {"include", "maybe"}:
+            continue
+
+        key = str(row.get("key") or "").strip()
+        title = str(row.get("title") or "").strip()
+        base_final_verdict = str(row.get("final_verdict") or "")
+
+        if not key:
+            skipped_records.append(
+                {
+                    "key": None,
+                    "title": title,
+                    "base_final_verdict": base_final_verdict,
+                    "fulltext_review_mode": review_mode,
+                    "fulltext_source_path": None,
+                    "fulltext_chars_total": 0,
+                    "fulltext_chars_used": 0,
+                    "reference_cut_applied": False,
+                    "reference_cut_method": "none",
+                    "reference_cut_marker": None,
+                    "reference_cut_line_no": None,
+                    "fulltext_missing_or_unmatched": True,
+                    "review_skipped": True,
+                    "discard_reason": "missing_key_for_fulltext_lookup",
+                    "final_verdict": "exclude (missing_fulltext)",
+                }
+            )
+            continue
+
+        metadata_entry = metadata_by_key.get(key)
+        if not title and isinstance(metadata_entry, dict):
+            normalized = _normalize_review_metadata(metadata_entry)
+            title = str(normalized.get("title") or "").strip()
+
+        fulltext_path = resolved_fulltext_root / f"{key}.md"
+        if (not fulltext_path.exists()) or (not fulltext_path.is_file()):
+            skipped_records.append(
+                {
+                    "key": key,
+                    "title": title,
+                    "base_final_verdict": base_final_verdict,
+                    "fulltext_review_mode": review_mode,
+                    "fulltext_source_path": str(fulltext_path),
+                    "fulltext_chars_total": 0,
+                    "fulltext_chars_used": 0,
+                    "reference_cut_applied": False,
+                    "reference_cut_method": "none",
+                    "reference_cut_marker": None,
+                    "reference_cut_line_no": None,
+                    "fulltext_missing_or_unmatched": True,
+                    "review_skipped": True,
+                    "discard_reason": "missing_fulltext",
+                    "final_verdict": "exclude (missing_fulltext)",
+                }
+            )
+            continue
+
+        fulltext_raw = fulltext_path.read_text(encoding="utf-8", errors="ignore")
+        truncated = _truncate_fulltext_before_references(fulltext_raw)
+        fulltext_after_cut = str(truncated.get("text_after_reference_cut") or "")
+        final_context = _apply_head_tail_limit(
+            fulltext_after_cut,
+            head_chars=fulltext_inline_head_chars,
+            tail_chars=fulltext_inline_tail_chars,
+        )
+
+        review_inputs.append(
+            {
+                "key": key,
+                "title": title,
+                "fulltext": final_context,
+                "base_final_verdict": base_final_verdict,
+                "fulltext_review_mode": review_mode,
+                "fulltext_source_path": str(fulltext_path),
+                "fulltext_chars_total": int(truncated.get("fulltext_chars_total") or 0),
+                "fulltext_chars_used": len(final_context),
+                "reference_cut_applied": bool(truncated.get("reference_cut_applied")),
+                "reference_cut_method": str(truncated.get("reference_cut_method") or "none"),
+                "reference_cut_marker": truncated.get("reference_cut_marker"),
+                "reference_cut_line_no": truncated.get("reference_cut_line_no"),
+                "fulltext_missing_or_unmatched": False,
+            }
+        )
+
+    if not review_inputs and not skipped_records:
+        raise RuntimeError("找不到任何可供 fulltext review 審查或標記的條目（請確認 base review 結果）。")
+
+    review_records: List[Dict[str, object]] = []
+    result_columns: List[str] = [
+        "key",
+        "title",
+        "base_final_verdict",
+        "fulltext_review_mode",
+        "fulltext_source_path",
+        "fulltext_chars_total",
+        "fulltext_chars_used",
+        "reference_cut_applied",
+        "reference_cut_method",
+        "reference_cut_marker",
+        "reference_cut_line_no",
+        "fulltext_missing_or_unmatched",
+        "review_skipped",
+        "discard_reason",
+        "final_verdict",
+    ]
+
+    if review_inputs:
+        df = pd.DataFrame(review_inputs)
+
+        def _build_reviewer(
+            name: str,
+            model: str,
+            *,
+            model_args: Dict[str, Any],
+            reasoning: str,
+            backstory: str,
+            additional_context: Optional[str] = None,
+        ) -> FullTextReviewer:
+            return FullTextReviewer(
+                name=name,
+                provider=OpenAIProvider(model=model),
+                inclusion_criteria=inclusion_criteria,
+                exclusion_criteria=exclusion_criteria,
+                model_args=model_args,
+                reasoning=reasoning,
+                backstory=backstory,
+                additional_context=additional_context,
+                max_concurrent_requests=50,
+                verbose=False,
+            )
+
+        junior_nano = _build_reviewer(
+            "JuniorNano",
+            junior_nano_model,
+            model_args={"reasoning_effort": junior_nano_reasoning_effort} if junior_nano_reasoning_effort else {},
+            reasoning="brief",
+            backstory="一位負責全文初步篩選文獻的研究助理",
+        )
+        junior_mini = _build_reviewer(
+            "JuniorMini",
+            junior_mini_model,
+            model_args={"reasoning_effort": junior_mini_reasoning_effort} if junior_mini_reasoning_effort else {},
+            reasoning="brief",
+            backstory="一位熟悉相關領域且可閱讀全文的研究助理",
+        )
+        senior = _build_reviewer(
+            "SeniorLead",
+            senior_model,
+            model_args={"reasoning_effort": senior_reasoning_effort} if senior_reasoning_effort else {},
+            reasoning="brief",
+            backstory="負責統整全文審查並做最終判定的資深 reviewer",
+            additional_context="兩位 junior reviewer 已提供初步評估，請在整合意見前檢視他們的回饋。",
+        )
+
+        def _senior_filter(row: "pd.Series") -> bool:  # type: ignore[name-defined]
+            eval_1 = row.get("round-A_JuniorNano_evaluation")
+            eval_2 = row.get("round-A_JuniorMini_evaluation")
+            if pd.isna(eval_1) or pd.isna(eval_2):
+                return False
+            try:
+                score1 = int(eval_1)
+                score2 = int(eval_2)
+            except (TypeError, ValueError):
+                return False
+            if score1 != score2:
+                if score1 >= 4 and score2 >= 4:
+                    return False
+                if score1 >= 3 or score2 >= 3:
+                    return True
+            elif score1 == score2 == 3:
+                return True
+            return False
+
+        workflow_schema = [
+            {"round": "A", "reviewers": [junior_nano, junior_mini], "text_inputs": ["title", "fulltext"]},
+            {
+                "round": "B",
+                "reviewers": [senior],
+                "text_inputs": [
+                    "title",
+                    "fulltext",
+                    "round-A_JuniorNano_output",
+                    "round-A_JuniorNano_evaluation",
+                    "round-A_JuniorMini_output",
+                    "round-A_JuniorMini_evaluation",
+                ],
+                "filter": _senior_filter,
+            },
+        ]
+
+        workflow = ReviewWorkflow.model_validate(
+            {"workflow_schema": workflow_schema, "verbose": False},
+            context={"data": df},
+        )
+        result_df = asyncio.run(workflow.run(df))
+        result_df["final_verdict"] = result_df.apply(_derive_final_verdict_from_row, axis=1)
+
+        result_columns = list(result_df.columns)
+        for drop_column in ("metadata", "fulltext"):
+            if drop_column in result_columns:
+                result_columns.remove(drop_column)
+
+        for index, row in result_df.iterrows():
+            record = {column: row[column] for column in result_df.columns if column not in {"metadata", "fulltext"}}
+            if "key" not in record:
+                record["key"] = row.get("key") if "key" in row else df.loc[index].get("key")
+            record["review_skipped"] = False
+            verdict = str(record.get("final_verdict") or "")
+            if verdict.startswith("exclude"):
+                record["discard_reason"] = verdict
+            elif verdict.startswith("maybe"):
+                record["discard_reason"] = "review_needs_followup"
+            else:
+                record["discard_reason"] = None
+            review_records.append(record)
+
+    output_records: List[Dict[str, object]] = []
+    output_records.extend(review_records)
+    if skipped_records:
+        base_record = {column: None for column in result_columns}
+        for item in skipped_records:
+            record = dict(base_record)
+            for key, value in item.items():
+                record[key] = value
+            output_records.append(record)
+
+    out = Path(output_path) if output_path else workspace.fulltext_review_results_path
+    _ensure_dir(out.parent)
+    out.write_text(json.dumps(output_records, ensure_ascii=False, indent=2), encoding="utf-8")
+    return {
+        "fulltext_review_results_path": str(out),
+        "review_mode": review_mode,
+        "fulltext_root": str(resolved_fulltext_root),
+        "reviewed": len(review_records),
+        "skipped_missing_fulltext": len(skipped_records),
+        "total": len(output_records),
     }
 
 

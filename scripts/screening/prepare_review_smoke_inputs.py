@@ -16,6 +16,20 @@ def _load_json(path: Path) -> Any:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _load_key_list(path: Path) -> list[str]:
+    keys: list[str] = []
+    seen: set[str] = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        if stripped in seen:
+            continue
+        seen.add(stripped)
+        keys.append(stripped)
+    return keys
+
+
 def _write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -107,6 +121,12 @@ def main() -> int:
         default=5,
         help="Number of metadata records to keep. Set to 0 to keep all screenable records.",
     )
+    parser.add_argument(
+        "--keys-file",
+        type=Path,
+        default=None,
+        help="Optional newline-delimited keys list; when set, this overrides --top-k.",
+    )
     args = parser.parse_args()
 
     if args.top_k < 0:
@@ -119,23 +139,49 @@ def main() -> int:
         raise SystemExit(f"Missing metadata file: {metadata_path}")
     if not criteria_path.exists():
         raise SystemExit(f"Missing criteria file: {criteria_path}")
+    keys_filter: list[str] = []
+    if args.keys_file is not None:
+        keys_path = args.keys_file.resolve()
+        if not keys_path.exists():
+            raise SystemExit(f"Missing keys file: {keys_path}")
+        keys_filter = _load_key_list(keys_path)
+        if not keys_filter:
+            raise SystemExit(f"No usable keys in --keys-file: {keys_path}")
 
     raw_records = _load_metadata_records(metadata_path)
 
     # Keep only records that can be screened by title + abstract.
     screenable = [row for row in raw_records if str(row.get("title") or "").strip() and str(row.get("abstract") or "").strip()]
-    if args.top_k > 0 and len(screenable) < args.top_k:
-        raise SystemExit(
-            f"Not enough screenable rows for top-k={args.top_k}; "
-            f"available={len(screenable)} (raw={len(raw_records)})"
-        )
-
     criteria_payload = _load_criteria_payload(criteria_path)
-
-    subset = screenable if args.top_k == 0 else screenable[: args.top_k]
+    if keys_filter:
+        by_key = {str(row.get("key") or "").strip(): row for row in screenable if str(row.get("key") or "").strip()}
+        subset: list[dict[str, Any]] = []
+        missing_keys: list[str] = []
+        for key in keys_filter:
+            row = by_key.get(key)
+            if row is None:
+                missing_keys.append(key)
+                continue
+            subset.append(row)
+        if not subset:
+            raise SystemExit("No matching screenable metadata rows found for --keys-file.")
+        if missing_keys:
+            print(f"[warn] missing keys in metadata (ignored): {len(missing_keys)}")
+            for key in missing_keys:
+                print(f"[warn]   {key}")
+    else:
+        if args.top_k > 0 and len(screenable) < args.top_k:
+            raise SystemExit(
+                f"Not enough screenable rows for top-k={args.top_k}; "
+                f"available={len(screenable)} (raw={len(raw_records)})"
+            )
+        subset = screenable if args.top_k == 0 else screenable[: args.top_k]
 
     out_dir = args.output_dir.resolve()
-    metadata_suffix = "full" if args.top_k == 0 else f"top{args.top_k}"
+    if keys_filter:
+        metadata_suffix = f"keys{len(subset)}"
+    else:
+        metadata_suffix = "full" if args.top_k == 0 else f"top{args.top_k}"
     out_metadata = out_dir / f"arxiv_metadata.{metadata_suffix}.json"
     out_manifest = out_dir / "manifest.json"
 
@@ -148,6 +194,8 @@ def main() -> int:
             "source_metadata_format": metadata_path.suffix.lower(),
             "source_criteria_format": criteria_path.suffix.lower(),
             "top_k": args.top_k if args.top_k > 0 else "full",
+            "keys_file": _rel(args.keys_file.resolve()) if args.keys_file is not None else None,
+            "keys_count": len(keys_filter) if keys_filter else None,
             "output_metadata": _rel(out_metadata),
             "output_criteria": None,
             "metadata_total_available": len(raw_records),
@@ -160,6 +208,9 @@ def main() -> int:
     print(f"[ok] wrote metadata subset: {out_metadata}")
     print(f"[ok] wrote manifest: {out_manifest}")
     print(f"[info] top_k={args.top_k}")
+    if keys_filter:
+        print(f"[info] keys_file={args.keys_file.resolve()}")
+        print(f"[info] keys_count={len(keys_filter)}")
     print(f"[info] raw_count={len(raw_records)}")
     print(f"[info] screenable_count={len(screenable)}")
     print(f"[info] subset_count={len(subset)}")

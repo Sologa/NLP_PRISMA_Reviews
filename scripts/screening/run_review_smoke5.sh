@@ -15,6 +15,13 @@ TOPIC="${TOPIC:-}"
 FORCE_PREPARE_INPUTS="${FORCE_PREPARE_INPUTS:-1}"
 STRIP_METADATA="${STRIP_METADATA:-1}"
 RUN_TAG="${RUN_TAG:-}"
+KEYS_FILE="${KEYS_FILE:-}"
+
+ENABLE_FULLTEXT_REVIEW="${ENABLE_FULLTEXT_REVIEW:-0}"
+FULLTEXT_REVIEW_MODE="${FULLTEXT_REVIEW_MODE:-inline}"
+FULLTEXT_INLINE_HEAD_CHARS="${FULLTEXT_INLINE_HEAD_CHARS:-24000}"
+FULLTEXT_INLINE_TAIL_CHARS="${FULLTEXT_INLINE_TAIL_CHARS:-12000}"
+
 TOP_K_SUFFIX="full"
 TOP_K_ARG=""
 if [[ "${TOP_K}" != "0" ]]; then
@@ -34,6 +41,7 @@ if [[ -n "${PAPER_ID}" ]]; then
   fi
   SOURCE_METADATA_PATH="${SOURCE_METADATA_PATH:-${ROOT_DIR}/refs/${PAPER_ID}/metadata/title_abstracts_metadata.jsonl}"
   CRITERIA_SOURCE_PATH="${CRITERIA_SOURCE_PATH:-${ROOT_DIR}/criteria_jsons/${PAPER_ID}.json}"
+  FULLTEXT_ROOT="${FULLTEXT_ROOT:-${ROOT_DIR}/refs/${PAPER_ID}/mds}"
   CRITERIA_PATH="${CRITERIA_SOURCE_PATH}"
 else
   if [[ "${TOP_K}" == "0" ]]; then
@@ -47,14 +55,24 @@ else
   fi
   SOURCE_METADATA_PATH="${SOURCE_METADATA_PATH:-${ROOT_DIR}/screening/data/source/cads/arxiv_metadata.json}"
   CRITERIA_SOURCE_PATH="${CRITERIA_SOURCE_PATH:-${ROOT_DIR}/screening/data/source/cads/criteria.json}"
+  FULLTEXT_ROOT="${FULLTEXT_ROOT:-}"
   CRITERIA_PATH="${CRITERIA_SOURCE_PATH}"
 fi
 
 WORKSPACE_ROOT="${WORKSPACE_ROOT:-${ROOT_DIR}/screening/workspaces}"
 
 DEFAULT_METADATA_PATH="${INPUT_DIR}/arxiv_metadata.${TOP_K_SUFFIX}.json"
-METADATA_PATH="${METADATA_PATH:-${DEFAULT_METADATA_PATH}}"
+if [[ -n "${METADATA_PATH:-}" ]]; then
+  METADATA_PATH="${METADATA_PATH}"
+  METADATA_PATH_EXPLICIT=1
+else
+  METADATA_PATH="${DEFAULT_METADATA_PATH}"
+  METADATA_PATH_EXPLICIT=0
+fi
+
 OUTPUT_PATH="${OUTPUT_PATH:-${OUTPUT_DIR}/latte_review_results.json}"
+FULLTEXT_BASE_RESULTS_PATH="${FULLTEXT_BASE_RESULTS_PATH:-${OUTPUT_PATH}}"
+FULLTEXT_OUTPUT_PATH="${FULLTEXT_OUTPUT_PATH:-${OUTPUT_DIR}/latte_fulltext_review_results.json}"
 
 PIPELINE_ENTRY="${PIPELINE_ENTRY:-${ROOT_DIR}/scripts/screening/vendor/scripts/topic_pipeline.py}"
 if [[ -x "${ROOT_DIR}/.venv/bin/python" ]]; then
@@ -63,12 +81,45 @@ else
   PIPELINE_PYTHON="${PIPELINE_PYTHON:-python3}"
 fi
 
+if [[ -n "${KEYS_FILE}" ]]; then
+  if [[ ! -f "${KEYS_FILE}" ]]; then
+    echo "[error] KEYS_FILE not found: ${KEYS_FILE}" >&2
+    exit 1
+  fi
+fi
+
 if [[ "${FORCE_PREPARE_INPUTS}" == "1" || ! -f "${METADATA_PATH}" || ! -f "${CRITERIA_PATH}" ]]; then
-  python3 "${ROOT_DIR}/scripts/screening/prepare_review_smoke_inputs.py" \
-    --source-metadata "${SOURCE_METADATA_PATH}" \
-    --criteria "${CRITERIA_SOURCE_PATH}" \
-    --output-dir "${INPUT_DIR}" \
+  PREPARE_CMD=(
+    python3 "${ROOT_DIR}/scripts/screening/prepare_review_smoke_inputs.py"
+    --source-metadata "${SOURCE_METADATA_PATH}"
+    --criteria "${CRITERIA_SOURCE_PATH}"
+    --output-dir "${INPUT_DIR}"
     --top-k "${TOP_K}"
+  )
+  if [[ -n "${KEYS_FILE}" ]]; then
+    PREPARE_CMD+=(--keys-file "${KEYS_FILE}")
+  fi
+  "${PREPARE_CMD[@]}"
+
+  if [[ -n "${KEYS_FILE}" && "${METADATA_PATH_EXPLICIT}" == "0" ]]; then
+    MANIFEST_PATH="${INPUT_DIR}/manifest.json"
+    if [[ ! -f "${MANIFEST_PATH}" ]]; then
+      echo "[error] Missing manifest after prepare: ${MANIFEST_PATH}" >&2
+      exit 1
+    fi
+    METADATA_PATH="$(${PIPELINE_PYTHON} - <<PY
+import json
+from pathlib import Path
+root = Path("${ROOT_DIR}").resolve()
+manifest = Path("${MANIFEST_PATH}").resolve()
+payload = json.loads(manifest.read_text(encoding="utf-8"))
+rel = payload.get("output_metadata")
+if not rel:
+    raise SystemExit("manifest output_metadata is empty")
+print((root / rel).resolve())
+PY
+)"
+  fi
 fi
 
 if [[ -f "${ROOT_DIR}/.env" ]]; then
@@ -96,6 +147,7 @@ echo "[info] output_dir=${OUTPUT_DIR}"
 echo "[info] metadata_path=${METADATA_PATH}"
 echo "[info] criteria_path=${CRITERIA_PATH}"
 echo "[info] force_prepare_inputs=${FORCE_PREPARE_INPUTS}"
+echo "[info] keys_file=${KEYS_FILE:-<none>}"
 
 if ! "${PIPELINE_PYTHON}" -c "import openai, pandas, pydantic, tqdm" >/dev/null 2>&1; then
   echo "[error] Missing Python dependencies in ${PIPELINE_PYTHON}." >&2
@@ -106,13 +158,18 @@ fi
 
 mkdir -p "${WORKSPACE_ROOT}" "${OUTPUT_DIR}"
 
-"${PIPELINE_PYTHON}" "${PIPELINE_ENTRY}" review \
-  --topic "${TOPIC}" \
-  --workspace-root "${WORKSPACE_ROOT}" \
-  --metadata "${METADATA_PATH}" \
-  --criteria "${CRITERIA_PATH}" \
-  --output "${OUTPUT_PATH}" \
-  ${TOP_K_ARG:+--top-k "${TOP_K_ARG}"}
+REVIEW_CMD=(
+  "${PIPELINE_PYTHON}" "${PIPELINE_ENTRY}" review
+  --topic "${TOPIC}"
+  --workspace-root "${WORKSPACE_ROOT}"
+  --metadata "${METADATA_PATH}"
+  --criteria "${CRITERIA_PATH}"
+  --output "${OUTPUT_PATH}"
+)
+if [[ -n "${TOP_K_ARG}" ]]; then
+  REVIEW_CMD+=(--top-k "${TOP_K_ARG}")
+fi
+"${REVIEW_CMD[@]}"
 
 echo "[done] output=${OUTPUT_PATH}"
 if [[ "${STRIP_METADATA}" == "1" ]]; then
@@ -151,4 +208,34 @@ if [[ -n "${RUN_TAG:-}" ]]; then
   TAGGED_OUTPUT_PATH="${OUTPUT_DIR}/latte_review_results.${RUN_TAG}.json"
   cp "${OUTPUT_PATH}" "${TAGGED_OUTPUT_PATH}"
   echo "[done] tagged_output=${TAGGED_OUTPUT_PATH}"
+fi
+
+if [[ "${ENABLE_FULLTEXT_REVIEW}" == "1" ]]; then
+  if [[ -z "${FULLTEXT_ROOT}" ]]; then
+    echo "[error] FULLTEXT_ROOT is required when ENABLE_FULLTEXT_REVIEW=1" >&2
+    exit 1
+  fi
+  echo "[info] fulltext_review_mode=${FULLTEXT_REVIEW_MODE}"
+  echo "[info] fulltext_root=${FULLTEXT_ROOT}"
+  echo "[info] fulltext_output=${FULLTEXT_OUTPUT_PATH}"
+
+  "${PIPELINE_PYTHON}" "${PIPELINE_ENTRY}" fulltext-review \
+    --topic "${TOPIC}" \
+    --workspace-root "${WORKSPACE_ROOT}" \
+    --base-review-results "${FULLTEXT_BASE_RESULTS_PATH}" \
+    --metadata "${METADATA_PATH}" \
+    --criteria "${CRITERIA_PATH}" \
+    --fulltext-root "${FULLTEXT_ROOT}" \
+    --output "${FULLTEXT_OUTPUT_PATH}" \
+    --fulltext-review-mode "${FULLTEXT_REVIEW_MODE}" \
+    --fulltext-inline-head-chars "${FULLTEXT_INLINE_HEAD_CHARS}" \
+    --fulltext-inline-tail-chars "${FULLTEXT_INLINE_TAIL_CHARS}"
+
+  if [[ -n "${RUN_TAG:-}" ]]; then
+    TAGGED_FULLTEXT_OUTPUT_PATH="${OUTPUT_DIR}/latte_fulltext_review_results.${RUN_TAG}.json"
+    cp "${FULLTEXT_OUTPUT_PATH}" "${TAGGED_FULLTEXT_OUTPUT_PATH}"
+    echo "[done] tagged_fulltext_output=${TAGGED_FULLTEXT_OUTPUT_PATH}"
+  fi
+
+  echo "[done] fulltext_output=${FULLTEXT_OUTPUT_PATH}"
 fi

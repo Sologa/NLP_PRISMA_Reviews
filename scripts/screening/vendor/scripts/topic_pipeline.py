@@ -40,6 +40,7 @@ from src.pipelines.topic_pipeline import (
     harvest_arxiv_metadata,
     harvest_other_sources,
     resolve_workspace,
+    run_latte_fulltext_review,
     run_latte_review,
     run_snowball_asreview,
     run_snowball_iterative,
@@ -310,6 +311,27 @@ def build_parser() -> argparse.ArgumentParser:
     review.add_argument("--junior-mini-reasoning-effort", default=None)
     review.add_argument("--senior-reasoning-effort", default="medium")
 
+    fulltext_review = add_subparser("fulltext-review", help="（選用）跑 Full-text 再審查")
+    fulltext_review.add_argument("--base-review-results", type=Path, default=None, help="base review 結果 JSON（預設 workspace/review/latte_review_results.json）")
+    fulltext_review.add_argument("--metadata", type=Path, default=None, help="metadata JSON/JSONL（用於補 key/title；建議使用 screening input metadata）")
+    fulltext_review.add_argument("--criteria", type=Path, default=None, help="criteria.json（預設 workspace/criteria/criteria.json）")
+    fulltext_review.add_argument("--fulltext-root", type=Path, default=None, help="full text 目錄（預設由 metadata 推斷到 refs/<paper_id>/mds）")
+    fulltext_review.add_argument("--output", type=Path, default=None, help="輸出檔案（預設 workspace/review/latte_fulltext_review_results.json）")
+    fulltext_review.add_argument(
+        "--fulltext-review-mode",
+        default="inline",
+        choices=["inline", "file_search", "hybrid"],
+        help="全文審查模式（本版僅實作 inline）",
+    )
+    fulltext_review.add_argument("--fulltext-inline-head-chars", type=int, default=24000)
+    fulltext_review.add_argument("--fulltext-inline-tail-chars", type=int, default=12000)
+    fulltext_review.add_argument("--junior-nano-model", default=None)
+    fulltext_review.add_argument("--junior-mini-model", default=None)
+    fulltext_review.add_argument("--senior-model", default=None)
+    fulltext_review.add_argument("--junior-nano-reasoning-effort", default=None)
+    fulltext_review.add_argument("--junior-mini-reasoning-effort", default=None)
+    fulltext_review.add_argument("--senior-reasoning-effort", default="medium")
+
     snowball = add_subparser("snowball", help="（選用）LatteReview → ASReview + snowballing")
     snowball.add_argument("--review-results", type=Path, default=None)
     snowball.add_argument("--metadata", type=Path, default=None)
@@ -329,6 +351,15 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--with-criteria", action="store_true")
     run.add_argument("--criteria-mode", default="web", choices=["web", "pdf+web"])
     run.add_argument("--with-review", action="store_true")
+    run.add_argument("--with-fulltext-review", action="store_true")
+    run.add_argument(
+        "--fulltext-review-mode",
+        default="inline",
+        choices=["inline", "file_search", "hybrid"],
+    )
+    run.add_argument("--fulltext-root", type=Path, default=None)
+    run.add_argument("--fulltext-inline-head-chars", type=int, default=24000)
+    run.add_argument("--fulltext-inline-tail-chars", type=int, default=12000)
     run.add_argument("--with-snowball", action="store_true")
     run.add_argument("--snowball-mode", default="loop", choices=["loop", "while"])
     run.add_argument("--snowball-max-rounds", type=_positive_int, default=1)
@@ -671,6 +702,30 @@ def main(argv: Optional[List[str]] = None) -> int:
         print(result)
         return 0
 
+    if args.command == "fulltext-review":
+        junior_nano_model = args.junior_nano_model or "gpt-5-nano"
+        junior_mini_model = args.junior_mini_model or "gpt-4.1-mini"
+        senior_model = args.senior_model or "gpt-5-mini"
+        result = run_latte_fulltext_review(
+            ws,
+            base_review_results_path=args.base_review_results,
+            arxiv_metadata_path=args.metadata,
+            criteria_path=args.criteria,
+            fulltext_root=args.fulltext_root,
+            output_path=args.output,
+            fulltext_review_mode=args.fulltext_review_mode,
+            fulltext_inline_head_chars=args.fulltext_inline_head_chars,
+            fulltext_inline_tail_chars=args.fulltext_inline_tail_chars,
+            junior_nano_model=junior_nano_model,
+            junior_mini_model=junior_mini_model,
+            senior_model=senior_model,
+            junior_nano_reasoning_effort=args.junior_nano_reasoning_effort,
+            junior_mini_reasoning_effort=args.junior_mini_reasoning_effort,
+            senior_reasoning_effort=args.senior_reasoning_effort,
+        )
+        print(result)
+        return 0
+
     if args.command == "snowball":
         resolved_start_date, resolved_end_date, _, _ = _resolve_stage_window(
             ws,
@@ -784,6 +839,14 @@ def main(argv: Optional[List[str]] = None) -> int:
                 ws,
                 start_date=resolved_seed_start_date,
                 discard_after_date=resolved_seed_end_date,
+            )
+        if args.with_fulltext_review:
+            run_latte_fulltext_review(
+                ws,
+                fulltext_review_mode=args.fulltext_review_mode,
+                fulltext_root=args.fulltext_root,
+                fulltext_inline_head_chars=args.fulltext_inline_head_chars,
+                fulltext_inline_tail_chars=args.fulltext_inline_tail_chars,
             )
         if args.with_snowball:
             if (

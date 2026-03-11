@@ -127,6 +127,18 @@ def _find_key(item: dict[str, Any]) -> str | None:
     return None
 
 
+def _load_key_filter(path: Path) -> set[str]:
+    keys: set[str] = set()
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        keys.add(stripped)
+    if not keys:
+        raise SystemExit(f"No usable keys found in {path}")
+    return keys
+
+
 def _predict_row(row: dict[str, Any], positive_mode: str) -> int:
     pred = _to_verdict_bool(row.get("final_verdict"), positive_mode)
     if pred is not None:
@@ -136,6 +148,57 @@ def _predict_row(row: dict[str, Any], positive_mode: str) -> int:
     elif row.get("round-A_JuniorNano_evaluation") is not None:
         pred = _int_to_bool(row.get("round-A_JuniorNano_evaluation"))
     return 0 if pred is None else pred
+
+
+def _index_records_by_key(
+    records: list[dict[str, Any]],
+    *,
+    key_filter: set[str] | None = None,
+) -> tuple[dict[str, dict[str, Any]], list[str], int, list[dict[str, Any]]]:
+    keyed: dict[str, dict[str, Any]] = {}
+    order: list[str] = []
+    dropped_no_key = 0
+    skipped: list[dict[str, Any]] = []
+    for row in records:
+        if not isinstance(row, dict):
+            continue
+        key = _find_key(row)
+        if key_filter is not None and key is not None and key not in key_filter:
+            continue
+        if not key:
+            dropped_no_key += 1
+            skipped.append(row)
+            continue
+        if key not in keyed:
+            keyed[key] = row
+            order.append(key)
+    return keyed, order, dropped_no_key, skipped
+
+
+def _collect_verdict_and_predictions(
+    records: list[dict[str, Any]],
+    *,
+    positive_mode: str,
+    key_filter: set[str] | None = None,
+) -> tuple[dict[str, int], dict[str, int], int]:
+    pred_map: dict[str, int] = {}
+    verdict_counter: dict[str, int] = {}
+    dropped_no_key = 0
+    for row in records:
+        if not isinstance(row, dict):
+            continue
+        key = _find_key(row)
+        if key_filter is not None and key is not None and key not in key_filter:
+            continue
+        verdict = str(row.get("final_verdict") or "")
+        verdict_counter[verdict] = verdict_counter.get(verdict, 0) + 1
+        pred = _predict_row(row, positive_mode)
+        if key:
+            pred_map[key] = pred
+            row["key"] = key
+        else:
+            dropped_no_key += 1
+    return pred_map, verdict_counter, dropped_no_key
 
 
 def _build_report(
@@ -150,6 +213,8 @@ def _build_report(
     pred_map: dict[str, int],
     scores: dict[str, float] | None,
     results_count: int,
+    keys_file: Path | None = None,
+    keys_count: int | None = None,
     tp: int = 0,
     fp: int = 0,
     tn: int = 0,
@@ -170,6 +235,10 @@ def _build_report(
         "gold_only_count": len(missing_from_results),
         "extra_result_only_count": len(extra_in_results),
     }
+    if keys_file is not None:
+        report["keys_file"] = str(keys_file)
+    if keys_count is not None:
+        report["keys_count"] = int(keys_count)
     if scores is not None:
         report["metrics"] = {
             "precision": scores["precision"],
@@ -209,11 +278,28 @@ def main() -> int:
     )
     parser.add_argument("--save-report", type=Path, default=None, help="Optional path to write JSON summary")
     parser.add_argument(
+        "--keys-file",
+        type=Path,
+        default=None,
+        help="Optional newline-delimited key list; evaluate only these keys.",
+    )
+    parser.add_argument(
         "--annotate",
         action="store_true",
         help="Annotate results in-place with correctness flags against gold labels.",
     )
     parser.add_argument("--strip-metadata", action="store_true", help="Drop metadata field when writing annotated output.")
+    parser.add_argument(
+        "--combine-with-base",
+        action="store_true",
+        help="Combine fulltext output with base-review outputs before computing metrics.",
+    )
+    parser.add_argument(
+        "--base-review-results",
+        type=Path,
+        default=None,
+        help="When --combine-with-base is set, provide the base review results JSON.",
+    )
     args = parser.parse_args()
 
     results_path = args.results.resolve()
@@ -222,10 +308,27 @@ def main() -> int:
         raise SystemExit(f"Missing results file: {results_path}")
     if not gold_path.exists():
         raise SystemExit(f"Missing gold metadata file: {gold_path}")
+    if args.combine_with_base and args.base_review_results is None:
+        raise SystemExit("--combine-with-base requires --base-review-results")
+    key_filter: set[str] | None = None
+    if args.keys_file is not None:
+        keys_path = args.keys_file.resolve()
+        if not keys_path.exists():
+            raise SystemExit(f"Missing keys file: {keys_path}")
+        key_filter = _load_key_filter(keys_path)
 
     results = _load_records(results_path)
     if not isinstance(results, list):
         raise SystemExit(f"Expected list in {results_path}")
+
+    base_results = None
+    if args.base_review_results is not None:
+        base_path = args.base_review_results.resolve()
+        if not base_path.exists():
+            raise SystemExit(f"Missing base review results file: {base_path}")
+        base_results = _load_records(base_path)
+        if not isinstance(base_results, list):
+            raise SystemExit(f"Expected list in {base_path}")
 
     gold_records = _load_records(gold_path)
     gold_map: dict[str, int] = {}
@@ -237,24 +340,63 @@ def main() -> int:
         if label is None:
             continue
         gold_map[key] = 1 if label else 0
+    if key_filter is not None:
+        gold_map = {key: value for key, value in gold_map.items() if key in key_filter}
 
     if not gold_map:
         raise SystemExit(f"No usable is_evidence_base labels found in {gold_path}")
 
+    combined_rows: list[dict[str, Any]]
     pred_map: dict[str, int] = {}
     verdict_counter: dict[str, int] = {}
     dropped_no_key = 0
 
-    for row in results:
-        key = _find_key(row)
-        verdict = str(row.get("final_verdict") or "")
-        verdict_counter[verdict] = verdict_counter.get(verdict, 0) + 1
-        pred = _predict_row(row, args.positive_mode)
-        if key:
+    if args.combine_with_base:
+        if base_results is None:
+            raise SystemExit("--combine-with-base requires --base-review-results")
+        base_records, base_order, base_dropped_no_key, _ = _index_records_by_key(
+            base_results,
+            key_filter=key_filter,
+        )
+        fulltext_records, _, fulltext_dropped_no_key, _ = _index_records_by_key(
+            results,
+            key_filter=key_filter,
+        )
+        dropped_no_key = base_dropped_no_key + fulltext_dropped_no_key
+        combined_rows = []
+        for key in base_order:
+            base_row = base_records[key]
+            merged = dict(base_row)
+            source_row = base_row
+            if key in fulltext_records:
+                fulltext_row = fulltext_records[key]
+                merged.update(fulltext_row)
+                merged["base_final_verdict"] = str(base_row.get("final_verdict") or "")
+                source_row = fulltext_row
+
+            source_verdict = str(source_row.get("final_verdict") or "")
+            verdict_counter[source_verdict] = verdict_counter.get(source_verdict, 0) + 1
+            pred = _predict_row(source_row, args.positive_mode)
             pred_map[key] = pred
-            row["key"] = key
-        else:
-            dropped_no_key += 1
+            merged["key"] = key
+            combined_rows.append(merged)
+        for key, fulltext_row in fulltext_records.items():
+            if key in base_records:
+                continue
+            pred = _predict_row(fulltext_row, args.positive_mode)
+            pred_map[key] = pred
+            verdict = str(fulltext_row.get("final_verdict") or "")
+            verdict_counter[verdict] = verdict_counter.get(verdict, 0) + 1
+            row_with_key = dict(fulltext_row)
+            row_with_key["key"] = key
+            combined_rows.append(row_with_key)
+    else:
+        pred_map, verdict_counter, dropped_no_key = _collect_verdict_and_predictions(
+            results,
+            positive_mode=args.positive_mode,
+            key_filter=key_filter,
+        )
+        combined_rows = [row for row in results if isinstance(row, dict)]
 
     matched_keys = sorted(set(pred_map.keys()) & set(gold_map.keys()))
 
@@ -262,6 +404,8 @@ def main() -> int:
         print(f"[eval] paper_id={args.paper_id}")
         print(f"[eval] results_path={results_path}")
         print(f"[eval] gold_path={gold_path}")
+        if args.combine_with_base:
+            print("[eval] combine_with_base=True")
         print("[eval] no matching keys between prediction output and gold labels.")
         report = _build_report(
             args.paper_id,
@@ -274,7 +418,9 @@ def main() -> int:
             gold_map,
             pred_map,
             None,
-            len(results),
+            len(combined_rows),
+            keys_file=args.keys_file.resolve() if args.keys_file is not None else None,
+            keys_count=len(key_filter) if key_filter is not None else None,
         )
         if args.save_report is not None:
             args.save_report.parent.mkdir(parents=True, exist_ok=True)
@@ -285,7 +431,8 @@ def main() -> int:
             print(f"[eval] report={args.save_report}")
 
         if args.annotate:
-            for row in results:
+            rows_to_annotate = combined_rows if args.combine_with_base else [row for row in results if isinstance(row, dict)]
+            for row in rows_to_annotate:
                 if args.strip_metadata:
                     row.pop("metadata", None)
                 row_key = _find_key(row)
@@ -303,7 +450,7 @@ def main() -> int:
                     row["ground_truth"] = None
                 if row_key:
                     row["key"] = row_key
-            results_path.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
+            results_path.write_text(json.dumps(rows_to_annotate, ensure_ascii=False, indent=2), encoding="utf-8")
             print(f"[eval] annotated_results={results_path}")
             return 0
         raise SystemExit("No matched keys between results and gold labels.")
@@ -328,7 +475,11 @@ def main() -> int:
     print(f"[eval] paper_id={args.paper_id}")
     print(f"[eval] results_path={results_path}")
     print(f"[eval] gold_path={gold_path}")
-    print(f"[eval] rows_loaded={len(results)}")
+    if args.combine_with_base:
+        print("[eval] combine_with_base=True")
+    if key_filter is not None:
+        print(f"[eval] keys_filter={len(key_filter)} from {args.keys_file.resolve()}")
+    print(f"[eval] rows_loaded={len(combined_rows)}")
     print(f"[eval] unique_gold={len(gold_map)}")
     print(f"[eval] matched={len(matched_keys)}")
     print(f"[eval] dropped_no_key={dropped_no_key}")
@@ -353,7 +504,9 @@ def main() -> int:
         gold_map,
         pred_map,
         scores,
-        len(results),
+        len(combined_rows),
+        keys_file=args.keys_file.resolve() if args.keys_file is not None else None,
+        keys_count=len(key_filter) if key_filter is not None else None,
         tp=tp,
         fp=fp,
         tn=tn,
@@ -365,7 +518,8 @@ def main() -> int:
         print(f"[eval] report={args.save_report}")
 
     if args.annotate:
-        for row in results:
+        rows_to_annotate = combined_rows if args.combine_with_base else [row for row in results if isinstance(row, dict)]
+        for row in rows_to_annotate:
             if args.strip_metadata:
                 row.pop("metadata", None)
             row_key = _find_key(row)
@@ -387,7 +541,7 @@ def main() -> int:
                 row["ground_truth"] = None
                 row["is_wrong"] = None
                 row["is_correct"] = None
-        results_path.write_text(json.dumps(results, ensure_ascii=False, indent=2), encoding="utf-8")
+        results_path.write_text(json.dumps(rows_to_annotate, ensure_ascii=False, indent=2), encoding="utf-8")
         print(f"[eval] annotated_results={results_path}")
 
     return 0
