@@ -4438,14 +4438,10 @@ def _ensure_latte_review_importable() -> None:
 def _criteria_payload_to_strings(payload: Dict[str, object]) -> Tuple[str, str]:
     """Convert structured criteria JSON into LatteReview-friendly strings."""
 
-    topic_definition = str(payload.get("topic_definition") or "").strip()
     inclusion = payload.get("inclusion_criteria")
     exclusion = payload.get("exclusion_criteria")
 
     inclusion_lines: List[str] = []
-    if topic_definition:
-        inclusion_lines.append(f"主題定義：{topic_definition}")
-
     if isinstance(inclusion, dict):
         required = inclusion.get("required") or []
         any_of = inclusion.get("any_of") or []
@@ -4489,6 +4485,15 @@ def _criteria_payload_to_strings(payload: Dict[str, object]) -> Tuple[str, str]:
     inclusion_text = "\n".join(line for line in inclusion_lines if line)
     exclusion_text = "\n".join(line for line in exclusion_lines if line)
     return inclusion_text, exclusion_text
+
+
+def _criteria_context_from_payload(payload: Dict[str, object]) -> str:
+    """Return topic_definition separately as background context for reviewers."""
+
+    topic_definition = str(payload.get("topic_definition") or "").strip()
+    if not topic_definition:
+        return ""
+    return f"主題脈絡（非硬性 inclusion）: {topic_definition}"
 
 
 _REFERENCE_HEADING_RE = re.compile(
@@ -4705,35 +4710,58 @@ def _derive_final_verdict_from_row(row: "Any") -> str:
         except Exception:
             return False
 
-    senior_eval = row.get("round-B_SeniorLead_evaluation")
-    source = "junior"
-    score: Optional[int] = None
-    if senior_eval is not None and not _is_missing(senior_eval):
+    def _to_score(value: Any) -> Optional[int]:
+        if value is None or _is_missing(value):
+            return None
         try:
-            score = int(senior_eval)
-            source = "senior"
+            return int(value)
         except (TypeError, ValueError):
-            score = None
-    if score is None:
-        candidates: List[int] = []
-        for value in (
-            row.get("round-A_JuniorNano_evaluation"),
-            row.get("round-A_JuniorMini_evaluation"),
-        ):
-            if value is None or _is_missing(value):
-                continue
-            try:
-                candidates.append(int(value))
-            except (TypeError, ValueError):
-                continue
-        if not candidates:
-            return "需再評估 (no_score)"
-        score = int(round(sum(candidates) / len(candidates)))
-    if score >= 4:
-        return f"include ({source}:{score})"
-    if score <= 2:
-        return f"exclude ({source}:{score})"
-    return f"maybe ({source}:{score})"
+            return None
+
+    senior_eval = _to_score(row.get("round-B_SeniorLead_evaluation"))
+    if senior_eval is not None:
+        if senior_eval >= 4:
+            return f"include (senior:{senior_eval})"
+        if senior_eval <= 2:
+            return f"exclude (senior:{senior_eval})"
+        return f"maybe (senior:{senior_eval})"
+
+    junior_scores: List[int] = []
+    for value in (
+        row.get("round-A_JuniorNano_evaluation"),
+        row.get("round-A_JuniorMini_evaluation"),
+    ):
+        score = _to_score(value)
+        if score is not None:
+            junior_scores.append(score)
+
+    if not junior_scores:
+        return "需再評估 (no_score)"
+
+    if len(junior_scores) >= 2 and all(score <= 2 for score in junior_scores):
+        return f"exclude (junior:{junior_scores[0]},{junior_scores[1]})"
+
+    if len(junior_scores) >= 2 and all(score >= 4 for score in junior_scores):
+        return f"include (junior:{junior_scores[0]},{junior_scores[1]})"
+
+    if any(score == 3 for score in junior_scores):
+        return f"maybe (junior:{','.join(str(score) for score in junior_scores)})"
+
+    if any(score >= 4 for score in junior_scores) and any(score <= 2 for score in junior_scores):
+        return f"maybe (junior:{','.join(str(score) for score in junior_scores)})"
+
+    if all(score >= 4 for score in junior_scores):
+        return f"include (junior:{','.join(str(score) for score in junior_scores)})"
+
+    if len(junior_scores) == 1:
+        score = junior_scores[0]
+        if score <= 2:
+            return f"maybe (junior:{score})"
+        if score >= 4:
+            return f"maybe (junior:{score})"
+        return f"maybe (junior:{score})"
+
+    return f"maybe (junior:{','.join(str(score) for score in junior_scores)})"
 
 
 def run_latte_review(
@@ -4809,6 +4837,7 @@ def run_latte_review(
             resolved_end = cutoff_value.strip()
 
     inclusion_criteria, exclusion_criteria = _criteria_payload_to_strings(criteria_payload)
+    criteria_context = _criteria_context_from_payload(criteria_payload)
     if not inclusion_criteria:
         inclusion_criteria = "論文需與指定主題高度相關，且提供可用於評估的英文內容（全文或摘要/方法）。"
     if not exclusion_criteria:
@@ -4918,6 +4947,9 @@ def run_latte_review(
             backstory: str,
             additional_context: Optional[str] = None,
         ) -> TitleAbstractReviewer:
+            context = criteria_context
+            if additional_context:
+                context = f"{criteria_context}\n{additional_context}" if criteria_context else additional_context
             return TitleAbstractReviewer(
                 name=name,
                 provider=OpenAIProvider(model=model),
@@ -4926,7 +4958,7 @@ def run_latte_review(
                 model_args=model_args,
                 reasoning=reasoning,
                 backstory=backstory,
-                additional_context=additional_context,
+                additional_context=context,
                 max_concurrent_requests=50,
                 verbose=False,
             )
@@ -4953,49 +4985,8 @@ def run_latte_review(
             reasoning="brief",
             backstory="一位熟悉相關領域的研究助理",
         )
-        senior = _build_reviewer(
-            "SeniorLead",
-            senior_model,
-            model_args={"reasoning_effort": senior_reasoning_effort} if senior_reasoning_effort else {},
-            reasoning="brief",
-            backstory="負責統整並做最終判定的資深 reviewer",
-            additional_context="兩位 junior reviewer 已提供初步評估，請在整合意見前檢視他們的回饋。",
-        )
-
-        def _senior_filter(row: "pd.Series") -> bool:  # type: ignore[name-defined]
-            eval_1 = row.get("round-A_JuniorNano_evaluation")
-            eval_2 = row.get("round-A_JuniorMini_evaluation")
-            if pd.isna(eval_1) or pd.isna(eval_2):
-                return False
-            try:
-                score1 = int(eval_1)
-                score2 = int(eval_2)
-            except (TypeError, ValueError):
-                return False
-            if score1 != score2:
-                if score1 >= 4 and score2 >= 4:
-                    return False
-                if score1 >= 3 or score2 >= 3:
-                    return True
-            elif score1 == score2 == 3:
-                return True
-            return False
-
         workflow_schema = [
             {"round": "A", "reviewers": [junior_nano, junior_mini], "text_inputs": ["title", "abstract"]},
-            {
-                "round": "B",
-                "reviewers": [senior],
-                "text_inputs": [
-                    "title",
-                    "abstract",
-                    "round-A_JuniorNano_output",
-                    "round-A_JuniorNano_evaluation",
-                    "round-A_JuniorMini_output",
-                    "round-A_JuniorMini_evaluation",
-                ],
-                "filter": _senior_filter,
-            },
         ]
 
         workflow = ReviewWorkflow.model_validate(
@@ -5121,6 +5112,7 @@ def run_latte_fulltext_review(
                 criteria_payload = structured
 
     inclusion_criteria, exclusion_criteria = _criteria_payload_to_strings(criteria_payload)
+    criteria_context = _criteria_context_from_payload(criteria_payload)
     if not inclusion_criteria:
         inclusion_criteria = "論文需與指定主題高度相關，且提供可用於評估的英文內容（全文或摘要/方法）。"
     if not exclusion_criteria:
@@ -5151,6 +5143,9 @@ def run_latte_fulltext_review(
         base_final_verdict = str(row.get("final_verdict") or "")
 
         if not key:
+            base_verdict_label = _extract_verdict_label(base_final_verdict)
+            if base_verdict_label not in {"include", "maybe"}:
+                base_verdict_label = "include"
             skipped_records.append(
                 {
                     "key": None,
@@ -5165,9 +5160,10 @@ def run_latte_fulltext_review(
                     "reference_cut_marker": None,
                     "reference_cut_line_no": None,
                     "fulltext_missing_or_unmatched": True,
+                    "review_state": "review_skipped",
                     "review_skipped": True,
                     "discard_reason": "missing_key_for_fulltext_lookup",
-                    "final_verdict": "exclude (missing_fulltext)",
+                    "final_verdict": f"{base_verdict_label} (review_state:review_skipped)",
                 }
             )
             continue
@@ -5179,6 +5175,9 @@ def run_latte_fulltext_review(
 
         fulltext_path = resolved_fulltext_root / f"{key}.md"
         if (not fulltext_path.exists()) or (not fulltext_path.is_file()):
+            base_verdict_label = _extract_verdict_label(base_final_verdict)
+            if base_verdict_label not in {"include", "maybe"}:
+                base_verdict_label = "maybe"
             skipped_records.append(
                 {
                     "key": key,
@@ -5193,9 +5192,10 @@ def run_latte_fulltext_review(
                     "reference_cut_marker": None,
                     "reference_cut_line_no": None,
                     "fulltext_missing_or_unmatched": True,
+                    "review_state": "retrieval_failed",
                     "review_skipped": True,
                     "discard_reason": "missing_fulltext",
-                    "final_verdict": "exclude (missing_fulltext)",
+                    "final_verdict": f"{base_verdict_label} (review_state:retrieval_failed)",
                 }
             )
             continue
@@ -5223,6 +5223,7 @@ def run_latte_fulltext_review(
                 "reference_cut_method": str(truncated.get("reference_cut_method") or "none"),
                 "reference_cut_marker": truncated.get("reference_cut_marker"),
                 "reference_cut_line_no": truncated.get("reference_cut_line_no"),
+                "review_state": "reviewed",
                 "fulltext_missing_or_unmatched": False,
             }
         )
@@ -5243,6 +5244,7 @@ def run_latte_fulltext_review(
         "reference_cut_method",
         "reference_cut_marker",
         "reference_cut_line_no",
+        "review_state",
         "fulltext_missing_or_unmatched",
         "review_skipped",
         "discard_reason",
@@ -5261,6 +5263,9 @@ def run_latte_fulltext_review(
             backstory: str,
             additional_context: Optional[str] = None,
         ) -> FullTextReviewer:
+            context = criteria_context
+            if additional_context:
+                context = f"{criteria_context}\n{additional_context}" if criteria_context else additional_context
             return FullTextReviewer(
                 name=name,
                 provider=OpenAIProvider(model=model),
@@ -5269,7 +5274,7 @@ def run_latte_fulltext_review(
                 model_args=model_args,
                 reasoning=reasoning,
                 backstory=backstory,
-                additional_context=additional_context,
+                additional_context=context,
                 max_concurrent_requests=50,
                 verbose=False,
             )

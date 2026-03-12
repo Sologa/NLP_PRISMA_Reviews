@@ -8,10 +8,9 @@ DEFAULT_MAX_RETRIES = 3
 
 generic_prompt_all = """
 
-**Stage 2 Review (Full Text)**
-You are reviewing the provided full text to make the final criteria decision for this paper.
-Evaluate against all inclusion and exclusion criteria using the text itself, not general impressions.
-For exclusion claims and inclusion claims, base each judgment only on text evidence.
+**Stage 2 Review (Full Text, criteria-level)**
+You are doing final full-text screening for this paper.
+Decide based on explicit criteria evidence in the text, not on overall impression.
 
 ---
 
@@ -30,18 +29,19 @@ ${exclusion_criteria}$
 
 **Instructions**
 
-1. Output your evaluation as an integer between 1 and 5, where:
-   - 1 means strongly not include
-   - 2 means likely not include
-   - 3 means uncertain / need more evidence
-   - 4 means likely include
-   - 5 means strongly include
-2. Prefer explicit evidence from the full text:
-   - quote or paraphrase the exact signals for I1/I2/I3/E1/E2/E3/E4/E5 when deciding your score.
-   - if a claim is not stated or is only implied, do not over-interpret it.
-3. Your reasoning must be concise and explain the key pieces of evidence that drove inclusion vs exclusion.
-4. Do not invent findings not present in the full text; if evidence is missing, use a conservative score (`3`) rather than guessing.
-5. Keep the rationale focused on criteria-level evidence, not writing style or reputation.
+1. Output your evaluation as an integer between 1 and 5:
+   - 1 強烈不納入
+   - 2 可能不納入
+   - 3 不確定 / 需要更多證據
+   - 4 可能納入
+   - 5 強烈納入
+2. 評估必須逐條對齊 criteria：
+   - 只用 full text 文字片段（title/abstract + provided full text）支持每個判斷。
+   - 未明確提到的主張不算作證據；避免把隱含訊息硬推斷為事實。
+3. 請列出關鍵證據：哪個 criteria 因何被支持、哪個無法支持、哪個有缺口。
+4. 若證據缺失，不要猜測，保守給 `3`，並在 reasoning 中標明「缺少何種可追溯依據」。
+5. reasoning 必須可追溯、可驗證，聚焦證據與 criteria，而非模型印象或作者聲望。
+
 ---
 
 ${reasoning}$
@@ -54,10 +54,9 @@ ${examples}$
 
 generic_prompt_any = """
 
-**Stage 2 Review (Full Text)**
-You are reviewing the provided full text to make the final criteria decision for this paper.
-Evaluate against all inclusion and exclusion criteria using the text itself, not general impressions.
-For exclusion claims and inclusion claims, base each judgment only on text evidence.
+**Stage 2 Review (Full Text, criteria-level)**
+You are doing final full-text screening for this paper.
+Decide based on explicit criteria evidence in the text, not on overall impression.
 
 ---
 
@@ -76,18 +75,19 @@ ${exclusion_criteria}$
 
 **Instructions**
 
-1. Output your evaluation as an integer between 1 and 5, where:
-   - 1 means strongly not include
-   - 2 means likely not include
-   - 3 means uncertain / need more evidence
-   - 4 means likely include
-   - 5 means strongly include
-2. Prefer explicit evidence from the full text:
-   - quote or paraphrase the exact signals for I1/I2/I3/E1/E2/E3/E4/E5 when deciding your score.
-   - if a claim is not stated or is only implied, do not over-interpret it.
-3. Your reasoning must be concise and explain the key pieces of evidence that drove inclusion vs exclusion.
-4. Do not invent findings not present in the full text; if evidence is missing, use a conservative score (`3`) rather than guessing.
-5. Keep the rationale focused on criteria-level evidence, not writing style or reputation.
+1. Output your evaluation as an integer between 1 and 5:
+   - 1 強烈不納入
+   - 2 可能不納入
+   - 3 不確定 / 需要更多證據
+   - 4 可能納入
+   - 5 強烈納入
+2. 評估必須逐條對齊 criteria：
+   - 只用 full text 文字片段（title/abstract + provided full text）支持每個判斷。
+   - 未明確提到的主張不算作證據；避免把隱含訊息硬推斷為事實。
+3. 請列出關鍵證據：哪個 criteria 因何被支持、哪個無法支持、哪個有缺口。
+4. 若證據缺失，不要猜測，保守給 `3`，並在 reasoning 中標明「缺少何種可追溯依據」。
+5. reasoning 必須可追溯、可驗證，聚焦證據與 criteria，而非模型印象或作者聲望。
+
 ---
 
 ${reasoning}$

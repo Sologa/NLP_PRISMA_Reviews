@@ -7,11 +7,11 @@ DEFAULT_MAX_RETRIES = 3
 
 generic_prompt_all = """
 
-**Stage 1 Review (Title + Abstract only)**
-You are reviewing only `title` and `abstract` to decide a screening signal for a paper.
-Do **not** use or assume any full-text content.
-Evaluate whether the paper should be included based on the following criteria.
-For this stage, prefer a high-recall filtering rule: if evidence is incomplete, do not force exclusion.
+**Stage 1 Review (Title + Abstract only, high-recall gate)**
+You are screening only `title` and `abstract` to decide whether a paper should move to full review.
+Do not use or assume any full-text content.
+
+This stage is recall-oriented: keep papers in flow when evidence is weak, and avoid hard exclusion without explicit evidence.
 
 ---
 
@@ -30,20 +30,22 @@ ${exclusion_criteria}$
 
 **Instructions**
 
-1. Output your evaluation as an integer between 1 and 5, where:
-   - 1 means strongly not include
-   - 2 means likely not include
-   - 3 means uncertain / need more evidence
-   - 4 means likely include
-   - 5 means strongly include
-2. This is Stage 1 only:
-   - Use only the provided `title` and `abstract`.
-   - Do not treat missing details as exclusion evidence.
-   - If information is insufficient, the correct signal is usually `3` rather than `1` or `2`.
-3. If a paper is topically relevant but lacks explicit evidence in title/abstract, preserve it as possible (choose `3`) instead of excluding early.
-4. When you are unsure, provide a conservative score (`3`) and explain what is missing.
-5. Your response must be brief, and your `reasoning` must state the key evidence for your score in one concise paragraph.
-6. Do not invent claims that are not in the provided text.
+1. Output your evaluation as an integer between 1 and 5:
+   - 1 強烈排除
+   - 2 可能排除
+   - 3 不確定 / 需要更多證據
+   - 4 可能納入
+   - 5 強烈納入
+2. Stage 1 constraints:
+   - 只看 `title` + `abstract`，不得依賴 full text。
+   - 未出現否定性證據時，不應直接用 1 或 2 排除。
+   - 對 topic relevance 有一定疑似但不足以證成的，請偏向 3。
+3. Sparse metadata 規則（citation-like/keyword-only/metadata 片段）：
+   - 不夠明確時不應直接視為 exclusion。
+   - 若只有摘要片段且缺關鍵 evidence，請保守為 3 並說明缺什麼。
+4. 理由要簡潔：
+   - 指出你採用該分數的關鍵證據；若不確定，請明確列出缺少哪一條 criteria 證據。
+5. 不要憑空捏造任何事實，不要推測 full text。
 ---
 
 ${reasoning}$
@@ -56,11 +58,11 @@ ${examples}$
 
 generic_prompt_any = """
 
-**Stage 1 Review (Title + Abstract only)**
-You are reviewing only `title` and `abstract` to decide a screening signal for a paper.
-Do **not** use or assume any full-text content.
-Evaluate whether the paper should be included based on the following criteria.
-For this stage, prefer a high-recall filtering rule: if evidence is incomplete, do not force exclusion.
+**Stage 1 Review (Title + Abstract only, high-recall gate)**
+You are screening only `title` and `abstract` to decide whether a paper should move to full review.
+Do not use or assume any full-text content.
+
+This stage is recall-oriented: keep papers in flow when evidence is weak, and avoid hard exclusion without explicit evidence.
 
 ---
 
@@ -79,27 +81,29 @@ ${exclusion_criteria}$
 
 **Instructions**
 
-1. Output your evaluation as an integer between 1 and 5, where:
-   - 1 means strongly not include
-   - 2 means likely not include
-   - 3 means uncertain / need more evidence
-   - 4 means likely include
-   - 5 means strongly include
-2. This is Stage 1 only:
-   - Use only the provided `title` and `abstract`.
-   - Do not treat missing details as exclusion evidence.
-   - If information is insufficient, the correct signal is usually `3` rather than `1` or `2`.
-3. If a paper is topically relevant but lacks explicit evidence in title/abstract, preserve it as possible (choose `3`) instead of excluding early.
-4. When you are unsure, provide a conservative score (`3`) and explain what is missing.
-5. Your response must be brief, and your `reasoning` must state the key evidence for your score in one concise paragraph.
-6. Do not invent claims that are not in the provided text.
+1. Output your evaluation as an integer between 1 and 5:
+   - 1 強烈排除
+   - 2 可能排除
+   - 3 不確定 / 需要更多證據
+   - 4 可能納入
+   - 5 強烈納入
+2. Stage 1 constraints:
+   - 只看 `title` + `abstract`，不得依賴 full text。
+   - 未出現否定性證據時，不應直接用 1 或 2 排除。
+   - 對 topic relevance 有一定疑似但不足以證成的，請偏向 3。
+3. Sparse metadata 規則（citation-like/keyword-only/metadata 片段）：
+   - 不夠明確時不應直接視為 exclusion。
+   - 若只有摘要片段且缺關鍵 evidence，請保守為 3 並說明缺什麼。
+4. 理由要簡潔：
+   - 指出你採用該分數的關鍵證據；若不確定，請明確列出缺少哪一條 criteria 證據。
+5. 不要憑空捏造任何事實，不要推測 full text。
 ---
 
-${reasoning}
+${reasoning}$
 
-${additional_context}
+${additional_context}$
 
-${examples}
+${examples}$
 
 """
 
