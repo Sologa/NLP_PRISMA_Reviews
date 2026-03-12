@@ -4536,6 +4536,17 @@ _CITATION_VENUE_RE = re.compile(
 _ARXIV_ID_RE = re.compile(r"\b(\d{4}\.\d{4,5})(?:v\d+)?\b")
 
 
+def _to_score(value: Any) -> Optional[int]:
+    if value is None:
+        return None
+    if isinstance(value, float) and value != value:
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def _extract_verdict_label(value: Any) -> str:
     text = str(value or "").strip().lower()
     if not text:
@@ -4702,22 +4713,6 @@ def _infer_fulltext_root(*, explicit_root: Optional[Path], metadata_path: Path, 
 
 
 def _derive_final_verdict_from_row(row: "Any") -> str:
-    def _is_missing(value: Any) -> bool:
-        if value is None:
-            return True
-        try:
-            return bool(value != value)
-        except Exception:
-            return False
-
-    def _to_score(value: Any) -> Optional[int]:
-        if value is None or _is_missing(value):
-            return None
-        try:
-            return int(value)
-        except (TypeError, ValueError):
-            return None
-
     senior_eval = _to_score(row.get("round-B_SeniorLead_evaluation"))
     if senior_eval is not None:
         if senior_eval >= 4:
@@ -4738,30 +4733,22 @@ def _derive_final_verdict_from_row(row: "Any") -> str:
     if not junior_scores:
         return "需再評估 (no_score)"
 
-    if len(junior_scores) >= 2 and all(score <= 2 for score in junior_scores):
-        return f"exclude (junior:{junior_scores[0]},{junior_scores[1]})"
+    if len(junior_scores) == 2:
+        score_1, score_2 = junior_scores[0], junior_scores[1]
+        if all(score >= 4 for score in junior_scores):
+            return f"include (junior:{score_1},{score_2})"
 
-    if len(junior_scores) >= 2 and all(score >= 4 for score in junior_scores):
-        return f"include (junior:{junior_scores[0]},{junior_scores[1]})"
+        if all(score <= 2 for score in junior_scores):
+            return f"exclude (junior:{score_1},{score_2})"
 
-    if any(score == 3 for score in junior_scores):
-        return f"maybe (junior:{','.join(str(score) for score in junior_scores)})"
+        return f"maybe (junior:{score_1},{score_2})"
 
-    if any(score >= 4 for score in junior_scores) and any(score <= 2 for score in junior_scores):
-        return f"maybe (junior:{','.join(str(score) for score in junior_scores)})"
-
-    if all(score >= 4 for score in junior_scores):
-        return f"include (junior:{','.join(str(score) for score in junior_scores)})"
-
-    if len(junior_scores) == 1:
-        score = junior_scores[0]
-        if score <= 2:
-            return f"maybe (junior:{score})"
-        if score >= 4:
-            return f"maybe (junior:{score})"
-        return f"maybe (junior:{score})"
-
-    return f"maybe (junior:{','.join(str(score) for score in junior_scores)})"
+    score = junior_scores[0]
+    if score >= 4:
+        return f"include (junior:{score})"
+    if score <= 2:
+        return f"exclude (junior:{score})"
+    return f"maybe (junior:{score})"
 
 
 def run_latte_review(
@@ -4985,8 +4972,57 @@ def run_latte_review(
             reasoning="brief",
             backstory="一位熟悉相關領域的研究助理",
         )
+
+        def _senior_filter(row: "pd.Series") -> bool:  # type: ignore[name-defined]
+            score_1 = _to_score(row.get("round-A_JuniorNano_evaluation"))
+            score_2 = _to_score(row.get("round-A_JuniorMini_evaluation"))
+
+            if score_1 is None or score_2 is None:
+                return True
+            if score_1 >= 4 and score_2 >= 4:
+                return False
+            if score_1 <= 2 and score_2 <= 2:
+                return False
+            return True
+
+        senior = _build_reviewer(
+            "SeniorLead",
+            senior_model,
+            model_args={"reasoning_effort": senior_reasoning_effort} if senior_reasoning_effort else {},
+            reasoning="brief",
+            backstory=(
+                "你是 Stage 1 的 senior adjudicator，目標是把只看 title + abstract 的關鍵邊界案件收斂到可追溯的裁決。"
+                "你只能依據 title、abstract 與兩位 junior 的 output 與 evaluation 作判斷，不能假設 full text 會補齊缺漏。"
+            ),
+            additional_context=(
+                "仲裁規則（嚴格版）：\n"
+                "1) 你只能看這次輸入中的 title、abstract、round-A_JuniorNano/JuniorMini 的判斷；不得引用沒有明示的 full text。\n"
+                "2) 不要把 topic relevance、conceptual similarity、method similarity、domain adjacent 視為納入充分證據。\n"
+                "3) 僅當以下條件同時滿足才可給 3(maybe)：\n"
+                "   a. 已看到至少一條可追溯的核心 inclusion 正向訊號（非純概念關聯詞）；\n"
+                "   b. 缺失恰好一個能影響納入判斷的關鍵條件；\n"
+                "   c. 該缺失在現有 title/abstract 中無法直接判定，但在這輪規則下仍值得延後判定。\n"
+                "4) 如果是 topic-adjacent、method-related、metadata-like 或只描述相關關鍵字，但沒有核心 inclusion 正向證據，優先給 1 或 2 排除。\n"
+                "5) 高題目相關性≠可納入：除非核心 eligibility 已被明確支持，否則不要因『可能有關』就保留。\n"
+                "6) 輸出 reasoning 必須回答：看到了哪些正向證據、缺了什麼關鍵條件、為什麼可/不可視為 exclusion。"
+            ),
+        )
+
         workflow_schema = [
             {"round": "A", "reviewers": [junior_nano, junior_mini], "text_inputs": ["title", "abstract"]},
+            {
+                "round": "B",
+                "reviewers": [senior],
+                "text_inputs": [
+                    "title",
+                    "abstract",
+                    "round-A_JuniorNano_output",
+                    "round-A_JuniorNano_evaluation",
+                    "round-A_JuniorMini_output",
+                    "round-A_JuniorMini_evaluation",
+                ],
+                "filter": _senior_filter,
+            },
         ]
 
         workflow = ReviewWorkflow.model_validate(
