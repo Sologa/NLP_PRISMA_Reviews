@@ -1,6 +1,6 @@
 {
   "topic": "Preference-Based Learning in Audio Applications: A Systematic Analysis",
-  "topic_definition": "Preference learning is counted when a paper involves ranking or A/B comparison of two or more audio clips (including preference signals expressed as pairwise/relative preferences). If only numeric ratings are provided (e.g., 1–5 MOS), they are counted only when they are explicitly converted into rankings/pairwise preferences. Preference signals can be from human judgments or synthetic preferences. Even without explicit pairwise comparisons, papers with an RL training loop for an audio model are included when optimization is preference-driven. Preference-only-for-evaluation papers are excluded. Audio-domain inclusion also applies when audio is a core modality in multi-modal work (audio + other modalities).",
+  "topic_definition": "Operational title/abstract decision table. Include only when ALL of the following are satisfied: (A) audio-domain evidence is present, (B) preference-signal evidence is present, and (C) the preference/ranking signal has a learning role (training objective, loss, reward modeling, label construction, or model selection). Audio-domain strong positives include speech, spoken dialogue/calls, speech emotion recognition, acoustic/audio signal, voice/paralinguistic cues, or canonical speech corpora context (for example IEMOCAP/SEMAINE). For multi-modal work, audio must be a core input modality, not peripheral metadata. Preference-signal positives include pairwise comparison, relative preference labels, rank/rank-order supervision, preference optimization, or human comparative judgments used for learning. Ordinal/rank formulations count only when they are used to learn ordered preferences (not merely reported labels). Insufficient evidence includes emotion/ranking wording without clear audio context, scalar rating-only prediction, pure category classification labels, or ranking used only in evaluation/reporting. Preference-only-for-evaluation papers are excluded.",
   "summary": "Parsed screening criteria from criteria_mds/2511.13936.md",
   "summary_topics": [
     {
@@ -11,14 +11,21 @@
   "inclusion_criteria": {
     "required": [
       {
-        "criterion": "Preference-learning component exists: the paper includes comparisons/rankings of audio items (ranking, A/B comparison, pairwise preference), or explicitly defines preference signals that are used for learning.",
+        "criterion": "Learning-role gate (required): preference/ranking signal must explicitly affect learning (training objective/loss/reward, label construction, or model selection). Signals used only for evaluation/benchmark reporting do not satisfy inclusion.",
         "source": "criteria_mds/2511.13936.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Audio-domain application is present. For multi-modal works, this includes any paper where audio is a core modality.",
+        "criterion": "Preference-signal gate (required): at least one positive preference-like signal is present, such as pairwise comparison, relative labels, rank/rank-order learning, preference optimization, or comparative human judgments converted to training supervision.",
+        "source": "criteria_mds/2511.13936.md",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "Audio-domain gate (required): title/abstract must indicate audio or speech as core task signal. Strong positives include speech/SER, spoken interactions or calls, acoustic/audio/voice/paralinguistic framing, or canonical speech corpora context. Multi-modal papers are in-scope only when audio is core.",
         "source": "criteria_mds/2511.13936.md",
         "topic_ids": [
           "S1"
@@ -35,21 +42,28 @@
   },
   "exclusion_criteria": [
     {
-      "criterion": "Preferences are used only for evaluation, with no learning/optimization/training component.",
+      "criterion": "Negative override: preference or ranking appears only in evaluation/reporting/annotation description and is not used for learning/optimization/training.",
       "source": "criteria_mds/2511.13936.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "Paper is not preference learning (fails the operational definition below).",
+      "criterion": "Negative override: pure SER or emotion classification/regression without a preference/rank-based learning component.",
       "source": "criteria_mds/2511.13936.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "Paper is not an audio-domain work.",
+      "criterion": "Negative override: ordinal intensity labels are present but not operationalized as preference/rank learning signals in the model objective.",
+      "source": "criteria_mds/2511.13936.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Negative override: not an audio-domain work, or multimodal with no clear evidence that audio is core.",
       "source": "criteria_mds/2511.13936.md",
       "topic_ids": [
         "S1"

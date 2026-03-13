@@ -1,7 +1,7 @@
 {
   "topic": "NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods",
-  "topic_definition": "Automated process extraction is the task of transforming natural-language descriptions of activities, actors, and control flow into structured process representations or process models using natural language processing.",
-  "summary": "Parsed screening criteria from criteria_corrected_3papers/2409.13738.md",
+  "topic_definition": "Stage-split operational criteria for this review. Stage 1 is title+abstract screening only: decide by observable evidence of the core task (text-to-process extraction) and core method role (NLP/text processing is central to extraction, not peripheral). If abstract-level evidence indicates core fit but full details are missing, keep as maybe for Stage 2. Stage 2 is fulltext confirmation: enforce complete eligibility (paper type, language/fulltext availability, primary research, concrete method completeness, and empirical validation).",
+  "summary": "Parsed screening criteria from criteria_corrected_3papers/2409.13738.md; operationalized into Stage 1 observable projection and Stage 2 confirmatory projection.",
   "summary_topics": [
     {
       "id": "S1",
@@ -11,49 +11,56 @@
   "inclusion_criteria": {
     "required": [
       {
-        "criterion": "Full research article / full research paper.",
+        "criterion": "[Stage 1 observable gate] Core task fit: title/abstract should indicate extraction or generation of a structured process representation/model (for example BPMN, DMN, declarative process model, process graph) from natural language text.",
         "source": "criteria_corrected_3papers/2409.13738.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Full text available.",
+        "criterion": "[Stage 1 observable gate] Method-role fit: NLP/text processing must be central to the extraction pipeline (for example parsing, information extraction, semantic analysis, sequence labeling, relation extraction in service of process-model construction), not a background utility.",
         "source": "criteria_corrected_3papers/2409.13738.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Written in English.",
+        "criterion": "[Stage 1 observable gate] Uncertainty handling: if core task + method-role evidence exists but abstract does not fully expose experiment design or implementation depth, keep for Stage 2 (maybe) rather than hard exclusion.",
         "source": "criteria_corrected_3papers/2409.13738.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Primary research (original contribution; not secondary research).",
+        "criterion": "[Stage 2 confirmatory gate] Full research article / full research paper.",
         "source": "criteria_corrected_3papers/2409.13738.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Specifically covers use of NLP for process extraction from natural language text.",
+        "criterion": "[Stage 2 confirmatory gate] Full text available and written in English.",
         "source": "criteria_corrected_3papers/2409.13738.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Explicates a concrete method.",
+        "criterion": "[Stage 2 confirmatory gate] Primary research (original contribution; not secondary research).",
         "source": "criteria_corrected_3papers/2409.13738.md",
         "topic_ids": [
           "S1"
         ]
       },
       {
-        "criterion": "Describes experiments to empirically validate the method.",
+        "criterion": "[Stage 2 confirmatory gate] Concrete extraction method is sufficiently specified in fulltext (not only conceptual discussion).",
+        "source": "criteria_corrected_3papers/2409.13738.md",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "[Stage 2 confirmatory gate] Empirical validation is described in fulltext (experiments/evaluation supporting the extraction method).",
         "source": "criteria_corrected_3papers/2409.13738.md",
         "topic_ids": [
           "S1"
@@ -63,55 +70,96 @@
   },
   "exclusion_criteria": [
     {
-      "criterion": "Not a full research paper, such as a poster, short paper, abstract, report, thesis, or book chapter.",
+      "criterion": "[Stage 1 strong negative] Topic-adjacent or process-adjacent only: paper discusses BPM/process domain but not the core objective of extracting/constructing process representation from natural language text.",
       "source": "criteria_corrected_3papers/2409.13738.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "No full text available.",
+      "criterion": "[Stage 1 strong negative] Output-object mismatch: work focuses only on generic IE/NER/relation extraction/classification/retrieval/question answering/sentiment without explicit mapping to process representation/model construction.",
       "source": "criteria_corrected_3papers/2409.13738.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "Not written in English.",
+      "criterion": "[Stage 1 strong negative] Generic NLP/LLM/dataset/foundation-model paper with no explicit text-to-process extraction task should be excluded.",
       "source": "criteria_corrected_3papers/2409.13738.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "Secondary research (literature review, meta-analysis, comments).",
+      "criterion": "[Stage 1 strong negative] Non-target BPM task: process redesign, matching, prediction/forecasting, compliance monitoring, recommendation, simulation, or natural-text generation from process models without core extraction target.",
       "source": "criteria_corrected_3papers/2409.13738.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "Not specifically NLP-for-process-extraction, including process redesign, matching, prediction, sentiment analysis, targeting individual labels instead of natural text, or generating natural text from processes.",
+      "criterion": "[Stage 2 only negative] Not a full research paper, such as poster/short paper/abstract/report/thesis/book chapter; or secondary research (survey/review/meta-analysis/comments).",
       "source": "criteria_corrected_3papers/2409.13738.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "Only superficially discusses an applied method.",
+      "criterion": "[Stage 2 only negative] No full text available or not written in English.",
       "source": "criteria_corrected_3papers/2409.13738.md",
       "topic_ids": [
         "S1"
       ]
     },
     {
-      "criterion": "Does not describe experiments to validate the method.",
+      "criterion": "[Stage 2 only negative] Method is only superficial/conceptual and does not provide an executable extraction pipeline.",
+      "source": "criteria_corrected_3papers/2409.13738.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "[Stage 2 only negative] Does not describe empirical validation for the extraction method.",
       "source": "criteria_corrected_3papers/2409.13738.md",
       "topic_ids": [
         "S1"
       ]
     }
   ],
+  "stage_projection": {
+    "stage1_observable": {
+      "scope": "Title+abstract only; recall-preserving gate for core semantic fit.",
+      "strong_positive_evidence": [
+        "Explicit text-to-process objective (extract/generate process model/representation from natural language)",
+        "Process-model target object stated (BPMN/DMN/declarative process/process graph/workflow model)",
+        "NLP/text processing explicitly used to construct the process representation"
+      ],
+      "weak_or_unclear_evidence": [
+        "Core process-extraction intent is plausible but experiment/method depth is not explicit in abstract",
+        "Insufficient abstract detail on validation should defer to Stage 2 instead of hard exclusion"
+      ],
+      "strong_negative_evidence": [
+        "Process/BPM topic without text-to-process extraction objective",
+        "Only generic NLP/LLM/benchmark/dataset discussion",
+        "Only entity/relation/classification/retrieval tasks without explicit process-representation construction",
+        "BPM tasks outside extraction target (prediction/redesign/compliance/matching/simulation/text generation from process)"
+      ]
+    },
+    "stage2_confirmatory": {
+      "scope": "Fulltext-based final eligibility confirmation.",
+      "required_checks": [
+        "Full research paper and primary research",
+        "English and fulltext availability",
+        "Concrete extraction method completeness",
+        "Empirical validation completeness"
+      ]
+    },
+    "negative_overrides": [
+      "Topic-adjacent but non-extraction papers should not be retained by topical similarity alone",
+      "Process-adjacent papers without process-representation target object are out-of-scope",
+      "Mentioning modeling/extraction/formalization terms is insufficient unless tied to text-to-process core objective"
+    ]
+  },
   "sources": [
     "criteria_corrected_3papers/2409.13738.md"
   ]
