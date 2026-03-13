@@ -33,6 +33,11 @@ from urllib.parse import urlparse
 
 import requests
 
+from src.pipelines.runtime_prompt_loader import (
+    load_stage1_junior_prompt,
+    load_stage1_senior_prompt,
+    load_stage2_fulltext_prompt,
+)
 from src.utils.codex_cli import (
     DEFAULT_CODEX_DISABLE_FLAGS,
     parse_json_snippet,
@@ -4924,6 +4929,9 @@ def run_latte_review(
 
     if rows:
         df = pd.DataFrame(rows)
+        stage1_junior_nano_prompt = load_stage1_junior_prompt("JuniorNano")
+        stage1_junior_mini_prompt = load_stage1_junior_prompt("JuniorMini")
+        stage1_senior_prompt = load_stage1_senior_prompt("stage1_senior_prompt_tuned")
 
         def _build_reviewer(
             name: str,
@@ -4959,7 +4967,7 @@ def run_latte_review(
             if junior_nano_reasoning_effort
             else {},
             reasoning="brief",
-            backstory="一位負責初步篩選文獻的研究助理",
+            backstory=stage1_junior_nano_prompt.backstory,
         )
         junior_mini = _build_reviewer(
             "JuniorMini",
@@ -4970,7 +4978,7 @@ def run_latte_review(
             if junior_mini_reasoning_effort
             else {},
             reasoning="brief",
-            backstory="一位熟悉相關領域的研究助理",
+            backstory=stage1_junior_mini_prompt.backstory,
         )
 
         def _senior_filter(row: "pd.Series") -> bool:  # type: ignore[name-defined]
@@ -4990,22 +4998,8 @@ def run_latte_review(
             senior_model,
             model_args={"reasoning_effort": senior_reasoning_effort} if senior_reasoning_effort else {},
             reasoning="brief",
-            backstory=(
-                "你是 Stage 1 的 senior adjudicator，目標是把只看 title + abstract 的關鍵邊界案件收斂到可追溯的裁決。"
-                "你只能依據 title、abstract 與兩位 junior 的 output 與 evaluation 作判斷，不能假設 full text 會補齊缺漏。"
-            ),
-            additional_context=(
-                "仲裁規則（嚴格版）：\n"
-                "1) 你只能看這次輸入中的 title、abstract、round-A_JuniorNano/JuniorMini 的判斷；不得引用沒有明示的 full text。\n"
-                "2) 不要把 topic relevance、conceptual similarity、method similarity、domain adjacent 視為納入充分證據。\n"
-                "3) 僅當以下條件同時滿足才可給 3(maybe)：\n"
-                "   a. 已看到至少一條可追溯的核心 inclusion 正向訊號（非純概念關聯詞）；\n"
-                "   b. 缺失恰好一個能影響納入判斷的關鍵條件；\n"
-                "   c. 該缺失在現有 title/abstract 中無法直接判定，但在這輪規則下仍值得延後判定。\n"
-                "4) 如果是 topic-adjacent、method-related、metadata-like 或只描述相關關鍵字，但沒有核心 inclusion 正向證據，優先給 1 或 2 排除。\n"
-                "5) 高題目相關性≠可納入：除非核心 eligibility 已被明確支持，否則不要因『可能有關』就保留。\n"
-                "6) 輸出 reasoning 必須回答：看到了哪些正向證據、缺了什麼關鍵條件、為什麼可/不可視為 exclusion。"
-            ),
+            backstory=stage1_senior_prompt.backstory,
+            additional_context=stage1_senior_prompt.additional_context,
         )
 
         workflow_schema = [
@@ -5289,6 +5283,9 @@ def run_latte_fulltext_review(
 
     if review_inputs:
         df = pd.DataFrame(review_inputs)
+        stage2_junior_nano_prompt = load_stage2_fulltext_prompt("JuniorNano")
+        stage2_junior_mini_prompt = load_stage2_fulltext_prompt("JuniorMini")
+        stage2_senior_prompt = load_stage2_fulltext_prompt("SeniorLead")
 
         def _build_reviewer(
             name: str,
@@ -5320,22 +5317,22 @@ def run_latte_fulltext_review(
             junior_nano_model,
             model_args={"reasoning_effort": junior_nano_reasoning_effort} if junior_nano_reasoning_effort else {},
             reasoning="brief",
-            backstory="一位負責全文初步篩選文獻的研究助理",
+            backstory=stage2_junior_nano_prompt.backstory,
         )
         junior_mini = _build_reviewer(
             "JuniorMini",
             junior_mini_model,
             model_args={"reasoning_effort": junior_mini_reasoning_effort} if junior_mini_reasoning_effort else {},
             reasoning="brief",
-            backstory="一位熟悉相關領域且可閱讀全文的研究助理",
+            backstory=stage2_junior_mini_prompt.backstory,
         )
         senior = _build_reviewer(
             "SeniorLead",
             senior_model,
             model_args={"reasoning_effort": senior_reasoning_effort} if senior_reasoning_effort else {},
             reasoning="brief",
-            backstory="負責統整全文審查並做最終判定的資深 reviewer",
-            additional_context="兩位 junior reviewer 已提供初步評估，請在整合意見前檢視他們的回饋。",
+            backstory=stage2_senior_prompt.backstory,
+            additional_context=stage2_senior_prompt.additional_context,
         )
 
         def _senior_filter(row: "pd.Series") -> bool:  # type: ignore[name-defined]

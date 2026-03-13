@@ -1,0 +1,277 @@
+[
+  {
+    "key": "straw2020artificial",
+    "round-B_SeniorLead_reasoning": "我給予 1（強烈排除）：正向證據僅有 abstract 顯示為文獻回顧並對 GloVe/Word2Vec 進行偏見分析（兩位 junior 的輸出亦認為如此），但缺少任何與「NLP 用於流程抽取」的核心正向證據——沒有提出具體的流程抽取方法、也未描述針對流程抽取的實驗驗證，且研究重心為偏見評估/文獻回顧，故依審核準則應排除。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "bhardwaj2021investigating",
+    "round-B_SeniorLead_reasoning": "Positive evidence: none — the title and abstract focus on analyzing and mitigating gender bias in BERT for downstream emotion/sentiment intensity tasks and describe identifying/removing gender directions in embeddings. Missing key inclusion criteria: no mention of automated process extraction, process models, activities/actors/control-flow extraction, or transforming natural-language descriptions into structured processes. Both junior reviewers also flagged topic mismatch. Therefore this paper does not meet the core topic requirement (NLP-for-process-extraction) and should be excluded. (Brief verdict: strong exclude — the manuscript addresses bias mitigation in language models, not process extraction.)",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "gupta2024navigating",
+    "round-B_SeniorLead_reasoning": "正向證據：title/abstract 提到 large language models、cybersecurity、data privacy，並報告一個以深度 CNN 在 KDDCup 資料上達到 94.73% 的安全框架與實驗結果（兩位 junior 亦評為不確定/指出缺少 process-extraction 證據）。缺失的關鍵條件：摘要中沒有任何關於「自動化流程抽取」（從自然語言轉為結構化流程模型）的描述、也未提出針對此任務的 NLP 方法或相應實驗驗證。判斷理由：內容明顯偏向 LLM 安全與分類/偵測任務，屬於 topic-adjacent / method-related 的情況但缺乏任何核心 inclusion 訊號，根據仲裁規則應傾向排除（可能排除）。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "dong_self-collaboration_2024",
+    "round-B_SeniorLead_reasoning": "正向證據：標題與摘要描述了以 LLM（ChatGPT）進行自我協作以解決複雜程式碼生成，並報告了具體實驗與效能提升；缺失的關鍵條件：摘要中完全沒有提到「自動將自然語言描述轉換為結構化流程/流程模型」的任何字眼（如活動/actors/控制流程/process model/process extraction/process mining 等），亦未顯示處理自然語言到流程表示的實驗或方法細節。依仲裁規則，雖有方法與實驗的正向訊號，但缺少核心的 topic（NLP-for-process-extraction）正向證據，且不能假設全文會補足，故應排除。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "qian_chatdev_2024",
+    "round-B_SeniorLead_reasoning": "Score 2 (可能排除): The title/abstract describe a chat-based multi-agent LLM framework for software development that uses natural-language communication, which is conceptually related, but there is no explicit, traceable evidence that the paper performs NLP-for-process-extraction (i.e., transforming natural-language descriptions into structured process models), nor does it describe a concrete extraction method or experiments validating such extraction—these missing core inclusion criteria lead me to likely exclude.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "guo_large_2024",
+    "round-B_SeniorLead_reasoning": "摘要明確表明本文為關於 LLM-based multi-agent 的 survey/overview（屬二次研究），未呈現任何原創的 NLP-for-process-extraction 方法或實驗驗證；因此缺失核心納入條件（原創研究、針對流程抽取的具體方法與實驗），應強烈排除。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "devlin_bert",
+    "round-B_SeniorLead_reasoning": "The abstract describes BERT as a general-purpose pre-trained language model with empirical results on standard NLP benchmarks (positive evidence of an NLP method and experiments), but it contains no mention of process extraction, process models, activities/actors/control-flow, or any experiments applying the method to automated process extraction—therefore it fails the core inclusion criteria and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "li2023_acecoder",
+    "round-B_SeniorLead_reasoning": "No positive evidence of NLP-for-process-extraction: the title/abstract focus entirely on code generation prompting (AceCoder), guided code generation, example retrieval, and evaluation on code benchmarks (MBPP/MBJP/MBJSP); there is no mention of process extraction, process models, activities/actors/control-flow, or transforming natural-language descriptions into structured process representations—so it does not meet the core inclusion criteria and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "li2023_skcoder",
+    "round-B_SeniorLead_reasoning": "Positive evidence: title and abstract describe a concrete, experimentally-validated method (SkCoder) for sketch-based automatic code generation from natural-language requirements, with retrieval, sketch extraction, post-editing, datasets, baselines, and metrics. Missing key inclusion criteria: no mention of extracting structured process representations, activities/actors/control flow, or any process-modeling task — the work focuses on code synthesis rather than NLP-for-process-extraction. Conclusion: this is topic-adjacent but lacks the core NLP-for-process-extraction signal and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "poesia2022_synchromesh",
+    "round-B_SeniorLead_reasoning": "正向證據：題目與摘要描述將自然語言映射為程式碼（使用預訓練語言模型、檢索式 few-shot 與受限解碼），並在多個程式語言/場景上做實驗驗證，這與將自然語言轉為結構化表示在方法上有技術相近性。缺失的關鍵條件：摘要中並未出現任何關於「process extraction」或把自然語言轉為流程模型/活動、控制流、參與者等流程結構的陳述，也沒提到流程模型、活動/控制流的抽取或驗證；因此缺乏核心的納入正向證據。兩位 junior 也標示主題相關但未明確符合流程抽取。本案屬於題目相近但非專注於 automated process extraction，依仲裁規則不宜列為保留（非僅因為方法相似而納入）。 一句話說明：摘要聚焦於自然語言→程式碼生成（非流程模型抽取），缺乏任何明確處理流程抽取的證據，故傾向排除。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "du2022_r-gqa",
+    "round-B_SeniorLead_reasoning": "Positive signals: abstract describes a concrete NLP extraction method (retrieval-augmented generative QA) with experiments for event argument extraction (an extraction task over text). Missing key condition(s): it does not explicitly address automated process extraction or producing structured process representations/models (no mention of activities→process models, control flow, or process modeling), so core topical relevance is not established. Per arbitration rules, this is topic-adjacent/method-related but lacks the required explicit process-extraction evidence, so it should likely be excluded from full review (or deprioritized).",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "forell_modeling_meets_llm",
+    "round-B_SeniorLead_reasoning": "Title/abstract describe using LLMs to model GPU/OpenCL program performance (an LLM-based estimator) with no mention of processing natural-language descriptions or extracting structured process models—both juniors marked uncertain (3)—so the paper lacks the core inclusion signal (NLP for process extraction from natural-language text) and is topic-mismatched; therefore I give 1 (strong exclude).",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "berti_evaluating_llm",
+    "round-B_SeniorLead_reasoning": "The abstract explicitly says the paper \"reviews the current implementations... and reflects\" on questions, indicating a literature review/secondary research rather than primary research presenting a concrete NLP method or experiments for process extraction; it lacks any evidence of an original method, datasets, or empirical validation (JuniorNano also marked exclusion; JuniorMini was uncertain). Therefore it meets the exclusion criterion for secondary research and should be excluded at Stage 1.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "hildebrandt_dcr",
+    "round-B_SeniorLead_reasoning": "Positive signals: paper presents a process-modeling contribution (Dynamic Condition Response Graphs), a graphical notation, and a field-study example — i.e., it concerns workflows and their representation. Missing key inclusion evidence: no mention of natural-language input, NLP methods for extracting processes from text, a concrete NLP-based extraction method, or empirical experiments validating such a method. Because the title/abstract are workflow-modeling (topic-adjacent) but contain no core positive evidence of NLP-for-process-extraction, I score 2 (likely exclusion).",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "lopez_assisted_declarative_process",
+    "round-B_SeniorLead_reasoning": "The abstract gives clear positive signals — a concrete tool (Process Highlighter) that integrates NLP to identify roles, activities and constraints for declarative (DCR) process model creation and mentions empirical observations with caseworkers and students — but it does not unambiguously state this is a full research paper nor describe systematic experiments/evaluation needed for inclusion, so more evidence is required; score: 3 (uncertain / needs more evidence).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "wvda_declare",
+    "round-B_SeniorLead_reasoning": "Positive signals: discusses the Declare framework, process-mining–based diagnostics and recommendations for declarative workflows (shows relevance to process modeling). Missing key inclusion evidence: no mention of NLP or automated extraction from natural-language text, no concrete method for NLP-based process extraction, and no description of experiments to validate such a method (both junior reviews flagged these gaps). Given the lack of any core positive evidence for NLP-for-process-extraction, I judge this as likely exclusion.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "Fereday2006",
+    "round-B_SeniorLead_reasoning": "I see no positive evidence for NLP-based process extraction—the title and abstract describe a qualitative hybrid inductive/deductive thematic analysis in a nursing doctoral study about performance feedback (coding and theme development), and both junior reviewers flagged lack of NLP/process-extraction signals. Missing are all core inclusion elements: any mention of automated NLP for process extraction, a concrete computational method for transforming natural language into structured processes, and experiments or empirical validation. This is topic-adjacent (qualitative analysis methods) but does not meet the required NLP/process-extraction criteria, so it should be excluded. One-sentence explanation for the score: Assigned 1 because the paper is a qualitative thematic-analysis report in nursing with no evidence of NLP-based process-extraction methods or experimental validation.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "bellan_gpt3_2022",
+    "round-B_SeniorLead_reasoning": "Positive evidence: the title and abstract explicitly describe a concrete NLP method (pre-trained LMs, GPT-3, in-context learning) for extracting business process entities and relations, report empirical experiments (feasibility results for activities, participants, and performs relation), and provide lessons learned—these satisfy core inclusion signals of original-method + experiments on process extraction. Missing/uncertain: the abstract does not explicitly state full-text availability or paper length/type (i.e., whether it is a full research article vs. short paper), but there is no negative evidence. Given the clear methodological and experimental content and the recall-oriented Stage 1 policy, I recommend strong inclusion.",
+    "round-B_SeniorLead_evaluation": 5
+  },
+  {
+    "key": "cunningham2013getting",
+    "round-B_SeniorLead_reasoning": "Positive signals: the title/abstract describe GATE, an open-source biomedical text-analytics toolkit and give applied examples in life sciences/medicine (genomics, medical records, drug search). Missing key inclusion evidence: no explicit statement that the paper addresses automated process extraction (transforming natural-language descriptions into structured process models), no concrete NLP method for process extraction, and no description of experiments validating such a method. Given this is topic-adjacent (a tool/system paper about text analytics and deployment lifecycle) but lacks the core positive signals required for process-extraction research, I lean toward exclusion at this high-recall gate.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "shen2018ordered",
+    "round-B_SeniorLead_reasoning": "The title/abstract describe a novel recurrent architecture (ON-LSTM) for modeling hierarchical structure in language and evaluate it on language modeling, unsupervised parsing, syntactic evaluation and logical inference (positive evidence of an NLP method), but there is no mention of transforming natural-language descriptions into structured process representations, process models, or experiments on process extraction (missing the core inclusion signal), so this paper is topic-adjacent but lacks the required evidence for NLP-for-process-extraction and should likely be excluded (score=2); both junior reviewers had rated 3.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "li2005using",
+    "round-B_SeniorLead_reasoning": "正向證據：標題與摘要顯示本文針對 information extraction 的分類問題，提出在不均衡訓練資料下改良 SVM 與 Perceptron（uneven margins），並在多個基準語料上做實驗驗證。缺失的關鍵條件：摘要中沒有任何提及「自動化流程擷取（process extraction）」、「活動/參與者/控制流程的結構化表示或流程模型」等核心詞彙，亦無足夠跡象表明其工作是將自然語言轉換為流程模型。根據仲裁規則，這屬於方法相關但非核心主題涵蓋，故應排除於流程擷取專題外。 簡短評語（1句）：雖為有實驗的方法論性 IE 研究，但未顯示與自動化流程擷取（將自然語言描述轉為流程模型）之直接關聯，故傾向排除。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "ezencan2020comparison",
+    "round-B_SeniorLead_reasoning": "正向證據：title/abstract 清楚描述了在小語料上比對 bidirectional LSTM 與預訓練 BERT，並報告在聊天機器人意圖分類任務上的實驗結果（顯示有 NLP 實驗與比較）。缺失的關鍵條件：完全沒有提到「從自然語言抽取程序/流程模型」或任何將自然語言轉為結構化流程表示的方法，也未聲明針對流程抽取的實驗或具體方法。判斷理由：因為缺乏任何核心的 process-extraction 正向證據，且僅為意圖分類的模型比較，故不符合收錄主題，建議可能排除。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "pennington2014glove",
+    "round-B_SeniorLead_reasoning": "Positive evidence: title/abstract show a concrete NLP method (GloVe) with experiments and empirical validation; Missing key condition: no mention of automated process extraction or transforming natural-language descriptions into structured process models—only general word-representation work—so while not explicit negative evidence, this is topic-adjacent rather than in-scope; therefore likely exclude (2).",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "sanh2020distilbert",
+    "round-B_SeniorLead_reasoning": "No positive evidence that this paper addresses automated process extraction: title/abstract describe model compression (DistilBERT) and pre-training/distillation methods for general NLP and on-device use, not transforming natural-language activity descriptions into structured process models; both junior reviewers marked uncertainty. Missing key inclusion items: explicit focus on NLP-for-process-extraction and experiments validating process-extraction tasks (cannot assume full text). Given topic-adjacent/method-related content but no core inclusion signals, favor probable exclusion.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "mikolov2013distributed",
+    "round-B_SeniorLead_reasoning": "看過 title/abstract（及兩位 junior 的判斷）：正向證據極少—文章聚焦於 Skip-gram、negative sampling 與短語表示（phrase detection），這些是一般 NLP/表示學習方法，沒有任何一句提到自動化流程抽取、活動/角色/控制流或將自然語言轉換為流程模型的具體方法或實驗驗證。缺少的關鍵條件：明確聲稱為“NLP-for-process-extraction”的任務、具體的流程抽取方法描述、以及針對流程抽取的實驗或評估。鑑於此為 topic-adjacent/method-related 但無核心納入證據，依仲裁規則應優先排除（可能排除）。兩位 junior 都給 3（不確定），但在嚴格準則下應下修為 2。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "Eberts2021",
+    "round-B_SeniorLead_reasoning": "The paper clearly presents an NLP method (entity-level relation extraction using multi-instance learning and coreference, with experiments on DocRED) — a positive signal for NLP methodology — but the title/abstract contain no indication of automated process extraction (no mention of extracting activities, actors, control-flow, or producing process models, nor experiments/datasets for process extraction), so it does not meet the core inclusion criterion and should likely be excluded (prefer conservative exclusion: 2).",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "Prokhorenkova2018",
+    "round-B_SeniorLead_reasoning": "No positive signals of NLP-for-process-extraction: the title/abstract describe CatBoost (gradient boosting, ordered boosting, categorical-feature handling) with no mention of natural language, process extraction/parsing, or experiments on extracting process models—therefore it fails the core inclusion criteria and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "weidlich2011",
+    "round-B_SeniorLead_reasoning": "未見任何涉及從自然語言文本以 NLP 抽取流程（automated process extraction）的正向證據；摘要談論的是行為概要（behavioral profiles）、Petri 網與模型一致性度量，缺少關鍵條件（NLP 方法、從自然語言到流程模型的描述與相關實驗驗證），因此應排除。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "dijkman2011",
+    "round-B_SeniorLead_reasoning": "Positive evidence: title/abstract describe similarity metrics and experimental evaluation for retrieving business process models from repositories (node/structural/behavioral similarity) — i.e., process-model matching. Missing (core inclusion requirements): no mention of natural language, NLP methods, or any method to extract process models from natural-language text; instead the work compares existing models (process matching), which the inclusion criteria explicitly exclude. Junior reviewers marked uncertain (3), but given the clear absence of NLP-for-process-extraction signals and the explicit exclusion of process-matching work, this paper should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "devlin_bert_2018",
+    "round-B_SeniorLead_reasoning": "正向證據：此文為 NLP 領域且提出通用語言表示模型（BERT）；缺失的關鍵條件：摘要未提及 process extraction 任務、未說明針對流程擷取的具體方法或相關實驗；因此不符合「專門用 NLP 做流程擷取」的收錄條件，傾向排除（評分=2）。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "herbst_inductive_1999",
+    "round-B_SeniorLead_reasoning": "No positive signal of NLP-based process extraction was found: title/abstract describe inducing workflow structure from execution traces using HMMs and decision-rule induction and validate on artificial process traces (suggesting process-mining from logs), but there is no mention of natural-language text, NLP, or text-to-model extraction — missing the core inclusion criterion of using NLP on natural language descriptions; given this topic-adjacency and lack of the key evidence, I rate it as likely exclude (2).",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "Davenport2019",
+    "round-B_SeniorLead_reasoning": "觀察（正向證據）：title 與 abstract 都像是產業評論/作者簡介（Deloitte Insights 與 Thomas H. Davenport 的個人簡介與著作推薦），沒有任何指出為完整學術研究論文、也沒有提及 NLP 或自動化流程擷取的方法或實驗。兩位 junior 的判斷也認為這是傳記/產業說明性內容而非原創研究。缺失的關鍵條件：1) 無顯示為 full research article（可能是新聞/部落格/insights 條目）；2) 無任何關於 NLP-driven process extraction 的主題或具體方法描述；3) 無實驗或驗證證據。依據仲裁規則（metadata-like/biographical 把握度高且缺核心正向證據），應予以強烈排除。理由（1 句）：摘要僅為作者/產業介紹，完全缺乏作為原創研究、方法說明或實驗驗證的任何證據，因此給予強烈排除。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "lopez2021challenges",
+    "round-B_SeniorLead_reasoning": "Positive signals: the title/abstract explicitly address textual process discovery and mention use of NLP and practitioner experiences in Danish/Italian municipalities (shows topical relevance and applied observations). Missing evidence: no mention of a concrete NLP method, no description of experiments/empirical validation, and no clear indication this is a full primary research article rather than a position/challenges report. Per rules I cannot assume full text fills these gaps, so this should likely be excluded at Stage 1 (insufficient core inclusion evidence).",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "van2018challenges",
+    "round-B_SeniorLead_reasoning": "Title and abstract are topically relevant (NLP applied to BPM), but the abstract explicitly identifies the work as a “position paper” that discusses challenges and selected applications without presenting a concrete method or empirical experiments; both junior reviews noted this—thus it fails the primary-research + method + experiment inclusion criteria and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "bellan2020qualitative",
+    "round-B_SeniorLead_reasoning": "正向證據：title/abstract 明確關注“從文本中抽取流程”的主題，且提到對現有參考工具在真實 SOP 文檔上的測試（具有實驗性評估的跡象）；缺失的關鍵條件：摘要多次強調採用「質性分析／state-of-the-art 分析」，看起來是二次研究/工具評估，未宣稱提出或詳細說明任何原創的方法並對其進行實驗驗證——而這正是納入標準的核心要求。因此在無法查看全文以補足證據下，該稿較可能為二次研究，傾向排除（評分 2）。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "riefer2016mining",
+    "round-B_SeniorLead_reasoning": "The title and abstract explicitly describe a ‘‘state-of-the-art’’ overview that presents, analyzes, and compares existing approaches—i.e., a literature review/secondary research—with no indication of an original method or experimental validation (both juniors flagged uncertainty), so it does not meet the primary-research inclusion criteria and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "bellan2021process",
+    "round-B_SeniorLead_reasoning": "正向證據：題目與摘要明確聚焦於從文本抽取流程模型（符合 NLP for process-extraction 的主題），並描述對 10 種現有方法進行質性與量化比較、在統一任務（實體與關係抽取）上以明確資料集與指標執行實驗與評估（顯示有實驗與可比基準）。缺失的關鍵條件：摘要不明確指出本篇是否為“原創的抽取方法”或是否為以文獻回顧/基準測試為主的次級研究——也就是是否具備被列為 primary research 的原創方法貢獻不確定。為何不直接排除：沒有出現否定性證據（如僅為短摘要或非英文等），且已有實驗與數據基準的正向訊號，因此應保留以進一步核實。根據仲裁規則（已有至少一項核心正向證據且僅缺一個能影響納入判斷的關鍵條件），評為 3（不確定/需要更多證據）。",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "Devlin2019BERTPO",
+    "round-B_SeniorLead_reasoning": "正向證據：title/abstract 僅描述一個通用語言預訓練模型（BERT）並報告多項 NLP 任務的 SOTA 成績；未見任何與「自動化流程抽取」(activities/actors/control-flow → 結構化流程模型) 直接相關的描述或實驗。缺失的關鍵條件：未明示針對流程抽取的應用或方法細節、未描述任何針對流程抽取的實驗或驗證。判斷與理由：此論文屬於 topic-adjacent 的通用 NLP 方法，但根據仲裁規則，當沒有任何核心納入正向證據時應優先排除（但因尚無明確否定證據，給予保守的「可能排除」評分）。（兩位 junior 均判 3，但缺乏核心證據故改為 2）",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "busch2023just",
+    "round-B_SeniorLead_reasoning": "Positive evidence: title/abstract are topically relevant (prompt engineering applied to BPM; mentions process extraction and predictive monitoring). Critical missing evidence: the abstract explicitly frames the work as a \"position paper\" developing a research agenda and contains no indication of an original empirical contribution, no concrete method, and no experiments—so it does not meet the primary-research / method-and-evaluation inclusion criteria. Junior outputs likewise flagged it as a position paper without experiments. Therefore this should be excluded (strongly).",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "kitchenham2004procedures",
+    "round-B_SeniorLead_reasoning": "Abstract clearly describes a guideline/report for conducting systematic reviews in software engineering (secondary research), with no mention of NLP-based process extraction, no concrete method for process extraction, and no experiments—thus it fails core inclusion criteria; both juniors flagged uncertainty but that does not overcome the explicit negative evidence (secondary guideline/report).",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "etikala2021extracting",
+    "round-B_SeniorLead_reasoning": "正向證據：title/abstract 明確提出一套具名框架 Text2DMN，並說明使用 NLP、規則與 ML 方法把自然語言的決策描述轉為 DMN 決策模型，這構成一條可追溯的核心正向訊號（兩位 junior 也指出方法性提案）。缺失關鍵條件：摘要未提及任何實驗、資料集或實證評估以驗證所提方法（亦未明示為完整研究文章或包含實驗結果），因此無法確認是否滿足「描述實驗以驗證方法」的入選條件。判斷理由：因為已有具體方法/框架的正向證據且僅缺少一項關鍵證據，且該缺失在本輪 title/abstract 下無法補足，依仲裁規則保守將其延後判定。 給分說明：3（不確定 / 需要更多證據）—有方法提案但摘要未報告實驗驗證。",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "nasiri2023automatic",
+    "round-B_SeniorLead_reasoning": "正向證據：標題與摘要明確描述本作為原創研究，針對「從 user stories/acceptance criteria 自動抽取業務流程模型」的 NLP 任務，具體指出使用 NLP 提取要素、以規則（用 Prolog 編寫並導入 Python）產生 UML activity diagram，並在多個 use cases 上以多種績效指標進行評估且報告結果；兩位 junior 的判斷亦分別給出 3 與 5（中性到強烈納入）。缺失/未明示之處：摘要未明確宣稱 full text 可得、未詳述資料集規模與實驗細節（但無否定性證據）。為 Stage 1（高召回）且在無負面證據下，這篇文章在主題範圍、方法具體性與實驗驗證三項核心納入條件皆有正向訊號，因此應進入全文審查而非直接排除。",
+    "round-B_SeniorLead_evaluation": 5
+  },
+  {
+    "key": "azevedo2018bpmn",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers gave 3; positive evidence: the title and abstract explicitly describe a framework that (a) generates textual work instructions from BPMN models and (b) updates the original BPMN model when the textual instructions are edited, and the abstract reports two experiments verifying equivalence/consistency between the artifacts -- this is a traceable signal that the work involves text→model synchronization (i.e., process extraction/update). Missing/uncertain: the abstract does not state a concrete NLP method or make clear whether edited texts are free‑form natural language or controlled templates, nor does it describe the extraction algorithm or evaluation details needed to confirm this is an NLP-for-process-extraction contribution; only one key eligibility item (explicit NLP extraction method/coverage of natural text) is absent. Why not exclude: there is an affirmative signal of synchronizing text and BPMN and experimental validation, so exclusion is premature; but because the core methodological evidence is missing, the paper should be deferred for full review. Score explanation (one sentence): I score 3 because the abstract shows text↔model synchronization and experiments (positive signal) but lacks explicit description of a concrete NLP extraction method and whether free‑form natural language is supported, so inclusion is uncertain.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "goncalves2011let",
+    "round-B_SeniorLead_reasoning": "The abstract gives a clear positive signal that this is a concrete method and a supporting tool that combines Group Storytelling with Text Mining/NLP to elicit process models (supporting core inclusion), but it does not mention any empirical validation/experiments or state full-paper availability—so I defer (maybe) pending those missing details; both junior reviewers also rated it 3. Missing key evidence: explicit description of experiments/evaluation (and explicit confirmation of full research paper/full text). Therefore score 3 (uncertain / needs more evidence).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "sintoris2017extracting",
+    "round-B_SeniorLead_reasoning": "正向證據：title 與 abstract 明確指出主題為使用 NLP 從自然語言文件抽取/產生 BPMN 商業流程模型，與 inclusion 的主題相關。缺失/否定性證據：abstract 明確標示為「Doctoral Consortium paper」(表明非完整研究論文)，且摘要中未呈現可追溯的具體方法細節或任何實驗/驗證證據；兩位 junior 的判斷亦指出相同問題。根據仲裁規則與納入/排除條件，‘非完整研究論文’為直接的排除依據，且缺少具體方法與實驗驗證因此不符合核心納入要求。給分說明：1（強烈排除）—因摘要明示為 Doctoral Consortium 類型且缺乏具體方法與實驗證據，符合排除條件。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "bellan2022process",
+    "round-B_SeniorLead_reasoning": "The title/abstract present a clear, primary contribution (the PET dataset annotated with activities, gateways, actors and flow) and mention baselines/benchmarks and a public HuggingFace release (positive signals for NLP-based process extraction), although the abstract does not explicitly describe a novel concrete extraction method or state full-text availability—given the strong dataset relevance and mention of baselines, this is worth passing to full review (keep for further verification).",
+    "round-B_SeniorLead_evaluation": 4
+  },
+  {
+    "key": "qian2020approach",
+    "round-B_SeniorLead_reasoning": "Title and abstract explicitly present an original NLP method for process model extraction (multi-grained text classification with a hierarchical neural network), report creation of two datasets and extensive experiments with statistically significant improvements—these satisfy the core inclusion signals (primary research, concrete method, empirical validation) and there is no negative evidence about being a short/abstract-only item or lacking full text, so include (strong).",
+    "round-B_SeniorLead_evaluation": 5
+  },
+  {
+    "key": "honkisz2018concept",
+    "round-B_SeniorLead_reasoning": "The title and abstract present a concrete, primary-method contribution (a spreadsheet-based intermediate model, semantic analysis, and transformation into BPMN) which is a positive signal for NLP-based process extraction, but they do not mention any experiments or empirical validation (a required inclusion criterion) — juniors likewise flagged this absence — therefore I defer inclusion pending full-paper evidence (score 3).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "Page2021",
+    "round-B_SeniorLead_reasoning": "The title and abstract explicitly describe PRISMA 2020 as an updated reporting guideline presenting checklists and flow diagrams (secondary methodological/reporting guidance), not a primary research paper proposing an NLP method or reporting experiments for process extraction—it lacks any concrete NLP method, empirical validation, or original primary-research contribution required for inclusion, so it should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "robeer2016",
+    "round-B_SeniorLead_reasoning": "正向證據：標題與摘要明確提出以NLP自動從 user stories 派生概念模型、描述具體演算法並實作為 Visual Narrator 工具，且在兩個案例研究中報告了 80–92% 的 precision/recall（符合「具體方法 + 實驗驗證」的關鍵條件）；缺失的關鍵條件：摘要未明確指出這是否屬於「process extraction」（即從自然語言抽取活動、角色與控制流程）而非一般的概念/領域模型，因此在無全文可確認前不宜直接納入或排除，故給予保留判定。",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "berti2023abstractions",
+    "round-B_SeniorLead_reasoning": "Positive evidence: the title explicitly cites a \"Case Study\" on \"Process Mining with LLMs\" and mentions \"Abstractions, Scenarios, and Prompt Definitions,\" which is a traceable, non-purely-conceptual signal that the paper applies LLMs to process-mining tasks (aligns with inclusion topic). Missing/uncertain evidence: the abstract is truncated mid-sentence and provides no explicit description of a concrete method, datasets, or experimental validation required by the inclusion criteria; full-text availability and whether this is primary research with empirical results cannot be confirmed. Both junior reviewers also returned uncertainty (3). No explicit negative evidence is present, so under recall-oriented Stage 1 I defer rather than exclude. Brief explanation: title suggests an empirical case-study application to NLP-for-process-mining, but the truncated abstract fails to show the required concrete method or experiments—hence keep for further review (score 3).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "kampik2023large",
+    "round-B_SeniorLead_reasoning": "摘要提出了將 LLM 與知識基系統結合的 Large Process Model 類願景（正向信號：明確提到利用 process performance data 與 LLMs 提供情境化/客製化流程模型與建議），但未明確指出“從自然語言中自動抽取流程”的 NLP 任務，也沒有描述任何具體方法或實驗驗證（缺少核心 inclusion：NLP-based process extraction、方法細節、實驗），因此這篇屬於 topic-adjacent 的概念/願景文章，傾向排除（可能排除）。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "grohs2023large",
+    "round-B_SeniorLead_reasoning": "The abstract explicitly reports applying a specific LLM to three concrete BPM NLP tasks (mining imperative and declarative process models, and assessing RPA suitability) and claims empirical comparisons showing comparable or superior performance—this is a clear positive signal of a concrete method and experiments; although dataset/metric/full-text availability details are not given in the abstract (absence of which is not negative evidence here), the stated empirical results justify strong inclusion for full review.",
+    "round-B_SeniorLead_evaluation": 5
+  },
+  {
+    "key": "vidgof2023large",
+    "round-B_SeniorLead_reasoning": "Title is topically relevant (LLMs + Business Process Management) but the abstract is truncated and only gives high-level statements; I see no traceable positive evidence that this is about NLP-based automated process extraction (no mention of 'process extraction', concrete method, experiments, or that it is an original full research paper). Both junior reviewers flagged insufficient evidence. Given the paper is topic-adjacent but lacks the core inclusion signals required, this should likely be excluded (score 2).",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "hasic2019complexity",
+    "round-B_SeniorLead_reasoning": "The abstract focuses on proposing and empirically assessing complexity metrics for DMN decision models and contains no mention of NLP, natural-language input, or any method/experiments for extracting process models from text—i.e., the core inclusion signals (an NLP-based process-extraction method and validation on text) are missing, so this is out of scope.",
+    "round-B_SeniorLead_evaluation": 1
+  }
+]

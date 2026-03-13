@@ -1,0 +1,91 @@
+{
+  "paper_id": "2409.13738",
+  "paths": {
+    "baseline": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/latte_review_results.senior_no_marker.json",
+    "frozen_inputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/frozen_senior_replay/frozen_stage1_senior_inputs.json",
+    "replay_no_marker_outputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/frozen_senior_replay/senior_replay_outputs.stage1_senior_no_marker.json",
+    "replay_tuned_outputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/frozen_senior_replay/senior_replay_outputs.stage1_senior_prompt_tuned.json",
+    "reconstructed_no_marker": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/frozen_senior_replay/latte_review_results.reconstructed_replay_stage1_senior_no_marker.json",
+    "reconstructed_tuned": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/frozen_senior_replay/latte_review_results.reconstructed_replay_stage1_senior_prompt_tuned.json",
+    "gold": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2409.13738/metadata/title_abstracts_metadata-annotated.jsonl"
+  },
+  "counts": {
+    "baseline_total": 78,
+    "sent_to_senior": 55,
+    "not_sent_to_senior": 23
+  },
+  "view1_senior_subset_distribution": {
+    "baseline_no_marker": {
+      "1_2": 27,
+      "3": 21,
+      "4_5": 7,
+      "missing": 0,
+      "total": 55
+    },
+    "replay_stage1_senior_no_marker": {
+      "1_2": 27,
+      "3": 20,
+      "4_5": 8,
+      "missing": 0,
+      "total": 55
+    },
+    "replay_stage1_senior_prompt_tuned": {
+      "1_2": 42,
+      "3": 8,
+      "4_5": 5,
+      "missing": 0,
+      "total": 55
+    }
+  },
+  "view2_stage1_metrics": {
+    "baseline_no_marker": {
+      "tp": 21,
+      "fp": 26,
+      "tn": 31,
+      "fn": 0,
+      "precision": 0.44680851063829785,
+      "recall": 1.0,
+      "f1": 0.6176470588235294,
+      "matched": 78,
+      "gold_size": 84,
+      "pred_size": 78
+    },
+    "replay_stage1_senior_no_marker": {
+      "tp": 21,
+      "fp": 26,
+      "tn": 31,
+      "fn": 0,
+      "precision": 0.44680851063829785,
+      "recall": 1.0,
+      "f1": 0.6176470588235294,
+      "matched": 78,
+      "gold_size": 84,
+      "pred_size": 78
+    },
+    "replay_stage1_senior_prompt_tuned": {
+      "tp": 21,
+      "fp": 11,
+      "tn": 46,
+      "fn": 0,
+      "precision": 0.65625,
+      "recall": 1.0,
+      "f1": 0.7924528301886793,
+      "matched": 78,
+      "gold_size": 84,
+      "pred_size": 78
+    }
+  },
+  "spot_checks": [
+    {
+      "paper_id": "2409.13738",
+      "key": "etikala2021extracting",
+      "baseline_junior_scores": {
+        "JuniorNano": 3,
+        "JuniorMini": 4
+      },
+      "baseline_senior_score": 3,
+      "replay_no_marker_senior_score": 4,
+      "replay_tuned_senior_score": 3
+    }
+  ]
+}

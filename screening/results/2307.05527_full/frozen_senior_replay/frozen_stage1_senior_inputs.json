@@ -1,0 +1,819 @@
+[
+  {
+    "baseline_index": 0,
+    "key": "vaswani2017attention",
+    "title": "Attention Is All You Need",
+    "abstract": "The dominant sequence transduction models are based on complex recurrent or convolutional neural networks in an encoder-decoder configuration. The best performing models also connect the encoder and decoder through an attention mechanism. We propose a new simple network architecture, the Transformer, based solely on attention mechanisms, dispensing with recurrence and convolutions entirely. Experiments on two machine translation tasks show these models to be superior in quality while being more parallelizable and requiring significantly less time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-to-German translation task, improving over the existing best results, including ensembles by over 2 BLEU. On the WMT 2014 English-to-French translation task, our model establishes a new single-model state-of-the-art BLEU score of 41.8 after training for 3.5 days on eight GPUs, a small fraction of the training costs of the best models from the literature. We show that the Transformer generalizes well to other tasks by applying it successfully to English constituency parsing both with large and limited training data.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract describes Transformer architecture for NLP/MT, with no audio generation focus; lacking audio-centric evidence, so relevance to generative audio is uncertain.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on a Transformer model applied to machine translation and parsing, with no mention of audio generative models or audio output, which does not align with the requirement of generative audio model focus or audio output domain.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "本文題目與摘要明確描述基於注意力的 Transformer 用於機器翻譯與語法解析，未提及音訊或音訊生成作為主要輸出或主題，故不符合「生成音訊模型為主要關注」的納入標準，因此排除。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 2,
+    "key": "huang2018music",
+    "title": "Music Transformer",
+    "abstract": "Music relies heavily on repetition to build structure and meaning. Self-reference occurs on multiple timescales, from motifs to phrases to reusing of entire sections of music, such as in pieces with ABA structure. The Transformer (Vaswani et al., 2017), a sequence model based on self-attention, has achieved compelling results in many generation tasks that require maintaining long-range coherence. This suggests that self-attention might also be well-suited to modeling music. In musical composition and performance, however, relative timing is critically important. Existing approaches for representing relative positional information in the Transformer modulate attention based on pairwise distance (Shaw et al., 2018). This is impractical for long sequences such as musical compositions since their memory complexity for intermediate relative information is quadratic in the sequence length. We propose an algorithm that reduces their intermediate memory requirement to linear in the sequence length. This enables us to demonstrate that a Transformer with our modified relative attention mechanism can generate minute-long compositions (thousands of steps, four times the length modeled in Oore et al., 2018) with compelling structure, generate continuations that coherently elaborate on a given motif, and in a seq2seq setup generate accompaniments conditioned on melodies. We evaluate the Transformer with our relative attention mechanism on two datasets, JSB Chorales and Piano-e-Competition, and obtain state-of-the-art results on the latter.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract shows Transformer-based generation of music with long sequences and motif-based continuations, but it does not clearly specify that the output is audio-domain (vs symbolic music), so the evidence for the 'entirely audio' criterion is insufficient.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper explicitly proposes a generative audio model focused on music composition using a Transformer with a modified relative attention mechanism, meeting the inclusion criteria of generating audio output with a clear generative model focus.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "Abstract and datasets indicate symbolic/MIDI music modeling (mentions JSB Chorales, Piano-e-Competition, 'thousands of steps', seq2seq accompaniments), not raw audio waveform generation, so it does not meet the 'entirely audio output' inclusion criterion — exclude.",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 3,
+    "key": "bond2021deep",
+    "title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+    "abstract": "Deep generative models are a class of techniques that train deep neural networks to model the distribution of training samples. Research has fragmented into various interconnected approaches, each of which make trade-offs including run-time, diversity, and architectural restrictions. In particular, this compendium covers energy-based models, variational autoencoders, generative adversarial networks, autoregressive models, normalizing flows, in addition to numerous hybrid approaches. These techniques are compared and contrasted, explaining the premises behind each and how they are interrelated, while reviewing current state-of-the-art advances and implementations.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract discusses general generative modeling methods (VAEs, GANs, flows, etc.) without any explicit audio focus, so audio relevance is not demonstrated in the title/abstract.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The title and abstract describe a comprehensive review of various deep generative models (VAEs, GANs, normalizing flows, etc.) but do not explicitly mention any focus on generative audio models or audio as primary output, which is required by the inclusion criteria; thus, further evidence is needed to confirm relevance to audio-specific generative modeling.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The title/abstract describe a broad survey of deep generative models (VAEs, GANs, normalizing flows, energy-based and autoregressive models) but contain no mention of audio, audio datasets, audio outputs, or audio-specific applications, so there is insufficient evidence that the paper’s primary focus is generative audio — therefore uncertain and needs the full text to decide.",
+    "baseline_round-B_SeniorLead_evaluation": 3,
+    "baseline_final_verdict": "maybe (senior:3)"
+  },
+  {
+    "baseline_index": 8,
+    "key": "nanayakkara2021unpacking",
+    "title": "Unpacking the Expressed Consequences of AI Research in Broader Impact Statements",
+    "abstract": "The computer science research community and the broader public have become increasingly aware of negative consequences of algorithmic systems. In response, the top-tier Neural Information Processing Systems (NeurIPS) conference for machine learning and artificial intelligence research required that authors include a statement of broader impact to reflect on potential positive and negative consequences of their work. We present the results of a qualitative thematic analysis of a sample of statements written for the 2020 conference. The themes we identify broadly fall into categories related to how consequences are expressed (e.g., valence, specificity, uncertainty), areas of impacts expressed (e.g., bias, the environment, labor, privacy), and researchers' recommendations for mitigating negative consequences in the future. In light of our results, we offer perspectives on how the broader impact statement can be implemented in future iterations to better align with potential goals.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "This abstract analyzes broader impact statements in AI research (NeurIPS 2020) with no reference to generative audio models or audio output, so it does not meet the topic focus on generative audio.",
+      "evaluation": 2
+    },
+    "round-A_JuniorNano_evaluation": 2,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper analyzes broader impact statements related to AI research but does not mention generative audio models or focus on audio outputs, which is essential for inclusion based on criteria. Lack of evidence on audio generative model or application focus justifies a middle score rather than exclusion without full text.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "Title and abstract describe a qualitative analysis of NeurIPS 2020 broader impact statements across general AI topics (valence, specificity, bias, environment, labor, privacy) with no mention of audio, generative audio models, or audio outputs—so it does not meet the requirement that the paper’s primary focus is generative audio. 因缺乏任何證據顯示論文聚焦於音頻生成或以音頻為主要輸出，故排除。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 9,
+    "key": "hecht2021s",
+    "title": "It's Time to Do Something: Mitigating the Negative Impacts of Computing Through a Change to the Peer Review Process",
+    "abstract": "The computing research community needs to work much harder to address the downsides of our innovations. Between the erosion of privacy, threats to democracy, and automation's effect on employment (among many other issues), we can no longer simply assume that our research will have a net positive impact on the world. While bending the arc of computing innovation towards societal benefit may at first seem intractable, we believe we can achieve substantial progress with a straightforward step: making a small change to the peer review process. As we explain below, we hypothesize that our recommended change will force computing researchers to more deeply consider the negative impacts of their work. We also expect that this change will incentivize research and policy that alleviates computing's negative impacts.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract discusses mitigating negative impacts of computing and proposing a change to the peer-review process, but it does not address generative audio models or audio outputs, so there is no evidence supporting audio-focused relevance.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "該文章標題與摘要聚焦於透過修改審稿流程來減緩計算技術的負面影響，並未提及生成式音頻模型或與音頻生成功能有直接關聯，缺乏音頻生成相關證據，因此無法確認是否符合生成音頻模型主題。",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The title and abstract discuss changing the peer-review process to mitigate broad societal harms of computing and contain no mention of audio, generative audio models, or audio outputs, so the paper is out of scope for a generative-audio focus.",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 23,
+    "key": "Wang2020DeepSonar",
+    "title": "DeepSonar: Towards Effective and Robust Detection of AI-Synthesized Fake Voices",
+    "abstract": "With the recent advances in voice synthesis, AI-synthesized fake voices are indistinguishable to human ears and widely are applied to produce realistic and natural DeepFakes, exhibiting real threats to our society. However, effective and robust detectors for synthesized fake voices are still in their infancy and are not ready to fully tackle this emerging threat. In this paper, we devise a novel approach, named \\emph{DeepSonar}, based on monitoring neuron behaviors of speaker recognition (SR) system, \\ie, a deep neural network (DNN), to discern AI-synthesized fake voices. Layer-wise neuron behaviors provide an important insight to meticulously catch the differences among inputs, which are widely employed for building safety, robust, and interpretable DNNs. In this work, we leverage the power of layer-wise neuron activation patterns with a conjecture that they can capture the subtle differences between real and AI-synthesized fake voices, in providing a cleaner signal to classifiers than raw inputs. Experiments are conducted on three datasets (including commercial products from Google, Baidu, \\etc) containing both English and Chinese languages to corroborate the high detection rates (98.1\\% average accuracy) and low false alarm rates (about 2\\% error rate) of DeepSonar in discerning fake voices. Furthermore, extensive experimental results also demonstrate its robustness against manipulation attacks (\\eg, voice conversion and additive real-world noises). Our work further poses a new insight into adopting neuron behaviors for effective and robust AI aided multimedia fakes forensics as an inside-out approach instead of being motivated and swayed by various artifacts introduced in synthesizing fakes.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract describes a detector for AI-synthesized voices using neuron activation patterns; it does not clearly present a generative audio model as the primary focus, so relevance to 'generative audio model focus' is uncertain from title+abstract.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on detecting AI-synthesized fake voices, which is directly related to generative audio models and their applications. It proposes a novel, robust detection approach with strong experimental validation on audio-only datasets, aligning well with inclusion criteria for generative audio model applications and audio-only output. There is no evidence of exclusion criteria such as focus on text or video generation or being a non-full-paper form.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "The paper presents an audio-only detection approach (DeepSonar) targeting AI-synthesized fake voices—an application directly related to generative audio models—with empirical evaluation on multiple speech datasets (English and Chinese) and no indication it is a non-full-paper, so it should be included for full review.",
+    "baseline_round-B_SeniorLead_evaluation": 5,
+    "baseline_final_verdict": "include (senior:5)"
+  },
+  {
+    "baseline_index": 25,
+    "key": "Suh2021AI",
+    "title": "AI as Social Glue: Uncovering the Roles of Deep Generative AI during Social Music Composition",
+    "abstract": "Recent advances in deep generative neural networks have made it possible for artificial intelligence to actively collaborate with human beings in co-creating novel content (e.g. music, art). While substantial research focuses on (individual) human-AI collaborations, comparatively less research examines how AI can play a role in human-human collaborations during co-creation. In a qualitative lab study, we observed 30 participants (15 pairs) compose a musical phrase in pairs, both with and without AI. Our findings reveal that AI may play important roles in influencing human social dynamics during creativity, including: 1) implicitly seeding a common ground at the start of collaboration, 2) acting as a psychological safety net in creative risk-taking, 3) providing a force for group progress, 4) mitigating interpersonal stalling and friction, and 5) altering users’ collaborative and creative roles. This work contributes to the future of generative AI in social creativity by providing implications for how AI could enrich, impede, or alter creative social dynamics in the years to come.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract describes a deep generative AI involved in social music composition and reports a qualitative study on AI’s influence on human collaboration in music, which aligns with a generative audio application and has no clear exclusion signals in the abstract.",
+      "evaluation": 5
+    },
+    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper mainly discusses the role of AI in social music composition focusing on human-human collaboration dynamics with AI involvement, but the abstract does not explicitly confirm that it introduces or analyzes a generative audio model or application specifically as its primary focus; thus, it partially meets the criteria but lacks clear evidence of a generative audio model focus and conclusive generative audio output emphasis.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract explicitly studies deep generative neural networks in the context of music co-creation (audio), reporting a qualitative lab study on pairs composing musical phrases with and without AI and analyzing AI’s roles in social music collaboration, which aligns with a generative audio application focus and contains no exclusion signals; therefore it should pass the high-recall gate.",
+    "baseline_round-B_SeniorLead_evaluation": 5,
+    "baseline_final_verdict": "include (senior:5)"
+  },
+  {
+    "baseline_index": 26,
+    "key": "Li2021Robust",
+    "title": "Robust Detection of Machine-induced Audio Attacks in Intelligent Audio Systems with Microphone Array",
+    "abstract": "With the popularity of intelligent audio systems in recent years, their vulnerabilities have become an increasing public concern. Existing studies have designed a set of machine-induced audio attacks, such as replay attacks, synthesis attacks, hidden voice commands, inaudible attacks, and audio adversarial examples, which could expose users to serious security and privacy threats. To defend against these attacks, existing efforts have been treating them individually. While they have yielded reasonably good performance in certain cases, they can hardly be combined into an all-in-one solution to be deployed on the audio systems in practice. Additionally, modern intelligent audio devices, such as Amazon Echo and Apple HomePod, usually come equipped with microphone arrays for far-field voice recognition and noise reduction. Existing defense strategies have been focusing on single- and dual-channel audio, while only few studies have explored using multi-channel microphone array for defending specific types of audio attack. Motivated by the lack of systematic research on defending miscellaneous audio attacks and the potential benefits of multi-channel audio, this paper builds a holistic solution for detecting machine-induced audio attacks leveraging multi-channel microphone arrays on modern intelligent audio systems. Specifically, we utilize magnitude and phase spectrograms of multi-channel audio to extract spatial information and leverage a deep learning model to detect the fundamental difference between human speech and adversarial audio generated by the playback machines. Moreover, we adopt an unsupervised domain adaptation training framework to further improve the model's generalizability in new acoustic environments. Evaluation is conducted under various settings on a public multi-channel replay attack dataset and a self-collected multi-channel audio attack dataset involving 5 types of advanced audio attacks. The results show that our method can achieve an equal error rate (EER) as low as 6.6% in detecting a variety of machine-induced attacks. Even in new acoustic environments, our method can still achieve an EER as low as 8.8%.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "摘要描述針對機器產生的音頻攻擊的檢測方法，並利用多通道麥克風陣列；雖涉及生成式音頻攻擊與合成攻擊等內容，但未清楚以生成式音頻模型為主要研究焦點，因此就生成音頻模型主題的相關性仍不確定，需更多證據。",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "該論文聚焦於使用多麥克風陣列和深度學習來檢測機器產生的音頻攻擊，主要是分類和防禦機制，並未介紹或分析生成性音訊模型，本質上是分類/檢測方法，非生成音訊模型的主要應用。",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "摘要明確描述的是利用多通道麥克風陣列與深度學習來檢測/防禦機器產生的音頻攻擊（回放、合成攻擊、隱藏命令、不可聽攻擊、對抗樣本），重心在分類/檢測方法而非引入或以生成音訊模型為主要研究對象，故不符合以生成音訊模型為主題的納入標準，建議可能排除。",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 27,
+    "key": "kelley2021exciting",
+    "title": "Exciting, Useful, Worrying, Futuristic: Public Perception of Artificial Intelligence in 8 Countries",
+    "abstract": "As the influence and use of artificial intelligence (AI) have grown and its transformative potential has become more apparent, many questions have been raised regarding the economic, political, social, and ethical implications of its use. Public opinion plays an important role in these discussions, influencing product adoption, commercial development, research funding, and regulation. In this paper we present results of an in-depth survey of public opinion of artificial intelligence conducted with 10,005 respondents spanning eight countries and six continents. We report widespread perception that AI will have significant impact on society, accompanied by strong support for the responsible development and use of AI, and also characterize the public's sentiment towards AI with four key themes (exciting, useful, worrying, and futuristic) whose prevalence distinguishes response to AI in different countries.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "摘要僅描述對人工智能的公眾感知的調查，未提及生成音頻模型、音頻輸出或任何與音頻相關的核心焦點，因此無法滿足本研究的音頻中心主題與輸出要求，屬於強烈排除。",
+      "evaluation": 1
+    },
+    "round-A_JuniorNano_evaluation": 1,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on public perception of AI broadly across multiple countries and does not mention generative audio models or audio-focused output, which is the key inclusion criterion; thus, it lacks sufficient evidence to confirm topical relevance related to generative audio models.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "Title and abstract describe a multi-country survey of public perceptions of AI (themes: exciting, useful, worrying, futuristic) with no mention of generative audio, audio outputs, speech/music synthesis, or any audio-focused models or applications—therefore it does not meet the generative-audio focus and should be excluded.",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 28,
+    "key": "delac2004survey",
+    "title": "A survey of biometric recognition methods",
+    "abstract": "Abstract: Biometric recognition refers to an automatic recognition of individuals based on a feature vector(s) derived from their physiological and/or behavioral characteristic. Biometric recognition systems should provide a reliable personal recognition schemes to either confirm or determine the identity of an individual. Applications of such a system include computer systems security, secure electronic banking, mobile phones, credit cards, secure access to buildings, health and social services. By using biometrics a person could be identified based on &amp;amp;quot;who she/he is &amp;amp;quot; rather then &amp;amp;quot;what she/he has &amp;amp;quot; (card, token, key) or &amp;amp;quot;what she/he knows&amp;amp;quot; (password, PIN). In this paper, a brief overview of biometric methods, both unimodal and multimodal, and their advantages and disadvantages, will be presented.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "摘要內容為生物識別方法的概覽，與生成音頻模型的主題不直接相關，且未提供可證成其為生成音頻應用的證據，因此判定為不確定/需要更多證據。",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "該文章標題與摘要主要聚焦於生物特徵識別方法的調查，並無提及生成式音頻模型或其應用，與規定的主題不符，因此缺乏關於生成式音頻模型的證據。",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "Title and abstract clearly describe a survey of biometric recognition methods (physiological/behavioral ID, unimodal/multimodal, security applications) and contain no mention of audio, audio synthesis, generative models, speech, or music, so it does not meet the generative-audio focus inclusion criteria.",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 34,
+    "key": "vyas2023provable",
+    "title": "On Provable Copyright Protection for Generative Models",
+    "abstract": "There is a growing concern that learned conditional generative models may output samples that are substantially similar to some copyrighted data $C$ that was in their training set. We give a formal definition of $\\textit{near access-freeness (NAF)}$ and prove bounds on the probability that a model satisfying this definition outputs a sample similar to $C$, even if $C$ is included in its training set. Roughly speaking, a generative model $p$ is $\\textit{$k$-NAF}$ if for every potentially copyrighted data $C$, the output of $p$ diverges by at most $k$-bits from the output of a model $q$ that $\\textit{did not access $C$ at all}$. We also give generative model learning algorithms, which efficiently modify the original generative model learning algorithm in a black box manner, that output generative models with strong bounds on the probability of sampling protected content. Furthermore, we provide promising experiments for both language (transformers) and image (diffusion) generative models, showing minimal degradation in output quality while ensuring strong protections against sampling protected content.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract covers copyright protection for generative models with experiments in language and image domains, but there is no explicit audio focus, so audio relevance is uncertain.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "該論文聚焦於生成模型的版權保護問題，主體涉及文本和影像生成模型，並無明顯與生成音頻模型或音頻輸出相關的描述，因此缺乏符合包含條件的證據。",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "Abstract and experiments explicitly mention language (transformers) and image (diffusion) generative models with no mention of audio or audio-output experiments, so there is strong evidence the paper is not primarily about generative audio (missing any statement of audio models or audio outputs).",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 35,
+    "key": "rostamzadeh2021ethics",
+    "title": "Ethics and Creativity in Computer Vision",
+    "abstract": "This paper offers a retrospective of what we learnt from organizing the workshop *Ethical Considerations in Creative applications of Computer Vision* at CVPR 2021 conference and, prior to that, a series of workshops on *Computer Vision for Fashion, Art and Design* at ECCV 2018, ICCV 2019, and CVPR 2020. We hope this reflection will bring artists and machine learning researchers into conversation around the ethical and social dimensions of creative applications of computer vision.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract discusses ethics in computer vision and does not mention audio generation or audio outputs; there is no explicit evidence that it covers generative audio models. Given Stage 1 constraints, we cannot exclude based on this, and the relevance to the target topic is uncertain, so we assign a 3 (uncertain / needs more evidence).",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The title and abstract focus on ethical and social dimensions of creative applications in computer vision, with no mention of generative audio models or audio outputs, which are central to the inclusion criteria; thus, relevance to generative audio models is not established.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "標題與摘要明確以「computer vision」及相關工作坊（創意/倫理）為主，完全未提及音訊或生成式音訊模型，符合排除條件（非以音訊為中心）。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 39,
+    "key": "polyak2020unsupervised",
+    "title": "Unsupervised Cross-Domain Singing Voice Conversion",
+    "abstract": "We present a wav-to-wav generative model for the task of singing voice conversion from any identity. Our method utilizes both an acoustic model, trained for the task of automatic speech recognition, together with melody extracted features to drive a waveform-based generator. The proposed generative architecture is invariant to the speaker's identity and can be trained to generate target singers from unlabeled training data, using either speech or singing sources. The model is optimized in an end-to-end fashion without any manual supervision, such as lyrics, musical notes or parallel samples. The proposed approach is fully-convolutional and can generate audio in real-time. Experiments show that our method significantly outperforms the baseline methods while generating convincingly better audio samples than alternative attempts.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract clearly describes a generative audio model for singing voice conversion, meeting the topic relevance, but the full-paper status (long-form vs extended abstract) cannot be verified from the abstract alone, so I cannot strongly include it; thus a cautious score of 3 (uncertain / need more evidence).",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "該論文題目與摘要明確描述一種用於歌聲轉換的無監督wav-to-wav生成模型，聚焦於生成音頻的應用，符合生成音頻模型的主題要求，且無拒絕條件出現，因此給予較高評分。",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract clearly describes a wav-to-wav unsupervised singing-voice conversion generative model with audio-only outputs (meets the generative audio focus and application criteria), but the abstract does not confirm whether this is a full long-form paper versus an extended abstract, so I conservatively mark it as 'possibly include'.",
+    "baseline_round-B_SeniorLead_evaluation": 4,
+    "baseline_final_verdict": "include (senior:4)"
+  },
+  {
+    "baseline_index": 40,
+    "key": "purwins2019deep",
+    "title": "Deep Learning for Audio Signal Processing",
+    "abstract": "Given the recent surge in developments of deep learning, this article provides a review of the state-of-the-art deep learning techniques for audio signal processing. Speech, music, and environmental sound processing are considered side-by-side, in order to point out similarities and differences between the domains, highlighting general methods, problems, key references, and potential for cross-fertilization between areas. The dominant feature representations (in particular, log-mel spectra and raw waveform) and deep learning models are reviewed, including convolutional neural networks, variants of the long short-term memory architecture, as well as more audio-specific neural network models. Subsequently, prominent deep learning application areas are covered, i.e. audio recognition (automatic speech recognition, music information retrieval, environmental sound detection, localization and tracking) and synthesis and transformation (source separation, audio enhancement, generative models for speech, sound, and music synthesis). Finally, key issues and future questions regarding deep learning applied to audio signal processing are identified.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract presents a broad review of deep learning for audio signal processing across speech, music, and environmental sounds, with a mention of generative models for speech, sound, and music synthesis; however, it does not clearly state that generative audio modeling is the main focus, so its alignment with the inclusion criterion of ‘topic is generative audio models’ is uncertain. Lacking full text, we cannot confirm central emphasis beyond a general review. Therefore score as uncertain/needs more evidence (3).",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The abstract reviews deep learning techniques for audio signal processing and covers generative models for speech, sound, and music synthesis among various applications; however, it is a broad survey rather than focused specifically on generative audio models or their ethical implications, lacking clarity on primary focus and generative model depth.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract is a broad survey of deep learning for audio that only briefly lists generative models (synthesis/transformation) among many topics rather than treating generative audio modeling as the primary focus, so it likely does not meet the inclusion criterion that generative audio models/applications be the main contribution. Key evidence: covers speech, music, environmental sounds, feature representations, CNNs/LSTMs and many application areas (recognition, synthesis, enhancement) — generative models are one item among many. Missing evidence: explicit statement that the paper introduces, analyzes, or centers on generative audio models, or that synthesis/generative modeling is the main contribution of the work.",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 48,
+    "key": "diakopoulos2021anticipating",
+    "title": "Anticipating and addressing the ethical implications of deepfakes in the context of elections",
+    "abstract": "New media synthesis technologies are rapidly advancing and becoming more accessible, allowing users to make video and audio clips (i.e. deepfakes) of individuals doing and saying things they never did or said. Deepfakes have significant implications for the integrity of many social domains including that of elections. Focusing on the 2020 US presidential election and using an anticipatory approach, this article examines the ethical issues raised by deepfakes and discusses strategies for addressing these issues. Eight hypothetical scenarios are developed and used as the basis for this analysis, which identifies harms to voters who view deepfakes, candidates and campaigns that are the subjects of deepfakes, and threats to electoral integrity. Four potential forms of intervention are discussed with respect to multi-stakeholder responsibility for addressing harms, including education and media literacy, subject defense, verification, and publicity moderation.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract discusses ethical implications of deepfakes in elections but does not clearly present or center on a generative audio model or an audio-only output, so evidence for inclusion is uncertain from title/abstract alone.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "This paper focuses on the ethical implications of deepfakes in elections, with an emphasis on video and audio deepfakes, but the abstract does not indicate a focus specifically on generative audio models or generative audio outputs; therefore, the core topic relevance to generative audio models as primary focus is unclear and lacks necessary evidence.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract describes an ethical analysis of video and audio deepfakes in elections rather than introducing or analyzing a generative audio model or an audio-only application; it lacks evidence of a primary focus on generative audio models, audio-only outputs, or technical/methodological contributions required by the inclusion criteria, so it is likely to be excluded. (Missing evidence: no generative-audio model or audio-only application presented, no model analysis/evaluation details.)",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 51,
+    "key": "yoon2020Gesture",
+    "title": "Speech gesture generation from the trimodal context of text, audio, and speaker identity",
+    "abstract": "For human-like agents, including virtual avatars and social robots, making proper gestures while speaking is crucial in human-agent interaction. Co-speech gestures enhance interaction experiences and make the agents look alive. However, it is difficult to generate human-like gestures due to the lack of understanding of how people gesture. Data-driven approaches attempt to learn gesticulation skills from human demonstrations, but the ambiguous and individual nature of gestures hinders learning. In this paper, we present an automatic gesture generation model that uses the multimodal context of speech text, audio, and speaker identity to reliably generate gestures. By incorporating a multimodal context and an adversarial training scheme, the proposed model outputs gestures that are human-like and that match with speech content and rhythm. We also introduce a new quantitative evaluation metric for gesture generation models. Experiments with the introduced metric and subjective human evaluation showed that the proposed gesture generation model is better than existing end-to-end generation models. We further confirm that our model is able to work with synthesized audio in a scenario where contexts are constrained, and show that different gesture styles can be generated for the same speech by specifying different speaker identities in the style embedding space that is learned from videos of various speakers. All the code and data is available at https://github.com/ai4r/Gesture-Generation-from-Trimodal-Context.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract centers on generating human-like gestures from trimodal context (text, audio, and speaker identity) with gestures as the output; audio is only an input modality, so it does not present generative audio as the primary output, making inclusion uncertain (score 3).",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on generating co-speech gestures from multimodal inputs including text, audio, and speaker identity, but the primary output is gestures (non-audio), not audio itself, which conflicts with the inclusion criteria that emphasize generative audio models with audio as the output domain.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "摘要明確指出模型以文本、音頻與講者身份為輸入並輸出「手勢」（co-speech gestures），音訊只是輸入或情境而非生成的主要輸出，因此不符合以生成音訊為主的納入標準。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 52,
+    "key": "au2022choreograph",
+    "title": "ChoreoGraph: Music-conditioned Automatic Dance Choreography over a Style and Tempo Consistent Dynamic Graph",
+    "abstract": "To generate dance that temporally and aesthetically matches the music is a challenging problem, as the following factors need to be considered. First, the aesthetic styles and messages conveyed by the motion and music should be consistent. Second, the beats of the generated motion should be locally aligned to the musical features. And finally, basic choreomusical rules should be observed, and the motion generated should be diverse. To address these challenges, we propose ChoreoGraph, which choreographs high-quality dance motion for a given piece of music over a Dynamic Graph. A data-driven learning strategy is proposed to evaluate the aesthetic style and rhythmic connections between music and motion in a progressively learned cross-modality embedding space. The motion sequences will be beats-aligned based on the music segments and then incorporated as nodes of a Dynamic Motion Graph. Compatibility factors such as the style and tempo consistency, motion context connection, action completeness, and transition smoothness are comprehensively evaluated to determine the node transition in the graph. We demonstrate that our repertoire-based framework can generate motions with aesthetic consistency and robustly extensible in diversity. Both quantitative and qualitative experiment results show that our proposed model outperforms other baseline models.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "透過標題與摘要可見本文重點在於在音樂條件下生成舞蹈動作，並以動態圖組織與節拍對齊等機制，但輸出傾向於舞蹈動作/運動而非純音頻生成或音頻作為唯一輸出，因此難以確認是否符合以音頻為核心的生成音頻模型主題，證據不足以直接納入。",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on generating dance choreography conditioned on music, producing motion sequences aligned with musical features; however, the primary output is dance motion, not audio, and it does not introduce or analyze generative audio models or generate audio itself, thus it does not meet the inclusion criteria focused on generative audio models with audio output.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "根據標題與摘要，本文提出 ChoreoGraph 以音樂為條件生成並編排舞蹈動作（beat-aligned motion sequences over a Dynamic Motion Graph），主要輸出為動作/編舞而非音頻或音頻生成，因此不符合以生成音頻模型或音頻輸出為主題的納入標準，故予以強烈排除。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 57,
+    "key": "mardis2012toward",
+    "title": "Toward broader impacts: Making sense of <scp>NSF</scp>'s merit review criteria in the context of the <scp>N</scp>ational <scp>S</scp>cience <scp>D</scp>igital <scp>L</scp>ibrary",
+    "abstract": "Scholars in library and information science are under increasing pressure to seek external funding for research. The National Science Foundation (NSF), which is often the source of this funding, considers proposed projects based on the criteria of “Intellectual Merit” and “Broader Impacts.” However, these merit review criteria have been criticized as being insufficiently specific and not appropriate for all types of scientific research. In an effort to examine the extent to which funded projects represented B roader I mpacts, the researchers performed a content analysis of the abstracts from projects in the N ational S cience D igital L ibrary, an NSF project that crossed many disciplines and applications, but is of particular relevance to information scientists. When the results of these analyses are placed in the context of the controversy surrounding the B roader I mpacts merit review criterion, it is clear that this criterion is interpreted broadly and that even successful proposals often include aspirational or incomplete claims of impact. Because current proposed revisions to the merit review criteria that include emphases on demonstrable innovation and economic benefit will likely only complicate proposers' abilities to describe their projects' potentials, researchers may benefit from a greater understanding of Broader Impacts and how they can be clearly expressed to reviewers.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The title/abstract address NSF's Broader Impacts criteria rather than audio or generative audio models, and there is no explicit audio content in the abstract; thus relevance to the target topic is unclear from Stage 1 evidence, so conservatively score 3.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The title and abstract focus on NSF's merit review criteria and broader impacts within the context of the National Science Digital Library and information science funding, without mention of generative audio models or audio generation as the main topic or output.",
+      "evaluation": 1
+    },
+    "round-A_JuniorMini_evaluation": 1,
+    "baseline_round-B_SeniorLead_reasoning": "Title and abstract discuss NSF’s “Broader Impacts” merit review criteria and a content analysis of National Science Digital Library project abstracts (library/information science funding), with no mention of audio, generative models, audio outputs, or related methods — therefore this paper does not meet the generative-audio focus and should be excluded.",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 59,
+    "key": "roberts2009realizing",
+    "title": "Realizing Societal Benefit from Academic Research: Analysis of the National Science Foundation’s Broader Impacts Criterion",
+    "abstract": "The National Science Foundation (NSF) evaluates grant proposals based on two criteria: intellectual merit and broader impacts. NSF gives applicants wide latitude to choose among a number of broader impacts, which include both benefits for the scientific community and benefits for society. This paper considers whether including potential societal benefits in the Broader Impacts Criterion leads to enhanced benefits for society. One prerequisite for realizing societal benefit is to transfer research results to potential users in a meaningful format. To determine whether researchers who discuss broader impacts for society are more likely to engage in broad dissemination activities beyond the scientific publication, I analysed proposed broader impacts statements from recent award abstracts. Although 43% of researchers discussed potential benefits for society, those researchers were no more likely to propose dissemination of results to potential users than researchers who only discussed broader impacts for science. These findings suggest that considering potential societal benefit as a broader impact may not lead to more actual societal benefits and that many potentially useful results may not be disseminated beyond the scientific community. I conclude with policy recommendations that could increase the likelihood of realizing potential societal benefits from academic research.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "摘要內容專注於 NSF 的 Broad Impacts 評分與社會效益，未出現與生成音頻模型或音頻輸出相關的主題或證據，因此在缺乏音頻領域直接證據的情況下，按 Stage 1 高召回原則採取保留態度，需更多關於音頻生成的證據才能納入。",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on evaluation of societal benefits of academic research through NSF's Broader Impacts Criterion and dissemination practices, without mentioning generative audio models or audio output as a primary focus, thus failing to meet the topic relevance criteria related to generative audio models.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "摘要僅討論 NSF 的 Broader Impacts 與研究成果向社會傳播，完全未提及聲音/音頻、生成模型、語音或音樂等相關主題或輸出，因而不符合以生成音頻模型為主要焦點的納入標準。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 60,
+    "key": "barnett2022crowdsourcing",
+    "title": "Crowdsourcing Impacts: Exploring the Utility of Crowds for Anticipating Societal Impacts of Algorithmic Decision Making",
+    "abstract": "With the increasing pervasiveness of algorithms across industry and government, a growing body of work has grappled with how to understand their societal impact and ethical implications. Various methods have been used at different stages of algorithm development to encourage researchers and designers to consider the potential societal impact of their research. An understudied yet promising area in this realm is using participatory foresight to anticipate these different societal impacts. We employ crowdsourcing as a means of participatory foresight to uncover four different types of impact areas based on a set of governmental algorithmic decision making tools: (1) perceived valence, (2) societal domains, (3) specific abstract impact types, and (4) ethical algorithm concerns. Our findings suggest that this method is effective at leveraging the cognitive diversity of the crowd to uncover a range of issues. We further analyze the complexities within the interaction of the impact areas identified to demonstrate how crowdsourcing can illuminate patterns around the connections between impacts. Ultimately this work establishes crowdsourcing as an effective means of anticipating algorithmic impact which complements other approaches towards assessing algorithms in society by leveraging participatory foresight and cognitive diversity.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract centers on crowdsourcing as participatory foresight to anticipate societal impacts of algorithmic decision making, with no mention of audio or generative audio models, so audio-domain relevance is not established and the paper should remain uncertain and flagged for further review with more evidence.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on crowdsourcing to anticipate societal impacts of algorithmic decision-making in general, without mentioning generative audio models or audio outputs, thus lacking alignment with the required topic focus on generative audio models and audio-specific outputs.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "The title and abstract focus on crowdsourcing to anticipate societal impacts of governmental algorithmic decision-making and contain no mention of audio, generative audio models, or audio outputs, so it does not meet the generative-audio primary-focus inclusion criteria and should likely be excluded.",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 61,
+    "key": "cashmore2009introduction",
+    "title": "Introduction: The effectiveness of impact assessment instruments",
+    "abstract": "The global application of impact assessment instruments to achieve a variety of policy integration goals (e.g. the mainstreaming of environmental, gender or economic efficiency concerns) continues to proliferate. These instruments represent important components of contemporary political governance and hence are an important locus for applied research. This special issue of Impact Assessment and Project Appraisal critically examines 'state-of-the-art' knowledge and understanding of the effectiveness of impact assessment instruments. Six articles explore this subject from a variety of orientations (in terms of theoretical versus empirical emphasis, policy integration concerns, contributors' beliefs and framing etc.). Individually and cumulatively, these articles make a powerful contribution to learning about the 'thorny' issue of effectiveness and its implications for the theory and practice of impact assessment.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The title/abstract discuss governance-focused impact assessment instruments with no mention of audio or generative models, so there is no clear evidence of relevance to generative audio; thus this item is uncertain and should not be excluded at this stage.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on the effectiveness of impact assessment instruments in political governance without mentioning generative audio models or audio outputs, which is the primary topic required for inclusion.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "標題與摘要聚焦於政策治理與影響評估工具的有效性，明確為政治/政策研究議題，未提及生成式音頻模型、音頻輸出或相關方法；因此不符合以生成音頻模型或音頻輸出為主要焦點的納入準則，建議強烈排除。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 62,
+    "key": "metcalf2021algorithmic",
+    "title": "Algorithmic Impact Assessments and Accountability: The Co-construction of Impacts",
+    "abstract": "Algorithmic impact assessments (AIAs) are an emergent form of accountability for organizations that build and deploy automated decision-support systems. They are modeled after impact assessments in other domains. Our study of the history of impact assessments shows that \"impacts\" are an evaluative construct that enable actors to identify and ameliorate harms experienced because of a policy decision or system. Every domain has different expectations and norms around what constitutes impacts and harms, how potential harms are rendered as impacts of a particular undertaking, who is responsible for conducting such assessments, and who has the authority to act on them to demand changes to that undertaking. By examining proposals for AIAs in relation to other domains, we find that there is a distinct risk of constructing algorithmic impacts as organizationally understandable metrics that are nonetheless inappropriately distant from the harms experienced by people, and which fall short of building the relationships required for effective accountability. As impact assessments become a commonplace process for evaluating harms, the FAccT community, in its efforts to address this challenge, should A) understand impacts as objects that are co-constructed accountability relationships, B) attempt to construct impacts as close as possible to actual harms, and C) recognize that accountability governance requires the input of various types of expertise and affected communities. We conclude with lessons for assembling cross-expertise consensus for the co-construction of impacts and building robust accountability relationships.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The title/abstract discuss algorithmic impact assessments and accountability in general, with no explicit reference to generative audio models or audio outputs; relevance to the 'generative audio' topic is not evidenced, so per Stage 1 guidelines this remains uncertain (3) rather than exclusion.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "本文討論的核心是演算法影響評估與問責機制，重點在於政策與系統的影響評估框架，並未涉及生成音訊模型或以生成音訊為主要焦點，缺乏與生成音訊應用直接相關的內容。",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "Abstract examines algorithmic impact assessments and accountability across domains with no mention of generative audio models, audio outputs, speech, or music applications, so it does not meet the requirement that the paper’s primary focus is generative audio.",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 63,
+    "key": "shelby2022sociotechnical",
+    "title": "Sociotechnical Harms of Algorithmic Systems: Scoping a Taxonomy for Harm Reduction",
+    "abstract": "Understanding the landscape of potential harms from algorithmic systems enables practitioners to better anticipate consequences of the systems they build. It also supports the prospect of incorporating controls to help minimize harms that emerge from the interplay of technologies and social and cultural dynamics. A growing body of scholarship has identified a wide range of harms across different algorithmic technologies. However, computing research and practitioners lack a high level and synthesized overview of harms from algorithmic systems. Based on a scoping review of computing research $(n=172)$, we present an applied taxonomy of sociotechnical harms to support a more systematic surfacing of potential harms in algorithmic systems. The final taxonomy builds on and refers to existing taxonomies, classifications, and terminologies. Five major themes related to sociotechnical harms - representational, allocative, quality-of-service, interpersonal harms, and social system/societal harms - and sub-themes are presented along with a description of these categories. We conclude with a discussion of challenges and opportunities for future research.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract discusses sociotechnical harms of algorithmic systems in general without mention of audio generation or audio outputs, making audio-specific relevance uncertain; therefore this item should be treated as uncertain rather than excluded at this stage.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "本文題目與摘要聚焦於演算法系統的社會技術性傷害，未提及任何生成式音訊模型或以音訊為主要輸出，且主題範圍較廣，缺乏與生成式音訊模型倫理相關的明確連結，因此無法確認符合 inclusion criteria。",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "Both junior reviewers marked this as uncertain; the title/abstract describe a broad taxonomy of sociotechnical harms from algorithmic systems (scoping review) but contain no mention of audio, generative audio models, or audio-specific outputs, so there is insufficient evidence to include—keep as 3 (needs full text or explicit audio-related evidence).",
+    "baseline_round-B_SeniorLead_evaluation": 3,
+    "baseline_final_verdict": "maybe (senior:3)"
+  },
+  {
+    "baseline_index": 66,
+    "key": "brundage2018malicious",
+    "title": "The Malicious Use of Artificial Intelligence: Forecasting, Prevention, and Mitigation",
+    "abstract": "This report surveys the landscape of potential security threats from malicious uses of AI, and proposes ways to better forecast, prevent, and mitigate these threats. After analyzing the ways in which AI may influence the threat landscape in the digital, physical, and political domains, we make four high-level recommendations for AI researchers and other stakeholders. We also suggest several promising areas for further research that could expand the portfolio of defenses, or make attacks less effective or harder to execute. Finally, we discuss, but do not conclusively resolve, the long-term equilibrium of attackers and defenders.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract addresses AI security threats in general with no explicit focus on generative audio models or audio-only outputs, so audio relevance is not evidenced; thus the item is uncertain for audio focus (3).",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper broadly discusses security threats from malicious AI use without mention of generative audio models or audio output as a focus; thus, it does not meet the inclusion criteria centered on generative audio models and audio domain output, but the content is not explicitly excluding audio relevance, warranting an uncertain rating pending further evidence.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract is a broad survey of malicious AI uses across digital/physical/political domains and offers high-level recommendations, with no mention of generative audio models, audio outputs, or audio-focused experiments—evidence indicates it is likely not primarily about generative audio, so mark as probably exclude.",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 67,
+    "key": "weidinger2021ethical",
+    "title": "Ethical and social risks of harm from Language Models",
+    "abstract": "This paper aims to help structure the risk landscape associated with large-scale Language Models (LMs). In order to foster advances in responsible innovation, an in-depth understanding of the potential risks posed by these models is needed. A wide range of established and anticipated risks are analysed in detail, drawing on multidisciplinary expertise and literature from computer science, linguistics, and social sciences. We outline six specific risk areas: I. Discrimination, Exclusion and Toxicity, II. Information Hazards, III. Misinformation Harms, V. Malicious Uses, V. Human-Computer Interaction Harms, VI. Automation, Access, and Environmental Harms. The first area concerns the perpetuation of stereotypes, unfair discrimination, exclusionary norms, toxic language, and lower performance by social group for LMs. The second focuses on risks from private data leaks or LMs correctly inferring sensitive information. The third addresses risks arising from poor, false or misleading information including in sensitive domains, and knock-on risks such as the erosion of trust in shared information. The fourth considers risks from actors who try to use LMs to cause harm. The fifth focuses on risks specific to LLMs used to underpin conversational agents that interact with human users, including unsafe use, manipulation or deception. The sixth discusses the risk of environmental harm, job automation, and other challenges that may have a disparate effect on different social groups or communities. In total, we review 21 risks in-depth. We discuss the points of origin of different risks and point to potential mitigation approaches. Lastly, we discuss organisational responsibilities in implementing mitigations, and the role of collaboration and participation. We highlight directions for further research, particularly on expanding the toolkit for assessing and evaluating the outlined risks in LMs.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "此摘要僅討論一般語言模型風險，未提及音頻生成或音頻輸出，因此對生成音頻的主題相關性不明，採保守評分3。",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on ethical and social risks from language models, analyzing risks related to text and language technologies without mentioning generative audio models or audio as the primary focus, which fails the inclusion criteria centered on generative audio outputs.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "The title/abstract focus on ethical and social risks of language models and conversational agents (textual LMs), with no mention of generative audio, speech/music synthesis, or audio outputs — missing the required evidence that the paper’s primary focus is generative audio, so it is likely out of scope.",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 69,
+    "key": "Mirsky2021Creation",
+    "title": "The Creation and Detection of Deepfakes: A Survey",
+    "abstract": "Generative deep learning algorithms have progressed to a point where it is difficult to tell the difference between what is real and what is fake. In 2018, it was discovered how easy it is to use this technology for unethical and malicious applications, such as the spread of misinformation, impersonation of political leaders, and the defamation of innocent individuals. Since then, these `deepfakes' have advanced significantly. In this paper, we explore the creation and detection of deepfakes and provide an in-depth view of how these architectures work. The purpose of this survey is to provide the reader with a deeper understanding of (1) how deepfakes are created and detected, (2) the current trends and advancements in this domain, (3) the shortcomings of the current defense solutions, and (4) the areas which require further research and attention.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract discusses deepfakes in general and does not specify audio as the primary output domain, so unclear relevance to generative audio models; score 3.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on deepfake generation and detection, primarily related to video and image modalities rather than audio generative models; there is no evidence in the title or abstract that audio generation or audio outputs are the main topic, thus it does not meet the inclusion criteria centered on generative audio models.",
+      "evaluation": 2
+    },
+    "round-A_JuniorMini_evaluation": 2,
+    "baseline_round-B_SeniorLead_reasoning": "The title/abstract describe deepfakes in general (creation and detection) without specifying that the paper focuses on audio-only generative models or that audio is the primary output—it may cover audio but offers no explicit evidence, so inclusion for an audio-focused corpus is uncertain and requires the full paper to confirm.",
+    "baseline_round-B_SeniorLead_evaluation": 3,
+    "baseline_final_verdict": "maybe (senior:3)"
+  },
+  {
+    "baseline_index": 73,
+    "key": "wang_armor_2021",
+    "title": "Armor: A Benchmark for Meta-evaluation of Artificial Music",
+    "abstract": "Objective evaluation (OE) is essential to artificial music, but it's often very hard to determine the quality of OEs. Hitherto, subjective evaluation (SE) remains reliable and prevailing but suffers inevitable disadvantages that OEs may overcome. Therefore, a meta-evaluation system is necessary for designers to test the effectiveness of OEs. In this paper, we present Armor, a complex and cross-domain benchmark dataset that serves for this purpose. Since OEs should correlate with human judgment, we provide music as test cases for OEs and human judgment scores as touchstones. We also provide two meta-evaluation scenarios and their corresponding testing methods to assess the effectiveness of OEs. To the best of our knowledge, Armor is the first comprehensive and rigorous framework that future works could follow, take example by, and improve upon for the task of evaluating computer-generated music and the field of computational music as a whole. By analyzing different OE methods on our dataset, we observe that there is still a huge gap between SE and OE, meaning that hard-coded algorithms are far from catching human's judgment to the music.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Armor describes a benchmark dataset for meta-evaluating objective evaluations of artificial music, aligning with generative audio research by focusing on evaluation methodology rather than a specific model, thus not clearly excluded but not strictly model-focused; likely include at stage 1.",
+      "evaluation": 4
+    },
+    "round-A_JuniorNano_evaluation": 4,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper introduces Armor, a benchmark for evaluating artificial music objective evaluation methods, focusing specifically on music as audio output, and does not present a generative audio model itself but addresses evaluation related directly to generative music audio, meeting the topic relevance though not fully introducing a generative model; based on abstract alone, it is uncertain if this fulfills all inclusion criteria especially generative model focus due to lack of explicit generative model development or primary focus on generative audio output.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The paper presents Armor, a benchmark and meta-evaluation framework focused on objective evaluation of artificial (computer-generated) music, provides music test cases and human-judgment touchstones, and thus clearly concerns audio and evaluation of generative-music outputs; the abstract does not claim a new generative model but evaluates and benchmarks methods for assessing generated music, so under Stage‑1 (recall‑oriented) inclusion it should proceed to full review — lacking only explicit statement that a generative model or application is introduced (not required at this stage).",
+    "baseline_round-B_SeniorLead_evaluation": 4,
+    "baseline_final_verdict": "include (senior:4)"
+  },
+  {
+    "baseline_index": 93,
+    "key": "neves_generating_2022",
+    "title": "Generating music with sentiment using Transformer-GANs",
+    "abstract": "The field of Automatic Music Generation has seen significant progress thanks to the advent of Deep Learning. However, most of these results have been produced by unconditional models, which lack the ability to interact with their users, not allowing them to guide the generative process in meaningful and practical ways. Moreover, synthesizing music that remains coherent across longer timescales while still capturing the local aspects that make it sound ``realistic'' or ``human-like'' is still challenging. This is due to the large computational requirements needed to work with long sequences of data, and also to limitations imposed by the training schemes that are often employed. In this paper, we propose a generative model of symbolic music conditioned by data retrieved from human sentiment. The model is a Transformer-GAN trained with labels that correspond to different configurations of the valence and arousal dimensions that quantitatively represent human affective states. We try to tackle both of the problems above by employing an efficient linear version of Attention and using a Discriminator both as a tool to improve the overall quality of the generated music and its ability to follow the conditioning signals.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract presents a sentiment-conditioned symbolic music generator via Transformer-GAN with linear attention; since the abstract does not clearly specify audio-domain output, the fit to 'generative audio models' is uncertain, so a cautious score of 3 is warranted.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper clearly focuses on a generative audio model that synthesizes music conditioned by human sentiment, fitting the inclusion criteria of generative audio model and audio output; it does not show any exclusion signs such as non-audio focus or non-generative output, thus should be included for full review.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract describes a generative symbolic-music model (Transformer-GAN conditioned on valence/arousal) aimed at producing music and improving coherence—this is directly a generative music/audio application with no exclusion signs (not classification, not non-audio, and appears to be a full research contribution); therefore it should proceed to full review. (Minor ambiguity: the abstract doesn’t state waveform vs. symbolic/MIDI output explicitly, but symbolic music generation still meets the generative-audio focus.)",
+    "baseline_round-B_SeniorLead_evaluation": 5,
+    "baseline_final_verdict": "include (senior:5)"
+  },
+  {
+    "baseline_index": 98,
+    "key": "lee_conditional_nodate",
+    "title": "Conditional variational autoencoder to improve neural audio synthesis for polyphonic music sound",
+    "abstract": "Deep generative models for audio synthesis have recently been significantly improved. However, the task of modeling raw-waveforms remains a difficult problem, especially for audio waveforms and music signals. Recently, the realtime audio variational autoencoder (RAVE) method was developed for high-quality audio waveform synthesis. The RAVE method is based on the variational autoencoder and utilizes the two-stage training strategy. Unfortunately, the RAVE model is limited in reproducing wide-pitch polyphonic music sound. Therefore, to enhance the reconstruction performance, we adopt the pitch activation data as an auxiliary information to the RAVE model. To handle the auxiliary information, we propose an enhanced RAVE model with a conditional variational autoencoder structure and an additional fully-connected layer. To evaluate the proposed structure, we conducted a listening experiment based on multiple stimulus tests with hidden references and an anchor (MUSHRA) with the MAESTRO. The obtained results indicate that the proposed model exhibits a more significant performance and stability improvement than the conventional RAVE model.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The title/abstract describe a conditional variational autoencoder approach to neural audio synthesis for polyphonic music, using RAVE and pitch-activation data, with listening-based evaluation—clearly a generative audio model in the audio domain; however, from the abstract alone we cannot confirm it is a full-length paper (vs an extended abstract), so evidence is insufficient for strong inclusion, meriting a cautious score.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The title and abstract indicate this paper focuses on a generative audio model (conditional variational autoencoder) specifically for neural audio synthesis of polyphonic music sounds, which fits the topic well. It is a full research paper discussing a new model and evaluation, not an extended abstract or unrelated work. There is no negative evidence against inclusion.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "Both juniors disagreed (3 vs 5). Based on title/abstract alone, this paper clearly proposes a generative audio model (a conditional VAE extension of RAVE) specifically for polyphonic music waveforms, uses pitch-activation conditioning, and reports listening evaluations (MUSHRA on MAESTRO), which together indicate a full research contribution focused on audio synthesis with experimental validation and no negative evidence of being an extended abstract—therefore include.",
+    "baseline_round-B_SeniorLead_evaluation": 5,
+    "baseline_final_verdict": "include (senior:5)"
+  },
+  {
+    "baseline_index": 108,
+    "key": "han_symbolic_nodate",
+    "title": "Symbolic Music Loop Generation with Neural Discrete Representations",
+    "abstract": "Since most of music has repetitive structures from motifs to phrases, repeating musical ideas can be a basic operation for music composition. The basic block that we focus on is conceptualized as loops which are essential ingredients of music. Furthermore, meaningful note patterns can be formed in a finite space, so it is sufficient to represent them with combinations of discrete symbols as done in other domains. In this work, we propose symbolic music loop generation via learning discrete representations. We first extract loops from MIDI datasets using a loop detector and then learn an autoregressive model trained by discrete latent codes of the extracted loops. We show that our model outperforms well-known music generative models in terms of both fidelity and diversity, evaluating on random space. Our code and supplementary materials are available at https://github.com/sjhan91/Loop_VQVAE_Official.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract centers on symbolic MIDI loop generation with discrete latent codes rather than audio outputs, so it's unclear whether it satisfies the 'output domain is entirely audio' inclusion criterion; therefore treat as uncertain (3).",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on a generative audio model specifically for symbolic music loop generation, using discrete latent representations and comparing performance to existing music generative models, which aligns well with the inclusion criteria of generative audio models with audio output; no exclusion criteria are met based on the title and abstract.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "The title and abstract describe a generative model for symbolic music loop generation (extracted from MIDI) using discrete latent codes and an autoregressive model, explicitly comparing to existing music generative models — this is a music/audio-generation paper (symbolic MIDI is a valid audio output domain), so it meets inclusion criteria and no exclusion criteria are present.",
+    "baseline_round-B_SeniorLead_evaluation": 5,
+    "baseline_final_verdict": "include (senior:5)"
+  },
+  {
+    "baseline_index": 114,
+    "key": "wu_power_2022",
+    "title": "The Power of Fragmentation: A Hierarchical Transformer Model for Structural Segmentation in Symbolic Music Generation",
+    "abstract": "Symbolic Music Generation relies on the contextual representation capabilities of the generative model, where the most prevalent approach is the Transformer-based model. The learning of musical context is also related to the structural elements in music, i.e. intro, verse, and chorus, which are currently overlooked by the research community. In this paper, we propose a hierarchical Transformer model to learn multi-scale contexts in music. In the encoding phase, we first designed a Fragment Scope Localization layer to syncopate the music into chords and sections. Then, we use a multi-scale attention mechanism to learn note-, chord-, and section-level contexts. In the decoding phase, we proposed a hierarchical Transformer model that uses fine-decoders to generate sections in parallel and a coarse-decoder to decode the combined music. We also designed a Music Style Normalization layer to achieve a consistent music style between the generated sections. Our model is evaluated on two open MIDI datasets, and experiments show that our model outperforms the best contemporary music generative models. More excitingly, the visual evaluation shows that our model is superior in melody reuse, resulting in more realistic music.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract describes a hierarchical Transformer for symbolic music generation using MIDI data and structural segmentation; it does not clearly claim an audio-domain output, so alignment with the 'generative audio model' criterion is uncertain at Stage 1.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on a hierarchical Transformer model specifically designed for symbolic music generation, clearly addressing generative audio models with an audio-only output domain and proposing novel modeling approaches with empirical evaluation, fitting the inclusion criteria for a full research paper on generative audio models.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "The paper proposes a hierarchical Transformer for symbolic music generation and is evaluated on open MIDI datasets (mentions chords/sections, MIDI, and visual evaluation), which indicates the output is likely symbolic (MIDI) rather than audio waveforms; there is no explicit evidence in the title/abstract that the model produces audio-only (waveform) outputs or that the work focuses on audio-domain generative models—therefore this is borderline and needs the full paper to determine eligibility (missing: explicit statement of audio-waveform output and confirmation that this is a full research paper).",
+    "baseline_round-B_SeniorLead_evaluation": 3,
+    "baseline_final_verdict": "maybe (senior:3)"
+  },
+  {
+    "baseline_index": 128,
+    "key": "you_self-supervised_2021",
+    "title": "Self-supervised Contrastive Cross-Modality Representation Learning for Spoken Question Answering",
+    "abstract": "Spoken question answering (SQA) requires fine-grained understanding of both spoken documents and questions for the optimal answer prediction. In this paper, we propose novel training schemes for spoken question answering with a self-supervised training stage and a contrastive representation learning stage. In the self-supervised stage, we propose three auxiliary self-supervised tasks, including utterance restoration, utterance insertion, and question discrimination, and jointly train the model to capture consistency and coherence among speech documents without any additional data or annotations. We then propose to learn noise-invariant utterance representations in a contrastive objective by adopting multiple augmentation strategies, including span deletion and span substitution. Besides, we design a Temporal-Alignment attention to semantically align the speech-text clues in the learned common space and benefit the SQA tasks. By this means, the training schemes can more effectively guide the generation model to predict more proper answers. Experimental results show that our model achieves state-of-the-art results on three SQA benchmarks.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "From the title/abstract, the work centers on self-supervised and contrastive learning for spoken question answering with cross-modality alignment, not clearly presenting a generative audio model whose primary output is audio, so inclusion is uncertain based on the abstract alone.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on spoken question answering using self-supervised contrastive cross-modality representation learning, but does not explicitly present or discuss a generative audio model or generate audio outputs; it mainly deals with understanding speech documents for answer prediction, which suggests a non-generative, prediction/classification rather than generative audio model focus.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "摘要明確描述為 spoken question answering（以語音文件理解並做答案預測/生成文字答案），著重於自監督與對比表示學習與語音-文字對齊，沒有提出任何以合成/生成音頻為主要輸出或生成音頻模型的證據，故不屬於生成音頻主題範疇。",
+    "baseline_round-B_SeniorLead_evaluation": 1,
+    "baseline_final_verdict": "exclude (senior:1)"
+  },
+  {
+    "baseline_index": 134,
+    "key": "hadjeres_piano_2021",
+    "title": "The Piano Inpainting Application",
+    "abstract": "Autoregressive models are now capable of generating high-quality minute-long expressive MIDI piano performances. Even though this progress suggests new tools to assist music composition, we observe that generative algorithms are still not widely used by artists due to the limited control they offer, prohibitive inference times or the lack of integration within musicians' workflows. In this work, we present the Piano Inpainting Application (PIA), a generative model focused on inpainting piano performances, as we believe that this elementary operation (restoring missing parts of a piano performance) encourages human-machine interaction and opens up new ways to approach music composition. Our approach relies on an encoder-decoder Linear Transformer architecture trained on a novel representation for MIDI piano performances termed Structured MIDI Encoding. By uncovering an interesting synergy between Linear Transformers and our inpainting task, we are able to efficiently inpaint contiguous regions of a piano performance, which makes our model suitable for interactive and responsive A.I.-assisted composition. Finally, we introduce our freely-available Ableton Live PIA plugin, which allows musicians to smoothly generate or modify any MIDI clip using PIA within a widely-used professional Digital Audio Workstation.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract describes a generative model for inpainting MIDI piano performances and an Ableton plugin, but the output is described as MIDI data rather than waveform audio, so it does not clearly meet the 'output domain is entirely audio' criterion and remains uncertain.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper clearly focuses on a generative audio model for MIDI piano performance inpainting and its application within a professional digital audio workstation, aligning well with the inclusion criteria about generative audio models and audio output; there is no evidence of exclusion criteria such as a non-audio focus or non-full paper form.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract describes a clear generative music application (an encoder–decoder Linear Transformer for inpainting piano performances and an Ableton Live plugin) so it is likely in-scope for generative audio review, but it is ambiguous whether the output is waveform audio or symbolic MIDI only (no explicit waveform output stated), so I recommend passing to full review for confirmation.",
+    "baseline_round-B_SeniorLead_evaluation": 4,
+    "baseline_final_verdict": "include (senior:4)"
+  },
+  {
+    "baseline_index": 135,
+    "key": "zhang_incorporating_2021",
+    "title": "Incorporating Multi-Target in Multi-Stage Speech Enhancement Model for Better Generalization",
+    "abstract": "Recent single-channel speech enhancement meth-ods based on deep neural networks (DNNs) have achieved remarkable results, but there are still generalization problems in real scenes. Like other data-driven methods, DNN-based speech enhancement models produce significant performance degradation on untrained data. In this study, we make full use of the contribution of multi-target joint learning to the model generalization capability, and propose a lightweight and low-computing dilated convolutional network (DCN) model for a more robust speech denoising task. Our goal is to integrate the masking target, the mapping target, and the parameters of the traditional speech enhancement estimator into a DCN model to maximize their complementary advantages. To do this, we build a multi-stage learning framework to deal with multiple targets in stages to achieve their joint learning, namely ‘MT-in-MS’. Our experimental results show that compared with the state-of-the-art time domain and time-frequency domain models, this proposed low-cost DCN model can achieve better generalization performance in speaker, noise, and channel mismatch cases.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "根據 title/abstract，本文聚焦單通道語音增強的多目標聯學習與多階框架以提升泛化，並未明確以生成式音頻模型為核心焦點或給出生成型音頻輸出，因此屬於不確定或需更多證據的情形，給予3分。",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "該論文聚焦於多目標多階段語音增強模型，並未明確提及生成式音訊模型或生成式音訊應用，主要強調的是語音增強與模型泛化能力，因此不完全符合主題中對生成式音訊模型的要求。",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "本文聚焦單通道語音增強（去噪）之多目標/多階段學習與輕量化卷積網路，強調遮罩與映射目標及傳統估計器參數的整合以提升泛化，摘要中未提及任何生成式音訊模型、音訊合成或以生成為主要任務的證據，故與「生成式音訊模型為主要焦點」的入選條件不符。",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 146,
+    "key": "mittal_symbolic_2021",
+    "title": "Symbolic Music Generation with Diffusion Models",
+    "abstract": "Score-based generative models and diffusion probabilistic models have been successful at generating high-quality samples in continuous domains such as images and audio. However, due to their Langevin-inspired sampling mechanisms, their application to discrete and sequential data has been limited. In this work, we present a technique for training diffusion models on sequential data by parameterizing the discrete domain in the continuous latent space of a pre-trained variational autoencoder. Our method is non-autoregressive and learns to generate sequences of latent embeddings through the reverse process and offers parallel generation with a constant number of iterative refinement steps. We apply this technique to modeling symbolic music and show strong unconditional generation and post-hoc conditional infilling results compared to autoregressive language models operating over the same continuous embeddings.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Abstract describes diffusion-based generation of symbolic music via a VAE latent space, focusing on symbolic sequences rather than audio waveforms, so its status as a generative audio model is unclear; thus assign 3.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on a generative model for symbolic music, which is a form of audio output; it presents a technique for generating symbolic music sequences, meeting the generative audio model focus criterion with no evidence of exclusion criteria; thus, it fits well within the inclusion scope.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "Title and abstract describe a diffusion-based generative model applied to symbolic music (generating musical sequences and doing infilling), which is a generative music/audio application even though it operates on symbolic (not raw waveform) representations—therefore it should proceed to full review but is borderline since it’s not explicitly waveform-level audio.",
+    "baseline_round-B_SeniorLead_evaluation": 4,
+    "baseline_final_verdict": "include (senior:4)"
+  },
+  {
+    "baseline_index": 153,
+    "key": "zhou_generative_2020",
+    "title": "Generative Melody Composition with Human-in-the-Loop Bayesian Optimization",
+    "abstract": "Deep generative models allow even novice composers to generate various melodies by sampling latent vectors. However, finding the desired melody is challenging since the latent space is unintuitive and high-dimensional. In this work, we present an interactive system that supports generative melody composition with human-in-the-loop Bayesian optimization (BO). This system takes a mixed-initiative approach; the system generates candidate melodies to evaluate, and the user evaluates them and provides preferential feedback (i.e., picking the best melody among the candidates) to the system. This process is iteratively performed based on BO techniques until the user finds the desired melody. We conducted a pilot study using our prototype system, suggesting the potential of this approach.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract describes a generative audio system for melody with human-in-the-loop Bayesian optimization and reports a pilot study, which fits the generative-audio focus, but there is no explicit claim that this is a full-length paper, so full-paper eligibility cannot be confirmed from title+abstract alone.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The title and abstract clearly indicate the paper focuses on generative audio models, specifically melody composition using Bayesian optimization with human feedback, aligning well with the inclusion criteria targeting generative audio model applications. There is no indication of exclusion criteria such as non-audio focus or non-full-paper form, though it is described as a pilot study which may imply a prototype system rather than full evaluation; nevertheless, the topic relevance is strong.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "Title and abstract clearly describe a generative-audio application (melody synthesis) using a generative model with human-in-the-loop Bayesian optimization, matching the inclusion criteria for generative audio; the mention of a pilot/prototype study does not constitute evidence it is an extended abstract or non-full-paper, so retain for full review.",
+    "baseline_round-B_SeniorLead_evaluation": 5,
+    "baseline_final_verdict": "include (senior:5)"
+  },
+  {
+    "baseline_index": 175,
+    "key": "liang_midi-sandwich2_2019",
+    "title": "MIDI-Sandwich2: RNN-based Hierarchical Multi-modal Fusion Generation VAE networks for multi-track symbolic music generation",
+    "abstract": "Currently, almost all the multi-track music generation models use the Convolutional Neural Network (CNN) to build the generative model, while the Recurrent Neural Network (RNN) based models can not be applied in this task. In view of the above problem, this paper proposes a RNN-based Hierarchical Multi-modal Fusion Generation Variational Autoencoder (VAE) network, MIDI-Sandwich2, for multi-track symbolic music generation. Inspired by VQ-VAE2, MIDI-Sandwich2 expands the dimension of the original hierarchical model by using multiple independent Binary Variational Autoencoder (BVAE) models without sharing weights to process the information of each track. Then, with multi-modal fusion technology, the upper layer named Multi-modal Fusion Generation VAE (MFG-VAE) combines the latent space vectors generated by the respective tracks, and uses the decoder to perform the ascending dimension reconstruction to simulate the inverse operation of multi-modal fusion, multi-modal generation, so as to realize the RNN-based multi-track symbolic music generation. For the multi-track format pianoroll, we also improve the output binarization method of MuseGAN, which solves the problem that the refinement step of the original scheme is difficult to differentiate and the gradient is hard to descent, making the generated song more expressive. The model is validated on the Lakh Pianoroll Dataset (LPD) multi-track dataset. Compared to the MuseGAN, MIDI-Sandwich2 can not only generate harmonious multi-track music, the generation quality is also close to the state of the art level. At the same time, by using the VAE to restore songs, the semi-generated songs reproduced by the MIDI-Sandwich2 are more beautiful than the pure autogeneration music generated by MuseGAN. Both the code and the audition audio samples are open source on https://github.com/LiangHsia/MIDI-S2.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "Although the abstract presents a generative music model (symbolic MIDI) with RNN-based hierarchical VAE and multi-track fusion, it centers on symbolic outputs (pianoroll) and only mentions audio samples in a code repo, so explicit audio-domain output evidence is unclear.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper presents a novel RNN-based generative model specifically for multi-track symbolic music generation, focusing entirely on audio output, meeting the generative audio model focus criteria with detailed methodology and evaluation on a music dataset; therefore, it aligns well with the inclusion criteria and lacks exclusion issues.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract describes a generative music model (RNN-based hierarchical VAE) for multi-track symbolic music (MIDI/pianoroll), evaluated on the Lakh Pianoroll Dataset with code and audio samples available, so it clearly targets generative music and should pass the high-recall gate; caveat: the outputs appear to be symbolic (pianoroll/MIDI) rather than waveform-level audio, which may matter if only raw-audio models are desired.",
+    "baseline_round-B_SeniorLead_evaluation": 4,
+    "baseline_final_verdict": "include (senior:4)"
+  },
+  {
+    "baseline_index": 178,
+    "key": "nakatani_maximum_2019",
+    "title": "Maximum likelihood convolutional beamformer for simultaneous denoising and dereverberation",
+    "abstract": "This article describes a probabilistic formulation of a Weighted Power minimization Distortionless response convolutional beamformer (WPD). The WPD unifies a weighted prediction error based dereverberation method (WPE) and a minimum power distortionless response beamformer (MPDR) into a single convolutional beamformer, and achieves simultaneous dereverberation and denoising in an optimal way. However, the optimization criterion is obtained simply by combining existing criteria without any clear theoretical justification. This article presents a generative model and a probabilistic formulation of a WPD, and derives an optimization algorithm based on a maximum likelihood estimation. We also describe a method for estimating the steering vector of the desired signal by utilizing WPE within the WPD framework to provide an effective and efficient beamformer for denoising and dereverberation.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract presents a probabilistic beamforming method for simultaneous denoising and dereverberation, but it does not clearly frame a generative audio model as its primary focus, so relevance to 'generative audio models' is uncertain; thus a cautious score of 3.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper presents a probabilistic generative model formulation for a convolutional beamformer focused on simultaneous dereverberation and denoising in audio, aligning with generative audio model topics; however, it lacks explicit discussion of applications or outputs that are generative audio themselves, so the evidence is suggestive but not definitive.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract focuses on probabilistic modeling and maximum-likelihood estimation for a convolutional beamformer that performs denoising and dereverberation (an audio enhancement/estimation method), with no evidence it introduces or targets generative audio models or audio synthesis—therefore it likely does not meet the ‘generative audio model’ inclusion and should be possibly excluded.",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 183,
+    "key": "liang_midi-sandwich_2019",
+    "title": "MIDI-Sandwich: Multi-model Multi-task Hierarchical Conditional VAE-GAN networks for Symbolic Single-track Music Generation",
+    "abstract": "Most existing neural network models for music generation explore how to generate music bars, then directly splice the music bars into a song. However, these methods do not explore the relationship between the bars, and the connected song as a whole has no musical form structure and sense of musical direction. To address this issue, we propose a Multi-model Multi-task Hierarchical Conditional VAE-GAN (Variational Autoencoder-Generative adversarial networks) networks, named MIDI-Sandwich, which combines musical knowledge, such as musical form, tonic, and melodic motion. The MIDI-Sandwich has two submodels: Hierarchical Conditional Variational Autoencoder (HCVAE) and Hierarchical Conditional Generative Adversarial Network (HCGAN). The HCVAE uses hierarchical structure. The underlying layer of HCVAE uses Local Conditional Variational Autoencoder (L-CVAE) to generate a music bar which is pre-specified by the First and Last Notes (FLN). The upper layer of HCVAE uses Global Variational Autoencoder(G-VAE) to analyze the latent vector sequence generated by the L-CVAE encoder, to explore the musical relationship between the bars, and to produce the song pieced together by multiple music bars generated by the L-CVAE decoder, which makes the song both have musical structure and sense of direction. At the same time, the HCVAE shares a part of itself with the HCGAN to further improve the performance of the generated music. The MIDI-Sandwich is validated on the Nottingham dataset and is able to generate a single-track melody sequence (17x8 beats), which is superior to the length of most of the generated models (8 to 32 beats). Meanwhile, by referring to the experimental methods of many classical kinds of literature, the quality evaluation of the generated music is performed. The above experiments prove the validity of the model.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "摘要聚焦符號化音樂生成（MIDI），未明確說明音頻輸出/波形生成，因此難以確定是否為以音頻為輸出的生成模型，故評為3（需要更多證據）。",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper clearly proposes a novel generative audio model focused on symbolic single-track music generation, meeting the inclusion criteria of generative audio model focus and full research paper format without evidence of exclusion criteria issues.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "Abstract and title explicitly describe a generative model for symbolic (MIDI) single-track music—detailing model architecture (HCVAE/HCGAN), dataset (Nottingham), and quantitative/qualitative experiments—so this is on-topic for generative audio (music) and appears to be a full research paper; JuniorNano’s concern about waveform vs. symbolic output is noted but does not disqualify the paper since symbolic MIDI generation falls within the generative-audio/music domain. 強烈納入。",
+    "baseline_round-B_SeniorLead_evaluation": 5,
+    "baseline_final_verdict": "include (senior:5)"
+  },
+  {
+    "baseline_index": 184,
+    "key": "pati_learning_2019",
+    "title": "Learning to Traverse Latent Spaces for Musical Score Inpainting",
+    "abstract": "Music Inpainting is the task of filling in missing or lost information in a piece of music. We investigate this task from an interactive music creation perspective. To this end, a novel deep learning-based approach for musical score inpainting is proposed. The designed model takes both past and future musical context into account and is capable of suggesting ways to connect them in a musically meaningful manner. To achieve this, we leverage the representational power of the latent space of a Variational Auto-Encoder and train a Recurrent Neural Network which learns to traverse this latent space conditioned on the past and future musical contexts. Consequently, the designed model is capable of generating several measures of music to connect two musical excerpts. The capabilities and performance of the model are showcased by comparison with competitive baselines using several objective and subjective evaluation methods. The results show that the model generates meaningful inpaintings and can be used in interactive music creation applications. Overall, the method demonstrates the merit of learning complex trajectories in the latent spaces of deep generative models.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract describes a novel deep learning-based approach for musical score inpainting using VAE latent space traversal and an RNN, with objective/subjective evaluations and interactive applicability, but it is unclear whether the final output is audio or symbolic score, so we cannot confirm strict audio-domain eligibility from title/abstract alone.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on a generative audio model specifically for musical score inpainting using deep learning, clearly meeting the topic relevance criteria for generative audio model applications; no exclusion criteria are triggered, so it should be included for full review.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "Junior assessments conflict; after review: the abstract repeatedly describes \"musical score inpainting\", \"musical score\", and generating \"measures\" to connect excerpts, which strongly indicates a symbolic (score-level) output rather than audio waveform/synthesis. There is no mention of audio waveforms, spectrograms, waveform synthesis, or audio-domain evaluation in the title/abstract. Because the inclusion criteria require the paper’s primary output domain to be audio, and that evidence is absent while the text explicitly refers to scores, this item likely falls outside the generative-audio scope. If the paper explicitly stated waveform/audio synthesis or audio-domain evaluations in the abstract, I would keep it in flow.",
+    "baseline_round-B_SeniorLead_evaluation": 2,
+    "baseline_final_verdict": "exclude (senior:2)"
+  },
+  {
+    "baseline_index": 192,
+    "key": "purwins_deep_2019",
+    "title": "Deep Learning for Audio Signal Processing",
+    "abstract": "Given the recent surge in developments of deep learning, this article provides a review of the state-of-the-art deep learning techniques for audio signal processing. Speech, music, and environmental sound processing are considered side-by-side, in order to point out similarities and differences between the domains, highlighting general methods, problems, key references, and potential for cross-fertilization between areas. The dominant feature representations (in particular, log-mel spectra and raw waveform) and deep learning models are reviewed, including convolutional neural networks, variants of the long short-term memory architecture, as well as more audio-specific neural network models. Subsequently, prominent deep learning application areas are covered, i.e. audio recognition (automatic speech recognition, music information retrieval, environmental sound detection, localization and tracking) and synthesis and transformation (source separation, audio enhancement, generative models for speech, sound, and music synthesis). Finally, key issues and future questions regarding deep learning applied to audio signal processing are identified.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The title/abstract present a broad review of deep learning for audio signal processing, with mentions of generative models in synthesis, but no clear indication that generative audio models are the primary focus; evidence is inconclusive for strong inclusion or exclusion.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper reviews deep learning techniques for audio signal processing broadly, including audio synthesis and generative models, but it does not clearly focus exclusively on generative audio models as the primary topic, nor does it explicitly center on generative audio outputs; therefore, more specific evidence on generative audio model focus is needed to confidently include it.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract describes a broad state-of-the-art review of deep learning for audio signal processing that lists many topics (recognition, synthesis, enhancement, generative models among others) but does not indicate that generative audio models or applications are the primary focus; missing explicit evidence that the paper centers on generative audio or that it is a full-length research paper focused on generation. Therefore I judge this borderline case as inconclusive and keep it in flow pending full-text evidence. (One-sentence explanation: the paper includes generative audio models among many topics but lacks clear primary focus on generative audio.)",
+    "baseline_round-B_SeniorLead_evaluation": 3,
+    "baseline_final_verdict": "maybe (senior:3)"
+  },
+  {
+    "baseline_index": 198,
+    "key": "thio_minimal_2019",
+    "title": "A Minimal Template for Interactive Web-based Demonstrations of Musical Machine Learning",
+    "abstract": "New machine learning algorithms are being developed to solve problems in different areas, including music. Intuitive, accessible, and understandable demonstrations of the newly built models could help attract the attention of people from different disciplines and evoke discussions. However, we notice that it has not been a common practice for researchers working on musical machine learning to demonstrate their models in an interactive way. To address this issue, we present in this paper an template that is specifically designed to demonstrate symbolic musical machine learning models on the web. The template comes with a small codebase, is open source, and is meant to be easy to use by any practitioners to implement their own demonstrations. Moreover, its modular design facilitates the reuse of the musical components and accelerates the implementation. We use the template to build interactive demonstrations of four exemplary music generation models. We show that the built-in interactivity and real-time audio rendering of the browser make the demonstration easier to understand and to play with. It also helps researchers to gain insights into different models and to A/B test them.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract presents a template for interactive, web-based demonstrations of musical machine learning, applied to music generation models with real-time audio rendering, indicating an audio-centric generative model focus and a demonstrative application rather than non-audio content.",
+      "evaluation": 5
+    },
+    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on a template for interactive web-based demonstrations specifically for symbolic musical machine learning models, emphasizing model understanding and interactivity rather than presenting or analyzing a generative audio model or application itself. It does not clearly introduce or analyze generative audio models as the primary focus, and the output domain is music but the core is on demonstration methodology, not generative audio output or related ethical issues. Therefore, the relevance to generative audio models as required is weak, leading to uncertainty on inclusion.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_evaluation": 3,
+    "baseline_round-B_SeniorLead_reasoning": "The abstract describes an open-source web template specifically for demonstrating symbolic musical machine-learning (including interactive demos of four music-generation models with real-time audio rendering), so the paper is clearly in the audio/generative-music domain but its primary contribution is a demonstration tool rather than a new or in-depth analysis of generative audio models—given Stage 1's recall orientation I recommend keeping it for full review to confirm whether the paper meets the 'generative audio model focus' requirement. (Missing/unclear: whether the paper is a full-length research article and whether generative models are a primary focus rather than illustrative examples.)",
+    "baseline_round-B_SeniorLead_evaluation": 4,
+    "baseline_final_verdict": "include (senior:4)"
+  },
+  {
+    "baseline_index": 203,
+    "key": "koh_rethinking_2018",
+    "title": "Rethinking Recurrent Latent Variable Model for Music Composition",
+    "abstract": "We present a model for capturing musical features and creating novel sequences of music, called the Convolutional Variational Recurrent Neural Network. To generate sequential data, the model uses an encoder-decoder architecture with latent probabilistic connections to capture the hidden structure of music. Using the sequence-to-sequence model, our generative model can exploit samples from a prior distribution and generate a longer sequence of music. We compare the performance of our proposed model with other types of Neural Networks using the criteria of Information Rate that is implemented by Variable Markov Oracle, a method that allows statistical characterization of musical information dynamics and detection of motifs in a song. Our results suggest that the proposed model has a better statistical resemblance to the musical structure of the training data, which improves the creation of new sequences of music in the style of the originals.",
+    "round-A_JuniorNano_output": {
+      "reasoning": "摘要描述了一种用于音乐生成的模型（Convolutional Variational Recurrent Neural Network），并以音乐序列为目标进行评估，符合生成音频/音乐的主题，但未明确指明最终输出是否为音频波形而非符号音乐，且仅基于标题与摘要，尚缺乏足够证据明确归类为“音频生成且为完整论文”的充分证据，因此标注为3（需要更多证据）",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper clearly focuses on a generative audio model for music composition, proposing a novel Conv Variational Recurrent NN that generates music sequences; the abstract provides sufficient evidence of a generative audio model and evaluates its effectiveness in generating musically structured audio output, fitting the inclusion criteria.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_evaluation": 5,
+    "baseline_round-B_SeniorLead_reasoning": "標題與摘要清楚描述一個用於生成音樂序列的生成模型（Convolutional Variational Recurrent Neural Network），說明了 encoder–decoder、從先驗採樣以生成更長音樂序列，並以 Variable Markov Oracle 的 Information Rate 評估其對訓練資料音樂結構的再現性，顯示以生成音樂為主要焦點；但摘要未明確指出最終輸出為原始音訊波形還是符號化音樂（如 MIDI），也未明確說明為全文論文而非短文或工作坊投稿；在 Stage 1 應以高召回為主且無否定性證據下，偏向納入但保留少量不確定性，因此給予 4（可能納入）。",
+    "baseline_round-B_SeniorLead_evaluation": 4,
+    "baseline_final_verdict": "include (senior:4)"
+  }
+]

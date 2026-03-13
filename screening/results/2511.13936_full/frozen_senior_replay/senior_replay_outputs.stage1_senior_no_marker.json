@@ -1,0 +1,267 @@
+[
+  {
+    "key": "google_scholar_hindex",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers gave 3; the title (“Top Publications - Computer Science”) and abstract (“Accessed: 2025-03-19”) contain only metadata and no evidence of audio content or any preference-learning component (no rankings/pairwise comparisons, no RL/optimization driven by preferences), so per the sparse-metadata rule I keep this as 3—insufficient information to include or exclude.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "harzing2007pop",
+    "round-B_SeniorLead_reasoning": "僅有標題 “Publish or Perish?” 並無摘要或內容，無任何證據顯示為音訊領域或包含偏好學習/排名元件；兩位初評者也因資料不足各給3分；缺少的關鍵證據為：是否為音訊相關、是否包含偏好/排名或以偏好驅動的訓練、以及是否為綜述，因此依召回導向保守給予3分（不確定/需要更多證據）。",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "lotfian2016retrieving",
+    "round-B_SeniorLead_reasoning": "The abstract describes a probabilistic preference-learning approach that creates relative (pairwise) labels from categorical emotion annotations and trains rank-classifiers (happy/angry/sad) with cross-corpus evaluation—supporting inclusion for preference-learning—however it never explicitly states that audio is a core modality (could be visual/text/multimodal), so modality evidence is missing; retain for full review (uncertain).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "parthasarathy2018preference",
+    "round-B_SeniorLead_reasoning": "The abstract clearly describes a preference-learning/ranking approach using QA-based relative labels for sentence-level emotional annotations (supporting inclusion on grounds of a preference-learning component), but it does not specify the modality (speech/audio vs. text/other), so audio-domain relevance cannot be confirmed — both junior reviewers also flagged this uncertainty and rated 3. Given the missing evidence of an audio application, I assign an uncertain score.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "han2020ordinal",
+    "round-B_SeniorLead_reasoning": "The paper clearly addresses an audio-domain SER task and explicitly models ordinal rank information with a CORAL-based network (matching inclusion for audio and rank-aware methods), but the abstract describes ordinal classification (transforming to binary threshold sub-tasks) rather than explicit pairwise/A–B preference signals or a preference-driven training objective—so it’s unclear whether this meets the operational definition of preference learning; I concur more with the ‘uncertain’ junior reviewer than the positive one. (Missing evidence: explicit pairwise comparisons, A/B ranking of audio clips, or use of preference signals for learning.)",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "chumbalov2020scalable",
+    "round-B_SeniorLead_reasoning": "The title/abstract describes a general comparison-based search method with experiments on movie actors and no mention of audio or audio preference learning (junior reviewers also flagged non-audio focus), so it does not meet the audio-domain preference-learning inclusion criteria — likely exclusion.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "jayawardena2020ordinal",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers gave 3; the abstract addresses ordinal vs. classification/regression and proposes a neural-net loss for affective computing datasets but contains no mention of pairwise/ranking/preference signals nor explicitly that audio is a core modality, so inclusion as a preference-learning audio paper is unclear and full text is needed.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "dong2020pyramid",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers marked this as uncertain. The abstract describes collecting crowdsourced numeric quality ratings (MOS-like) and training a pyramid BLSTM to predict those scores, but it does not mention any ranking/pairwise A/B comparisons or an explicit preference-learning objective (nor conversion of ratings into pairwise preferences), so it is unclear whether this work meets the preference-learning inclusion criteria — lacking explicit evidence of preference/ranking-based training, I keep it as uncertain.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "wu2023interval",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated 3. The abstract describes an HMM-based conversion from time-continuous interval labels to time-continuous ordinal labels for speech (MSP-Podcast/MSP-Conversation) and explicitly treats relative ordinal labels (ROLs, i.e., comparisons), so the work is audio-related and involves comparison-style labels; however, it does not state that these relative/ordinal signals are used as preference signals for learning/ranking or that any model is trained with pairwise/preferences—it appears to be a label-conversion method rather than a preference-learning or ranking-learning study. Missing evidence: explicit use of pairwise/relative preferences as a learning signal or a ranking/preference-learning training objective. Given this ambiguity, I keep it in flow (uncertain) for full review.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "anastassiou2024seed",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers noted the presence of reinforcement learning for improving speaker similarity/controllability (one saw this as evidence for preference-driven optimization, the other flagged it as unclear); the abstract explicitly mentions an RL approach but does not state that RL uses human/pairwise preferences or preference-derived rewards, so evidence of explicit preference-learning signals is weak but plausible—recommend moving to full review to verify whether RL is preference-driven or uses ranking/A-B signals.",
+    "round-B_SeniorLead_evaluation": 4
+  },
+  {
+    "key": "chu2024qwen2",
+    "round-B_SeniorLead_reasoning": "The abstract explicitly reports using DPO (Direct Preference Optimization) to optimize the model’s factuality and behavior—which constitutes a preference-learning training signal—and the work centers on an audio-language model, so it meets the preference-learning + audio-domain inclusion criteria; junior reviewers noted missing explicit preference details, but the mention of DPO is sufficient evidence to include. Therefore: strong include.",
+    "round-B_SeniorLead_evaluation": 5
+  },
+  {
+    "key": "wu2025adaptive",
+    "round-B_SeniorLead_reasoning": "The abstract describes an audio accompaniment model finetuned with reinforcement learning using a learned reward model that provides feedback on harmonic and temporal coherence (even if not explicitly human-derived), which constitutes preference-driven optimization for an audio task — include for full review; note the abstract does not specify whether the reward model is learned from human preference labels.",
+    "round-B_SeniorLead_evaluation": 5
+  },
+  {
+    "key": "kumar2025using",
+    "round-B_SeniorLead_reasoning": "The abstract explicitly proposes an RLHF framework that fine-tunes a speech-enhancement model using a MOS-based reward model (i.e., preference-driven RL optimization in the audio domain); one junior reviewer was cautious about the exact form of preference signals but the other concurred with inclusion—given the clear RLHF + MOS reward claim, this meets the inclusion criteria.",
+    "round-B_SeniorLead_evaluation": 5
+  },
+  {
+    "key": "huang2025step",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated 3; the abstract describes a unified audio–text model, generative speech data engine, and human evaluations (audio is clearly a core modality), but it gives no explicit evidence of preference-learning (no mention of pairwise/A-B rankings, preference signals, or RL optimization driven by preferences), so inclusion is uncertain pending full-text details.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "ouyang2022training",
+    "round-B_SeniorLead_reasoning": "The paper clearly describes preference-based fine-tuning of text language models (InstructGPT) using human rankings, but there is no indication of any audio modality or ranking of audio items—both junior reviewers noted the lack of audio—so it fails the audio-domain inclusion and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "mckeown2011semaine",
+    "round-B_SeniorLead_reasoning": "The title/abstract describes a richly annotated multimodal audiovisual dataset (SEMAINE) for emotionally colored conversations (150 participants, 959 conversations, affective labels, FACS, laughs/nods) but contains no mention of preference signals, pairwise/A-B comparisons, rankings, or preference-driven learning/optimization (junior reviewers likewise flagged lack of preference-learning evidence), so there is insufficient evidence to include—recommend 3 (uncertain; send to full review for confirmation).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "lotfian2017building",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers recommended 3; the abstract describes an audio-domain method (retrieving emotional speech from podcasts + crowdsourced annotation) but contains no explicit mention of any preference-learning components (rankings, A/B/pairwise preferences, conversion of ratings into preferences, or preference-driven optimization/RL), so inclusion is uncertain due to missing evidence of preference signals used for learning.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "busso2016msp",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers concluded the abstract describes a multimodal emotional corpus with classifier evaluations and naturalness/inter-evaluator analyses but found no mention of preference-learning, pairwise/ranked comparisons, or preference-driven training; the abstract lacks explicit evidence of rankings, A/B comparisons, or conversion of ratings into preference signals. One-sentence explanation: No clear preference-learning or ranking component is described in the title/abstract, so retain for full review (score 3).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "zhou2014predicting",
+    "round-B_SeniorLead_reasoning": "The abstract describes supervised ML (KNN, Random Forest regression) to predict geographic origin from audio descriptors with cross-validation and reports geodesic error; it contains no indication of any preference-learning component (no rankings, pairwise/A–B comparisons, human or synthetic preference signals, or preference-driven optimization). Junior reviewers were split, but given the clear absence of preference/ranking signals in the title/abstract, this paper likely falls outside the preference-learning inclusion criteria.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "lopes2015sonancia",
+    "round-B_SeniorLead_reasoning": "The title/abstract indicate an audio-focused work (sonification of procedurally generated game levels) but contain no evidence of a preference-learning component (rankings, pairwise comparisons, or optimization), and given the junior reviewers' split (4 and 3) I rate this a 3—uncertain, full text needed to confirm presence of preference-driven learning.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "donahue2022melody",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated this paper a 3; the abstract describes generative pre-training and a new dataset for melody transcription but contains no mention of ranking/pairwise preferences, preference-driven optimization, or RL-based preference training, so presence of a preference-learning component is unclear and full text is needed—score 3.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "ouyang2022training",
+    "round-B_SeniorLead_reasoning": "The paper clearly describes preference-based fine-tuning of text language models (InstructGPT) using human rankings, but there is no indication of any audio modality or ranking of audio items—both junior reviewers noted the lack of audio—so it fails the audio-domain inclusion and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "lin2004rouge",
+    "round-B_SeniorLead_reasoning": "The title/abstract describe ROUGE as a text-summary evaluation package (n-gram/sequence overlap measures) with no mention of audio data or any preference-learning/ranking signals, so it fails the audio and preference-learning inclusion criteria and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "zhang2019bertscore",
+    "round-B_SeniorLead_reasoning": "題目與摘要明確描述 BERTScore 為文本（含影像標題）生成評估指標，未涉及音訊或以偏好學習進行排序/訓練，故不符合包含音訊偏好學習的收錄條件；已參考兩位初評（分別為1與3）。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "schluter2017limits",
+    "round-B_SeniorLead_reasoning": "摘要與標題顯示論文探討的是文字摘要與 ROUGE 評估及演算法性質（NP-hard 證明、貪婪演算法表現），完全未提及音訊應用或任何偏好學習/排序（A/B、pairwise 或基於偏好的訓練/優化），故不符合收錄標準；兩位初審也指出相同缺失。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "chakrabarty2024art",
+    "round-B_SeniorLead_reasoning": "The paper studies creativity of written stories (LLMs vs. professional authors) using human assessment; there is no audio modality and no preference-learning/ranking or training component (judgments are used for evaluation only), so it does not meet the audio preference-learning inclusion criteria.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "zheng2023judging",
+    "round-B_SeniorLead_reasoning": "Reasoning: The title and abstract describe using strong LLMs to judge chat assistants (MT-bench and Chatbot Arena) to approximate human preferences for evaluation, with no mention of audio as a modality or any preference-learning/optimization applied to audio items—preferences are used for evaluation only. Both junior reviewers flagged no audio relevance; thus this paper fails the audio-domain and preference-learning inclusion criteria and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "carterette2008here",
+    "round-B_SeniorLead_reasoning": "Abstract describes using pairwise preference judgments for evaluating document relevance (an IR evaluation methodology), with no indication of audio as a core modality nor of using preference signals for learning/optimization—therefore it fails both the audio-domain and preference-learning inclusion criteria; junior reviewers' outputs (1 and 3) were consulted and support exclusion.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "wester2015we",
+    "round-B_SeniorLead_reasoning": "The paper critiques subjective evaluation practices for TTS and re-analyses Blizzard 2013 to show effects on MOS-based rank order and significant pairs, but the abstract contains no evidence that these preference signals are used for learning/optimization (no mention of pairwise/preference-based training or converting MOS into preferences); both junior reviewers also rated it as uncertain. Lacking explicit preference-learning elements, I cannot confidently include it at this stage—recommend score 3 (uncertain / needs full-text to confirm whether any preference-learning component exists).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "rix2001perceptual",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated this as 3. The title/abstract describe PESQ as an objective speech-quality assessment model (integration of PAMS and PSQM99) with no mention of preference signals, pairwise/ranking comparisons, or any learning/optimization component; lacking explicit evidence of preference-based data or training, and per Stage‑1 recall-oriented rules I retain this as uncertain and request full text for confirmation (missing explicit pairwise preferences, ranking/A-B comparisons, or an RL/learning loop).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "morris2004and",
+    "round-B_SeniorLead_reasoning": "Abstract presents new ASR evaluation metrics (MER, WIL) and alignment discussion but contains no mention of preference signals, rankings/A-B comparisons, or any learning/optimization using preferences; junior reviewers also flagged it as evaluation-only (scores 3 and 2). Lacking explicit evidence of preference-learning components, I err on the side of recall and mark as uncertain pending full text (missing: pairwise/preferences, preference-driven training or ranking of audio).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "huang2022mulan",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers gave 3; the abstract describes a large-scale two-tower audio–text embedding (zero-shot tagging and retrieval) but contains no explicit mention of preference signals, pairwise/A-B comparisons, ranking losses, or preference-driven optimization (e.g., RL), so under a recall-oriented gate I conservatively score 3 pending full-text confirmation of any preference-learning components.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "metallinou2013annotation",
+    "round-B_SeniorLead_reasoning": "The abstract describes continuous multimodal emotion annotation on a large database but gives no evidence of preference-learning (pairwise/A-B comparisons, rankings, or preference-driven training) nor explicitly identifies audio as a core modality; junior reviewers likewise rated it 3 — insufficient evidence to include, so conservatively score 3.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "christiano2017deep",
+    "round-B_SeniorLead_reasoning": "標題與摘要顯示本工作是從人類偏好進行的強化學習（符合偏好學習方向），但摘要僅提到 Atari 與模擬機器人任務，未提及任何音頻/音訊作業或音頻偏好信號；兩位初審也給出3分評估，故在僅看標題與摘要時缺少音頻領域的證據，應保留以待全文確認。",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "liu2024lipo",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers flagged the same issue: the paper focuses on listwise preference optimization for language models (learning-to-rank) with no mention of audio or audio-data; because the inclusion criterion requires an audio-domain application and that evidence is missing, I rate it as uncertain and request full paper only if audio relevance is shown.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "cao2007learning",
+    "round-B_SeniorLead_reasoning": "Title and abstract describe a general listwise learning-to-rank method for retrieval (permutation/top-k models and listwise loss) but contain no mention of audio or audio-based preference signals (e.g., ranking/A–B of audio clips, MOS→rank conversion, or preference-driven RL), so I cannot confirm audio-domain relevance—both junior reviewers also flagged this uncertainty; therefore keep for further review (3).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "rafailov2023direct",
+    "round-B_SeniorLead_reasoning": "The abstract describes Direct Preference Optimization for text language models and RLHF (a preference-learning method) but contains no mention of audio or audio-related tasks, so it fails the audio-domain inclusion criterion and should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "schulman2017proximal",
+    "round-B_SeniorLead_reasoning": "摘要描述一種通用強化學習演算法（PPO），並在模擬機器人與Atari任務上測試；未提及任何音頻應用或偏好/比較信號（pairwise/A-B或以偏好驅動的優化），兩位初審亦認為與音頻偏好學習不相關，因此應排除。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "shao2024deepseekmath",
+    "round-B_SeniorLead_reasoning": "標題與摘要只描述數學推理與模型訓練（DeepSeekMath、數學資料、GRPO/PPO變體），未提及任何音訊模態或以偏好/排序為目標的學習信號；兩位初審分別評為3與2，綜合判定為1（強烈排除）。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "gao2023scaling",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated this paper a 3; the abstract studies reward-model overoptimization in RLHF using synthetic preferences (so it is about preference learning), but there is no mention of audio or any audio-domain application or audio items being ranked, so the required audio-domain evidence is missing—insufficient to include but also not definitive exclusion without the full text (recommend proceed to full review only if audio relevance is confirmed).",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "kilgour2018fr",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated this as 3; the abstract describes a reference-free audio evaluation metric (Fréchet Audio Distance) for music enhancement but contains no indication of a preference-learning component (no pairwise/A-B comparisons, rankings, or training/optimization driven by preference signals), so inclusion is unclear without the full paper.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "mittag2021nisqa",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated 3. The abstract describes an end-to-end CNN+Self-Attention model for multidimensional speech quality prediction trained on crowdsourced datasets, but it contains no mention of ranking/pairwise/A-B preference signals or preference-driven training (only implicit numeric quality labels), so I cannot confirm a preference-learning component from title+abstract alone and full text is needed to verify conversion of ratings into preferences.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "singhal2023long",
+    "round-B_SeniorLead_reasoning": "The abstract studies RLHF effects on large language models and length biases in text outputs with no mention of audio as a core modality or any audio preference signals, so it does not meet the audio preference-learning inclusion criteria; both junior reviewers likewise noted it is text-focused—exclude.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "zhou2023beyond",
+    "round-B_SeniorLead_reasoning": "Title and abstract focus on aligning language models via multi-objective RLHF and make no mention of audio, audio preference signals, or optimization of audio models; Junior reviewers scored 3 (uncertain) and 2 (likely exclusion) for lack of audio evidence—given explicit LM/RLHF framing and absence of any audio-related indications, this paper likely does not meet the audio-preference inclusion criteria.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "li2024omnibench",
+    "round-B_SeniorLead_reasoning": "The title/abstract present a tri-modal benchmark (vision+audio+text) and an instruction-tuning dataset, so audio is a core modality, but there is no mention of preference-learning elements (pairwise/A-B comparisons, rankings, preference labels, or preference-driven/RL training); therefore evidence is insufficient to confirm inclusion.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "plackett1975analysis",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers noted absence of audio content; the title/abstract describe a probabilistic treatment of permutations with applications to voting and beanstores but no mention of audio modalities or audio-based preference learning (rankings/A-B comparisons/paired preferences/optimization driven by preference), so it fails the audio preference-learning inclusion criteria — exclude.",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "pan2022effects",
+    "round-B_SeniorLead_reasoning": "摘要僅討論強化學習中的獎勵規格錯誤、能力閾值與異常策略檢測，未提及任何音訊應用或偏好學習（例如排序/對比偏好信號）；兩位初審皆傾向3分但未給出新增音訊證據；因此在缺乏音訊或偏好學習證據下，應偏向排除。",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "yang2021superb",
+    "round-B_SeniorLead_reasoning": "The paper introduces SUPERB, a speech SSL benchmark focusing on frozen shared representations and lightweight task heads for evaluation/leaderboard purposes; the abstract contains no mention of ranking/pairwise comparisons, preference signals, or any preference-driven learning/optimization (and both junior reviewers flagged the same absence), so it likely does not meet the preference-learning inclusion criterion.",
+    "round-B_SeniorLead_evaluation": 2
+  },
+  {
+    "key": "xu2025qwen2",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers scored 3; the abstract describes a multimodal model that includes audio but gives no evidence of preference-learning (rankings, pairwise/A–B comparisons, preference signals, or preference-driven training) and it's unclear whether audio is a core focus—more explicit evidence is needed to include it.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "hurst2024gpt",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers scored 3. The abstract describes GPT-4o as a multimodal model with speech-to-speech capabilities (so audio is a core modality), but it contains no explicit mention of preference-learning components such as pairwise/ranking/A–B comparisons, preference signals used for training, or RL-based preference optimization. Missing explicit evidence of preference-driven learning/training; therefore uncertain and should proceed to full review for confirmation.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "team2024gemini",
+    "round-B_SeniorLead_reasoning": "Abstract shows Gemini 1.5 is multimodal with audio/ASR as a core modality (supporting retention), and junior reviewers likewise noted audio presence; however the abstract contains no mention of any preference-learning component (rankings/A-B pairwise comparisons, preference signals, or preference-driven training/RL loop). Per Stage 1 recall-oriented rules, lack of explicit preference-learning evidence means we should keep it in uncertainty rather than exclude.",
+    "round-B_SeniorLead_evaluation": 3
+  },
+  {
+    "key": "ginsparg2021lessons",
+    "round-B_SeniorLead_reasoning": "題目與摘要僅討論 arXiv 三十年資訊分享與創辦者的討論，明顯為評論/回顧性質，且未提及任何音訊模態、偏好學習、排名或成對比較與學習成分（已參考兩位 junior reviewer 的意見），故不符合音訊偏好學習收錄標準，建議排除。",
+    "round-B_SeniorLead_evaluation": 1
+  },
+  {
+    "key": "sutton2017popularity",
+    "round-B_SeniorLead_reasoning": "I reviewed the two junior reviewers (scores 3 and 2) and the title+abstract clearly discuss arXiv adoption in computer science with no mention of audio as a modality or any preference-learning/ranking/pairwise signals (missing both audio-domain and preference-learning evidence), so this should be excluded.",
+    "round-B_SeniorLead_evaluation": 1
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "stage1_junior": {
+    "junior_nano": {
+      "backstory": "A research assistant responsible for preliminary literature screening."
+    },
+    "junior_mini": {
+      "backstory": "A research assistant familiar with the target domain."
+    }
+  },
+  "stage1_senior_no_marker": {
+    "backstory": "A senior reviewer responsible for synthesizing junior feedback and making final decisions.",
+    "additional_context": "Two junior reviewers have provided initial assessments. Review their feedback before making your integrated judgment."
+  },
+  "stage1_senior_prompt_tuned": {
+    "backstory": "You are the Stage 1 senior adjudicator. Your goal is to resolve key boundary cases using only title + abstract evidence with traceable decisions. You may only use the title, abstract, and both juniors' outputs/evaluations. Do not assume full text will fill missing evidence.",
+    "additional_context": "Adjudication rules (strict mode):\n1) Only use information explicitly present in this input: title, abstract, and round-A_JuniorNano/JuniorMini outputs/evaluations; do not rely on unseen full text.\n2) Do not treat topic relevance, conceptual similarity, method similarity, or domain adjacency as sufficient inclusion evidence.\n3) You may assign 3 (maybe) only when all conditions are met:\n   a. At least one traceable core positive inclusion signal is present (not just concept-related wording).\n   b. Exactly one key eligibility condition is missing.\n   c. That missing condition cannot be directly determined from the current title/abstract, yet deferral remains justified under this round's rules.\n4) If the case is topic-adjacent, method-related, metadata-like, or only mentions related keywords without core positive inclusion evidence, prefer 1 or 2 (exclude).\n5) High topic relevance does not imply inclusion: unless core eligibility is explicitly supported, do not retain the paper simply because it seems possibly related.\n6) In reasoning, explicitly state: what positive evidence is present, what key condition is missing, and why that does or does not warrant exclusion."
+  },
+  "stage2_fulltext": {
+    "junior_nano": {
+      "backstory": "A research assistant responsible for preliminary full-text screening."
+    },
+    "junior_mini": {
+      "backstory": "A research assistant familiar with the target domain and able to review full text."
+    },
+    "senior": {
+      "backstory": "A senior reviewer responsible for synthesizing full-text reviews and making final decisions.",
+      "additional_context": "Two junior reviewers have provided initial assessments. Review their feedback before making your integrated judgment."
+    }
+  }
+}

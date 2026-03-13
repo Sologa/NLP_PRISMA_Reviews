@@ -1,0 +1,87 @@
+{
+  "all_match": true,
+  "mismatch_count": 0,
+  "mismatches": [],
+  "checks": [
+    {
+      "name": "stage1_junior.junior_nano.backstory",
+      "expected": "一位負責初步篩選文獻的研究助理",
+      "actual": "一位負責初步篩選文獻的研究助理",
+      "expected_sha256": "4f1c2d120ae7b4da241d366ca4b702fa87a299507178dfd242deb2b950608fe7",
+      "actual_sha256": "4f1c2d120ae7b4da241d366ca4b702fa87a299507178dfd242deb2b950608fe7",
+      "match": true
+    },
+    {
+      "name": "stage1_junior.junior_mini.backstory",
+      "expected": "一位熟悉相關領域的研究助理",
+      "actual": "一位熟悉相關領域的研究助理",
+      "expected_sha256": "f5e663be720f1779dd96debfc36b2fb54f7f7993f60e3359a67bc6213d358e0b",
+      "actual_sha256": "f5e663be720f1779dd96debfc36b2fb54f7f7993f60e3359a67bc6213d358e0b",
+      "match": true
+    },
+    {
+      "name": "stage1_senior_prompt_tuned.backstory",
+      "expected": "你是 Stage 1 的 senior adjudicator，目標是把只看 title + abstract 的關鍵邊界案件收斂到可追溯的裁決。你只能依據 title、abstract 與兩位 junior 的 output 與 evaluation 作判斷，不能假設 full text 會補齊缺漏。",
+      "actual": "你是 Stage 1 的 senior adjudicator，目標是把只看 title + abstract 的關鍵邊界案件收斂到可追溯的裁決。你只能依據 title、abstract 與兩位 junior 的 output 與 evaluation 作判斷，不能假設 full text 會補齊缺漏。",
+      "expected_sha256": "edd349540ed007caf5bf925ded7bbcf787cd22f7104c1294453ba4c8825a7655",
+      "actual_sha256": "edd349540ed007caf5bf925ded7bbcf787cd22f7104c1294453ba4c8825a7655",
+      "match": true
+    },
+    {
+      "name": "stage1_senior_prompt_tuned.additional_context",
+      "expected": "仲裁規則（嚴格版）：\n1) 你只能看這次輸入中的 title、abstract、round-A_JuniorNano/JuniorMini 的判斷；不得引用沒有明示的 full text。\n2) 不要把 topic relevance、conceptual similarity、method similarity、domain adjacent 視為納入充分證據。\n3) 僅當以下條件同時滿足才可給 3(maybe)：\n   a. 已看到至少一條可追溯的核心 inclusion 正向訊號（非純概念關聯詞）；\n   b. 缺失恰好一個能影響納入判斷的關鍵條件；\n   c. 該缺失在現有 title/abstract 中無法直接判定，但在這輪規則下仍值得延後判定。\n4) 如果是 topic-adjacent、method-related、metadata-like 或只描述相關關鍵字，但沒有核心 inclusion 正向證據，優先給 1 或 2 排除。\n5) 高題目相關性≠可納入：除非核心 eligibility 已被明確支持，否則不要因『可能有關』就保留。\n6) 輸出 reasoning 必須回答：看到了哪些正向證據、缺了什麼關鍵條件、為什麼可/不可視為 exclusion。",
+      "actual": "仲裁規則（嚴格版）：\n1) 你只能看這次輸入中的 title、abstract、round-A_JuniorNano/JuniorMini 的判斷；不得引用沒有明示的 full text。\n2) 不要把 topic relevance、conceptual similarity、method similarity、domain adjacent 視為納入充分證據。\n3) 僅當以下條件同時滿足才可給 3(maybe)：\n   a. 已看到至少一條可追溯的核心 inclusion 正向訊號（非純概念關聯詞）；\n   b. 缺失恰好一個能影響納入判斷的關鍵條件；\n   c. 該缺失在現有 title/abstract 中無法直接判定，但在這輪規則下仍值得延後判定。\n4) 如果是 topic-adjacent、method-related、metadata-like 或只描述相關關鍵字，但沒有核心 inclusion 正向證據，優先給 1 或 2 排除。\n5) 高題目相關性≠可納入：除非核心 eligibility 已被明確支持，否則不要因『可能有關』就保留。\n6) 輸出 reasoning 必須回答：看到了哪些正向證據、缺了什麼關鍵條件、為什麼可/不可視為 exclusion。",
+      "expected_sha256": "8adfcf63c3490dbdb784b021a5f0d5575476cb39e1bae3bb395d5cb9c8a922fa",
+      "actual_sha256": "8adfcf63c3490dbdb784b021a5f0d5575476cb39e1bae3bb395d5cb9c8a922fa",
+      "match": true
+    },
+    {
+      "name": "stage2_fulltext.junior_nano.backstory",
+      "expected": "一位負責全文初步篩選文獻的研究助理",
+      "actual": "一位負責全文初步篩選文獻的研究助理",
+      "expected_sha256": "73f6d6187c84e2c1f6f561098f68265de4e3af715cb616f0cc3fd503f8385165",
+      "actual_sha256": "73f6d6187c84e2c1f6f561098f68265de4e3af715cb616f0cc3fd503f8385165",
+      "match": true
+    },
+    {
+      "name": "stage2_fulltext.junior_mini.backstory",
+      "expected": "一位熟悉相關領域且可閱讀全文的研究助理",
+      "actual": "一位熟悉相關領域且可閱讀全文的研究助理",
+      "expected_sha256": "150eb2e4745249e0fc62431a60ba0ab16be35c67d3dbdbbaf87c51a772197edd",
+      "actual_sha256": "150eb2e4745249e0fc62431a60ba0ab16be35c67d3dbdbbaf87c51a772197edd",
+      "match": true
+    },
+    {
+      "name": "stage2_fulltext.senior.backstory",
+      "expected": "負責統整全文審查並做最終判定的資深 reviewer",
+      "actual": "負責統整全文審查並做最終判定的資深 reviewer",
+      "expected_sha256": "66aa68299d33c88bd4f2bcb2fa473fef7dc752bd2884d747fe2e40b74c732406",
+      "actual_sha256": "66aa68299d33c88bd4f2bcb2fa473fef7dc752bd2884d747fe2e40b74c732406",
+      "match": true
+    },
+    {
+      "name": "stage2_fulltext.senior.additional_context",
+      "expected": "兩位 junior reviewer 已提供初步評估，請在整合意見前檢視他們的回饋。",
+      "actual": "兩位 junior reviewer 已提供初步評估，請在整合意見前檢視他們的回饋。",
+      "expected_sha256": "f695224a1f8bd51ca7fadb61d75a356869510694805c259522d4b8ad94cf12db",
+      "actual_sha256": "f695224a1f8bd51ca7fadb61d75a356869510694805c259522d4b8ad94cf12db",
+      "match": true
+    },
+    {
+      "name": "stage1_senior_no_marker.backstory",
+      "expected": "負責統整並做最終判定的資深 reviewer",
+      "actual": "負責統整並做最終判定的資深 reviewer",
+      "expected_sha256": "6d2f1316d9ab01632f8d7bd808591c565b8be55a541a1efe7ccb6e4d6f88f8cc",
+      "actual_sha256": "6d2f1316d9ab01632f8d7bd808591c565b8be55a541a1efe7ccb6e4d6f88f8cc",
+      "match": true
+    },
+    {
+      "name": "stage1_senior_no_marker.additional_context",
+      "expected": "兩位 junior reviewer 已提供初步評估，請在整合意見前檢視他們的回饋。",
+      "actual": "兩位 junior reviewer 已提供初步評估，請在整合意見前檢視他們的回饋。",
+      "expected_sha256": "f695224a1f8bd51ca7fadb61d75a356869510694805c259522d4b8ad94cf12db",
+      "actual_sha256": "f695224a1f8bd51ca7fadb61d75a356869510694805c259522d4b8ad94cf12db",
+      "match": true
+    }
+  ]
+}

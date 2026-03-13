@@ -1,0 +1,91 @@
+{
+  "paper_id": "2601.19926",
+  "paths": {
+    "baseline": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2601.19926_full/latte_review_results.senior_no_marker.json",
+    "frozen_inputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2601.19926_full/frozen_senior_replay/frozen_stage1_senior_inputs.json",
+    "replay_no_marker_outputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2601.19926_full/frozen_senior_replay/senior_replay_outputs.stage1_senior_no_marker.json",
+    "replay_tuned_outputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2601.19926_full/frozen_senior_replay/senior_replay_outputs.stage1_senior_prompt_tuned.json",
+    "reconstructed_no_marker": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2601.19926_full/frozen_senior_replay/latte_review_results.reconstructed_replay_stage1_senior_no_marker.json",
+    "reconstructed_tuned": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2601.19926_full/frozen_senior_replay/latte_review_results.reconstructed_replay_stage1_senior_prompt_tuned.json",
+    "gold": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/metadata/title_abstracts_metadata-annotated.jsonl"
+  },
+  "counts": {
+    "baseline_total": 358,
+    "sent_to_senior": 215,
+    "not_sent_to_senior": 143
+  },
+  "view1_senior_subset_distribution": {
+    "baseline_no_marker": {
+      "1_2": 16,
+      "3": 165,
+      "4_5": 34,
+      "missing": 0,
+      "total": 215
+    },
+    "replay_stage1_senior_no_marker": {
+      "1_2": 10,
+      "3": 175,
+      "4_5": 30,
+      "missing": 0,
+      "total": 215
+    },
+    "replay_stage1_senior_prompt_tuned": {
+      "1_2": 85,
+      "3": 121,
+      "4_5": 9,
+      "missing": 0,
+      "total": 215
+    }
+  },
+  "view2_stage1_metrics": {
+    "baseline_no_marker": {
+      "tp": 330,
+      "fp": 9,
+      "tn": 14,
+      "fn": 5,
+      "precision": 0.9734513274336283,
+      "recall": 0.9850746268656716,
+      "f1": 0.9792284866468842,
+      "matched": 358,
+      "gold_size": 360,
+      "pred_size": 358
+    },
+    "replay_stage1_senior_no_marker": {
+      "tp": 332,
+      "fp": 13,
+      "tn": 10,
+      "fn": 3,
+      "precision": 0.9623188405797102,
+      "recall": 0.991044776119403,
+      "f1": 0.9764705882352942,
+      "matched": 358,
+      "gold_size": 360,
+      "pred_size": 358
+    },
+    "replay_stage1_senior_prompt_tuned": {
+      "tp": 264,
+      "fp": 6,
+      "tn": 17,
+      "fn": 71,
+      "precision": 0.9777777777777777,
+      "recall": 0.7880597014925373,
+      "f1": 0.8727272727272728,
+      "matched": 358,
+      "gold_size": 360,
+      "pred_size": 358
+    }
+  },
+  "spot_checks": [
+    {
+      "paper_id": "2601.19926",
+      "key": "mccoy_right_2019",
+      "baseline_junior_scores": {
+        "JuniorNano": 3,
+        "JuniorMini": 3
+      },
+      "baseline_senior_score": 3,
+      "replay_no_marker_senior_score": 3,
+      "replay_tuned_senior_score": 2
+    }
+  ]
+}

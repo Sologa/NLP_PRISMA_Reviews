@@ -1,0 +1,102 @@
+{
+  "paper_id": "2511.13936",
+  "paths": {
+    "baseline": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2511.13936_full/latte_review_results.senior_no_marker.json",
+    "frozen_inputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2511.13936_full/frozen_senior_replay/frozen_stage1_senior_inputs.json",
+    "replay_no_marker_outputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2511.13936_full/frozen_senior_replay/senior_replay_outputs.stage1_senior_no_marker.json",
+    "replay_tuned_outputs": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2511.13936_full/frozen_senior_replay/senior_replay_outputs.stage1_senior_prompt_tuned.json",
+    "reconstructed_no_marker": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2511.13936_full/frozen_senior_replay/latte_review_results.reconstructed_replay_stage1_senior_no_marker.json",
+    "reconstructed_tuned": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2511.13936_full/frozen_senior_replay/latte_review_results.reconstructed_replay_stage1_senior_prompt_tuned.json",
+    "gold": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/metadata/title_abstracts_metadata-annotated.jsonl"
+  },
+  "counts": {
+    "baseline_total": 85,
+    "sent_to_senior": 53,
+    "not_sent_to_senior": 32
+  },
+  "view1_senior_subset_distribution": {
+    "baseline_no_marker": {
+      "1_2": 21,
+      "3": 28,
+      "4_5": 4,
+      "missing": 0,
+      "total": 53
+    },
+    "replay_stage1_senior_no_marker": {
+      "1_2": 20,
+      "3": 29,
+      "4_5": 4,
+      "missing": 0,
+      "total": 53
+    },
+    "replay_stage1_senior_prompt_tuned": {
+      "1_2": 36,
+      "3": 14,
+      "4_5": 3,
+      "missing": 0,
+      "total": 53
+    }
+  },
+  "view2_stage1_metrics": {
+    "baseline_no_marker": {
+      "tp": 29,
+      "fp": 22,
+      "tn": 32,
+      "fn": 1,
+      "precision": 0.5686274509803921,
+      "recall": 0.9666666666666667,
+      "f1": 0.7160493827160493,
+      "matched": 84,
+      "gold_size": 88,
+      "pred_size": 84
+    },
+    "replay_stage1_senior_no_marker": {
+      "tp": 29,
+      "fp": 23,
+      "tn": 31,
+      "fn": 1,
+      "precision": 0.5576923076923077,
+      "recall": 0.9666666666666667,
+      "f1": 0.7073170731707317,
+      "matched": 84,
+      "gold_size": 88,
+      "pred_size": 84
+    },
+    "replay_stage1_senior_prompt_tuned": {
+      "tp": 27,
+      "fp": 9,
+      "tn": 45,
+      "fn": 3,
+      "precision": 0.75,
+      "recall": 0.9,
+      "f1": 0.8181818181818182,
+      "matched": 84,
+      "gold_size": 88,
+      "pred_size": 84
+    }
+  },
+  "spot_checks": [
+    {
+      "paper_id": "2511.13936",
+      "key": "lotfian2016retrieving",
+      "baseline_junior_scores": {
+        "JuniorNano": 3,
+        "JuniorMini": 3
+      },
+      "baseline_senior_score": 3,
+      "replay_no_marker_senior_score": 3,
+      "replay_tuned_senior_score": 3
+    },
+    {
+      "paper_id": "2511.13936",
+      "key": "han2020ordinal",
+      "baseline_junior_scores": {
+        "JuniorNano": 5,
+        "JuniorMini": 3
+      },
+      "baseline_senior_score": 4,
+      "replay_no_marker_senior_score": 3,
+      "replay_tuned_senior_score": 3
+    }
+  ]
+}
