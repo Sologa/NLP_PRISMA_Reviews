@@ -1,384 +1,376 @@
-# NLP PRISMA Screening Current Status Handoff
+# NLP PRISMA Screening: Canonical Current Status Handoff
 
-Date: 2026-03-13
+Date: 2026-03-16
+Status: authoritative current-state handoff
 
-## 1. 這份 handoff 的目的
+This is the single canonical handoff for future external conversations.
 
-這份文件是給外部 ChatGPT / GPT-5.4-pro 之類模型閱讀的最新狀態交接。
+Use this file together with:
 
-重點不是重述整個專案背景，而是把目前已經驗證過的結論、各輪實驗的作用、最新可用分數、以及真正還值得做的下一步，整理成一份可直接承接的工作備忘錄。
+- `AGENTS.md`
+- `screening/results/results_manifest.json`
 
----
+Do not infer current state from older reports before reading this file.
 
-## 2. 專案目前已經大致確定的事情
+## 1. Purpose
 
-### 2.1 runtime prompt 與原始 template 的關係
+This file exists to stop new conversations from confusing:
 
-一開始 repo 內有 markdown prompt templates，但 runtime 並沒有真正直接用它們。
+- active criteria files with historical criteria files
+- current metrics with historical benchmark metrics
+- candidate next experiments with current adopted architecture
 
-後來已經做了 runtime prompt externalization，現在 runtime prompt 已外移為：
+The current repository state is the result of multiple prompt, adjudication, replay, criteria, and criteria-migration experiments. Only part of that history remains current production state.
 
-- `scripts/screening/runtime_prompts/runtime_prompts.json`
+## 2. Current State Verification
 
-而且已做過 equivalence check，確認 externalization 本身不是主要 confound。
+### 2.1 Runtime paths
 
-### 2.2 Stage 1 流程原則目前固定
+Current runtime uses:
 
-目前已經收斂的 Stage 1 原則是：
+- runtime prompts from `scripts/screening/runtime_prompts/runtime_prompts.json`
+- Stage 1 criteria from `criteria_stage1/<paper_id>.json`
+- Stage 2 criteria from `criteria_stage2/<paper_id>.json`
 
-- 兩位 junior 都 `>= 4`：直接 `include`
-- 兩位 junior 都 `<= 2`：直接 `exclude`
-- 其他情況：送 `SeniorLead`
+Current runtime must not be described as using:
 
-並且：
+- `criteria_jsons/*.json`
+- removed markdown prompt templates
+- old prompt-only / no-marker / operational-v2 reports as current state
 
-- `SeniorLead` 必須保留
-- `SeniorLead` 一旦介入，可單點裁決
-- marker heuristic 已刪除，不再回頭使用
+### 2.2 Current active criteria files for the two most fragile reviews
 
-### 2.3 已知不值得再追的方向
+#### `2409.13738`
 
-下列方向已經基本驗證過，不值得再花主力：
+- Stage 1: `criteria_stage1/2409.13738.json`
+- Stage 2: `criteria_stage2/2409.13738.json`
 
-1. 追求一個全域更好的 `SeniorLead` strict prompt
-2. 重新引入 marker heuristic
-3. 再做一輪純 global prompt tuning 想一次解四篇
+#### `2511.13936`
 
-原因是：
+- Stage 1: `criteria_stage1/2511.13936.json`
+- Stage 2: `criteria_stage2/2511.13936.json`
 
-- `senior_prompt_tuned` 確實能改善 `2409`、部分改善 `2511`
-- 但會明顯傷到 `2601`
-- `frozen-input SeniorLead replay` 已證明這不是主要由 junior rerun noise 造成
+### 2.3 Current active metrics authority
 
-也就是說：
+#### `2409.13738`
 
-- `SeniorLead` prompt effect 是真的
-- 但這個 effect 明顯是 review-specific，不能用單一全域 prompt 解掉
+- Stage 1 metrics authority: `screening/results/2409.13738_full/stage1_f1.stage_split_criteria_migration.json`
+- Combined metrics authority: `screening/results/2409.13738_full/combined_f1.stage_split_criteria_migration.json`
 
----
+#### `2511.13936`
 
-## 3. 已完成的重要實驗與結論
+- Stage 1 metrics authority: `screening/results/2511.13936_full/stage1_f1.stage_split_criteria_migration.json`
+- Combined metrics authority: `screening/results/2511.13936_full/combined_f1.stage_split_criteria_migration.json`
 
-### 3.1 prompt-only runtime realignment
+#### `2307.05527`
 
-目的：
+Current stable reference remains:
 
-- 驗證 runtime reviewer prompt 往 template 精神靠攏後，是否能改善結果
+- Stage 1: `screening/results/2307.05527_full/review_after_stage1_senior_no_marker_report.json`
+- Combined: `screening/results/2307.05527_full/combined_after_fulltext_senior_no_marker_report.json`
 
-結論：
+#### `2601.19926`
 
-- 有改善，但不是根治
-- 主要只是證明 prompt drift 的確是問題之一
+Current stable reference remains:
 
-對應文件：
+- Stage 1: `screening/results/2601.19926_full/review_after_stage1_senior_no_marker_report.json`
+- Combined: `screening/results/2601.19926_full/combined_after_fulltext_senior_no_marker_report.json`
+
+### 2.4 Current metrics table
+
+| Paper | Stage 1 criteria path | Stage 2 criteria path | Stage 1 F1 | Combined F1 | Metrics file path |
+| --- | --- | --- | ---: | ---: | --- |
+| `2307.05527` | `criteria_stage1/2307.05527.json` | `criteria_stage2/2307.05527.json` | `0.9621` | `0.9581` | `review_after_stage1_senior_no_marker_report.json`, `combined_after_fulltext_senior_no_marker_report.json` |
+| `2409.13738` | `criteria_stage1/2409.13738.json` | `criteria_stage2/2409.13738.json` | `0.7500` | `0.7843` | `stage1_f1.stage_split_criteria_migration.json`, `combined_f1.stage_split_criteria_migration.json` |
+| `2511.13936` | `criteria_stage1/2511.13936.json` | `criteria_stage2/2511.13936.json` | `0.8657` | `0.8814` | `stage1_f1.stage_split_criteria_migration.json`, `combined_f1.stage_split_criteria_migration.json` |
+| `2601.19926` | `criteria_stage1/2601.19926.json` | `criteria_stage2/2601.19926.json` | `0.9792` | `0.9733` | `review_after_stage1_senior_no_marker_report.json`, `combined_after_fulltext_senior_no_marker_report.json` |
+
+## 3. Current workflow invariants
+
+These are settled and should be treated as background assumptions.
+
+### Stage 1 routing
+
+- two junior reviewers at title + abstract stage
+- if both scores are `>= 4`, final verdict is `include`
+- if both scores are `<= 2`, final verdict is `exclude`
+- otherwise route to `SeniorLead`
+
+### Senior behavior
+
+- `SeniorLead` remains mandatory
+- `SeniorLead` can single-score decide the final Stage 1 verdict once invoked
+
+### Removed and rejected policy
+
+- marker heuristic removed
+- global strict senior prompt is not a universal solution
+- no return to junior-reasoning marker logic
+
+## 4. Experiment timeline and what each experiment established
+
+### 4.1 Runtime prompt externalization
+
+- runtime prompt source moved to `scripts/screening/runtime_prompts/runtime_prompts.json`
+- prompt equivalence check established that externalization itself was not the main confound
+
+Historical references:
 
 - `docs/prompt_only_runtime_realignment_report.md`
+- `screening/results/runtime_prompt_externalization/`
 
-### 3.2 stage1 recall redesign / senior adjudication / no-marker
+### 4.2 Stage 1 aggregation convergence
 
-目的：
+Experiments across recall-redesign, senior-adjudication, and no-marker established the current aggregation rule:
 
-- 測試 Stage 1 recall-first 改法
-- 保留 `SeniorLead`
-- 移除 marker heuristic
-- 找出更像人工流程的 Stage 1 aggregation
+- double-high include
+- double-low exclude
+- else senior
 
-結論：
-
-- `SeniorLead` 必須保留
-- `double-high include / double-low exclude / else senior` 是可 defend 的流程版本
-- marker heuristic 應刪除
-
-對應文件：
+Historical references:
 
 - `docs/stage1_recall_redesign_report.md`
 - `docs/stage1_senior_adjudication_redesign_report.md`
 - `docs/stage1_senior_no_marker_report.md`
 
-### 3.3 strict `SeniorLead` prompt tuning
+### 4.3 Strict senior prompt tuning
 
-目的：
+This line of work showed:
 
-- 壓縮 `maybe`
-- 對 topic-adjacent paper 更嚴格
+- better precision on `2409`
+- partial help on `2511`
+- severe damage to `2601`
 
-結論：
+This line is historical and should not be treated as the current general solution.
 
-- 幫到 `2409`
-- 部分幫到 `2511`
-- 但嚴重傷到 `2601`
-
-對應文件：
+Historical reference:
 
 - `docs/stage1_senior_prompt_tuning_report.md`
 
-### 3.4 frozen-input SeniorLead replay
+### 4.4 Frozen senior replay
 
-目的：
+This established that the senior prompt effect was real and not mostly junior rerun noise.
 
-- 固定 junior outputs 與 sent-to-senior case 集合
-- 只比較不同 `SeniorLead` prompt 的 effect
+Key historical conclusion:
 
-結論：
+- the effect of stricter senior prompting is review-specific
+- this makes global strict senior tuning a poor universal direction
 
-- `SeniorLead` prompt effect 是真的，不主要是 rerun noise
-- `senior_prompt_tuned` 對 `2409` / `2511` 的 precision 幫助在 frozen-input 下仍存在
-- `senior_prompt_tuned` 對 `2601` recall 的傷害在 frozen-input 下也仍存在
-
-這份實驗的研究意義非常高，因為它把「SeniorLead prompt 是真效果還是噪音」這件事講清楚了。
-
-對應文件：
+Historical reference:
 
 - `docs/frozen_senior_replay_report.md`
 
-### 3.5 `2511` criteria operationalization v2
+### 4.5 `2511` operationalization v2
 
-目的：
+This was an important historical experiment because it showed that `2511` performance could improve strongly if criteria were operationally hardened.
 
-- 驗證 `2511` 的主問題是不是 criteria boundary / operationalization
+But that experiment later became methodologically unacceptable because the criteria contained derived hardening beyond the source-faithful paper boundary.
 
-做法：
-
-- 只改 `criteria_jsons/2511.13936.json`
-- 不改 pipeline / prompt / senior / aggregation
-
-結論：
-
-- 這一輪非常成功
-- 只改 criteria，就能同時提升 precision 與 recall
-- 因此 `2511` 的主問題確實是 criteria operationalization，而不是 senior prompt
-
-對應文件：
+Historical reference:
 
 - `docs/criteria_2511_operationalization_v2_report.md`
 
-### 3.6 `2409` criteria stage split
+### 4.6 `2409` stage split wording experiment
 
-目的：
+This was an important historical step because it showed that `2409` had stage-mixing problems.
 
-- 驗證 `2409` 是否存在 Stage 1 / Stage 2 criteria 混層
+But this was still earlier than the repo-wide migration to true stage-specific criteria files.
 
-做法：
-
-- 只改 `criteria_jsons/2409.13738.json`
-- 把 criteria wording 明確區分為：
-  - Stage 1 observable
-  - Stage 2 confirmatory
-
-結論：
-
-- 這一輪有效
-- precision 明顯改善
-- recall 無損
-- 但仍有殘餘 hard FP
-
-重要 caveat：
-
-- 這不是 pipeline-level 的真正 stage split
-- 而是 criteria wording 上的 stage-aware projection
-- pipeline 目前並不真正 hard-consume `stage_projection` 欄位
-
-對應文件：
+Historical reference:
 
 - `docs/criteria_2409_stage_split_report.md`
 
----
+### 4.7 Source-faithful vs operational comparison
 
-## 4. 目前四篇 SR 最新可視為「現行狀態」的分數
+This historical comparison established:
 
-口徑：
+- operational criteria often produced better F1
+- but those gains partly came from unacceptable criteria supertranslation
 
-- `2409`、`2511` 使用各自最新 criteria surgery 結果
-- `2307`、`2601` 目前仍以 `senior_no_marker` 代表現行穩定版本
+Historical reference:
 
-### 4.1 `2307.05527`
+- `docs/source_faithful_vs_operational_2409_2511_report.md`
 
-Stage 1:
+### 4.8 Stage-split criteria migration
 
-- precision `0.9593`
-- recall `0.9649`
-- f1 `0.9621`
-- `tp=165 fp=7 tn=40 fn=6`
+This is the current architecture.
 
-Combined:
+What changed:
 
-- precision `0.9816`
-- recall `0.9357`
-- f1 `0.9581`
-- `tp=160 fp=3 tn=44 fn=11`
+- criteria were formally split into `criteria_stage1/` and `criteria_stage2/`
+- runtime was changed to read stage-specific criteria
+- current criteria semantics became much cleaner
+- current-state metrics for `2409` and `2511` are now defined by the stage-split migration outputs
 
-### 4.2 `2409.13738`
+Current-state reference:
 
-使用：`criteria_2409_stage_split`
+- `docs/stage_split_criteria_migration_report.md`
 
-Stage 1:
+## 5. Per-review current state
 
-- precision `0.5250`
-- recall `1.0000`
-- f1 `0.6885`
-- `tp=21 fp=19 tn=38 fn=0`
+### 5.1 `2307.05527`
 
-Combined:
+#### Active files
 
-- precision `0.6364`
-- recall `1.0000`
-- f1 `0.7778`
-- `tp=21 fp=12 tn=45 fn=0`
+- `criteria_stage1/2307.05527.json`
+- `criteria_stage2/2307.05527.json`
 
-### 4.3 `2511.13936`
+#### Current score authority
 
-使用：`criteria_2511_opv2`
+- Stage 1: `screening/results/2307.05527_full/review_after_stage1_senior_no_marker_report.json`
+- Combined: `screening/results/2307.05527_full/combined_after_fulltext_senior_no_marker_report.json`
 
-Stage 1:
+#### Current metrics
 
-- precision `0.8056`
-- recall `0.9667`
-- f1 `0.8788`
-- `tp=29 fp=7 tn=47 fn=1`
+- Stage 1 F1: `0.9621`
+- Combined F1: `0.9581`
 
-Combined:
+#### Main current issue
 
-- precision `0.8788`
-- recall `0.9667`
-- f1 `0.9206`
-- `tp=29 fp=4 tn=50 fn=1`
+- not the current battleground
+- do not destabilize with new global strategy changes
 
-### 4.4 `2601.19926`
+#### Current do-not-touch guidance
 
-Stage 1:
+- do not revisit global strict senior prompting for this paper
+- do not invent new criteria-only changes without a paper-specific reason
 
-- precision `0.9735`
-- recall `0.9851`
-- f1 `0.9792`
-- `tp=330 fp=9 tn=14 fn=5`
+### 5.2 `2409.13738`
 
-Combined:
+#### Active files
 
-- precision `0.9676`
-- recall `0.9791`
-- f1 `0.9733`
-- `tp=328 fp=11 tn=12 fn=7`
+- `criteria_stage1/2409.13738.json`
+- `criteria_stage2/2409.13738.json`
 
----
+#### Current score authority
 
-## 5. 用白話講，目前系統還剩什麼要修
+- Stage 1: `screening/results/2409.13738_full/stage1_f1.stage_split_criteria_migration.json`
+- Combined: `screening/results/2409.13738_full/combined_f1.stage_split_criteria_migration.json`
 
-### 5.1 `2307`
+#### Current metrics
 
-大致已經不是主戰場。
+- Stage 1 F1: `0.7500`
+- Combined F1: `0.7843`
 
-白話講：
+#### Main current issue
 
-- 整體已經很強
-- 還有少數 final FN
-- 但目前不值得優先大動
+- residual hard FP and evidence interpretation under source-faithful constraints
+- no longer acceptable to solve this by writing derived hardening back into criteria
 
-### 5.2 `2409`
+#### Current do-not-touch guidance
 
-這是目前最明顯的瓶頸。
+- do not describe `criteria_jsons/2409.13738.json` as current
+- do not treat `criteria_2409_stage_split` historical report as current score authority
+- do not label `evidence_qa_feasibility_analysis` as adopted architecture
 
-白話講：
+### 5.3 `2511.13936`
 
-- 它還是會把很多「看起來跟流程 / BPM / LLM / NLP 很有關」的 paper 收進來
-- 但那些 paper 不一定真的是 review 要的 `text -> process representation extraction`
+#### Active files
 
-也就是：
+- `criteria_stage1/2511.13936.json`
+- `criteria_stage2/2511.13936.json`
 
-- 它還是太容易把「沾邊」當成「核心符合」
+#### Current score authority
 
-目前已經修掉的是：
+- Stage 1: `screening/results/2511.13936_full/stage1_f1.stage_split_criteria_migration.json`
+- Combined: `screening/results/2511.13936_full/combined_f1.stage_split_criteria_migration.json`
 
-- Stage 1 / Stage 2 混層的一部分
+#### Current metrics
 
-目前還沒完全修掉的是：
+- Stage 1 F1: `0.8657`
+- Combined F1: `0.8814`
 
-- core target object boundary
-- process-adjacent 與 true text-to-process extraction 的語義邊界
+#### Main current issue
 
-### 5.3 `2511`
+- performance is lower than the old operational-v2 result
+- current criteria semantics are cleaner and must not be polluted again
+- future improvements must come from non-criteria layers
 
-這篇現在已經大致修好了。
+#### Current do-not-touch guidance
 
-白話講：
+- do not describe `criteria_jsons/2511.13936.json` as current
+- do not treat `criteria_2511_opv2` report as current score authority
+- do not reinsert old operational hardening into criteria
 
-- 原本最大問題是 criteria 沒把邊界講清楚
-- 現在把 audio-domain、preference-signal、learning-role、negative overrides 寫清楚後，結果就明顯變好
+### 5.4 `2601.19926`
 
-剩下的是：
+#### Active files
 
-- 少數高爭議 boundary case
-- 不再是廣泛的 criteria 模糊
+- `criteria_stage1/2601.19926.json`
+- `criteria_stage2/2601.19926.json`
 
-### 5.4 `2601`
+#### Current score authority
 
-這篇現在很強，不應亂動。
+- Stage 1: `screening/results/2601.19926_full/review_after_stage1_senior_no_marker_report.json`
+- Combined: `screening/results/2601.19926_full/combined_after_fulltext_senior_no_marker_report.json`
 
-白話講：
+#### Current metrics
 
-- 很多真陽性本來就摘要弱、metadata 薄
-- 只要把 senior prompt 調太嚴，它就會壞
+- Stage 1 F1: `0.9792`
+- Combined F1: `0.9733`
 
-所以這篇的策略不是再變嚴，而是：
+#### Main current issue
 
-- 不要讓全域 strict senior 再傷到它
+- highly sensitive to stricter senior behavior
+- avoid global changes that sacrifice recall
 
----
+#### Current do-not-touch guidance
 
-## 6. 現在最值得做的事
+- do not globalize stricter senior prompt rules from `2409`
+- do not use `2601` as a justification for criteria hardening that is not source-faithful
 
-### 6.1 第一優先：`2409` 再做一輪 criteria boundary cleanup
+## 6. Do-not-confuse rules
 
-方向不是再改 senior，也不是再改 global prompt，而是：
+These rules exist specifically to stop file confusion in new threads.
 
-- 只針對 `2409` 剩下的 hard FP
-- 再補一輪更硬的 target-object boundary
+1. Do not describe `criteria_jsons/*.json` as active production criteria.
+2. Do not use historical operational reports as current score authority.
+3. Do not describe `docs/ChatGPT/evidence_qa_feasibility_analysis_2409_2511.md` as adopted architecture.
+4. Do not assume all four papers share the same kind of current score provenance.
+5. For `2409` and `2511`, current score authority is the stage-split migration metrics files.
+6. For `2307` and `2601`, current stable reference remains the latest fully benchmarked `senior_no_marker` reports.
 
-重點是把以下邊界寫得更可操作：
+## 7. Results read order
 
-- 談 process / BPM 不等於 text-to-process extraction
-- generic LLM for BPM 不等於 process representation extraction
-- process-adjacent task 不等於 core extraction object
+When reading per-paper results, use this order.
 
-### 6.2 `2511` 可以暫時停止大改
+1. `screening/results/results_manifest.json`
+2. the relevant `screening/results/<paper>_full/CURRENT.md`
+3. only then, raw or historical result files
 
-除非要專門追那 1 個殘餘 FN，否則目前不值得再大動。
+This is required because many old files remain in each result directory for comparison, and the filename that looks newest is not always the current score authority.
 
-### 6.3 `2307`、`2601` 暫時不要動
+## 8. Prompt boilerplate for future external chats
 
-這兩篇現在不是瓶頸，尤其 `2601` 很容易被修壞。
+Use this block when opening a new external conversation:
 
----
+```text
+Before analyzing this repository, treat the current active criteria as stage-specific:
+- Stage 1: criteria_stage1/<paper_id>.json
+- Stage 2: criteria_stage2/<paper_id>.json
+Do not use criteria_jsons/*.json as current production criteria.
+Current score authority is:
+- 2409 / 2511: stage_split_criteria_migration metrics
+- 2307 / 2601: latest fully benchmarked senior_no_marker reports
+Read AGENTS.md, docs/chatgpt_current_status_handoff.md, and screening/results/results_manifest.json first.
+Do not infer current state from historical reports.
+```
 
-## 7. 建議 ChatGPT 接下來優先回答的問題
+## 9. Candidate next experiment (separate thread only)
 
-如果你是外部模型，最值得先回答的是：
+The following file is a candidate direction for a future experiment, not the current architecture:
 
-1. 針對 `2409` 剩餘 hard FP，應該如何進一步 sharpen target-object boundary？
-2. 目前 `2409` criteria wording 中，哪些句子仍太容易讓 reviewer把 topic-adjacent paper 納入？
-3. 如果不改 pipeline，只改 `2409` criteria，下一輪最有希望補的 negative overrides 是哪些？
-4. 目前 `2511` 是否已經可以視為「主要問題已解決」，只剩少數 boundary policy issue？
-5. `2307` 與 `2601` 是否應保持現狀，避免 global prompt / policy 調整造成退步？
+- `docs/ChatGPT/evidence_qa_feasibility_analysis_2409_2511.md`
 
----
+If pursued, it must be handled as a separate experiment thread.
 
-## 8. 建議外部模型優先閱讀的檔案順序
+It must not be described as:
 
-1. `docs/nlp_prisma_screening_diagnosis_report.md`
-2. `docs/frozen_senior_replay_report.md`
-3. `docs/criteria_2511_operationalization_v2_report.md`
-4. `docs/criteria_2409_stage_split_report.md`
-5. `criteria_jsons/2511.13936.json`
-6. `criteria_jsons/2409.13738.json`
-7. `scripts/screening/runtime_prompts/runtime_prompts.json`
-8. `scripts/screening/vendor/src/pipelines/topic_pipeline.py`
+- current criteria
+- current workflow
+- current metrics basis
+- current runtime architecture
 
----
+## 10. K-Dense note
 
-## 9. 最後一句話版結論
-
-目前系統層面的主要問題已經大致釐清：
-
-- 不要再追 global SeniorLead tuning
-- `2511` 主要靠 criteria surgery 已大致修好
-- `2409` 仍是目前最值得處理的 paper，而且剩餘問題主要是 target-object boundary，不是再改全域流程
-
+If many future experiment tracks need to be coordinated without repeatedly rewriting background, use `www.k-dense.ai` as an external workflow manager.

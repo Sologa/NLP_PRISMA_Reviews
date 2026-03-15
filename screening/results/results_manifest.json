@@ -1,0 +1,234 @@
+{
+  "current_architecture": {
+    "runtime_prompts": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "criteria_stage1_dir": "criteria_stage1",
+    "criteria_stage2_dir": "criteria_stage2",
+    "notes": [
+      "criteria_jsons/*.json are historical/reference only",
+      "2409 and 2511 current score authority is stage_split_criteria_migration",
+      "2307 and 2601 current stable reference remains latest fully benchmarked senior_no_marker"
+    ]
+  },
+  "papers": {
+    "2307.05527": {
+      "paper_id": "2307.05527",
+      "result_dir": "screening/results/2307.05527_full",
+      "criteria": {
+        "stage1": "criteria_stage1/2307.05527.json",
+        "stage2": "criteria_stage2/2307.05527.json"
+      },
+      "current_metrics": {
+        "status": "latest_fully_benchmarked_senior_no_marker",
+        "stage1": {
+          "path": "screening/results/2307.05527_full/review_after_stage1_senior_no_marker_report.json",
+          "precision": 0.9593,
+          "recall": 0.9649,
+          "f1": 0.9621
+        },
+        "combined": {
+          "path": "screening/results/2307.05527_full/combined_after_fulltext_senior_no_marker_report.json",
+          "precision": 0.9816,
+          "recall": 0.9357,
+          "f1": 0.9581
+        }
+      },
+      "current_report": {
+        "stage1": "screening/results/2307.05527_full/CURRENT.md",
+        "combined": "screening/results/2307.05527_full/CURRENT.md"
+      },
+      "historical_baselines": {
+        "prompt_only_v1": [
+          "screening/results/2307.05527_full/review_after_stage1_prompt_only_v1_report.json",
+          "screening/results/2307.05527_full/combined_after_fulltext_report.json"
+        ],
+        "recall_redesign_v1": [
+          "screening/results/2307.05527_full/stage1_recall_redesign_report.json",
+          "screening/results/2307.05527_full/combined_recall_redesign_report.json"
+        ],
+        "senior_adjudication_v1": [
+          "screening/results/2307.05527_full/review_after_stage1_senior_adjudication_v1_report.json",
+          "screening/results/2307.05527_full/combined_after_fulltext_senior_adjudication_v1_report.json"
+        ],
+        "senior_no_marker": [
+          "screening/results/2307.05527_full/review_after_stage1_senior_no_marker_report.json",
+          "screening/results/2307.05527_full/combined_after_fulltext_senior_no_marker_report.json"
+        ],
+        "senior_prompt_tuned": [
+          "screening/results/2307.05527_full/review_after_stage1_senior_prompt_tuned_report.json",
+          "screening/results/2307.05527_full/combined_after_fulltext_senior_prompt_tuned_report.json"
+        ]
+      },
+      "notes": [
+        "Current stable score authority is still senior_no_marker.",
+        "No same-level stage_split_criteria_migration rerun currently supersedes it."
+      ]
+    },
+    "2409.13738": {
+      "paper_id": "2409.13738",
+      "result_dir": "screening/results/2409.13738_full",
+      "criteria": {
+        "stage1": "criteria_stage1/2409.13738.json",
+        "stage2": "criteria_stage2/2409.13738.json"
+      },
+      "current_metrics": {
+        "status": "current_stage_split",
+        "stage1": {
+          "path": "screening/results/2409.13738_full/stage1_f1.stage_split_criteria_migration.json",
+          "precision": 0.6000,
+          "recall": 1.0000,
+          "f1": 0.7500
+        },
+        "combined": {
+          "path": "screening/results/2409.13738_full/combined_f1.stage_split_criteria_migration.json",
+          "precision": 0.6667,
+          "recall": 0.9524,
+          "f1": 0.7843
+        }
+      },
+      "current_report": {
+        "stage1": "screening/results/2409.13738_full/CURRENT.md",
+        "combined": "screening/results/2409.13738_full/CURRENT.md"
+      },
+      "historical_baselines": {
+        "prompt_only_v1": [
+          "screening/results/2409.13738_full/review_after_stage1_prompt_only_v1_report.json",
+          "screening/results/2409.13738_full/combined_after_fulltext_report.json"
+        ],
+        "recall_redesign_v1": [
+          "screening/results/2409.13738_full/stage1_recall_redesign_report.json",
+          "screening/results/2409.13738_full/combined_recall_redesign_report.json"
+        ],
+        "senior_adjudication_v1": [
+          "screening/results/2409.13738_full/review_after_stage1_senior_adjudication_v1_report.json",
+          "screening/results/2409.13738_full/combined_after_fulltext_senior_adjudication_v1_report.json"
+        ],
+        "senior_no_marker": [
+          "screening/results/2409.13738_full/review_after_stage1_senior_no_marker_report.json",
+          "screening/results/2409.13738_full/combined_after_fulltext_senior_no_marker_report.json"
+        ],
+        "senior_prompt_tuned": [
+          "screening/results/2409.13738_full/review_after_stage1_senior_prompt_tuned_report.json",
+          "screening/results/2409.13738_full/combined_after_fulltext_senior_prompt_tuned_report.json"
+        ],
+        "criteria_2409_stage_split": [
+          "screening/results/2409.13738_full/review_after_stage1_criteria_2409_stage_split_report.json",
+          "screening/results/2409.13738_full/combined_after_fulltext_criteria_2409_stage_split_report.json"
+        ]
+      },
+      "notes": [
+        "Current score authority is the stage_split_criteria_migration metrics files.",
+        "The older criteria_2409_stage_split files remain historical comparison artifacts, not current score authority."
+      ]
+    },
+    "2511.13936": {
+      "paper_id": "2511.13936",
+      "result_dir": "screening/results/2511.13936_full",
+      "criteria": {
+        "stage1": "criteria_stage1/2511.13936.json",
+        "stage2": "criteria_stage2/2511.13936.json"
+      },
+      "current_metrics": {
+        "status": "current_stage_split",
+        "stage1": {
+          "path": "screening/results/2511.13936_full/stage1_f1.stage_split_criteria_migration.json",
+          "precision": 0.7838,
+          "recall": 0.9667,
+          "f1": 0.8657
+        },
+        "combined": {
+          "path": "screening/results/2511.13936_full/combined_f1.stage_split_criteria_migration.json",
+          "precision": 0.8966,
+          "recall": 0.8667,
+          "f1": 0.8814
+        }
+      },
+      "current_report": {
+        "stage1": "screening/results/2511.13936_full/CURRENT.md",
+        "combined": "screening/results/2511.13936_full/CURRENT.md"
+      },
+      "historical_baselines": {
+        "prompt_only_v1": [
+          "screening/results/2511.13936_full/review_after_stage1_prompt_only_v1_report.json",
+          "screening/results/2511.13936_full/combined_after_fulltext_report.json"
+        ],
+        "recall_redesign_v1": [
+          "screening/results/2511.13936_full/stage1_recall_redesign_report.json",
+          "screening/results/2511.13936_full/combined_recall_redesign_report.json"
+        ],
+        "senior_adjudication_v1": [
+          "screening/results/2511.13936_full/review_after_stage1_senior_adjudication_v1_report.json",
+          "screening/results/2511.13936_full/combined_after_fulltext_senior_adjudication_v1_report.json"
+        ],
+        "senior_no_marker": [
+          "screening/results/2511.13936_full/review_after_stage1_senior_no_marker_report.json",
+          "screening/results/2511.13936_full/combined_after_fulltext_senior_no_marker_report.json"
+        ],
+        "senior_prompt_tuned": [
+          "screening/results/2511.13936_full/review_after_stage1_senior_prompt_tuned_report.json",
+          "screening/results/2511.13936_full/combined_after_fulltext_senior_prompt_tuned_report.json"
+        ],
+        "criteria_2511_opv2": [
+          "screening/results/2511.13936_full/review_after_stage1_criteria_2511_opv2_report.json",
+          "screening/results/2511.13936_full/combined_after_fulltext_criteria_2511_opv2_report.json"
+        ]
+      },
+      "notes": [
+        "Current score authority is the stage_split_criteria_migration metrics files.",
+        "The older criteria_2511_opv2 files remain historical comparison artifacts, not current score authority."
+      ]
+    },
+    "2601.19926": {
+      "paper_id": "2601.19926",
+      "result_dir": "screening/results/2601.19926_full",
+      "criteria": {
+        "stage1": "criteria_stage1/2601.19926.json",
+        "stage2": "criteria_stage2/2601.19926.json"
+      },
+      "current_metrics": {
+        "status": "latest_fully_benchmarked_senior_no_marker",
+        "stage1": {
+          "path": "screening/results/2601.19926_full/review_after_stage1_senior_no_marker_report.json",
+          "precision": 0.9735,
+          "recall": 0.9851,
+          "f1": 0.9792
+        },
+        "combined": {
+          "path": "screening/results/2601.19926_full/combined_after_fulltext_senior_no_marker_report.json",
+          "precision": 0.9676,
+          "recall": 0.9791,
+          "f1": 0.9733
+        }
+      },
+      "current_report": {
+        "stage1": "screening/results/2601.19926_full/CURRENT.md",
+        "combined": "screening/results/2601.19926_full/CURRENT.md"
+      },
+      "historical_baselines": {
+        "prompt_only_v1": [
+          "screening/results/2601.19926_full/review_after_stage1_prompt_only_v1_report.json",
+          "screening/results/2601.19926_full/combined_after_fulltext_report.json"
+        ],
+        "recall_redesign_v1": [
+          "screening/results/2601.19926_full/stage1_recall_redesign_report.json",
+          "screening/results/2601.19926_full/combined_recall_redesign_report.json"
+        ],
+        "senior_adjudication_v1": [
+          "screening/results/2601.19926_full/review_after_stage1_senior_adjudication_v1_report.json",
+          "screening/results/2601.19926_full/combined_after_fulltext_senior_adjudication_v1_report.json"
+        ],
+        "senior_no_marker": [
+          "screening/results/2601.19926_full/review_after_stage1_senior_no_marker_report.json",
+          "screening/results/2601.19926_full/combined_after_fulltext_senior_no_marker_report.json"
+        ],
+        "senior_prompt_tuned": [
+          "screening/results/2601.19926_full/review_after_stage1_senior_prompt_tuned_report.json",
+          "screening/results/2601.19926_full/combined_after_fulltext_senior_prompt_tuned_report.json"
+        ]
+      },
+      "notes": [
+        "Current stable score authority is still senior_no_marker.",
+        "No same-level stage_split_criteria_migration rerun currently supersedes it."
+      ]
+    }
+  }
+}
