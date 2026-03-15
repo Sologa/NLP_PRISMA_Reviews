@@ -1,5 +1,20 @@
 # NLP_PRISMA_Reviews 詳細診斷報告：`2409` criteria boundary 深化分析與修正方案
 
+Historical note:
+
+- This report is a historical analysis document, not the current-state entrypoint.
+- It was written before the current stage-split criteria migration became the authoritative state.
+- References in this document to `criteria_jsons/*.json` and older score tables must not be treated as current production state.
+- Current active files are:
+  - `criteria_stage1/2409.13738.json`
+  - `criteria_stage2/2409.13738.json`
+  - `criteria_stage1/2511.13936.json`
+  - `criteria_stage2/2511.13936.json`
+- Current score authority is documented in:
+  - `AGENTS.md`
+  - `docs/chatgpt_current_status_handoff.md`
+  - `screening/results/results_manifest.json`
+
 ## 0. 報告目的
 
 本報告依照指定閱讀順序，重新整合以下九個核心檔案的結論，並在此基礎上對 `2409.13738` 的殘餘 hard false positives（hard FP）做更細的語義邊界拆解，提出一個**只改 criteria、不改 pipeline、不改 senior、不改 aggregation** 的可落地修正方案。

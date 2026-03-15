@@ -1,5 +1,18 @@
 # Source-Faithful vs Operational 對照報告（2409 / 2511）
 
+Historical note:
+
+- This is a historical comparison report.
+- In this document, `operational` refers to the older single-file criteria phase based on `criteria_jsons/*.json`.
+- It must not be treated as current production state.
+- Current active criteria are stage-specific:
+  - `criteria_stage1/<paper_id>.json`
+  - `criteria_stage2/<paper_id>.json`
+- Current score authority is documented in:
+  - `AGENTS.md`
+  - `docs/chatgpt_current_status_handoff.md`
+  - `screening/results/results_manifest.json`
+
 Date: 2026-03-15  
 Benchmark root: `screening/results/source_faithful_vs_operational_2409_2511_runA`
 

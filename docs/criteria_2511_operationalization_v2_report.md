@@ -1,5 +1,14 @@
 # 2511 Criteria Operationalization v2 Report
 
+Historical note:
+
+- This report belongs to the older operational-hardening phase.
+- The criteria changes described here are not the current active criteria state.
+- Current active criteria are:
+  - `criteria_stage1/2511.13936.json`
+  - `criteria_stage2/2511.13936.json`
+- Current score authority is the stage-split migration metrics, not the `criteria_2511_opv2` scores in this report.
+
 Date: 2026-03-13  
 Paper ID: `2511.13936`  
 Run tag: `criteria_2511_opv2`

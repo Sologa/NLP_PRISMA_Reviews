@@ -1,4 +1,5 @@
 ---
+historical_note: "This document is historical. References to criteria_jsons/*.json describe the older single-file criteria phase, not the current active stage-split criteria."
 title: "2511.13936 與 2409.13738 criteria 改寫報告"
 subtitle: "以原篇為唯一上限的 source-faithful rewrite"
 date: "2026-03-14"

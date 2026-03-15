@@ -1,5 +1,14 @@
 # Screening Smoke-5 Runbook
 
+Current-state note:
+
+- This runbook should be read with repo root `AGENTS.md`.
+- Active criteria are now stage-specific:
+  - Stage 1: `criteria_stage1/<PAPER_ID>.json`
+  - Stage 2: `criteria_stage2/<PAPER_ID>.json`
+- `criteria_jsons/*.json` are historical/reference only.
+- Current results authority is documented in `screening/results/results_manifest.json`.
+
 ## 1) Script 放哪裡
 
 - `scripts/screening/prepare_review_smoke_inputs.py`
@@ -22,7 +31,8 @@
 
 也可直接用既有 paper（不需先手動轉檔）：
 - Metadata source: `refs/<PAPER_ID>/metadata/title_abstracts_metadata.jsonl`
-- Criteria source: `criteria_jsons/<PAPER_ID>.json`
+- Stage 1 criteria source: `criteria_stage1/<PAPER_ID>.json`
+- Stage 2 criteria source: `criteria_stage2/<PAPER_ID>.json`
 - Prepared input: `screening/data/<PAPER_ID>_smoke<TOP_K>/`
 - Output: `screening/results/<PAPER_ID>_smoke<TOP_K>/`
 
@@ -113,14 +123,14 @@ PY
    - `fields`（結構化欄位）
    - `raw_text`（metadata 整串字串）
 2. 保留兩種 criteria 路徑：
-   - `structured_split`
-   - `legacy_raw`
+   - `stage_split`（current）
+   - `legacy_raw`（historical only，不再視為 current direction）
 3. 後續以 args 控制並做實驗比較（A/B）。
 
 建議預留參數（尚未實作）：
 
 ```bash
 --metadata-mode fields|raw_text
---criteria-mode structured_split|legacy_raw
+--criteria-mode stage_split|legacy_raw
 --experiment-tag <name>
 ```

@@ -1,5 +1,17 @@
 # Screening Migration Plan (Current Repo Only)
 
+Historical note:
+
+- This document is an older migration plan.
+- Current active criteria are no longer `criteria_jsons/*.json`.
+- Current runtime reads:
+  - Stage 1: `criteria_stage1/<PAPER_ID>.json`
+  - Stage 2: `criteria_stage2/<PAPER_ID>.json`
+- For current-state guidance, use:
+  - `AGENTS.md`
+  - `docs/chatgpt_current_status_handoff.md`
+  - `screening/results/results_manifest.json`
+
 實作細節與指令請看：`docs/screening_smoke5_runbook.md`
 
 ## 0. 規則
@@ -44,7 +56,8 @@ screening/
 也支援既有 repo 格式（無需手動改檔）：
 
 - metadata: `refs/<PAPER_ID>/metadata/title_abstracts_metadata.jsonl`
-- criteria: `criteria_jsons/<PAPER_ID>.json`
+- Stage 1 criteria: `criteria_stage1/<PAPER_ID>.json`
+- Stage 2 criteria: `criteria_stage2/<PAPER_ID>.json`
 - 執行：`PAPER_ID=<id> TOP_K=<k> bash scripts/screening/run_review_smoke5.sh`
 
 ## 3. 驗證

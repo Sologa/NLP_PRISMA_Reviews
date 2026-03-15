@@ -1,5 +1,14 @@
 # 2409 Criteria Stage-Split Report
 
+Historical note:
+
+- This report is a historical intermediate step.
+- It predates the repo-wide migration to stage-specific criteria files.
+- Current active criteria are:
+  - `criteria_stage1/2409.13738.json`
+  - `criteria_stage2/2409.13738.json`
+- Current score authority is the stage-split migration metrics, not the `criteria_2409_stage_split` scores in this report.
+
 Date: 2026-03-13  
 Paper ID: `2409.13738`  
 Run tag: `criteria_2409_stage_split`

@@ -1,4 +1,5 @@
 ---
+status_note: "Candidate next experiment only. Not adopted current architecture. Current production state is defined by AGENTS.md, docs/chatgpt_current_status_handoff.md, and screening/results/results_manifest.json."
 title: "2409 / 2511：criteria-related QA、evidence extraction 與 evidence synthesis 的可行性分析"
 subtitle: "基於 current stage-split criteria 與 repo 內現有 prompt / question-set 資產"
 date: "2026-03-15"

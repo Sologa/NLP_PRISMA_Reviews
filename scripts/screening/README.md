@@ -1,5 +1,16 @@
 # Screening Scripts
 
+Current-state note:
+
+- Active criteria paths are stage-specific:
+  - `criteria_stage1/<PAPER_ID>.json`
+  - `criteria_stage2/<PAPER_ID>.json`
+- `criteria_jsons/*.json` are historical/reference only and must not be treated as current production criteria.
+- For current-state orientation, read:
+  - repo root `AGENTS.md`
+  - `docs/chatgpt_current_status_handoff.md`
+  - `screening/results/results_manifest.json`
+
 This folder contains screening-only scripts.
 
 ## Files
