@@ -102,7 +102,8 @@ python3 scripts/screening/evaluate_review_f1.py 2307.05527 \
     - Metadata source: `refs/<PAPER_ID>/metadata/title_abstracts_metadata.jsonl` (for screening input)
     - Annotated metadata: `refs/<PAPER_ID>/metadata/title_abstracts_metadata-annotated.jsonl` (for F1)
     - Fulltext source: `refs/<PAPER_ID>/mds/*.md`
-    - Criteria source: `criteria_jsons/<PAPER_ID>.json`
+    - Stage 1 criteria source: `criteria_stage1/<PAPER_ID>.json`
+    - Stage 2 criteria source: `criteria_stage2/<PAPER_ID>.json`
     - Input: `screening/data/<PAPER_ID>_smoke<TOP_K>/` (smoke mode), or `screening/data/<PAPER_ID>_full/` (full mode)
     - Output: `screening/results/<PAPER_ID>_top<TOP_K>/`
   - Full mode (`TOP_K=0`):
@@ -122,6 +123,8 @@ PIPELINE_PYTHON=/path/to/python bash scripts/screening/run_review_smoke5.sh
 ## `run_review_smoke5.sh` env flags
 
 - `KEYS_FILE`: newline key list to pick exact records (overrides top-k selection order).
+- `CRITERIA_STAGE1_PATH`: Stage 1 criteria path（預設 `criteria_stage1/<PAPER_ID>.json`）。
+- `CRITERIA_STAGE2_PATH`: Stage 2 criteria path（預設 `criteria_stage2/<PAPER_ID>.json`）。
 - `ENABLE_FULLTEXT_REVIEW`: `1` to run stage-2 fulltext review after base review.
 - `FULLTEXT_REVIEW_MODE`: `inline|file_search|hybrid` (`inline` implemented).
 - `FULLTEXT_ROOT`: fulltext root directory (usually `refs/<PAPER_ID>/mds`).

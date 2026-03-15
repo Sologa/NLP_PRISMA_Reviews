@@ -298,7 +298,12 @@ def build_parser() -> argparse.ArgumentParser:
 
     review = add_subparser("review", help="（選用）跑 Title/Abstract 初篩")
     review.add_argument("--metadata", type=Path, default=None, help="arXiv metadata JSON（預設 workspace/harvest/arxiv_metadata.json）")
-    review.add_argument("--criteria", type=Path, default=None, help="criteria.json（預設 workspace/criteria/criteria.json）")
+    review.add_argument(
+        "--criteria",
+        type=Path,
+        default=None,
+        help="Stage 1 criteria JSON（未提供時自動推斷 `criteria_stage1/<paper_id>.json`）",
+    )
     review.add_argument("--output", type=Path, default=None, help="輸出檔案（預設 workspace/review/latte_review_results.json）")
     review.add_argument("--top-k", type=int, default=None)
     review.add_argument("--start-date", default=None, help="YYYY 或 YYYY-MM-DD")
@@ -314,7 +319,12 @@ def build_parser() -> argparse.ArgumentParser:
     fulltext_review = add_subparser("fulltext-review", help="（選用）跑 Full-text 再審查")
     fulltext_review.add_argument("--base-review-results", type=Path, default=None, help="base review 結果 JSON（預設 workspace/review/latte_review_results.json）")
     fulltext_review.add_argument("--metadata", type=Path, default=None, help="metadata JSON/JSONL（用於補 key/title；建議使用 screening input metadata）")
-    fulltext_review.add_argument("--criteria", type=Path, default=None, help="criteria.json（預設 workspace/criteria/criteria.json）")
+    fulltext_review.add_argument(
+        "--criteria",
+        type=Path,
+        default=None,
+        help="Stage 2 criteria JSON（未提供時自動推斷 `criteria_stage2/<paper_id>.json`）",
+    )
     fulltext_review.add_argument("--fulltext-root", type=Path, default=None, help="full text 目錄（預設由 metadata 推斷到 refs/<paper_id>/mds）")
     fulltext_review.add_argument("--output", type=Path, default=None, help="輸出檔案（預設 workspace/review/latte_fulltext_review_results.json）")
     fulltext_review.add_argument(

@@ -4501,6 +4501,87 @@ def _criteria_context_from_payload(payload: Dict[str, object]) -> str:
     return f"主題脈絡（非硬性 inclusion）: {topic_definition}"
 
 
+def _load_criteria_payload_from_path(criteria_file: Path) -> Dict[str, object]:
+    """Load criteria payload from either direct JSON or structured wrapper JSON."""
+
+    loaded = _read_json(criteria_file)
+    if not isinstance(loaded, dict):
+        raise ValueError(f"criteria 檔案格式錯誤（需為 JSON object）：{criteria_file}")
+
+    structured = loaded.get("structured_payload")
+    if isinstance(structured, dict):
+        return structured
+
+    if isinstance(loaded.get("topic_definition"), (str, dict, list)):
+        return loaded
+
+    raise ValueError(f"criteria 檔案缺少可解析欄位（topic_definition / structured_payload）：{criteria_file}")
+
+
+def _infer_stage_criteria_paper_id(
+    *,
+    workspace: TopicWorkspace,
+    metadata_path: Optional[Path] = None,
+    base_review_results_path: Optional[Path] = None,
+) -> Optional[str]:
+    """Infer paper id for stage-specific criteria resolution."""
+
+    candidates: List[str] = []
+    for token in (
+        workspace.topic,
+        workspace.root.name,
+        str(workspace.root),
+        str(metadata_path or ""),
+        str(base_review_results_path or ""),
+    ):
+        if not token:
+            continue
+        matches = _ARXIV_ID_RE.findall(str(token))
+        for match in matches:
+            if match not in candidates:
+                candidates.append(match)
+    return candidates[0] if candidates else None
+
+
+def _resolve_stage_criteria_path(
+    *,
+    stage: str,
+    workspace: TopicWorkspace,
+    metadata_path: Optional[Path],
+    criteria_path: Optional[Path],
+    base_review_results_path: Optional[Path] = None,
+) -> Path:
+    """Resolve stage criteria path with no fallback to workspace criteria.json."""
+
+    if criteria_path is not None:
+        resolved = Path(criteria_path)
+        if not resolved.exists():
+            raise FileNotFoundError(f"找不到指定 criteria 檔案：{resolved}")
+        return resolved
+
+    if stage not in {"stage1", "stage2"}:
+        raise ValueError(f"不支援的 stage: {stage}")
+
+    paper_id = _infer_stage_criteria_paper_id(
+        workspace=workspace,
+        metadata_path=metadata_path,
+        base_review_results_path=base_review_results_path,
+    )
+    if not paper_id:
+        raise ValueError(
+            "無法推斷 paper_id 以載入 stage criteria。請顯式提供 --criteria。"
+        )
+
+    repo_root = Path(__file__).resolve().parents[5]
+    criteria_dir = "criteria_stage1" if stage == "stage1" else "criteria_stage2"
+    resolved = repo_root / criteria_dir / f"{paper_id}.json"
+    if not resolved.exists():
+        raise FileNotFoundError(
+            f"找不到 {stage} criteria 檔案：{resolved}（本流程不使用 fallback）"
+        )
+    return resolved
+
+
 _REFERENCE_HEADING_RE = re.compile(
     r"""
     ^\s{0,3}
@@ -4794,21 +4875,13 @@ def run_latte_review(
     if not metadata_path.exists():
         raise FileNotFoundError(f"找不到 arXiv metadata 檔案：{metadata_path}")
 
-    criteria_payload: Dict[str, object] = {}
-    if criteria_path:
-        loaded = _read_json(Path(criteria_path))
-        if isinstance(loaded, dict):
-            structured = loaded.get("structured_payload")
-            if isinstance(structured, dict):
-                criteria_payload = structured
-            elif isinstance(loaded.get("topic_definition"), (str, dict, list)):
-                criteria_payload = loaded  # allow direct criteria JSON
-    elif workspace.criteria_path.exists():
-        loaded = _read_json(workspace.criteria_path)
-        if isinstance(loaded, dict):
-            structured = loaded.get("structured_payload")
-            if isinstance(structured, dict):
-                criteria_payload = structured
+    resolved_stage1_criteria_path = _resolve_stage_criteria_path(
+        stage="stage1",
+        workspace=workspace,
+        metadata_path=metadata_path,
+        criteria_path=criteria_path,
+    )
+    criteria_payload = _load_criteria_payload_from_path(resolved_stage1_criteria_path)
 
     resolved_window = resolve_cutoff_time_window(
         workspace,
@@ -5063,6 +5136,7 @@ def run_latte_review(
     out.write_text(json.dumps(output_records, ensure_ascii=False, indent=2), encoding="utf-8")
     return {
         "review_results_path": str(out),
+        "criteria_path": str(resolved_stage1_criteria_path),
         "reviewed": len(review_records),
         "forced_included": len(forced_included),
         "discarded": len(discarded),
@@ -5125,21 +5199,14 @@ def run_latte_fulltext_review(
     if not isinstance(loaded_base, list):
         raise ValueError("base review results payload must be a list")
 
-    criteria_payload: Dict[str, object] = {}
-    if criteria_path:
-        loaded = _read_json(Path(criteria_path))
-        if isinstance(loaded, dict):
-            structured = loaded.get("structured_payload")
-            if isinstance(structured, dict):
-                criteria_payload = structured
-            elif isinstance(loaded.get("topic_definition"), (str, dict, list)):
-                criteria_payload = loaded
-    elif workspace.criteria_path.exists():
-        loaded = _read_json(workspace.criteria_path)
-        if isinstance(loaded, dict):
-            structured = loaded.get("structured_payload")
-            if isinstance(structured, dict):
-                criteria_payload = structured
+    resolved_stage2_criteria_path = _resolve_stage_criteria_path(
+        stage="stage2",
+        workspace=workspace,
+        metadata_path=metadata_path,
+        criteria_path=criteria_path,
+        base_review_results_path=base_results,
+    )
+    criteria_payload = _load_criteria_payload_from_path(resolved_stage2_criteria_path)
 
     inclusion_criteria, exclusion_criteria = _criteria_payload_to_strings(criteria_payload)
     criteria_context = _criteria_context_from_payload(criteria_payload)
@@ -5412,6 +5479,7 @@ def run_latte_fulltext_review(
     out.write_text(json.dumps(output_records, ensure_ascii=False, indent=2), encoding="utf-8")
     return {
         "fulltext_review_results_path": str(out),
+        "criteria_path": str(resolved_stage2_criteria_path),
         "review_mode": review_mode,
         "fulltext_root": str(resolved_fulltext_root),
         "reviewed": len(review_records),

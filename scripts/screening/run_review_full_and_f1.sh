@@ -57,13 +57,19 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 SOURCE_METADATA_PATH_REVIEW="${ROOT_DIR}/refs/${PAPER_ID}/metadata/title_abstracts_metadata.jsonl"
 SOURCE_METADATA_PATH_REVIEW_ANNO="${ROOT_DIR}/refs/${PAPER_ID}/metadata/title_abstracts_metadata-annotated.jsonl"
-CRITERIA_PATH="${ROOT_DIR}/criteria_jsons/${PAPER_ID}.json"
+CRITERIA_STAGE1_PATH="${ROOT_DIR}/criteria_stage1/${PAPER_ID}.json"
+CRITERIA_STAGE2_PATH="${ROOT_DIR}/criteria_stage2/${PAPER_ID}.json"
 GOLD_METADATA_PRIMARY="${ROOT_DIR}/refs/${PAPER_ID}/metadata/title_abstracts_metadata-annotated.jsonl"
 GOLD_METADATA_FALLBACK="${ROOT_DIR}/refs/${PAPER_ID}/metadata/title_abstracts_metadata.jsonl"
 RESULTS_DIR="${ROOT_DIR}/screening/results/${PAPER_ID}_full"
 
-if [[ ! -f "${CRITERIA_PATH}" ]]; then
-  echo "[error] Missing criteria file: ${CRITERIA_PATH}" >&2
+if [[ ! -f "${CRITERIA_STAGE1_PATH}" ]]; then
+  echo "[error] Missing Stage 1 criteria file: ${CRITERIA_STAGE1_PATH}" >&2
+  exit 1
+fi
+
+if [[ ! -f "${CRITERIA_STAGE2_PATH}" ]]; then
+  echo "[error] Missing Stage 2 criteria file: ${CRITERIA_STAGE2_PATH}" >&2
   exit 1
 fi
 
@@ -95,8 +101,11 @@ export PAPER_ID
 export TOP_K=0
 export TOPIC="${PAPER_ID}_screening_full"
 export SOURCE_METADATA_PATH
-export CRITERIA_SOURCE_PATH="${CRITERIA_PATH}"
-export CRITERIA_PATH="${CRITERIA_PATH}"
+export CRITERIA_SOURCE_PATH="${CRITERIA_STAGE1_PATH}"
+export CRITERIA_STAGE1_SOURCE_PATH="${CRITERIA_STAGE1_PATH}"
+export CRITERIA_STAGE2_SOURCE_PATH="${CRITERIA_STAGE2_PATH}"
+export CRITERIA_STAGE1_PATH="${CRITERIA_STAGE1_PATH}"
+export CRITERIA_STAGE2_PATH="${CRITERIA_STAGE2_PATH}"
 export FORCE_PREPARE_INPUTS="${FORCE_PREPARE_INPUTS:-1}"
 export INPUT_DIR="${ROOT_DIR}/screening/data/${PAPER_ID}_full"
 

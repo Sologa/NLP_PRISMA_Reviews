@@ -424,7 +424,7 @@ def main() -> int:
     for paper_id in paper_ids:
         result_dir = REPO_ROOT / "screening" / "results" / f"{paper_id}_full"
         baseline_path = result_dir / "latte_review_results.senior_no_marker.json"
-        criteria_path = REPO_ROOT / "criteria_jsons" / f"{paper_id}.json"
+        criteria_path = REPO_ROOT / "criteria_stage1" / f"{paper_id}.json"
         gold_path = REPO_ROOT / "refs" / paper_id / "metadata" / "title_abstracts_metadata-annotated.jsonl"
         output_dir = result_dir / args.output_subdir
 

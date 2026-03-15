@@ -40,9 +40,12 @@ if [[ -n "${PAPER_ID}" ]]; then
     OUTPUT_DIR="${OUTPUT_DIR:-${ROOT_DIR}/screening/results/${PAPER_ID}_top${TOP_K}}"
   fi
   SOURCE_METADATA_PATH="${SOURCE_METADATA_PATH:-${ROOT_DIR}/refs/${PAPER_ID}/metadata/title_abstracts_metadata.jsonl}"
-  CRITERIA_SOURCE_PATH="${CRITERIA_SOURCE_PATH:-${ROOT_DIR}/criteria_jsons/${PAPER_ID}.json}"
+  CRITERIA_STAGE1_SOURCE_PATH="${CRITERIA_STAGE1_SOURCE_PATH:-${ROOT_DIR}/criteria_stage1/${PAPER_ID}.json}"
+  CRITERIA_STAGE2_SOURCE_PATH="${CRITERIA_STAGE2_SOURCE_PATH:-${ROOT_DIR}/criteria_stage2/${PAPER_ID}.json}"
+  CRITERIA_SOURCE_PATH="${CRITERIA_SOURCE_PATH:-${CRITERIA_STAGE1_SOURCE_PATH}}"
+  CRITERIA_STAGE1_PATH="${CRITERIA_STAGE1_PATH:-${CRITERIA_SOURCE_PATH}}"
+  CRITERIA_STAGE2_PATH="${CRITERIA_STAGE2_PATH:-${CRITERIA_STAGE2_SOURCE_PATH}}"
   FULLTEXT_ROOT="${FULLTEXT_ROOT:-${ROOT_DIR}/refs/${PAPER_ID}/mds}"
-  CRITERIA_PATH="${CRITERIA_SOURCE_PATH}"
 else
   if [[ "${TOP_K}" == "0" ]]; then
     TOPIC="${TOPIC:-cads_full_local}"
@@ -54,9 +57,12 @@ else
     OUTPUT_DIR="${OUTPUT_DIR:-${ROOT_DIR}/screening/results/cads_smoke5}"
   fi
   SOURCE_METADATA_PATH="${SOURCE_METADATA_PATH:-${ROOT_DIR}/screening/data/source/cads/arxiv_metadata.json}"
-  CRITERIA_SOURCE_PATH="${CRITERIA_SOURCE_PATH:-${ROOT_DIR}/screening/data/source/cads/criteria.json}"
+  CRITERIA_STAGE1_SOURCE_PATH="${CRITERIA_STAGE1_SOURCE_PATH:-${ROOT_DIR}/screening/data/source/cads/criteria.json}"
+  CRITERIA_STAGE2_SOURCE_PATH="${CRITERIA_STAGE2_SOURCE_PATH:-${CRITERIA_STAGE1_SOURCE_PATH}}"
+  CRITERIA_SOURCE_PATH="${CRITERIA_SOURCE_PATH:-${CRITERIA_STAGE1_SOURCE_PATH}}"
+  CRITERIA_STAGE1_PATH="${CRITERIA_STAGE1_PATH:-${CRITERIA_SOURCE_PATH}}"
+  CRITERIA_STAGE2_PATH="${CRITERIA_STAGE2_PATH:-${CRITERIA_STAGE2_SOURCE_PATH}}"
   FULLTEXT_ROOT="${FULLTEXT_ROOT:-}"
-  CRITERIA_PATH="${CRITERIA_SOURCE_PATH}"
 fi
 
 WORKSPACE_ROOT="${WORKSPACE_ROOT:-${ROOT_DIR}/screening/workspaces}"
@@ -88,7 +94,7 @@ if [[ -n "${KEYS_FILE}" ]]; then
   fi
 fi
 
-if [[ "${FORCE_PREPARE_INPUTS}" == "1" || ! -f "${METADATA_PATH}" || ! -f "${CRITERIA_PATH}" ]]; then
+if [[ "${FORCE_PREPARE_INPUTS}" == "1" || ! -f "${METADATA_PATH}" || ! -f "${CRITERIA_STAGE1_PATH}" ]]; then
   PREPARE_CMD=(
     python3 "${ROOT_DIR}/scripts/screening/prepare_review_smoke_inputs.py"
     --source-metadata "${SOURCE_METADATA_PATH}"
@@ -142,12 +148,18 @@ fi
 echo "[info] topic=${TOPIC}"
 echo "[info] source_metadata_path=${SOURCE_METADATA_PATH}"
 echo "[info] source_criteria_path=${CRITERIA_SOURCE_PATH}"
+echo "[info] stage1_criteria_path=${CRITERIA_STAGE1_PATH}"
+echo "[info] stage2_criteria_path=${CRITERIA_STAGE2_PATH}"
 echo "[info] input_dir=${INPUT_DIR}"
 echo "[info] output_dir=${OUTPUT_DIR}"
 echo "[info] metadata_path=${METADATA_PATH}"
-echo "[info] criteria_path=${CRITERIA_PATH}"
 echo "[info] force_prepare_inputs=${FORCE_PREPARE_INPUTS}"
 echo "[info] keys_file=${KEYS_FILE:-<none>}"
+
+if [[ ! -f "${CRITERIA_STAGE1_PATH}" ]]; then
+  echo "[error] Missing Stage 1 criteria file: ${CRITERIA_STAGE1_PATH}" >&2
+  exit 1
+fi
 
 if ! "${PIPELINE_PYTHON}" -c "import openai, pandas, pydantic, tqdm" >/dev/null 2>&1; then
   echo "[error] Missing Python dependencies in ${PIPELINE_PYTHON}." >&2
@@ -163,7 +175,7 @@ REVIEW_CMD=(
   --topic "${TOPIC}"
   --workspace-root "${WORKSPACE_ROOT}"
   --metadata "${METADATA_PATH}"
-  --criteria "${CRITERIA_PATH}"
+  --criteria "${CRITERIA_STAGE1_PATH}"
   --output "${OUTPUT_PATH}"
 )
 if [[ -n "${TOP_K_ARG}" ]]; then
@@ -215,6 +227,10 @@ if [[ "${ENABLE_FULLTEXT_REVIEW}" == "1" ]]; then
     echo "[error] FULLTEXT_ROOT is required when ENABLE_FULLTEXT_REVIEW=1" >&2
     exit 1
   fi
+  if [[ ! -f "${CRITERIA_STAGE2_PATH}" ]]; then
+    echo "[error] Missing Stage 2 criteria file: ${CRITERIA_STAGE2_PATH}" >&2
+    exit 1
+  fi
   echo "[info] fulltext_review_mode=${FULLTEXT_REVIEW_MODE}"
   echo "[info] fulltext_root=${FULLTEXT_ROOT}"
   echo "[info] fulltext_output=${FULLTEXT_OUTPUT_PATH}"
@@ -224,7 +240,7 @@ if [[ "${ENABLE_FULLTEXT_REVIEW}" == "1" ]]; then
     --workspace-root "${WORKSPACE_ROOT}" \
     --base-review-results "${FULLTEXT_BASE_RESULTS_PATH}" \
     --metadata "${METADATA_PATH}" \
-    --criteria "${CRITERIA_PATH}" \
+    --criteria "${CRITERIA_STAGE2_PATH}" \
     --fulltext-root "${FULLTEXT_ROOT}" \
     --output "${FULLTEXT_OUTPUT_PATH}" \
     --fulltext-review-mode "${FULLTEXT_REVIEW_MODE}" \

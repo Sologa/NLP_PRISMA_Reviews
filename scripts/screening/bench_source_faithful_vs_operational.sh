@@ -21,7 +21,7 @@ criteria_path_for() {
   local variant="$2"
   case "${variant}" in
     operational)
-      echo "${ROOT_DIR}/criteria_jsons/${paper_id}.json"
+      echo "${ROOT_DIR}/criteria_stage1/${paper_id}.json"
       ;;
     source_faithful)
       echo "${ROOT_DIR}/docs/ChatGPT/${paper_id}.source_faithful_rewrite.json"
