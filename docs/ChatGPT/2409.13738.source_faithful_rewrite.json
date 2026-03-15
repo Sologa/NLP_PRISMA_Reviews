@@ -1,0 +1,104 @@
+{
+  "topic": "NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods",
+  "topic_definition": "Source-faithful rewrite based only on the original paper's stated inclusion and exclusion criteria. This review concerns NLP-enabled process extraction, i.e., extracting process models from natural-language text. The covered targets include control-flow models (imperative or declarative) and decisional models. For the current pipeline, title+abstract screening can only proxy whether the paper appears to specifically cover the use of NLP for process extraction from natural language text; final eligibility must still confirm paper type, language/fulltext availability, originality, concrete method, and experiments.",
+  "summary": "Source-faithful rewrite grounded only in the original paper's IC.1-IC.4, EC.1-EC.4, and scope statements.",
+  "summary_topics": [
+    {
+      "id": "S1",
+      "description": "NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods"
+    }
+  ],
+  "inclusion_criteria": {
+    "required": [
+      {
+        "criterion": "Paper is a full research article published in a peer-reviewed conference or journal, a full text is available, and the paper is written in English.",
+        "source": "https://arxiv.org/html/2409.13738v1",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "Paper is a primary research article presenting an original research contribution.",
+        "source": "https://arxiv.org/html/2409.13738v1",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "Paper specifically covers the use of NLP for process extraction from natural language text.",
+        "source": "https://arxiv.org/html/2409.13738v1",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "Paper explicates a concrete method and describes experiments to empirically validate the method.",
+        "source": "https://arxiv.org/html/2409.13738v1",
+        "topic_ids": [
+          "S1"
+        ]
+      }
+    ]
+  },
+  "exclusion_criteria": [
+    {
+      "criterion": "Papers that are not full research papers, are not published in a conference or journal, are not peer-reviewed including preprints, have no full text available, or are not written in English are excluded.",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Secondary research articles are excluded.",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Papers not specifically covering the use of NLP for process extraction are excluded. This includes studies on NLP for process redesign, matching, or process prediction, sentiment analysis, works that target individual labels instead of natural text, or studies on generating natural text from processes.",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Papers that only superficially discuss an applied method, or do not describe experiments to validate the method, are excluded.",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "stage_projection": {
+    "stage1_observable": {
+      "scope": "Title+abstract proxy of the paper's IC.3 and EC.3 within the current pipeline.",
+      "strong_positive_evidence": [
+        "The paper explicitly describes the use of NLP for process extraction from natural-language text.",
+        "The source is natural-language text and the target is a process model or structured process representation."
+      ],
+      "strong_negative_evidence": [
+        "The paper is about NLP for process redesign, matching, or process prediction.",
+        "The paper focuses on sentiment analysis.",
+        "The paper targets individual labels instead of natural text.",
+        "The paper studies generating natural text from processes."
+      ],
+      "defer_to_stage2_when_unclear": [
+        "If IC.3 appears plausible from title+abstract but paper type, language/fulltext availability, method concreteness, or experiments are not clear, defer to Stage 2 confirmation instead of adding unsupported topic-specific exclusions."
+      ]
+    },
+    "stage2_confirmatory": {
+      "scope": "Full confirmation of the paper's IC.1-IC.4 and EC.1-EC.4.",
+      "required_checks": [
+        "Full research article in a peer-reviewed conference or journal",
+        "Full text available and written in English",
+        "Primary research with an original contribution",
+        "Concrete method",
+        "Experiments that empirically validate the method"
+      ]
+    }
+  },
+  "sources": [
+    "https://arxiv.org/html/2409.13738v1"
+  ]
+}
