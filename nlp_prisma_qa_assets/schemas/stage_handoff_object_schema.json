@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NLP PRISMA stage handoff object",
+  "description": "Compact object passed from Stage 1 to Stage 2 or from Stage 2 to SeniorLead.",
+  "type": "object",
+  "required": [
+    "paper_id",
+    "from_stage",
+    "to_stage",
+    "carry_forward_fields",
+    "unresolved_fields",
+    "conflicting_fields",
+    "notes_for_next_reader"
+  ],
+  "properties": {
+    "paper_id": {
+      "type": "string"
+    },
+    "from_stage": {
+      "type": "string",
+      "enum": [
+        "stage1",
+        "stage2"
+      ]
+    },
+    "to_stage": {
+      "type": "string",
+      "enum": [
+        "stage2",
+        "seniorlead"
+      ]
+    },
+    "carry_forward_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unresolved_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "conflicting_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "notes_for_next_reader": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_raw_quote_expansion": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Fields where the next reader should inspect raw quotes directly."
+    }
+  },
+  "additionalProperties": false
+}
