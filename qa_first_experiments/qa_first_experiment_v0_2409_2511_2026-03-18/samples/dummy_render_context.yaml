@@ -1,0 +1,124 @@
+PAPER_ID: "2409.13738"
+PAPER_TITLE: "Dummy Paper Title"
+STAGE: "stage1"
+TARGET_STAGE: "stage1"
+WORKFLOW_ARM: "qa-only"
+CURRENT_STAGE1_CRITERIA_JSON_PATH: "criteria_stage1/2409.13738.json"
+CURRENT_STAGE2_CRITERIA_JSON_PATH: "criteria_stage2/2409.13738.json"
+CURRENT_STAGE1_CRITERIA_JSON_CONTENT: |
+  {
+    "paper_id": "2409.13738",
+    "stage": "stage1",
+    "criteria": []
+  }
+CURRENT_STAGE2_CRITERIA_JSON_CONTENT: |
+  {
+    "paper_id": "2409.13738",
+    "stage": "stage2",
+    "criteria": []
+  }
+QA_JSON_PATH: "qa/2409.13738.stage1.seed_qa.json"
+QA_JSON_CONTENT: |
+  {
+    "paper_id": "2409.13738",
+    "stage": "stage1",
+    "reviewer_guardrails": [],
+    "question_groups": [
+      {
+        "group_id": "title_abstract",
+        "questions": [
+          {
+            "qid": "T1",
+            "criterion_family": "process_extraction_core_fit"
+          }
+        ]
+      }
+    ]
+  }
+REVIEWER_GUARDRAILS_JSON: |
+  []
+TITLE: "Dummy title"
+ABSTRACT: "Dummy abstract"
+FULLTEXT_TEXT: "Dummy full text."
+METADATA_JSON: |
+  {"key": "dummy2026paper", "venue": "DummyConf"}
+PRIOR_STAGE_OUTPUT_JSON: |
+  {"answers": []}
+CURRENT_QA_OUTPUT_JSON: |
+  {"answers": []}
+SYNTHESIS_OBJECT_JSON: |
+  {"field_records": []}
+JUNIOR_QA_OUTPUTS_JSON: |
+  [{"reviewer": "JuniorNano", "answers": []}, {"reviewer": "JuniorMini", "answers": []}]
+JUNIOR_SYNTHESIS_OUTPUTS_JSON: |
+  [{"reviewer": "JuniorNano", "field_records": []}, {"reviewer": "JuniorMini", "field_records": []}]
+JUNIOR_DECISION_OUTPUTS_JSON: |
+  [{"reviewer": "JuniorNano", "stage_score": 3}, {"reviewer": "JuniorMini", "stage_score": 4}]
+SYNTHESIS_SCHEMA_PATH: "schemas/minimal_synthesis_schema.yaml"
+SYNTHESIS_SCHEMA_CONTENT: |
+  top_level:
+    required: [paper_id, paper_title, stage, arm, field_records]
+QA_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "string",
+    "stage": "stage1|stage2",
+    "workflow_arm": "qa-only|qa+synthesis",
+    "qa_source_path": "string",
+    "reviewer_guardrails_applied": ["string"],
+    "answers": [
+      {
+        "qid": "string",
+        "criterion_family": "string",
+        "answer_state": "present|absent|unclear",
+        "answer_rationale": "string",
+        "supporting_quotes": ["string"],
+        "locations": ["string"],
+        "missingness_reason": "string|null"
+      }
+    ]
+  }
+SYNTHESIS_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "string",
+    "paper_title": "string",
+    "stage": "stage1|stage2",
+    "arm": "qa+synthesis",
+    "field_records": [
+      {
+        "field_name": "string",
+        "state": "present|absent|unclear|mixed",
+        "normalized_value": "string|object|array|null",
+        "supporting_quotes": ["string"],
+        "locations": ["string"],
+        "missingness_reason": "string|null",
+        "conflict_note": "string|null",
+        "derived_from_qids": ["string"],
+        "stage_handoff_status": "observed_in_stage1|deferred_to_stage2|carried_from_stage1|resolved_in_stage2|not_applicable"
+      }
+    ]
+  }
+CRITERIA_EVAL_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "string",
+    "stage": "stage1|stage2",
+    "arm": "qa-only|qa+synthesis",
+    "stage_score": 3,
+    "decision_recommendation": "include|exclude|maybe|manual_review_needed",
+    "criterion_mapping": [],
+    "criterion_conflicts": [],
+    "decision_rationale": "string",
+    "manual_review_needed": true,
+    "routing_note": "string"
+  }
+SENIOR_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "string",
+    "stage": "stage1|stage2",
+    "arm": "qa-only|qa+synthesis",
+    "senior_stage_score": 3,
+    "decision_recommendation": "include|exclude|maybe|manual_review_needed",
+    "decision_rationale": "string",
+    "criterion_conflicts": [],
+    "manual_review_needed": false,
+    "routing_note": "string"
+  }

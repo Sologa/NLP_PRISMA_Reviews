@@ -1,0 +1,18 @@
+patch_bundle: qa_first_experiment_v0_2409_2511_2026-03-18
+status: experiment_only
+seed_source_bundle: qa_first_experiments/chatgpt_seed_qas_2409_2511_2026-03-18
+patches:
+  - paper_id: "2511.13936"
+    stage: stage1
+    qid: M1
+    original_question: "此 SR 無正式 metadata-only eligibility gate；若需要，可只記錄 publication year / venue 作 corpus note，不得替代語義判定。"
+    patched_form: "Moved from answerable question_groups to reviewer_guardrails[0]: Metadata such as publication year or venue may be recorded only as corpus notes and must not be used as eligibility evidence or to override semantic evidence."
+    patch_reason: "The original M1 is a workflow instruction, not paper evidence. Forcing present|absent|unclear answers would create meaningless QA rows and contaminate evaluator inputs."
+    patch_scope: minimal_required
+  - paper_id: "2511.13936"
+    stage: stage2
+    qid: M1
+    original_question: "此 SR 的 canonical eligibility 不包含 peer-review / year / citation hard gates；若 reviewer 記錄這些 metadata，是否已明確標成 corpus note 而非 eligibility criterion？"
+    patched_form: "Moved from answerable question_groups to reviewer_guardrails[0]: Peer-review, year, venue, and citation metadata may be recorded only as corpus notes and must not be treated as canonical eligibility gates for 2511."
+    patch_reason: "The original M1 audits reviewer behavior rather than extracting paper evidence. Keeping it answerable would blur workflow guardrails with evidence QA."
+    patch_scope: minimal_required

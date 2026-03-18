@@ -1,0 +1,140 @@
+{
+  "schema_version": "qa_seed_v1",
+  "asset_type": "qa_seed",
+  "status": "experiment_only",
+  "paper_id": "2511.13936",
+  "stage": "stage1",
+  "source_markdown": "nlp_prisma_reviews_qa_generation_2026-03-17/qa_generated/2511.13936_stage1_qa.md",
+  "source_basis": {
+    "seed_origin": "ChatGPT-generated QA package",
+    "current_criteria": [
+      "criteria_stage1/2511.13936.json",
+      "criteria_stage2/2511.13936.json"
+    ],
+    "notes": [
+      "This JSON is an experiment seed, not production criteria.",
+      "The original seed package contained an incorrect repo-PDF availability note; that claim is not treated as authoritative here."
+    ]
+  },
+  "review": {
+    "title": "Preference-Based Learning in Audio Applications: A Systematic Analysis",
+    "topic": "Preference learning in audio applications",
+    "design_intent": "Stage 1 keeps only title, abstract, keywords, and first-page observable signals, and defers unstable or full-text-only confirmation to Stage 2.",
+    "decision_output_allowed": false
+  },
+  "question_groups": [
+    {
+      "group_id": "metadata",
+      "group_label": "Metadata-only checks",
+      "questions": [
+        {
+          "qid": "M1",
+          "criterion_family": "formal_metadata_note",
+          "question": "此 SR 無正式 metadata-only eligibility gate；若需要，可只記錄 publication year / venue 作 corpus note，不得替代語義判定。",
+          "expected_answer_form": "present | absent | unclear + 一句 metadata 證據說明",
+          "quote_requirement": "若 PDF 首頁或書目記錄可直接支持，引用最短可驗證字串；否則填 metadata_record_only。",
+          "location_requirement": "bibliographic record",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明缺少年份、頁數、venue、語言或可驗證書目。",
+          "stage2_handoff": "此列不是 hard criterion，而是避免 reviewer 誤把 retrieval history 當正式條件。"
+        }
+      ]
+    },
+    {
+      "group_id": "title_abstract",
+      "group_label": "Title/Abstract-observable QA",
+      "questions": [
+        {
+          "qid": "T1",
+          "criterion_family": "preference_signal",
+          "question": "title/abstract 是否顯示 preference-learning evidence，例如 ranking、pairwise / A-B comparison、comparative feedback，或明示 preferences 用於 learning？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "若只有 ratings 而未見轉成 preference，Stage 2 釐清。"
+        },
+        {
+          "qid": "T2",
+          "criterion_family": "converted_ratings_or_rl_loop",
+          "question": "若沒有明確 pairwise comparison，title/abstract 是否仍顯示 numeric ratings 被轉為 rankings/preferences，或存在 RL training loop for an audio model？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "Stage 2 確認具體機制。"
+        },
+        {
+          "qid": "T3",
+          "criterion_family": "audio_domain_fit",
+          "question": "title/abstract 是否顯示研究應用於 audio domain；multimodal works including audio 也算在內？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "若 audio 只在周邊場景出現，Stage 2 釐清。"
+        },
+        {
+          "qid": "T4",
+          "criterion_family": "learning_not_evaluation_only",
+          "question": "title/abstract 是否顯示 preferences 用於 learning / training / adaptation，而不是 solely for evaluation？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "若只見 human evaluation without training consequence，Stage 2 確認。"
+        },
+        {
+          "qid": "T5",
+          "criterion_family": "survey_review_negative",
+          "question": "title/abstract 是否清楚顯示為 survey / review article？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "Stage 2 再確認 publication form。"
+        }
+      ]
+    }
+  ],
+  "handoff_policy": [
+    "若任一核心題只得到 unclear，不得因為缺少摘要訊號而自行補寫新 exclusion。",
+    "若 paper 同時出現納入訊號與鄰近非目標訊號，Stage 1 只記錄衝突與 present / absent / unclear 狀態，真正的 semantic closure 交給 Stage 2。",
+    "Metadata-only 條件不得覆蓋正文語義；正文語義也不得取代外部可驗證 metadata。"
+  ],
+  "non_goals": [
+    "不直接輸出最終納入結論",
+    "不把原 SR 的 paper-specific 例子升級成 general rule",
+    "不把 performance-oriented hardening 回寫成 formal criteria"
+  ]
+}
+

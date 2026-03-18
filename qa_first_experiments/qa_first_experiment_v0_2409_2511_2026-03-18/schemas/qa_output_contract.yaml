@@ -1,0 +1,26 @@
+type: object
+required:
+  - paper_id
+  - stage
+  - workflow_arm
+  - qa_source_path
+  - reviewer_guardrails_applied
+  - answers
+answer_record:
+  required:
+    - qid
+    - criterion_family
+    - answer_state
+    - answer_rationale
+    - supporting_quotes
+    - locations
+    - missingness_reason
+  optional:
+    - stage2_handoff_note
+    - conflict_note
+    - resolves_stage1
+    - candidate_synthesis_fields
+allowed_answer_state:
+  - present
+  - absent
+  - unclear

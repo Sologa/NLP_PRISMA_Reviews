@@ -1,0 +1,53 @@
+bundle: qa_first_experiment_templates_2409_2511_v0
+status: experiment_only
+storage_rule: external_template_files_only
+intended_scope:
+  - "2409.13738"
+  - "2511.13936"
+arms:
+  - qa-only
+  - qa+synthesis
+templates:
+  - id: stage1_qa_only_reviewer
+    file: 01_stage1_qa_only_reviewer_TEMPLATE.md
+    stage: stage1
+    arm: qa-only
+  - id: stage2_qa_only_reviewer
+    file: 02_stage2_qa_only_reviewer_TEMPLATE.md
+    stage: stage2
+    arm: qa-only
+  - id: stage1_qa_synthesis_reviewer
+    file: 03_stage1_qa_synthesis_reviewer_TEMPLATE.md
+    stage: stage1
+    arm: qa+synthesis
+  - id: stage2_qa_synthesis_reviewer
+    file: 04_stage2_qa_synthesis_reviewer_TEMPLATE.md
+    stage: stage2
+    arm: qa+synthesis
+  - id: synthesis_builder
+    file: 05_synthesis_builder_TEMPLATE.md
+    stage: cross-stage
+    arm: qa+synthesis
+  - id: criteria_evaluator_from_qa_only
+    file: 06_criteria_evaluator_from_qa_only_TEMPLATE.md
+    stage: decision
+    arm: qa-only
+  - id: criteria_evaluator_from_synthesis
+    file: 07_criteria_evaluator_from_synthesis_TEMPLATE.md
+    stage: decision
+    arm: qa+synthesis
+required_placeholders:
+  - PAPER_ID
+  - PAPER_TITLE
+  - STAGE
+  - CURRENT_STAGE1_CRITERIA_JSON_PATH
+  - CURRENT_STAGE2_CRITERIA_JSON_PATH
+  - SEED_QA_JSON_PATH
+  - TITLE
+  - ABSTRACT
+  - FULLTEXT_TEXT
+  - METADATA_JSON
+  - PRIOR_STAGE_OUTPUT_JSON
+  - QA_OUTPUT_JSON_SCHEMA_HINT
+  - SYNTHESIS_OUTPUT_JSON_SCHEMA_HINT
+

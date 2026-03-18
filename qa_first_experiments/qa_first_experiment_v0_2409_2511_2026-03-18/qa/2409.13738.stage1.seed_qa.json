@@ -1,0 +1,155 @@
+{
+  "schema_version": "qa_seed_v1",
+  "asset_type": "qa_seed",
+  "status": "experiment_only",
+  "paper_id": "2409.13738",
+  "stage": "stage1",
+  "source_markdown": "nlp_prisma_reviews_qa_generation_2026-03-17/qa_generated/2409.13738_stage1_qa.md",
+  "source_basis": {
+    "seed_origin": "ChatGPT-generated QA package",
+    "current_criteria": [
+      "criteria_stage1/2409.13738.json",
+      "criteria_stage2/2409.13738.json"
+    ],
+    "notes": [
+      "This JSON is an experiment seed, not production criteria.",
+      "The original seed package contained an incorrect repo-PDF availability note; that claim is not treated as authoritative here."
+    ]
+  },
+  "review": {
+    "title": "NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods",
+    "topic": "NLP for process extraction from natural-language text",
+    "design_intent": "Stage 1 keeps only title, abstract, keywords, and first-page observable signals, and defers unstable or full-text-only confirmation to Stage 2.",
+    "decision_output_allowed": false
+  },
+  "reviewer_guardrails": [],
+  "question_groups": [
+    {
+      "group_id": "metadata",
+      "group_label": "Metadata-only checks",
+      "questions": [
+        {
+          "qid": "M1",
+          "criterion_family": "publication_form_deferred",
+          "question": "該研究是否可由書目訊息初步判斷為 conference / journal full research article，而非 poster / short / thesis / report / book chapter？",
+          "expected_answer_form": "present | absent | unclear + 一句 metadata 證據說明",
+          "quote_requirement": "若 PDF 首頁或書目記錄可直接支持，引用最短可驗證字串；否則填 metadata_record_only。",
+          "location_requirement": "bibliographic metadata / first page / venue record",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明缺少年份、頁數、venue、語言或可驗證書目。",
+          "stage2_handoff": "此項只做 metadata 記錄；最終 closure 在 Stage 2。"
+        },
+        {
+          "qid": "M2",
+          "criterion_family": "language_fulltext_deferred",
+          "question": "該研究是否可初步確認為英文且可取得 full text？",
+          "expected_answer_form": "present | absent | unclear + 一句 metadata 證據說明",
+          "quote_requirement": "若 PDF 首頁或書目記錄可直接支持，引用最短可驗證字串；否則填 metadata_record_only。",
+          "location_requirement": "bibliographic metadata / first page / venue record",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明缺少年份、頁數、venue、語言或可驗證書目。",
+          "stage2_handoff": "此項只做 metadata 記錄；最終 closure 在 Stage 2。"
+        }
+      ]
+    },
+    {
+      "group_id": "title_abstract",
+      "group_label": "Title/Abstract-observable QA",
+      "questions": [
+        {
+          "qid": "T1",
+          "criterion_family": "process_extraction_core_fit",
+          "question": "title/abstract 是否明確指出研究 specifically covers NLP for process extraction from natural-language text？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "若只看到 BPM / process mining 而未見 NLP + extraction 關係，交 Stage 2。"
+        },
+        {
+          "qid": "T2",
+          "criterion_family": "source_target_link",
+          "question": "title/abstract 是否出現從 natural-language text 產生 process model / process representation / control-flow / decision model 的可觀測訊號？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "若只提 process analysis without extraction target，Stage 2 釐清。"
+        },
+        {
+          "qid": "T3",
+          "criterion_family": "non_target_family_prediction_matching_redesign",
+          "question": "title/abstract 是否反而表明研究是 NLP for process redesign、process matching、process prediction 等非目標任務？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "若 process extraction 與其他任務並存，Stage 2 確認主任務。"
+        },
+        {
+          "qid": "T4",
+          "criterion_family": "non_target_family_label_or_text_generation",
+          "question": "title/abstract 是否顯示研究只預測 individual labels、做 sentiment analysis、或是從 process 生成自然語言 text，而不是從 text 萃取 process？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "Stage 2 解決 source/target 方向問題。"
+        },
+        {
+          "qid": "T5",
+          "criterion_family": "secondary_study_signal",
+          "question": "title/abstract 是否清楚顯示它是 survey / review / secondary study？",
+          "expected_answer_form": "present | absent | unclear + 一句 title/abstract 證據說明",
+          "quote_requirement": "必須引用 title 或 abstract 中最短、最直接的支持或反證片段；若完全沒有足夠訊號，標 unclear。",
+          "location_requirement": "title / abstract / keywords / first-page abstract block",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "unclear 時說明 abstract 過短、語義含糊、或只出現鄰近任務而未明言。",
+          "stage2_handoff": "publication form / originality 在 Stage 2 完整 closure。"
+        }
+      ]
+    }
+  ],
+  "handoff_policy": [
+    "若任一核心題只得到 unclear，不得因為缺少摘要訊號而自行補寫新 exclusion。",
+    "若 paper 同時出現納入訊號與鄰近非目標訊號，Stage 1 只記錄衝突與 present / absent / unclear 狀態，真正的 semantic closure 交給 Stage 2。",
+    "Metadata-only 條件不得覆蓋正文語義；正文語義也不得取代外部可驗證 metadata。"
+  ],
+  "non_goals": [
+    "不直接輸出最終納入結論",
+    "不把原 SR 的 paper-specific 例子升級成 general rule",
+    "不把 performance-oriented hardening 回寫成 formal criteria"
+  ]
+}

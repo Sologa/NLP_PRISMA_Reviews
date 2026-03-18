@@ -1,0 +1,168 @@
+{
+  "schema_version": "qa_seed_v1",
+  "asset_type": "qa_seed",
+  "status": "experiment_only",
+  "paper_id": "2409.13738",
+  "stage": "stage2",
+  "source_markdown": "nlp_prisma_reviews_qa_generation_2026-03-17/qa_generated/2409.13738_stage2_qa.md",
+  "source_basis": {
+    "seed_origin": "ChatGPT-generated QA package",
+    "current_criteria": [
+      "criteria_stage1/2409.13738.json",
+      "criteria_stage2/2409.13738.json"
+    ],
+    "notes": [
+      "This JSON is an experiment seed, not production criteria.",
+      "The original seed package contained an incorrect repo-PDF availability note; that claim is not treated as authoritative here."
+    ]
+  },
+  "review": {
+    "title": "NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods",
+    "topic": "NLP for process extraction from natural-language text",
+    "design_intent": "Stage 2 uses full text to close Stage 1 unresolved fields, confirm canonical eligibility, and record conflicts between title/abstract and body evidence.",
+    "decision_output_allowed": false
+  },
+  "reviewer_guardrails": [],
+  "question_groups": [
+    {
+      "group_id": "metadata_confirmation",
+      "group_label": "Metadata and bibliographic confirmation",
+      "questions": [
+        {
+          "qid": "M1",
+          "criterion_family": "publication_form",
+          "question": "全文與書目是否確認該研究為 peer-reviewed conference / journal 的 full research article？",
+          "expected_answer_form": "present | absent | unclear + 一句全文或書目證據說明",
+          "quote_requirement": "若全文或首頁可直接支持，引用最短可驗證字串；若屬外部書目/排名資料，填 metadata_record_only 並給出來源類型。",
+          "location_requirement": "first-page bibliographic block / venue information / section header / external bibliographic record",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "資料不足時說明缺少頁數、venue ranking、peer-review 狀態、年份或語言證據。",
+          "conflict_note_guidance": "若摘要、首頁與外部書目不一致，簡述衝突來源。",
+          "resolves_stage1": "M1"
+        },
+        {
+          "qid": "M2",
+          "criterion_family": "language_fulltext",
+          "question": "全文是否確認為英文且 full text 可得？",
+          "expected_answer_form": "present | absent | unclear + 一句全文或書目證據說明",
+          "quote_requirement": "若全文或首頁可直接支持，引用最短可驗證字串；若屬外部書目/排名資料，填 metadata_record_only 並給出來源類型。",
+          "location_requirement": "first-page bibliographic block / venue information / section header / external bibliographic record",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "資料不足時說明缺少頁數、venue ranking、peer-review 狀態、年份或語言證據。",
+          "conflict_note_guidance": "若摘要、首頁與外部書目不一致，簡述衝突來源。",
+          "resolves_stage1": "M2"
+        }
+      ]
+    },
+    {
+      "group_id": "full_text_confirmation",
+      "group_label": "Full-text / confirmatory QA",
+      "questions": [
+        {
+          "qid": "F1",
+          "criterion_family": "primary_research_confirm",
+          "question": "全文是否確認該研究為 primary research article，提出 original research contribution？",
+          "expected_answer_form": "present | absent | unclear + 一句全文證據說明",
+          "quote_requirement": "必須引用正文中最短、最直接的支持或反證片段；若摘要與正文衝突，至少各引一處。",
+          "location_requirement": "section heading + page number(s); appendix must be marked when used",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "當全文仍不足以判定時，說明缺少方法、任務定義、資料來源、輸出形式或實驗描述。",
+          "conflict_note_guidance": "若 title/abstract 與正文、方法與實驗、或不同段落之間有衝突，簡述衝突。",
+          "resolves_stage1": "T5"
+        },
+        {
+          "qid": "F2",
+          "criterion_family": "process_extraction_confirm",
+          "question": "全文是否確認研究 specifically covers the use of NLP for process extraction from natural-language text？",
+          "expected_answer_form": "present | absent | unclear + 一句全文證據說明",
+          "quote_requirement": "必須引用正文中最短、最直接的支持或反證片段；若摘要與正文衝突，至少各引一處。",
+          "location_requirement": "section heading + page number(s); appendix must be marked when used",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "當全文仍不足以判定時，說明缺少方法、任務定義、資料來源、輸出形式或實驗描述。",
+          "conflict_note_guidance": "若 title/abstract 與正文、方法與實驗、或不同段落之間有衝突，簡述衝突。",
+          "resolves_stage1": [
+            "T1",
+            "T2"
+          ]
+        },
+        {
+          "qid": "F3",
+          "criterion_family": "concrete_method_confirm",
+          "question": "全文是否 explicate a concrete method，而不是只做表面描述或概念性討論？",
+          "expected_answer_form": "present | absent | unclear + 一句全文證據說明",
+          "quote_requirement": "必須引用正文中最短、最直接的支持或反證片段；若摘要與正文衝突，至少各引一處。",
+          "location_requirement": "section heading + page number(s); appendix must be marked when used",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "當全文仍不足以判定時，說明缺少方法、任務定義、資料來源、輸出形式或實驗描述。",
+          "conflict_note_guidance": "若 title/abstract 與正文、方法與實驗、或不同段落之間有衝突，簡述衝突。",
+          "resolves_stage1": "deferred_method_confirmation"
+        },
+        {
+          "qid": "F4",
+          "criterion_family": "empirical_validation_confirm",
+          "question": "全文是否描述 experiments 以 empirically validate 該方法？",
+          "expected_answer_form": "present | absent | unclear + 一句全文證據說明",
+          "quote_requirement": "必須引用正文中最短、最直接的支持或反證片段；若摘要與正文衝突，至少各引一處。",
+          "location_requirement": "section heading + page number(s); appendix must be marked when used",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "當全文仍不足以判定時，說明缺少方法、任務定義、資料來源、輸出形式或實驗描述。",
+          "conflict_note_guidance": "若 title/abstract 與正文、方法與實驗、或不同段落之間有衝突，簡述衝突。",
+          "resolves_stage1": "deferred_validation_confirmation"
+        },
+        {
+          "qid": "F5",
+          "criterion_family": "non_target_family_resolution",
+          "question": "全文是否顯示研究其實屬於 process redesign / matching / prediction / sentiment / label-only / text-from-process generation 等非目標家族？",
+          "expected_answer_form": "present | absent | unclear + 一句全文證據說明",
+          "quote_requirement": "必須引用正文中最短、最直接的支持或反證片段；若摘要與正文衝突，至少各引一處。",
+          "location_requirement": "section heading + page number(s); appendix must be marked when used",
+          "allowed_states": [
+            "present",
+            "absent",
+            "unclear"
+          ],
+          "missingness_reason_guidance": "當全文仍不足以判定時，說明缺少方法、任務定義、資料來源、輸出形式或實驗描述。",
+          "conflict_note_guidance": "若 title/abstract 與正文、方法與實驗、或不同段落之間有衝突，簡述衝突。",
+          "resolves_stage1": [
+            "T3",
+            "T4"
+          ]
+        }
+      ]
+    }
+  ],
+  "conflict_handling_policy": [
+    "若 title/abstract 與正文衝突，conflict_note 必須記錄哪裡衝突、哪一段支持哪個解讀。",
+    "若 metadata 與正文語義衝突，不可讓其中一方直接覆蓋另一方；需分開記錄並交由後續 synthesis 層處理。",
+    "若全文仍不足以判定，保留 unclear 並明確填寫 missingness_reason，不得發明新 criteria 補洞。"
+  ],
+  "non_goals": [
+    "不直接輸出最終納入結論",
+    "不把 workflow support 偽裝成 criteria",
+    "不把歷史 hardening、retrieval heuristics 或 corpus-construction filters 偷渡成 canonical eligibility"
+  ]
+}
