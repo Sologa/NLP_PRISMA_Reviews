@@ -1,0 +1,114 @@
+{
+  "bundle_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/qa_first_experiments/qa_first_experiment_v1_2409_stage2_final_ablation_2026-03-19",
+  "results_root": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/qa_first_v1_2409_stage2_final_ablation_2026-03-19",
+  "run_date": "2026-03-19 19:56:51",
+  "papers": [
+    "2409.13738"
+  ],
+  "arms": [
+    "qa+synthesis"
+  ],
+  "baseline": {
+    "2409.13738": {
+      "stage1": {
+        "paper_id": "2409.13738",
+        "results_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/latte_review_results.json",
+        "gold_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2409.13738/metadata/title_abstracts_metadata-annotated.jsonl",
+        "positive_mode": "include_or_maybe",
+        "matched": 78,
+        "dropped_no_key": 0,
+        "verdict_counts": {
+          "exclude (junior:2,2)": 2,
+          "exclude (junior:1,2)": 4,
+          "exclude (senior:1)": 30,
+          "exclude (senior:2)": 7,
+          "include (junior:5,5)": 29,
+          "include (senior:5)": 1,
+          "include (senior:4)": 1,
+          "maybe (senior:3)": 3,
+          "include (junior:5,4)": 1
+        },
+        "gold_size": 84,
+        "results_size": 78,
+        "gold_only_count": 6,
+        "extra_result_only_count": 0,
+        "metrics": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999,
+          "tp": 21,
+          "fp": 14,
+          "tn": 43,
+          "fn": 0
+        }
+      },
+      "combined": {
+        "paper_id": "2409.13738",
+        "results_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/2409.13738_full/latte_fulltext_review_results.json",
+        "gold_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2409.13738/metadata/title_abstracts_metadata-annotated.jsonl",
+        "positive_mode": "include_or_maybe",
+        "matched": 78,
+        "dropped_no_key": 0,
+        "verdict_counts": {
+          "exclude (junior:2,2)": 2,
+          "exclude (junior:1,2)": 5,
+          "exclude (senior:1)": 32,
+          "exclude (senior:2)": 8,
+          "include (junior:5,5)": 19,
+          "maybe (senior:3)": 10,
+          "include (junior:4,5)": 1,
+          "exclude (junior:2,1)": 1
+        },
+        "gold_size": 84,
+        "results_size": 78,
+        "gold_only_count": 6,
+        "extra_result_only_count": 0,
+        "metrics": {
+          "precision": 0.6666666666666666,
+          "recall": 0.9523809523809523,
+          "f1": 0.7843137254901961,
+          "tp": 20,
+          "fp": 10,
+          "tn": 47,
+          "fn": 1
+        }
+      }
+    }
+  },
+  "summaries": [
+    {
+      "paper_id": "2409.13738",
+      "arm": "qa+synthesis",
+      "stage1_f1": 0.6896551724137931,
+      "combined_f1": 0.6285714285714286,
+      "stage1_precision": 0.5405405405405406,
+      "stage1_recall": 0.9523809523809523,
+      "combined_precision": 0.7857142857142857,
+      "combined_recall": 0.5238095238095238,
+      "stage2_selected": 37,
+      "stage2_reviewed": 37,
+      "stage2_missing": 0,
+      "stage1_verdict_counts": {
+        "exclude (senior:2)": 16,
+        "exclude (junior:2,2)": 25,
+        "maybe (senior:3)": 37
+      },
+      "combined_verdict_counts": {
+        "exclude (senior:2)": 32,
+        "exclude (junior:2,2)": 31,
+        "maybe (senior:3)": 6,
+        "include (senior:5)": 5,
+        "include (junior:5,5)": 3,
+        "exclude (junior:2,1)": 1
+      }
+    }
+  ],
+  "hygiene": [
+    {
+      "paper_id": "2409.13738",
+      "arm": "qa+synthesis",
+      "validation_failure_count": 51,
+      "updated_at": "2026-03-19 19:56:51"
+    }
+  ]
+}

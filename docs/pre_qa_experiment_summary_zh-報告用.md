@@ -4,7 +4,47 @@
 範圍：本報告整理 `QA-first` 實驗啟動之前的主要實驗線，終點到 `stage_split_criteria_migration` 與目前 handoff 為止。  
 不納入範圍：`docs/ChatGPT/evidence_qa_feasibility_analysis_2409_2511.md` 與 `qa_first_experiments/` 內的 QA-first 實驗資產。  
 
-## 1. 一頁摘要
+## 1. 四篇 SR 分別在做什麼
+
+先說明：這裡的 `SR` 是 `systematic review`，也就是「系統性文獻回顧」。  
+白話說，四篇 SR 各自都有一個明確主題，目標是從大量候選論文裡，找出真正屬於那個主題範圍的研究。
+
+### 1.1 四篇 SR 的主題總表
+
+| Paper | SR 題目 | 這篇 SR 在看什麼 | 白話說明 | 一個直覺例子 |
+| --- | --- | --- | --- | --- |
+| `2307.05527` | *The Ethical Implications of Generative Audio Models* | 生成式音訊模型的倫理問題 | 這篇不是在問「模型準不準」，而是在看「這類模型會帶來哪些道德、法律、社會風險」。 | 例如：一篇討論 deepfake 聲音、聲音版權、聲音模仿同意權的研究。 |
+| `2409.13738` | *NLP4PBM: Process Extraction using NLP* | 用 NLP 從自然語言文字抽出流程模型 | 重點是「把文字敘述變成流程圖或流程結構」，不是一般 NLP 都算。 | 例如：把客服流程描述、醫療流程文件、作業手冊，自動轉成 process model。 |
+| `2511.13936` | *Preference-Based Learning in Audio Applications* | 音訊領域中的偏好式學習 | 重點是「用偏好訊號來學習」，像 A/B 比較、排序、偏好回饋，而不是只拿偏好做最後評分。 | 例如：讓人比較兩段語音或音樂，模型再根據這些偏好更新訓練。 |
+| `2601.19926` | *The Grammar of Transformers* | Transformer 語言模型裡的句法知識與可解釋性 | 重點是看 Transformer 內部到底有沒有學到文法結構，以及研究者怎麼證明這件事。 | 例如：分析 BERT/GPT 是否知道主詞動詞一致、依存關係、句法樹等結構。 |
+
+### 1.2 每篇 SR 的「會收什麼」與「不收什麼」
+
+說明：下面的例子是依目前 active criteria 整理出的白話例子，用來幫助理解範圍，不是正式 criteria 原文。
+
+| Paper | 會收的研究 | 不收的研究 | 白話上的邊界 |
+| --- | --- | --- | --- |
+| `2307.05527` | 以生成式音訊為主題的完整研究論文，主軸是音訊生成模型或應用，並討論倫理、法律、社會議題。 | 純 ASR/轉錄、影像或影片生成、分類/預測模型、主輸出不是音訊的工作。 | 如果研究最後產生的是文字、影像、影片，而不是音訊，就通常不在這篇 SR 裡。 |
+| `2409.13738` | 用 NLP 從自然語言文字抽出流程表示，且有具體方法與實驗驗證的原創研究。 | 流程預測、流程比對、流程重設計、情緒分析、只做一般 IE/分類但沒有真正抽出流程模型的工作。 | 不是「有用 NLP 處理流程相關文字」就算；要真的抽出 process model 才算。 |
+| `2511.13936` | 在音訊領域裡，用 ranking、A/B 比較、偏好回饋或 RL loop 來訓練模型的研究。 | 只用偏好來做 evaluation、沒有 learning component 的工作；survey/review。 | 關鍵不是「有沒有問人喜不喜歡」，而是這個偏好有沒有真的拿來驅動學習。 |
+| `2601.19926` | 研究 Transformer-based LM，並且實證分析它們的句法知識或文法結構。 | 非 Transformer 架構、只談模型但不分析 syntax、沒有實證內容的 survey / position paper。 | 不是所有 interpretability paper 都算；要明確碰到 syntax，且對象要是 Transformer LM。 |
+
+### 1.3 這些主題裡常見的專有名詞
+
+| 名詞 | 出現在哪篇 SR | 白話說明 | 例子 |
+| --- | --- | --- | --- |
+| Generative audio model | `2307` | 會「產生聲音」的模型，不只是辨識聲音 | 例如文字轉語音、音樂生成、聲音風格模仿。 |
+| Ethical implications | `2307` | 技術帶來的倫理、法律、社會風險 | 例如未經同意模仿他人聲音、假語音詐騙。 |
+| Process extraction | `2409` | 從自然語言描述中抽出流程步驟與結構 | 例如把 SOP 文字轉成流程圖。 |
+| Process model | `2409` | 對流程的形式化表示 | 例如一張包含步驟、順序、分支條件的流程圖。 |
+| Preference learning | `2511` | 不是直接給絕對分數，而是用「比較誰比較好」來學習 | 例如讓使用者在兩段音樂中選比較喜歡的一段。 |
+| A/B comparison | `2511` | 把兩個候選音訊放在一起比較 | 例如比較兩種 TTS 聲音，選較自然的一個。 |
+| RL training loop | `2511` | 模型根據回饋反覆更新策略的訓練流程 | 例如音訊生成模型根據偏好回饋逐步調整輸出。 |
+| Syntactic knowledge | `2601` | 模型是否學到句法或文法結構 | 例如知道主詞和動詞要一致，或誰依附誰。 |
+| Interpretability | `2601` | 研究模型裡哪些部分在做什麼 | 例如 probing 某些 layer / head 是否在編碼句法資訊。 |
+| Transformer-based LM | `2601` | 以 Transformer 為核心的語言模型 | 例如 BERT、GPT 類模型。 |
+
+## 2. 一頁摘要
 
 | 問題 | 結論 | 白話說明 |
 | --- | --- | --- |
@@ -12,9 +52,10 @@
 | 哪些規則被正式保留下來？ | `double-high include`、`double-low exclude`、其餘送 senior；移除 marker heuristic；保留 `SeniorLead` | 兩個初審都高分就收、都低分就拒；卡在中間才交給資深 reviewer。 |
 | 哪些方向被否定？ | 全域嚴格 senior prompt、junior reasoning marker heuristic、把 operational hardening 偷寫回 criteria | 不能靠「更嚴格的資深裁決」或「看 junior 解釋文字關鍵字」吃遍四篇 paper。 |
 | 哪些 paper 在 QA 前最麻煩？ | `2409.13738`、`2511.13936` | 這兩篇在 source-faithful 前提下，仍有 evidence interpretation / criteria observability 問題。 |
+| 為什麼 `2409/2511` 都還不到 `0.9`？ | `2409` 主要卡 hard FP；`2511` 主要卡 boundary ambiguity | 前者比較像「太多看起來很像、其實不算」；後者比較像「同一句摘要到底算不算 preference learning，很容易解讀不一樣」。 |
 | 為什麼會走到 QA 前夕？ | criteria 與 routing 已經整理到相對乾淨，但 decision layer 仍常直接吃自由文本證據 | 白話說，規則本身已經比較乾淨了，但模型還是常常「看文章自己腦補」，所以才開始考慮先做 QA / evidence extraction。 |
 
-### 1.1 QA 前的 current authority
+### 2.1 QA 前的 current authority
 
 | Paper | QA 前 current authority | Stage 1 F1 | Combined F1 | 狀態 | 白話說明 |
 | --- | --- | ---: | ---: | --- | --- |
@@ -23,7 +64,7 @@
 | `2511.13936` | `stage_split_criteria_migration` | 0.8657 | 0.8814 | current active | 語義更乾淨，但比歷史上最激進的 operational 版本低。 |
 | `2601.19926` | `senior_no_marker` | 0.9792 | 0.9733 | stable reference | 對過嚴 senior 很脆弱，因此維持 no-marker。 |
 
-### 1.2 QA 前最後的 production workflow
+### 2.2 QA 前最後的 production workflow
 
 | 元件 | QA 前採用狀態 | 白話說明 |
 | --- | --- | --- |
@@ -34,7 +75,7 @@
 | Marker heuristic | 已移除 | 不再靠 reviewer 解釋文字裡有沒有某些關鍵字來決定流程。 |
 | Guidance 第三層 | 不採用 | 不再額外加一層「隱藏規則說明」，避免規則來源變成三套。 |
 
-### 1.3 QA 前 production workflow 概念流程圖
+### 2.3 QA 前 production workflow 概念流程圖
 
 如果你的閱讀器不會把圖形渲染得很好，可以直接照著箭頭由上往下讀。
 
@@ -65,46 +106,6 @@
   v
 最終納入 或 最終排除
 ```
-
-## 2. 四篇 SR 分別在做什麼
-
-先說明：這裡的 `SR` 是 `systematic review`，也就是「系統性文獻回顧」。  
-白話說，四篇 SR 各自都有一個明確主題，目標是從大量候選論文裡，找出真正屬於那個主題範圍的研究。
-
-### 2.1 四篇 SR 的主題總表
-
-| Paper | SR 題目 | 這篇 SR 在看什麼 | 白話說明 | 一個直覺例子 |
-| --- | --- | --- | --- | --- |
-| `2307.05527` | *The Ethical Implications of Generative Audio Models* | 生成式音訊模型的倫理問題 | 這篇不是在問「模型準不準」，而是在看「這類模型會帶來哪些道德、法律、社會風險」。 | 例如：一篇討論 deepfake 聲音、聲音版權、聲音模仿同意權的研究。 |
-| `2409.13738` | *NLP4PBM: Process Extraction using NLP* | 用 NLP 從自然語言文字抽出流程模型 | 重點是「把文字敘述變成流程圖或流程結構」，不是一般 NLP 都算。 | 例如：把客服流程描述、醫療流程文件、作業手冊，自動轉成 process model。 |
-| `2511.13936` | *Preference-Based Learning in Audio Applications* | 音訊領域中的偏好式學習 | 重點是「用偏好訊號來學習」，像 A/B 比較、排序、偏好回饋，而不是只拿偏好做最後評分。 | 例如：讓人比較兩段語音或音樂，模型再根據這些偏好更新訓練。 |
-| `2601.19926` | *The Grammar of Transformers* | Transformer 語言模型裡的句法知識與可解釋性 | 重點是看 Transformer 內部到底有沒有學到文法結構，以及研究者怎麼證明這件事。 | 例如：分析 BERT/GPT 是否知道主詞動詞一致、依存關係、句法樹等結構。 |
-
-### 2.2 每篇 SR 的「會收什麼」與「不收什麼」
-
-說明：下面的例子是依目前 active criteria 整理出的白話例子，用來幫助理解範圍，不是正式 criteria 原文。
-
-| Paper | 會收的研究 | 不收的研究 | 白話上的邊界 |
-| --- | --- | --- | --- |
-| `2307.05527` | 以生成式音訊為主題的完整研究論文，主軸是音訊生成模型或應用，並討論倫理、法律、社會議題。 | 純 ASR/轉錄、影像或影片生成、分類/預測模型、主輸出不是音訊的工作。 | 如果研究最後產生的是文字、影像、影片，而不是音訊，就通常不在這篇 SR 裡。 |
-| `2409.13738` | 用 NLP 從自然語言文字抽出流程表示，且有具體方法與實驗驗證的原創研究。 | 流程預測、流程比對、流程重設計、情緒分析、只做一般 IE/分類但沒有真正抽出流程模型的工作。 | 不是「有用 NLP 處理流程相關文字」就算；要真的抽出 process model 才算。 |
-| `2511.13936` | 在音訊領域裡，用 ranking、A/B 比較、偏好回饋或 RL loop 來訓練模型的研究。 | 只用偏好來做 evaluation、沒有 learning component 的工作；survey/review。 | 關鍵不是「有沒有問人喜不喜歡」，而是這個偏好有沒有真的拿來驅動學習。 |
-| `2601.19926` | 研究 Transformer-based LM，並且實證分析它們的句法知識或文法結構。 | 非 Transformer 架構、只談模型但不分析 syntax、沒有實證內容的 survey / position paper。 | 不是所有 interpretability paper 都算；要明確碰到 syntax，且對象要是 Transformer LM。 |
-
-### 2.3 這些主題裡常見的專有名詞
-
-| 名詞 | 出現在哪篇 SR | 白話說明 | 例子 |
-| --- | --- | --- | --- |
-| Generative audio model | `2307` | 會「產生聲音」的模型，不只是辨識聲音 | 例如文字轉語音、音樂生成、聲音風格模仿。 |
-| Ethical implications | `2307` | 技術帶來的倫理、法律、社會風險 | 例如未經同意模仿他人聲音、假語音詐騙。 |
-| Process extraction | `2409` | 從自然語言描述中抽出流程步驟與結構 | 例如把 SOP 文字轉成流程圖。 |
-| Process model | `2409` | 對流程的形式化表示 | 例如一張包含步驟、順序、分支條件的流程圖。 |
-| Preference learning | `2511` | 不是直接給絕對分數，而是用「比較誰比較好」來學習 | 例如讓使用者在兩段音樂中選比較喜歡的一段。 |
-| A/B comparison | `2511` | 把兩個候選音訊放在一起比較 | 例如比較兩種 TTS 聲音，選較自然的一個。 |
-| RL training loop | `2511` | 模型根據回饋反覆更新策略的訓練流程 | 例如音訊生成模型根據偏好回饋逐步調整輸出。 |
-| Syntactic knowledge | `2601` | 模型是否學到句法或文法結構 | 例如知道主詞和動詞要一致，或誰依附誰。 |
-| Interpretability | `2601` | 研究模型裡哪些部分在做什麼 | 例如 probing 某些 layer / head 是否在編碼句法資訊。 |
-| Transformer-based LM | `2601` | 以 Transformer 為核心的語言模型 | 例如 BERT、GPT 類模型。 |
 
 ## 3. 名詞速查
 
@@ -167,22 +168,39 @@
 
 原本的大表太寬，這裡改成兩張比較窄的表。
 
+先說明：下面這些名字大多是 repo 內的實驗 tag，不是讀者本來就該知道的正式術語。  
+所以這裡改成「repo 名稱 + 中文稱呼」一起看。
+
 表 4.2A 主要改動與是否採用
 
-| 順序 | 實驗 / 報告 | 核心改動 | QA 前是否採用 |
-| --- | --- | --- | --- |
-| 0 | `before` baseline | 舊版 prompt / workflow | 否 |
-| 1 | `prompt_only_runtime_realignment` | 對齊 runtime reviewer prompt，不改 schema | 部分吸收 |
-| 2 | `stage1_recall_redesign` | 強化 Stage 1 recall，並碰 serialization / aggregation / missing_fulltext | 否 |
-| 3 | `stage1_senior_adjudication_redesign` | 重整 `SeniorLead` 介入規則 | 部分吸收 |
-| 4 | `stage1_senior_no_marker` | 拿掉 marker heuristic，改純分數規則 | 是 |
-| 5 | `stage1_senior_prompt_tuning` | 讓 senior prompt 更嚴格 | 否 |
-| 6 | `nlp_prisma_screening_diagnosis` | 交叉核對 raw JSON、criteria、prompt、runtime | 不是 production 變更 |
-| 7 | `frozen_senior_replay` | 固定 junior 輸入，重放 senior 決策 | 是，作為結論依據 |
-| 8 | `criteria_2511_operationalization_v2` | 只改 `2511` criteria，做更硬的 decision table | 否 |
-| 9 | `criteria_2409_stage_split` | 只改 `2409` criteria，先做 Stage 1 / Stage 2 分拆 | 部分吸收 |
-| 10 | `source_faithful_vs_operational_2409_2511` | 正式比較 source-faithful 與 operational | 是，方法學結論被採納 |
-| 11 | `stage_split_criteria_migration` | 正式改成 `criteria_stage1/` + `criteria_stage2/` | 是，QA 前最後採用架構 |
+| 順序 | Repo 名稱 | 中文稱呼 | 核心改動 | QA 前是否採用 |
+| --- | --- | --- | --- | --- |
+| 0 | `before` baseline | 原始舊版起點 | 還沒做後續修正前的 prompt / workflow 基準線 | 否 |
+| 1 | `prompt_only_runtime_realignment` | reviewer prompt 對齊版 | 把實際 runtime 用的 reviewer prompt 對齊，不改 schema | 部分吸收 |
+| 2 | `stage1_recall_redesign` | Stage 1 高召回優先版 | 盡量不要漏掉真陽性，因此重設 Stage 1 流程，也動到 serialization、aggregation、missing_fulltext | 否 |
+| 3 | `stage1_senior_adjudication_redesign` | SeniorLead 仲裁重整版 | 重整 `SeniorLead` 什麼時候進場、怎麼接手模糊案例 | 部分吸收 |
+| 4 | `stage1_senior_no_marker` | 去掉 marker 規則版 | 拿掉 marker heuristic，改成純分數 routing，不再看 junior reasoning 關鍵字 | 是 |
+| 5 | `stage1_senior_prompt_tuning` | 嚴格 senior prompt 版 | 不改流程，只把 senior prompt 調得更保守、更不願意給 maybe | 否 |
+| 6 | `nlp_prisma_screening_diagnosis` | 全面診斷報告 | 交叉核對 raw JSON、criteria、prompt、runtime，找真正瓶頸 | 不是 production 變更 |
+| 7 | `frozen_senior_replay` | 固定 junior、重放 senior 驗證 | junior 輸入固定不變，只重放 senior 決策，用來驗證 senior prompt effect 是不是真存在 | 是，作為結論依據 |
+| 8 | `criteria_2511_operationalization_v2` | `2511` criteria 硬化決策表版 | 只改 `2511` criteria，把模糊語義寫成更硬、更像 decision table 的規則 | 否 |
+| 9 | `criteria_2409_stage_split` | `2409` 先行分階段版 | 只改 `2409` criteria，先把 Stage 1 / Stage 2 邏輯拆開 | 部分吸收 |
+| 10 | `source_faithful_vs_operational_2409_2511` | 忠於原文 vs 實務硬化對照 | 正式比較 source-faithful criteria 和 operational hardening criteria 的差別 | 是，方法學結論被採納 |
+| 11 | `stage_split_criteria_migration` | 正式遷移到 stage-split criteria | 把系統正式改成 `criteria_stage1/` + `criteria_stage2/` 的架構 | 是，QA 前最後採用架構 |
+
+表 4.2A 裡幾個容易看不懂的字，白話如下：
+
+| 名詞 | 白話說明 |
+| --- | --- |
+| runtime realignment | 把「實際執行時真的在用的 prompt」對齊，不再讓文件版和程式版各講各的。 |
+| recall redesign | 優先追求「不要漏掉該收的」，也就是 high recall 路線。 |
+| adjudication | 仲裁。白話就是 junior 沒共識時，交給 senior 做最後裁決。 |
+| no marker | 不再看 junior 解釋文字裡有沒有某些標記詞。 |
+| prompt tuning | 不改模型參數，只改 prompt wording。 |
+| frozen replay | 把前段輸入固定住，重播後段決策，看效果到底是不是那個 prompt 造成的。 |
+| operationalization | 把抽象規則改寫成 reviewer 比較好執行的操作化規則。 |
+| source-faithful | 盡量忠於原 paper 原本寫的 eligibility，不偷加 performance-oriented 硬規則。 |
+| migration | 從舊架構正式搬到新架構，不只是做一個局部實驗。 |
 
 表 4.2B 每輪想回答什麼、結果如何
 
@@ -192,7 +210,7 @@
 | 1 | 單純 prompt 對齊能不能先把大問題修掉？ | 四篇平均 Combined F1 升到 `0.8980` |
 | 2 | 若盡量不漏掉真陽性，整體會不會更好？ | Recall 幾乎滿分，但 precision 大掉；平均 Combined F1 降到 `0.8435` |
 | 3 | 更積極的 senior 仲裁能否同時守住 precision 與 recall？ | 比 recall redesign 穩，但四篇平均 Combined F1 僅 `0.8214` |
-| 4 | 不看 reasoning 關鍵字，只看分數，會不會更乾淨？ | `senior_no_marker` 全面優於 `senior_adjudication_v1` |
+| 4 | 不看 reasoning 關鍵字，只看分數 routing，會不會更乾淨？ | 去掉 marker 規則版全面優於早期的 senior 仲裁重整版 |
 | 5 | 更保守的 senior 能否壓低 `2409/2511` 的 FP？ | `2409/2511` 進步，但 `2601` 大崩；`2601` Combined F1 掉到 `0.8860` |
 | 6 | 真正瓶頸到底在哪？ | 指出問題是「criteria 可觀測性」+「senior prompt 不可移植」的組合 |
 | 7 | 嚴格 senior 的效果是真效果，還是 rerun noise？ | 證明 effect 主要來自 senior prompt 本身，不是 noise |
@@ -200,173 +218,6 @@
 | 9 | `2409` 是否是 stage-mixing 問題？ | Combined F1 從 `0.6885` 升到 `0.7778` |
 | 10 | 高分到底是合理優化，還是超譯 criteria？ | 證實有些高分來自 criteria supertranslation |
 | 11 | 如何在不偷加規則下，把 stage 差異正式落地？ | `2409` Combined F1 = `0.7843`；`2511` Combined F1 = `0.8814` |
-
-### 4.3 哪些版本真的是 prompt 差異
-
-這裡先講清楚一件事：**不是所有版本之間都只差 prompt**。  
-如果把 `senior_no_marker`、`stage1_recall_redesign` 這些版本也說成只是 prompt 差異，會不準。真正屬於「主要變因就是 prompt wording」的，主要是下面兩類：
-
-| 版本 | 主要變因 | 是否屬於 prompt-only / prompt-dominant | 這節會不會列出 before / after prompt |
-| --- | --- | --- | --- |
-| `prompt_only_runtime_realignment` | Stage 1 reviewer prompt 與 Stage 2 reviewer prompt wording | 是，prompt-only | 會，重點列 Stage 1 reviewer before / after |
-| `senior_prompt_tuned` | Stage 1 `SeniorLead` adjudicator wording | 是，prompt-only | 會，列 `senior_no_marker` vs `senior_prompt_tuned` |
-| `senior_no_marker` | routing / aggregation 規則 + marker heuristic 移除 | 否，不是只有 prompt | 不用 before / after prompt 解釋 |
-| `stage1_recall_redesign` | prompt + serialization + aggregation + missing_fulltext | 否，不是只有 prompt | 不用單靠 prompt 對照解釋 |
-
-### 4.4 Prompt 對照一：Stage 1 reviewer 在 `prompt_only_runtime_realignment` 前後改了什麼
-
-來源說明：
-- 改動前：`title_abstract_reviewer.py` 的早期 generic prompt（git `e7df8f4`）
-- 改動後：`title_abstract_reviewer.py` 的 stage-aware prompt（git `3689023`）
-- 下方內容是**中文翻譯版**，方便直接放進中文報告閱讀
-
-#### 4.4.1 改動前 prompt（中文翻譯）
-
-<div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:8px; padding:12px 14px; margin:10px 0;">
-<pre style="white-space:pre-wrap; margin:0;">
-請審查下面的 title 與 abstract，並依據納入條件與排除條件判斷是否應該納入。
-注意：只有在同時符合所有納入條件，且不符合任何排除條件時，才應納入。
-
-輸入項目：
-<<${item}$>>
-
-納入條件：
-${inclusion_criteria}$
-
-排除條件：
-${exclusion_criteria}$
-
-指示：
-1. 請輸出 1 到 5 的整數分數：
-   - 1 = 絕對排除
-   - 2 = 較傾向排除
-   - 3 = 不確定是否納入或排除
-   - 4 = 較傾向納入
-   - 5 = 絕對納入
-
-${reasoning}$
-${additional_context}$
-${examples}$
-</pre>
-</div>
-
-#### 4.4.2 改動後 prompt（中文翻譯）
-
-<div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:8px; padding:12px 14px; margin:10px 0;">
-<pre style="white-space:pre-wrap; margin:0;">
-Stage 1 審查（只看 title + abstract）
-
-你現在只審查 title 與 abstract，目的是決定這篇 paper 是否應繼續往後送審。
-不要使用、也不要假設任何 full text 內容。
-這一階段採高召回篩選：只要證據不完整，就不要過早排除。
-
-輸入項目：
-<<${item}$>>
-
-納入條件：
-${inclusion_criteria}$
-
-排除條件：
-${exclusion_criteria}$
-
-指示：
-1. 請輸出 1 到 5 的整數分數：
-   - 1 = 強烈不納入
-   - 2 = 較可能不納入
-   - 3 = 不確定 / 需要更多證據
-   - 4 = 較可能納入
-   - 5 = 強烈納入
-2. 這是 Stage 1：
-   - 只能使用 title 與 abstract。
-   - 不可把「缺少細節」直接當成排除證據。
-   - 如果資訊不足，通常應給 3，而不是 1 或 2。
-3. 若 paper 主題相關，但 title/abstract 沒有提供足夠明確證據，應先保留為 3，不要提早排除。
-4. 如果你不確定，請給 3，並說明缺的是什麼證據。
-5. reasoning 必須簡短，並用一小段話說清楚你打分的關鍵依據。
-6. 不要捏造任何輸入文字裡沒有出現的資訊。
-
-${reasoning}$
-${additional_context}$
-${examples}$
-</pre>
-</div>
-
-#### 4.4.3 這組 prompt 差在哪裡
-
-| 面向 | 改動前 | 改動後 | 白話說明 |
-| --- | --- | --- | --- |
-| Stage awareness | 沒有明講這是 Stage 1 | 明講只看 `title + abstract` | reviewer 不再把 abstract 階段當成全文審查。 |
-| 對 full text 的態度 | 沒有明確限制 | 明講不能假設 full text | 不准再腦補「也許全文會補齊」。 |
-| 預設裁決傾向 | 比較像一般 include/exclude 判斷 | 明確偏高召回，資訊不足優先 `3` | 這直接把很多早期 `exclude` 拉回 `maybe`。 |
-| 對證據缺漏的處理 | 沒特別說 | 缺證據不等於排除證據 | 白話：看不到，不代表沒有。 |
-| reasoning 要求 | 幾乎只有輸出分數 | 要說明關鍵證據與缺什麼 | 讓後面比較容易分析為什麼被打成 `3`。 |
-
-### 4.5 Prompt 對照二：Stage 1 `SeniorLead` 在 `senior_prompt_tuned` 前後改了什麼
-
-來源說明：
-- 改動前：`scripts/screening/runtime_prompts/runtime_prompts.json` 中的 `stage1_senior_no_marker`
-- 改動後：同檔中的 `stage1_senior_prompt_tuned`
-- 下方同樣是**中文翻譯 / 中文整理版**
-
-#### 4.5.1 改動前 prompt（`stage1_senior_no_marker`）
-
-<div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:8px; padding:12px 14px; margin:10px 0;">
-<pre style="white-space:pre-wrap; margin:0;">
-你是一位資深 reviewer，負責整合 junior reviewer 的回饋並做最後決定。
-
-補充情境：
-兩位 junior reviewer 已經給了初步判斷。
-請先看他們的回饋，再做整合判斷。
-</pre>
-</div>
-
-#### 4.5.2 改動後 prompt（`stage1_senior_prompt_tuned`）
-
-<div style="background:#f3f4f6; border:1px solid #d1d5db; border-radius:8px; padding:12px 14px; margin:10px 0;">
-<pre style="white-space:pre-wrap; margin:0;">
-你是 Stage 1 的資深裁決 reviewer。
-你的目標是：只根據 title + abstract 的證據，對關鍵邊界案件做出可追溯的裁決。
-你只能使用：
-- title
-- abstract
-- 兩位 junior 的 output 與 evaluation
-你不能假設 full text 會補齊缺漏。
-
-嚴格模式裁決規則：
-1. 只能使用目前輸入裡明確出現的資訊，不可依賴看不到的全文。
-2. 不能把主題相關、概念相似、方法相似、領域相鄰，當成足夠的納入證據。
-3. 只有在以下條件同時成立時，才能給 `3 / maybe`：
-   a. 至少有一條可追溯的核心正向納入訊號。
-   b. 只缺一個關鍵條件。
-   c. 而且那個缺口在目前的 title/abstract 真的無法直接判定。
-4. 如果只是 topic-adjacent、method-related、metadata-like，或只是提到相關關鍵字但沒有核心正向證據，應偏向給 `1` 或 `2`。
-5. 高相關不等於納入：除非核心資格條件有被明確支持，否則不要因為「看起來很像」就保留。
-6. reasoning 必須明確寫出：
-   - 看到了什麼正向證據
-   - 缺了什麼關鍵條件
-   - 為什麼這樣會導向排除或暫留
-</pre>
-</div>
-
-#### 4.5.3 這組 prompt 差在哪裡
-
-| 面向 | `no_marker` | `prompt_tuned` | 白話說明 |
-| --- | --- | --- | --- |
-| Senior 角色 | 只說「整合 junior 回饋」 | 改成「Stage 1 邊界裁決者」 | 從一般整合者變成偏嚴格的裁判。 |
-| 可用證據 | 沒有寫得很死 | 明文限制只能用 `title + abstract + juniors` | 不准再把全文可能會說什麼算進來。 |
-| `maybe = 3` 的門檻 | 幾乎沒限制 | 三條件同時成立才准給 `3` | 直接抑制 `maybe` 濫用。 |
-| 對 topic-adjacent 的態度 | 沒有明確偏向 | 明確要求偏向 `1/2 exclude` | 讓 senior 更容易把沾邊但不夠核心的 case 排掉。 |
-| reasoning | 普通整合說明 | 必須明講正向證據、缺口、排除理由 | 讓裁決更像 legal-style justification。 |
-
-#### 4.5.4 這個 tuned prompt 的實際效果
-
-| Paper | 主要效果 | 代價 |
-| --- | --- | --- |
-| `2409` | 壓掉很多 Stage 1 FP，precision 明顯上升 | Combined 仍沒有超過 `prompt_only_v1` |
-| `2511` | 也能壓 FP | 同時犧牲了一部分 recall |
-| `2601` | 幾乎沒有帶來值得的 precision 收益 | recall 明顯受傷，屬於負面效果 |
-
-所以，`senior_prompt_tuned` 的本質不是「模型更聰明」，而是 **把 senior 改成更嚴格、更不願意給 maybe、更不願意因為主題相似就保留**。
 
 ## 5. 全域流程線：Stage 1 與 Combined 結果
 
@@ -394,7 +245,64 @@ ${examples}$
 | `senior_no_marker` | **0.9581** | 0.6885 | 0.7941 | **0.9733** | 0.8535 |
 | `senior_prompt_tuned` | 0.9358 | 0.7778 | 0.8525 | 0.8860 | 0.8630 |
 
-### 5.3 這組表格怎麼看
+### 5.3 Stage 1 / Stage 2（全文後）分開看
+
+說明：repo 目前沒有一組獨立維護的「純 Stage 2 單獨 F1 authority」，因此這裡把
+
+- `Stage 1`：title + abstract 初篩後的 F1
+- `Stage 2 / 全文後`：經過 full-text review 後的最終 Combined F1
+
+並排放在一起，讓讀者直接看出每個版本從初篩到全文確認後，分數是上升還是下降。
+
+表 5.3A `2307` / `2409`
+
+| 實驗版本 | `2307` Stage 1 | `2307` Stage 2 / 全文後 | `2409` Stage 1 | `2409` Stage 2 / 全文後 |
+| --- | ---: | ---: | ---: | ---: |
+| `before` | 0.8846 | 0.8000 | 0.7391 | 0.7556 |
+| `prompt_only_v1` | 0.9593 | 0.9429 | 0.6364 | **0.8235** |
+| `recall_redesign` | 0.9448 | 0.9521 | 0.4468 | 0.6269 |
+| `senior_adjudication_v1` | 0.9563 | 0.9426 | 0.6087 | 0.6562 |
+| `senior_no_marker` | **0.9621** | **0.9581** | 0.6176 | 0.6885 |
+| `senior_prompt_tuned` | 0.9489 | 0.9358 | **0.7636** | 0.7778 |
+
+表 5.3B `2511` / `2601`
+
+| 實驗版本 | `2511` Stage 1 | `2511` Stage 2 / 全文後 | `2601` Stage 1 | `2601` Stage 2 / 全文後 |
+| --- | ---: | ---: | ---: | ---: |
+| `before` | 0.7843 | 0.7843 | 0.8760 | 0.8567 |
+| `prompt_only_v1` | 0.7895 | **0.8710** | 0.9690 | 0.9548 |
+| `recall_redesign` | 0.5714 | 0.8406 | 0.9682 | 0.9545 |
+| `senior_adjudication_v1` | 0.7229 | 0.7179 | **0.9809** | 0.9687 |
+| `senior_no_marker` | 0.7160 | 0.7941 | 0.9792 | **0.9733** |
+| `senior_prompt_tuned` | **0.8387** | 0.8525 | 0.8896 | 0.8860 |
+
+### 5.4 另外兩篇最佳 setting 的 confusion matrix
+
+說明：`2307` 和 `2601` 在第 5 章這條全域流程線裡，最佳 setting 都是 `senior_no_marker`。  
+這裡把它們在最佳 setting 下的 `TP / FP / TN / FN` 列出來，避免只看 F1 看不出失分結構。
+
+表 5.4A `2307` 最佳 setting = `senior_no_marker`
+
+| 階段 | TP | FP | TN | FN | 白話判讀 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Stage 1 | 165 | 7 | 40 | 6 | 已經很平衡，只有少量 FP 與 FN。 |
+| Stage 2 / 全文後 | 160 | 3 | 44 | 11 | 全文後 FP 更少，但 FN 增加一些，所以 recall 比 Stage 1 低。 |
+
+表 5.4B `2601` 最佳 setting = `senior_no_marker`
+
+| 階段 | TP | FP | TN | FN | 白話判讀 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| Stage 1 | 330 | 9 | 14 | 5 | 幾乎是高 TP、低 FP、低 FN 的穩定型。 |
+| Stage 2 / 全文後 | 328 | 11 | 12 | 7 | 全文後略多一些 FP/FN，但整體仍非常穩。 |
+
+直接說這兩篇的失分結構：
+
+| Paper | 最佳 setting 下主要問題 | 白話說明 |
+| --- | --- | --- |
+| `2307` | 沒有單一嚴重崩盤；全文後是 **FN 稍多於 FP** | 代表它不是 precision 大崩，而是全文後有少數本來可保留的正例被洗掉。 |
+| `2601` | 同樣沒有單一嚴重崩盤；全文後 **FP 與 FN 都很低** | 代表這篇本身就是比較容易做高分的 review。 |
+
+### 5.5 這組表格怎麼看
 
 | 觀察 | 證據 | 白話說明 |
 | --- | --- | --- |
@@ -516,7 +424,182 @@ stage 差異更清楚
 | `2511` | `criteria_2511_opv2` | 0.9206 | `stage_split_criteria_migration` | 0.8814 | `opv2` 有明顯 criteria supertranslation，因此方法學上不能升格成 current state。 |
 | `2601` | `senior_no_marker` | 0.9733 | `senior_no_marker` | 0.9733 | 這篇對 strict senior 太敏感，所以維持 no-marker。 |
 
-## 10. 為什麼 QA 會成為下一步
+## 10. 為什麼 `2409` / `2511` 都還不到 `0.9`，以及 `stage_split_criteria_migration` 到底改了什麼
+
+這一章要先講清楚一件事：  
+`2409/2511` 在 QA 前的後期改善，不只是在調 senior prompt。  
+另一條非常關鍵的設定是：**把 Stage 1 與 Stage 2 用的 criteria 正式拆成兩份**。  
+
+白話說，原本比較像是「同一份 criteria 在初篩和全文確認都硬套」；後來改成：
+
+- Stage 1：只用摘要真的看得到的條件
+- Stage 2：才用完整、忠於原 paper 的 canonical criteria
+
+所以如果第 10 章只講「它們為什麼不到 `0.9`」，但不講這個設定到底改了什麼，會少掉一半重點。
+
+### 10.1 先看 `senior_no_marker` vs `stage_split_criteria_migration`
+
+這張表先回答最直接的問題：  
+把 criteria 拆成 Stage 1 / Stage 2 兩份之後，和 `senior_no_marker` 基準線相比，分數到底有沒有變好？
+
+| Paper | 設定 | Stage 1 F1 | Stage 2 / 全文後 Combined F1 | 相對 `senior_no_marker` 變化 | 白話解讀 |
+| --- | --- | ---: | ---: | --- | --- |
+| `2409` | `senior_no_marker` | 0.6176 | 0.6885 | baseline | 還沒正式拆開 stage-specific criteria 的基準線。 |
+| `2409` | `stage_split_criteria_migration` | 0.7500 | 0.7843 | `+0.1324 / +0.0958` | 拆開後明顯變好，但仍不到 `0.9`。 |
+| `2511` | `senior_no_marker` | 0.7160 | 0.7941 | baseline | 還沒正式拆開 stage-specific criteria 的基準線。 |
+| `2511` | `stage_split_criteria_migration` | 0.8657 | 0.8814 | `+0.1496 / +0.0872` | 拆開後也明顯變好，但仍不到 `0.9`。 |
+
+這張表的重點不是「拆完還是不夠高」，而是：
+
+- 它**不是沒用**，因為 `2409/2511` 都比 `senior_no_marker` 明顯進步。
+- 但它也**不是萬靈丹**，因為拆完後仍留下一批 hard case。
+
+### 10.2 先看 confusion matrix：這兩篇主要卡 FP 還是 FN？
+
+如果只看 `F1`，很容易看不出到底是 false positive 還是 false negative 在拖分。  
+所以這裡直接把 `TP / FP / TN / FN` 列出來。
+
+表 10.2A `2409` confusion matrix 對照
+
+| 設定 | 階段 | TP | FP | TN | FN | 白話判讀 |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| `senior_no_marker` | Stage 1 | 21 | 26 | 31 | 0 | 幾乎完全不是漏收問題，而是保留太多假陽性。 |
+| `senior_no_marker` | Stage 2 / 全文後 | 21 | 19 | 38 | 0 | 全文後仍然是明顯 FP-heavy。 |
+| `stage_split_criteria_migration` | Stage 1 | 21 | 14 | 43 | 0 | FP 明顯下降，但主要問題仍是 FP。 |
+| `stage_split_criteria_migration` | Stage 2 / 全文後 | 20 | 10 | 47 | 1 | 仍以 FP 為主，只是比以前少很多。 |
+
+表 10.2B `2511` confusion matrix 對照
+
+| 設定 | 階段 | TP | FP | TN | FN | 白話判讀 |
+| --- | --- | ---: | ---: | ---: | ---: | --- |
+| `senior_no_marker` | Stage 1 | 29 | 22 | 32 | 1 | Stage 1 很明顯是 FP-heavy。 |
+| `senior_no_marker` | Stage 2 / 全文後 | 27 | 11 | 43 | 3 | 全文後 FP 仍多，但已不像 Stage 1 那麼失衡。 |
+| `stage_split_criteria_migration` | Stage 1 | 29 | 8 | 46 | 1 | Stage 1 的 FP 已大幅被壓下來。 |
+| `stage_split_criteria_migration` | Stage 2 / 全文後 | 26 | 3 | 51 | 4 | 到 current state，FP 已不多，反而 FN 稍微比 FP 更突出。 |
+
+直接回答「主要是在 FP 還是 FN」：
+
+| Paper | 看哪個階段 | 主要問題 | 白話說明 |
+| --- | --- | --- | --- |
+| `2409` | Stage 1 與全文後都一樣 | **主要是 FP** | 不管拆分前後，它都比較像「把太多不該收的留下來」。 |
+| `2511` | Stage 1 | **先是 FP** | 初篩時原本也很明顯是假陽性太多。 |
+| `2511` | current state 的全文後 | **變成 FP / FN 都有，但 FN 稍微更突出** | 因為 FP 已壓到只剩 `3`，但 FN 變成 `4`。 |
+
+所以更精確的結論是：
+
+- `2409`：很明確是 **FP-dominant**。
+- `2511`：不是單純一邊崩盤；在 `senior_no_marker` 時比較像 **FP-heavy**，但到了 `stage_split_criteria_migration` 的 current state，**FP 已被大幅修掉，剩下變成邊界案造成的 FN/recall 壓力也開始明顯**。
+
+### 10.3 `stage1/2 criteria 分開` 這個設定，整體到底改了什麼
+
+| 面向 | 拆開之前的問題 | `stage_split_criteria_migration` 之後 | 白話說明 |
+| --- | --- | --- | --- |
+| Criteria 結構 | 比較像同一套條件在不同 stage 共用 | 正式分成 `criteria_stage1/` 與 `criteria_stage2/` | 初篩和全文確認不再硬用同一份規則。 |
+| Stage 1 角色 | 容易被迫提前判一些摘要看不穩的條件 | 只保留 title/abstract 可觀測投影 | 初篩只做它看得到的事。 |
+| Stage 2 角色 | 容易和 Stage 1 混在一起 | 固定為 canonical、source-faithful 完整 eligibility | 全文階段才確認完整資格。 |
+| Runtime 讀檔方式 | 舊路徑和 fallback 容易造成混用 | Stage 1 只讀 `criteria_stage1/`；Stage 2 只讀 `criteria_stage2/`；不使用 fallback | 避免系統偷偷讀回舊 criteria。 |
+| Guidance 第三層 | 有機會再塞一層半正式規則 | 刻意不新增 guidance layer | 規則來源維持兩層，不變三層。 |
+| 方法學定位 | 容易把 runtime 方便用的規則寫成正式 criteria | Stage 2 忠於原 paper；Stage 1 只做 observable projection | 不再把 performance hardening 偽裝成 paper 原本就有的條件。 |
+
+一句話總結：  
+這個設定的核心不是「再多加一些規則」，而是 **把該在 Stage 1 判的，和該在 Stage 2 判的，正式切乾淨**。
+
+### 10.4 `2409` 在這個設定下，到底詳細改了哪些內容
+
+先看 `2409` 拆開後，Stage 1 和 Stage 2 各自負責什麼：
+
+| 面向 | Stage 1（摘要版 criteria） | Stage 2（全文版 criteria） | 白話說明 |
+| --- | --- | --- | --- |
+| 核心主題 | 只看摘要是否明確顯示「NLP for process extraction」 | 仍要求真的是 NLP for process extraction | 核心主題兩邊都看，但 Stage 1 只能用摘要證據判。 |
+| 任務訊號 | 看摘要有沒有 text -> process representation / process model 的 observable signal | 用全文確認 paper 真正在做什麼任務 | Stage 1 只看「像不像這個任務」，Stage 2 再做完整確認。 |
+| paper type / peer review / English / fulltext | 不在 Stage 1 硬判 | 放到 Stage 2 確認 | 這類條件摘要常看不穩，所以延後。 |
+| primary research | 不在 Stage 1 硬判 | 放到 Stage 2 確認 | 避免初篩過早把「看不清楚」當成排除。 |
+| concrete method + experiments | 不在 Stage 1 當硬門檻 | 放到 Stage 2 做完整確認 | 這是全文比較適合判的事。 |
+| non-target examples | 在 Stage 1 保留明顯看得出的負例，如 redesign / matching / prediction / sentiment analysis | 在 Stage 2 用完整 EC.3 / EC.4 進一步排除 | 能在摘要確定不符的，先排；其餘留到後面。 |
+| 遇到證據不完整時 | 明確寫成 keep `maybe`， defer to Stage 2 | Stage 2 再做 final confirmation | 這是拆分後很關鍵的一條。 |
+
+這次還明確**移除了**一些不再寫進正式 criteria 的硬化內容：
+
+| 被移除的東西 | 白話說明 |
+| --- | --- |
+| `Generic NLP/LLM/dataset/foundation-model paper -> exclude` | 不能因為看起來太泛就一刀切排掉。 |
+| `Output-object mismatch: IE/NER/RE/classification/retrieval -> exclude` | 不能把某些方法名字直接當成硬排除規則。 |
+| `compliance/recommendation/simulation` 等外擴 hard negatives | 不能把太多 operational 便利規則硬寫回正式 criteria。 |
+| `executable extraction pipeline` 這類加嚴措辭 | 不能把 reviewer 想要的高標準直接偽裝成原 paper 明文條件。 |
+
+白話總結 `2409` 的這次改動：
+
+- 把「摘要只能看出大方向」和「全文才能確認的條件」切開。
+- 讓 Stage 1 少做不該它做的確認題。
+- 但即使這樣，`2409` 還是會留下很多 process-adjacent hard FP，所以分數仍上不去 `0.9`。
+
+### 10.5 `2511` 在這個設定下，到底詳細改了哪些內容
+
+`2511` 的拆法和 `2409` 不一樣，它不是把一堆 paper-type 條件往後丟而已，而是把「什麼算 preference-learning in audio」的可觀測邊界重新整理。
+
+| 面向 | Stage 1（摘要版 criteria） | Stage 2（全文版 criteria） | 白話說明 |
+| --- | --- | --- | --- |
+| preference signal | 摘要看得到 ranking / A-B / comparative preference 就算正向訊號 | 全文以 canonical 定義確認 preference learning | Stage 1 先看有沒有偏好式學習的表面訊號。 |
+| numeric ratings | 只有在摘要看得出 rating 被轉成 ranking / comparative preference 時才算 | Stage 2 確認它是否真的構成 preference learning | 單純打分數不等於偏好式學習。 |
+| RL loop | 沒有 explicit comparison 也可保留，只要摘要顯示是 audio model 的 RL training loop | Stage 2 再確認它是否真的符合 final selection | 避免把沒有明寫 A/B 的 RL paper 直接漏掉。 |
+| audio domain | Stage 1 保留 audio domain；multimodal including audio 也算 | Stage 2 仍維持 multimodal including audio 可納入 | 不把 audio-only 硬寫成唯一合法情況。 |
+| evaluation-only preference | Stage 1 就可排除明顯只是拿 preferences 做 evaluation 的研究 | Stage 2 再用 canonical criteria 確認 | 這是 `2511` 最關鍵的負向邊界。 |
+| survey / review | Stage 1 可排除明顯的 survey/review | Stage 2 繼續保留這條 | 這一條兩邊都相對直。 |
+
+這次也明確**移除了**一些不再寫進正式 criteria 的硬化內容：
+
+| 被移除的東西 | 白話說明 |
+| --- | --- |
+| `audio must be core` 強制門檻 | 不能偷把「audio 必須是唯一核心」寫成原 paper 明文規則。 |
+| `training objective/loss/reward/model selection` 細粒度硬 gate | 不能把 reviewer 好判斷的細則直接升格為正式 criteria。 |
+| `IEMOCAP/SEMAINE` 等資料集規則 | 不能把特定資料集經驗法則寫成 paper-grounded criteria。 |
+| `SER/ordinal` 類額外硬化規則 | 不能把某些常見邊界案例直接硬編成 formal exclusion / inclusion。 |
+
+白話總結 `2511` 的這次改動：
+
+- 它不是單純把條件往後丟，而是把「摘要能看見的 preference-learning 訊號」整理成較乾淨的 Stage 1 投影。
+- 同時把過去一些很會拿分、但方法學上站不住的 hardening 從正式 criteria 拿掉。
+- 所以它的語義變乾淨了，但也少了那些「考試型捷徑」。
+
+### 10.6 做完這些以後，為什麼還是不到 `0.9`
+
+| Paper | 這個設定已經解掉什麼 | 這個設定還沒解掉什麼 | 所以為什麼還是不到 `0.9` |
+| --- | --- | --- | --- |
+| `2409` | 解掉 stage-mixing，也把很多不該在 Stage 1 硬判的條件往後移 | 沒解掉 process-adjacent / topic-adjacent hard FP | Stage 1 precision 仍只有 `0.6000`，全文後也只有 `0.6667`。 |
+| `2511` | 解掉一部分方法學混亂，讓 Stage 1 與 Stage 2 的責任更清楚 | 沒解掉 abstract-level boundary ambiguity | 全文後 precision `0.8966` 已不差，但 recall `0.8667` 仍被邊界案拉住。 |
+
+最白話的說法是：
+
+- `2409`：現在比較像「規則拆乾淨了，但還是有很多看起來太像正例的假陽性」。
+- `2511`：現在比較像「規則拆乾淨了，但很多摘要還是很難穩定判斷它到底是 learning 還是 evaluation」。
+
+### 10.7 `2409/2511` 跟 `2307/2601` 最大差別是什麼
+
+| 比較面向 | `2307 / 2601` | `2409` | `2511` |
+| --- | --- | --- | --- |
+| 核心 eligibility 訊號 | 相對直 | 很窄，而且鄰近主題很多 | 常藏在 preference / ranking / learning role 的語義裡 |
+| 摘要可觀測性 | 較高 | 常只能看出 process-related | 常看到偏好訊號，但看不出是否真的進 learning |
+| 最主要錯誤型態 | 零星邊界案 | hard FP | boundary ambiguity |
+| 對 hardening 的依賴 | 不強 | 局部有幫助 | 很強，但容易越界 |
+
+白話講，就是：
+
+- `2307/2601` 比較像「摘要一看就知道大方向對不對」。
+- `2409` 比較像「看起來很像，但其實差最後一條核心定義」。
+- `2511` 比較像「同一句摘要，到底算 learning 還是 evaluation，很容易看法不同」。
+
+### 10.8 這一章的最後結論
+
+| 問題 | 最後答案 |
+| --- | --- |
+| `stage_split_criteria_migration` 有沒有幫助？ | 有，`2409/2511` 都比 `senior_no_marker` 明顯進步。 |
+| 這個設定本質上改了什麼？ | 把 Stage 1 與 Stage 2 的 criteria 正式拆開，並強制 runtime 分流讀取。 |
+| `2409` 拆開後為什麼還不到 `0.9`？ | 因為它仍然是明顯的 FP 問題，特別是 process-adjacent / topic-adjacent case。 |
+| `2511` 拆開後為什麼還不到 `0.9`？ | 因為它已不再是單純 FP-heavy；在 current state 下 FP 已大幅下降，但 FN / recall 壓力變得更顯眼。 |
+| 為什麼不能直接拿歷史更高分版本回來？ | 因為 `2511` 的 `>0.9` 高分很大一部分來自 operational hardening，而 current state 不接受把那種規則偽裝成正式 criteria。 |
+| 為什麼這會把問題推向 QA？ | 因為 rules 已經比以前乾淨，剩下更像是 evidence extraction / evidence interpretation 問題。 |
+
+## 11. 為什麼 QA 會成為下一步
 
 | QA 前觀察 | 證據 | 白話說明 |
 | --- | --- | --- |
@@ -525,13 +608,17 @@ stage 差異更清楚
 | 全域 strict senior 不能當解法 | `2601` tuned Combined F1 = `0.8860` | 不能再靠「把 senior 變更嚴」來救全部 paper。 |
 | Stage-split 已把 criteria 邊界整理乾淨 | current architecture 已正式採用 `criteria_stage1/` + `criteria_stage2/` | 既然 criteria 本體已經相對乾淨，下一步自然會往 evidence QA / synthesis 移動。 |
 
-## 11. 來源檔案索引
+## 12. 來源檔案索引
 
 | 類型 | 檔案 | 用途 |
 | --- | --- | --- |
 | Current state | `AGENTS.md` | 定義 QA 前 current architecture、current authority、方法學邊界。 |
 | Current state | `docs/chatgpt_current_status_handoff.md` | 提供目前正式 handoff 與實驗主線摘要。 |
 | Current state | `screening/results/results_manifest.json` | 提供各 paper 的 current metrics authority 與歷史 baseline 索引。 |
+| Current criteria | `criteria_stage1/2409.13738.json` | 支撐 `2409` Stage 1 observable projection 的分析。 |
+| Current criteria | `criteria_stage2/2409.13738.json` | 支撐 `2409` canonical full-eligibility 的分析。 |
+| Current criteria | `criteria_stage1/2511.13936.json` | 支撐 `2511` Stage 1 boundary / observability 的分析。 |
+| Current criteria | `criteria_stage2/2511.13936.json` | 支撐 `2511` preference-learning canonical boundary 的分析。 |
 | Per-paper current state | `screening/results/2307.05527_full/CURRENT.md` | 說明 `2307` 目前以 `senior_no_marker` 為 stable reference。 |
 | Per-paper current state | `screening/results/2409.13738_full/CURRENT.md` | 說明 `2409` 目前以 `stage_split_criteria_migration` 為 authority。 |
 | Per-paper current state | `screening/results/2511.13936_full/CURRENT.md` | 說明 `2511` 目前以 `stage_split_criteria_migration` 為 authority。 |
@@ -548,7 +635,7 @@ stage 差異更清楚
 | Methodology history | `docs/source_faithful_vs_operational_2409_2511_report.md` | source-faithful vs operational 的關鍵比較。 |
 | Current architecture adoption | `docs/stage_split_criteria_migration_report.md` | QA 前最後採用的正式架構。 |
 
-## 12. 最後總結
+## 13. 最後總結
 
 | 問題 | 最後答案 |
 | --- | --- |
