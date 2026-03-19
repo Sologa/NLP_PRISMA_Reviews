@@ -1,0 +1,37 @@
+{
+  "asset_bundle": "qa_first_experiment_v1_global_repair_second_pass_2409_2511_2026-03-19",
+  "status": "experiment_only",
+  "source_seed_bundle": "qa_first_experiments/chatgpt_seed_qas_2409_2511_2026-03-18",
+  "scope": [
+    "2409.13738",
+    "2511.13936"
+  ],
+  "arms": [
+    "qa-only",
+    "qa+synthesis"
+  ],
+  "current_production_inputs": {
+    "runtime_prompts": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "criteria_stage1": [
+      "criteria_stage1/2409.13738.json",
+      "criteria_stage1/2511.13936.json"
+    ],
+    "criteria_stage2": [
+      "criteria_stage2/2409.13738.json",
+      "criteria_stage2/2511.13936.json"
+    ]
+  },
+  "template_manifest": "templates/prompt_manifest.yaml",
+  "patch_notes": "patches/seed_qa_patch_notes.yaml",
+  "tooling": [
+    "tools/render_prompt.py",
+    "tools/validate_bundle.py"
+  ],
+  "policy_files": [
+    "templates/policies/global_identity_hygiene_policy.md",
+    "templates/policies/global_stage1_defer_policy.md",
+    "templates/policies/validation_retry_repair_policy.md",
+    "templates/policies/stage_specific_policy_manifest.yaml"
+  ],
+  "framing_document": "EXPERIMENT_FRAMING.md"
+}

@@ -1,0 +1,65 @@
+schema_id: qa_first_v0_minimal_synthesis_schema
+status: experiment_only
+top_level:
+  type: object
+  required:
+    - paper_id
+    - candidate_key
+    - candidate_title
+    - stage
+    - arm
+    - source_record_provenance
+    - prior_stage_reference
+    - field_records
+field_record:
+  type: object
+  required:
+    - field_name
+    - state
+    - state_basis
+    - normalized_value
+    - supporting_quotes
+    - locations
+    - missingness_reason
+    - conflict_note
+    - derived_from_qids
+    - stage_handoff_status
+    - support_source_kind
+  allowed_state_values:
+    - present
+    - absent
+    - unclear
+    - mixed
+  allowed_state_basis_values:
+    - direct_support
+    - direct_counterevidence
+    - insufficient_signal
+    - mixed_signal
+  stage_handoff_status_values:
+    - observed_in_stage1
+    - deferred_to_stage2
+    - carried_from_stage1
+    - resolved_in_stage2
+    - not_applicable
+  support_source_kind_values:
+    - current_stage_qa
+    - prior_stage_output
+    - current_stage_qa_and_prior_stage_output
+paper_specific_required_fields:
+  "2409.13738":
+    - source_object
+    - target_object
+    - nlp_role
+    - non_target_family
+    - primary_research
+    - concrete_method
+    - empirical_validation
+  "2511.13936":
+    - preference_signal
+    - comparison_type
+    - ratings_conversion
+    - rl_loop
+    - audio_domain
+    - multimodal_audio_role
+    - learning_vs_evaluation
+    - survey_signal

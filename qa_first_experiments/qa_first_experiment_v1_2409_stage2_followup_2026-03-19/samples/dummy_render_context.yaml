@@ -1,0 +1,181 @@
+CANDIDATE_KEY: "__CANDIDATE_KEY__"
+CANDIDATE_TITLE: "__CANDIDATE_TITLE__"
+PAPER_ID: "__REVIEW_ID__"
+PAPER_TITLE: "__CANDIDATE_TITLE__"
+STAGE: "__STAGE__"
+TARGET_STAGE: "__TARGET_STAGE__"
+WORKFLOW_ARM: "__WORKFLOW_ARM__"
+CURRENT_STAGE1_CRITERIA_JSON_PATH: "criteria_stage1/__REVIEW_ID__.json"
+CURRENT_STAGE2_CRITERIA_JSON_PATH: "criteria_stage2/__REVIEW_ID__.json"
+CURRENT_STAGE1_CRITERIA_JSON_CONTENT: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "stage": "__STAGE__",
+    "criteria": []
+  }
+CURRENT_STAGE2_CRITERIA_JSON_CONTENT: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "stage": "__TARGET_STAGE__",
+    "criteria": []
+  }
+QA_JSON_PATH: "qa/__REVIEW_ID__.__STAGE__.seed_qa.json"
+QA_PROMPT_PAYLOAD_JSON: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "stage": "__STAGE__",
+    "reviewer_guardrails": [],
+    "question_groups": [
+      {
+        "group_id": "title_abstract",
+        "questions": [
+          {
+            "qid": "T1",
+            "criterion_family": "process_extraction_core_fit"
+          }
+        ]
+      }
+    ]
+  }
+REVIEWER_GUARDRAILS_JSON: |
+  []
+SOURCE_RECORD_PROVENANCE_JSON: |
+  {
+    "record_key": "__CANDIDATE_KEY__",
+    "record_title": "__CANDIDATE_TITLE__",
+    "source": "__SOURCE__",
+    "source_id": "__SOURCE_ID__",
+    "stage": "__STAGE__",
+    "workflow_arm": "__WORKFLOW_ARM__",
+    "qa_asset_path": "qa/__REVIEW_ID__.__STAGE__.seed_qa.json",
+    "criteria_stage1_path": "criteria_stage1/__REVIEW_ID__.json",
+    "criteria_stage2_path": "criteria_stage2/__REVIEW_ID__.json",
+    "fulltext_candidate_path": "refs/__REVIEW_ID__/mds/__CANDIDATE_KEY__.md",
+    "fulltext_available": false
+  }
+PROTECTED_REVIEW_PHRASES_JSON: |
+  [
+    "__PROTECTED_REVIEW_TITLE__",
+    "__PROTECTED_REVIEW_TOPIC__"
+  ]
+OUTPUT_IDENTITY_CONTRACT_JSON: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "candidate_key": "__CANDIDATE_KEY__",
+    "candidate_title": "__CANDIDATE_TITLE__",
+    "stage": "__STAGE__",
+    "workflow_arm": "__WORKFLOW_ARM__"
+  }
+GLOBAL_IDENTITY_HYGIENE_POLICY_MD: |
+  Identity fields must be echoed exactly and review-level metadata is never candidate evidence.
+GLOBAL_STAGE1_DEFER_POLICY_MD: |
+  If unresolved core evidence has no direct negative support, use `unclear` or `stage_score=3` instead of forcing exclusion.
+STAGE_SPECIFIC_POLICY_MD: ""
+TITLE: "Dummy title"
+ABSTRACT: "Dummy abstract"
+FULLTEXT_TEXT: "Dummy full text."
+METADATA_JSON: |
+  {"key": "dummy2026paper", "venue": "DummyConf"}
+PRIOR_STAGE_OUTPUT_JSON: |
+  {"answers": [], "candidate_key": "__CANDIDATE_KEY__"}
+CURRENT_QA_OUTPUT_JSON: |
+  {"answers": [], "candidate_key": "__CANDIDATE_KEY__"}
+SYNTHESIS_OBJECT_JSON: |
+  {"field_records": [], "candidate_key": "__CANDIDATE_KEY__"}
+JUNIOR_QA_OUTPUTS_JSON: |
+  [{"reviewer": "JuniorNano", "candidate_key": "__CANDIDATE_KEY__", "answers": []}, {"reviewer": "JuniorMini", "candidate_key": "__CANDIDATE_KEY__", "answers": []}]
+JUNIOR_SYNTHESIS_OUTPUTS_JSON: |
+  [{"reviewer": "JuniorNano", "candidate_key": "__CANDIDATE_KEY__", "field_records": []}, {"reviewer": "JuniorMini", "candidate_key": "__CANDIDATE_KEY__", "field_records": []}]
+JUNIOR_DECISION_OUTPUTS_JSON: |
+  [{"reviewer": "JuniorNano", "candidate_key": "__CANDIDATE_KEY__", "stage_score": 3}, {"reviewer": "JuniorMini", "candidate_key": "__CANDIDATE_KEY__", "stage_score": 4}]
+SYNTHESIS_SCHEMA_PATH: "schemas/minimal_synthesis_schema.yaml"
+SYNTHESIS_SCHEMA_CONTENT: |
+  top_level:
+    required: [paper_id, candidate_key, candidate_title, stage, arm, source_record_provenance, prior_stage_reference, field_records]
+QA_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "candidate_key": "__CANDIDATE_KEY__",
+    "candidate_title": "__CANDIDATE_TITLE__",
+    "stage": "__STAGE__",
+    "workflow_arm": "__WORKFLOW_ARM__",
+    "qa_source_path": "__QA_SOURCE_PATH__",
+    "reviewer_guardrails_applied": ["string"],
+    "source_record_provenance": {"record_key": "__CANDIDATE_KEY__"},
+    "answers": [
+      {
+        "qid": "string",
+        "criterion_family": "string",
+        "answer_state": "present|absent|unclear",
+        "state_basis": "direct_support|direct_counterevidence|insufficient_signal|mixed_signal",
+        "answer_rationale": "string",
+        "supporting_quotes": ["string"],
+        "locations": ["string"],
+        "missingness_reason": "string|null"
+      }
+    ]
+  }
+SYNTHESIS_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "candidate_key": "__CANDIDATE_KEY__",
+    "candidate_title": "__CANDIDATE_TITLE__",
+    "stage": "__STAGE__",
+    "arm": "__WORKFLOW_ARM__",
+    "source_record_provenance": {"record_key": "__CANDIDATE_KEY__"},
+    "prior_stage_reference": {"stage": "__PRIOR_STAGE__", "available": false},
+    "field_records": [
+      {
+        "field_name": "string",
+        "state": "present|absent|unclear|mixed",
+        "state_basis": "direct_support|direct_counterevidence|insufficient_signal|mixed_signal",
+        "normalized_value": "string|array|null",
+        "supporting_quotes": ["string"],
+        "locations": ["string"],
+        "missingness_reason": "string|null",
+        "conflict_note": "string|null",
+        "derived_from_qids": ["string"],
+        "stage_handoff_status": "observed_in_stage1|deferred_to_stage2|carried_from_stage1|resolved_in_stage2|not_applicable",
+        "support_source_kind": "current_stage_qa|prior_stage_output|current_stage_qa_and_prior_stage_output"
+      }
+    ]
+  }
+CRITERIA_EVAL_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "candidate_key": "__CANDIDATE_KEY__",
+    "candidate_title": "__CANDIDATE_TITLE__",
+    "stage": "__STAGE__",
+    "arm": "__WORKFLOW_ARM__",
+    "source_record_provenance": {"record_key": "__CANDIDATE_KEY__"},
+    "stage_score": 3,
+    "scoring_basis": "unresolved_without_direct_negative",
+    "decision_recommendation": "include|exclude|maybe|manual_review_needed",
+    "direct_negative_evidence_ids": [],
+    "unresolved_core_evidence_ids": ["string"],
+    "deferred_core_evidence_ids": ["string"],
+    "criterion_mapping": [],
+    "criterion_conflicts": [],
+    "decision_rationale": "string",
+    "manual_review_needed": true,
+    "routing_note": "string"
+  }
+SENIOR_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "__REVIEW_ID__",
+    "candidate_key": "__CANDIDATE_KEY__",
+    "candidate_title": "__CANDIDATE_TITLE__",
+    "stage": "__STAGE__",
+    "arm": "__WORKFLOW_ARM__",
+    "source_record_provenance": {"record_key": "__CANDIDATE_KEY__"},
+    "senior_stage_score": 3,
+    "scoring_basis": "unresolved_without_direct_negative",
+    "decision_recommendation": "include|exclude|maybe|manual_review_needed",
+    "direct_negative_evidence_ids": [],
+    "unresolved_core_evidence_ids": ["string"],
+    "deferred_core_evidence_ids": ["string"],
+    "decision_rationale": "string",
+    "criterion_conflicts": [],
+    "manual_review_needed": false,
+    "routing_note": "string"
+  }
