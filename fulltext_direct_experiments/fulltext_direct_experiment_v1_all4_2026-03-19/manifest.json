@@ -1,0 +1,37 @@
+{
+  "asset_bundle": "fulltext_direct_experiment_v1_all4_2026-03-19",
+  "status": "experiment_only",
+  "scope": [
+    "2307.05527",
+    "2409.13738",
+    "2511.13936",
+    "2601.19926"
+  ],
+  "workflow": {
+    "id": "fulltext-direct",
+    "aliases": [
+      "stage2-direct"
+    ],
+    "stage_model": "one_stage_fulltext"
+  },
+  "current_production_inputs": {
+    "runtime_prompts": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "criteria_stage1_dir": "criteria_stage1",
+    "criteria_stage2_dir": "criteria_stage2"
+  },
+  "candidate_inputs": {
+    "metadata_pattern": "refs/<paper_id>/metadata/title_abstracts_metadata.jsonl",
+    "gold_pattern": "refs/<paper_id>/metadata/title_abstracts_metadata-annotated.jsonl",
+    "fulltext_pattern": "refs/<paper_id>/mds/*.md"
+  },
+  "template_manifest": "templates/prompt_manifest.yaml",
+  "tooling": [
+    "tools/render_prompt.py",
+    "tools/validate_bundle.py",
+    "tools/run_experiment.py"
+  ],
+  "policy_files": [
+    "templates/validation_retry_repair_policy.md"
+  ],
+  "framing_document": "EXPERIMENT_FRAMING.md"
+}

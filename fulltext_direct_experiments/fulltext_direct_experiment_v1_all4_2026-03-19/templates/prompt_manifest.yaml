@@ -1,0 +1,38 @@
+bundle: fulltext_direct_experiment_templates_v1_all4
+status: experiment_only
+storage_rule: external_template_files_only
+scope:
+  - "2307.05527"
+  - "2409.13738"
+  - "2511.13936"
+  - "2601.19926"
+workflow:
+  id: fulltext-direct
+  aliases:
+    - stage2-direct
+  stage_model: one_stage_fulltext
+templates:
+  - id: fulltext_direct_junior_reviewer
+    file: 01_fulltext_direct_junior_reviewer_TEMPLATE.md
+    stage: stage2_direct
+    role: junior
+  - id: fulltext_direct_senior_reviewer
+    file: 02_fulltext_direct_senior_reviewer_TEMPLATE.md
+    stage: stage2_direct
+    role: senior
+required_placeholders:
+  - PAPER_ID
+  - CANDIDATE_KEY
+  - CANDIDATE_TITLE
+  - PRODUCTION_RUNTIME_PROMPTS_PATH
+  - STAGE2_CRITERIA_JSON_PATH
+  - STAGE2_CRITERIA_JSON_CONTENT
+  - TITLE
+  - ABSTRACT
+  - FULLTEXT_TEXT
+  - METADATA_JSON
+  - SOURCE_RECORD_PROVENANCE_JSON
+  - FULLTEXT_RESOLUTION_JSON
+  - JUNIOR_REVIEW_OUTPUTS_JSON
+  - JUNIOR_OUTPUT_JSON_SCHEMA_HINT
+  - SENIOR_OUTPUT_JSON_SCHEMA_HINT

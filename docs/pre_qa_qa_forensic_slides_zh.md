@@ -50,12 +50,12 @@ style: |
 
 ## 四篇 SR 是在做什麼
 
-| Paper | SR 主題 | 白話說明 | 直覺例子 |
-| --- | --- | --- | --- |
-| `2307.05527` | 生成式音訊模型的倫理問題 | 看生成式音訊模型會帶來哪些道德、法律、社會風險。 | deepfake 聲音、聲音版權、模仿他人聲音的同意權。 |
-| `2409.13738` | 用 NLP 從文字抽流程模型 | 看論文是否真的把自然語言流程描述轉成 process model。 | 把 SOP 或醫療流程文件轉成流程圖。 |
-| `2511.13936` | 音訊領域的偏好式學習 | 看研究是否真的用偏好訊號來訓練音訊模型。 | 讓人比兩段音訊哪個較好，再用這個偏好更新模型。 |
-| `2601.19926` | Transformer 的句法知識與可解釋性 | 看 Transformer LM 是否學到 syntax，以及怎麼證明。 | 分析 BERT/GPT 是否知道依存關係、句法樹、主詞動詞一致。 |
+| Paper | SR 正式 title | 白話主題 | 白話說明 | 直覺例子 |
+| --- | --- | --- | --- | --- |
+| `2307.05527` | *The Ethical Implications of Generative Audio Models* | 生成式音訊模型的倫理問題 | 看生成式音訊模型會帶來哪些道德、法律、社會風險。 | deepfake 聲音、聲音版權、模仿他人聲音的同意權。 |
+| `2409.13738` | *NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods* | 用 NLP 從文字抽流程模型 | 看論文是否真的把自然語言流程描述轉成 process model。 | 把 SOP 或醫療流程文件轉成流程圖。 |
+| `2511.13936` | *Preference-Based Learning in Audio Applications: A Systematic Analysis* | 音訊領域的偏好式學習 | 看研究是否真的用偏好訊號來訓練音訊模型。 | 讓人比兩段音訊哪個較好，再用這個偏好更新模型。 |
+| `2601.19926` | *The Grammar of Transformers* | Transformer 的句法知識與可解釋性 | 看 Transformer LM 是否學到 syntax，以及怎麼證明。 | 分析 BERT/GPT 是否知道依存關係、句法樹、主詞動詞一致。 |
 
 ---
 
@@ -346,6 +346,40 @@ QA v1 second-pass
 | QA v1 first-pass | `0.5753` | `0.8333` | `0.6383` | `0.8571` | first-pass 的 Stage 1 幾乎被 `maybe flood` 拖垮。 |
 | QA v1 second-pass | `0.6774` | `0.7500` | `0.8772` | `0.8727` | `2511` 明顯救回，`2409` hygiene 修好但 Combined 變差。 |
 | `2409` follow-up | `0.6897` | `0.7692` | n/a | n/a | precision 拉高，但 recall 掉太多。 |
+
+---
+
+## 新增 baseline：`stage2-only / fulltext-direct` 是什麼
+
+| 面向 | 設定 | 白話說明 |
+| --- | --- | --- |
+| 名稱 | `fulltext-direct` / `stage2-only` | 不做 Stage 1 初篩，直接對所有 candidate 跑 full-text review。 |
+| positive mode | `include_or_maybe` | 只要 final verdict 是 `include` 或 `maybe`，都算 positive。 |
+| 範圍 | 四篇全跑 | `2307`、`2409`、`2511`、`2601` 都有結果。 |
+| 性質 | experiment-only baseline | 只是比較用，不覆寫 production。 |
+| 為什麼重要 | 它回答「如果乾脆直接讀全文，會不會比較好」 | 可以看出問題到底比較像 Stage 1 gating，還是全文判讀本身。 |
+
+---
+
+## `stage2-only / fulltext-direct` 結果
+
+| Paper | F1 | TP | FP | TN | FN | Delta vs current combined | 白話判讀 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| `2307.05527` | `0.8924` | 141 | 4 | 47 | 30 | `-0.0657` | 直接讀全文反而比 current 差，代表它不需要這種重做法。 |
+| `2409.13738` | `0.7692` | 20 | 11 | 52 | 1 | `-0.0151` | 幾乎沒比 current 好，表示 `2409` 問題不只是 Stage 1。 |
+| `2511.13936` | `0.9062` | 29 | 5 | 53 | 1 | `+0.0249` | 直接讀全文反而贏 current，表示 `2511` 很大一部分痛點確實在前段 gating /摘要判讀。 |
+| `2601.19926` | `0.9691` | 329 | 14 | 10 | 7 | `-0.0042` | 幾乎和 current 差不多，沒有顯著收益。 |
+
+四篇 pooled：
+
+| 指標 | 數值 |
+| --- | --- |
+| pooled F1 | `0.9343` |
+| pooled confusion matrix | `TP=519, FP=34, TN=162, FN=39` |
+
+一句話：
+
+> `stage2-only` 最有訊號的是 `2511`，但對 `2409` 沒有形成決定性改善，所以它不能單獨取代 QA 線或 current production。
 
 ---
 
@@ -647,6 +681,7 @@ QA v1 second-pass
 | QA-first 想解什麼？ | 不是再改 formal criteria，而是把 evidence 先拆成固定 QA，再根據答案做判斷。 |
 | QA second-pass 成功了嗎？ | `2511` 成功很多；`2409` hygiene 修好了，但 Combined F1 掉到 `0.7500`。 |
 | `2409` follow-up 成功了嗎？ | 沒有。FP 壓低了，但 recall 掉太多，Combined 只有 `0.7692`。 |
+| 新增的 `stage2-only` baseline 告訴我們什麼？ | `2511` 直接全文可到 `0.9062`，但 `2409` 只有 `0.7692`，所以 `2511` 更像前段 gating 問題，`2409` 則連全文判讀也仍難。 |
 
 ---
 
@@ -666,4 +701,3 @@ QA v1 second-pass
 - `screening/results/qa_first_v1_global_repair_second_pass_2409_2511_2026-03-19/REPORT_zh.md`
 - `screening/results/qa_first_v1_2409_stage2_followup_2026-03-19/REPORT_zh.md`
 - `AGENTS.md`
-

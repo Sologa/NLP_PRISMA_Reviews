@@ -11,11 +11,11 @@
 
 ### 1.1 四篇 SR 的主題總表
 
-| Paper | SR 題目 | 這篇 SR 在看什麼 | 白話說明 | 一個直覺例子 |
+| Paper | SR 正式 title | 這篇 SR 在看什麼 | 白話說明 | 一個直覺例子 |
 | --- | --- | --- | --- | --- |
 | `2307.05527` | *The Ethical Implications of Generative Audio Models* | 生成式音訊模型的倫理問題 | 這篇不是在問「模型準不準」，而是在看「這類模型會帶來哪些道德、法律、社會風險」。 | 例如：一篇討論 deepfake 聲音、聲音版權、聲音模仿同意權的研究。 |
-| `2409.13738` | *NLP4PBM: Process Extraction using NLP* | 用 NLP 從自然語言文字抽出流程模型 | 重點是「把文字敘述變成流程圖或流程結構」，不是一般 NLP 都算。 | 例如：把客服流程描述、醫療流程文件、作業手冊，自動轉成 process model。 |
-| `2511.13936` | *Preference-Based Learning in Audio Applications* | 音訊領域中的偏好式學習 | 重點是「用偏好訊號來學習」，像 A/B 比較、排序、偏好回饋，而不是只拿偏好做最後評分。 | 例如：讓人比較兩段語音或音樂，模型再根據這些偏好更新訓練。 |
+| `2409.13738` | *NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods* | 用 NLP 從自然語言文字抽出流程模型 | 重點是「把文字敘述變成流程圖或流程結構」，不是一般 NLP 都算。 | 例如：把客服流程描述、醫療流程文件、作業手冊，自動轉成 process model。 |
+| `2511.13936` | *Preference-Based Learning in Audio Applications: A Systematic Analysis* | 音訊領域中的偏好式學習 | 重點是「用偏好訊號來學習」，像 A/B 比較、排序、偏好回饋，而不是只拿偏好做最後評分。 | 例如：讓人比較兩段語音或音樂，模型再根據這些偏好更新訓練。 |
 | `2601.19926` | *The Grammar of Transformers* | Transformer 語言模型裡的句法知識與可解釋性 | 重點是看 Transformer 內部到底有沒有學到文法結構，以及研究者怎麼證明這件事。 | 例如：分析 BERT/GPT 是否知道主詞動詞一致、依存關係、句法樹等結構。 |
 
 ### 1.2 每篇 SR 的「會收什麼」與「不收什麼」

@@ -1,0 +1,33 @@
+{
+  "paper_id": "sample.paper",
+  "candidate_key": "sample_key",
+  "candidate_title": "Sample Candidate Title",
+  "workflow_arm": "fulltext-direct",
+  "stage": "stage2-direct",
+  "source_record_provenance": {
+    "record_key": "sample_key",
+    "record_title": "Sample Candidate Title",
+    "source": "sample_source",
+    "source_id": "sample_source_id",
+    "metadata_path": "refs/sample.paper/metadata/title_abstracts_metadata.jsonl",
+    "criteria_stage2_path": "criteria_stage2/sample.paper.json",
+    "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "fulltext_candidate_path": "refs/sample.paper/mds/sample_key.md",
+    "fulltext_available": true
+  },
+  "senior_stage_score": 3,
+  "decision_recommendation": "maybe",
+  "agreement_summary": "Both juniors agree that the paper is on-topic but disagree on whether the evidence closes every required condition.",
+  "disagreement_summary": "The key disagreement is whether the supplied text explicitly satisfies the last required Stage 2 condition.",
+  "satisfied_inclusion_points": [
+    "The supplied full text clearly supports the main topic fit."
+  ],
+  "triggered_exclusion_points": [],
+  "uncertain_points": [
+    "One required inclusion point is not explicitly closed by the supplied text."
+  ],
+  "evidence_highlights": [
+    "Core topic fit is explicit, but one closure detail remains evidence-incomplete."
+  ],
+  "decision_rationale": "The paper appears relevant, but the supplied full text does not close the final evidence gap strongly enough for forced include or exclude."
+}

@@ -1,0 +1,124 @@
+PAPER_ID: sample.paper
+CANDIDATE_KEY: sample_key
+CANDIDATE_TITLE: Sample Candidate Title
+PRODUCTION_RUNTIME_PROMPTS_PATH: scripts/screening/runtime_prompts/runtime_prompts.json
+STAGE2_CRITERIA_JSON_PATH: criteria_stage2/sample.paper.json
+STAGE2_CRITERIA_JSON_CONTENT: |
+  {
+    "topic": "Sample Review",
+    "inclusion_criteria": {
+      "required": [
+        "Sample inclusion rule"
+      ]
+    },
+    "exclusion_criteria": [
+      "Sample exclusion rule"
+    ]
+  }
+TITLE: Sample Candidate Title
+ABSTRACT: Sample abstract text.
+FULLTEXT_TEXT: Sample full text body.
+METADATA_JSON: |
+  {
+    "key": "sample_key",
+    "source": "sample_source",
+    "source_id": "sample_source_id"
+  }
+SOURCE_RECORD_PROVENANCE_JSON: |
+  {
+    "record_key": "sample_key",
+    "record_title": "Sample Candidate Title",
+    "source": "sample_source",
+    "source_id": "sample_source_id",
+    "metadata_path": "refs/sample.paper/metadata/title_abstracts_metadata.jsonl",
+    "criteria_stage2_path": "criteria_stage2/sample.paper.json",
+    "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "fulltext_candidate_path": "refs/sample.paper/mds/sample_key.md",
+    "fulltext_available": true
+  }
+FULLTEXT_RESOLUTION_JSON: |
+  {
+    "resolution_status": "exact",
+    "normalized_key": "sample_key",
+    "resolved_path": "refs/sample.paper/mds/sample_key.md",
+    "match_candidates": [
+      "refs/sample.paper/mds/sample_key.md"
+    ]
+  }
+JUNIOR_REVIEW_OUTPUTS_JSON: |
+  [
+    {
+      "reviewer": "JuniorNano",
+      "stage_score": 4,
+      "decision_recommendation": "include"
+    },
+    {
+      "reviewer": "JuniorMini",
+      "stage_score": 3,
+      "decision_recommendation": "maybe"
+    }
+  ]
+JUNIOR_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "sample.paper",
+    "candidate_key": "sample_key",
+    "candidate_title": "Sample Candidate Title",
+    "workflow_arm": "fulltext-direct",
+    "stage": "stage2-direct",
+    "source_record_provenance": {
+      "record_key": "sample_key",
+      "record_title": "Sample Candidate Title",
+      "source": "sample_source",
+      "source_id": "sample_source_id",
+      "metadata_path": "refs/sample.paper/metadata/title_abstracts_metadata.jsonl",
+      "criteria_stage2_path": "criteria_stage2/sample.paper.json",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "fulltext_candidate_path": "refs/sample.paper/mds/sample_key.md",
+      "fulltext_available": true
+    },
+    "stage_score": 4,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The supplied full text explicitly matches the core Stage 2 topic."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Methods and results sections directly describe the target phenomenon."
+    ],
+    "decision_rationale": "The supplied full text explicitly supports inclusion and does not trigger an exclusion."
+  }
+SENIOR_OUTPUT_JSON_SCHEMA_HINT: |
+  {
+    "paper_id": "sample.paper",
+    "candidate_key": "sample_key",
+    "candidate_title": "Sample Candidate Title",
+    "workflow_arm": "fulltext-direct",
+    "stage": "stage2-direct",
+    "source_record_provenance": {
+      "record_key": "sample_key",
+      "record_title": "Sample Candidate Title",
+      "source": "sample_source",
+      "source_id": "sample_source_id",
+      "metadata_path": "refs/sample.paper/metadata/title_abstracts_metadata.jsonl",
+      "criteria_stage2_path": "criteria_stage2/sample.paper.json",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "fulltext_candidate_path": "refs/sample.paper/mds/sample_key.md",
+      "fulltext_available": true
+    },
+    "senior_stage_score": 3,
+    "decision_recommendation": "maybe",
+    "agreement_summary": "Both juniors agree that the paper is on-topic but disagree on closure.",
+    "disagreement_summary": "The disagreement is whether the last required condition is explicitly supported.",
+    "satisfied_inclusion_points": [
+      "The supplied full text clearly supports the main topic fit."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "One required inclusion point is not explicitly closed by the supplied text."
+    ],
+    "evidence_highlights": [
+      "Core topic fit is explicit, but one closure detail remains evidence-incomplete."
+    ],
+    "decision_rationale": "The paper appears relevant, but the supplied full text does not close the final evidence gap strongly enough for forced include or exclude."
+  }
