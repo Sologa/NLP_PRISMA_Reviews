@@ -28,6 +28,7 @@ if str(SCREENING_ROOT) not in sys.path:
     sys.path.insert(0, str(SCREENING_ROOT))
 
 import render_prompt  # noqa: E402
+import cutoff_time_filter  # noqa: E402
 from openai_batch_runner import BatchRequestSpec, OpenAIBatchRunner, build_json_schema_response_format  # noqa: E402
 
 
@@ -180,6 +181,10 @@ def _paper_stage2_criteria_path(paper_id: str) -> Path:
     return REPO_ROOT / "criteria_stage2" / f"{paper_id}.json"
 
 
+def _paper_cutoff_path(paper_id: str) -> Path:
+    return cutoff_time_filter.cutoff_json_path(REPO_ROOT, paper_id)
+
+
 def _runtime_prompts_path() -> Path:
     return REPO_ROOT / "scripts" / "screening" / "runtime_prompts" / "runtime_prompts.json"
 
@@ -198,6 +203,10 @@ def _paper_result_dir(run_id: str, paper_id: str) -> Path:
 
 def _paper_resolution_audit_path(run_id: str, paper_id: str) -> Path:
     return _paper_result_dir(run_id, paper_id) / "fulltext_resolution_audit.json"
+
+
+def _paper_cutoff_audit_path(run_id: str, paper_id: str) -> Path:
+    return _paper_result_dir(run_id, paper_id) / "cutoff_audit.json"
 
 
 def _paper_results_path(run_id: str, paper_id: str) -> Path:
@@ -250,7 +259,11 @@ def _cut_before_references(text: str, *, head_chars: int, tail_chars: int) -> tu
     }
 
 
-def _load_candidates(paper_id: str, *, max_records: int | None = None) -> list[dict[str, Any]]:
+def _load_candidates_with_cutoff(paper_id: str, *, max_records: int | None = None) -> dict[str, Any]:
+    cutoff_path = _paper_cutoff_path(paper_id)
+    cutoff_payload, time_policy = cutoff_time_filter.load_time_policy(cutoff_path)
+    cutoff_payload = dict(cutoff_payload)
+    cutoff_payload["_cutoff_json_path"] = str(cutoff_path.relative_to(REPO_ROOT))
     rows = _read_jsonl(_paper_metadata_path(paper_id))
     deduped: list[dict[str, Any]] = []
     seen_keys: set[str] = set()
@@ -260,9 +273,19 @@ def _load_candidates(paper_id: str, *, max_records: int | None = None) -> list[d
             continue
         seen_keys.add(key)
         deduped.append(row)
+    applied = cutoff_time_filter.apply_cutoff(deduped, payload=cutoff_payload, policy=time_policy)
+    selected_records = list(applied["kept_records"])
     if max_records is not None:
-        return deduped[:max_records]
-    return deduped
+        selected_records = selected_records[:max_records]
+    audit_payload = dict(applied["audit_payload"])
+    audit_payload["max_records_applied"] = max_records
+    audit_payload["candidate_total_after_cutoff_selected_for_run"] = len(selected_records)
+    return {
+        "selected_records": selected_records,
+        "excluded_records": list(applied["excluded_records"]),
+        "decisions_by_key": dict(applied["decisions_by_key"]),
+        "audit_payload": audit_payload,
+    }
 
 
 class FulltextIndex:
@@ -503,6 +526,37 @@ def _build_skipped_row(
     }
 
 
+def _build_cutoff_filtered_row(
+    *,
+    paper_id: str,
+    record: dict[str, Any],
+    decision: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "key": _safe_text(record.get("key")),
+        "title": _safe_text(record.get("title") or record.get("query_title")),
+        "workflow_arm": WORKFLOW_ARM,
+        "stage": WORKFLOW_STAGE,
+        "fulltext_review_mode": "batch",
+        "fulltext_source_path": None,
+        "fulltext_chars_total": 0,
+        "fulltext_chars_used": 0,
+        "reference_cut_applied": False,
+        "reference_cut_method": "none",
+        "reference_cut_marker": None,
+        "reference_cut_line_no": None,
+        "review_output": None,
+        "review_reasoning": None,
+        "review_evaluation": None,
+        "review_state": "cutoff_filtered",
+        "review_skipped": True,
+        "discard_reason": f"cutoff_time_window:{decision['cutoff_status']}",
+        "cutoff_filter": decision,
+        "final_verdict": "exclude (cutoff_time_window)",
+        "paper_id": paper_id,
+    }
+
+
 def _build_error_row(*, context: dict[str, Any], review_state: str, error_payload: dict[str, Any] | None = None) -> dict[str, Any]:
     meta = context["fulltext_meta"]
     return {
@@ -576,7 +630,21 @@ def _prepare_run_context(
     skipped_rows_by_paper: dict[str, list[dict[str, Any]]] = defaultdict(list)
     paper_summaries: dict[str, Any] = {}
     for paper_id in selected_papers:
-        records = _load_candidates(paper_id, max_records=max_records)
+        candidate_payload = _load_candidates_with_cutoff(paper_id, max_records=max_records)
+        records = list(candidate_payload["selected_records"])
+        excluded_records = list(candidate_payload["excluded_records"])
+        decisions_by_key = dict(candidate_payload["decisions_by_key"])
+        if write_audits:
+            _write_json(_paper_cutoff_audit_path(run_id, paper_id), candidate_payload["audit_payload"])
+        for record in excluded_records:
+            key = _safe_text(record.get("key"))
+            skipped_rows_by_paper[paper_id].append(
+                _build_cutoff_filtered_row(
+                    paper_id=paper_id,
+                    record=record,
+                    decision=decisions_by_key[key],
+                )
+            )
         resolution_by_key, audit_payload = _build_resolution_audit(paper_id, records)
         if write_audits:
             _write_json(_paper_resolution_audit_path(run_id, paper_id), audit_payload)
@@ -635,7 +703,10 @@ def _prepare_run_context(
             )
         paper_summaries[paper_id] = {
             "paper_id": paper_id,
-            "candidate_total": len(records),
+            "candidate_total": int(candidate_payload["audit_payload"]["candidate_total_before_cutoff"]),
+            "candidate_total_after_cutoff_selected_for_run": len(records),
+            "cutoff_excluded_count": len(excluded_records),
+            "cutoff_audit_path": _relative(_paper_cutoff_audit_path(run_id, paper_id)),
             "batch_request_count": exact_or_normalized,
             "skipped_count": len(skipped_rows_by_paper[paper_id]),
             "resolution_audit_path": _relative(_paper_resolution_audit_path(run_id, paper_id)),
@@ -761,7 +832,31 @@ def _submit_mode(
     )
     specs: list[BatchRequestSpec] = context["specs"]
     if not specs:
-        raise SystemExit("沒有任何可提交的 batch request。")
+        run_manifest = {
+            "run_id": run_id,
+            "mode": args.mode,
+            "bundle_dir": str(BUNDLE_DIR),
+            "manifest_path": str(MANIFEST_PATH),
+            "run_manifest_path": str(_run_manifest_path(run_id)),
+            "results_root": str(RESULTS_ROOT),
+            "run_dir": str(run_dir),
+            "batch_artifact_dir": str(_batch_artifact_dir(run_id, str(config["model"]))),
+            "model": str(config["model"]),
+            "model_preflight_id": model_id,
+            "reasoning_effort": reasoning_effort,
+            "endpoint": str(config["endpoint"]),
+            "papers": selected_papers,
+            "max_records": args.max_records,
+            "request_count": 0,
+            "paper_preparation": context["paper_summaries"],
+            "upload_file_id": None,
+            "batch_id": None,
+            "batch_status": "not_required_cutoff_only",
+        }
+        _write_json(_run_manifest_path(run_id), run_manifest)
+        print(f"[submit] run_id={run_id}", flush=True)
+        print("[submit] batch_not_required=cutoff_only", flush=True)
+        return 0
 
     runner = OpenAIBatchRunner(
         client=OpenAI(),
@@ -834,17 +929,27 @@ def _collect_mode(
         reasoning_effort=reasoning_effort,
     )
     specs: list[BatchRequestSpec] = context["specs"]
-    runner = OpenAIBatchRunner(
-        client=OpenAI(),
-        poll_interval_sec=float(args.batch_poll_interval_sec or config["batch_poll_interval_sec"]),
-    )
     artifact_dir = _batch_artifact_dir(args.run_id, str(config["model"]))
-    batch_payload = runner.wait_until_terminal(
-        run_manifest["batch_id"],
-        artifact_dir=artifact_dir,
-        max_wait_minutes=float(args.batch_max_wait_minutes or config["batch_max_wait_minutes"]),
-    )
-    parsed_payload = runner.collect_results(specs=specs, batch_payload=batch_payload, artifact_dir=artifact_dir)
+    if run_manifest.get("batch_id"):
+        runner = OpenAIBatchRunner(
+            client=OpenAI(),
+            poll_interval_sec=float(args.batch_poll_interval_sec or config["batch_poll_interval_sec"]),
+        )
+        batch_payload = runner.wait_until_terminal(
+            run_manifest["batch_id"],
+            artifact_dir=artifact_dir,
+            max_wait_minutes=float(args.batch_max_wait_minutes or config["batch_max_wait_minutes"]),
+        )
+        parsed_payload = runner.collect_results(specs=specs, batch_payload=batch_payload, artifact_dir=artifact_dir)
+    else:
+        artifact_dir.mkdir(parents=True, exist_ok=True)
+        batch_payload = {
+            "status": "not_required_cutoff_only",
+            "completed_at": None,
+            "output_file_id": None,
+            "error_file_id": None,
+        }
+        parsed_payload = {"successes": [], "failures": [], "missing": []}
 
     success_by_id = {item["custom_id"]: item for item in parsed_payload["successes"]}
     failure_by_id = {item["custom_id"]: item for item in parsed_payload["failures"]}

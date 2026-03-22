@@ -41,10 +41,23 @@
 
 ## 共用輸入來源
 
+- cutoff：`cutoff_jsons/<paper_id>.json`
 - metadata：`refs/<paper_id>/metadata/title_abstracts_metadata.jsonl`
 - gold：`refs/<paper_id>/metadata/title_abstracts_metadata-annotated.jsonl`
 - fulltext：`refs/<paper_id>/mds/*.md`
 - criteria：`criteria_stage2/<paper_id>.json`
+
+## 現在的前置順序
+
+目前 active 的旗艦版 batch runner 已改成：
+
+1. 先讀 `cutoff_jsons/<paper_id>.json`
+2. 再讀 `refs/<paper_id>/metadata/title_abstracts_metadata.jsonl`
+3. 對 metadata 套用 deterministic 時間窗硬條件
+4. cutoff 通過者才進全文解析與 batch request 建構
+5. cutoff 不通過者直接產生 `exclude (cutoff_time_window)` 結果列，不送模型
+
+也就是說，時間窗現在不是事後提示，而是 pipeline 最前面的 hard filter。
 
 ## 驗證指令
 
@@ -155,8 +168,35 @@
 - `screening/results/<results_root>/runs/<run_id>/batch_jobs/review/<model>/parsed_results.json`
 - `screening/results/<results_root>/runs/<run_id>/papers/<paper_id>/single_reviewer_batch_results.json`
 - `screening/results/<results_root>/runs/<run_id>/papers/<paper_id>/single_reviewer_batch_f1.json`
+- `screening/results/<results_root>/runs/<run_id>/papers/<paper_id>/cutoff_audit.json`
 - `screening/results/<results_root>/runs/<run_id>/run_manifest.json`
 - `screening/results/<results_root>/runs/<run_id>/REPORT_zh.md`
+
+## 對既有 run 重新套用 cutoff
+
+如果既有 run 已經跑完，而 `cutoff_jsons/<paper_id>.json` 後來更新，不需要重跑模型。
+
+請用：
+
+```bash
+./.venv/bin/python scripts/screening/reapply_cutoff_to_batch_results.py \
+  --run-manifest screening/results/<results_root>/runs/<run_id>/run_manifest.json
+```
+
+這個工具會：
+
+1. 讀既有 `single_reviewer_batch_results.json`
+2. 讀最新的 `cutoff_jsons/<paper_id>.json`
+3. 重新套用時間窗硬條件
+4. 輸出新的 results / F1 / report，不覆蓋原始 run
+
+產生的檔案預設是：
+
+- `single_reviewer_batch_results.after_cutoff.json`
+- `single_reviewer_batch_f1.after_cutoff.json`
+- `cutoff_reapply_audit.after_cutoff.json`
+- `run_manifest.after_cutoff.json`
+- `REPORT_after_cutoff_zh.md`
 
 ## GitHub 上傳建議
 

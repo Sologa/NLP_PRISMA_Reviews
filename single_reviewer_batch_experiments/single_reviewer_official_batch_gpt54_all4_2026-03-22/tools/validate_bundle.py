@@ -62,6 +62,7 @@ def validate_required_inputs() -> None:
             run_experiment._paper_gold_path(paper_id),
             run_experiment._paper_fulltext_root(paper_id),
             run_experiment._paper_stage2_criteria_path(paper_id),
+            run_experiment._paper_cutoff_path(paper_id),
         ):
             if not path.exists():
                 raise ValueError(f"缺少必要輸入: {path}")
