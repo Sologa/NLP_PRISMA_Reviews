@@ -52,7 +52,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-12-17",
+      "published_date_iso": "2020-12-17"
+    }
   },
   {
     "key": "bhardwaj2021investigating",
@@ -107,7 +114,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "gupta2024navigating",
@@ -123,46 +137,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "gupta2024navigating",
-      "candidate_title": "Navigating the security landscape of large language models in enterprise information systems",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "gupta2024navigating",
-        "record_title": "Navigating the security landscape of large language models in enterprise information systems",
-        "source": "openalex",
-        "source_id": "https://openalex.org/W4391635381",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/gupta2024navigating.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "Not specifically about NLP for process extraction from natural-language text",
-        "Not a full research paper (explicitly a letter)"
-      ],
-      "uncertain_points": [
-        "Peer-reviewed venue/status not confirmed"
-      ],
-      "evidence_highlights": [
-        "Abstract: \"In this letter, we present a comprehensive analysis of the security landscape surrounding large language models...\"",
-        "Abstract: \"we introduce a ... deep CNN-based security framework, ... tested with the KDDCup dataset\" (topic is LLM security, not process extraction)",
-        "No mention of extracting process/control-flow/decisional models from natural-language text in title, abstract, or provided full text"
-      ],
-      "decision_rationale": "The paper is off-topic for NLP-enabled process extraction and explicitly identifies itself as a letter rather than a full research article. It does not describe NLP methods for extracting process models from natural-language text, triggering exclusion per topic scope and full paper requirements."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024-02-07",
+      "published_date_iso": "2024-02-07"
     },
-    "review_reasoning": "The paper is off-topic for NLP-enabled process extraction and explicitly identifies itself as a letter rather than a full research article. It does not describe NLP methods for extracting process models from natural-language text, triggering exclusion per topic scope and full paper requirements.",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-02-07",
+      "published_date_iso": "2024-02-07"
+    }
   },
   {
     "key": "dong_self-collaboration_2024",
@@ -178,46 +172,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1420,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "dong_self-collaboration_2024",
-      "candidate_title": "Self-Collaboration Code Generation via ChatGPT",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "dong_self-collaboration_2024",
-        "record_title": "Self-Collaboration Code Generation via ChatGPT",
-        "source": "crossref",
-        "source_id": "10.1145/3672459",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/dong_self-collaboration_2024.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "英文全文可得且為完整研究文章",
-        "屬於原創性主研究並包含方法與實驗驗證"
-      ],
-      "triggered_exclusion_points": [
-        "不涵蓋以NLP自自然語言文本進行流程抽取之主題"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"we present a self-collaboration framework for code generation employing LLMs, exemplified by ChatGPT... conduct comprehensive experiments on various code-generation benchmarks.\"",
-        "Full text: \"We propose a self-collaboration framework... to address code generation tasks...\"",
-        "Full text: \"Building on self-collaboration framework, the virtual team formed by ChatGPT (GPT-3.5) can achieve significant improvements... on multiple code-generation benchmarks.\""
-      ],
-      "decision_rationale": "主題與審查範圍不符：本文聚焦於多代理自協作以提升LLM之程式碼生成表現，未涉及以NLP從自然語言文本抽取流程/決策模型之問題，觸發排除條件。雖符合英文全文、原創方法與實驗等要件，但關鍵納入條件（NLP用於流程抽取）未被滿足，故予以排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024-09-27",
+      "published_date_iso": "2024-09-27"
     },
-    "review_reasoning": "主題與審查範圍不符：本文聚焦於多代理自協作以提升LLM之程式碼生成表現，未涉及以NLP從自然語言文本抽取流程/決策模型之問題，觸發排除條件。雖符合英文全文、原創方法與實驗等要件，但關鍵納入條件（NLP用於流程抽取）未被滿足，故予以排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-09-27",
+      "published_date_iso": "2024-09-27"
+    }
   },
   {
     "key": "qian_chatdev_2024",
@@ -233,47 +207,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1132,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "qian_chatdev_2024",
-      "candidate_title": "ChatDev: Communicative Agents for Software Development",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "qian_chatdev_2024",
-        "record_title": "ChatDev: Communicative Agents for Software Development",
-        "source": "openalex",
-        "source_id": "https://openalex.org/W4402684050",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/qian_chatdev_2024.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "英文、具全文且為同行審查會議長文（ACL 2024）",
-        "屬於原創的初級研究並提出新方法",
-        "說明具體方法並包含實驗驗證"
-      ],
-      "triggered_exclusion_points": [
-        "未針對從自然語言文字進行流程抽取之NLP任務"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“we introduce ChatDev, a chat-powered software development framework … agents … contribute to the design, coding, and testing phases”",
-        "“establishing language as a unifying bridge for autonomous task-solving among LLM agents”",
-        "整篇聚焦多智能體軟體開發（設計/編碼/測試），無涉及從自然語言抽取控制流程或決策流程模型的任務"
-      ],
-      "decision_rationale": "雖為英文、具全文且為ACL 2024長文，屬原創並含實驗，但主題為多代理LLM用於軟體開發流程中的設計、編碼、測試協作，未涉及以NLP從自然語言文本抽取流程/決策模型之任務，觸發排除條件EC.3，且不滿足IC.3，故強排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024-01-01",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "雖為英文、具全文且為ACL 2024長文，屬原創並含實驗，但主題為多代理LLM用於軟體開發流程中的設計、編碼、測試協作，未涉及以NLP從自然語言文本抽取流程/決策模型之任務，觸發排除條件EC.3，且不滿足IC.3，故強排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-01-01",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "guo_large_2024",
@@ -289,46 +242,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1535,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "guo_large_2024",
-      "candidate_title": "Large Language Model based Multi-Agents: A Survey of Progress and Challenges",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "guo_large_2024",
-        "record_title": "Large Language Model based Multi-Agents: A Survey of Progress and Challenges",
-        "source": "openalex",
-        "source_id": "https://openalex.org/W4391591599",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/guo_large_2024.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "Secondary research article (survey)",
-        "Does not cover NLP for process extraction from natural language text",
-        "Preprint on arXiv; peer-reviewed venue not evidenced"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"we present this survey to offer an in-depth discussion on the essential aspects of multi-agent systems based on LLMs\"",
-        "Full text: \"presenting this survey paper, dedicated to the research on LLM-based multi-agent systems.\"",
-        "Topic throughout focuses on LLM-based multi-agent systems, applications, frameworks, and challenges; no mention of extracting process/control-flow/decisional models from text",
-        "Header: \"arXiv:2402.01680v2 [cs.CL] 19 Apr 2024\" (preprint indication)"
-      ],
-      "decision_rationale": "The paper is a survey (secondary research) on LLM-based multi-agent systems and does not address NLP-enabled process extraction from natural-language text. It also appears as an arXiv preprint without evidence of peer-reviewed publication. These trigger exclusion criteria."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024-01-21",
+      "published_date_iso": "2024-01-21"
     },
-    "review_reasoning": "The paper is a survey (secondary research) on LLM-based multi-agent systems and does not address NLP-enabled process extraction from natural-language text. It also appears as an arXiv preprint without evidence of peer-reviewed publication. These trigger exclusion criteria.",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-01-21",
+      "published_date_iso": "2024-01-21"
+    }
   },
   {
     "key": "neuberger_data_augment",
@@ -344,47 +277,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 673,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "neuberger_data_augment",
-      "candidate_title": "Leveraging Data Augmentation for Process Information Extraction",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "neuberger_data_augment",
-        "record_title": "Leveraging Data Augmentation for Process Information Extraction",
-        "source": "crossref",
-        "source_id": "10.1007/978-3-031-61007-3_6",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/neuberger_data_augment.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "英語撰寫且有全文；具 DOI 之會議/期刊出版",
-        "屬於原創的第一手研究工作",
-        "明確以 NLP 進行從自然語言文字的流程資訊抽取（BPIE）",
-        "提出具體方法（資料增強方案與設定）並以實驗實證驗證"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"We find that many of these methods are applicable to the task of business process information extraction, improving the accuracy of extraction.\"",
-        "Abstract: \"Simple data augmentation techniques improved the F1 score of mention extraction by 2.9 percentage points, and the F1 of relation extraction by 4.5.\"",
-        "Section 2–3: 定義 BPIE 的 Mention Detection 與 Relation Extraction，並以 PET 資料集進行實驗",
-        "Metadata: Crossref DOI 10.1007/978-3-031-61007-3_6（Springer 會議章節），英文全文可得"
-      ],
-      "decision_rationale": "論文以英語完整發表於具 DOI 之會議出版物，為原創實證研究；主題明確屬於以 NLP 從自然語言文本進行流程資訊抽取（BPIE），提出具體的資料增強方法選擇與配置流程，並以 PET 數據集進行系統性實驗與成效報告，符合所有 Stage 2 納入條件，未觸發排除條件。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "論文以英語完整發表於具 DOI 之會議出版物，為原創實證研究；主題明確屬於以 NLP 從自然語言文本進行流程資訊抽取（BPIE），提出具體的資料增強方法選擇與配置流程，並以 PET 數據集進行系統性實驗與成效報告，符合所有 Stage 2 納入條件，未觸發排除條件。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "discard_reason": "cutoff_time_window:after_end",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "devlin_bert",
@@ -440,7 +352,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "li2023_acecoder",
@@ -494,7 +413,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-03-31",
+      "published_date_iso": "2023-03-31"
+    }
   },
   {
     "key": "li2023_skcoder",
@@ -510,48 +436,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1559,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "li2023_skcoder",
-      "candidate_title": "SkCoder: A Sketch-based Approach for Automatic Code Generation",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "li2023_skcoder",
-        "record_title": "SkCoder: A Sketch-based Approach for Automatic Code Generation",
-        "source": "crossref",
-        "source_id": "10.1109/icse48619.2023.00179",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/li2023_skcoder.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "Full research article in English with full text available",
-        "Primary research with an original method",
-        "Concrete method with empirical validation"
-      ],
-      "triggered_exclusion_points": [
-        "Does not cover NLP for process extraction from natural-language text; focuses on code generation"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“we propose a sketch-based code generation approach named SKCODER to mimic developers’ code reuse behavior.”",
-        "“Given a natural language requirement, SKCODER retrieves a similar code snippet, extracts relevant parts as a code sketch, and edits the sketch into the desired code.”",
-        "“We conduct experiments on two public datasets and a new dataset collected by this work.” (datasets are for code generation such as HearthStone, Magic, AixBench-L)",
-        "No mention of extracting process/control-flow or decisional models from natural-language text"
-      ],
-      "decision_rationale": "While the paper is a peer-reviewed full research article with an original method and empirical validation, it does not address NLP-enabled process extraction from natural-language text. It focuses on automatic code generation, triggering the exclusion criterion for topic mismatch."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2023-05",
+      "published_date_iso": null
     },
-    "review_reasoning": "While the paper is a peer-reviewed full research article with an original method and empirical validation, it does not address NLP-enabled process extraction from natural-language text. It focuses on automatic code generation, triggering the exclusion criterion for topic mismatch.",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-05",
+      "published_date_iso": null
+    }
   },
   {
     "key": "poesia2022_synchromesh",
@@ -609,7 +513,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-01-26",
+      "published_date_iso": "2022-01-26"
+    }
   },
   {
     "key": "du2022_r-gqa",
@@ -666,7 +577,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "zhao2024_rag_applic",
@@ -682,45 +600,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 2170,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "zhao2024_rag_applic",
-      "candidate_title": "Retrieval-Augmented Generation for AI-Generated Content: A Survey",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "zhao2024_rag_applic",
-        "record_title": "Retrieval-Augmented Generation for AI-Generated Content: A Survey",
-        "source": "openalex",
-        "source_id": "https://openalex.org/W4393299232",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/zhao2024_rag_applic.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "屬於次級研究（survey），非主要研究文章",
-        "未針對以NLP從自然語言文字進行流程抽取的主題",
-        "未提出針對流程抽取的具體方法與實驗驗證"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "標題與摘要：\"Retrieval-Augmented Generation for AI-Generated Content: A Survey\"；\"we comprehensively review existing efforts... we survey on practical applications of RAG\"",
-        "全文導言與貢獻段落自稱為 comprehensive survey，涵蓋 foundations、enhancements、applications、benchmarks，而非提出單一新方法與實驗",
-        "內容主題聚焦 RAG 與 AIGC 跨多模態，無涉及從自然語言文字抽取流程/控制流或決策模型之研究"
-      ],
-      "decision_rationale": "該文為RAG在AIGC領域的綜述性調查（次級研究），不屬於主要研究；且主題不涵蓋以NLP從自然語言文字進行流程抽取。亦未提出針對流程抽取的具體方法與實驗驗證。明確觸發排除條件並不滿足必要納入條件，故強排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024-02-29",
+      "published_date_iso": "2024-02-29"
     },
-    "review_reasoning": "該文為RAG在AIGC領域的綜述性調查（次級研究），不屬於主要研究；且主題不涵蓋以NLP從自然語言文字進行流程抽取。亦未提出針對流程抽取的具體方法與實驗驗證。明確觸發排除條件並不滿足必要納入條件，故強排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-02-29",
+      "published_date_iso": "2024-02-29"
+    }
   },
   {
     "key": "forell_modeling_meets_llm",
@@ -736,46 +635,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1137,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "forell_modeling_meets_llm",
-      "candidate_title": "LLMPerf: GPU Performance Modeling meets Large Language Models",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "forell_modeling_meets_llm",
-        "record_title": "LLMPerf: GPU Performance Modeling meets Large Language Models",
-        "source": "openalex",
-        "source_id": "10.1109/mascots64422.2024.10786558",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/forell_modeling_meets_llm.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "英文全文可得，經會議同行評審發表",
-        "為原創性的一手研究並提出具體方法與實驗"
-      ],
-      "triggered_exclusion_points": [
-        "不涵蓋以NLP從自然語言文字進行流程抽取的主題"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“Our work establishes a connection between LLMs and performance modeling, employing the LLM as a performance estimator… tasks for OpenCL device source programs.”",
-        "“A first large language model that estimates OpenCL execution time from only static information.”",
-        "Conference header: “2024 32nd International Conference on Modeling, Analysis and Simulation of Computer and Telecommunication Systems (MASCOTS) … IEEE”"
-      ],
-      "decision_rationale": "本文聚焦以LLM預測OpenCL GPU核心的執行時間屬於效能建模，未涉及從自然語言文本中抽取流程/決策模型之任務，明確不符合主題性納入條件(IC: 使用NLP進行流程抽取)。其他必要條件如英文、同行評審、原創方法與實驗皆滿足，但因關鍵主題不符而應排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "本文聚焦以LLM預測OpenCL GPU核心的執行時間屬於效能建模，未涉及從自然語言文本中抽取流程/決策模型之任務，明確不符合主題性納入條件(IC: 使用NLP進行流程抽取)。其他必要條件如英文、同行評審、原創方法與實驗皆滿足，但因關鍵主題不符而應排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "kourani_process_modelling_with_llm",
@@ -791,47 +670,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 720,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "kourani_process_modelling_with_llm",
-      "candidate_title": "Process Modeling With Large Language Models",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "kourani_process_modelling_with_llm",
-        "record_title": "Process Modeling With Large Language Models",
-        "source": "semantic_scholar",
-        "source_id": "113ddfcf87a6cf7bfe70c36a80fe793c7e962878",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/kourani_process_modelling_with_llm.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "英文全文可得",
-        "為原創的主要研究，提出具體方法並有初步實驗",
-        "明確使用NLP/LLM自自然語言文本生成流程模型（流程抽取）"
-      ],
-      "triggered_exclusion_points": [
-        "僅為預印本（arXiv），非同行評審之會議或期刊發表"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "文中多處描述從自然語言過程描述自動生成並迭代改進流程模型，並可輸出BPMN與Petri nets（摘要；第3節、3.2節）",
-        "評估部分對兩個過程案例進行模型生成與比較（第4節）",
-        "版面標示為 arXiv:2403.07541v2 [cs.SE] 8 Apr 2024，未見任何同行評審會議/期刊註記（首頁）"
-      ],
-      "decision_rationale": "儘管本文以LLM自文本抽取與生成流程模型，並提供方法與實驗，但未證明為已在同行評審會議或期刊正式發表；文本顯示為arXiv預印本，觸發排除條件。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024-03-12",
+      "published_date_iso": "2024-03-12"
     },
-    "review_reasoning": "儘管本文以LLM自文本抽取與生成流程模型，並提供方法與實驗，但未證明為已在同行評審會議或期刊正式發表；文本顯示為arXiv預印本，觸發排除條件。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-03-12",
+      "published_date_iso": "2024-03-12"
+    }
   },
   {
     "key": "berti_evaluating_llm",
@@ -847,46 +705,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 351,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "berti_evaluating_llm",
-      "candidate_title": "Evaluating Large Language Models in Process Mining: Capabilities, Benchmarks, and Evaluation Strategies",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "berti_evaluating_llm",
-        "record_title": "Evaluating Large Language Models in Process Mining: Capabilities, Benchmarks, and Evaluation Strategies",
-        "source": "arxiv",
-        "source_id": "2403.06749v3",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/berti_evaluating_llm.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "非同行評審之預印本（arXiv），不符合需為會議或期刊正式發表",
-        "次級研究（綜述/立場性討論），非主要原創研究",
-        "未專注於從自然語言文字進行流程抽取之NLP任務",
-        "未闡述具體方法且無實驗驗證"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"This paper reviews the current implementations of LLMs in PM and reflects on three different questions.\"",
-        "Full text Section 1 and 3 describe capabilities, benchmarks, and evaluation strategies rather than proposing and validating a concrete method.",
-        "Source metadata/arXiv: arXiv:2403.06749v3 (preprint), indicating non peer-reviewed status."
-      ],
-      "decision_rationale": "該稿為對LLM於流程探勘之能力、基準與評估策略的綜述與討論，未提出具體原創方法與實驗驗證，且為arXiv預印本非同行評審發表；亦非專注於以NLP自自然語言文字進行流程抽取之研究。多項必要納入條件未滿足並觸發排除條款，故予以排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "該稿為對LLM於流程探勘之能力、基準與評估策略的綜述與討論，未提出具體原創方法與實驗驗證，且為arXiv預印本非同行評審發表；亦非專注於以NLP自自然語言文字進行流程抽取之研究。多項必要納入條件未滿足並觸發排除條款，故予以排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "omg_dmn",
@@ -902,47 +740,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "omg_dmn",
-      "candidate_title": "Decision Model and Notation (DMN)",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "omg_dmn",
-        "record_title": "Decision Model and Notation (DMN)",
-        "source": "manual",
-        "source_id": "https://www.omg.org/dmn/",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/omg_dmn.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "非同行評審之會議/期刊完整研究論文：屬於OMG規範文件",
-        "非原創性主要研究文章：為標準規格說明",
-        "不涉及NLP從自然語言文字進行流程抽取",
-        "未描述方法之實驗性驗證"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“An OMG Decision Model and Notation Publication … Version 1.4 … Standard Document URL: https://www.omg.org/spec/DMN”",
-        "“The material in this document details an Object Management Group specification …”",
-        "“Guide to the Specification” (目錄與內容均為標準規格說明而非研究方法與實驗)",
-        "全文聚焦於DMN元素、決策表、FEEL語言之定義與合規，未涉及NLP流程抽取或實證評估"
-      ],
-      "decision_rationale": "文件為OMG的標準規格說明，非同行評審期刊/會議之主要研究，且不涵蓋NLP用於從自然語言文本抽取流程，也無實驗驗證，明確觸發排除條件。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "文件為OMG的標準規格說明，非同行評審期刊/會議之主要研究，且不涵蓋NLP用於從自然語言文本抽取流程，也無實驗驗證，明確觸發排除條件。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "omg_uml",
@@ -958,46 +775,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "omg_uml",
-      "candidate_title": "Unified Modeling Language (UML)",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "omg_uml",
-        "record_title": "Unified Modeling Language (UML)",
-        "source": "manual",
-        "source_id": "https://www.omg.org/spec/UML/",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/omg_uml.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "非同行評審之會議/期刊完整研究論文（為OMG規範文件）",
-        "屬於次級/標準規範而非原創性主要研究",
-        "未涵蓋NLP用於從自然語言文字進行流程抽取",
-        "未提供具體方法之實驗驗證"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“An OMG® Unified Modeling Language® Publication … Version 2.5.1 … Object Management Group specification”",
-        "“This specification is published under the ‘RF on Limited Terms’ IPR mode …”",
-        "目錄與正文皆為UML語言與XMI序列化之規範內容，無NLP或流程抽取研究方法與實驗描述"
-      ],
-      "decision_rationale": "全文為OMG之UML 2.5.1規範文件，非同行評審之主要研究論文，且不涉及NLP流程抽取或方法實驗，明確觸發排除條件。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "全文為OMG之UML 2.5.1規範文件，非同行評審之主要研究論文，且不涉及NLP流程抽取或方法實驗，明確觸發排除條件。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "omg_bpmn",
@@ -1053,7 +850,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    }
   },
   {
     "key": "hildebrandt_dcr",
@@ -1108,7 +912,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011-10-18",
+      "published_date_iso": "2011-10-18"
+    }
   },
   {
     "key": "lopez_assisted_declarative_process",
@@ -1166,7 +977,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:2)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-10-01",
+      "published_date_iso": "2019-10-01"
+    }
   },
   {
     "key": "lopez_declarative_process_discovery",
@@ -1225,7 +1043,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:4)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "vda_extracting_declarative_process",
@@ -1282,7 +1107,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "wvda_declare",
@@ -1338,7 +1170,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2009-03-10",
+      "published_date_iso": "2009-03-10"
+    }
   },
   {
     "key": "schuler_state_2024",
@@ -1354,48 +1193,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 459,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "schuler_state_2024",
-      "candidate_title": "\"State of the Art: Automatic Generation of Business Process Models\"",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "schuler_state_2024",
-        "record_title": "\"State of the Art: Automatic Generation of Business Process Models\"",
-        "source": "manual",
-        "source_id": "\"State of the Art: Automatic Generation of Business Process Models\"",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/schuler_state_2024.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "英語全文可得且為會議論文章節（同行評審）"
-      ],
-      "triggered_exclusion_points": [
-        "次級研究（系統性文獻回顧）",
-        "未提出原創方法且無實驗驗證該方法",
-        "主題不專注於NLP從自然語言文本的流程抽取"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“We conducted a systematic literature review (LR) on automatic generation of business process models.”",
-        "“This is followed by the presentation of our LR. We briefly describe our method for conducting the study in Sect. 3 and then present our findings...”",
-        "範圍涵蓋多種輸入（event logs, code, rules, tables, models, knowledge bases, natural text），非專門聚焦NLP文本抽取（4.2章節）",
-        "未描述原創演算法/方法與其實驗驗證；全文為現有文獻之彙整與討論"
-      ],
-      "decision_rationale": "本文為系統性文獻回顧（次級研究），未提出原創方法與實驗驗證，且主題並非專門針對NLP從自然語言文本之流程抽取；因此觸發排除條件。雖滿足英文同行評審全文可得，但不符合必要納入條件。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "本文為系統性文獻回顧（次級研究），未提出原創方法與實驗驗證，且主題並非專門針對NLP從自然語言文本之流程抽取；因此觸發排除條件。雖滿足英文同行評審全文可得，但不符合必要納入條件。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "Fereday2006",
@@ -1411,46 +1228,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 668,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "Fereday2006",
-      "candidate_title": "Demonstrating Rigor Using Thematic Analysis: A Hybrid Approach of Inductive and Deductive Coding and Theme Development",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "Fereday2006",
-        "record_title": "Demonstrating Rigor Using Thematic Analysis: A Hybrid Approach of Inductive and Deductive Coding and Theme Development",
-        "source": "crossref",
-        "source_id": "10.1177/160940690600500107",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/Fereday2006.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "英語同行評審期刊全文可得"
-      ],
-      "triggered_exclusion_points": [
-        "不涵蓋使用NLP從自然語言文字進行流程抽取",
-        "未闡述用於流程抽取的NLP方法與其實驗驗證"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“the authors describe how they used a hybrid process of inductive and deductive thematic analysis to interpret raw data in a doctoral study on the role of performance feedback in the self-assessment of nursing practice.”",
-        "“Data were gathered from nursing clinician focus groups, clinical manager focus groups, and organizational performance review policies and procedures.”",
-        "“This article has provided an illumination of the steps involved in the process of thematic analysis… a balance of deductive coding and inductive coding.”"
-      ],
-      "decision_rationale": "本文為質性研究方法論案例，聚焦主題分析於護理情境之資料詮釋，未涉及以NLP從自然語言文本抽取流程模型，亦無針對流程抽取NLP方法的實證實驗，因此觸發主題不符之排除條件。雖符合英語同行評審與全文可得，但關鍵納入條件（NLP用於流程抽取與方法實驗驗證）未滿足。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2006-03",
+      "published_date_iso": null
     },
-    "review_reasoning": "本文為質性研究方法論案例，聚焦主題分析於護理情境之資料詮釋，未涉及以NLP從自然語言文本抽取流程模型，亦無針對流程抽取NLP方法的實證實驗，因此觸發主題不符之排除條件。雖符合英語同行評審與全文可得，但關鍵納入條件（NLP用於流程抽取與方法實驗驗證）未滿足。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2006-03",
+      "published_date_iso": null
+    }
   },
   {
     "key": "bellan_gpt3_2022",
@@ -1506,7 +1303,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "de2008stanford",
@@ -1561,7 +1365,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2008",
+      "published_date_iso": "2008-01-01"
+    }
   },
   {
     "key": "cunningham2013getting",
@@ -1616,7 +1427,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2013-02-01",
+      "published_date_iso": "2013-02-01"
+    }
   },
   {
     "key": "shen2018ordered",
@@ -1672,7 +1490,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018-10-22",
+      "published_date_iso": "2018-10-22"
+    }
   },
   {
     "key": "li2005using",
@@ -1729,7 +1554,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2005-06-29",
+      "published_date_iso": "2005-06-29"
+    }
   },
   {
     "key": "ezencan2020comparison",
@@ -1782,7 +1614,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-09-11",
+      "published_date_iso": "2020-09-11"
+    }
   },
   {
     "key": "pennington2014glove",
@@ -1839,7 +1678,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2014-01-01",
+      "published_date_iso": "2014-01-01"
+    }
   },
   {
     "key": "sanh2020distilbert",
@@ -1894,7 +1740,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-10-02",
+      "published_date_iso": "2019-10-02"
+    }
   },
   {
     "key": "mikolov2013distributed",
@@ -1951,7 +1804,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2013",
+      "published_date_iso": "2013-01-01"
+    }
   },
   {
     "key": "Eberts2021",
@@ -2007,7 +1867,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-01-01",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "Prokhorenkova2018",
@@ -2060,7 +1927,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "weidlich2011",
@@ -2076,46 +1950,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1990,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "weidlich2011",
-      "candidate_title": "Efficient Consistency Measurement Based on Behavioral Profiles of Process Models",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "weidlich2011",
-        "record_title": "Efficient Consistency Measurement Based on Behavioral Profiles of Process Models",
-        "source": "crossref",
-        "source_id": "10.1109/tse.2010.96",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/weidlich2011.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "Full research article in English with full text available (IEEE TSE journal paper).",
-        "Primary research presenting an original method (behavioral profiles) with empirical validation."
-      ],
-      "triggered_exclusion_points": [
-        "Paper does not cover the use of NLP for process extraction from natural language text."
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"Our contribution is a concept called behavioral profile that captures the essential behavioral constraints of a process model... computed efficiently... for sound free-choice Petri nets... checking consistency between partially overlapping models of the SAP reference model.\"",
-        "Full text: Focus on process model alignment and consistency; Petri nets, behavioral profiles, and consistency measures; no mention of NLP or extraction from natural-language text.",
-        "Section 8 Conclusion: Emphasizes consistency between process models and behavioral profiles; no scope of NLP-based process extraction."
-      ],
-      "decision_rationale": "While this is a peer-reviewed English full research article with an original method and validation, it does not address NLP-enabled process extraction from natural language text. It focuses on consistency measurement between process models using behavioral profiles and Petri nets. Therefore it fails the required inclusion criterion on topic (IC.3) and triggers the exclusion criterion for not covering NLP for process extraction."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2011-05",
+      "published_date_iso": null
     },
-    "review_reasoning": "While this is a peer-reviewed English full research article with an original method and validation, it does not address NLP-enabled process extraction from natural language text. It focuses on consistency measurement between process models using behavioral profiles and Petri nets. Therefore it fails the required inclusion criterion on topic (IC.3) and triggers the exclusion criterion for not covering NLP for process extraction.",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2011-05",
+      "published_date_iso": null
+    }
   },
   {
     "key": "dijkman2011",
@@ -2170,7 +2024,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "bellan_pet_23",
@@ -2225,7 +2086,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "devlin_bert_2018",
@@ -2282,7 +2150,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "herbst_inductive_1999",
@@ -2339,7 +2214,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2002",
+      "published_date_iso": "2002-01-01"
+    }
   },
   {
     "key": "Davenport2019",
@@ -2393,7 +2275,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "dumas2018fundamentals",
@@ -2447,7 +2336,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "weske2007business",
@@ -2500,7 +2396,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
+    }
   },
   {
     "key": "lopez2021challenges",
@@ -2559,7 +2462,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "van2018challenges",
@@ -2615,7 +2525,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018-08-01",
+      "published_date_iso": "2018-08-01"
+    }
   },
   {
     "key": "bellan2020qualitative",
@@ -2672,7 +2589,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-01-01",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "riefer2016mining",
@@ -2731,7 +2655,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "bordignon2018natural",
@@ -2786,7 +2717,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "maqbool2019comprehensive",
@@ -2841,7 +2779,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "bellan2021process",
@@ -2897,7 +2842,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-10-07",
+      "published_date_iso": "2021-10-07"
+    }
   },
   {
     "key": "han2020bps",
@@ -2954,7 +2906,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-10-01",
+      "published_date_iso": "2020-10-01"
+    }
   },
   {
     "key": "Devlin2019BERTPO",
@@ -3010,7 +2969,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "busch2023just",
@@ -3066,7 +3032,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "kitchenham2004procedures",
@@ -3123,7 +3096,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2004",
+      "published_date_iso": "2004-01-01"
+    }
   },
   {
     "key": "halioui2018bioinformatic",
@@ -3181,7 +3161,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018-06-14",
+      "published_date_iso": "2018-06-14"
+    }
   },
   {
     "key": "sonbol2023machine",
@@ -3239,7 +3226,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "maybe (single:3)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2021extracting",
@@ -3298,7 +3292,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "maybe (single:3)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-01-01",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "goossens2023extracting",
@@ -3357,7 +3358,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2020text2dec",
@@ -3414,7 +3422,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "sholiq2022generating",
@@ -3472,7 +3487,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-20",
+      "published_date_iso": "2022-10-20"
+    }
   },
   {
     "key": "nasiri2023automatic",
@@ -3529,7 +3551,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-25",
+      "published_date_iso": "2022-10-25"
+    }
   },
   {
     "key": "azevedo2018bpmn",
@@ -3587,7 +3616,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "ferreira2017semi",
@@ -3643,7 +3679,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "goncalves2011let",
@@ -3700,7 +3743,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "friedrich2011process",
@@ -3756,7 +3806,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "chen2014pewp",
@@ -3813,7 +3870,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2014-09-01",
+      "published_date_iso": "2014-09-01"
+    }
   },
   {
     "key": "quishpi2021extracting",
@@ -3869,7 +3933,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "sintoris2017extracting",
@@ -3927,7 +3998,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017-07-01",
+      "published_date_iso": "2017-07-01"
+    }
   },
   {
     "key": "bellan2022process",
@@ -3984,7 +4062,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "neuberger2023beyond",
@@ -4042,7 +4127,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "qian2020approach",
@@ -4100,7 +4192,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:2)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-05-16",
+      "published_date_iso": "2019-05-16"
+    }
   },
   {
     "key": "elallaoui2018automatic",
@@ -4156,7 +4255,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "honkisz2018concept",
@@ -4212,7 +4318,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:4)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "Page2021",
@@ -4268,7 +4381,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-03-29",
+      "published_date_iso": "2021-03-29"
+    }
   },
   {
     "key": "friedrich2010automated",
@@ -4324,7 +4444,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    }
   },
   {
     "key": "robeer2016",
@@ -4381,7 +4508,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "berti2023abstractions",
@@ -4397,47 +4531,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 512,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "berti2023abstractions",
-      "candidate_title": "Abstractions, Scenarios, and Prompt Definitions for Process Mining with LLMs: A Case Study",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "berti2023abstractions",
-        "record_title": "Abstractions, Scenarios, and Prompt Definitions for Process Mining with LLMs: A Case Study",
-        "source": "arxiv",
-        "source_id": "https://arxiv.org/abs/2307.02194",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/berti2023abstractions.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "Full text available in English"
-      ],
-      "triggered_exclusion_points": [
-        "Preprint on arXiv; no evidence of peer-reviewed conference/journal publication",
-        "Does not specifically cover NLP for process extraction from natural-language text"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "arXiv:2307.02194v2 [cs.DB] 14 Jul 2023",
-        "In this paper, we apply LLMs in the context of process mining by i) abstracting the information of standard process mining artifacts and ii) describing the prompting strategies.",
-        "We present a case study using available event logs. Starting from different abstractions and analysis questions, we formulate prompts and evaluate the quality of the answers.",
-        "The study focuses on textual abstractions of event logs and process models and prompting strategies; no description of extracting process models from natural-language documents."
-      ],
-      "decision_rationale": "The paper is an arXiv preprint without evidence of peer-reviewed publication and does not target NLP-based process extraction from natural-language text; instead it studies LLM prompting over abstractions of event logs/process models. Therefore it fails required topic fit and publication criteria."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2023-07",
+      "published_date_iso": null
     },
-    "review_reasoning": "The paper is an arXiv preprint without evidence of peer-reviewed publication and does not target NLP-based process extraction from natural-language text; instead it studies LLM prompting over abstractions of event logs/process models. Therefore it fails required topic fit and publication criteria.",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07",
+      "published_date_iso": null
+    }
   },
   {
     "key": "kampik2023large",
@@ -4453,48 +4566,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1152,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "kampik2023large",
-      "candidate_title": "Large Process Models: A Vision for Business Process Management in the Age of Generative AI",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "kampik2023large",
-        "record_title": "Large Process Models: A Vision for Business Process Management in the Age of Generative AI",
-        "source": "openalex",
-        "source_id": "10.1007/s13218-024-00863-8",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/kampik2023large.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "英文、期刊發表且可取得全文"
-      ],
-      "triggered_exclusion_points": [
-        "屬於次級/討論型文章而非主要原創研究",
-        "未專注於以NLP從自然語言文字進行流程抽取",
-        "未提出具體方法並以實驗進行驗證"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "封面標示：DISCUSSION",
-        "全文為願景與概念性提案：\"we propose the concept of a Large Process Model (LPM)\"",
-        "無方法與實驗段落；內容為\"discuss the application potential... argue for their technical feasibility... highlight limitations and research challenges\"",
-        "主題聚焦於LLMs與BPM融合的願景，非從自然語言文本抽取流程模型"
-      ],
-      "decision_rationale": "該文為期刊討論/願景性文章，未提出針對從自然語言文字進行流程抽取的具體NLP方法與實證實驗，屬於次級研究與概念性討論，觸發排除條件。僅滿足英文且可取得全文的形式條件，未滿足核心納入條件IC.3與IC.4。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
     },
-    "review_reasoning": "該文為期刊討論/願景性文章，未提出針對從自然語言文字進行流程抽取的具體NLP方法與實證實驗，屬於次級研究與概念性討論，觸發排除條件。僅滿足英文且可取得全文的形式條件，未滿足核心納入條件IC.3與IC.4。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "grohs2023large",
@@ -4510,49 +4601,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 824,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "grohs2023large",
-      "candidate_title": "Large Language Models can accomplish Business Process Management Tasks",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "grohs2023large",
-        "record_title": "Large Language Models can accomplish Business Process Management Tasks",
-        "source": "semantic_scholar",
-        "source_id": "cce17289765132b6192ccf90123bb7f5ef920c8e",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/grohs2023large.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "為主要研究，提出以LLM處理BPM文字任務的原創貢獻",
-        "明確涵蓋以NLP自自然語言文字抽取流程模型（命令式與宣告式）",
-        "說明具體方法（基於GPT-4之提示設計與輸出格式）並提供實驗與對比驗證",
-        "全文可得且為英文撰寫"
-      ],
-      "triggered_exclusion_points": [
-        "非經同儕審查之期刊/會議正式發表（arXiv預印本）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "標頭：\"arXiv:2307.09923v1 [cs.CL] 19 Jul 2023\"",
-        "摘要：\"...mining imperative process models from textual descriptions, mining declarative process models from textual descriptions...\"",
-        "第3節與第4節詳述 text-to-BPMN 與 text-to-LTL 的方法與評估（表1、表3）",
-        "全文為英文，提供完整方法與實驗描述"
-      ],
-      "decision_rationale": "雖然本文以LLM從自然語言抽取流程模型並提供實證評估，符合主題與方法相關的納入要件，但其為arXiv預印本，未明示經同儕審查之會議或期刊正式發表，觸發排除條件，故予以排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: after_end",
+      "published_date_raw": "2023-07-19",
+      "published_date_iso": "2023-07-19"
     },
-    "review_reasoning": "雖然本文以LLM從自然語言抽取流程模型並提供實證評估，符合主題與方法相關的納入要件，但其為arXiv預印本，未明示經同儕審查之會議或期刊正式發表，觸發排除條件，故予以排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: after_end",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:after_end",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07-19",
+      "published_date_iso": "2023-07-19"
+    }
   },
   {
     "key": "vidgof2023large",
@@ -4568,47 +4636,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 656,
     "review_output": {
-      "paper_id": "2409.13738",
-      "candidate_key": "vidgof2023large",
-      "candidate_title": "Large Language Models for Business Process Management: Opportunities and Challenges",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "vidgof2023large",
-        "record_title": "Large Language Models for Business Process Management: Opportunities and Challenges",
-        "source": "arxiv",
-        "source_id": "https://arxiv.org/abs/2304.04309",
-        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2409.13738.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2409.13738/mds/vidgof2023large.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "非同儕審查之預印本（未見會議/期刊發表）",
-        "屬於次級研究／綜述與研究方向論述，非主要原創研究",
-        "未具體針對以NLP自自然語言文字進行流程抽取之方法研究",
-        "無具體方法與實驗驗證描述"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "全文標註：\"Preprint submitted to arXiv\"（非同儕審查）",
-        "研究性質描述：\"We investigate six research directions highlighting problems... including usage guidelines for practitioners.\"（研究方向與機會挑戰，非方法）",
-        "論文目標：\"we identify and discuss LLM applications within BPM and along the different BPM lifecycle phases\"（概述性探討）",
-        "未見方法實作與實證：全文未提供具體流程抽取方法與實驗結果"
-      ],
-      "decision_rationale": "該文為arXiv預印本，未證明經同儕審查之會議或期刊發表；內容以機會、挑戰及研究方向討論為主，未提出具體以NLP從自然語言文字進行流程抽取的方法與實驗驗證，屬次級性質，不符合Stage 2必要納入條件，觸發多項排除條款，故予以排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2023-04",
+      "published_date_iso": null
     },
-    "review_reasoning": "該文為arXiv預印本，未證明經同儕審查之會議或期刊發表；內容以機會、挑戰及研究方向討論為主，未提出具體以NLP從自然語言文字進行流程抽取的方法與實驗驗證，屬次級性質，不符合Stage 2必要納入條件，觸發多項排除條款，故予以排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-04",
+      "published_date_iso": null
+    }
   },
   {
     "key": "bellan2022extracting",
@@ -4666,7 +4713,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "hasic2019complexity",
@@ -4722,6 +4776,13 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2409.13738"
+    "paper_id": "2409.13738",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   }
 ]

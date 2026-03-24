@@ -172,32 +172,6 @@
 - `screening/results/<results_root>/runs/<run_id>/run_manifest.json`
 - `screening/results/<results_root>/runs/<run_id>/REPORT_zh.md`
 
-## 對既有 run 重新套用 cutoff
-
-如果既有 run 已經跑完，而 `cutoff_jsons/<paper_id>.json` 後來更新，不需要重跑模型。
-
-請用：
-
-```bash
-./.venv/bin/python scripts/screening/reapply_cutoff_to_batch_results.py \
-  --run-manifest screening/results/<results_root>/runs/<run_id>/run_manifest.json
-```
-
-這個工具會：
-
-1. 讀既有 `single_reviewer_batch_results.json`
-2. 讀最新的 `cutoff_jsons/<paper_id>.json`
-3. 重新套用時間窗硬條件
-4. 輸出新的 results / F1 / report，不覆蓋原始 run
-
-產生的檔案預設是：
-
-- `single_reviewer_batch_results.after_cutoff.json`
-- `single_reviewer_batch_f1.after_cutoff.json`
-- `cutoff_reapply_audit.after_cutoff.json`
-- `run_manifest.after_cutoff.json`
-- `REPORT_after_cutoff_zh.md`
-
 ## GitHub 上傳建議
 
 建議保留在 GitHub 供後續分析的檔案：

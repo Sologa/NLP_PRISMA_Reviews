@@ -6,12 +6,13 @@
 - reasoning_effort：`high`
 - endpoint：`/v1/chat/completions`
 - batch_status：`completed`
+- posthoc_cutoff_reapplied_at：`2026-03-23T07:33:41.476898+00:00`
 
 ## 指標
 
-| Paper | Candidates | Batch requests | F1 | Delta vs current combined | Precision | Recall |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `2409.13738` | 84 | 84 | 0.6957 | -0.0886 | 0.6400 | 0.7619 |
+| Paper | Candidates | Batch requests | Cutoff filtered | F1 | Delta vs current combined | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `2409.13738` | 84 | 84 | 19 | 0.7111 | -0.0732 | 0.6667 | 0.7619 |
 
 ## 工件
 

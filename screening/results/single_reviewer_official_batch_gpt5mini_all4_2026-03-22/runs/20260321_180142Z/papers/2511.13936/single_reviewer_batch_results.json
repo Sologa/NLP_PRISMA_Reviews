@@ -50,7 +50,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "page2021prisma",
@@ -105,7 +112,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "harzing2007pop",
@@ -121,44 +135,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "harzing2007pop",
-      "candidate_title": "Publish or Perish?",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "harzing2007pop",
-        "record_title": "Publish or Perish?",
-        "source": "zenodo",
-        "source_id": "16249313",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/harzing2007pop.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "不符合必要納入條件：沒有證據顯示與偏好學習（ranking/A-B 比較或將數值評分轉為排名、或含有 audio 模型的 RL 訓練回路）相關",
-        "不符合必要納入條件：非音訊領域應用（全文內容為出版/引用分析、期刊排名與學術發表建議）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Title/slide headings: \"Publish or Perish?\", \"Citation analysis: why?\", \"Journal rankings: why?\"",
-        "內容多為出版/引用分析、期刊排名、如何發表與被引用（例如：\"Designed to make GS a more useful alternative to ISI\"、\"How to get cited?\"）",
-        "全文未出現「audio」、「sound」、「preference learning」、「A/B comparison」、「ranking of audio clips」、「reinforcement learning」等相關字詞或方法描述"
-      ],
-      "decision_rationale": "全文顯示為 Anne-Wil Harzing 關於出版與引用分析的簡報，主題為期刊排名、引用計量與如何發表，明確不在音訊領域且沒有任何偏好學習（A/B 比較、音訊排名或以偏好驅動的學習／RL）相關內容。依據 Stage 2 必要納入條件（需為偏好學習且應用於音訊領域），該論文不符合，故給予強排除（score=1, decision=exclude）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
     },
-    "review_reasoning": "全文顯示為 Anne-Wil Harzing 關於出版與引用分析的簡報，主題為期刊排名、引用計量與如何發表，明確不在音訊領域且沒有任何偏好學習（A/B 比較、音訊排名或以偏好驅動的學習／RL）相關內容。依據 Stage 2 必要納入條件（需為偏好學習且應用於音訊領域），該論文不符合，故給予強排除（score=1, decision=exclude）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
+    }
   },
   {
     "key": "yang2010ranking",
@@ -174,46 +170,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1216,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "yang2010ranking",
-      "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "yang2010ranking",
-        "record_title": "Ranking-based emotion recognition for music organization and retrieval",
-        "source": "openalex",
-        "source_id": "10.1109/tasl.2010.2064164",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "明確採用偏好學習／learning-to-rank（提出 RBF-ListNet，優化 ranking-based 目標函數）",
-        "應用於音頻領域（音樂情感識別、music emotion recognition）",
-        "非綜述文章，包含學習模型訓練與實驗驗證（非僅用偏好作為評估）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: “We also develop an RBF-ListNet algorithm to optimize the ranking-based objective function of our approach.”",
-        "Full text §III: “the subjects only have to make pairwise comparison of the songs” (music emotion tournament) — 明確使用偏好比較作為標註)",
-        "Full text §IV: “we propose a novel learning-to-rank algorithm called RBF-ListNet to rank music pieces by emotion.”",
-        "Full text 結果段落與實驗（Section VII）：報告實驗結果與性能指標（Gamma statistic），顯示為有學習與驗證的研究"
-      ],
-      "decision_rationale": "本文明確提出並使用 ranking-based 注釋方法（pairwise comparisons / music emotion tournament）及 learning-to-rank 模型（RBF-ListNet），且應用場景為音樂情感識別（音頻領域），並包含模型訓練與實驗驗證，非綜述或僅做評估。因此符合 Stage 2 所列之偏好學習且應用於音頻領域之納入條件，建議納入。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
     },
-    "review_reasoning": "本文明確提出並使用 ranking-based 注釋方法（pairwise comparisons / music emotion tournament）及 learning-to-rank 模型（RBF-ListNet），且應用場景為音樂情感識別（音頻領域），並包含模型訓練與實驗驗證，非綜述或僅做評估。因此符合 Stage 2 所列之偏好學習且應用於音頻領域之納入條件，建議納入。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    }
   },
   {
     "key": "cao2012combining",
@@ -229,46 +205,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "cao2012combining",
-      "candidate_title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "cao2012combining",
-        "record_title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
-        "source": "openalex",
-        "source_id": "10.21437/interspeech.2012-116",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/cao2012combining.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "使用 pairwise ranking SVM 作為偏好學習（ranking/比較）",
-        "應用於音訊領域（情感識別，使用 FAU AIBO 語音語料庫）",
-        "非綜述文章（原創方法與實驗）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "\"Ranking support vector machines (SVM) are a typical pairwise method for designing ranking models.\"",
-        "\"To train a ranker for a target emotion, we specify a set of pairs of instances for which one instance conveys the target emotion better than the other;\"",
-        "\"All experiments are performed on the FAU AIBO database which contains realistic spontaneous emotional speech.\"",
-        "全文描述將 ranking 模型與 conventional SVM 結合並在語音資料上訓練與評估（實驗結果表明改進）"
-      ],
-      "decision_rationale": "本文明確使用 pairwise ranking SVM（成對比較以建立部分排序）來學習排序/偏好信號，且所有實驗都在 FAU AIBO 語音語料庫上執行，屬於音訊領域的應用。文章為原創方法與實驗報告，非綜述，且包含學習（training）而非僅做評估。因此滿足 Stage 2 的必須納入條件，建議納入（strong include）。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2012",
+      "published_date_iso": "2012-01-01"
     },
-    "review_reasoning": "本文明確使用 pairwise ranking SVM（成對比較以建立部分排序）來學習排序/偏好信號，且所有實驗都在 FAU AIBO 語音語料庫上執行，屬於音訊領域的應用。文章為原創方法與實驗報告，非綜述，且包含學習（training）而非僅做評估。因此滿足 Stage 2 的必須納入條件，建議納入（strong include）。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2012",
+      "published_date_iso": "2012-01-01"
+    }
   },
   {
     "key": "cao2015speaker",
@@ -284,45 +240,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 755,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "cao2015speaker",
-      "candidate_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "cao2015speaker",
-        "record_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
-        "source": "pubmed",
-        "source_id": "25422534",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/cao2015speaker.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "明確使用 ranking 方法（ranking SVM）進行學習而非僅作評估",
-        "應用於音頻領域：實驗資料為 Berlin、LDC、FAU Aibo 等語音情感語料（acted 與 spontaneous）",
-        "非綜述/回顧文章：提出方法並包含實驗與結果比較"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: “We introduce a ranking approach for emotion recognition… We train ranking SVMs for individual emotions”",
-        "Full text (§2、§3): 描述在 Berlin、LDC、FAU Aibo 等語音資料上以 ranking SVM 進行訓練與測試",
-        "Results/Conclusions: 比較 ranking-based classifiers 與傳統 SVM，並報告 ranking 方法在多個語料上優於分類方法"
-      ],
-      "decision_rationale": "本文明確提出並訓練 ranking SVM（學習到的排序模型）用於語音情感識別，且在多個 acted 與 spontaneous 語音資料集上進行實驗與結果比較，滿足 Stage 2 所定義的「以 ranking（偏好/排序）學習在音頻領域的應用」納入準則；非綜述且有實際學習元件，因此判定為強納入（score=5）。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
     },
-    "review_reasoning": "本文明確提出並訓練 ranking SVM（學習到的排序模型）用於語音情感識別，且在多個 acted 與 spontaneous 語音資料集上進行實驗與結果比較，滿足 Stage 2 所定義的「以 ranking（偏好/排序）學習在音頻領域的應用」納入準則；非綜述且有實際學習元件，因此判定為強納入（score=5）。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    }
   },
   {
     "key": "lotfian2016practical",
@@ -338,46 +275,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "lotfian2016practical",
-      "candidate_title": "Practical considerations on the use of preference learning for ranking emotional speech",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "lotfian2016practical",
-        "record_title": "Practical considerations on the use of preference learning for ranking emotional speech",
-        "source": "openalex",
-        "source_id": "10.1109/icassp.2016.7472670",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016practical.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "明確使用偏好學習（pairwise ranking / Rank-SVM）作為訓練方法",
-        "應用於語音情緒（audio domain，使用 SEMAINE 語音資料庫）",
-        "非綜述性文章（具方法描述與實驗比較）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"Preference learning represents an appealing framework to rank speech samples...\"",
-        "Full text §4: \"This study uses Rank-SVM as our preference learning algorithm.\"",
-        "Full text §2: 使用 SEMAINE 資料庫並以 arousal 與 valence（語音情緒屬性）為目標",
-        "全文描述以 pairwise relative labels 訓練 ranking classifiers（非僅用於評估）"
-      ],
-      "decision_rationale": "本文明確提出並實作偏好學習（Rank-SVM、pairwise relative labels）以對語音樣本（SEMAINE 資料庫的 arousal/valence）進行排序與檢索；屬於 audio domain，且非綜述文章，且包含學習訓練環節（非僅用偏好作為評估）。因此符合 Stage 2 的所有必要納入條件，建議強納入。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
     },
-    "review_reasoning": "本文明確提出並實作偏好學習（Rank-SVM、pairwise relative labels）以對語音樣本（SEMAINE 資料庫的 arousal/valence）進行排序與檢索；屬於 audio domain，且非綜述文章，且包含學習訓練環節（非僅用偏好作為評估）。因此符合 Stage 2 的所有必要納入條件，建議強納入。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "lotfian2016retrieving",
@@ -393,46 +310,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "lotfian2016retrieving",
-      "candidate_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "lotfian2016retrieving",
-        "record_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
-        "source": "crossref",
-        "source_id": "10.21437/interspeech.2016-1052",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016retrieving.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "論文涉及 preference learning（成對比較與排名）",
-        "應用於音訊/語音情感識別（audio domain）",
-        "非綜述或回顧文章（有原創方法與實驗）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "\"this framework relies on pairwise comparisons to rank-order the testing data according to an emotional dimension.\" (Abstract)",
-        "\"We build happy, angry and sad rank-classifiers using this metric.\" (Abstract / full text)",
-        "使用 IEMOCAP 與 MSP-IMPROV 語音情感語料進行 cross-corpus 評估（Sec. 3, 5）— 明確在音訊領域",
-        "\"We use the relevance score to train preference learning algorithms... We consider two rank classifiers: preference learning with Gaussian process ... and Rank-SVM.\" (Sec. 4.2)"
-      ],
-      "decision_rationale": "全文明確描述並實作了 preference learning（成對比較 / 排序），且在語音情感語料（IEMOCAP、MSP-IMPROV）上訓練與評估 rank-classifiers（包括 GP preference learning 與 Rank-SVM）。論文非綜述，且偏向提出方法並進行實驗驗證，因此符合 Stage 2 的三項必須納入條件：涉入 preference learning、應用於音訊領域、非 survey。未見只將偏好用於評估且無學習成分的情況，故建議納入（強納入）。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
     },
-    "review_reasoning": "全文明確描述並實作了 preference learning（成對比較 / 排序），且在語音情感語料（IEMOCAP、MSP-IMPROV）上訓練與評估 rank-classifiers（包括 GP preference learning 與 Rank-SVM）。論文非綜述，且偏向提出方法並進行實驗驗證，因此符合 Stage 2 的三項必須納入條件：涉入 preference learning、應用於音訊領域、非 survey。未見只將偏好用於評估且無學習成分的情況，故建議納入（強納入）。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "parthasarathy2016using",
@@ -448,46 +345,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1889,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "parthasarathy2016using",
-      "candidate_title": "Using agreement on direction of change to build rank-based emotion classifiers",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "parthasarathy2016using",
-        "record_title": "Using agreement on direction of change to build rank-based emotion classifiers",
-        "source": "openalex",
-        "source_id": "10.1109/taslp.2016.2593944",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2016using.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "明確涉及偏好學習：訓練 rank-based classifiers（rankers）以排序表現行為，使用相對標籤（relative labels）",
-        "應用於音頻領域：使用 SEMAINE 視聽資料庫、僅考慮 user 的語音段並採用聲學特徵",
-        "非綜述文章：包含方法描述與實驗評估（實驗比較 QA-based 標籤與 baseline）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: '... explore the use of relative labels to train machine learning algorithms that can rank expressive behaviors.'",
-        "Full text / Introduction: 'We clarify ... and identify a rank based classifier (ranker) that can learn the relevant pairwise evaluations.'",
-        "Full text / Database & Experiments: 'The experimental evaluation on the SEMAINE database demonstrates the benefits of the proposed approach.'",
-        "Methods/Section III: describes deriving relative labels from FEELTRACE continuous annotations and training preference-learning rankers."
-      ],
-      "decision_rationale": "全文明確支持 Stage 2 納入條件：論文提出並實作以相對標籤（從 FEELTRACE 連續標註推導的 qualitative agreement labels）訓練 rank-based classifiers（屬於偏好/排序學習），且應用於音頻領域（SEMAINE 資料庫、聲學特徵、user turns）。論文包含方法與實驗比較，非綜述，且有實際學習/訓練流程（非僅用偏好作為評估），因此符合納入且給予強納入。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
     },
-    "review_reasoning": "全文明確支持 Stage 2 納入條件：論文提出並實作以相對標籤（從 FEELTRACE 連續標註推導的 qualitative agreement labels）訓練 rank-based classifiers（屬於偏好/排序學習），且應用於音頻領域（SEMAINE 資料庫、聲學特徵、user turns）。論文包含方法與實驗比較，非綜述，且有實際學習/訓練流程（非僅用偏好作為評估），因此符合納入且給予強納入。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "parthasarathy2017ranking",
@@ -503,45 +380,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "parthasarathy2017ranking",
-      "candidate_title": "Ranking emotional attributes with deep neural networks",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "parthasarathy2017ranking",
-        "record_title": "Ranking emotional attributes with deep neural networks",
-        "source": "openalex",
-        "source_id": "10.1109/icassp.2017.7953107",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2017ranking.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "論文使用偏好學習／排序（pairwise ranking）框架（RankNet）",
-        "應用於語音情緒屬性（audio domain）",
-        "非綜述／非回顧性文章（有實驗與比較學習方法）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "\"We use a deep learning ranker implemented with the RankNet algorithm to evaluate preference between emotional sentences in terms of dimensional attributes (arousal, valence and dominance).\" (abstract)",
-        "\"This study trains rankers using RankNet, which has a DNN architecture.\" (Sec. 4.1)",
-        "\"the USC-IEMOCAP database is used for training the models, and the MSP-IMPROV is used for testing the models... This study only uses speech.\" (Sec. 3 and 5.2)"
-      ],
-      "decision_rationale": "全文明確描述以偏好學習／pairwise ranking (RankNet, RankSVM) 訓練排序器來評估語音情緒屬性，並在語音語料（USC-IEMOCAP、MSP-IMPROV）上做交叉語料實驗；非綜述性研究，且含學習元件而非僅評估。因此滿足所有 Stage 2 必要納入條件，未觸發排除條件，給予強納入。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
     },
-    "review_reasoning": "全文明確描述以偏好學習／pairwise ranking (RankNet, RankSVM) 訓練排序器來評估語音情緒屬性，並在語音語料（USC-IEMOCAP、MSP-IMPROV）上做交叉語料實驗；非綜述性研究，且含學習元件而非僅評估。因此滿足所有 Stage 2 必要納入條件，未觸發排除條件，給予強納入。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "parthasarathy2018preference",
@@ -557,46 +415,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "parthasarathy2018preference",
-      "candidate_title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "parthasarathy2018preference",
-        "record_title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
-        "source": "crossref",
-        "source_id": "10.21437/interspeech.2018-2478",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2018preference.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "明確使用 preference-learning（對句子對(pairwise) 建立相對標籤並進行排序）",
-        "應用於音頻/語音領域（使用 MSP-Podcast 語音語料與聲學特徵）",
-        "非綜述文章；包含學習方法實作與實驗驗證（RankNet、RankMargin 訓練與比較）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "\"The proposed relative labels between pairs of sentences capture consistent trends across evaluators.\" (Abstract)",
-        "\"preference-learning methods to rank-order emotional attributes trained with the proposed QA-based labels achieve significantly better performance\" (Abstract / Full text)",
-        "實驗使用 MSP-Podcast corpus (\"The experimental evaluation is conducted on the version 1.1 of the MSP-Podcast corpus\")",
-        "使用聲學特徵與偏好學習損失：\"we systematically compare the performance of two preference-learning methods: RankNet and RankMargin\"; 使用 Interspeech 2013 acoustic feature set"
-      ],
-      "decision_rationale": "全文明確提出並實作基於 QA 的相對標籤，訓練與評估 preference-learning 模型（RankNet、RankMargin），且實驗在 MSP-Podcast 語音語料與聲學特徵上進行。這直接滿足 Stage 2 的必備納入條件（屬於 preference learning、應用於音頻領域、非綜述且含學習成分），未觸發任何排除條件。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
     },
-    "review_reasoning": "全文明確提出並實作基於 QA 的相對標籤，訓練與評估 preference-learning 模型（RankNet、RankMargin），且實驗在 MSP-Podcast 語音語料與聲學特徵上進行。這直接滿足 Stage 2 的必備納入條件（屬於 preference learning、應用於音頻領域、非綜述且含學習成分），未觸發任何排除條件。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "lopes2017modelling",
@@ -612,45 +450,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1458,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "lopes2017modelling",
-      "candidate_title": "Modelling affect for horror soundscapes",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "lopes2017modelling",
-        "record_title": "Modelling affect for horror soundscapes",
-        "source": "openalex",
-        "source_id": "10.1109/taffc.2017.2695460",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/lopes2017modelling.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "使用偏好學習（preference learning）對音訊片段進行排序/排名",
-        "研究明確應用於音訊領域（horror soundscapes、音效庫、音訊特徵）",
-        "不是綜述或回顧文章（為實驗性研究，包含資料收集與模型訓練/驗證）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "摘要／全文：\"Affect models are trained via preference learning on over a thousand annotations...\"（明確說明以 preference learning 訓練模型，並以排名資料）",
-        "摘要／全文：研究對象為短音訊片段與恐怖音效庫（聲音庫、audio assets、horror genre），並以低階音訊特徵作為輸入（明確屬於 audio domain）",
-        "方法與實驗段落：採用 crowdsourcing 的 pairwise ranking 注釋並訓練 RankSVM 模型，報告交叉驗證準確率（非僅用偏好作為評估）"
-      ],
-      "decision_rationale": "全文明確記錄以偏好學習 (preference learning / RankSVM) 來對短音訊片段進行配對/排序（摘要與方法多處明示），研究直接基於音訊資產與音訊特徵且針對 horror soundscapes，且為實驗性工作（包含資料收集、模型訓練與交叉驗證結果），因此滿足 Stage 2 的三項必須納入條件；亦未觸及排除條件（非僅將偏好用於評估、非綜述）。基於上述明確文字證據，建議強納入（score=5）。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
     },
-    "review_reasoning": "全文明確記錄以偏好學習 (preference learning / RankSVM) 來對短音訊片段進行配對/排序（摘要與方法多處明示），研究直接基於音訊資產與音訊特徵且針對 horror soundscapes，且為實驗性工作（包含資料收集、模型訓練與交叉驗證結果），因此滿足 Stage 2 的三項必須納入條件；亦未觸及排除條件（非僅將偏好用於評估、非綜述）。基於上述明確文字證據，建議強納入（score=5）。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "han2020ordinal",
@@ -705,7 +524,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "chumbalov2020scalable",
@@ -761,7 +587,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "jayawardena2020ordinal",
@@ -815,7 +648,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "dong2020pyramid",
@@ -869,7 +709,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "zhou2021interactive",
@@ -923,7 +770,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-14",
+      "published_date_iso": "2021-04-14"
+    }
   },
   {
     "key": "liu2021reinforcement",
@@ -978,7 +832,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "lei2023audio",
@@ -1032,7 +893,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "naini2023unsupervised",
@@ -1087,7 +955,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-06-04",
+      "published_date_iso": "2023-06-04"
+    }
   },
   {
     "key": "naini2023preference",
@@ -1142,7 +1017,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "wu2023interval",
@@ -1199,7 +1081,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "liao2024baton",
@@ -1254,7 +1143,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "cideron2024musicrl",
@@ -1309,7 +1205,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "anastassiou2024seed",
@@ -1364,7 +1267,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "chu2024qwen2",
@@ -1418,7 +1328,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-07-15",
+      "published_date_iso": "2024-07-15"
+    }
   },
   {
     "key": "zhang2024speechalign",
@@ -1473,7 +1390,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-04-08",
+      "published_date_iso": "2024-04-08"
+    }
   },
   {
     "key": "wu2025adaptive",
@@ -1527,7 +1451,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "kumar2025using",
@@ -1581,7 +1512,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-11-24",
+      "published_date_iso": "2024-11-24"
+    }
   },
   {
     "key": "huang2025step",
@@ -1635,7 +1573,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025-02-17",
+      "published_date_iso": "2025-02-17"
+    }
   },
   {
     "key": "luo2025openomni",
@@ -1690,7 +1635,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "nagpal2025speech",
@@ -1744,7 +1696,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "gao2025emo",
@@ -1798,7 +1757,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "ouyang2022training",
@@ -1851,7 +1817,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "mckeown2011semaine",
@@ -1867,44 +1840,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1216,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "mckeown2011semaine",
-      "candidate_title": "The semaine database: Annotated multimodal records of emotionally colored conversations between a person and a limited agent",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "mckeown2011semaine",
-        "record_title": "The semaine database: Annotated multimodal records of emotionally colored conversations between a person and a limited agent",
-        "source": "openalex",
-        "source_id": "10.1109/t-affc.2011.20",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/mckeown2011semaine.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "Paper does not pertain to preference learning (no ranking/A-B comparisons of audio clips or RL training loop described)",
-        "Studies that use preferences solely for evaluation, with no learning component, are excluded"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract / Full text: 描述為建立 Sensitive Artificial Listener (SAL) agents 而建置的大型多模態資料庫，重點在錄音、標註與資料集提供（例如：'The material is available through a web-accessible database.'）",
-        "Abstract / Full text: 文中說明進行了版本比較以評估系統表現（'comparing the most communicatively competent version to versions with reduced nonverbal skills.'），但這是系統評估而非以偏好作為學習信號的偏好學習 (preference-based learning)",
-        "Full text: 大量內容描述註記方法與自動分析（FEELtrace、FACS、事件檢測等），未見描述將人類偏好或 A/B 排序作為學習目標或有 RL 訓練迴路的論述"
-      ],
-      "decision_rationale": "本文主要貢獻為一個多模態情緒對話資料庫與其詳細標註與評估方法。雖然文中有對不同系統版本的比較（evaluation），但沒有明確文字證據顯示論文涉及偏好學習（如以人類/合成偏好做 ranking 或 A/B 比較作為學習信號），亦未描述將偏好用於訓練（例如 RL training loop）。依據 Stage 2 條件，缺乏對偏好學習的明確支持且僅作為評估用途時應排除，故給予強排除 (score=1, decision=exclude)。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
     },
-    "review_reasoning": "本文主要貢獻為一個多模態情緒對話資料庫與其詳細標註與評估方法。雖然文中有對不同系統版本的比較（evaluation），但沒有明確文字證據顯示論文涉及偏好學習（如以人類/合成偏好做 ranking 或 A/B 比較作為學習信號），亦未描述將偏好用於訓練（例如 RL training loop）。依據 Stage 2 條件，缺乏對偏好學習的明確支持且僅作為評估用途時應排除，故給予強排除 (score=1, decision=exclude)。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "lotfian2017building",
@@ -1920,45 +1875,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1324,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "lotfian2017building",
-      "candidate_title": "Building naturalistic emotionally balanced speech corpus by retrieving emotional speech from existing podcast recordings",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "lotfian2017building",
-        "record_title": "Building naturalistic emotionally balanced speech corpus by retrieving emotional speech from existing podcast recordings",
-        "source": "openalex",
-        "source_id": "10.1109/taffc.2017.2736999",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2017building.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "論文使用排序/偏好學習方法（例：SVM-rank、GP-rank）以檢索目標情緒語音樣本，直接對應 ranking / A-B 比較 類型的偏好學習",
-        "應用於音頻/語音領域（從 podcasts 取得語音段並構建情緒語料庫）",
-        "非綜述文章：提出方法、實驗與資料集（MSP-PODCAST）並報告實驗結果"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "文中多次提及並比較排序/偏好學習方法：\"SVM-rank\", \"Gaussian-process rank (GP-rank)\", \"BOC-DL\"",
-        "明確說明目標為從 podcasts 檢索並標註情緒語音段：\"build the MSP-PODCAST database\", \"retrieve recordings conveying balanced emotional content\"",
-        "論文描述實驗與結果（檢索到 2,317 sentences 並用 crowdsourcing 標註），非僅作為評估"
-      ],
-      "decision_rationale": "全文明確描述並使用排序/偏好學習演算法（SVM-rank、GP-rank 等）以檢索情緒語音樣本，且應用場景為 podcasts 語音（音頻領域）；論文為方法與資料集建構並包含實驗結果，非綜述。沒有觸發以偏好僅作為評估而無學習元件的排除條件，因此依據 Stage 2 條件應納入。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
     },
-    "review_reasoning": "全文明確描述並使用排序/偏好學習演算法（SVM-rank、GP-rank 等）以檢索情緒語音樣本，且應用場景為 podcasts 語音（音頻領域）；論文為方法與資料集建構並包含實驗結果，非綜述。沒有觸發以偏好僅作為評估而無學習元件的排除條件，因此依據 Stage 2 條件應納入。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "busso2016msp",
@@ -1974,45 +1910,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1983,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "busso2016msp",
-      "candidate_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "busso2016msp",
-        "record_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
-        "source": "openalex",
-        "source_id": "10.1109/taffc.2016.2515617",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/busso2016msp.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "應用於音訊領域（多模態情感語料庫，包含語音與視覺）",
-        "不是綜述或回顧文章（原創資料集與實驗分析）"
-      ],
-      "triggered_exclusion_points": [
-        "未滿足必要納入條件：沒有明確涉及偏好學習（未見 ranking/A-B 比較、未見將數值評分轉換為排名、亦未見以偏好為驅動的強化學習訓練迴路）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Title/Abstract 明確表述：\"MSP-IMPROV corpus, a multimodal emotional database\"、\"The paper also provides the performance for speech and facial emotion classifiers.\"（強調資料集與情感分類）",
-        "全文多處描述資料收集、情感標註與分類實驗（e.g., 收錄 7,818 互動轉述、分類器表現表格），但未見與偏好學習或偏好比較相關的方法或實驗描述"
-      ],
-      "decision_rationale": "本篇為情感多模態語料庫與情感分類研究（資料集建立與分類器評估），明確應用於音訊/視覺情感領域且非綜述文章，故滿足 Stage 2 中之「應用於音訊領域」與「非調查/回顧」兩項。但關鍵的必要納入條件是論文需與偏好學習有直接關聯（例如 ranking 或 A/B 比較、或以偏好為基礎的 RL 訓練迴路），在標題、摘要與全文中皆未找到任何關於偏好比較、排名、或基於偏好的學習訓練回路的描述或實驗證據。因此不符合 Stage 2 的核心必要條件，依規則給予強排除（stage_score=1，decision_recommendation=exclude）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
     },
-    "review_reasoning": "本篇為情感多模態語料庫與情感分類研究（資料集建立與分類器評估），明確應用於音訊/視覺情感領域且非綜述文章，故滿足 Stage 2 中之「應用於音訊領域」與「非調查/回顧」兩項。但關鍵的必要納入條件是論文需與偏好學習有直接關聯（例如 ranking 或 A/B 比較、或以偏好為基礎的 RL 訓練迴路），在標題、摘要與全文中皆未找到任何關於偏好比較、排名、或基於偏好的學習訓練回路的描述或實驗證據。因此不符合 Stage 2 的核心必要條件，依規則給予強排除（stage_score=1，decision_recommendation=exclude）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "zhou2014predicting",
@@ -2028,48 +1945,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1258,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "zhou2014predicting",
-      "candidate_title": "Predicting the geographical origin of music",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "zhou2014predicting",
-        "record_title": "Predicting the geographical origin of music",
-        "source": "openalex",
-        "source_id": "10.1109/icdm.2014.73",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/zhou2014predicting.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "Applied within the audio domain (uses audio descriptors and MARSYAS)",
-        "Paper is not a survey or review article"
-      ],
-      "triggered_exclusion_points": [
-        "Does not pertain to preference-based learning (no ranking/A-B comparisons or preference signals)",
-        "No evidence of preference-driven learning (no numeric-rating→ranking conversion, no preference-based RL loop)"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract/full text: 'We cast the problem as training a machine learning program to predict the geographical origin of pieces of music.' (supervised prediction/regression task)",
-        "Methods/results: 'We decided to cast the problem as a regression problem (predicting a spherical coordinate, latitude and longitude)... K-Nearest Neighbors and Random forest regression.' (explicit use of regression, KNN, RFR)",
-        "Data/features: 'described them using 2 different sets of standard audio descriptors using MARSYAS.' (confirms audio-domain application)",
-        "No text in abstract or full text describes ranking/A-B comparisons, preference labels, or a preference-based RL training loop."
-      ],
-      "decision_rationale": "Although the paper is an audio-domain machine learning study (uses MARSYAS audio descriptors and is not a survey), it does not meet the required Stage 2 inclusion criterion of addressing preference-based learning. The work is a supervised regression/classification task predicting geographic origin using KNN and Random Forest regression; there is no mention of rankings, A/B comparisons, preference labels, numeric ratings converted to rankings, or any preference-driven RL training. Therefore it fails the necessary preference-learning requirement and should be excluded."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2014",
+      "published_date_iso": "2014-01-01"
     },
-    "review_reasoning": "Although the paper is an audio-domain machine learning study (uses MARSYAS audio descriptors and is not a survey), it does not meet the required Stage 2 inclusion criterion of addressing preference-based learning. The work is a supervised regression/classification task predicting geographic origin using KNN and Random Forest regression; there is no mention of rankings, A/B comparisons, preference labels, numeric ratings converted to rankings, or any preference-driven RL training. Therefore it fails the necessary preference-learning requirement and should be excluded.",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2014",
+      "published_date_iso": "2014-01-01"
+    }
   },
   {
     "key": "lopes2015sonancia",
@@ -2085,46 +1980,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 427,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "lopes2015sonancia",
-      "candidate_title": "Sonancia : sonification of procedurally generated game levels",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "lopes2015sonancia",
-        "record_title": "Sonancia : sonification of procedurally generated game levels",
-        "source": "openalex",
-        "source_id": null,
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/lopes2015sonancia.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "不具備偏好學習要素（無排名/A-B 比較或用偏好訓練的 RL 迴圈）"
-      ],
-      "uncertain_points": [
-        "提及以人類聽眾得到的「intensity」經驗值，但未描述為偏好比較或用於偏好學習"
-      ],
-      "evidence_highlights": [
-        "Abstract: \"sonification of procedurally generated digital game levels.\"（強調關於遊戲關卡的聲音化與音訊領域應用）",
-        "Full text: 描述兩種 sonification 演算法（instrument-based 與 intensity-based）與即時混音規則，聚焦於音訊選取與播放機制，而非偏好資料或學習迴路。",
-        "Full text: \"The intensity value consists of an empirical measure obtained from human listeners\"（指出有以人類為基礎的強度值，但未說明為偏好比較或轉換為排名或用於訓練模型）",
-        "全文未找到任何關於 ranking / A-B comparisons、將數值評分轉換為排名的描述，或使用偏好作為學習信號（例如 RL 訓練迴圈）的明確說明。"
-      ],
-      "decision_rationale": "雖然本文明確在音訊/遊戲聲景（audio domain）上工作，並描述了 sonification 的演算法與系統實作，但全文沒有提供任何偏好學習（ranking 或 A/B 比較）或以偏好為學習信號的訓練迴路的明確文字證據。Stage 2 要求必須有偏好學習元素（或用偏好進行學習的 RL 迴路）；該必要條件在本文中未被文字支持，因此給予強排除（score=1）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
     },
-    "review_reasoning": "雖然本文明確在音訊/遊戲聲景（audio domain）上工作，並描述了 sonification 的演算法與系統實作，但全文沒有提供任何偏好學習（ranking 或 A/B 比較）或以偏好為學習信號的訓練迴路的明確文字證據。Stage 2 要求必須有偏好學習元素（或用偏好進行學習的 RL 迴路）；該必要條件在本文中未被文字支持，因此給予強排除（score=1）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    }
   },
   {
     "key": "donahue2022melody",
@@ -2179,7 +2054,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "reiter2018structured",
@@ -2195,44 +2077,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 419,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "reiter2018structured",
-      "candidate_title": "A Structured Review of the Validity of BLEU",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "reiter2018structured",
-        "record_title": "A Structured Review of the Validity of BLEU",
-        "source": "crossref",
-        "source_id": "10.1162/coli_a_00322",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/reiter2018structured.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "Paper is a survey/structured review article",
-        "Paper is not applied within the audio domain (focuses on NLP/MT/NLG)"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "\"I present a structured review of the evidence on whether BLEU is a valid evaluation technique\" (abstract)",
-        "\"The BLEU metric has been widely used in NLP... especially in machine translation and natural language generation.\" (full text)",
-        "Section 2: \"My survey is limited to BLEU, and does not look at other popular metrics... I focus on BLEU because I believe it is the most popular metric\" (full text)"
-      ],
-      "decision_rationale": "本文明確為一篇 structured review（多處文字如摘要與內文說明「I present a structured review」與「My survey is limited to BLEU」），屬於被明確排除的 survey/review 類型；且全文內容聚焦於 NLP（機器翻譯與 NLG）與 BLEU 指標，未涉及音訊領域或偏好式學習（如對音訊片段的 A/B 比較、排序或以偏好為學習信號的 RL 迴路）。因此依據 Stage 2 標準（排除 survey/review 以及非音訊領域）判定為強排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2018-09",
+      "published_date_iso": null
     },
-    "review_reasoning": "本文明確為一篇 structured review（多處文字如摘要與內文說明「I present a structured review」與「My survey is limited to BLEU」），屬於被明確排除的 survey/review 類型；且全文內容聚焦於 NLP（機器翻譯與 NLG）與 BLEU 指標，未涉及音訊領域或偏好式學習（如對音訊片段的 A/B 比較、排序或以偏好為學習信號的 RL 迴路）。因此依據 Stage 2 標準（排除 survey/review 以及非音訊領域）判定為強排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2018-09",
+      "published_date_iso": null
+    }
   },
   {
     "key": "lin2004rouge",
@@ -2248,44 +2112,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 2127,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "lin2004rouge",
-      "candidate_title": "Rouge: A package for automatic evaluation of summaries",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "lin2004rouge",
-        "record_title": "Rouge: A package for automatic evaluation of summaries",
-        "source": "openalex",
-        "source_id": null,
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/lin2004rouge.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "不涉及偏好學習（未描述 ranking 或 A/B 比較、也未描述以偏好為學習信號的 RL 訓練迴路）",
-        "非音訊領域（論文主題為文本摘要評估與自動評分方法）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"measures to automatically determine the quality of a summary by comparing it to other (ideal) summaries created by humans.\"",
-        "Full text (Introduction): \"In this paper, we introduce a package, ROUGE, for automatic evaluation of summaries.\"",
-        "Full text: multiple sections describe ROUGE-N, ROUGE-L, ROUGE-W, ROUGE-S for summarization evaluation and experiments on DUC datasets (text summarization evaluation)."
-      ],
-      "decision_rationale": "本文明確聚焦於文本摘要的自動評估指標（ROUGE）並以 DUC 摘要資料做實驗；全文與摘要均無任何關於偏好學習（ranking/A-B 比較或以偏好做為學習信號的 RL 迴路）的描述，亦非應用於音訊領域。因此不符合 Stage 2 所列之「偏好學習」及「音訊領域」必要納入條件，故建議排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2004",
+      "published_date_iso": "2004-01-01"
     },
-    "review_reasoning": "本文明確聚焦於文本摘要的自動評估指標（ROUGE）並以 DUC 摘要資料做實驗；全文與摘要均無任何關於偏好學習（ranking/A-B 比較或以偏好做為學習信號的 RL 迴路）的描述，亦非應用於音訊領域。因此不符合 Stage 2 所列之「偏好學習」及「音訊領域」必要納入條件，故建議排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2004",
+      "published_date_iso": "2004-01-01"
+    }
   },
   {
     "key": "papineni2002bleu",
@@ -2301,46 +2147,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 883,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "papineni2002bleu",
-      "candidate_title": "Bleu: a method for automatic evaluation of machine translation",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "papineni2002bleu",
-        "record_title": "Bleu: a method for automatic evaluation of machine translation",
-        "source": "manual",
-        "source_id": "local:papineni2002bleu",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/papineni2002bleu.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "非音訊領域：全文聚焦機器翻譯評估，未提及音訊或含音訊之多模態應用",
-        "不屬於偏好學習：文章提出自動評估指標以比較翻譯與參考，非以偏好 (ranking/A-B) 驅動之學習方法",
-        "僅用偏好/人類評分作為評估，無學習元件：人類評判用於評估系統而非用於訓練或偏好學習（符合排除準則）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Title: \"BLEU: a Method for Automatic Evaluation of Machine Translation\"",
-        "Abstract: \"Human evaluations of machine translation are extensive but expensive... we propose a quick, inexpensive, language-independent automatic metric intended as an understudy to human judges.\"",
-        "Full text: \"We propose such an evaluation method in this paper.\" / \"To judge the quality of a machine translation, one measures its closeness to one or more reference human translations...\"",
-        "Full text conclusion: \"BLEU’s strength is that it correlates highly with human judgments...\" and references to Chinese-English experiments (MT domain)."
-      ],
-      "decision_rationale": "本文明確是針對機器翻譯(MT)的自動評估指標（BLEU），全文與摘要均描述以人類判定與 n-gram 比對來評估翻譯品質；未提及音訊領域或任何以偏好作為學習信號（例如 ranking/A-B 比較用於訓練或 RL 迴路）。因此不符合 Stage 2 的核心納入條件，且符合「僅用偏好作為評估、無學習成分」之排除準則，判定為強排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2002",
+      "published_date_iso": "2002-01-01"
     },
-    "review_reasoning": "本文明確是針對機器翻譯(MT)的自動評估指標（BLEU），全文與摘要均描述以人類判定與 n-gram 比對來評估翻譯品質；未提及音訊領域或任何以偏好作為學習信號（例如 ranking/A-B 比較用於訓練或 RL 迴路）。因此不符合 Stage 2 的核心納入條件，且符合「僅用偏好作為評估、無學習成分」之排除準則，判定為強排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2002",
+      "published_date_iso": "2002-01-01"
+    }
   },
   {
     "key": "zhang2019bertscore",
@@ -2356,45 +2182,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 937,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "zhang2019bertscore",
-      "candidate_title": "BERTScore: Evaluating Text Generation with BERT",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "zhang2019bertscore",
-        "record_title": "BERTScore: Evaluating Text Generation with BERT",
-        "source": "arxiv",
-        "source_id": "1904.09675v3",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/zhang2019bertscore.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "不涉及偏好學習（沒有排名、A/B 比較或以偏好為學習信號的 RL 訓練迴路）",
-        "不屬於音訊領域（明確針對文本生成、機器翻譯與圖像描述）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"We propose BERTScore, an automatic evaluation metric for text generation.\"",
-        "Abstract: \"We evaluate using the outputs of 363 machine translation and image captioning systems.\"",
-        "Full text (Introduction/Experiments): \"We experiment with BERTSCORE on machine translation and image captioning tasks...\"",
-        "全文中未出現與音訊應用、音訊片段之偏好比較 (A/B) 或以偏好作為學習目標(如 RL 訓練迴路) 的描述。"
-      ],
-      "decision_rationale": "本文描述並評估一個用於文本生成（機器翻譯、圖像描述等）的評估指標，明確針對 NLP 任務與文本嵌入，無任何關於音訊領域或偏好學習（排名、A/B 比較或以偏好為學習信號）的證據。因不滿足 Stage 2 要求的必要條件（偏好學習與音訊應用），故排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
     },
-    "review_reasoning": "本文描述並評估一個用於文本生成（機器翻譯、圖像描述等）的評估指標，明確針對 NLP 任務與文本嵌入，無任何關於音訊領域或偏好學習（排名、A/B 比較或以偏好為學習信號）的證據。因不滿足 Stage 2 要求的必要條件（偏好學習與音訊應用），故排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "schluter2017limits",
@@ -2410,46 +2217,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 470,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "schluter2017limits",
-      "candidate_title": "The limits of automatic summarisation according to rouge",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "schluter2017limits",
-        "record_title": "The limits of automatic summarisation according to rouge",
-        "source": "openalex",
-        "source_id": "10.18653/v1/e17-2007",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/schluter2017limits.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "不涉及偏好學習（未呈現對兩個或多個音訊片段的排序或 A/B 比較，亦無將數值評分轉換為排序或以偏好進行模型學習的描述）",
-        "不屬於音訊領域（全文聚焦文本摘要與 ROUGE 指標，使用文本資料集）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Title: \"The limits of automatic summarisation according to ROUGE\" — 顯示研究焦點為摘要與 ROUGE 指標",
-        "Abstract: \"This paper discusses some central caveats of summarisation, incurred in the use of the ROUGE metric for evaluation...\" — 明確討論 summarisation 與 ROUGE",
-        "Full text (intro/results): 多處提及文本摘要資料集與評測，例如 duc04, echr, wiki；表格與段落全部圍繞 ROUGE 與 extractive summarisation 的優化與 NP-hard 證明",
-        "Full text: \"This work is all under the assumption that ROUGE (under its currently used parameters) provides an accurate account of summarisation quality.\" — 再次確認以 ROUGE/文字摘要為核心",
-        "全文未提及 \"audio\"、未描述音訊應用、也未提及偏好學習（preference learning）、排序或 A/B 比較、或以偏好作為訓練信號的 RL 迴路"
-      ],
-      "decision_rationale": "本文完整聚焦於文字自動摘要與 ROUGE 評估（標題、摘要與全文均討論 ROUGE、DUC/wiki/echr 等文本資料集與 extractive summarisation 的理論與實驗），未在任何位置提到音訊應用或偏好學習（例如對音訊片段的排序/A-B 比較、將評分轉為排序、或使用偏好進行 RL 訓練）。因此不符合 Stage 2 所要求的「偏好學習」與「音訊領域」兩項必要納入條件，依規則給予強排除（score=1，decision=exclude）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
     },
-    "review_reasoning": "本文完整聚焦於文字自動摘要與 ROUGE 評估（標題、摘要與全文均討論 ROUGE、DUC/wiki/echr 等文本資料集與 extractive summarisation 的理論與實驗），未在任何位置提到音訊應用或偏好學習（例如對音訊片段的排序/A-B 比較、將評分轉為排序、或使用偏好進行 RL 訓練）。因此不符合 Stage 2 所要求的「偏好學習」與「音訊領域」兩項必要納入條件，依規則給予強排除（score=1，decision=exclude）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "chakrabarty2024art",
@@ -2501,7 +2288,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-09-25",
+      "published_date_iso": "2023-09-25"
+    }
   },
   {
     "key": "zheng2023judging",
@@ -2554,7 +2348,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "carterette2008here",
@@ -2570,45 +2371,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 644,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "carterette2008here",
-      "candidate_title": "Here or there: Preference judgments for relevance",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "carterette2008here",
-        "record_title": "Here or there: Preference judgments for relevance",
-        "source": "manual",
-        "source_id": "local:carterette2008here",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/carterette2008here.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "不在音訊領域：研究對象為網頁/搜尋引擎結果（非 audio）",
-        "偏好判斷僅用於評估（無針對 audio 模型的偏好學習訓練環節）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "All judgments will be made on web pages retrieved by the Yahoo!, Google, and Microsoft Live search engines.",
-        "Queries We sampled 51 queries from Microsoft’s Live Search query logs.",
-        "We compared three types of judgments: (1) absolute judgments ...; (2) binary preference judgments ...; and (3) a stronger version of preference judgment ... (web/page relevance).",
-        "We compared evaluations between four different measures: DCG, normalized DCG (NDCG), ppref, and wpref."
-      ],
-      "decision_rationale": "The paper studies preference judgments for web search / document relevance (assessors judging web pages and search-engine evaluation). Stage 2 requires the paper be applied within the audio domain; this manuscript explicitly uses web pages and search-engine queries (no audio data or audio tasks). Additionally, the work focuses on using preferences for evaluation (designing measures and assessor interfaces) rather than presenting a preference-based learning loop for audio models. Both facts map directly to the Stage 2 required inclusion/exclusion criteria, so the paper is excluded."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2008",
+      "published_date_iso": "2008-01-01"
     },
-    "review_reasoning": "The paper studies preference judgments for web search / document relevance (assessors judging web pages and search-engine evaluation). Stage 2 requires the paper be applied within the audio domain; this manuscript explicitly uses web pages and search-engine queries (no audio data or audio tasks). Additionally, the work focuses on using preferences for evaluation (designing measures and assessor interfaces) rather than presenting a preference-based learning loop for audio models. Both facts map directly to the Stage 2 required inclusion/exclusion criteria, so the paper is excluded.",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2008",
+      "published_date_iso": "2008-01-01"
+    }
   },
   {
     "key": "wester2015we",
@@ -2624,49 +2406,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "wester2015we",
-      "candidate_title": "Are we using enough listeners? no! — an empirically-supported critique of interspeech 2014 TTS evaluations",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "wester2015we",
-        "record_title": "Are we using enough listeners? no! — an empirically-supported critique of interspeech 2014 TTS evaluations",
-        "source": "openalex",
-        "source_id": "10.21437/interspeech.2015-689",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/wester2015we.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "Paper is applied within the audio domain (speech synthesis / TTS)",
-        "Paper is not a survey or review article (original analysis and guidelines)"
-      ],
-      "triggered_exclusion_points": [
-        "Uses preferences and MOS tests solely for evaluation with no learning component",
-        "No evidence of preference-based learning (e.g., ranking/A-B comparisons used to train models or an RL training loop)"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: 'Tallying the numbers of listeners that took part in subjective evaluations of synthetic speech at Interspeech 2014 ...'",
-        "Full text: 'The most commonly used listening tests are Mean Opinion Score tests (MOS) or Differential MOS (DMOS), preference tests, ABX-tests, transcription tasks, and MUSHRA tests.'",
-        "Full text: 'To illustrate the importance of sentence coverage and the number of listeners, we re-analysed listener response data from the Blizzard Challenge 2013.'",
-        "Full text: 'The final scores published in [12] were obtained with 50 paid participants (EE), 92 volunteers (ER), and 52 speech experts (ES).' ",
-        "Full text: 'This paper intends to present good practice in designing listening tests for subjective evaluation of synthetic speech ...' (focus on evaluation methodology rather than learning)"
-      ],
-      "decision_rationale": "雖然本文在語音/語音合成領域且不是綜述（滿足“應用於音頻領域”與“非評論性文章”），但全文內容為主觀評估方法學的分析與重分析（Blizzard 2013），使用 MOS / preference / ABX 等作為評估手段，沒有任何證據顯示存在以偏好為訓練信號的學習方法或 RL 訓練迴圈。根據 Stage 2 的排除準則「僅將偏好用作評估、無學習成分者排除」，此篇應予排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
     },
-    "review_reasoning": "雖然本文在語音/語音合成領域且不是綜述（滿足“應用於音頻領域”與“非評論性文章”），但全文內容為主觀評估方法學的分析與重分析（Blizzard 2013），使用 MOS / preference / ABX 等作為評估手段，沒有任何證據顯示存在以偏好為訓練信號的學習方法或 RL 訓練迴圈。根據 Stage 2 的排除準則「僅將偏好用作評估、無學習成分者排除」，此篇應予排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    }
   },
   {
     "key": "rix2001perceptual",
@@ -2682,47 +2441,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "rix2001perceptual",
-      "candidate_title": "Perceptual evaluation of speech quality (PESQ)-a new method for speech quality assessment of telephone networks and codecs",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "rix2001perceptual",
-        "record_title": "Perceptual evaluation of speech quality (PESQ)-a new method for speech quality assessment of telephone networks and codecs",
-        "source": "openalex",
-        "source_id": "10.1109/icassp.2001.941023",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/rix2001perceptual.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "應用於音訊領域（窄帶語音、電話網路與語音編碼）",
-        "非綜述／非評論文章（提出新方法並包含實驗結果）"
-      ],
-      "triggered_exclusion_points": [
-        "不符合偏好學習定義：文中無排名或 A/B 比較、亦無以偏好作為學習信號的 RL 訓練回路",
-        "僅使用主觀 MOS/ACR 測試作為模型校準與評估（屬於以偏好作為評估而非偏好學習）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "全文多次描述 PESQ 為一客觀預測主觀 MOS 的模型，並說明“predict subjective MOS” 與其輸出映射（PESQMOS = 4.5 - 0.1 dsyM - 0.0309 dAsyM）",
-        "文中報告 “results from 38 known and 8 unknown subjective tests” 並使用 ACR（absolute category rating）意見量表——顯示使用數值評分作為評估/校準",
-        "全文描述時間對齊、聽覺變換、誤差聚合與回歸校準等方法，但未提及任何排名／A-B 比較實驗或以偏好為學習目標的強化學習回路"
-      ],
-      "decision_rationale": "依據 Stage 2 納入條件，論文必須涉及“偏好學習”（定義為排名或 A/B 比較，或包含以偏好為學習信號的 RL 訓練回路）。本篇 PESQ 工作明確是為了預測主觀 MOS、以數值主觀評分（ACR/MOS）作為校準與評估，並未報告排名/A-B 比較或偏好驅動的學習流程；因此不符合偏好學習的必要納入條件。論文確實應用於音訊領域且非綜述，但因第一項必要條件未被正向支持，依規則給予強排除（stage_score=1，decision_recommendation=exclude）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2002",
+      "published_date_iso": "2002-01-01"
     },
-    "review_reasoning": "依據 Stage 2 納入條件，論文必須涉及“偏好學習”（定義為排名或 A/B 比較，或包含以偏好為學習信號的 RL 訓練回路）。本篇 PESQ 工作明確是為了預測主觀 MOS、以數值主觀評分（ACR/MOS）作為校準與評估，並未報告排名/A-B 比較或偏好驅動的學習流程；因此不符合偏好學習的必要納入條件。論文確實應用於音訊領域且非綜述，但因第一項必要條件未被正向支持，依規則給予強排除（stage_score=1，decision_recommendation=exclude）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2002",
+      "published_date_iso": "2002-01-01"
+    }
   },
   {
     "key": "morris2004and",
@@ -2738,47 +2476,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "morris2004and",
-      "candidate_title": "From WER and RIL to MER and WIL: improved evaluation measures for connected speech recognition",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "morris2004and",
-        "record_title": "From WER and RIL to MER and WIL: improved evaluation measures for connected speech recognition",
-        "source": "openalex",
-        "source_id": "10.21437/interspeech.2004-668",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/morris2004and.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "Applied within the audio domain (CSR/ASR)",
-        "Paper is not a survey or review article"
-      ],
-      "triggered_exclusion_points": [
-        "不屬於偏好學習（未包含排序或 A/B 比較、也未將數值評分轉為排序、且無 RL 訓練迴路） — 未滿足必要納入條件"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"In this article we introduce two new absolute CSR performance measures: MER (match error rate) and WIL (word information lost).\"",
-        "Abstract: \"The word error rate (WER), commonly used in ASR assessment...\" — 明確表明研究焦點為 ASR/CSR 評估指標",
-        "Full text (Section 4–6): 詳述 MER、RIL 與 WIL 的定義與推導，並以 HSDI 計數與資訊理論為基礎，不涉及偏好資料或比較學習方法",
-        "全文（title、abstract 與 main text）未提及「preference」「rank」「A/B」「preference learning」「reinforcement」「RL」等字詞或偏好式學習流程的描述"
-      ],
-      "decision_rationale": "本文聚焦於連續語音識別的評估指標（MER、WIL），明確為 ASR/CSR 評估方法與資訊理論推導。Stage 2 的必要納入條件要求論文須涉及偏好式學習（例如排序或 A/B 比較，或包含以偏好為目標的學習迴路），而本文在 title、abstract 與全文中均未呈現任何偏好比較或偏好驅動的學習（亦無 RL 相關註明）。因此不符合 Stage 2 的核心納入條件，依規則判定為強排除（stage_score=1, decision_recommendation=\"exclude\"）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2004",
+      "published_date_iso": "2004-01-01"
     },
-    "review_reasoning": "本文聚焦於連續語音識別的評估指標（MER、WIL），明確為 ASR/CSR 評估方法與資訊理論推導。Stage 2 的必要納入條件要求論文須涉及偏好式學習（例如排序或 A/B 比較，或包含以偏好為目標的學習迴路），而本文在 title、abstract 與全文中均未呈現任何偏好比較或偏好驅動的學習（亦無 RL 相關註明）。因此不符合 Stage 2 的核心納入條件，依規則判定為強排除（stage_score=1, decision_recommendation=\"exclude\"）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2004",
+      "published_date_iso": "2004-01-01"
+    }
   },
   {
     "key": "huang2022mulan",
@@ -2833,7 +2550,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-12-04",
+      "published_date_iso": "2022-12-04"
+    }
   },
   {
     "key": "manocha2020differentiable",
@@ -2887,7 +2611,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "stiennon2020learning",
@@ -2941,7 +2672,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "metallinou2013annotation",
@@ -2957,47 +2695,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 769,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "metallinou2013annotation",
-      "candidate_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "metallinou2013annotation",
-        "record_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
-        "source": "openalex",
-        "source_id": "10.1109/fg.2013.6553804",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/metallinou2013annotation.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "論文應用於包含語音的多模態（audio-including multimodal）領域：使用 USC CreativeIT multimodal 資料庫，並提及 speech/close-talking microphones",
-        "論文非純綜述：包含作者原始的標註工作、設計決策與實驗結果（case study 與 annotation results）"
-      ],
-      "triggered_exclusion_points": [
-        "不符合必要的偏好學習條件：全文未描述偏好學習（ranking / A/B comparisons）、將數值評分轉換為排序用於學習，或用偏好信號訓練（例如 RL 訓練迴路）",
-        "論文焦點在情緒連續標註與處理（annotation/design/aggregation），未呈現以偏好為核心的學習或比較實驗"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "\"We use the USC CreativeIT database which is a multimodal database... The collected data contains ... speech obtained from close-talking microphones and videos\" (III. DATABASE DESCRIPTION)",
-        "\"The perceived emotional state for each participant was annotated in terms of the widely used dimensional attributes of activation, valence and dominance.\" (IV. DATA ANNOTATION)",
-        "全文主要討論 continuous emotional annotation 工具、設計、標註結果與開放問題（例如 Sections IV–VII），未見對 ranking/A-B comparisons、preferences 用於學習或 RL training loop 的描述或實驗細節。"
-      ],
-      "decision_rationale": "雖然論文應用於包含語音的多模態情緒標註領域，且不是純綜述，但它缺乏 Stage 2 要求的關鍵必要條件：未呈現任何偏好學習（如 ranking 或 A/B 比較）、也未將評分轉換為排序用於學習或包含以偏好信號驅動的學習迴路（例如 RL）。因此根據 Stage 2 準則應排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2013",
+      "published_date_iso": "2013-01-01"
     },
-    "review_reasoning": "雖然論文應用於包含語音的多模態情緒標註領域，且不是純綜述，但它缺乏 Stage 2 要求的關鍵必要條件：未呈現任何偏好學習（如 ranking 或 A/B 比較）、也未將評分轉換為排序用於學習或包含以偏好信號驅動的學習迴路（例如 RL）。因此根據 Stage 2 準則應排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2013",
+      "published_date_iso": "2013-01-01"
+    }
   },
   {
     "key": "christiano2017deep",
@@ -3013,47 +2730,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "christiano2017deep",
-      "candidate_title": "Reinforcement-Learning-Deep-Reinforcement-Learning-from-Human-Preferences",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "christiano2017deep",
-        "record_title": "Reinforcement-Learning-Deep-Reinforcement-Learning-from-Human-Preferences",
-        "source": "github",
-        "source_id": "BenJ-cell/Reinforcement-Learning-Deep-Reinforcement-Learning-from-Human-Preferences",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/christiano2017deep.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "明確使用偏好比較（pairs of trajectory segments）來進行偏好式學習/獎勵學習",
-        "非綜述/回顧文章（為原創研究與實驗）"
-      ],
-      "triggered_exclusion_points": [
-        "未在音訊（audio）領域應用：實驗領域為 Atari 遊戲與 MuJoCo 物理模擬機器人",
-        "未滿足 Stage 2 要求之「應用於音訊領域」必要條件"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“we explore goals defined in terms of (non-expert) human preferences between pairs of trajectory segments.”",
-        "“Our experiments take place in two domains: Atari games in the Arcade Learning Environment ... and robotics tasks in the physics simulator MuJoCo.”",
-        "全文以實驗性研究與方法論為主，含大量實驗結果與消融研究，非 survey/review。"
-      ],
-      "decision_rationale": "本文確實屬於偏好式學習（使用人類對軌跡片段的比較來學習獎勵並用於 RL），且不是綜述文章，這些點有明確文本支持。然而 Stage 2 的必要納入條件要求「應用於音訊領域（或包含音訊）」。本文的實驗與應用域明確為 Atari 與 MuJoCo 機器人模擬，未涉及音訊或含音訊的多模態應用。因此不滿足 Stage 2 的關鍵必要條件，依規則給予強排除 (stage_score=1, exclude)。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
     },
-    "review_reasoning": "本文確實屬於偏好式學習（使用人類對軌跡片段的比較來學習獎勵並用於 RL），且不是綜述文章，這些點有明確文本支持。然而 Stage 2 的必要納入條件要求「應用於音訊領域（或包含音訊）」。本文的實驗與應用域明確為 Atari 與 MuJoCo 機器人模擬，未涉及音訊或含音訊的多模態應用。因此不滿足 Stage 2 的關鍵必要條件，依規則給予強排除 (stage_score=1, exclude)。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "liu2024lipo",
@@ -3108,7 +2804,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "cao2007learning",
@@ -3124,47 +2827,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 942,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "cao2007learning",
-      "candidate_title": "Learning to rank: from pairwise approach to listwise approach",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "cao2007learning",
-        "record_title": "Learning to rank: from pairwise approach to listwise approach",
-        "source": "manual",
-        "source_id": "local:cao2007learning",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/cao2007learning.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "論文屬於偏好/排序學習（learning to rank, listwise/pairwise 排序方法）",
-        "非綜述/非回顧文章（提出新方法並有實驗驗證）"
-      ],
-      "triggered_exclusion_points": [
-        "未在音訊領域應用 — 文中標的為文件/資訊檢索（非 audio）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "\"The paper is concerned with learning to rank... useful for document retrieval, collaborative filtering, and many other applications.\" (Abstract)",
-        "\"Experimental results on information retrieval show that the proposed listwise approach performs better than the pairwise approach.\" (Abstract/Conclusions)",
-        "實驗使用的數據集與場景為資訊檢索：TREC, OHSUMED, CSearch（全文 Section 6）",
-        "全文反覆以 'document retrieval' / 'information retrieval' 為範例與應用場景，未見與 audio 或 audio clips 之偏好比較或音訊模型的描述"
-      ],
-      "decision_rationale": "雖然本文明確屬於偏好/排序學習（listwise learning to rank）且非綜述文章，但 Stage 2 必要納入條件之一是「應用於音訊領域」。全文與摘要明確將應用場景設定為文件/資訊檢索，並以 TREC、OHSUMED、CSearch 等資訊檢索資料集做實驗，未發現任何關於音訊片段比較、音訊偏好學習或針對音訊模型的 RL 訓練迴路等文字證據。因此不符合「應用於音訊領域」的必要條件，依規則予以排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
     },
-    "review_reasoning": "雖然本文明確屬於偏好/排序學習（listwise learning to rank）且非綜述文章，但 Stage 2 必要納入條件之一是「應用於音訊領域」。全文與摘要明確將應用場景設定為文件/資訊檢索，並以 TREC、OHSUMED、CSearch 等資訊檢索資料集做實驗，未發現任何關於音訊片段比較、音訊偏好學習或針對音訊模型的 RL 訓練迴路等文字證據。因此不符合「應用於音訊領域」的必要條件，依規則予以排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
+    }
   },
   {
     "key": "rafailov2023direct",
@@ -3218,7 +2900,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "zhang2021sample",
@@ -3270,7 +2959,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-05-18",
+      "published_date_iso": "2021-05-18"
+    }
   },
   {
     "key": "schulman2017proximal",
@@ -3286,43 +2982,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 508,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "schulman2017proximal",
-      "candidate_title": "Proximal Policy Optimization Algorithms",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "schulman2017proximal",
-        "record_title": "Proximal Policy Optimization Algorithms",
-        "source": "arxiv",
-        "source_id": "1707.06347",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/schulman2017proximal.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "未應用於音訊領域（實驗在模擬機器人控制與 Atari 遊戲）",
-        "不涉及偏好學習：無音訊片段之排名或 A/B 比較，亦未以偏好作為訓練信號"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"Our experiments test PPO on a collection of benchmark tasks, including simulated robotic locomotion and Atari game playing\"",
-        "Full text (Introduction): paper describes a new family of policy gradient methods for reinforcement learning and experiments on continuous control and Atari — 沒有提及音訊或偏好比較的應用"
-      ],
-      "decision_rationale": "Stage 2 納入條件要求為「偏好學習且應用於音訊領域」（或包含音訊的多模態），且非綜述文章。本篇為提出一般強化學習演算法並在模擬機器人與 Atari 上驗證（全文與摘要明確列出），未在音訊域應用，也未描述對音訊片段之排名/A/B 比較或以偏好作為訓練信號；因此不符合必要納入條件，判定為強排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2017-07-20",
+      "published_date_iso": "2017-07-20"
     },
-    "review_reasoning": "Stage 2 納入條件要求為「偏好學習且應用於音訊領域」（或包含音訊的多模態），且非綜述文章。本篇為提出一般強化學習演算法並在模擬機器人與 Atari 上驗證（全文與摘要明確列出），未在音訊域應用，也未描述對音訊片段之排名/A/B 比較或以偏好作為訓練信號；因此不符合必要納入條件，判定為強排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017-07-20",
+      "published_date_iso": "2017-07-20"
+    }
   },
   {
     "key": "casper2023open",
@@ -3374,7 +3053,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-07-27",
+      "published_date_iso": "2023-07-27"
+    }
   },
   {
     "key": "ziegler2019fine",
@@ -3390,45 +3076,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1192,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "ziegler2019fine",
-      "candidate_title": "Fine-Tuning Language Models from Human Preferences",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "ziegler2019fine",
-        "record_title": "Fine-Tuning Language Models from Human Preferences",
-        "source": "arxiv",
-        "source_id": "1909.08593",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/ziegler2019fine.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "使用偏好學習：從人類比較訓練獎勵模型並用於 RL 微調語言模型（明確描述）",
-        "非綜述文章（為實驗性研究，包含方法與實驗）"
-      ],
-      "triggered_exclusion_points": [
-        "不屬於音訊領域：明確應用於自然語言文本（續寫、摘要），而非音訊/聲音應用"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract / 全文：\"we apply reward learning to four natural language tasks: continuing text... and summarization tasks on the TL;DR and CNN/Daily Mail datasets.\"",
-        "Methods / 全文：全文描述以語言模型（text）為輸入、用人類比較訓練獎勵模型並以 RL 微調策略（policy）。"
-      ],
-      "decision_rationale": "雖然本文明確使用偏好學習（以人類比較訓練獎勵模型並用 RL 微調）且不是綜述，但所有應用場景均為自然語言／文本（續寫、摘要）；未在文中呈現任何音訊（audio）應用或多模態以音訊為成分的實驗。因此不符合 Stage 2 要求中「應用於音訊領域」的必要條件，故依規則給予強排除（stage_score=1，exclude）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2019-09-18",
+      "published_date_iso": "2019-09-18"
     },
-    "review_reasoning": "雖然本文明確使用偏好學習（以人類比較訓練獎勵模型並用 RL 微調）且不是綜述，但所有應用場景均為自然語言／文本（續寫、摘要）；未在文中呈現任何音訊（audio）應用或多模態以音訊為成分的實驗。因此不符合 Stage 2 要求中「應用於音訊領域」的必要條件，故依規則給予強排除（stage_score=1，exclude）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2019-09-18",
+      "published_date_iso": "2019-09-18"
+    }
   },
   {
     "key": "shao2024deepseekmath",
@@ -3482,7 +3149,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-02-05",
+      "published_date_iso": "2024-02-05"
+    }
   },
   {
     "key": "gao2023scaling",
@@ -3532,7 +3206,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "mantisnlp2023rlhf",
@@ -3584,7 +3265,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "kilgour2018fr",
@@ -3600,46 +3288,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 436,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "kilgour2018fr",
-      "candidate_title": "Fréchet Audio Distance: A Metric for Evaluating Music Enhancement Algorithms",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "kilgour2018fr",
-        "record_title": "Fréchet Audio Distance: A Metric for Evaluating Music Enhancement Algorithms",
-        "source": "arxiv",
-        "source_id": "https://arxiv.org/abs/1812.08466",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/kilgour2018fr.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "應用於音訊領域（明確聚焦於 music enhancement / music signals）",
-        "非綜述文章（提出新指標 FAD 並有實驗驗證）"
-      ],
-      "triggered_exclusion_points": [
-        "研究使用偏好/比較僅作為評估，沒有學習成分（排除條件）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract / Introduction: \"We propose the Fréchet Audio Distance (FAD), a novel, reference-free evaluation metric for music enhancement algorithms.\" (表明本文是提出評估指標)",
-        "Human evaluation method: \"For our human-based evaluation, we asked raters to compare the effect of two different distortions on the same 5 s of audio... The raters were asked 'which audio clip sounds most like a studio produced recording?'\" (表明使用 A/B 比較作為評估)",
-        "Conclusion: \"In this paper, we proposed the reference-free FAD metric for measuring the quality of music enhancement approaches... Our evaluation using human raters showed that FAD correlated better with human ratings than SDR.\" (強調偏好比較用於評估而非用於訓練/學習)"
-      ],
-      "decision_rationale": "雖然本文明確為音訊領域（music enhancement）且不是綜述，且文中使用人類評分/兩段音訊比較 (A/B) 進行大量人類評估，但所有出現的偏好/比較都是用來評估指標 (FAD) 的效用，全文未描述任何使用偏好作為學習信號或在音訊模型中進行偏好驅動的訓練（例如 RL 或利用比較產生學習更新）。依據 Stage 2 準則『僅將偏好用於評估且無學習成分的研究應被排除』，該必要納入條件（pertains to preference learning）未被滿足，故給予強排除（stage_score = 1，decision_recommendation = \"exclude\"）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2018-12",
+      "published_date_iso": null
     },
-    "review_reasoning": "雖然本文明確為音訊領域（music enhancement）且不是綜述，且文中使用人類評分/兩段音訊比較 (A/B) 進行大量人類評估，但所有出現的偏好/比較都是用來評估指標 (FAD) 的效用，全文未描述任何使用偏好作為學習信號或在音訊模型中進行偏好驅動的訓練（例如 RL 或利用比較產生學習更新）。依據 Stage 2 準則『僅將偏好用於評估且無學習成分的研究應被排除』，該必要納入條件（pertains to preference learning）未被滿足，故給予強排除（stage_score = 1，decision_recommendation = \"exclude\"）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2018-12",
+      "published_date_iso": null
+    }
   },
   {
     "key": "mittag2021nisqa",
@@ -3694,7 +3362,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-19",
+      "published_date_iso": "2021-04-19"
+    }
   },
   {
     "key": "itu20031534",
@@ -3710,46 +3385,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 713,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "itu20031534",
-      "candidate_title": "1534-1, method for the subjective assessment of intermediate quality levels of coding systems (mushra),”,”",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "itu20031534",
-        "record_title": "1534-1, method for the subjective assessment of intermediate quality levels of coding systems (mushra),”,”",
-        "source": "manual",
-        "source_id": "local:itu20031534",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/itu20031534.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "應用於音訊領域（明確為音訊主觀品質評估方法）",
-        "非綜述/回顧文章（為 ITU 推薦 / 方法規範）"
-      ],
-      "triggered_exclusion_points": [
-        "僅將偏好/比較用於評估，無任何學習或以偏好為訓練信號的演算法元件"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "文件描述 MUSHRA 為“Multi Stimulus test with Hidden Reference and Anchor”，受試者在參考與所有受測版本間切換並進行排序與分級（見 5.3、5.4 節）",
-        "說明分級流程使用連續品質量表 (CQS)，並指出受試者進行排序/排名以給分（5.4 節；描述 subjects 的排序/grading 過程）",
-        "全文為主觀評估方法與實驗設計、聽覺條件與統計分析的推薦，未見任何關於學習演算法、強化學習訓練循環或使用偏好來訓練音訊模型的描述"
-      ],
-      "decision_rationale": "本文為 ITU 的主觀音訊品質評估方法（MUSHRA），明確描述使用受試者之比較/排序與分級來評估系統，但全文僅將偏好用於評估目的，未包含任何以偏好為學習信號或 RL/訓練迴路的技術。根據 Stage 2 準則：「僅將偏好用於評估且無學習元件者排除」，因此決定強烈排除（stage_score=1）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "2003",
+      "published_date_iso": "2003-01-01"
     },
-    "review_reasoning": "本文為 ITU 的主觀音訊品質評估方法（MUSHRA），明確描述使用受試者之比較/排序與分級來評估系統，但全文僅將偏好用於評估目的，未包含任何以偏好為學習信號或 RL/訓練迴路的技術。根據 Stage 2 準則：「僅將偏好用於評估且無學習元件者排除」，因此決定強烈排除（stage_score=1）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2003",
+      "published_date_iso": "2003-01-01"
+    }
   },
   {
     "key": "singhal2023long",
@@ -3804,7 +3459,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "al2023speech",
@@ -3856,7 +3518,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "zhou2023beyond",
@@ -3872,46 +3541,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 2005,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "zhou2023beyond",
-      "candidate_title": "Beyond One-Preference-Fits-All Alignment: Multi-Objective Direct Preference Optimization",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "zhou2023beyond",
-        "record_title": "Beyond One-Preference-Fits-All Alignment: Multi-Objective Direct Preference Optimization",
-        "source": "arxiv",
-        "source_id": "https://arxiv.org/abs/2310.03708",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/zhou2023beyond.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "論文涉及偏好學習（討論 RLHF、DPO、偏好資料與多目標偏好優化）",
-        "論文不是綜述/回顧文章（提出新方法 MODPO 並有實驗）"
-      ],
-      "triggered_exclusion_points": [
-        "未在音訊領域應用：全文聚焦於語言模型、safety 與長篇問答等文字任務，未提及音訊或含音訊之多模態應用"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Title / Abstract: 'A single language model... aligned with labelers through reinforcement learning from human feedback (RLHF)... multi-objective RLHF (MORLHF)'",
-        "Full text (Introduction/Tasks): 多次提到 'language models', 'safety alignment', 'long-form question answering', 使用 BEAVERTAILS 與 QA-FEEDBACK 資料集（文字問答相關）",
-        "Methods/Experiments: 描述 MODPO 對語言模型的訓練與評估（無音訊相關實驗或音訊資料集）"
-      ],
-      "decision_rationale": "雖然本文明確涉及偏好學習並提出非綜述性的新方法（滿足偏好學習與非綜述兩項納入條件），但缺乏核心必要條件：未在音訊領域應用。Stage 2 的必備條件明確要求論文應用於音訊領域或包含音訊（multimodal 含音訊視為符合），而本篇全文與實驗僅聚焦於文字/語言模型任務（safety alignment、long-form QA、BEAVERTAILS、QA-FEEDBACK 等），因此未滿足音訊應用的必要納入條件，依規則給予強排除（score=1，decision=exclude）。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2023-10",
+      "published_date_iso": null
     },
-    "review_reasoning": "雖然本文明確涉及偏好學習並提出非綜述性的新方法（滿足偏好學習與非綜述兩項納入條件），但缺乏核心必要條件：未在音訊領域應用。Stage 2 的必備條件明確要求論文應用於音訊領域或包含音訊（multimodal 含音訊視為符合），而本篇全文與實驗僅聚焦於文字/語言模型任務（safety alignment、long-form QA、BEAVERTAILS、QA-FEEDBACK 等），因此未滿足音訊應用的必要納入條件，依規則給予強排除（score=1，decision=exclude）。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-10",
+      "published_date_iso": null
+    }
   },
   {
     "key": "li2024omnibench",
@@ -3967,7 +3616,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "bradley1952rank",
@@ -3983,47 +3639,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 550,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "bradley1952rank",
-      "candidate_title": "Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "bradley1952rank",
-        "record_title": "Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons",
-        "source": "crossref",
-        "source_id": "10.2307/2334029",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/bradley1952rank.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "包含成對比較（paired comparisons）或排序/偏好方法（滿足偏好學習的形式要素）",
-        "非綜述/回顧文章（為方法/理論與實驗示例）"
-      ],
-      "triggered_exclusion_points": [
-        "研究應用領域非音訊：全文示例為豬肉味覺測試（taste-testing），顯示非音訊應用",
-        "無偏好學習的學習/訓練環節（全文為統計模型與檢定，未描述 RL 或其它訓練迴路）"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "引言與範例說明：\"The use of the tables and the method of analysis are illustrated with an example of a taste-testing experiment on pork roasts\"（全文明確以味覺/食品為應用示例）",
-        "方法描述：全文大量闡述 paired comparisons 與 likelihood-ratio 檢定（例如 §2 'Let us consider t treatments in an experiment involving paired comparisons'、§4 關於 likelihood function 與估計）— 表示統計配對比較方法",
-        "缺乏音訊或學習訓練描述：全文聚焦於統計分析與表格、無強化學習或任一訓練迴路的描述或實施細節"
-      ],
-      "decision_rationale": "雖然本文明確處理成對比較與偏好/排序的統計方法，但全文應用示例與上下文為味覺（豬肉品評），非音訊領域；且未描述任何學習或 RL 訓練迴路。因此不符合 Stage 2 的「應用於音訊領域」及相關偏好學習之學習組件要求，依據 Stage 2 標準應排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "1952",
+      "published_date_iso": "1952-01-01"
     },
-    "review_reasoning": "雖然本文明確處理成對比較與偏好/排序的統計方法，但全文應用示例與上下文為味覺（豬肉品評），非音訊領域；且未描述任何學習或 RL 訓練迴路。因此不符合 Stage 2 的「應用於音訊領域」及相關偏好學習之學習組件要求，依據 Stage 2 標準應排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "1952",
+      "published_date_iso": "1952-01-01"
+    }
   },
   {
     "key": "plackett1975analysis",
@@ -4039,47 +3674,26 @@
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 449,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "plackett1975analysis",
-      "candidate_title": "The analysis of permutations",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "plackett1975analysis",
-        "record_title": "The analysis of permutations",
-        "source": "openalex",
-        "source_id": "10.2307/2346567",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/plackett1975analysis.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [
-        "Pertains to ranking/preferences: defines probability distributions over permutations and analyses ranking data",
-        "Paper is not a survey or review (original research article with methods and applications)"
-      ],
-      "triggered_exclusion_points": [
-        "Not applied within the audio domain (applications are voting and beanstore consumer preference)",
-        "No preference-based learning for audio models or RL training loop; work is statistical modeling/inference rather than preference-learning in audio"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Abstract: \"The results are applied to data on voting at elections and beanstores.\"",
-        "Full text keywords: \"CONSUMER PREFERENCES; ... VOTING BIAS; RANDOM PERMUTATIONS\"",
-        "Full text applications and examples: election data and beanstore consumer preference ranking; no mention of audio or audio models"
-      ],
-      "decision_rationale": "While the paper clearly concerns rankings and preference data (probability distributions over permutations; applications to voting and consumer rankings) and is an original research article, it is not applied within the audio domain and contains no preference-based learning for audio models (no RL loop or audio experiments). Fails the required Stage 2 criterion 'applied within the audio domain', therefore excluded (strong exclude)."
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "1975",
+      "published_date_iso": "1975-01-01"
     },
-    "review_reasoning": "While the paper clearly concerns rankings and preference data (probability distributions over permutations; applications to voting and consumer rankings) and is an original research article, it is not applied within the audio domain and contains no preference-based learning for audio models (no RL loop or audio experiments). Fails the required Stage 2 criterion 'applied within the audio domain', therefore excluded (strong exclude).",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "1975",
+      "published_date_iso": "1975-01-01"
+    }
   },
   {
     "key": "luce1959individual",
@@ -4095,43 +3709,26 @@
     "reference_cut_marker": null,
     "reference_cut_line_no": null,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "luce1959individual",
-      "candidate_title": "Individual Choice Behavior",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "luce1959individual",
-        "record_title": "Individual Choice Behavior",
-        "source": "crossref",
-        "source_id": "10.2307/1911299",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/luce1959individual.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "Survey or review article (excluded by criteria)",
-        "Not applied within the audio domain / fails audio-domain inclusion criterion"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "文首明示為書評: \"Review Reviewed Work(s): Individual Choice Behavior ... Review by: Patrick Suppes\"",
-        "全文內容討論選擇行為的理論、心理物理學、效用論與學習模型，但未提及任何音訊或 audio 應用（例如 Chapter 2: \"applications to psychophysics\"，無 audio 描述）"
-      ],
-      "decision_rationale": "Full text is a book review (explicitly labeled 'Review' and 'Review by: Patrick Suppes'), which matches the exclusion 'Survey or review articles are excluded.' The content discusses choice theory, psychophysics, utility, and learning models but contains no mention of audio-domain applications or preference-based learning applied to audio. 因此不符合 Stage 2 的音訊領域偏好學習納入條件，依據輸入文本明確排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: before_start",
+      "published_date_raw": "1962",
+      "published_date_iso": "1962-01-01"
     },
-    "review_reasoning": "Full text is a book review (explicitly labeled 'Review' and 'Review by: Patrick Suppes'), which matches the exclusion 'Survey or review articles are excluded.' The content discusses choice theory, psychophysics, utility, and learning models but contains no mention of audio-domain applications or preference-based learning applied to audio. 因此不符合 Stage 2 的音訊領域偏好學習納入條件，依據輸入文本明確排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: before_start",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:before_start",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "1962",
+      "published_date_iso": "1962-01-01"
+    }
   },
   {
     "key": "pan2022effects",
@@ -4184,7 +3781,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "chaudhari2025rlhf",
@@ -4237,7 +3841,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025-09-10",
+      "published_date_iso": "2025-09-10"
+    }
   },
   {
     "key": "kaufmann2024survey",
@@ -4289,7 +3900,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "latif2101survey",
@@ -4345,7 +3963,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "zhu2021deep",
@@ -4397,7 +4022,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-15",
+      "published_date_iso": "2021-04-15"
+    }
   },
   {
     "key": "liang2022holistic",
@@ -4451,7 +4083,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "yang2021superb",
@@ -4507,7 +4146,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "xu2025qwen2",
@@ -4523,48 +4169,26 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1047,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "xu2025qwen2",
-      "candidate_title": "Qwen2.5-Omni Technical Report",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "xu2025qwen2",
-        "record_title": "Qwen2.5-Omni Technical Report",
-        "source": "arxiv",
-        "source_id": "https://arxiv.org/abs/2503.20215",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/xu2025qwen2.md",
-        "fulltext_available": true
-      },
-      "stage_score": 5,
-      "decision_recommendation": "include",
-      "satisfied_inclusion_points": [
-        "明確使用偏好導向方法（DPO）於語音生成訓練",
-        "包含強化學習（RL）階段用於語音生成—存在 RL 訓練迴路",
-        "應用於音頻/語音領域（包含音頻編碼、語音生成與相關評測）",
-        "非綜述或回顧文章（為技術報告與實驗研究）"
-      ],
-      "triggered_exclusion_points": [],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "“The second stage utilized DPO (Rafailov et al., 2023) to enhance the stability of speech generation.”",
-        "“To mitigate this issue, we introduce a reinforcement learning phase to improve the stability of speech generation.”",
-        "“After receiving the information, Talker starts to autoregressively generate audio tokens and text tokens.”",
-        "描述音頻處理：“we resample it to a frequency of 16kHz and transform the raw waveform into a 128-channel mel-spectrogram”",
-        "實驗/結果段落顯示 RL 優化效果：提及 Qwen2.5-Omni-7BRL 並說明 RL 優化後的改進（表格與敘述）"
-      ],
-      "decision_rationale": "全文清楚記載於 Talker 的訓練流程中使用偏好導向方法（DPO）以及後續的強化學習階段來提升語音生成穩定性；且文章大量描述音頻處理、語音 token 生成與語音相關評測結果，顯示研究有實際的音頻/語音學習與訓練迴路。該工作為技術報告並包含方法與實驗，不是 survey。因此根據 Stage 2 定義（需為偏好學習且應用於音頻領域或包含 RL 訓練迴路），此篇符合納入條件，未觸發排除條件。"
+      "stage_score": 1,
+      "decision_recommendation": "exclude",
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2025-03",
+      "published_date_iso": null
     },
-    "review_reasoning": "全文清楚記載於 Talker 的訓練流程中使用偏好導向方法（DPO）以及後續的強化學習階段來提升語音生成穩定性；且文章大量描述音頻處理、語音 token 生成與語音相關評測結果，顯示研究有實際的音頻/語音學習與訓練迴路。該工作為技術報告並包含方法與實驗，不是 survey。因此根據 Stage 2 定義（需為偏好學習且應用於音頻領域或包含 RL 訓練迴路），此篇符合納入條件，未觸發排除條件。",
-    "review_evaluation": 5,
-    "review_state": "reviewed",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+    "review_evaluation": 1,
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
-    "final_verdict": "include (single:5)",
-    "paper_id": "2511.13936"
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
+    "final_verdict": "exclude (single:1)",
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2025-03",
+      "published_date_iso": null
+    }
   },
   {
     "key": "hurst2024gpt",
@@ -4620,7 +4244,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:2)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "team2024gemini",
@@ -4676,7 +4307,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "maybe (single:3)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "ginsparg2021lessons",
@@ -4730,7 +4368,14 @@
     "review_skipped": false,
     "discard_reason": null,
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "sutton2017popularity",
@@ -4746,44 +4391,25 @@
     "reference_cut_marker": "References",
     "reference_cut_line_no": 593,
     "review_output": {
-      "paper_id": "2511.13936",
-      "candidate_key": "sutton2017popularity",
-      "candidate_title": "Popularity of arXiv.org within Computer Science",
-      "workflow_arm": "single-reviewer-official-batch",
-      "stage": "stage2-single-reviewer-batch",
-      "source_record_provenance": {
-        "record_key": "sutton2017popularity",
-        "record_title": "Popularity of arXiv.org within Computer Science",
-        "source": "arxiv",
-        "source_id": "https://arxiv.org/abs/1710.05225",
-        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
-        "criteria_stage2_path": "criteria_stage2/2511.13936.json",
-        "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
-        "fulltext_candidate_path": "refs/2511.13936/mds/sutton2017popularity.md",
-        "fulltext_available": true
-      },
       "stage_score": 1,
       "decision_recommendation": "exclude",
-      "satisfied_inclusion_points": [],
-      "triggered_exclusion_points": [
-        "Paper does not pertain to preference learning (no ranking/A-B audio comparisons or RL training loop)",
-        "Paper is not applied within the audio domain (focuses on arXiv usage in computer science)"
-      ],
-      "uncertain_points": [],
-      "evidence_highlights": [
-        "Title: \"Popularity of arXiv.org within Computer Science\"",
-        "Abstract: \"...computer scientists have been slow to post electronic versions of papers on sites like arXiv.org...\"",
-        "Full text: \"We aim to quantify the extent to which computer scientists deposit papers in centralized e-print repositories, and whether these e-prints are preprints...\"",
-        "Full text: Focus on matching conference publications to arXiv and measuring e-print/preprint prevalence across CS areas (no audio or preference-learning content)."
-      ],
-      "decision_rationale": "本文研究主題為 computer science 中 arXiv/e-print 的使用情況（標題與全文明確說明：目的是衡量電腦科學會議論文在 arXiv 的發佈比率與 preprint 行為）。全文與摘要中沒有任何關於偏好學習（例如對音訊片段的排名、A/B 比較、將數值評分轉為排序、或用偏好作為學習信號／RL 訓練迴路）的描述，也沒有在音頻領域的應用證據。因此不符合 Stage 2 的必要納入條件（既非偏好學習，也非音頻應用），應排除。"
+      "decision_rationale": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
+      "published_date_raw": "2017-10",
+      "published_date_iso": null
     },
-    "review_reasoning": "本文研究主題為 computer science 中 arXiv/e-print 的使用情況（標題與全文明確說明：目的是衡量電腦科學會議論文在 arXiv 的發佈比率與 preprint 行為）。全文與摘要中沒有任何關於偏好學習（例如對音訊片段的排名、A/B 比較、將數值評分轉為排序、或用偏好作為學習信號／RL 訓練迴路）的描述，也沒有在音頻領域的應用證據。因此不符合 Stage 2 的必要納入條件（既非偏好學習，也非音頻應用），應排除。",
+    "review_reasoning": "Hard filtered by cutoff_jsons time_policy: unparseable_published_date",
     "review_evaluation": 1,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
     "final_verdict": "exclude (single:1)",
-    "paper_id": "2511.13936"
+    "paper_id": "2511.13936",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2017-10",
+      "published_date_iso": null
+    }
   }
 ]

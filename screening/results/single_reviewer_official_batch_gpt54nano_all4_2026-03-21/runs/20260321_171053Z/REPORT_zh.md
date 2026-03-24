@@ -5,12 +5,13 @@
 - model：`gpt-5.4-nano`
 - endpoint：`/v1/chat/completions`
 - batch_status：`completed`
+- posthoc_cutoff_reapplied_at：`2026-03-23T07:33:40.809846+00:00`
 
 ## 指標
 
-| Paper | Candidates | Batch requests | F1 | Delta vs current combined | Precision | Recall |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `2409.13738` | 2 | 2 | 0.0000 | -0.7843 | 0.0000 | 0.0000 |
+| Paper | Candidates | Batch requests | Cutoff filtered | F1 | Delta vs current combined | Precision | Recall |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `2409.13738` | 2 | 2 | 0 | 0.0000 | -0.7843 | 0.0000 | 0.0000 |
 
 ## 工件
 
