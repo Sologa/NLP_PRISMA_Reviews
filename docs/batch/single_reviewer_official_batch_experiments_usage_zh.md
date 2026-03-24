@@ -359,3 +359,55 @@ Cost_batch = (U / 1,000,000) * P_in
   - `precision = 0.7500`
   - `recall = 0.8571`
   - `f1 = 0.8000`
+
+## 2409 criteria 變更後的 low 重跑
+
+- 通用 rerun bundle：
+  - [single_reviewer_official_batch_2409_low_rerun_after_criteria_change_2026-03-24](../../single_reviewer_batch_experiments/single_reviewer_official_batch_2409_low_rerun_after_criteria_change_2026-03-24)
+- 結果根目錄：
+  - [single_reviewer_official_batch_2409_low_rerun_after_criteria_change_2026-03-24](../../screening/results/single_reviewer_official_batch_2409_low_rerun_after_criteria_change_2026-03-24)
+- 專門報告：
+  - [single_reviewer_low_rerun_after_2409_criteria_change_zh.md](./single_reviewer_low_rerun_after_2409_criteria_change_zh.md)
+  - [single_reviewer_low_rerun_after_2409_criteria_change.csv](./single_reviewer_low_rerun_after_2409_criteria_change.csv)
+- 與 criteria 變更先後對照：
+  - [single_reviewer_runs_vs_2409_criteria_change_zh.md](./single_reviewer_runs_vs_2409_criteria_change_zh.md)
+  - [single_reviewer_runs_vs_2409_criteria_change.csv](./single_reviewer_runs_vs_2409_criteria_change.csv)
+
+這次重跑的目標模型共有六個：
+
+- `gpt-5`
+- `gpt-5-mini`
+- `gpt-5-nano`
+- `gpt-5.4`
+- `gpt-5.4-mini`
+- `gpt-5.4-nano`
+
+目前已完成的有效 rerun：
+
+- `gpt-5`
+  - 有效 run id：`20260324_2409_rerun_gpt5_low`
+  - F1：`0.8889`
+- `gpt-5.4-mini`
+  - 有效 run id：`20260324_2409_rerun_gpt54mini_low`
+  - F1：`0.8636`
+- `gpt-5.4-nano`
+  - 有效 run id：`20260324_2409_rerun_gpt54nano_low`
+  - F1：`0.8400`
+
+目前仍在 OpenAI Batch API queue 的模型：
+
+- `gpt-5-mini`
+  - 初次嘗試：`20260324_2409_rerun_gpt5mini_low`
+  - replacement run：`20260324_2409_rerun2_gpt5mini_low`
+- `gpt-5-nano`
+  - 初次嘗試：`20260324_2409_rerun_gpt5nano_low`
+  - replacement run：`20260324_2409_rerun2_gpt5nano_low`
+- `gpt-5.4`
+  - 初次嘗試：`20260324_2409_rerun_gpt54_low`
+  - replacement run：`20260324_2409_rerun2_gpt54_low`
+
+狀態說明：
+
+- 目前六個模型都已重新提交為 `low` rerun。
+- 其中三個模型已完成，三個模型在 OpenAI 端仍停在 `in_progress 0/65`。
+- 專門報告會以模型為單位顯示有效結果；若同一模型有多次嘗試，採最新完成者為準。
