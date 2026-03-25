@@ -1,0 +1,854 @@
+{
+  "paper_id": "2511.13936",
+  "cutoff_json_path": "cutoff_jsons/2511.13936.json",
+  "time_policy": {
+    "enabled": true,
+    "date_field": "published",
+    "start_date": "2020-01-01",
+    "start_inclusive": true,
+    "end_date": "2025-11-17",
+    "end_inclusive": true,
+    "timezone": "UTC",
+    "derivation_mode": "intersection_of_projectable_time_clauses",
+    "projected_clause_ids": [
+      "stage1_r3",
+      "operational_fallback_sr_publication_date"
+    ],
+    "binding_clause_ids": [
+      "stage1_r3",
+      "operational_fallback_sr_publication_date"
+    ],
+    "fallback_applied": true
+  },
+  "evidence": [
+    {
+      "clause_id": "stage1_r3",
+      "section": "Stage 1 Retrieval Criteria",
+      "criterion_id": "R3",
+      "text": "Published from 2020 onward.",
+      "source": "criteria_mds/2511.13936.md"
+    },
+    {
+      "clause_id": "stage1_r6",
+      "section": "Stage 1 Retrieval Criteria",
+      "criterion_id": "R6",
+      "text": "For arXiv papers, the citation count must meet year-specific thresholds (2020: 28, 2021: 22, 2022: 32, 2023: 90, 2024: 13, 2025: 1).",
+      "source": "criteria_mds/2511.13936.md"
+    },
+    {
+      "clause_id": "operational_fallback_sr_publication_date",
+      "section": "Operational fallback",
+      "criterion_id": "N/A",
+      "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-11-17).",
+      "source": "paper: arxiv abs metadata"
+    }
+  ],
+  "normalization_notes": [
+    "The current JSON already gives the same window [2020-01-01, 2025-11-17], but it does not record the arXiv-only year-by-year citation gates that materially affect retrieval.",
+    "Those citation thresholds are subset-specific and non-window-like, so they stay in time_clauses with project_to_time_policy=false."
+  ],
+  "candidate_total_before_cutoff": 88,
+  "candidate_total_after_cutoff": 51,
+  "cutoff_excluded_count": 37,
+  "status_counts": {
+    "passed": 51,
+    "before_start": 32,
+    "unparseable_published_date": 5
+  },
+  "rows": [
+    {
+      "key": "google_scholar_hindex",
+      "title": "Top Publications - Computer Science",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    },
+    {
+      "key": "page2021prisma",
+      "title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    },
+    {
+      "key": "harzing2007pop",
+      "title": "Publish or Perish?",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
+    },
+    {
+      "key": "yang2010ranking",
+      "title": "Ranking-based emotion recognition for music organization and retrieval",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    },
+    {
+      "key": "cao2012combining",
+      "title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2012",
+      "published_date_iso": "2012-01-01"
+    },
+    {
+      "key": "cao2015speaker",
+      "title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    },
+    {
+      "key": "lotfian2016practical",
+      "title": "Practical considerations on the use of preference learning for ranking emotional speech",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    },
+    {
+      "key": "lotfian2016retrieving",
+      "title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    },
+    {
+      "key": "parthasarathy2016using",
+      "title": "Using agreement on direction of change to build rank-based emotion classifiers",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    },
+    {
+      "key": "parthasarathy2017ranking",
+      "title": "Ranking emotional attributes with deep neural networks",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    },
+    {
+      "key": "parthasarathy2018preference",
+      "title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    },
+    {
+      "key": "lopes2017modelling",
+      "title": "Modelling affect for horror soundscapes",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    },
+    {
+      "key": "han2020ordinal",
+      "title": "Ordinal learning for emotion recognition in customer service calls",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    },
+    {
+      "key": "chumbalov2020scalable",
+      "title": "Scalable and efficient comparison-based search without features",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    },
+    {
+      "key": "jayawardena2020ordinal",
+      "title": "How Ordinal Are Your Data?",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    },
+    {
+      "key": "dong2020pyramid",
+      "title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    },
+    {
+      "key": "zhou2021interactive",
+      "title": "Interactive Exploration-Exploitation Balancing for Generative Melody Composition",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-14",
+      "published_date_iso": "2021-04-14"
+    },
+    {
+      "key": "liu2021reinforcement",
+      "title": "Reinforcement learning for emotional text-to-speech synthesis with improved emotion discriminability",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    },
+    {
+      "key": "lei2023audio",
+      "title": "Audio-visual emotion recognition with preference learning based on intended and multi-modal perceived labels",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "naini2023unsupervised",
+      "title": "Unsupervised Domain Adaptation for Preference Learning Based Speech Emotion Recognition",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-06-04",
+      "published_date_iso": "2023-06-04"
+    },
+    {
+      "key": "naini2023preference",
+      "title": "Preference Learning Labels by Anchoring on Consecutive Annotations",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "wu2023interval",
+      "title": "From Interval to Ordinal: A HMM based Approach for Emotion Label Conversion",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "liao2024baton",
+      "title": "Baton: Aligning text-to-audio model with human preference feedback",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    },
+    {
+      "key": "cideron2024musicrl",
+      "title": "Musicrl: Aligning music generation to human preferences",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    },
+    {
+      "key": "anastassiou2024seed",
+      "title": "Seed-tts: A family of high-quality versatile speech generation models",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    },
+    {
+      "key": "chu2024qwen2",
+      "title": "Qwen2-Audio Technical Report",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-07-15",
+      "published_date_iso": "2024-07-15"
+    },
+    {
+      "key": "zhang2024speechalign",
+      "title": "SpeechAlign: Aligning Speech Generation to Human Preferences",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-04-08",
+      "published_date_iso": "2024-04-08"
+    },
+    {
+      "key": "wu2025adaptive",
+      "title": "Adaptive accompaniment with ReaLchords",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    },
+    {
+      "key": "kumar2025using",
+      "title": "Using RLHF to Align Speech Enhancement Approaches to Mean-Opinion Quality Scores",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-11-24",
+      "published_date_iso": "2024-11-24"
+    },
+    {
+      "key": "huang2025step",
+      "title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025-02-17",
+      "published_date_iso": "2025-02-17"
+    },
+    {
+      "key": "luo2025openomni",
+      "title": "Openomni: Large language models pivot zero-shot omnimodal alignment across language with real-time self-aware emotional speech synthesis",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    },
+    {
+      "key": "nagpal2025speech",
+      "title": "Speech recognition with LLMs adapted to disordered speech using reinforcement learning",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    },
+    {
+      "key": "gao2025emo",
+      "title": "Emo-dpo: Controllable emotional speech synthesis through direct preference optimization",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    },
+    {
+      "key": "ouyang2022training",
+      "title": "Training language models to follow instructions with human feedback",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    },
+    {
+      "key": "mckeown2011semaine",
+      "title": "The semaine database: Annotated multimodal records of emotionally colored conversations between a person and a limited agent",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    },
+    {
+      "key": "lotfian2017building",
+      "title": "Building naturalistic emotionally balanced speech corpus by retrieving emotional speech from existing podcast recordings",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    },
+    {
+      "key": "busso2016msp",
+      "title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    },
+    {
+      "key": "zhou2014predicting",
+      "title": "Predicting the geographical origin of music",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2014",
+      "published_date_iso": "2014-01-01"
+    },
+    {
+      "key": "lopes2015sonancia",
+      "title": "Sonancia : sonification of procedurally generated game levels",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    },
+    {
+      "key": "donahue2022melody",
+      "title": "Melody transcription via generative pre-training",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    },
+    {
+      "key": "reiter2018structured",
+      "title": "A Structured Review of the Validity of BLEU",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2018-09",
+      "published_date_iso": null
+    },
+    {
+      "key": "lin2004rouge",
+      "title": "Rouge: A package for automatic evaluation of summaries",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2004",
+      "published_date_iso": "2004-01-01"
+    },
+    {
+      "key": "papineni2002bleu",
+      "title": "Bleu: a method for automatic evaluation of machine translation",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2002",
+      "published_date_iso": "2002-01-01"
+    },
+    {
+      "key": "zhang2019bertscore",
+      "title": "BERTScore: Evaluating Text Generation with BERT",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    },
+    {
+      "key": "schluter2017limits",
+      "title": "The limits of automatic summarisation according to rouge",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    },
+    {
+      "key": "chakrabarty2024art",
+      "title": "Art or Artifice? Large Language Models and the False Promise of Creativity",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-09-25",
+      "published_date_iso": "2023-09-25"
+    },
+    {
+      "key": "zheng2023judging",
+      "title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "carterette2008here",
+      "title": "Here or there: Preference judgments for relevance",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2008",
+      "published_date_iso": "2008-01-01"
+    },
+    {
+      "key": "wester2015we",
+      "title": "Are we using enough listeners? no! — an empirically-supported critique of interspeech 2014 TTS evaluations",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    },
+    {
+      "key": "rix2001perceptual",
+      "title": "Perceptual evaluation of speech quality (PESQ)-a new method for speech quality assessment of telephone networks and codecs",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2002",
+      "published_date_iso": "2002-01-01"
+    },
+    {
+      "key": "morris2004and",
+      "title": "From WER and RIL to MER and WIL: improved evaluation measures for connected speech recognition",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2004",
+      "published_date_iso": "2004-01-01"
+    },
+    {
+      "key": "huang2022mulan",
+      "title": "MuLan: A Joint Embedding of Music Audio and Natural Language",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-12-04",
+      "published_date_iso": "2022-12-04"
+    },
+    {
+      "key": "manocha2020differentiable",
+      "title": "A differentiable perceptual audio metric learned from just noticeable differences",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    },
+    {
+      "key": "stiennon2020learning",
+      "title": "Learning to summarize from human feedback",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    },
+    {
+      "key": "metallinou2013annotation",
+      "title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2013",
+      "published_date_iso": "2013-01-01"
+    },
+    {
+      "key": "christiano2017deep",
+      "title": "Reinforcement-Learning-Deep-Reinforcement-Learning-from-Human-Preferences",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    },
+    {
+      "key": "liu2024lipo",
+      "title": "LiPO: Listwise Preference Optimization through Learning-to-Rank",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    },
+    {
+      "key": "cao2007learning",
+      "title": "Learning to rank: from pairwise approach to listwise approach",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
+    },
+    {
+      "key": "rafailov2023direct",
+      "title": "Direct preference optimization: Your language model is secretly a reward model",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "zhang2021sample",
+      "title": "Sample Efficient Reinforcement Learning with REINFORCE",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-05-18",
+      "published_date_iso": "2021-05-18"
+    },
+    {
+      "key": "schulman2017proximal",
+      "title": "Proximal Policy Optimization Algorithms",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017-07-20",
+      "published_date_iso": "2017-07-20"
+    },
+    {
+      "key": "casper2023open",
+      "title": "Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-07-27",
+      "published_date_iso": "2023-07-27"
+    },
+    {
+      "key": "ziegler2019fine",
+      "title": "Fine-Tuning Language Models from Human Preferences",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2019-09-18",
+      "published_date_iso": "2019-09-18"
+    },
+    {
+      "key": "shao2024deepseekmath",
+      "title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-02-05",
+      "published_date_iso": "2024-02-05"
+    },
+    {
+      "key": "gao2023scaling",
+      "title": "Scaling laws for reward model overoptimization",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    },
+    {
+      "key": "mantisnlp2023rlhf",
+      "title": "Fine-Tuning LLMs with Reinforcement Learning from Human Feedback (RLHF) - Part 3",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "kilgour2018fr",
+      "title": "Fréchet Audio Distance: A Metric for Evaluating Music Enhancement Algorithms",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2018-12",
+      "published_date_iso": null
+    },
+    {
+      "key": "mittag2021nisqa",
+      "title": "NISQA: A Deep CNN-Self-Attention Model for Multidimensional Speech Quality Prediction with Crowdsourced Datasets",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-19",
+      "published_date_iso": "2021-04-19"
+    },
+    {
+      "key": "itu20031534",
+      "title": "1534-1, method for the subjective assessment of intermediate quality levels of coding systems (mushra),”,”",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2003",
+      "published_date_iso": "2003-01-01"
+    },
+    {
+      "key": "singhal2023long",
+      "title": "A long way to go: Investigating length correlations in rlhf",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "al2023speech",
+      "title": "Speech Emotion Recognition: A Comprehensive Survey",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "zhou2023beyond",
+      "title": "Beyond One-Preference-Fits-All Alignment: Multi-Objective Direct Preference Optimization",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-10",
+      "published_date_iso": null
+    },
+    {
+      "key": "li2024omnibench",
+      "title": "Omnibench: Towards the future of universal omni-language models",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    },
+    {
+      "key": "bradley1952rank",
+      "title": "Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "1952",
+      "published_date_iso": "1952-01-01"
+    },
+    {
+      "key": "plackett1975analysis",
+      "title": "The analysis of permutations",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "1975",
+      "published_date_iso": "1975-01-01"
+    },
+    {
+      "key": "luce1959individual",
+      "title": "Individual Choice Behavior",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "1962",
+      "published_date_iso": "1962-01-01"
+    },
+    {
+      "key": "pan2022effects",
+      "title": "The effects of reward misspecification: Mapping and mitigating misaligned models",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    },
+    {
+      "key": "chaudhari2025rlhf",
+      "title": "RLHF Deciphered: A Critical Analysis of Reinforcement Learning from Human Feedback for LLMs",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025-09-10",
+      "published_date_iso": "2025-09-10"
+    },
+    {
+      "key": "kaufmann2024survey",
+      "title": "A survey of reinforcement learning from human feedback",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "latif2101survey",
+      "title": "A survey on deep reinforcement learning for audio-based applications",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "zhu2021deep",
+      "title": "Deep Audio-visual Learning: A Survey",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-15",
+      "published_date_iso": "2021-04-15"
+    },
+    {
+      "key": "liang2022holistic",
+      "title": "Holistic evaluation of language models",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    },
+    {
+      "key": "yang2021superb",
+      "title": "Superb: Speech processing universal performance benchmark",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    },
+    {
+      "key": "xu2025qwen2",
+      "title": "Qwen2.5-Omni Technical Report",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2025-03",
+      "published_date_iso": null
+    },
+    {
+      "key": "hurst2024gpt",
+      "title": "Gpt-4o system card",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    },
+    {
+      "key": "team2024gemini",
+      "title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    },
+    {
+      "key": "ginsparg2021lessons",
+      "title": "Lessons from arXiv’s 30 years of information sharing",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    },
+    {
+      "key": "sutton2017popularity",
+      "title": "Popularity of arXiv.org within Computer Science",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2017-10",
+      "published_date_iso": null
+    }
+  ],
+  "max_records_applied": null,
+  "candidate_total_after_cutoff_selected_for_run": 51
+}

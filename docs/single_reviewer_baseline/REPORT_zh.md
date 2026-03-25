@@ -1,13 +1,13 @@
 # Single Reviewer Baseline 總報告
 
-- 產生時間：`2026-03-24T01:52:54`
+- 產生時間：`2026-03-25T11:39:25`
 - CSV：`docs/single_reviewer_baseline/single_reviewer_runs_summary.csv`
 - 說明：本報告使用目前磁碟上各 run 的最新結果。若某些舊 run 曾被直接套用 `cutoff_jsons/<paper_id>.json` 的 `time_policy` 硬覆寫，這裡顯示的是覆寫後結果。
 
 ## 已完成 run
 
 - 已完成 paper-level 結果列數：`19`
-- 尚未完成 paper-level 結果列數：`0`
+- 尚未完成 paper-level 結果列數：`3`
 
 ## 2307.05527
 
@@ -50,12 +50,14 @@
 
 ## 尚未完成
 
-目前沒有 pending run。
+| 模型 | effort | paper | batch_status | cutoff後送審 | cutoff排除 | run_id |
+| --- | --- | --- | --- | ---: | ---: | --- |
+| `gpt-5-mini` | `low` | `2307.05527` | `validating` | `192` | `30` | `20260325_gpt5mini_low_2307_sep` |
+| `gpt-5-mini` | `low` | `2511.13936` | `validating` | `51` | `37` | `20260325_gpt5mini_low_2511_sep` |
+| `gpt-5-mini` | `low` | `2601.19926` | `in_progress` | `354` | `6` | `20260325_gpt5mini_low_2601_sep` |
 
 ## 補充觀察
 
 - `2409.13738` 目前最佳已完成結果是 `gpt-5-mini` / `low`，F1 = `0.8511`。
-- `gpt-4.1-mini` / `2409.13738` 已完成，F1 = `0.7241`，相對現行完整 pipeline 差值 `-0.0602`。
-- `2307.05527` 目前只有全量 run，最佳仍低於現行完整 pipeline。
-- `2511.13936` 目前所有已完成 single-reviewer 結果仍低於現行完整 pipeline。
-- `2601.19926` 目前最好的 single-reviewer 結果非常接近現行完整 pipeline，但仍略低。
+- 原本的三篇合併 batch `20260325_gpt5mini_low_other3` 已改為取消重跑；目前 OpenAI 狀態為 `cancelling`，進度 `0/597`。
+- 已改成三個單篇 batch 重新送出，避免再被 597 requests 綁在同一個 queue。
