@@ -11,7 +11,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 673.0,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This full-text article presents a concrete extraction pipeline for process information (MD/RE and BPMN mapping) based on NLP data-augmentation techniques, provides explicit experimental design with 5-fold cross-validation and 25 hyperparameter trials via Optuna, reports empirical results (Table 1) showing F1 gains, is written in English, and constitutes primary research with described methodology and empirical validation; no exclusion criteria appear to be violated.",
@@ -28,9 +28,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "kourani_process_modelling_with_llm",
@@ -44,7 +54,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 720.0,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "One-sentence explanation: This item is a full English primary research article that presents an explicit end-to-end method to extract/generate structured process models from natural-language descriptions, with concrete implementation details and empirical validation, meeting Stage 2 criteria (strongly include).\nEvidence mapping:\n- Full research article: central sections (Framework, Evaluation, Limitations, Conclusion) and an explicit end-to-end pipeline from textual descriptions to executable process models; includes a public GitHub repository with the full artifacts.\n- Full text in English: entire document is in English (Abstract, sections, figures, tables).\n- Primary research: proposes a novel framework, instantiates a concrete system, and provides empirical evaluation.\n- Concrete extraction method: describes input text -> prompting -> LLM code generation -> code execution -> generate POWL intermediate models -> transform to BPMN/Petri nets; includes sample code (Listing 1.x), predefined APIs, and an error-handling/refinement loop.\n- Empirical validation: Evaluation with two state-of-the-art LLMs (GPT-4 and Gemini) across two processes, multiple runs, error-handling iterations, and comparisons to a baseline TA approach; results illustrated in figures and tables.\n- Reproducibility: public artifacts available at the linked GitHub repository.\nOverall assessment: all Stage 2 confirmatory gates are satisfied; no major evidence gaps identified in the full text.",
@@ -61,9 +71,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-03-12",
+      "published_date_iso": "2024-03-12"
+    }
   },
   {
     "key": "lopez_assisted_declarative_process",
@@ -96,7 +116,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-10-01",
+      "published_date_iso": "2019-10-01"
+    }
   },
   {
     "key": "lopez_declarative_process_discovery",
@@ -129,7 +156,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "vda_extracting_declarative_process",
@@ -162,7 +196,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "schuler_state_2024",
@@ -176,7 +217,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 459.0,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Reasoning: This item is a literature review rather than an original text-to-process extraction method, as the abstract states 'We conducted a systematic literature review (LR) on automatic generation of business process models,' and the full text discusses categorizing existing approaches rather than presenting an executable extraction pipeline or author-level empirical validation; thus it fails Stage 1 core task fit and Stage 2 confirmatory gates for primary research with empirical validation. Evidence: (1) Abstract explicitly describes a systematic literature review; (2) Sections describe the LR process and a synthesis of prior work rather than a new text-to-process extraction method by the authors; (3) Inclusion criteria in Stage 2 require primary research with empirical validation, which this paper lacks as a survey/review. Missing: concrete, executable extraction pipeline from natural language to a process model authored by the paper and any empirical evaluation of such a method by the authors.缺少可追溯依據。",
@@ -193,9 +234,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:1,1)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "bellan_gpt3_2022",
@@ -228,7 +279,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "bellan_pet_23",
@@ -261,7 +319,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "lopez2021challenges",
@@ -297,7 +362,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "bellan2020qualitative",
@@ -333,7 +405,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-01-01",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "riefer2016mining",
@@ -369,7 +448,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "bordignon2018natural",
@@ -405,7 +491,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "maqbool2019comprehensive",
@@ -441,7 +534,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "bellan2021process",
@@ -474,7 +574,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-10-07",
+      "published_date_iso": "2021-10-07"
+    }
   },
   {
     "key": "han2020bps",
@@ -507,7 +614,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-10-01",
+      "published_date_iso": "2020-10-01"
+    }
   },
   {
     "key": "busch2023just",
@@ -540,7 +654,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "halioui2018bioinformatic",
@@ -573,7 +694,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018-06-14",
+      "published_date_iso": "2018-06-14"
+    }
   },
   {
     "key": "sonbol2023machine",
@@ -606,7 +734,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2021extracting",
@@ -639,7 +774,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-01-01",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "goossens2023extracting",
@@ -672,7 +814,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2020text2dec",
@@ -705,7 +854,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "sholiq2022generating",
@@ -738,7 +894,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-20",
+      "published_date_iso": "2022-10-20"
+    }
   },
   {
     "key": "nasiri2023automatic",
@@ -771,7 +934,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-25",
+      "published_date_iso": "2022-10-25"
+    }
   },
   {
     "key": "azevedo2018bpmn",
@@ -804,7 +974,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "ferreira2017semi",
@@ -837,7 +1014,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "goncalves2011let",
@@ -870,7 +1054,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "friedrich2011process",
@@ -903,7 +1094,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "chen2014pewp",
@@ -936,7 +1134,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2014-09-01",
+      "published_date_iso": "2014-09-01"
+    }
   },
   {
     "key": "quishpi2021extracting",
@@ -969,7 +1174,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "sintoris2017extracting",
@@ -1005,7 +1217,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017-07-01",
+      "published_date_iso": "2017-07-01"
+    }
   },
   {
     "key": "bellan2022process",
@@ -1038,7 +1257,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "neuberger2023beyond",
@@ -1071,7 +1297,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "qian2020approach",
@@ -1104,7 +1337,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-05-16",
+      "published_date_iso": "2019-05-16"
+    }
   },
   {
     "key": "elallaoui2018automatic",
@@ -1137,7 +1377,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "honkisz2018concept",
@@ -1170,7 +1417,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "friedrich2010automated",
@@ -1203,7 +1457,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    }
   },
   {
     "key": "robeer2016",
@@ -1236,7 +1497,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "berti2023abstractions",
@@ -1250,7 +1518,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 512.0,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "One-sentence: The paper provides a concrete, executable extraction/translation pipeline using textual abstractions of process mining artifacts and an empirical case-study evaluation, meeting Stage 2 criteria for primary research with an explicit extraction method and empirical validation.",
@@ -1270,9 +1538,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgment: Exclude (score 2). The paper is process-adjacent—it studies using LLMs to query and reason over textual abstractions of existing process-mining artifacts (event logs, models) rather than extracting or generating a structured process representation/model from natural-language text. This fails the Stage 1 observable gates that are required for inclusion.\n\nEvidence mapped to criteria (full-text quotations annotated):\n\nStage 1 observable gates (core inclusion requirements)\n- Core task fit (REQUIRED): NOT MET. The title and abstract state the paper’s focus is on abstractions and prompting for process mining, not on extracting structured process models from natural-language text. For example, the abstract says: “we apply LLMs in the context of process mining by i) abstracting the information of standard process mining artifacts and ii) describing the prompting strategies.” (Abstract). Section 3 further clarifies: “When using LLMs for process mining, the original event logs or process model representations cannot be directly used due to size limitations. An abstraction of these artifacts must be obtained…” (Section 3). There is no statement describing extraction of BPMN/DMN/Petri nets or other structured process models from natural-language text as the core task.\n\n- Method-role fit (REQUIRED): NOT MET for the specific Stage 1 requirement (NLP must be central to an extraction pipeline from natural text into structured process models). The paper uses textual abstractions and LLM prompting to answer queries and to generate SQL to verify hypotheses, e.g., “From these abstractions, specific queries are formulated for GPT-4 execution” and the pm4py integration examples (Listing 1.3). This shows LLMs are used for querying and reasoning over already-structured process artifacts, not for a text-to-model extraction pipeline.\n\nBecause both Stage 1 gates are unmet, the paper falls under the Stage 1 strong-negative exclusion category (topic-adjacent only / output-object mismatch).\n\nStage 2 confirmatory gates (checked because Stage 1 gates fail but listed for completeness)\n- Full research article, full text in English: MET (full text provided and in English). The manuscript contains sections, implementation details and case study.\n- Primary research: MET (presents implementation in pm4py and a case study, Section 4 and Section 5).\n- Concrete method specified: PARTIALLY MET for the paper’s stated task (textual abstraction + pm4py integration). The paper includes concrete abstractions (examples of DFG, Petri net abstractions) and code snippets (Listing 1.3). However, this concreteness pertains to abstraction/querying, not to text-to-model extraction.\n- Empirical validation: MET for the paper’s contribution (case study on public logs, Section 5). Again, validation is for querying/abstraction use-cases, not for extracting models from natural text.\n\nExclusion criteria matched\n- Topic-adjacent or process-adjacent only: YES — The paper focuses on using LLMs to work with process mining artifacts, not on constructing process models from natural-language text.\n- Output-object mismatch / generic LLM usage: YES — Work centers on question-answering/hypothesis generation and verification over abstractions and SQL generation, not on mapping natural text to structured process representations.\n\nJunior reviewers: Two junior reviews were provided: one recommended exclusion (evaluation=2) with reasoning aligned to the Stage-1 gate failures; the other recommended strong inclusion (evaluation=5) but its assessment conflicts with the explicit Stage-1 inclusion criteria. My decision follows the explicit Stage-1 criteria and the evidence in the full text.\n\nConclusion: Although the paper is a valid primary study (with implementation and empirical work) on LLM-assisted process-mining querying, it does not meet the Stage-1 core task requirement of extracting/generating structured process models from natural-language text. Per the screening criteria, this warrants a “likely exclude” recommendation (score 2).",
     "round-B_SeniorLead_evaluation": 2,
-    "final_verdict": "exclude (senior:2)",
-    "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07",
+      "published_date_iso": null
+    }
   },
   {
     "key": "grohs2023large",
@@ -1286,7 +1564,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 824.0,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Evidence supports Stage 2 inclusion: the full text presents three explicit text-to-process extraction tasks (mining BPMN from text, mining declarative constraints, and RPA-task classification) with NLP-based prompt-driven extraction as the core methodology, an empirical evaluation against benchmarks, English full text, and clear primary research contributions; no strong negatives are present.",
@@ -1303,9 +1581,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07-19",
+      "published_date_iso": "2023-07-19"
+    }
   },
   {
     "key": "bellan2022extracting",
@@ -1338,6 +1626,13 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   }
 ]

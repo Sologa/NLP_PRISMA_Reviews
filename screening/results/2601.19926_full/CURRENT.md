@@ -4,38 +4,46 @@ This file identifies the current authoritative score sources for `2601.19926`.
 
 ## Current score authority
 
-Current stable reference remains the latest fully benchmarked `senior_no_marker` reports:
+Current stable reference score authority remains the latest fully benchmarked senior_no_marker metrics:
 
 - Stage 1: `screening/results/2601.19926_full/review_after_stage1_senior_no_marker_report.json`
 - Combined: `screening/results/2601.19926_full/combined_after_fulltext_senior_no_marker_report.json`
 
 Current metrics:
 
-- Stage 1 F1: `0.9792`
-- Combined F1: `0.9733`
+- Stage 1 F1: `0.9761`
+- Combined F1: `0.9700`
 
-## Why these files are current
+## Cutoff-first policy
 
-`2601` has stage-split criteria files in the current repo structure, but there is not yet a same-level stage-split migration rerun that supersedes the latest fully benchmarked `senior_no_marker` reports.
+- Mandatory pre-review cutoff: `cutoff_jsons/2601.19926.json`
+- Cutoff-excluded candidates: `6`
+- Cutoff-failed rows are now forced to `exclude (cutoff_time_window)` before reviewer routing is treated as authoritative.
 
-Therefore, current stable reference remains the `senior_no_marker` benchmark outputs above.
+## Provenance
+
+Current runtime uses:
+
+- Stage 1 criteria: `criteria_stage1/2601.19926.json`
+- Stage 2 criteria: `criteria_stage2/2601.19926.json`
 
 ## Historical baselines in this directory
 
-These are historical comparison artifacts, not the current score authority:
-
+These remain useful for comparison, but they are not the current score authority:
 - `review_after_stage1_prompt_only_v1_report.json`
 - `combined_after_fulltext_report.json`
 - `stage1_recall_redesign_report.json`
 - `combined_recall_redesign_report.json`
 - `review_after_stage1_senior_adjudication_v1_report.json`
 - `combined_after_fulltext_senior_adjudication_v1_report.json`
+- `review_after_stage1_senior_no_marker_report.json`
+- `combined_after_fulltext_senior_no_marker_report.json`
 - `review_after_stage1_senior_prompt_tuned_report.json`
 - `combined_after_fulltext_senior_prompt_tuned_report.json`
-- all `latte_review_results.*.json` and `latte_fulltext_review_results.*.json` historical raw files
+- raw historical `latte_review_results*.json` and `latte_fulltext_review_results*.json` outputs
 
 ## Do-not-confuse notes
 
-- Do not describe `criteria_jsons/2601.19926.json` as the current active criteria.
-- Do not assume `2601` should follow stricter global senior behavior learned from `2409`.
-- For current answer generation, use the two authoritative report files listed at the top of this file.
+- Do not describe `criteria_jsons/*.json` as current production criteria.
+- Do not reuse pre-cutoff metrics as current score authority.
+- Read `AGENTS.md`, `docs/chatgpt_current_status_handoff.md`, and `screening/results/results_manifest.json` first.

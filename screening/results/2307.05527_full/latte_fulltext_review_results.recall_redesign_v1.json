@@ -11,7 +11,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 466,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This paper is a full-length study introducing Music Transformer, a generative model for music that uses token-based symbolic representations and self-attention aimed at producing long-range, structured musical sequences, with extensive experiments and human evaluations. Key evidence: (1) It states a language-modeling approach to training generative models for symbolic music (3.1), (2) it proposes a memory-efficient relative attention mechanism to enable long sequences (3.4, 3.5), (3) it reports experiments on JSB Chorales and Piano-e-Competition with objective metrics (NLL, perplexity) and ablations (Tables 2-3, Sections 4.1-4.2), and (4) it includes listening tests and qualitative priming/harmonization evaluations (4.2.3, Figure 5). The work focuses on generating music outputs and evaluates samples via perceptual listening tests, implying an audio-domain application, albeit using symbolic/MIDI representations rather than raw waveforms. There is no indication of non-audio outputs or primary focus on text/vision; thus it aligns with the criteria for generative audio modeling. A potential caveat is that the output representation is symbolic musical tokens rather than waveform Audio; however, the core aim is generating musically coherent audio outputs, evidenced by perceptual evaluations. Overall, the paper meets criteria for a full, audio-focused generative model with explicit evidence. One-sentence explanation: The paper presents a full-length, domain-appropriate generative music model with comprehensive quantitative and perceptual evaluations, satisfying the inclusion criteria.",
@@ -31,9 +31,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgment (by criteria):\n\n1) Full research paper (long-form): SUPPORTED.\n   - Evidence: The provided full text contains complete paper structure, abstract, sections, experiments, tables, and appendices (e.g., ABSTRACT; 1 INTRODUCTION; 2 RELATED WORK; 3 MODEL; 4 EXPERIMENTS; 5 CONCLUSION). This indicates a full-length research paper rather than an extended abstract.\n\n2) Topic = generative audio models, and primary output domain is entirely audio: NOT SUPPORTED (paper does not meet this requirement).\n   - Evidence that output is symbolic/MIDI tokens (not raw audio):\n     • Section 3.1: “We take a language-modeling approach to training generative models for symbolic music. Hence we represent music as a sequence of discrete tokens, with the vocabulary determined by the dataset.”\n     • Section 3.1 (Piano-e paragraph): “For the Piano-e-Competition we therefore use the performance encoding proposed by Oore et al. (2018) which consists of a vocabulary of 128 NOTE_ON events, 128 NOTE_OFFs, 100 TIME_SHIFTs allowing for expressive timing at 10ms and 32 VELOCITY bins for expressive dynamics (see A.2 for more details).”\n     • Section 3.1 earlier: “The JSB Chorale dataset consists of four-part scored choral music... serialize it in raster-scan fashion...” — all indicating tokenized symbolic representations.\n   - Evidence that authors perform perceptual listening tests / renderings does exist, but does not imply model outputs raw audio:\n     • ABSTRACT / footnote: “Samples are available for listening at https://storage.googleapis.com/music-transformer/index.html.”\n     • Section 4.2.3: “To compare the perceived sample quality... we carried out a listening test study...” and Figure 5 reporting listening-test results.\n   - Crucial interpretation per criteria: the model’s primary generative output is symbolic (MIDI-like event tokens) rather than audio waveforms or direct audio signals. The paper does not present a generative audio (waveform-level) model or claim to synthesize raw audio; it generates symbolic music sequences which can be rendered for listening. The inclusion criterion requires the output domain to be entirely audio (i.e., primary focus on generative audio outputs). That explicit requirement is not met by the full text.\n\nReconciliation of junior reviewers:\n - JuniorNano argued for inclusion (score=5) citing listening tests and perception of audio samples. Their claim relies on the fact that samples were made listenable and judged perceptually. While true (supported by the text), the paper’s model still emits symbolic tokens rather than audio waveforms; the full-text evidence shows the pipeline is symbolic → render to audio for evaluation. Thus this does not satisfy the explicit criterion “output domain is entirely audio.”\n - JuniorMini argued for exclusion (score=2) because the model outputs symbolic (MIDI) tokens, not raw audio — this is directly supported by explicit sentences in Section 3.1 and elsewhere and aligns with my assessment.\n\nRemaining evidential gaps (if any):\n - There is no statement in the full text that the model outputs raw audio waveforms or that waveform synthesis is part of the proposed model. Hence no contradictory evidence was found.\n\nFinal short justification sentence:\n - The paper is a full research article on generative symbolic music (MIDI/event-token) modeling with perceptual evaluations, but its primary generative output is symbolic tokens (not audio waveforms), therefore it does not meet the criterion that the output domain be entirely audio.\n",
     "round-B_SeniorLead_evaluation": 2,
-    "final_verdict": "exclude (senior:2)",
-    "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "bond2021deep",
@@ -69,7 +79,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "dhariwal2020jukebox",
@@ -102,7 +119,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "agostinelli2023musiclm",
@@ -135,7 +159,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "nanayakkara2021unpacking",
@@ -168,7 +199,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "habib2019semi",
@@ -201,7 +239,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "kim2020glow",
@@ -234,7 +279,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "huang2020ai",
@@ -267,7 +319,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "zhao2020vertical",
@@ -303,7 +362,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "greshler2021catch",
@@ -336,7 +402,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "douwes2021energy",
@@ -369,7 +442,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "cho2022attributable",
@@ -402,7 +482,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "kim2022guided",
@@ -435,7 +522,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "serra2022universal",
@@ -468,7 +562,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "deng2022v",
@@ -501,7 +602,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "esling2022challenges",
@@ -534,7 +642,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "huang2023make",
@@ -567,7 +682,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "Sisman2020overview",
@@ -603,7 +725,14 @@
     "round-B_SeniorLead_evaluation": 5,
     "final_verdict": "include (senior:5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "Wang2020DeepSonar",
@@ -639,7 +768,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "frid2020music",
@@ -672,7 +808,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "Suh2021AI",
@@ -705,7 +848,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "Li2021Robust",
@@ -741,7 +891,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "ghose2020autofoley",
@@ -774,7 +931,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "polyak2021high",
@@ -807,7 +971,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "zhang2021restoring",
@@ -840,7 +1011,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "kim2021conditional",
@@ -873,7 +1051,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "polyak2020unsupervised",
@@ -906,7 +1091,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "purwins2019deep",
@@ -942,7 +1134,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "zhou2018voice",
@@ -956,7 +1155,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. References",
     "reference_cut_line_no": 458,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "證據要點：\n- 全文長度與結構：文中為完整學術論文，包含 Abstract、1-6 節、結論與致謝，且標註 Interspeech 2018，符合「完整研究論文」與長文形式的要求。\n- 主題焦點：以生成式音訊模型（SampleRNN）為核心，透過條件化機制進行語音轉換，且提出非平行資料的訓練與多說話人模型等方法，明確聚焦於生成式音訊模型及其應用。\n- 輸出域：整篇論文的核心產出為語音合成與語音轉換的音訊波形與聲學特徵，屬於音訊輸出之生成任務，符合音訊輸出為主的條件。\n- 証據覆蓋範圍：提供方法（Conditional SampleRNN、內容提取、語音樣本生成）、實驗設計與主觀評價，且有對比 Baseline 的評估，證據充分支撐其作為生成式音訊模型之應用案例。\n- 排除條件檢視：文章內容圍繞音訊生成與語音轉換，非文字轉錄、非視訊生成等，未落入排除類別。\n結論：因此該論文完全符合包含標準，屬於強烈納入的候選，評分為5分。",
@@ -973,9 +1172,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "tae2021editts",
@@ -1008,7 +1217,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "mutascu2021artificial",
@@ -1041,7 +1257,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "diakopoulos2021anticipating",
@@ -1074,7 +1297,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "Zhuang2022dance",
@@ -1107,7 +1337,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "Valle2021Transflower",
@@ -1140,7 +1377,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "mardis2012toward",
@@ -1154,7 +1398,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1529,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The article covers NSF Broader Impacts and NSDL program structure, with no discussion of a generative audio model or audio-output applications, so it does not meet the inclusion criteria for a generative audio-focused full paper.",
@@ -1171,9 +1415,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:1,1)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2012",
+      "published_date_iso": "2012-01-01"
+    }
   },
   {
     "key": "roberts2009realizing",
@@ -1187,7 +1441,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 915,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "One-sentence explanation: This full-text is a policy/merit-review analysis of NSF’s Broader Impacts Criterion and dissemination practices, not a paper on generative audio models, so it does not meet the topic criteria. Evidence: (1) The article opens by stating NSF evaluates proposals on intellectual merit and broader impacts, not audio generation. (2) The methods involve coding broad impacts in grant summaries and analyzing dissemination to potential users, not audio outputs. (3) Keywords and sections focus on policy, dissemination, and use-inspired research rather than audio generation. (4) The conclusion discusses whether broad societal benefits improve real-world impact, with policy recommendations for NSF—no audio-model content. Gaps: No discussion of generative audio models, audio outputs, or audio applications; no methodological treatment of audio generation beyond general research dissemination.)",
@@ -1204,9 +1458,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:1,1)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2009",
+      "published_date_iso": "2009-01-01"
+    }
   },
   {
     "key": "barnett2022crowdsourcing",
@@ -1239,7 +1503,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "shelby2022sociotechnical",
@@ -1272,7 +1543,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "bernstein2021ethics",
@@ -1305,7 +1583,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "ahmed2023growing",
@@ -1338,7 +1623,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "brundage2018malicious",
@@ -1352,7 +1644,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 289,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This paper is a broad AI risk/ethics report and does not present a generative audio model or an audio-only application as its primary focus; audio-related content (speech synthesis for impersonation) appears only as a brief example within wider threat discussions, so it does not meet the inclusion criteria requiring a generative-audio-centric full paper.",
@@ -1369,9 +1661,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:1,1)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "weidinger2021ethical",
@@ -1404,7 +1706,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "Mirsky2021Creation",
@@ -1437,7 +1746,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,1)"
+    "discard_reason": "exclude (junior:1,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "boulianne2020study",
@@ -1470,7 +1786,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "marafioti_context_2019",
@@ -1503,7 +1826,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "yoshimura_mel-cepstrum-based_2018",
@@ -1517,7 +1847,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 625,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "It clearly centers on a generative audio model (WaveNet vocoder) for neural-network-based speech waveform synthesis and proposes mel-cepstrum-based quantization noise shaping, with objective MOS-LQO and subjective AB tests in both WaveNet-based synthesis and a TTS task, i.e., a full-length paper focused on audio generation; no evidence of non-audio outputs or missing criteria, so it strongly satisfies the inclusion criteria.",
@@ -1534,9 +1864,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "wang_armor_2021",
@@ -1569,7 +1909,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "mustafa_badi_neural_2021",
@@ -1602,7 +1949,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "tomczak_drum_2020",
@@ -1635,7 +1989,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "sekiguchi_semi-supervised_2019",
@@ -1668,7 +2029,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "du_joint_2020",
@@ -1701,7 +2069,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "xiang_parallel-data-free_2020",
@@ -1734,7 +2109,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "saito_perceptual-similarity-aware_2021",
@@ -1767,7 +2149,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "kameoka_convs2s-vc_2020",
@@ -1781,7 +2170,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 2492,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "本論文為完整長篇論文，提出以 ConvS2S 為核心的語音轉換生成模型，明確以產生音訊輸出為目標，符合輸出域為音訊的生成音頻主題，因此應納入。 \n關鍵證據：\n- 完整論文結構：摘要、介紹、方法、實驗、結論等完整章節，非延伸摘要或章節截斷。\n- 生成式音訊模型焦點：核心為語音轉換模型及多說話者擴展，包含模型設計、損失函數、訓練策略等，屬生成式音頻研究。\n- 輸出域為音訊：文中指出可產生時間域波形（使用 WORLD 聲碼器或神經語者），並有 MOS 等聽感評估。\n- 排除性判斷：內容聚焦於音訊輸出與生成，非文本、非視訊、非 ASR 轉寫。\n- 證據缺口：未見需要額外外部材料才支撐的主張，證據足夠支持納入。",
@@ -1798,9 +2187,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "huang_prodiff_2022",
@@ -1833,7 +2232,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "xue_noise_2021",
@@ -1866,7 +2272,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "zhu_pop_2020",
@@ -1899,7 +2312,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "hong_speech_2021",
@@ -1932,7 +2352,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "kameoka_nonparallel_2020",
@@ -1965,7 +2392,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "huang_melody_2021",
@@ -1998,7 +2432,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "fang_automatic_2020",
@@ -2031,7 +2472,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "chen_musicality-novelty_2018",
@@ -2045,7 +2493,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 893,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This is a full-length research paper detailing a generative audio model (Musicality-Novelty GANs) for algorithmic music composition, producing audio-valued samples for listening tests (see sections 4.2–4.3) and presenting piano-roll visuals (time-pitch-bars), which supports the ‘full paper’ and ‘generative audio model with audio outputs’ criteria.",
@@ -2062,9 +2510,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "wang_neuraldps_2022",
@@ -2097,7 +2555,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "hono_sinsy_2021",
@@ -2130,7 +2595,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "kaur_time_2023",
@@ -2163,7 +2635,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "tinchev_modelling_2023",
@@ -2196,7 +2675,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "neves_generating_2022",
@@ -2229,7 +2715,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "wagner_generative_2023",
@@ -2262,7 +2755,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "jin_voice-preserving_2022",
@@ -2295,7 +2795,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "kang_any-speaker_2022",
@@ -2328,7 +2835,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "zhao_review_2022",
@@ -2364,7 +2878,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "lee_conditional_nodate",
@@ -2397,7 +2918,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "yen_cold_nodate",
@@ -2430,7 +2958,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "lemercier_analysing_nodate",
@@ -2463,7 +2998,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "motsoehli_comparision_nodate",
@@ -2496,7 +3038,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "zhang_sdmuse_nodate",
@@ -2532,7 +3081,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "sawata_versatile_nodate",
@@ -2565,7 +3121,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "takahashi_hierarchical_nodate",
@@ -2598,7 +3161,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "kreuk_audiogen_2022",
@@ -2631,7 +3201,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "richter_speech_2022",
@@ -2664,7 +3241,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "lv_re-creation_2023",
@@ -2697,7 +3281,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "han_symbolic_nodate",
@@ -2733,7 +3324,14 @@
     "round-B_SeniorLead_evaluation": 5,
     "final_verdict": "include (senior:5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "wu_ddsp-based_2022",
@@ -2766,7 +3364,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "cho_sane-tts_2022",
@@ -2799,7 +3404,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "lee_bigvgan_2023",
@@ -2832,7 +3444,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "serra_universal_2022",
@@ -2865,7 +3484,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "li_styletts_2022",
@@ -2898,7 +3524,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "wu_power_2022",
@@ -2934,7 +3567,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "huang_generspeech_2022",
@@ -2967,7 +3607,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "valin_real-time_2022",
@@ -3000,7 +3647,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "hsu_parallel_2022",
@@ -3033,7 +3687,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "song_sintra_2022",
@@ -3066,7 +3727,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "xie_complex_2022",
@@ -3099,7 +3767,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "welker_speech_2022",
@@ -3132,7 +3807,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "liu_learning_2022",
@@ -3165,7 +3847,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "koo_end--end_2022",
@@ -3198,7 +3887,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "pu_building_2022",
@@ -3231,7 +3927,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "liu_diffgan-tts_2022",
@@ -3264,7 +3967,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "lu_conditional_2022",
@@ -3297,7 +4007,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "caillon_rave_2021",
@@ -3330,7 +4047,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "katakkar_towards_2021",
@@ -3363,7 +4087,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "you_self-supervised_2021",
@@ -3396,7 +4127,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "zhao2021accomontage",
@@ -3429,7 +4167,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "pati_is_2021",
@@ -3462,7 +4207,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "um_facetron_2022",
@@ -3495,7 +4247,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "lu_study_2021",
@@ -3528,7 +4287,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "liu2021conditional",
@@ -3561,7 +4327,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "hadjeres_piano_2021",
@@ -3597,7 +4370,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "zhang_incorporating_2021",
@@ -3633,7 +4413,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "fenaux_bumblebee_2021",
@@ -3669,7 +4456,14 @@
     "round-B_SeniorLead_evaluation": 5,
     "final_verdict": "include (senior:5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "verma_generative_2021",
@@ -3702,7 +4496,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "chen_wavegrad_2021",
@@ -3735,7 +4536,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "zhang_wsrglow_2021",
@@ -3768,7 +4576,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "rouard_crash_2021",
@@ -3801,7 +4616,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "bie_benchmark_2021",
@@ -3834,7 +4656,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "greshler_catch--waveform_2021",
@@ -3867,7 +4696,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "min_meta-stylespeech_2021",
@@ -3900,7 +4736,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "chandna_loopnet_2021",
@@ -3933,7 +4776,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "liu_diffsinger_2022",
@@ -3966,7 +4816,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "mittal_symbolic_2021",
@@ -4002,7 +4859,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "guo_hierarchical_2021",
@@ -4038,7 +4902,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "hono_periodnet_2021",
@@ -4071,7 +4942,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "broek_mp3net_2021",
@@ -4104,7 +4982,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "proctor_laptop_2020",
@@ -4137,7 +5022,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "weiss_wave-tacotron_2021",
@@ -4170,7 +5062,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "kong_hifi-gan_2020",
@@ -4203,7 +5102,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "zhou_generative_2020",
@@ -4236,7 +5142,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "hono_hierarchical_2021",
@@ -4269,7 +5182,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "subramani_hprnet_2020",
@@ -4302,7 +5222,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "ren_popmag_2020",
@@ -4335,7 +5262,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "wang_learning_2020",
@@ -4368,7 +5302,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "chen_unsupervised_2020",
@@ -4401,7 +5342,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "morrison_controllable_2020",
@@ -4434,7 +5382,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "mccarthy_hooligan_2020",
@@ -4467,7 +5422,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "wu_jazz_2020",
@@ -4500,7 +5462,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "song_neural_2020",
@@ -4533,7 +5502,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "shankar_non-parallel_2020",
@@ -4566,7 +5542,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "tan_generative_2020",
@@ -4599,7 +5582,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "wu_speech--singing_2020",
@@ -4632,7 +5622,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "cai_cross-lingual_2020",
@@ -4665,7 +5662,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "hsu_wg-wavenet_2020",
@@ -4698,7 +5702,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "engel_ddsp_2020",
@@ -4731,7 +5742,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "liu_score_2020",
@@ -4764,7 +5782,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "raja_music_2020",
@@ -4797,7 +5822,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "whitehill_multi-reference_2019",
@@ -4830,7 +5862,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "yamamoto_parallel_2020",
@@ -4863,7 +5902,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "luo_mg-vae_2019",
@@ -4896,7 +5942,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "binkowski_high_2019",
@@ -4929,7 +5982,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "liang_midi-sandwich2_2019",
@@ -4965,7 +6025,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "hung_improving_2019",
@@ -4998,7 +6065,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "yu_conditional_2021",
@@ -5034,7 +6108,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "nakatani_maximum_2019",
@@ -5070,7 +6151,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "bazin_nonoto_2019",
@@ -5103,7 +6191,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "genchel_explicitly_2019",
@@ -5139,7 +6234,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "korzekwa_interpretable_2019",
@@ -5172,7 +6274,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "aouameur_neural_2019",
@@ -5205,7 +6314,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "liang_midi-sandwich_2019",
@@ -5241,7 +6357,14 @@
     "round-B_SeniorLead_evaluation": 5,
     "final_verdict": "include (senior:5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "pati_learning_2019",
@@ -5277,7 +6400,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "mustafa_analysis_2019",
@@ -5310,7 +6440,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "hodari_using_2019",
@@ -5343,7 +6480,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "vasquez_melnet_2019",
@@ -5376,7 +6520,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "kwon_effective_2019",
@@ -5409,7 +6560,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "wan_chive_2019",
@@ -5442,7 +6600,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "gillick_learning_2019",
@@ -5475,7 +6640,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "pariente_statistically_2019",
@@ -5508,7 +6680,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "purwins_deep_2019",
@@ -5544,7 +6723,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "castro_performing_2019",
@@ -5577,7 +6763,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "wang_neural_2019",
@@ -5610,7 +6803,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "bitton_assisted_2019",
@@ -5643,7 +6843,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "bollepalli_generative_2017",
@@ -5676,7 +6883,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "nugraha_deep_2019",
@@ -5709,7 +6923,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "thio_minimal_2019",
@@ -5742,7 +6963,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "park_sinusoidal_nodate",
@@ -5775,7 +7003,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "ming_feature_2019",
@@ -5808,7 +7043,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "wang_neural_2019-1",
@@ -5822,7 +7064,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "5. REFERENCES",
     "reference_cut_line_no": 663,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "本論文清楚提出並實現一個非自回歸的神經源濾波波形模型用於語音合成，屬於生成式音頻模型且為完整長文，且有實驗與消融分析支持。證據要點：- 模型架構：source 模块產生正弦激勵 e1:T，filter 模块將其轉換為語音波形 bo1:T；- 訓練準則：以頻域的譜幅距離 Ls 與相位距離 Lp 作為訓練目標，使用 SGD；- 與基線比較：與 AR WaveNet 與 WORLD 等比較，大規模聽感測試顯示 NSF 的 MOS 接近 AR WaveNet，且生成速度遠快於 AR WaveNet；- 消融分析：證實正弦波激勵與譜域距離對性能之重要性。",
@@ -5839,9 +7081,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "hsu_hierarchical_2018",
@@ -5855,7 +7107,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 713,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "根據全文，本論文提出並評估 GMVAE-Tacotron 這類生成性語音模型，明確以兩層混合先驗的變量構造生成語音，並以 Tacotron 2 基礎與 WaveRNN 對語音與梅爾頻譜進行生成，含多語者、嘈雜背景與風格控制等實驗，以及主客觀評價與混合成分分析，且輸出域為語音音頻/波形，符合“生成性音訊模型為核心且輸出域為音訊”的 inclusion 條件；同時文中未展開倫理風險分析或提供外部可重現性材料等可見證據，為潛在的研究缺口。",
@@ -5872,9 +7124,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "koh_rethinking_2018",
@@ -5888,7 +7150,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 587,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This paper strongly satisfies the inclusion criteria for generative audio modeling: it introduces a Convolutional-Variational Recurrent Neural Network for music generation and evaluates MIDI outputs using Information Rate (via VMO), including polyphonic generation and a video-game music application. Key evidence: 1) explicit model description and generative goal (Convolutional-Variational Recurrent Neural Network combining CNN, VAE, and RNN to generate music); 2) encoder-decoder with latent probabilistic connections for sequential data generation; 3) MIDI-based input/output with piano-roll representation; 4) training on Nottingham dataset of 1200 folk tunes and comparison with MelodyRNN variants; 5) IR-based evaluation of structure via VMO, showing higher IR for the proposed model; 6) demonstration of polyphonic generation and long-term structure; 7) explicit application to video game music; 8) generated samples are MIDI sequences (and synthesized audio for IR). Note: the text does not include explicit discussion of ethical implications of generative audio.",
@@ -5905,9 +7167,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "bitton_modulated_2018",
@@ -5921,7 +7193,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 638,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Brings a full-length paper focused on generative audio modeling with explicit audio output. Evidence: MoVE architecture for musical timbre transfer, many-to-many transfer within a single variational auto-encoder, FiLM conditioning for interactive control, and an MMD objective avoiding GANs; experiments show reconstruction and audio-domain transfers, with NSGT-based spectral representations and synthesis capabilities. The output domain is audio (timbre transfer and synthesis), not text/vision/video, and the paper provides dataset details, implementation, and evaluation on audio tasks. Therefore, it fully satisfies the inclusion criteria for a generative audio model paper with audio outputs. Missing aspects: none evident from the main text; no non-audio outputs claimed. Overall assessment supports inclusion (score 5).",
@@ -5938,9 +7210,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "lee_conditional_2018",
@@ -5954,7 +7236,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 337,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "One-sentence explanation: The text clearly constitutes a full-length research paper focused on a generative audio model conditioned on class labels (cWaveGAN), with a WaveGAN baseline, explicit methodology, experiments on raw audio, and conclusions, thus strongly eligible for inclusion. Evidence supporting inclusion: - Full manuscript structure (Sections 1–8) indicating a complete paper rather than an abstract. - Introduces Conditional WaveGANs (cWaveGAN) and conditioning techniques (concatenation, conditional scaling) to generate raw audio. - Uses WaveGAN as baseline and discusses GAN-based generation in audio, outputs raw waveform (1D convs, 8192-length, tanh final activation). - Experiments describe dataset (Speech Commands SC09), training setup, and preliminary results (human-recognizable audio) with ongoing efforts to stabilize training. - Output domain is audio-only (raw waveform) with PCM format references in the text. - The content includes tables listing architectures and hyperparameters, indicating an empirical study. There is no conflicting exclusion claim in the text. Therefore the paper strongly meets inclusion criteria for a generative-audio full-text paper.",
@@ -5971,9 +7253,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "brunner_symbolic_2018",
@@ -5987,7 +7279,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 964,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Key evidence supporting inclusion: - The paper presents a generative model (CycleGAN-based) applied to music genre transfer, explicitly stating adaptation of CycleGAN to symbolic music and the claim of first application in this domain. - It provides architectural details of the generative/adversarial framework, including generators, discriminators, and cycle-consistency losses, which are central to a generative audio model. - The task is framed as genre transfer in symbolic MIDI data, with experiments and quantitative evaluation using a genre classifier CA,B to measure transfer strength, plus qualitative examples and audio samples. - The dataset, preprocessing, and piano-roll representation define how music is encoded for generation, confirming the focus on music generation rather than purely discriminative tasks. - The paper discusses evaluation of audio results (audio samples) and notes that domain transfer can be heard by humans, reinforcing audio-centric evaluation. - Additional discriminators to regularize generation and keep the original content align with the goal of producing plausible audio/music outputs while performing style transfer. - It is stated as the first GAN-based symbolic music domain transfer work, and the authors provide code/data to facilitate future research. Potential limitations or gaps: While the work is clearly music-focused, the primary outputs are symbolic MIDI representations rather than raw audio waveforms; however, the paper frequently references audio samples and the eventual perceptual evaluation, suggesting the audio domain is still the intended end-use. Despite this, explicit emphasis on symbolic MIDI as the data representation could be seen as a minor ambiguity regarding “output domain is entirely audio.” Overall, the evidence supports including this as a generative audio model paper focused on music genre transfer. 1-sentence conclusion: This is a full paper that develops and evaluates a GAN-based music genre transfer model on symbolic MIDI data with perceptual audio evidence, satisfying the inclusion criteria for a generative audio model publication.",
@@ -6004,9 +7296,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "dieleman_challenge_2018",
@@ -6020,7 +7322,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 615,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The article is a full-length research paper focused on generative audio modeling of raw piano audio, introducing autoregressive discrete autoencoders (ADAs) including VQ-VAE and AMAE, evaluating hierarchical audio generation on 413 hours of solo piano data with both quantitative metrics (NLL, perplexity) and qualitative listening tests, and detailing audio-domain outputs via WaveNet-based architectures and reconstructed waveforms, thereby satisfying all inclusion criteria (full paper, audio-only output, generative model focus) with a strong fit (score 5).",
@@ -6037,9 +7339,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "gu_multi-task_2018",
@@ -6053,7 +7365,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. References",
     "reference_cut_line_no": 546,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "1-sentence explanation: The paper clearly constitutes a full research article focusing on a generative audio model (Multi-task WaveNet) with audio waveform outputs, satisfying the inclusion criteria with strong evidence. Key supporting details include: (1) Abstract states a generative model for SPSS based on WaveNet and multi-task learning aimed at producing high-quality speech waveforms conditioned on linguistic features; (2) Section 2 describes WaveNet as a generative model using dilated causal convolutions for waveform generation; (3) Section 3 introduces Multi-task WaveNet with a secondary task for acoustic features (MCCs and F0) and notes removal of external F0 prediction, highlighting an audio-generation-centric objective; (4) The system operates on raw audio outputs (16 kHz waveform inputs/outputs) and uses µ-law quantization with a 256-level softmax output, reinforcing the audio-output focus; (5) Experimental setup includes objective and subjective evaluations comparing WaveNet variants and MTL-WaveNet on audio quality metrics, across two speech corpora, demonstrating a full experimental study rather than a mere abstract or theoretical discussion; (6) The paper is structured as a full-length article (sections 1–6) with detailed methodology, experiments, and conclusions, not an abstract or chapter. Collectively, these points align with the criteria for a generative audio model focus, full paper form, and audio-domain output, and there is little evidence suggesting a non-audio primary focus within the provided full text.",
@@ -6070,9 +7382,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "juvela_speaker-independent_2018",
@@ -6086,7 +7408,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. References",
     "reference_cut_line_no": 580,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This is a full paper presenting GlotNet, a speaker-independent neural waveform generator for glottal excitation with audio output, including architecture, training losses (discretized logistic mixture density), and extensive listening tests and objective evaluations against a direct WaveNet vocoder, thus meeting full-paper and generative-audio focus criteria.",
@@ -6103,9 +7425,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "arik_neural_2018",
@@ -6119,7 +7451,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 641,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This item is a full-length, audio-focused generative-model paper; thus strongly eligible for inclusion (score 5) based on explicit criteria evidence. Key evidence: - It is a complete research paper (NIPS 2018, arXiv:1802.06006) with sections, figures, and experiments, not an abstract. - The topic is generative audio modeling for voice cloning with two approaches (speaker adaptation and speaker encoding) and outputs audio; its primary focus is on a generative speech-synthesis model. - The evidence scope includes main text and appendices detailing methodology, architectures (speaker encoder, multi-speaker model), and evaluation methods (MOS, EER, speaker classification/verification), indicating thorough analysis of the generative audio model. - The output domain is explicitly audio (speech synthesis, cloning, morphing) with no indication of non-audio primary outputs. - Datasets and experiments (LibriSpeech, VCTK) are used to support the generative-audio focus, and the paper discusses cloning from few samples and related evaluations; no major gaps in evidence for inclusion are evident.",
@@ -6136,9 +7468,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "wilkinson_generative_2019",
@@ -6152,7 +7494,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 526,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This is a full-length study focused on a generative audio model for natural sounds, explicitly describing generation via sampling of latent functions (e.g., 'sampling from the prior... generates functions' and 'new synthetic audio' in Section 3.2) and evaluating realism with a listening test (Section 4.2; Fig.5), which directly aligns with the inclusion criteria.",
@@ -6169,9 +7511,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "bando_statistical_2018",
@@ -6185,7 +7537,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "6. REFERENCES",
     "reference_cut_line_no": 683,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The paper presents a complete research work that (i) introduces a unified probabilistic generative model for audio (speech) by combining a VAE-based speech model with an NMF-based noise model, (ii) trains the speech model on clean audio and performs Bayesian inference to reconstruct enhanced speech, and (iii) evaluates outcomes in the audio domain (speech spectrogram reconstruction and SDR improvements) on established audio datasets (CHiME-3 and DEMAND), satisfying inclusion criteria for a generative audio model with audio outputs and full-paper coverage.",
@@ -6202,9 +7554,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "louie_expressive_2021",
@@ -6237,7 +7599,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "huang_singgan_2022",
@@ -6270,7 +7639,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "bie_unsupervised_2022",
@@ -6303,7 +7679,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "wu_quasi-periodic_2021",
@@ -6336,7 +7719,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "wu_quasi-periodic_2021-1",
@@ -6369,6 +7759,13 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   }
 ]

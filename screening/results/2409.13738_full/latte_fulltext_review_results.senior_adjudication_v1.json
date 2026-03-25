@@ -11,7 +11,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1420,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "結論摘要：本項目為完整研究論文，含實驗驗證與具體方法，但未直接覆蓋「使用 NLP 從自然語言文本提取流程的具體方法」之主題，因此屬於不符合該特定納入條件的情況，評分為2。關鍵證據如下：- 符合納入的正向證據：完整研究論文結構（有引言、方法、實例、評估與討論等）；提供實驗設置與基線比較；提出一個具體的自我協作框架與流程分工、角色指令與演算法（Algorithm 1、2 部分、實例設計）; 進行六個代碼生成基準與真實場景的實驗案例。- 不符合的證據（NLP 流程抽取的特定主題缺乏直接證據）：文中未出現以 NLP 將自然語言描述轉為結構化流程模型的研究或方法，也未以「流程抽取（process extraction）」為核心任務描述或驗證。- 其他符合/不清楚的點：論文著重於多代理協作與軟體開發流程管理，屬於自動化代碼生成與軟體工程領域的主題，與原始的 NLP 流程抽取任務存在語義層面差異。若要提升證據度，需直接出現關於 NLP 轉換文本為可計算流程模型的實驗或案例說明。",
@@ -31,9 +31,19 @@
     },
     "round-B_SeniorLead_reasoning": "綜合判定（結論）：評分為 3（不確定 / 需要更多證據）。簡短說明：本文為完整原創研究並詳述方法與實驗，但缺乏可追溯的明確證據表明其「專門針對從自然語言文本抽取流程（activities/actors/control flow → 結構化流程模型）」這一核心納入條件，因此不能確定納入。\n\n逐條對齊證據（僅基於提供之全文片段）：\n- Full research article / full research paper: 支持。證據：文中多處標示為 ACM Trans. Softw. Eng. Methodol., 38 pages、包含完整章節（Introduction, Framework, Instance, Evaluation, Related Work, Discussion, Conclusion）。\n- Full text available: 支持（提供之片段包含大量方法、算法與實驗細節與案例，並顯示為全文刊載格式）。\n- Written in English: 支持（全文為英文）。\n- Primary research (original contribution): 支持。證據：文中明確提出「self-collaboration framework」、實例化三角隊（analyst, coder, tester）、Algorithm 1，並有實驗評估與貢獻列點（Contributions 列表）。\n- Explicates a concrete method: 支持。證據：詳細敘述了 division of labor、role instructions、collaboration 模型（含 Eq.(1),(2) 與 Algorithm 1），以及 role instruction 範例（Fig.3）。\n- Describes experiments to empirically validate the method: 支持。證據：第4節 Evaluation 與多個基準（MBPP, HumanEval, APPS, CoderEval 等）與 RQs 明確列出，且結果與案例分析（網站、遊戲等）在文中呈現。\n- Specifically covers use of NLP for process extraction from natural language text: 無法支持／有缺口。理由／細節：\n  - 文中確實描述 analyst 會“break down requirements and develops high-level plans” 並提到可要求 LLM 以 JSON 輸出以減少遺漏，這表示將自然語言需求轉為某種結構化輸出或計劃（e.g., “Analyst. The goal of the analyst is to reduce the difficulty of coding by abstracting and decomposing the task from a high level…”；“it is recommended to ask LLMs to generate outputs in JSON format directly”）。\n  - 然而，全文沒有明確自稱或定義為「流程抽取（process extraction）」，也未述明要將自然語言中的活動、參與者、控制流等映射成正式的流程模型或流程表示（例如 Petri net、BPMN、流程控制流圖或相當的結構化過程表示），亦無針對流程抽取任務的專門評估或資料集；相關措辭僅為以軟體開發需求分解為子任務與高階計劃，屬於為生成可執行程式碼所做的需求解析，而非文獻定義的「自動流程模型抽取」任務。\n  - 根據審查指示“未明確提到的主張不算作證據；避免把隱含訊息硬推斷為事實”，上述 analyst→plan 的描述不足以直接等同或證明本文專門研究「NLP→結構化流程模型（activities/actors/control flow）」的過程抽取任務。\n\n結論性判斷與建議：\n由於除「專門的流程抽取」外，其它納入標準均被全文證據支持，但關鍵納入條件（專門針對從自然語言抽取流程）缺乏明確、可追溯的陳述或實驗驗證，依指示應保守處理為不確定，因此給予評分 3。如需確切納入，請補充能直接對應流程抽取任務的文字證據，例如：聲明研究目標為“extract process models/BPMN/control-flow from NL descriptions”、提供用於流程抽取的數據集或評估指標、或展示將 NL 轉為流程表示的範例與評測結果。",
     "round-B_SeniorLead_evaluation": 3,
-    "final_verdict": "maybe (senior:3)",
-    "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-09-27",
+      "published_date_iso": "2024-09-27"
+    }
   },
   {
     "key": "qian_chatdev_2024",
@@ -47,7 +57,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1132,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "While the work employs NLP via LLM-powered agents and natural-language communication to coordinate design, coding, and testing, it does not describe an NLP-for-process-extraction method to derive structured process models from natural-language descriptions, nor provide experiments validating such extraction, so it does not meet the inclusion criteria.",
@@ -67,9 +77,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgment: I recommend score = 3 (不確定 / 需要更多證據). Rationale: the submission is a full, original research paper about LLM-based multi-agent software development with detailed methods and experiments, meeting most formal inclusion criteria, but it does not present evidence that it specifically performs or evaluates “NLP for process extraction” (i.e., converting natural-language descriptions of activities/actors/control-flow into structured process models), which is the key topical requirement — that missing evidence warrants a conservative “3.”\n\nCriterion-level evidence (traceable to the provided full text):\n\n1) Full research article / full research paper: Supported. Evidence: front matter states “Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)” and the paper has standard sections (Abstract, Introduction, Related Work, Methods, Evaluation, Conclusion, Limitations). This clearly indicates a full long paper.\n\n2) Full text available: Supported. Evidence: The entire paper text is included in the input (title, abstract, and full sections up through Limitations and Acknowledgments).\n\n3) Written in English: Supported. Evidence: The entirety of the provided text is in English (e.g., Abstract, Sections 1–6).\n\n4) Primary research (original contribution): Supported. Evidence: The paper repeatedly states original contributions: “In this paper, we introduce ChatDev...”, presents new mechanisms (chat chain, communicative dehallucination), describes implementation and experiments (Section 4), and reports quantitative results (Tables and analyses).\n\n5) Specifically covers use of NLP for process extraction from natural language text: NOT SUPPORTED / missing. Evidence: Nowhere does the paper describe or evaluate a method that takes natural-language descriptions and outputs a structured process model (activities, actors, control flow). The paper’s focus (from Abstract and Sections 3–4) is on coordinating LLM-powered agents to perform software design, coding, and testing via multi-turn chat: e.g., Abstract: “specialized agents driven by large language models (LLMs) are guided in what to communicate (via chat chain) and how to communicate (via communicative dehallucination) ... solutions derived from their multi-turn dialogues.” Section 3 describes chat chains, agent roles, memory, and dehallucination. Section 4 describes dataset SRDD and experiments comparing ChatDev to baselines. However, there is no text stating that the system extracts structured process models from free-text requirements (no formal representation of process models, no extraction algorithm, no example of extracted process graphs, and no evaluation metrics for process extraction). The SRDD dataset is a ‘‘Software Requirement Description Dataset’’ (Section 4), but its existence alone does not constitute process-model extraction; the paper uses SRDD as software task prompts for agent-driven development rather than as input→structured-process-output evaluation.\n\nMissing explicit evidence that would be needed to include: (a) a described algorithm or model that maps natural-language requirement descriptions to a structured process representation (e.g., BPMN, event logs, activity/control-flow graphs), (b) examples of extracted process models from NL inputs, and (c) experiments/evaluation metrics validating extraction accuracy (precision/recall over activities, control-flow correctness, or human-annotated gold process models). None of these are present in the provided text.\n\n6) Explicates a concrete method: Supported (for the authors’ problem). Evidence: The paper formalizes the chat chain (equations 1–5), describes agent prompting (eq. 2), communicative dehallucination (eqs. 6–7), memory design, system prompts, and experimental settings — all concrete method details.\n\n7) Describes experiments to empirically validate the method: Supported. Evidence: Section 4 defines baselines (GPT-Engineer, MetaGPT), constructs SRDD, defines metrics (completeness, executability, consistency, quality), reports quantitative results (Table 1, pairwise evaluations Table 2), ablation studies, and communication analyses.\n\nOverall assessment and brief explanation (1-sentence): Because the paper clearly meets the formal requirements of a full original research paper with concrete methods and experiments but lacks any explicit method or evaluation that converts natural-language descriptions into structured process models (the central topical inclusion criterion), I conservatively rate it a 3 — additional, traceable evidence of explicit process-extraction methodology and evaluation would be required to include it.",
     "round-B_SeniorLead_evaluation": 3,
-    "final_verdict": "maybe (senior:3)",
-    "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-01-01",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "neuberger_data_augment",
@@ -83,7 +103,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 673,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This is a full-length, English-language primary NLP study on process extraction that explicitly presents a concrete data-augmentation method and empirically validates it, satisfying all inclusion criteria. Key evidence: (1) Full article structure with sections 2–6 and results; (2) English-language full text; (3) Original research with experiments (MD and RE) on PET dataset; (4) Concrete method (19 applicable augmentation techniques, exclusion criteria, hyper-parameter optimization); (5) Empirical validation via 5-fold cross-validation showing performance gains; (6) Code/datasets publicly available for replication; (7) Directly addresses NLP-driven process extraction from natural language text.",
@@ -100,9 +120,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "du2022_r-gqa",
@@ -135,7 +165,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "kourani_process_modelling_with_llm",
@@ -149,7 +186,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 720,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Key evidence: explicit claim of generating and refining process models from natural-language process descriptions, a concrete framework using POWL with export to BPMN/Petri nets, and empirical evaluation using GPT-4 and Gemini across two example processes, supporting the article as full primary NLP-for-process-extraction research.",
@@ -166,9 +203,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-03-12",
+      "published_date_iso": "2024-03-12"
+    }
   },
   {
     "key": "lopez_assisted_declarative_process",
@@ -204,7 +251,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-10-01",
+      "published_date_iso": "2019-10-01"
+    }
   },
   {
     "key": "lopez_declarative_process_discovery",
@@ -237,7 +291,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "vda_extracting_declarative_process",
@@ -270,7 +331,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "wvda_declare",
@@ -303,7 +371,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:2,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:2,2)"
+    "discard_reason": "exclude (junior:2,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2009-03-10",
+      "published_date_iso": "2009-03-10"
+    }
   },
   {
     "key": "bellan_gpt3_2022",
@@ -336,7 +411,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "cunningham2013getting",
@@ -372,7 +454,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2013-02-01",
+      "published_date_iso": "2013-02-01"
+    }
   },
   {
     "key": "shen2018ordered",
@@ -408,7 +497,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018-10-22",
+      "published_date_iso": "2018-10-22"
+    }
   },
   {
     "key": "li2005using",
@@ -444,7 +540,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2005-06-29",
+      "published_date_iso": "2005-06-29"
+    }
   },
   {
     "key": "sanh2020distilbert",
@@ -477,7 +580,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "maybe (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-10-02",
+      "published_date_iso": "2019-10-02"
+    }
   },
   {
     "key": "mikolov2013distributed",
@@ -510,7 +620,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "maybe (junior:2,2)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2013",
+      "published_date_iso": "2013-01-01"
+    }
   },
   {
     "key": "Eberts2021",
@@ -546,7 +663,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-01-01",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "weidlich2011",
@@ -560,7 +684,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1990,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "判定理由：此稿為流程模型的行為型態分析與一致性測度之研究，屬於形式化方法與實驗驗證領域，並未涉及以自然語言處理（NLP）對自然語言文本進行流程抽取的內容，因此不符合 inclusion criteria 中的 NLP-for-process-extraction 要求。證據要點：- 全文結構完備，包含引言、方法、實驗、結論等，且有 SAP 參考模型之實證，屬於完整研究論文；- 以英語撰寫；- 提出具體方法（行為輪廓與一致性度量），並有實作與實驗驗證（與 SAP 參考模型的驗證）；- 未出現 NLP 相關內容或自然語言文本轉換為流程模型的具體方法、資料描述或實驗。缺口：缺少可追溯依據顯示 NLP-為-流程抽取的實證方法與實驗，因此無法滿足該核心 inclusion criterion。結論性說明：本文不符合 NLP-for-process-extraction 的要件，儘管是高質量的完整研究，仍應排除於此 NLP-主題的納入清單之中。簡短說明：因未涵蓋 NLP 用於流程抽取的內容，因此不符合該 inclusion criterion。",
@@ -580,9 +704,19 @@
     },
     "round-B_SeniorLead_reasoning": "Per-criterion assessment using only the provided full text (title/abstract + body excerpts):\n\n1) Full research article / full research paper: SUPPORTED.\n   Evidence: The document is a full IEEE Transactions paper with abstract, sections (Introduction, Preliminaries, Related Work, Conclusion), author affiliations and manuscript history (e.g., “Manuscript received 2 Oct. 2009; revised 24 Apr. 2010; accepted 23 May 2010”), indicating a full research article.\n\n2) Full text available: SUPPORTED.\n   Evidence: A long contiguous full-text excerpt is provided (multiple sections and figures are present in the input).\n\n3) Written in English: SUPPORTED.\n   Evidence: Title and abstract are in English (e.g., “Efficient Consistency Measurement Based on Behavioral Profiles of Process Models”).\n\n4) Primary research (original contribution; not secondary research): SUPPORTED.\n   Evidence: The abstract and conclusion describe original contributions (behavioral profile concept, algorithmic complexity proof, implementation, experiments on SAP reference model): “Our contribution is a concept called behavioral profile... computed efficiently... We prove ... in O(n^3) time... The derivation of behavioral profiles and the calculation of a degree of consistency have been implemented...”\n\n5) Specifically covers use of NLP for process extraction from natural language text: NOT SUPPORTED / CONTRADICTED.\n   Evidence (absence + explicit focus elsewhere):\n   - The paper focuses on formal models and Petri nets: “behavioral profile... sound free-choice Petri nets” and “we use workflow (WF) systems [20] as our formal grounding.”\n   - The method operates on existing process models and aligns them: “checking consistency between partially overlapping models of the SAP reference model.”\n   - The paper discusses related areas such as process mining and matching of model elements (labels, correspondences), but not NLP-based extraction from natural language: e.g., “For our experiments, we consider a simple matching based on string equivalence of labels...” and “process mining, which aims at constructing models from event logs.” There is no mention of “natural language”, “text”, “NLP”, “information extraction”, “parsing”, or any method that transforms natural-language descriptions into process models.\n   Therefore there is no traceable text supporting that the paper specifically covers NLP-for-process-extraction.\n\n6) Explicates a concrete method: SUPPORTED (but not NLP-based).\n   Evidence: The paper defines behavioral profiles, complexity results, and an implemented approach: “We introduce the formal concept of a behavioral profile... We prove... profile consistency can be checked... All concepts proposed in this paper have been implemented...”\n\n7) Describes experiments to empirically validate the method: SUPPORTED (but not NLP-based).\n   Evidence: The abstract and conclusion state implementation and experiments on the SAP reference model: “We also report the findings from checking consistency between partially overlapping models of the SAP reference model.”\n\nOverall judgment: The paper is a full, primary-research article that clearly presents and validates a concrete method, but it does not address NLP-based extraction of process models from natural-language text — the key inclusion criterion for the NLP-for-process-extraction collection is not met and there is no traceable supporting evidence in the full text. Per instructions, this warrants exclusion.\n\nOne-sentence explanation for score: The paper does not cover NLP-based process extraction from natural-language text (no mention or evidence of NLP/text extraction methods), so it should be strongly excluded from the NLP-for-process-extraction inclusion set.",
     "round-B_SeniorLead_evaluation": 1,
-    "final_verdict": "exclude (senior:1)",
-    "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2011-05",
+      "published_date_iso": null
+    }
   },
   {
     "key": "bellan_pet_23",
@@ -615,7 +749,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "devlin_bert_2018",
@@ -651,7 +792,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "lopez2021challenges",
@@ -687,7 +835,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "han2020bps",
@@ -720,7 +875,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-10-01",
+      "published_date_iso": "2020-10-01"
+    }
   },
   {
     "key": "Devlin2019BERTPO",
@@ -756,7 +918,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "halioui2018bioinformatic",
@@ -789,7 +958,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018-06-14",
+      "published_date_iso": "2018-06-14"
+    }
   },
   {
     "key": "sonbol2023machine",
@@ -822,7 +998,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2021extracting",
@@ -855,7 +1038,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-01-01",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "goossens2023extracting",
@@ -888,7 +1078,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2020text2dec",
@@ -921,7 +1118,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "sholiq2022generating",
@@ -954,7 +1158,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-20",
+      "published_date_iso": "2022-10-20"
+    }
   },
   {
     "key": "nasiri2023automatic",
@@ -987,7 +1198,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-25",
+      "published_date_iso": "2022-10-25"
+    }
   },
   {
     "key": "azevedo2018bpmn",
@@ -1020,7 +1238,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "ferreira2017semi",
@@ -1053,7 +1278,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "goncalves2011let",
@@ -1086,7 +1318,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "friedrich2011process",
@@ -1119,7 +1358,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "chen2014pewp",
@@ -1152,7 +1398,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2014-09-01",
+      "published_date_iso": "2014-09-01"
+    }
   },
   {
     "key": "quishpi2021extracting",
@@ -1185,7 +1438,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "bellan2022process",
@@ -1218,7 +1478,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "neuberger2023beyond",
@@ -1251,7 +1518,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "qian2020approach",
@@ -1284,7 +1558,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-05-16",
+      "published_date_iso": "2019-05-16"
+    }
   },
   {
     "key": "elallaoui2018automatic",
@@ -1317,7 +1598,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "honkisz2018concept",
@@ -1353,7 +1641,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "friedrich2010automated",
@@ -1386,7 +1681,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    }
   },
   {
     "key": "robeer2016",
@@ -1422,7 +1724,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "berti2023abstractions",
@@ -1436,7 +1745,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 512,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "1-sentence explanation: The paper provides a concrete NLP-driven method for process extraction via textual abstractions and LLM prompting, with implementation in pm4py and a multi-log empirical case study, thus strongly meeting the inclusion criteria.\n\nKey evidence supporting inclusion criteria:\n- Full-text English, full article structure with Sections 1–6 and a Case Study (e.g., Introduction, Approach, Implementation, Case Study, Conclusion) indicating a complete research article.\n- Primary research with original contribution: proposes Abstractions of process mining artifacts, prompting strategies, and integration with GPT-4/pm4py, plus empirical evaluation.\n- Concrete NLP-for-process-extraction method: uses natural language prompts and LLM reasoning to query abstracted process mining artifacts (DFG, variants, Petri nets) and to formulate/verify hypotheses, as described in Sections 3 and 3.2.\n- Explicit, reproducible method: provides textual abstractions (Listing 1.1, 1.2), and describes an implementation workflow in pm4py (Section 4) with code-style examples (Listing 1.3).\n- Empirical validation: includes a Case Study with multiple public event logs (Road Traffic, BPI Challenge 2020, Sepsis, CCC19), evaluation of prompts (Table 1), and Hypothesis Formulation/Verification (Section 5.2, 5.1, 5.3), demonstrating empirical testing of the method.\n- Demonstrates NLP-assisted process mining workflow rather than general reflection: emphasizes prompt engineering, abstraction granularity, and use of SQL-like verification against event data (Listing 1.6), aligned with NLP-for-process-extraction.\n\nPotential caveat (not a missing criterion): while the work uses LLMs to interpret abstractions rather than extracting processes directly from free-form natural language descriptions of processes, it explicitly targets NLP-enabled querying and extraction of process insights from artifacts, which still satisfies the NLP-for-process-extraction scope of the inclusion criteria.\n\nOverall assessment: strong alignment with all criteria; no decisive evidence contradicts eligibility.\n",
@@ -1456,9 +1765,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgment (1-sentence): The paper is a full, primary-research article that concretely describes and implements an LLM-driven method for querying and analyzing process-mining artifacts (textual abstractions + prompting) and empirically evaluates it, but it does not provide evidence that it performs automated process extraction from free-form natural-language descriptions into structured process models.\n\nPer-criterion evidence (only from the provided full text):\n1) Full research article / full research paper — SUPPORTED\n   - Evidence: full structure with Abstract and numbered sections (e.g., \"1 Introduction\", \"2 Related Work\", \"3 Approach\", \"4 Implementation\", \"5 Case Study\", \"6 Conclusion\").\n2) Full text available — SUPPORTED\n   - Evidence: complete paper text is provided in the prompt (includes listings, figures, tables and sections).\n3) Written in English — SUPPORTED\n   - Evidence: entire provided text is in English (e.g., Abstract, Sections 1–6).\n4) Primary research (original contribution) — SUPPORTED\n   - Evidence: the paper states original contributions: \"we apply LLMs in the context of process mining by i) abstracting the information of standard process mining artifacts and ii) describing the prompting strategies.\" Also: \"We implement the proposed abstraction techniques into pm4py...\" (Section 1 & Section 4). This indicates a novel method and implementation plus case study.\n5) Specifically covers use of NLP for process extraction from natural language text — NOT SUPPORTED / PARTIAL\n   - Evidence for what it actually does: the paper repeatedly describes using LLMs to analyse textual abstractions of process-mining artifacts (e.g., \"textual abstractions of standard process mining artifacts, e.g., event logs and process models\" (Section 3.1)) and to answer natural-language queries or generate SQL for hypothesis verification (Sections 3.2, 5.2, Listings 1.5–1.6).\n   - Missing evidence: there is no statement, example, or experiment showing transformation of free-form natural-language descriptions (e.g., textual documents describing activities/actors/control flow) into structured process representations or models. The work operates on abstractions derived from event logs and process models, not on extracting models directly from natural-language descriptions. The Related Work cites other works that extract constraints from natural language, but that is not the authors’ implemented method.\n6) Explicates a concrete method — SUPPORTED\n   - Evidence: concrete abstraction formats are shown (Listing 1.1 DFG, Listing 1.2 Petri net abstraction), a pm4py integration example (Listing 1.3), and descriptions of prompt strategies (Section 3.2).\n7) Describes experiments to empirically validate the method — SUPPORTED\n   - Evidence: Case study on multiple public event logs (Road Traffic, BPI 2020, Sepsis, CCC19), results table (Table 1), and hypothesis verification example with SQL (Section 5, Listings 1.5–1.6).\n\nKey gap that determines scoring: The inclusion criterion asking for \"specifically covers use of NLP for process extraction from natural language text\" appears to demand transforming natural-language descriptions into structured process models. The provided text demonstrates using LLMs to reason about and query textual abstractions of already-structured artifacts (event logs, DFGs, Petri nets), not extracting process models from unstructured natural-language descriptions. There is no traceable evidence in the full text of automated extraction from free-form natural-language process descriptions.\n\nBecause that specific criterion is not met by the text (while all other required criteria are met), I deliver a conservative score per instruction 4: lacking the particular evidence requested, the paper should be marked as uncertain for that inclusion requirement.\n\nFinal short justification (1-sentence): The paper strongly meets all general inclusion criteria (full paper, English, primary research, explicit method, experiments) but lacks documented evidence that it performs automated extraction of process models from free-form natural-language descriptions, so the correct conservative assessment is uncertain.\n",
     "round-B_SeniorLead_evaluation": 3,
-    "final_verdict": "maybe (senior:3)",
-    "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07",
+      "published_date_iso": null
+    }
   },
   {
     "key": "kampik2023large",
@@ -1472,7 +1791,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1152,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "此評分說明：本文為概念性/展望型論文，未提供針對自然語言文本到流程模型的具體NLP萃取方法、也未描述實驗以驗證此類方法，因此不符合 inclusion criteria 中「Specifically covers use of NLP for process extraction from natural language text」與「Explicates a concrete method」與「Describe experiments」；證據缺口在於缺少可追溯的實作細節、實驗設計與結果，僅討論LPM架構、知識圖與LLM微調等概念性內容。因文章未給出可重現的NLP-based流程萃取方法與實驗，屬於需要更多證據以證實可行性的情況，故評分為3；現有文字證據顯示的內容為概念與展望，非實證方法。",
@@ -1492,9 +1811,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgment: This is a conceptual/vision paper ( Large Process Model ) that meets the basic bibliographic criteria but does NOT provide a concrete NLP-for-process-extraction method nor any experiments to validate such a method — therefore evidence for the key inclusion criteria (concrete method + experiments) is missing. I reviewed the two junior reviewers’ assessments (both rated 3) and agree with their conclusions.\n\nPer-criterion evidence (only using the provided full text):\n- Full research article / full research paper: Supported. Evidence: header shows journal, DOI and publication metadata (\"KI - Künstliche Intelligenz (2025) 39:81–95 https://doi.org/10.1007/…\", \"Received: 31 October 2023 / Accepted: 5 July 2024 / Published online: 26 July 2024\").\n- Full text available: Supported. Evidence: the full paper text is provided in the input (title, abstract, sections 1–8, etc.).\n- Written in English: Supported. Evidence: the entire article text is in English (e.g., abstract: \"The continued success of Large Language Models (LLMs) ...\").\n- Primary research (original contribution; not secondary research): Supported (with caveat). Evidence: the paper explicitly proposes a new concept/vision: \"we propose the concept of a Large Process Model (LPM)\" (Abstract and Sect. 4) — this is an original conceptual contribution rather than a literature review.\n- Specifically covers use of NLP for process extraction from natural language text: Not supported. Evidence: the paper discusses LLMs and related work and mentions related topics (e.g., \"process model generation [11] and task list extraction from text [12]\" and uses LLMs conceptually), but it does not present or explicate a concrete pipeline/approach that transforms natural-language descriptions into structured process models. The text frames LPM as a broader neuro-symbolic architecture and vision rather than as an NLP-for-extraction methods paper (e.g., Abstract: \"we propose the concept of a Large Process Model (LPM) that combines ...\" and Sect. 4: architectural components are described at a conceptual level without algorithmic detail).\n- Explicates a concrete method: Not supported. Evidence: although Sect. 4 describes components (\"process atoms\", \"process fine-tuned LLM\", \"BPM tools and integration\", \"run-time contextualization\"), there are no concrete method details (no algorithms, model architectures, training datasets, data preprocessing steps, or step-by-step NLP extraction procedures) that would allow reproduction. The paper repeatedly frames ideas as \"vision\" and \"feasibility\" (e.g., \"we argue that implementing an LPM is feasible, but also highlight limitations and research challenges\").\n- Describes experiments to empirically validate the method: Not supported. Evidence: there are no experimental sections, no datasets, no experimental design, nor results reported. The paper explicitly treats some directions as \"nascent\" or \"too nascent to warrant predictions of large-scale industry deployments\" (Conclusion / Sect. 6/7 discussion), and cites other works that performed preliminary experiments, but this paper itself provides no empirical validation.\n\nMissing, traceable evidence: (1) a reproducible description of an NLP-to-process-extraction method (algorithms, model architecture, data, training/fine-tuning details); (2) experimental design, datasets, metrics, and results validating any such method. Per the instructions, when such evidence is missing, be conservative.\n\nBrief 1-sentence explanation for score (and final score): The paper is a well-argued conceptual/vision contribution about LLMs and BPM but lacks the necessary, traceable concrete NLP method description and experimental validation required by the inclusion criteria, so I give a conservative rating of 3.",
     "round-B_SeniorLead_evaluation": 3,
-    "final_verdict": "maybe (senior:3)",
-    "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "grohs2023large",
@@ -1508,7 +1837,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 824,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Explanation: This is a full English-language, primary research article that empirically validates NLP-based process extraction from natural language text. It explicitly presents three concrete NLP tasks (mining imperative BPMN models from natural language, mining declarative process models, and assessing RPA suitability) applied via GPT-4, with a detailed methodology and empirical evaluation against benchmarks, including recall/precision/F1 metrics, and discusses robustness and practical implications. Key evidence includes: (1) three task descriptions and corresponding sections (3, 4, 5) with experiments; (2) explicit comparison against existing approaches or benchmarks; (3) reported quantitative metrics (recall, precision, F1) across multiple prompts and robustness analyses; (4) discussion of practical use and limitations in Section 6 and conclusions in Section 7. Together, these substantiate a full, original contribution focused on NLP-based process extraction with experimental validation, meeting and exceeding inclusion criteria. ",
@@ -1525,9 +1854,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07-19",
+      "published_date_iso": "2023-07-19"
+    }
   },
   {
     "key": "vidgof2023large",
@@ -1541,7 +1880,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 656,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The article is a full-length, English-language arXiv paper that discusses concrete NLP-enabled approaches to process extraction within the BPM lifecycle (e.g., 3.1 Identification: process discovery from documentation; 3.2 Discovery: process discovery from documentation/communication logs; 3.3 Process model querying), and it outlines six concrete research directions, which aligns with the inclusion criteria on topic and format. However, it does not report any empirical experiments or validation of the proposed methods, and the content is framed as exploratory guidance and directions rather than validated methods with datasets, evaluation metrics, and results. This lack of empirical validation evidence is the main gap against the required criterion of describing experiments to empirically validate the method. Key supporting evidence includes the article's structure and content (full sections, English text, explicit NLP/BPM focus) and explicit statements of exploratory research directions and absence of reported experiments. Gaps include no reported datasets, experiments, or empirical results to validate the proposed methods. Therefore, the score is 3 (uncertain/needs more evidence).",
@@ -1561,9 +1900,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgement: score = 3 (uncertain / needs more evidence). I agree with the two junior reviews: the paper is a full-length, original, English arXiv preprint that discusses LLM/NLP applications to BPM in a conceptual/exploratory way and proposes six research directions, but it does not present a concrete NLP method for automated process extraction nor any empirical experiments or datasets to validate such a method.\n\nCriteria-level evidence (text-anchored):\n1) Full research article / full text available / English: SUPPORTED. Evidence: title and header indicate an arXiv preprint and English full text (e.g., header: \"arXiv:2304.04309v1 [cs.SE] 9 Apr 2023\" and abstract beginning: \"Large language models are deep learning models ...\"). The paper repeatedly states full-paper structure: \"The paper is structured as follows.\" and \"Preprint submitted to arXiv.\" These support that a full English research article is provided.\n\n2) Primary research (original contribution; not secondary research): PARTIALLY SUPPORTED (conceptual/orienting original contribution). Evidence: the authors state an original, exploratory agenda: \"In this paper, we address the research challenge of how LLM applications can be integrated at different stages of business process management.\" and \"Our research approach is exploratory ... we developed strategies of how LLM applications can be integrated ... We observe various promising usage scenarios and identify challenges for future research.\" This indicates original conceptual contributions (research directions) rather than a literature-review-only paper.\n\n3) Specifically covers use of NLP for process extraction from natural-language text: NOT SUPPORTED as a method contribution. Evidence of topical coverage (conceptual): Section headings and prose discuss relevant application areas—e.g., \"3.1 Identification ... Identifying processes from documentation The idea is to give LLM all relevant documentation ... LLM is then tasked to identify which processes are taking place in the organization.\" and \"3.2 Discovery ... Process discovery from documentation ... LLM are extremely suitable for this task as they can summarize high volumes of text in a concise and structured way.\"\nHowever, these are high-level descriptions of potential applications; there is no concrete algorithm, model architecture, preprocessing pipeline, or procedural method spelled out for transforming natural-language descriptions into structured process models.\n\n4) Explicates a concrete method: NOT SUPPORTED / MISSING. There is no detailed method specification (no algorithm, no model training/fine-tuning description, no prompt engineering protocol with reproducible steps). The authors repeatedly frame the work as exploratory and directional: \"Our research approach is exploratory...\" and Section 4 lists research directions rather than presenting a concrete implemented method.\n\n5) Describes experiments to empirically validate the method: NOT SUPPORTED / MISSING. There are no datasets, no experimental setup, no evaluation metrics, nor results/tables reported. The text mentions future work and challenges but contains no empirical validation (e.g., \"For future work, we plan to work on developing research directions that are beyond the scope of this paper.\").\n\nKey gaps (traceable to the full text):\n- No concrete NLP/process-extraction method is given (missing reproducible method description).\n- No datasets, benchmarks, experiments, or quantitative/qualitative evaluations are reported to validate any proposed method.\n\nDecision rationale (one-sentence): The paper is a full-length, English, original exploratory article that conceptually addresses NLP/LLM applications for BPM (thus topical) but lacks a concrete NLP method for automated process extraction and any empirical validation, so per instructions I conservatively assign 3 (needs more evidence).",
     "round-B_SeniorLead_evaluation": 3,
-    "final_verdict": "maybe (senior:3)",
-    "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-04",
+      "published_date_iso": null
+    }
   },
   {
     "key": "bellan2022extracting",
@@ -1596,7 +1945,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "hasic2019complexity",
@@ -1629,6 +1985,13 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "maybe (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   }
 ]

@@ -11,7 +11,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 673,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "One-sentence explanation: Although the paper clearly covers NLP-based process information extraction with a concrete method and experiments, it is an arXiv preprint and not shown as peer-reviewed, so it does not meet the 'peer-reviewed publication' criterion. - Peer-reviewed publication: Not satisfied; Evidence: the item is listed as arXiv preprint (arXiv:2404.07501v1) with no explicit conference/journal venue indicated. - Full text availability: Satisfied; Evidence: Full text is provided in the input (sections 1-6). - Language: Satisfied; Evidence: Text is in English. - Primary research article: Satisfied; Evidence: Describes original method and experiments (MD/RE on PET). - NLP for process extraction: Satisfied; Evidence: Focus on process information extraction from natural language texts (MD/RE, PET dataset). - Concrete method and experiments: Satisfied; Evidence: Section 4-5 details data augmentation methods, setup, and results. - Exclusion risk: Not peer-reviewed; thus fails inclusion despite other criteria being met. Missing retrievable evidence: No indication of peer-reviewed venue or acceptance status provided in the text.",
@@ -31,9 +31,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgment (based only on the provided full text): Exclude (score 1). Key evidence, per inclusion/exclusion criteria: \n\n- Peer-reviewed publication (REQUIRED): Not satisfied. Evidence: the manuscript is presented as an arXiv preprint: “arXiv:2404.07501v1 [cs.CL] 11 Apr 2024” (top of the provided full text). No conference or journal venue, proceedings, or acceptance information is stated in the text. This directly contradicts the explicit inclusion criterion that the paper be a peer-reviewed conference or journal publication. \n\n- Full text availability: Satisfied. Evidence: the full manuscript (Sections 1–6) is included in the input (title, abstract, Sections 1–6, and tables/figures). \n\n- Language: Satisfied. Evidence: the entire text is in English. \n\n- Primary research article / original contribution: Satisfied. Evidence: the paper describes original experimental work (selection of 19 augmentation techniques, hyper-parameter optimization with Optuna, experiments on PET dataset) and reports empirical results (see Section 4 “Experiment Setup” and Section 5 “Results”). \n\n- Focus on NLP for process extraction: Satisfied. Evidence: the paper explicitly addresses business process information extraction from natural language, mentions PET dataset, MD (Mention Detection) and RE (Relation Extraction) tasks, and mapping to BPMN (see Abstract, Introduction, Section 2, and Figure 3). \n\n- Concrete method and experiments: Satisfied. Evidence: detailed methods (NL-Augmenter subset, exclusion criteria EC1–EC4, hyper-parameter optimization, Optuna, 5-fold cross-validation) and quantitative results (Table 1, reported F1 improvements) are provided (Sections 4–5). \n\nConclusion: although the manuscript meets the substantive technical criteria (English full text, primary NLP research on process extraction with concrete methods and experiments), it fails the explicit requirement of being a peer-reviewed conference or journal publication because the provided text identifies it as an arXiv preprint with no peer-reviewed venue stated. Per the stated inclusion/exclusion rules, absence of peer-review/publication venue is disqualifying. Therefore the correct screening decision is to exclude (score = 1).",
     "round-B_SeniorLead_evaluation": 1,
-    "final_verdict": "exclude (senior:1)",
-    "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "kourani_process_modelling_with_llm",
@@ -47,7 +57,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 720,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "本研究明確提出並實作一個以自然語言描述為起點，以大型語言模型生成與迭代 refinement 的流程模型框架，並以文本描述轉換為可執行的 POWL（再轉為 BPMN/Petri nets）模型，且包含兩個實驗案例及錯誤處理與使用者回饋機制，符合原創研究與實驗驗證的要件，且主題聚焦於從自然語言文本中提取/生成流程模型的 NLP 驅動流程建模。Evidence 支持的要點包括：(1) 以文本描述開始生成流程模型，且輸出可對 BPMN/Petri nets 等標準符號；(2) 提出具體框架與實作細節，並進行 GPT-4 與 Gemini 的實驗評估；(3) 以實驗案例（線上商店、飯店服務）驗證方法。需要注意的是，全文未在片段中明確給出該文章的同行評審狀態或出版來源，因此無法就同行評審資格作出確定結論；這是目前證據的缺口。關鍵證據對照如下：- 符合 NLP Enabled Process Extraction 的證據：文本描述起點、從自然語言描述生成流程模型、可匯出到 BPMN/Petri nets。- 全文可用性與英語撰寫：全文以英語撰寫且包含完整章節與實驗，證據充分。- 原創研究與實驗驗證：有框架、實作、評估與比較（GPT-4 vs Gemini、與 TA 框架比較），證據充分。- 同行評審狀態缺口：文中未給出出版來源的同行評審說明，無法證實。- 結論性評分說明：若以嚴謹的同行評審與正式出版狀態作為必要條件，則需證據補充；僅就文本可證實的內容而言，具實質研究價值與實驗支撐，但同行評審狀態未明。最終結論的單句說明：因具實證方法與實驗支撐，但缺乏可追溯的同行評審證據，故初步評為中等偏保守的結論。",
@@ -67,9 +77,19 @@
     },
     "round-B_SeniorLead_reasoning": "Decision summary: I rate this paper a 3 (uncertain / needs more evidence) because the full text satisfies all substantive inclusion criteria (original research, English full text, concrete method, experiments, and focus on NLP-enabled process extraction), but the file does not contain traceable evidence that the paper was published in a peer-reviewed conference or journal (it appears to be an arXiv preprint). Evidence per criterion (from the provided full text):\n\n1) \"Paper is a full research article published in a peer-reviewed conference or journal, a full text is available, and the paper is written in English.\" \n- Full text available: SUPPORTED — full manuscript provided (sections 1–6, references, figures, tables). \n- Written in English: SUPPORTED — entire document is in English (abstract and body). \n- Published in a peer-reviewed venue: NOT SUPPORTED / MISSING — the header shows “arXiv:2403.07541v2 [cs.SE] 8 Apr 2024”, indicating an arXiv preprint; the manuscript itself does not state acceptance in a conference or journal or any peer-review provenance.\n\n2) \"Paper is a primary research article presenting an original research contribution.\" SUPPORTED — the paper proposes a novel LLM-based process modeling framework, implements a concrete system (POWL-based), and discusses design choices (Sections 3, 3.2–3.5) and limitations (Section 5). The abstract and introduction state this original contribution.\n\n3) \"Paper specifically covers the use of NLP for process extraction from natural language text.\" SUPPORTED — abstract and Section 3 explicitly describe generating and refining process models \"starting from textual descriptions\" and leveraging LLMs to transform natural-language process descriptions into executable models.\n\n4) \"Paper explicates a concrete method and describes experiments to empirically validate the method.\" SUPPORTED — the paper details prompt-engineering strategies, POWL intermediate representation, code-generation and error-handling protocols (Section 3), and presents an evaluation integrating GPT-4 and Gemini with experimental runs, tables, figures, and discussion (Section 4), including links to generated models and a GitHub repo.\n\nExclusion criteria check: None of the exclusion criteria (e.g., being only secondary, no experiments, not English, no full text) apply except the absence of confirmed peer-reviewed publication.\n\nNotes on junior reviewers: One junior reviewer also flagged the missing peer-review/publication evidence and gave a score of 3; the other assumed peer-reviewed status and scored 5. Following the instruction to not guess missing publication status from the text and to be conservative when evidence is missing, I adopt the more cautious outcome.\n\nMissing / needed traceable evidence: an explicit statement of peer-reviewed acceptance or reference to a published conference/journal version (venue, DOI, proceedings) inside the manuscript or metadata. Because that evidence is absent, the inclusion criterion requiring publication in a peer-reviewed venue cannot be verified from the provided full text.\n\nOne-sentence explanation for the score: The manuscript is an original, English, full-text research article that clearly proposes and evaluates an LLM-based method for extracting process models from text, but it lacks verifiable evidence of publication in a peer-reviewed conference or journal, so the conservative rating is 3.",
     "round-B_SeniorLead_evaluation": 3,
-    "final_verdict": "maybe (senior:3)",
-    "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2024-03-12",
+      "published_date_iso": "2024-03-12"
+    }
   },
   {
     "key": "lopez_assisted_declarative_process",
@@ -102,7 +122,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,4)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-10-01",
+      "published_date_iso": "2019-10-01"
+    }
   },
   {
     "key": "lopez_declarative_process_discovery",
@@ -135,7 +162,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "vda_extracting_declarative_process",
@@ -168,7 +202,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019",
+      "published_date_iso": "2019-01-01"
+    }
   },
   {
     "key": "bellan_gpt3_2022",
@@ -201,7 +242,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "bellan_pet_23",
@@ -237,7 +285,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "bellan2021process",
@@ -273,7 +328,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-10-07",
+      "published_date_iso": "2021-10-07"
+    }
   },
   {
     "key": "han2020bps",
@@ -306,7 +368,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020-10-01",
+      "published_date_iso": "2020-10-01"
+    }
   },
   {
     "key": "halioui2018bioinformatic",
@@ -342,7 +411,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018-06-14",
+      "published_date_iso": "2018-06-14"
+    }
   },
   {
     "key": "sonbol2023machine",
@@ -378,7 +454,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2021extracting",
@@ -414,7 +497,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-01-01",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "goossens2023extracting",
@@ -450,7 +540,14 @@
     "round-B_SeniorLead_evaluation": 5,
     "final_verdict": "include (senior:5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "etikala2020text2dec",
@@ -483,7 +580,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "sholiq2022generating",
@@ -516,7 +620,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-20",
+      "published_date_iso": "2022-10-20"
+    }
   },
   {
     "key": "nasiri2023automatic",
@@ -549,7 +660,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022-10-25",
+      "published_date_iso": "2022-10-25"
+    }
   },
   {
     "key": "azevedo2018bpmn",
@@ -582,7 +700,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "ferreira2017semi",
@@ -615,7 +740,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "goncalves2011let",
@@ -648,7 +780,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "friedrich2011process",
@@ -681,7 +820,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "chen2014pewp",
@@ -714,7 +860,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2014-09-01",
+      "published_date_iso": "2014-09-01"
+    }
   },
   {
     "key": "quishpi2021extracting",
@@ -747,7 +900,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "bellan2022process",
@@ -783,7 +943,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "neuberger2023beyond",
@@ -819,7 +986,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "qian2020approach",
@@ -855,7 +1029,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2019-05-16",
+      "published_date_iso": "2019-05-16"
+    }
   },
   {
     "key": "elallaoui2018automatic",
@@ -888,7 +1069,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "honkisz2018concept",
@@ -921,7 +1109,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "friedrich2010automated",
@@ -954,7 +1149,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    }
   },
   {
     "key": "robeer2016",
@@ -990,7 +1192,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "grohs2023large",
@@ -1004,7 +1213,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 824,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This item presents original NLP-for-process-extraction experiments (mining BPMN/declarative models and RPA suitability) with empirical evaluation, but it is an arXiv preprint (arXiv:2307.09923v1) with no explicit evidence of peer review, thus failing the peer-reviewed criterion and leading to exclusion. Key evidence: (1) NLP-for-process-extraction tasks are described (BPMN, declarative constraints, RPA classification) with empirical evaluation sections and metrics (e.g., recall/precision/F1); (2) The text shows it is an arXiv preprint (arXiv:2307.09923v1) and does not state a peer-reviewed venue; (3) The full text is English and provides detailed methodology and experiments; (4) While the work demonstrates an original contribution, the exclusion criterion about peer-reviewed publication overrides inclusion. Missing explicit evidence of peer review is the decisive gap.)",
@@ -1024,9 +1233,19 @@
     },
     "round-B_SeniorLead_reasoning": "Summary judgment: Exclude (score=1) because the full text explicitly identifies the paper as an arXiv preprint and does not provide evidence of publication in a peer-reviewed conference or journal, which directly violates the stated inclusion requirement that papers must be peer-reviewed.\n\nSupport for this decision (evidence drawn only from the provided full text):\n- Paper is a preprint on arXiv: the full text contains the explicit bibliographic line \"arXiv:2307.09923v1 [cs.CL] 19 Jul 2023\" (found near the end of the Introduction/preamble). This is direct, traceable evidence that the manuscript is an arXiv preprint rather than a peer-reviewed conference or journal paper.\n- The paper otherwise meets several inclusion criteria: it is written in English; it is a primary research article describing original work; it explicitly presents a concrete method and empirical experiments. Examples from the text include:\n  - Clear statement of tasks and method: \"In this paper, we illustrate how LLMs can accomplish text-related BPM tasks by applying a specific LLM to three exemplary tasks...\" and Section 2 \"Approach\" describes the prompting setup.\n  - Empirical evaluation: sections 3–5 report experimental evaluations with tables of results (e.g., Table 1, Table 3, Table 5) and comparisons to benchmarks (e.g., \"As a benchmark, we use the process models produced by [7]\" and \"We recreate the set-up from [19], applying GPT4 on the same five LTL templates and 104 test sentences\"). These passages show the paper contains experiments validating the method.\n  - Full text availability: the provided manuscript includes the full sections, figures, and tables necessary to judge content.\n\nWhich criteria are satisfied vs. which fail based on the provided text:\n- Satisfied: \"full text is available\" (full manuscript provided); \"written in English\" (text is English); \"primary research article\" (presents a method and empirical evaluation); \"specifically covers the use of NLP for process extraction\" (tasks are mining BPMN/declarative models and RPA suitability from natural language); \"explicates a concrete method and describes experiments\" (Approach section, experiment sections, result tables and comparisons to benchmarks).\n- Not satisfied (fatal w.r.t. inclusion): \"Paper is a full research article published in a peer-reviewed conference or journal\" — there is no indication in the full text of a peer-reviewed venue; instead the text identifies the manuscript as an arXiv preprint (see exact string quoted above). The exclusion criteria explicitly list preprints / not peer-reviewed works as excluded.\n\nMissing/absent evidence: there is no traceable statement in the provided full text that the work was accepted or published in a peer-reviewed conference or journal, nor any DOI or conference/journal name with dates of publication; absent such evidence, the exclusion applies.\n\nGiven the explicit exclusion of non-peer-reviewed works (including preprints) in the provided inclusion/exclusion rules and the clear arXiv label in the manuscript, the correct decision based on the provided full text is to exclude this paper (score=1).",
     "round-B_SeniorLead_evaluation": 1,
-    "final_verdict": "exclude (senior:1)",
-    "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:after_end",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07-19",
+      "published_date_iso": "2023-07-19"
+    }
   },
   {
     "key": "bellan2022extracting",
@@ -1059,6 +1278,13 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   }
 ]

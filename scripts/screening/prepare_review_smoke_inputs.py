@@ -150,7 +150,8 @@ def main() -> int:
 
     raw_records = _load_metadata_records(metadata_path)
 
-    # Keep only records that can be screened by title + abstract.
+    # Track screenability stats, but keep the full pool for full runs so
+    # later deterministic filters (for example cutoff) can run first.
     screenable = [row for row in raw_records if str(row.get("title") or "").strip() and str(row.get("abstract") or "").strip()]
     criteria_payload = _load_criteria_payload(criteria_path)
     if keys_filter:
@@ -175,7 +176,7 @@ def main() -> int:
                 f"Not enough screenable rows for top-k={args.top_k}; "
                 f"available={len(screenable)} (raw={len(raw_records)})"
             )
-        subset = screenable if args.top_k == 0 else screenable[: args.top_k]
+        subset = raw_records if args.top_k == 0 else screenable[: args.top_k]
 
     out_dir = args.output_dir.resolve()
     if keys_filter:

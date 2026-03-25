@@ -54,12 +54,12 @@ lang: zh-TW
 
 1. `2409.13738`
    - Stage 1 F1 = `0.7500`
-   - Combined F1 = `0.7843`
+   - Combined F1 = `0.8235`
    - authority: `screening/results/2409.13738_full/stage1_f1.stage_split_criteria_migration.json`
    - authority: `screening/results/2409.13738_full/combined_f1.stage_split_criteria_migration.json`
 2. `2511.13936`
-   - Stage 1 F1 = `0.8657`
-   - Combined F1 = `0.8814`
+   - Stage 1 F1 = `0.7407`
+   - Combined F1 = `0.7692`
    - authority: `screening/results/2511.13936_full/stage1_f1.stage_split_criteria_migration.json`
    - authority: `screening/results/2511.13936_full/combined_f1.stage_split_criteria_migration.json`
 
@@ -680,7 +680,7 @@ Stage 1 的輸出不該在 Stage 2 消失。
 
 ### 實際判準
 
-1. Combined F1 高於 `0.7843`
+1. Combined F1 高於 `0.8235`
 2. Combined recall 不低於 current 明顯幅度
 3. object-boundary 相關 FP family 減少
 4. unstable keys 不增加
@@ -695,8 +695,8 @@ Stage 1 的輸出不該在 Stage 2 消失。
 
 ### 實際判準
 
-1. Combined F1 高於 `0.8814`
-2. Combined recall 高於 current `0.8667`
+1. Combined F1 高於 `0.7692`
+2. Combined recall 高於 current `0.6667`
 3. 沒有以 question wording 重新引入 `audio core` 類硬化條件
 4. unstable keys 減少
 

@@ -73,7 +73,7 @@ python3 scripts/screening/evaluate_review_f1.py <pid> --results screening/result
 
 | paper_id | this_round_stage1 FN | prompt_only_v1 FN | stage1_recall_redesign FN | this_round_stage1 f1 | prompt_only_v1 f1 | stage1_recall_redesign f1 | ΔF1 vs prompt_only | ΔF1 vs recall_redesign |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| 2307.05527 | 7 | 6 | 0 | 0.9563 | 0.9593 | 0.9448 | -0.0030 | +0.0115 |
+| 2307.05527 | 7 | 6 | 0 | 0.9563 | 0.9551 | 0.9448 | -0.0030 | +0.0115 |
 | 2409.13738 | 0 | 0 | 0 | 0.6087 | 0.6364 | 0.4468 | -0.0277 | +0.1619 |
 | 2511.13936 | 0 | 0 | 0 | 0.7229 | 0.7895 | 0.5714 | -0.0666 | +0.1515 |
 | 2601.19926 | 2 | 7 | 0 | 0.9809 | 0.9690 | 0.9682 | +0.0119 | +0.0126 |

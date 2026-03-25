@@ -11,7 +11,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1216,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The paper explicitly uses ranking-based supervision (pairwise comparisons via a music emotion tournament and a listwise loss with RBF-ListNet) to learn emotion rankings for music, and it is an audio-domain study focused on music emotion recognition, meeting the learning-role gate, the preference-signal gate, and the audio-domain gate.",
@@ -28,9 +28,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    }
   },
   {
     "key": "cao2012combining",
@@ -44,7 +54,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "8. References",
     "reference_cut_line_no": 492,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "1-sentence explanation: The paper explicitly uses ranking-based learning with pairwise training signals in an audio-domain emotion recognition task and integrates ranking outputs into learning, meeting all three inclusion criteria. Key evidence: Audio-domain: FAU AIBO spontaneous emotional speech dataset and emotion recognition focus are described throughout (e.g., \"FAU AIBO corpus of spontaneous elicited emotional speech\" and \"emotion recognition in spontaneous speech\"). Learning-role gate: Ranking SVMs are trained to produce emotion-specific rankings and a two-pass system trains a conventional SVM to combine ranking scores, showing the ranking objective directly drives learning (e.g., \"To train a ranker for a target emotion... the optimization problem... minimize the number of incorrectly predicted partially ordered pairs\"; and \"we implemented a two-pass system, by training a standard SVM classifier to combine the ranking scores\"). Preference-signal gate: Explicit pairwise training pairs are constructed (\"a set of pairs of instances for which one instance conveys the target emotion better than the other\") and the ranking objective relies on partial ordering, constituting a clear preference-learning signal. Exclusion criteria: None of the explicit exclusions apply here (not a survey; ranking is used for learning, not only evaluation). Overall, all criteria are supported by explicit statements in the full text. ",
@@ -61,9 +71,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2012",
+      "published_date_iso": "2012-01-01"
+    }
   },
   {
     "key": "cao2015speaker",
@@ -77,7 +97,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 755,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Explicitly trains ranking SVMs for each emotion using speaker-specific pairwise comparisons (e.g., Um,i,q > Un,i,*) on speech datasets (Berlin, LDC acted, FAU Aibo spontaneous), demonstrating a learning-based ranking signal in an audio-domain emotion recognition task.",
@@ -94,9 +114,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    }
   },
   {
     "key": "lotfian2016practical",
@@ -110,7 +140,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. REFERENCES",
     "reference_cut_line_no": 690,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Based on explicit learning signals for ranking (pairwise relative labels via Rank-SVM) in an audio-domain emotion task, with clearly defined training objectives and comparisons to non-preference models, and no indication of being a survey, this paper satisfies all three gating criteria; key evidence includes (Learning-role) explicit Rank-SVM optimization used for training with pairwise differences; (Preference-signal) margin-based construction of relative labels from continuous arousal/valence scores and pairwise comparisons; (Audio-domain) SE M AINE database with speech-derived acoustic features for arousal/valence; (Non-survey) experimental analysis of training-set tradeoffs and comparisons to SVR/SVM rather than a literature review; (No missing evidence) none of the exclusion conditions appear satisfied. Hence, strong support for inclusion with clear operational evidence across all criteria.",
@@ -127,9 +157,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "lotfian2016retrieving",
@@ -143,7 +183,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. References",
     "reference_cut_line_no": 580,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The paper explicitly defines a relevance score for each sample to indicate the presence of a target emotion and uses it to train preference-learning models (Gaussian process preference learning and Rank-SVM) through pairwise comparisons, i.e., a learning objective built on ranking signals. It relies on audio-domain corpora (IEMOCAP and MSP-IMPROV) and acoustic features, demonstrating that audio is the core signal. Therefore, all three criteria are satisfied: learning-role gate, preference-signal gate, and audio-domain gate. This work is not a survey and does not rely solely on evaluation metrics without learning. Reason: it directly implements a learning objective based on pairwise relevance-based ranking for audio emotion data.",
@@ -160,9 +200,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "parthasarathy2016using",
@@ -176,7 +226,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1889,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Explanation: The paper explicitly uses QA-derived relative labels to train rank-based emotion classifiers on an audio-domain dataset, meeting the learning-role gate and preference-signal gate, with audio as the core task signal; evidence supports all inclusion criteria with no clear exclusion signals. Key evidence: (1) Learning-role gate: abstract states that QA-derived relative labels are used to train rank-based classifiers (rankers). “The central idea is to define labels based on relative assessments derived from existing time-continuous labels annotated with FEELTRACE... their data indicate that it has statistical advantages over approaches that use absolute values. We show that it can be used to underpin machine learning, and the resulting techniques have advantages over techniques based on absolute values.” (2) Preference-signal gate: the method builds and uses relative rankings via pairwise comparisons of binned segments, producing IMs and a consensus CM to capture which segments are higher/lower, i.e., ordering information for learning. “The first step... form the IM... then, we compute simple pairwise comparisons between all the mean values of the bins... This information is entered into the (i, j) entry of IM, producing a skew-symmetric matrix... This matrix summarizes the relative agreement across raters for a given emotional attribute.” (3) Audio-domain gate: the study uses the SEMAINE database with FEELTRACE annotations and trains acoustic-feature–based rankers; it explicitly targets emotion recognition from audio in the context of speaking turns and continuous traces, with sections describing acoustic features and the SEMAINE corpus. (4) Multi-modal caveat resolved: although SEMAINE is audiovisual, the core learning and evaluation center on audio-derived emotional rankings, as shown by the emphasis on acoustic features and emotion dimensions (arousal, valence, power, expectation) and the claim of expanding to audiovisual features in future work. (5) Not a survey: the paper presents novel methodology, experiments, and results comparing QA-based ranking against a baseline. Overall, the explicit learning objective with relative, rank-based supervision in an audio-domain emotion recognition context strongly supports inclusion (score 5).",
@@ -193,9 +243,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "parthasarathy2017ranking",
@@ -209,7 +269,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "8. REFERENCES",
     "reference_cut_line_no": 558,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "本研究在音訊/語音領域核心任務上使用 RankNet 進行情緒屬性排序，且以相對標籤/配對比較為訓練監督；A) 音訊域證據：以 GeMAPS 生音特徵（88 特徵，OpenSMILE 提取）與 USC-IEMOCAP、MSP-IMPROV 這兩個語音數據庫為訓練與測試資料來源；B) 偏好訊號證據：4.1 節詳述 RankNet 的成對偏好機制，4.3 節定義以邊界 margin 選取的相對標籤，訓練中使用約 10,000 對樣本進行學習；C) 學習角色：訓練目標是排序/偏好，採用交叉熵損失（C = log(1+e^{-σ(si−sj)}）），透過梯度下降訓練 DNN，並與 RankSVM 比較顯示 RankNet 在 arousal、valence、dominance 三個屬性上具有顯著優勢；同時包含跨數據集評估、使用多屬性、以 P@k 與 Kendall’s Tau 等排序指標評估，且相對標籤設計為訓練中的學習信號而非僅為評估；結論：因符合音訊域、偏好信號、以及在學習中使用該偏好/排名信號三個條件，故評分為5（強烈納入）",
@@ -226,9 +286,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "parthasarathy2018preference",
@@ -242,7 +312,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. References",
     "reference_cut_line_no": 701,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The paper clearly satisfies all inclusion criteria: learning-role gate is active via training with RankNet/RankMargin losses and QA-based relative labels; preference-signal gate is present through pairwise sentence comparisons that create relative labels for training; audio-domain gate is satisfied by focusing on speech emotion recognition with the MSP-Podcast corpus and acoustic features (ComParE HLFs); there is no evident exclusion evidence (no ranking-only-for-evaluation or non-learning use shown); therefore it should be included (score 5).",
@@ -259,9 +329,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "lopes2017modelling",
@@ -275,7 +355,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1458,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Reasoning: The paper explicitly uses pairwise crowdsourced rankings of horror audio samples to train RankSVM models that predict global ranks for tension, arousal, and valence from low-level audio features, i.e., an audio-domain task with a learning objective driven by ranking signals, satisfying both learning-role and preference-signal gates; evidence includes (a) explicit mention of RankSVM training for global ranks across three affective dimensions, (b) crowdsourced pairwise annotations used for learning, and (c) extraction of audio features as inputs for learning.",
@@ -292,9 +372,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "han2020ordinal",
@@ -327,7 +417,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "jayawardena2020ordinal",
@@ -360,7 +457,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "dong2020pyramid",
@@ -396,7 +500,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "zhou2021interactive",
@@ -429,7 +540,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-14",
+      "published_date_iso": "2021-04-14"
+    }
   },
   {
     "key": "liu2021reinforcement",
@@ -462,7 +580,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "lei2023audio",
@@ -495,7 +620,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "naini2023unsupervised",
@@ -528,7 +660,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-06-04",
+      "published_date_iso": "2023-06-04"
+    }
   },
   {
     "key": "naini2023preference",
@@ -561,7 +700,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "wu2023interval",
@@ -597,7 +743,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "liao2024baton",
@@ -630,7 +783,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "cideron2024musicrl",
@@ -663,7 +823,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "anastassiou2024seed",
@@ -696,7 +863,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "chu2024qwen2",
@@ -729,7 +903,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-07-15",
+      "published_date_iso": "2024-07-15"
+    }
   },
   {
     "key": "zhang2024speechalign",
@@ -762,7 +943,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-04-08",
+      "published_date_iso": "2024-04-08"
+    }
   },
   {
     "key": "wu2025adaptive",
@@ -795,7 +983,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "kumar2025using",
@@ -828,7 +1023,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-11-24",
+      "published_date_iso": "2024-11-24"
+    }
   },
   {
     "key": "huang2025step",
@@ -861,7 +1063,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025-02-17",
+      "published_date_iso": "2025-02-17"
+    }
   },
   {
     "key": "luo2025openomni",
@@ -894,7 +1103,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "nagpal2025speech",
@@ -927,7 +1143,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "gao2025emo",
@@ -960,7 +1183,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "mckeown2011semaine",
@@ -974,7 +1204,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1216,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Reasoning: The paper clearly describes an audio-visual database and annotation framework (audio-domain evidence present) but provides no explicit learning objective, loss, reward, or ranking signal used for training, thus the learning-role gate is not evidenced; there is no clear preference/ranking learning signal described, only annotation processes (FEELtrace) and dataset provision, so evidence for the learning gate is lacking. Key supportive signals: (a) audio-visual data with high-quality recordings and synchronization; (b) extensive annotational scheme (FEELtrace) for valence/activation and other traces; (c) open availability of the database. Key gaps: no explicit training objective, loss function, or model selection based on rankings or preferences; no pairwise comparisons or ranking used as learning supervision. Therefore, classification is inconclusive and falls at 3 (unclear/needs more evidence) rather than clearly includable. Missing retrievable basis: explicit learning/training signals or learning-oriented objectives are not described in the full text provided. One-sentence explanation: The work provides an audio-visual dataset resource with annotations, but does not demonstrate any learning/ranking signals used for model training, so it does not meet the learning-role gate.",
@@ -994,9 +1224,19 @@
     },
     "round-B_SeniorLead_reasoning": "Decision summary (required gates and evidence from the provided full text):\n\n1) Audio-domain gate — SUPPORTED\n- Evidence: The paper repeatedly emphasizes audio/speech as core: e.g., “High quality recording was provided by five high-resolution, high-framerate cameras, and four microphones, recorded synchronously.”; the scenarios describe users hearing the operator “through loudspeakers” and speech played via prerecorded audio files in Semi-automatic SAL; the work is explicitly about conversational, speech-involving interactions (SAL scenario, spoken scripts, teleprompter, etc.). These quotations show audio/speech is a core input modality in the dataset. (See Abstract and Sections 2–4, e.g., “user heard through loudspeakers”, “pre-recorded audio file spoken by an actor”).\n\n2) Preference-signal gate — NOT SUPPORTED / LACKING REQUIRED EVIDENCE\n- Evidence of annotation types: The paper describes extensive annotation by multiple raters using continuous trace tools: “Powerpoint SAL data were annotated using the FEELtrace system... valence... and activation... The result is a pair of ‘traces’...”; “Solid SAL recordings are transcribed and extensively annotated: 6–8 raters per clip traced five affective dimensions and 27 associated categories.” These are descriptive continuous affect ratings and categorical labels.\n- Why this does not meet the preference-signal requirement: The inclusion criteria require explicit preference-like signals such as pairwise comparisons, relative labels/ranks, or comparative human judgments that are operationalized as preference supervision. The full text contains no description of pairwise preference judgments, rank-order annotations, comparative preference labels, or conversion of annotator traces into preference/ranking supervision. The annotations described are continuous affect traces and categorical labels used for description/evaluation, not explicit preference/ranking signals. The paper therefore lacks the specific kinds of preference signals required by the gate.\n\n3) Learning-role gate — NOT SUPPORTED / LACKING REQUIRED EVIDENCE\n- Evidence of learning use of annotations: Section 8 (“AUTOMATIC ANALYSIS OF THE DATABASE”) describes using the annotations to develop detectors (e.g., AU detection, head nod/shake detection, predicting affective dimensions). For example: “They reported that the segmentation process appeared to be effective...”, “they reported... detect 7 AUs with an average F1-measure…”, and “used the SEMAINE corpus to first detect a range of nonverbal audio-visual events and then use these to predict the values of five dimensions.” These passages show annotations were used as targets for supervised signal- or event-detection models.\n- Why the learning-role gate is not met with respect to preference signals: The required criterion is that a preference/ranking signal explicitly affects learning (training objective/loss/reward, label construction, or model selection). While the paper documents supervised learning using the annotation labels (predicting continuous affect dimensions, AUs, events), there is no description that any preference-like annotation (pairwise comparisons, rank labels, or preference-based labels) was used as the learning objective, incorporated into loss functions, used for reward modeling, used to construct labels as relative preferences, or used for model selection. The continuous traces and categorical labels are used as regression/classification targets—standard supervision—but they are not described as preference/ranking signals with a distinct learning role. Thus the specific “preference/ranking affects learning” requirement is not evidenced in the full text.\n\nNet assessment according to the instruction rules: two required gates (audio-domain and preference-signal) and a required learning-role gate must all be satisfied for inclusion. Although audio-domain is satisfied, the full text does not provide retrievable evidence of preference-like signals (pairwise/relative/rank annotations) nor of such signals being used explicitly as training objectives/loss/reward/model-selection. Per instructions, when evidence is missing we should conservatively give ‘3’. Missing retrievable evidence (what would change the decision): an explicit description of (a) pairwise or rank/comparative annotations, or (b) conversion of annotator judgments into preference/ranking labels, or (c) an explicit training objective or loss that uses preference/ranking labels (e.g., pairwise ranking loss, preference-based reward model), or (d) statements that preference comparisons were used for label construction or model selection. If such evidence were present, the score could move to 4 or 5.\n\nOne-sentence justification for the numeric score: The paper is clearly an audio-domain dataset with rich affect annotations, but it contains no explicit pairwise/relative preference signals nor any indication that preference/ranking labels were used as learning objectives or losses, so the required preference + learning-role conditions are not met based on the provided full text.",
     "round-B_SeniorLead_evaluation": 3,
-    "final_verdict": "maybe (senior:3)",
-    "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "donahue2022melody",
@@ -1029,7 +1269,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:2,1)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:2,1)"
+    "discard_reason": "exclude (junior:2,1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "wester2015we",
@@ -1043,7 +1290,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "6. References",
     "reference_cut_line_no": 652,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This paper does not meet the learning-role gate: while it is audio-domain and analyzes subjective MOS tests for speech synthesis, all ranking/preference signals are used for evaluation/reporting rather than as training objectives or learning signals, so it cannot be included under the stated inclusion criteria.",
@@ -1060,9 +1307,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:2,2)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:2,2)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    }
   },
   {
     "key": "manocha2020differentiable",
@@ -1095,7 +1352,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "mittag2021nisqa",
@@ -1131,7 +1395,14 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-19",
+      "published_date_iso": "2021-04-19"
+    }
   },
   {
     "key": "li2024omnibench",
@@ -1167,7 +1438,14 @@
     "round-B_SeniorLead_evaluation": 2,
     "final_verdict": "exclude (senior:2)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:2)"
+    "discard_reason": "exclude (senior:2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "xu2025qwen2",
@@ -1181,7 +1459,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 1047,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "结论：本文在音频域核心性、学习阶段的偏好信号应用以及学习目标中的偏好机制方面均有明确证据，符合包含标准的三大门槛，因此评为5（强烈纳入）。 关键证据：- 音频域核心证据：论文明确提出 Qwen2.5-Omni 为多模态统一模型，可同时处理文本、音频、图像、视频并生成文本与自然语音，且在实现中使用音频编码器、语音生成相关模块（如 qwen-tts-tokenizer、Flow-Matching DiT 等），强调声音/语音输出是系统的重要输出之一；- 学习角色证据：文中描述为实现端到端端到端训练，Talker/Thinker 架构的联动，以及在训练阶段引入面向指令/对话的学习流程，包含多阶段训练；- 偏好信号证据：明确引入直接偏好优化（DPO）、以及用于提升语音生成稳定性的 RL 优化，且给出 LDPO 的目标函数形式，直接将偏好信号嵌入训练目标中（Pref(yw|x)、Pref(yl|x) 等）。- 多模态与音频核心的共同性：研究强调音视频同步、时间对齐的路径（TMRoPE、时序对齐、音视频时间插入等），并以音频/视频为核心的 streaming 生成与推理。- 排除项一致性：非纯综述/评述文章，属于技术性技术报告，符合研究型论文性质。潜在的可追溯点：文本中包含具体公式与模块设计（LDPO、DPO、RL、Thinker-Talker、音频编码/解码等），可从全文中的对应段落核对。缺口提示：当前给出的片段存在截断，但核心证据（偏好学习目标、DPO/RL、音频核心处理、流式音频生成、TMRoPE 等）已经明确指向学习需以偏好信号驱动且音频为核心的多模态学习目标，因此不影响最终判断。",
@@ -1198,8 +1476,18 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2025-03",
+      "published_date_iso": null
+    }
   }
 ]

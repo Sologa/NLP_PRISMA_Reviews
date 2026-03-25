@@ -160,10 +160,10 @@ SeniorLead 仲裁重整
 
 | Paper | QA 前 current authority | Stage 1 F1 | Combined F1 | 同線最佳歷史版本 | 最佳 Combined F1 |
 | --- | --- | ---: | ---: | --- | ---: |
-| `2307` | `senior_no_marker` | `0.9621` | `0.9581` | `senior_no_marker` | `0.9581` |
-| `2409` | `stage_split_criteria_migration` | `0.7500` | `0.7843` | `prompt_only_v1` | `0.8235` |
-| `2511` | `stage_split_criteria_migration` | `0.8657` | `0.8814` | `criteria_2511_opv2` | `0.9206` |
-| `2601` | `senior_no_marker` | `0.9792` | `0.9733` | `senior_no_marker` | `0.9733` |
+| `2307` | `senior_no_marker` | `0.9113` | `0.9057` | `senior_no_marker` | `0.9057` |
+| `2409` | `stage_split_criteria_migration` | `0.7500` | `0.8235` | `prompt_only_v1` | `0.8235` |
+| `2511` | `stage_split_criteria_migration` | `0.7407` | `0.7692` | `criteria_2511_opv2` | `0.9206` |
+| `2601` | `senior_no_marker` | `0.9761` | `0.9700` | `senior_no_marker` | `0.9700` |
 
 白話：
 
@@ -177,11 +177,11 @@ SeniorLead 仲裁重整
 
 | 實驗版本 | `2307` Combined | `2409` Combined | `2511` Combined | `2601` Combined | 四篇平均 |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `before` | 0.8000 | 0.7556 | 0.7843 | 0.8567 | 0.7991 |
+| `before` | 0.8000 | 0.7556 | 0.8235 | 0.8567 | 0.7991 |
 | `prompt_only_v1` | 0.9429 | **0.8235** | 0.8710 | 0.9548 | **0.8980** |
 | `recall_redesign` | 0.9521 | 0.6269 | 0.8406 | 0.9545 | 0.8435 |
 | `senior_adjudication_v1` | 0.9426 | 0.6562 | 0.7179 | 0.9687 | 0.8214 |
-| `senior_no_marker` | **0.9581** | 0.6885 | 0.7941 | **0.9733** | 0.8535 |
+| `senior_no_marker` | **0.9057** | 0.6885 | 0.7941 | **0.9700** | 0.8535 |
 | `senior_prompt_tuned` | 0.9358 | 0.7778 | 0.8525 | 0.8860 | 0.8630 |
 
 白話：
@@ -214,8 +214,8 @@ SeniorLead 仲裁重整
 
 | Paper | current state | Stage 1 confusion matrix | Combined confusion matrix | 主要問題 |
 | --- | --- | --- | --- | --- |
-| `2409` | `stage_split_criteria_migration` | `TP 21 / FP 14 / TN 43 / FN 0` | `TP 20 / FP 10 / TN 47 / FN 1` | 明顯是 FP-heavy。 |
-| `2511` | `stage_split_criteria_migration` | `TP 29 / FP 8 / TN 46 / FN 1` | `TP 26 / FP 3 / TN 51 / FN 4` | FP 已降很多，但 FN / recall 壓力開始比較明顯。 |
+| `2409` | `stage_split_criteria_migration` | `TP 21 / FP 14 / TN 45 / FN 0` | `TP 21 / FP 9 / TN 50 / FN 0` | 明顯是 FP-heavy。 |
+| `2511` | `stage_split_criteria_migration` | `TP 20 / FP 4 / TN 53 / FN 10` | `TP 20 / FP 2 / TN 55 / FN 10` | FP 已降很多，但 FN / recall 壓力開始比較明顯。 |
 
 白話：
 
@@ -248,8 +248,8 @@ SeniorLead 仲裁重整
 
 | QA 前觀察 | 白話解讀 |
 | --- | --- |
-| `2409` current Combined F1 只有 `0.7843` | rules 拆乾淨了，但 residual FP 還很多。 |
-| `2511` current Combined F1 只有 `0.8814` | 規則語義乾淨了，但摘要邊界仍常判不穩。 |
+| `2409` current Combined F1 只有 `0.8235` | rules 拆乾淨了，但 residual FP 還很多。 |
+| `2511` current Combined F1 只有 `0.7692` | 規則語義乾淨了，但摘要邊界仍常判不穩。 |
 | `strict senior` 不能全域套用 | `2601` 對過嚴 senior 很敏感。 |
 | stage-split 已把 criteria 整理乾淨 | 下一步比較像是證據怎麼被抽出、怎麼被整理。 |
 
@@ -341,7 +341,7 @@ QA v1 second-pass
 
 | Source | `2409` Stage 1 | `2409` Combined | `2511` Stage 1 | `2511` Combined | 白話結論 |
 | --- | ---: | ---: | ---: | ---: | --- |
-| current production | `0.7500` | `0.7843` | `0.8657` | `0.8814` | pre-QA 正式基準。 |
+| current production | `0.7500` | `0.8235` | `0.7407` | `0.7692` | pre-QA 正式基準。 |
 | QA v0 | `0.7119` | `0.8333` | `0.8727` | `0.8519` | `2409` Combined 曾短暫更高；`2511` 沒贏 current。 |
 | QA v1 first-pass | `0.5753` | `0.8333` | `0.6383` | `0.8571` | first-pass 的 Stage 1 幾乎被 `maybe flood` 拖垮。 |
 | QA v1 second-pass | `0.6774` | `0.7500` | `0.8772` | `0.8727` | `2511` 明顯救回，`2409` hygiene 修好但 Combined 變差。 |

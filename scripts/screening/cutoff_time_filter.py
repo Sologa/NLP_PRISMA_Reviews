@@ -225,40 +225,111 @@ def apply_cutoff(records: list[dict[str, Any]], *, payload: dict[str, Any], poli
     }
 
 
+def build_cutoff_excluded_row(
+    record: dict[str, Any],
+    *,
+    decision: dict[str, Any],
+    existing_row: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    status = str(decision["cutoff_status"])
+    if existing_row is not None:
+        updated = dict(existing_row)
+        updated["pre_cutoff_final_verdict"] = updated.get("final_verdict")
+        updated["pre_cutoff_review_state"] = updated.get("review_state")
+        updated["pre_cutoff_review_skipped"] = updated.get("review_skipped")
+    else:
+        updated = {
+            "title": str(record.get("title") or record.get("query_title") or "").strip(),
+            "abstract": str(record.get("abstract") or record.get("summary") or "").strip(),
+            "key": str(record.get("key") or "").strip(),
+            "review_skipped": True,
+        }
+
+    updated["cutoff_filter"] = decision
+    updated["final_verdict"] = "exclude (cutoff_time_window)"
+    updated["discard_reason"] = f"cutoff_time_window:{status}"
+    updated["review_state"] = "cutoff_filtered"
+    updated["review_skipped"] = True
+    return updated
+
+
 def apply_cutoff_to_results(
     rows: list[dict[str, Any]],
     *,
     metadata_rows: list[dict[str, Any]],
     payload: dict[str, Any],
     policy: TimePolicy,
+    synthesize_missing_failed_rows: bool = False,
+    preserve_metadata_order: bool = False,
 ) -> dict[str, Any]:
     metadata_by_key = {
         str(row.get("key") or "").strip(): row
         for row in metadata_rows
         if str(row.get("key") or "").strip()
     }
-    adjusted_rows: list[dict[str, Any]] = []
+    adjusted_by_key: dict[str, dict[str, Any]] = {}
+    untouched_extra_rows: list[dict[str, Any]] = []
     counts: dict[str, int] = {}
     filtered_count = 0
+    synthesized_count = 0
+    seen_keys: set[str] = set()
 
     for row in rows:
         updated = dict(row)
         key = str(updated.get("key") or "").strip()
+        if not key:
+            untouched_extra_rows.append(updated)
+            continue
+        seen_keys.add(key)
         record = metadata_by_key.get(key, {"key": key, "published_date": None})
         decision = evaluate_record(record, policy)
-        updated["cutoff_filter"] = decision
         status = str(decision["cutoff_status"])
         counts[status] = counts.get(status, 0) + 1
         if decision["cutoff_pass"]:
-            adjusted_rows.append(updated)
+            updated["cutoff_filter"] = decision
+            adjusted_by_key[key] = updated
             continue
         filtered_count += 1
-        updated["pre_cutoff_final_verdict"] = updated.get("final_verdict")
-        updated["pre_cutoff_review_state"] = updated.get("review_state")
-        updated["final_verdict"] = "exclude (cutoff_time_window)"
-        updated["discard_reason"] = f"cutoff_time_window:{status}"
-        updated["review_state"] = "cutoff_filtered"
-        adjusted_rows.append(updated)
+        adjusted_by_key[key] = build_cutoff_excluded_row(
+            record,
+            decision=decision,
+            existing_row=updated,
+        )
+
+    if synthesize_missing_failed_rows:
+        for key, record in metadata_by_key.items():
+            if key in seen_keys:
+                continue
+            decision = evaluate_record(record, policy)
+            status = str(decision["cutoff_status"])
+            counts[status] = counts.get(status, 0) + 1
+            if decision["cutoff_pass"]:
+                continue
+            filtered_count += 1
+            synthesized_count += 1
+            adjusted_by_key[key] = build_cutoff_excluded_row(record, decision=decision)
+
+    if preserve_metadata_order:
+        adjusted_rows = []
+        appended_keys: set[str] = set()
+        for record in metadata_rows:
+            key = str(record.get("key") or "").strip()
+            if not key:
+                continue
+            row = adjusted_by_key.get(key)
+            if row is None:
+                continue
+            adjusted_rows.append(row)
+            appended_keys.add(key)
+        for row in rows:
+            key = str(row.get("key") or "").strip()
+            if not key or key in appended_keys:
+                continue
+            adjusted = adjusted_by_key.get(key)
+            adjusted_rows.append(adjusted if adjusted is not None else dict(row))
+        adjusted_rows.extend(untouched_extra_rows)
+    else:
+        adjusted_rows = list(adjusted_by_key.values()) + untouched_extra_rows
 
     audit_payload = {
         "paper_id": payload.get("paper_id"),
@@ -268,6 +339,7 @@ def apply_cutoff_to_results(
         "normalization_notes": payload.get("normalization_notes"),
         "rows_total": len(rows),
         "filtered_count": filtered_count,
+        "synthesized_count": synthesized_count,
         "status_counts": counts,
     }
     return {

@@ -94,7 +94,25 @@ if [[ -n "${KEYS_FILE}" ]]; then
   fi
 fi
 
-if [[ "${FORCE_PREPARE_INPUTS}" == "1" || ! -f "${METADATA_PATH}" || ! -f "${CRITERIA_STAGE1_PATH}" ]]; then
+NEEDS_FULL_POOL_REBUILD=0
+if [[ "${TOP_K}" == "0" && -f "${INPUT_DIR}/manifest.json" ]]; then
+  NEEDS_FULL_POOL_REBUILD="$(${PIPELINE_PYTHON} - <<PY
+import json
+from pathlib import Path
+manifest_path = Path("${INPUT_DIR}/manifest.json")
+try:
+    payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+except Exception:
+    print(1)
+    raise SystemExit(0)
+total_count = int(payload.get("metadata_total_available") or 0)
+subset_count = int(payload.get("metadata_subset_count") or 0)
+print(1 if subset_count < total_count else 0)
+PY
+)"
+fi
+
+if [[ "${FORCE_PREPARE_INPUTS}" == "1" || "${NEEDS_FULL_POOL_REBUILD}" == "1" || ! -f "${METADATA_PATH}" || ! -f "${CRITERIA_STAGE1_PATH}" ]]; then
   PREPARE_CMD=(
     python3 "${ROOT_DIR}/scripts/screening/prepare_review_smoke_inputs.py"
     --source-metadata "${SOURCE_METADATA_PATH}"
@@ -154,6 +172,7 @@ echo "[info] input_dir=${INPUT_DIR}"
 echo "[info] output_dir=${OUTPUT_DIR}"
 echo "[info] metadata_path=${METADATA_PATH}"
 echo "[info] force_prepare_inputs=${FORCE_PREPARE_INPUTS}"
+echo "[info] needs_full_pool_rebuild=${NEEDS_FULL_POOL_REBUILD}"
 echo "[info] keys_file=${KEYS_FILE:-<none>}"
 
 if [[ ! -f "${CRITERIA_STAGE1_PATH}" ]]; then

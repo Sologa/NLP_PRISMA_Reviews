@@ -35,6 +35,12 @@ Those files are historical/reference artifacts only. They are useful for experim
 
 These workflow rules are settled unless a future experiment explicitly changes them.
 
+### Pre-review cutoff
+
+- Repo-managed paper review must apply `cutoff_jsons/<paper_id>.json` before any reviewer routing.
+- Cutoff-failed rows are authoritative `exclude (cutoff_time_window)` outputs.
+- Do not describe cutoff as an optional post-review cleanup step.
+
 ### Stage 1 routing
 
 - Two junior reviewers score title + abstract.
@@ -157,10 +163,10 @@ Note: there is not yet a same-level stage-split migration rerun for `2601`. Use 
 
 | Paper | Current criteria source | Current score authority | Stage 1 F1 | Combined F1 | Status |
 | --- | --- | --- | ---: | ---: | --- |
-| `2307.05527` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9621` | `0.9581` | stable reference |
-| `2409.13738` | `criteria_stage1/` + `criteria_stage2/` | `stage_split_criteria_migration` | `0.7500` | `0.7843` | current active |
-| `2511.13936` | `criteria_stage1/` + `criteria_stage2/` | `stage_split_criteria_migration` | `0.8657` | `0.8814` | current active |
-| `2601.19926` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9792` | `0.9733` | stable reference |
+| `2307.05527` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9113` | `0.9057` | stable reference |
+| `2409.13738` | `criteria_stage1/` + `criteria_stage2/` | `stage_split_criteria_migration` | `0.7500` | `0.8235` | current active |
+| `2511.13936` | `criteria_stage1/` + `criteria_stage2/` | `stage_split_criteria_migration` | `0.7407` | `0.7692` | current active |
+| `2601.19926` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9761` | `0.9700` | stable reference |
 
 Important:
 
@@ -267,6 +273,8 @@ Use this when opening a new external chat:
 Current production criteria are stage-specific:
 - Stage 1: criteria_stage1/<paper_id>.json
 - Stage 2: criteria_stage2/<paper_id>.json
+Repo-managed review is cutoff-first:
+- Pre-review cutoff: cutoff_jsons/<paper_id>.json
 Do not use criteria_jsons/*.json as current criteria.
 Current score authority is:
 - 2409 / 2511: stage_split_criteria_migration metrics

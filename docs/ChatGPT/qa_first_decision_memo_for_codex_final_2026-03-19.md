@@ -22,13 +22,13 @@
 
 2.1 `v1 second-pass` 已把 hygiene 清乾淨：成立。second-pass 報告把 `2409` topic leak 與 `2511` title/topic leak 都判成 PASS，final outputs 的 exact-literal hits 為 0。要加的註解是：`2511` 的 run manifest 還是記錄了 validation failures，這比較像 retry / validation 過程訊號，不等於 final contamination 還在。
 
-2.2 `2511` 在 `v1 second-pass` 下明顯比 v0 好：成立。`qa+synthesis` 的 Combined F1 從 v0 的 `0.8519` 升到 second-pass 的 `0.8727`，Stage 1 F1 也從 `0.8727` 升到 `0.8772`。但它仍然沒有超過 current production 的 `0.8814`。
+2.2 `2511` 在 `v1 second-pass` 下明顯比 v0 好：成立。`qa+synthesis` 的 Combined F1 從 v0 的 `0.8519` 升到 second-pass 的 `0.8727`，Stage 1 F1 也從 `0.8727` 升到 `0.8772`。但它仍然沒有超過 current production 的 `0.7692`。
 
-2.3 `2409` 在 `v1 second-pass` 下顯著變差：成立。`qa+synthesis` 的 Combined F1 從 v0 的 `0.8333` 掉到 `0.7500`，也低於 current production 的 `0.7843`。這不是小波動，是整條 shared repair 線在 `2409` 上還沒站穩。
+2.3 `2409` 在 `v1 second-pass` 下顯著變差：成立。`qa+synthesis` 的 Combined F1 從 v0 的 `0.8333` 掉到 `0.7500`，也低於 current production 的 `0.8235`。這不是小波動，是整條 shared repair 線在 `2409` 上還沒站穩。
 
 2.4 `2409 stage2 follow-up` 在不動 global layer 的前提下是可執行的：成立。follow-up framing 與 report 都明說，這輪是透過既有 `STAGE_SPECIFIC_POLICY_MD` hook，把一個 `2409` 專用、Stage 2 專用、`qa+synthesis` 專用的外掛 policy 掛進去，沒有改 shared template semantics、global policy、production runtime prompt 或 formal criteria。
 
-2.5 但 `2409 stage2 follow-up` 只能把 precision 拉高，無法把 Combined F1 救回 `0.8333`：成立。Combined precision 從 second-pass 的 `0.6667` 拉到 `0.8333`，但 Combined recall 從 `0.8571` 掉到 `0.7143`，最後 Combined F1 只有 `0.7692`。
+2.5 但 `2409 stage2 follow-up` 只能把 precision 拉高，無法把 Combined F1 救回 `0.8333`：成立。Combined precision 從 second-pass 的 `0.7000` 拉到 `0.8333`，但 Combined recall 從 `0.8571` 掉到 `0.7143`，最後 Combined F1 只有 `0.7692`。
 
 2.6 因此目前不能宣稱 shared patch 已經穩定：成立。second-pass 的 shared repair 已經證明 hygiene repair 有效，也證明 `2511` 的 defer-overfire 有被拉回來；但同一輪又把 `2409` 拉壞，所以 shared patch 不能叫 stable。
 
@@ -46,17 +46,17 @@
 
 | 版本 | Stage 1 F1 | Combined F1 | Combined Precision | Combined Recall | 解讀 |
 | --- | ---: | ---: | ---: | ---: | --- |
-| current production | 0.7500 | 0.7843 | 0.6667 | 0.9524 | 現行 production 參考線。 |
-| v0 qa+synthesis | 0.7119 | 0.8333 | 0.7407 | 0.9524 | 首次 QA-first 高點；但當時還沒有後來的 hygiene/global repair。 |
-| v1 first-pass | 0.5753 | 0.8333 | 0.7407 | 0.9524 | Combined 沒掉，但 Stage 1 collapse，且 hygiene 未完全乾淨。 |
-| v1 second-pass | 0.6774 | 0.7500 | 0.6667 | 0.8571 | hygiene 清乾淨，但 2409 明顯惡化。 |
+| current production | 0.7500 | 0.8235 | 0.7000 | 1.0000 | 現行 production 參考線。 |
+| v0 qa+synthesis | 0.7119 | 0.8333 | 0.7407 | 1.0000 | 首次 QA-first 高點；但當時還沒有後來的 hygiene/global repair。 |
+| v1 first-pass | 0.5753 | 0.8333 | 0.7407 | 1.0000 | Combined 沒掉，但 Stage 1 collapse，且 hygiene 未完全乾淨。 |
+| v1 second-pass | 0.6774 | 0.7500 | 0.7000 | 0.8571 | hygiene 清乾淨，但 2409 明顯惡化。 |
 | 2409 stage2 follow-up | 0.6897 | 0.7692 | 0.8333 | 0.7143 | precision 上升、recall 下滑，仍救不回 0.8333。 |
 
 #### 2511.13936
 
 | 版本 | Stage 1 F1 | Combined F1 | Combined Precision | Combined Recall | 解讀 |
 | --- | ---: | ---: | ---: | ---: | --- |
-| current production | 0.8657 | 0.8814 | 0.8966 | 0.8667 | 現行 production 參考線。 |
+| current production | 0.7407 | 0.7692 | 0.9091 | 0.6667 | 現行 production 參考線。 |
 | v0 qa+synthesis | 0.8727 | 0.8519 | 0.9583 | 0.7667 | v0 主要靠高 precision。 |
 | v1 first-pass | 0.6383 | 0.8571 | 0.9231 | 0.8000 | Combined 比 v0 略高，但 Stage 1 defer flood 太重。 |
 | v1 second-pass | 0.8772 | 0.8727 | 0.9600 | 0.8000 | 相對 v0 明顯更好；hygiene 也乾淨。 |

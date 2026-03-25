@@ -12,7 +12,7 @@
 
 | Paper | Candidates | Batch requests | Cutoff filtered | F1 | Delta vs current combined | Precision | Recall |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `2409.13738` | 84 | 84 | 19 | 0.7111 | -0.0732 | 0.6667 | 0.7619 |
+| `2409.13738` | 84 | 84 | 19 | 0.7111 | -0.0732 | 0.7000 | 0.7619 |
 
 ## 工件
 

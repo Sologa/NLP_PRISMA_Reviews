@@ -7,8 +7,8 @@
    - Stage 1: `criteria_stage1/<paper_id>.json`
    - Stage 2: `criteria_stage2/<paper_id>.json`
 3. current metrics authority 仍是 production baseline：
-   - `2409.13738`: Stage 1 F1 `0.7500`, Combined F1 `0.7843`
-   - `2511.13936`: Stage 1 F1 `0.8657`, Combined F1 `0.8814`
+   - `2409.13738`: Stage 1 F1 `0.7500`, Combined F1 `0.8235`
+   - `2511.13936`: Stage 1 F1 `0.7407`, Combined F1 `0.7692`
 4. `qa_first_v0_2409_2511_2026-03-18` 是 experiment-only bundle，不是 production replacement。
 5. current workflow invariants 不變：
    - Stage 1 兩位 junior reviewer
@@ -34,8 +34,8 @@
 
 | # | 結論 | 狀態 | 證據層級 | 依據 |
 |---|---|---|---|---|
-| 1 | `2409` 的 gain 主要發生在 Stage 2，不是 Stage 1 | 成立 | confirmed by metrics | `2409` baseline Stage 1 F1 `0.7500`，`qa-only` `0.7368`，`qa+synthesis` `0.7119`；但 Combined 從 baseline `0.7843` 升到 `0.8085` / `0.8333` |
-| 2 | `2409 qa+synthesis` 的 Combined F1 高於 baseline 與 qa-only | 成立 | confirmed by metrics | `0.8333 > 0.8085 > 0.7843` |
+| 1 | `2409` 的 gain 主要發生在 Stage 2，不是 Stage 1 | 成立 | confirmed by metrics | `2409` baseline Stage 1 F1 `0.7500`，`qa-only` `0.7368`，`qa+synthesis` `0.7119`；但 Combined 從 baseline `0.8235` 升到 `0.8085` / `0.8333` |
+| 2 | `2409 qa+synthesis` 的 Combined F1 高於 baseline 與 qa-only | 成立 | confirmed by metrics | `0.8333 > 0.8085 > 0.8235` |
 | 3 | `2511` 的 regression 主要是 Stage 1 recall collapse，不是 FP 爆炸 | 成立 | confirmed by metrics | baseline Stage 1 `tp/fp/fn = 29/8/1`；`qa-only = 23/1/7`；`qa+synthesis = 24/1/6` |
 | 4 | `2511 qa+synthesis` 存在 contamination / binding 問題 | 成立 | confirmed by case inspection | `anastassiou2024seed`、`lin2004rouge`、`google_scholar_hindex` 等 case 出現 review title / `Systematic Analysis` 洩漏 |
 | 5 | `honkisz2018concept` 不應再被當成 `2409 qa+synthesis` 的 target-boundary exclusion 代表 case | 成立 | confirmed by case inspection | `2409 qa+synthesis` Stage 2 中 `honkisz2018concept` 最終是 `include (junior:5,5)` |

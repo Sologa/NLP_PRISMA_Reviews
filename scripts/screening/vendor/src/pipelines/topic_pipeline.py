@@ -33,6 +33,17 @@ from urllib.parse import urlparse
 
 import requests
 
+REPO_ROOT = Path(__file__).resolve().parents[5]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts.screening.cutoff_time_filter import (
+    TimePolicy as RepoTimePolicy,
+    apply_cutoff_to_results as repo_apply_cutoff_to_results,
+    cutoff_json_path as repo_cutoff_json_path,
+    load_time_policy as repo_load_time_policy,
+)
+
 from src.pipelines.runtime_prompt_loader import (
     load_stage1_junior_prompt,
     load_stage1_senior_prompt,
@@ -4572,14 +4583,41 @@ def _resolve_stage_criteria_path(
             "無法推斷 paper_id 以載入 stage criteria。請顯式提供 --criteria。"
         )
 
-    repo_root = Path(__file__).resolve().parents[5]
     criteria_dir = "criteria_stage1" if stage == "stage1" else "criteria_stage2"
-    resolved = repo_root / criteria_dir / f"{paper_id}.json"
+    resolved = REPO_ROOT / criteria_dir / f"{paper_id}.json"
     if not resolved.exists():
         raise FileNotFoundError(
             f"找不到 {stage} criteria 檔案：{resolved}（本流程不使用 fallback）"
         )
     return resolved
+
+
+def _load_repo_cutoff_policy(
+    *,
+    workspace: TopicWorkspace,
+    metadata_path: Optional[Path] = None,
+    base_review_results_path: Optional[Path] = None,
+) -> Tuple[str, Dict[str, object], RepoTimePolicy]:
+    """Load canonical cutoff policy from `cutoff_jsons/<paper_id>.json`."""
+
+    paper_id = _infer_stage_criteria_paper_id(
+        workspace=workspace,
+        metadata_path=metadata_path,
+        base_review_results_path=base_review_results_path,
+    )
+    if not paper_id:
+        raise ValueError("無法推斷 paper_id 以載入 cutoff_jsons/<paper_id>.json。")
+
+    cutoff_path = repo_cutoff_json_path(REPO_ROOT, paper_id)
+    if not cutoff_path.exists():
+        raise FileNotFoundError(
+            f"找不到 cutoff policy：{cutoff_path}（repo-managed paper review 現在要求 cutoff_jsons/<paper_id>.json）"
+        )
+
+    payload, policy = repo_load_time_policy(cutoff_path)
+    payload = dict(payload)
+    payload["_cutoff_json_path"] = str(cutoff_path.relative_to(REPO_ROOT))
+    return paper_id, payload, policy
 
 
 _REFERENCE_HEADING_RE = re.compile(
@@ -4619,7 +4657,7 @@ _CITATION_VENUE_RE = re.compile(
     r"\b(?:doi|arxiv|proc\.?|conference|journal|transactions|pp\.?|interspeech|icassp|neurips|iclr)\b",
     flags=re.IGNORECASE,
 )
-_ARXIV_ID_RE = re.compile(r"\b(\d{4}\.\d{4,5})(?:v\d+)?\b")
+_ARXIV_ID_RE = re.compile(r"(?<!\d)(\d{4}\.\d{4,5})(?:v\d+)?(?!\d)")
 
 
 def _to_score(value: Any) -> Optional[int]:
@@ -4882,24 +4920,22 @@ def run_latte_review(
         criteria_path=criteria_path,
     )
     criteria_payload = _load_criteria_payload_from_path(resolved_stage1_criteria_path)
-
-    resolved_window = resolve_cutoff_time_window(
-        workspace,
-        start_date=start_date,
-        end_date=discard_after_date,
+    _, repo_cutoff_payload, repo_cutoff_policy = _load_repo_cutoff_policy(
+        workspace=workspace,
+        metadata_path=metadata_path,
     )
-    resolved_start = resolved_window.get("start_date")
-    resolved_end = resolved_window.get("end_date")
-
-    cutoff_info = _get_cutoff_info(workspace)
-    if cutoff_info:
-        target = cutoff_info.get("target_paper") or {}
-        target_title = target.get("title") if isinstance(target, dict) else None
-        cutoff_value = cutoff_info.get("cutoff_date")
-        if isinstance(target_title, str) and target_title.strip():
-            discard_title = target_title.strip()
-        if resolved_end is None and isinstance(cutoff_value, str) and cutoff_value.strip():
-            resolved_end = cutoff_value.strip()
+    resolved_start = start_date
+    if resolved_start is None and repo_cutoff_policy.start_date is not None:
+        resolved_start = repo_cutoff_policy.start_date.isoformat()
+    resolved_end = discard_after_date
+    if resolved_end is None and repo_cutoff_policy.end_date is not None:
+        resolved_end = repo_cutoff_policy.end_date.isoformat()
+    resolved_window = {
+        "start_date": resolved_start,
+        "end_date": resolved_end,
+        "source_start_date": "arg" if start_date is not None else "cutoff_jsons.time_policy.start_date",
+        "source_end_date": "arg" if discard_after_date is not None else "cutoff_jsons.time_policy.end_date",
+    }
 
     inclusion_criteria, exclusion_criteria = _criteria_payload_to_strings(criteria_payload)
     criteria_context = _criteria_context_from_payload(criteria_payload)
@@ -5131,6 +5167,16 @@ def run_latte_review(
             record["discard_reason"] = discard_reason
             output_records.append(record)
 
+    cutoff_rewrite = repo_apply_cutoff_to_results(
+        output_records,
+        metadata_rows=[entry for entry in payload if isinstance(entry, dict)],
+        payload=repo_cutoff_payload,
+        policy=repo_cutoff_policy,
+        synthesize_missing_failed_rows=True,
+        preserve_metadata_order=True,
+    )
+    output_records = [dict(row) for row in cutoff_rewrite["rows"]]
+
     out = Path(output_path) if output_path else workspace.review_results_path
     _ensure_dir(out.parent)
     out.write_text(json.dumps(output_records, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -5145,6 +5191,9 @@ def run_latte_review(
         "end_date": resolved_end,
         "start_date_source": resolved_window.get("source_start_date"),
         "end_date_source": resolved_window.get("source_end_date"),
+        "cutoff_json_path": repo_cutoff_payload.get("_cutoff_json_path"),
+        "cutoff_filtered_count": cutoff_rewrite["audit_payload"].get("filtered_count"),
+        "cutoff_synthesized_count": cutoff_rewrite["audit_payload"].get("synthesized_count"),
     }
 
 
@@ -5207,6 +5256,11 @@ def run_latte_fulltext_review(
         base_review_results_path=base_results,
     )
     criteria_payload = _load_criteria_payload_from_path(resolved_stage2_criteria_path)
+    _, repo_cutoff_payload, repo_cutoff_policy = _load_repo_cutoff_policy(
+        workspace=workspace,
+        metadata_path=metadata_path,
+        base_review_results_path=base_results,
+    )
 
     inclusion_criteria, exclusion_criteria = _criteria_payload_to_strings(criteria_payload)
     criteria_context = _criteria_context_from_payload(criteria_payload)
@@ -5474,6 +5528,16 @@ def run_latte_fulltext_review(
                 record[key] = value
             output_records.append(record)
 
+    cutoff_rewrite = repo_apply_cutoff_to_results(
+        output_records,
+        metadata_rows=metadata_records,
+        payload=repo_cutoff_payload,
+        policy=repo_cutoff_policy,
+        synthesize_missing_failed_rows=False,
+        preserve_metadata_order=False,
+    )
+    output_records = [dict(row) for row in cutoff_rewrite["rows"]]
+
     out = Path(output_path) if output_path else workspace.fulltext_review_results_path
     _ensure_dir(out.parent)
     out.write_text(json.dumps(output_records, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -5485,6 +5549,8 @@ def run_latte_fulltext_review(
         "reviewed": len(review_records),
         "skipped_missing_fulltext": len(skipped_records),
         "total": len(output_records),
+        "cutoff_json_path": repo_cutoff_payload.get("_cutoff_json_path"),
+        "cutoff_filtered_count": cutoff_rewrite["audit_payload"].get("filtered_count"),
     }
 
 

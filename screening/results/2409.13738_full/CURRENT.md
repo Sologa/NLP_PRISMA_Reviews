@@ -12,7 +12,13 @@ Current active score authority is the stage-split criteria migration metrics:
 Current metrics:
 
 - Stage 1 F1: `0.7500`
-- Combined F1: `0.7843`
+- Combined F1: `0.8235`
+
+## Cutoff-first policy
+
+- Mandatory pre-review cutoff: `cutoff_jsons/2409.13738.json`
+- Cutoff-excluded candidates: `19`
+- Cutoff-failed rows are now forced to `exclude (cutoff_time_window)` before reviewer routing is treated as authoritative.
 
 ## Provenance
 
@@ -21,12 +27,9 @@ Current runtime uses:
 - Stage 1 criteria: `criteria_stage1/2409.13738.json`
 - Stage 2 criteria: `criteria_stage2/2409.13738.json`
 
-This means the old single-file criteria history and older reports are no longer the current score basis.
-
 ## Historical baselines in this directory
 
 These remain useful for comparison, but they are not the current score authority:
-
 - `review_after_stage1_prompt_only_v1_report.json`
 - `combined_after_fulltext_report.json`
 - `stage1_recall_redesign_report.json`
@@ -39,21 +42,10 @@ These remain useful for comparison, but they are not the current score authority
 - `combined_after_fulltext_senior_prompt_tuned_report.json`
 - `review_after_stage1_criteria_2409_stage_split_report.json`
 - `combined_after_fulltext_criteria_2409_stage_split_report.json`
-- all `latte_review_results.*.json` and `latte_fulltext_review_results.*.json` raw historical outputs
-
-## Important naming caveat
-
-The files:
-
-- `latte_review_results.criteria_2409_stage_split.json`
-- `latte_fulltext_review_results.criteria_2409_stage_split.json`
-
-look close to the current story, but they are still historical experiment artifacts from the older `criteria_2409_stage_split` phase.
-
-Current active score authority is not those files. It is the migration metrics files listed at the top of this file.
+- raw historical `latte_review_results*.json` and `latte_fulltext_review_results*.json` outputs
 
 ## Do-not-confuse notes
 
-- Do not describe `criteria_jsons/2409.13738.json` as the current active criteria.
-- Do not use `criteria_2409_stage_split` report scores as the current score.
-- Do not describe `docs/ChatGPT/evidence_qa_feasibility_analysis_2409_2511.md` as adopted current architecture.
+- Do not describe `criteria_jsons/*.json` as current production criteria.
+- Do not reuse pre-cutoff metrics as current score authority.
+- Read `AGENTS.md`, `docs/chatgpt_current_status_handoff.md`, and `screening/results/results_manifest.json` first.

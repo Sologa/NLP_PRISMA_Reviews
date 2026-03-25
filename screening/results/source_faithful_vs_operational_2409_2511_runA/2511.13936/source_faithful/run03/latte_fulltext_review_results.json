@@ -11,7 +11,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1216,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Explanation: The paper explicitly develops ranking-based emotion annotation with a learning-to-rank model (RBF-ListNet) applied to audio/music data, including pairwise comparisons via a music emotion tournament and a formal RL training loop, which fulfills the preference-learning criterion within the audio domain; thus it should be strongly included. Key supporting evidence: - Introduces ranking-based emotion annotation and a music emotion tournament with pairwise comparisons to derive a global order. - Proposes learning-to-rank methods (RankSVM, ListNet) and a nonlinear RBF-ListNet model to optimize ranking objectives. - Applies the method to music emotion (valence/arousal) in audio and conducts objective and subjective evaluations, showing improvements over rating-based baselines. - The study is not a survey and includes explicit learning components (ranking models) with comparisons between methods, within the audio domain. - The authors frame the work as ranking-focused for MER, with an explicit RL/training loop and ground-truth derived from preference data, not solely evaluation. Minor caveat: the primary evaluation uses Gamma statistics and subjective satisfaction, but this does not undermine the learning-to-rank focus. Overall, the evidence supports eligibility under the inclusion criteria.",
@@ -28,9 +28,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2010",
+      "published_date_iso": "2010-01-01"
+    }
   },
   {
     "key": "cao2012combining",
@@ -44,7 +54,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "8. References",
     "reference_cut_line_no": 492,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Reasoning: 5 - The paper clearly fulfills the inclusion criteria for preference learning in the audio domain and includes a learning loop around ranking (ranking SVM) coupled with traditional classification, not a survey. Key supporting evidence: (1) explicit ranking framework and pairwise preferences within the same speaker for target emotions (described: \"To train a ranker for a target emotion, we specify a set of pairs of instances...\" and using ranking SVM); (2) normalization and use of ranking scores as features for emotion prediction (described: \"For each test utterance U we define a normalized ranking score for each of the emotions...\"); (3) combination of ranking-based and conventional SVM classifiers with learning (described: a two-pass system where ranking scores are fused by a conventional multi-class SVM, and a feature-level fusion option); (4) application to audio: use of FAU AIBO spontaneous speech corpus, 5-class emotion task, and emphasis on utterances from spontaneous speech; (5) not a survey; it presents a novel method with empirical evaluation. No exclusion criteria are evidenced in the text. These points collectively indicate full eligibility under the stated criteria. Brief justification: the work embodies ranking-based preference learning in audio with a learning loop and explicit comparisons, not merely evaluation.",
@@ -61,9 +71,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2012",
+      "published_date_iso": "2012-01-01"
+    }
   },
   {
     "key": "cao2015speaker",
@@ -77,7 +97,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 755,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "This paper implements a true preference-learning framework for audio: ranking SVMs are trained for each emotion using pairwise utterance comparisons within the same speaker, producing rankings used for multi-emotion prediction across acted and spontaneous speech datasets; key evidence includes explicit ranking formulation (train ranking SVMs for individual emotions and pairwise constraints Um,i,* > Un,i,*), six emotion rankers, testing on Berlin, LDC, and FAU Aibo, and discussion of combining ranking with conventional SVM in late-stage fusion, indicating a learning component in the audio domain rather than evaluation-only work.",
@@ -94,9 +114,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2015",
+      "published_date_iso": "2015-01-01"
+    }
   },
   {
     "key": "lotfian2016practical",
@@ -110,7 +140,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. REFERENCES",
     "reference_cut_line_no": 690,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "本論文明確以偏好學習（preference learning）對語音情緒樣本進行排序，透過成對比較產生相對標籤並以 margin 控制比較強度；採用 Rank-SVM 進行訓練，且在 SE-MAINE 資料庫上以音頻特徵進行實驗，並與二元分類與回歸模型比較，顯示偏好學習在 arousal/valence 的排序與檢索任務中具優勢。核心證據包括：1) 摘要與緒論指出以相對排序為目標的偏好學習，且樣本以成對比較產生相對標籤；2) 文中定義透過樣本對 s1 與 s2 的比較，以及 margin threshold 產生訓練對，並訓練 Rank-SVM；3) 第4節明確給出 Rank-SVM 的最小化問題與訓練流程，以及使用 SVM-rank 工具箱；4) 第5節於 SEAMINE 資料庫以音訊特徵（OpenSMILE 產出 6308 個高階描述子，經特徵選擇後使用 50 個特徵）作為特徵，評估以 P@K 的檢索性能；5) 與二元 SVM 與 SVR 的比較顯示 Rank-SVM 的優越性；6) 研究並非綜述，且包含實作與學習，資料來源為多模態資料但重點聚焦於語音/聲學特徵，符合 audio domain 的應用與偏好學習的定義。綜合上述，符合全部包含條件，且證據充分，屬於強烈納入。",
@@ -127,9 +157,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "lotfian2016retrieving",
@@ -143,7 +183,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. References",
     "reference_cut_line_no": 580,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "此論文清楚涉及音頻領域的偏好學習，透過成對樣本的相對排序進行情緒檢索，並以實作的學習模型（GP 偏好學習、Rank-SVM）進行訓練與評估，因此符合偏好學習及音頻領域的要件。證據要點：- 使用 rank-based classifiers 針對情緒類別進行排序與檢索（4.2）。- 提出以個別評分建立相關性分數的機率框架，並以該分數產生相對偏好（4.1）。- 相關性分數由 R 位評估者的個別評估構成，考慮評估者之混淆與非共識標籤（4.1）。- 在 IEMOCAP 與 MSP-IMPROV 兩個音頻數據集上進行跨語料評估，採用 OpenSMILE 的聲學特徵，並以 P@K 與 Kendall tau 等指標評估（§3–§5）。- GP 與 Rank-SVM 在實驗中被比較，GP 通常表現較好，且以 relevance scores 取得最佳表現（§4.2、Table/Figure 描述）。- 與以共識標籤的 Cao 等方法相比，提出的 relevance-score GP 在多情緒檢索任務上表現更佳（5.3）。“- 非 survey/回顧性文章，含有明確的學習與預測模型與評估。- 研究亦提及限制與未來工作，例如評估者的可靠性建模與更高階的深度學習方法的擴展（第6節）。",
@@ -160,9 +200,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "parthasarathy2016using",
@@ -176,7 +226,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1889,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "The paper explicitly develops rank-based (preference-learning) classifiers for emotion recognition in audio by deriving relative labels via qualitative agreement (QA) from time-continuous FEELTRACE annotations and training rankers on these QA-derived labels, with explicit comparison to baseline models trained on absolute-valued traces; it uses the SEMAINE audio-visual database and evaluates across multiple emotional dimensions (arousal, valence, power, expectation), reporting improvements over the baseline in most cases, which aligns with inclusion criteria for preference learning in the audio domain (ranking/A-B style comparisons with a learning component).",
@@ -193,9 +243,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
   },
   {
     "key": "parthasarathy2017ranking",
@@ -209,7 +269,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "8. REFERENCES",
     "reference_cut_line_no": 558,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Evidence supports that this paper explicitly uses a learning-based ranking approach on audio data: it trains RankNet rankers for arousal, valence, and dominance using pairwise comparisons Ui vs Uj, with relative labels defined by a margin t and a fixed set of 10,000 pairs; it compares RankNet to RankSVM and to a DNN regression baseline. The work uses audio-domain features (GeMAPS) extracted from speech and evaluates cross-corpus (train on USC-IEMOCAP, test on MSP-IMPROV), and it is not a survey. Therefore, it meets the inclusion criteria for preference learning (ranking/A-B style comparisons of audio clips) and contains a true RL training loop for an audio model. Missing explicit evidence would be any claim about human vs. synthetic judgments beyond the pairwise preferences derived from existing annotations, but the paper clearly establishes pairwise preferences from labeled data, satisfying the core criterion. In short, the work provides explicit ranking-based learning over audio samples, not just evaluation, and fits the defined criteria for inclusion.",
@@ -226,9 +286,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "parthasarathy2018preference",
@@ -242,7 +312,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "7. References",
     "reference_cut_line_no": 701,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "5: Strongly eligible. The paper explicitly targets preference-learning for ranking emotional attributes, using pairwise comparisons to produce QA-based relative labels (3.1) and evaluating with RankNet/RankMargin losses (3.2). It is applied in the audio domain (MSP-Podcast corpus with sentence-level audio annotations and ComParE features) (4.1, 4.2). It implements learning (not merely evaluation), training networks to minimize RankNet/RankMargin losses and a regression baseline for comparison (3.2). It provides empirical results showing QA-based labels yield better global and local rankings via Kendall’s Tau (5.1, 5.2). The work is not a survey and includes a learning framework using explicit training and evaluation on audio data. Evidence is drawn from: abstract/introduction about QA-based sentence-level labels and preference-learning; 3.1 on QA for sentence-level annotations; 3.2 on RankNet/RankMargin; 4.1 MSP-Podcast corpus and annotation setup; 4.2 features; 5.1/5.2 results and conclusions.\"",
@@ -259,9 +329,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    }
   },
   {
     "key": "lopes2017modelling",
@@ -275,7 +355,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1458,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "此論文清楚使用偏好學習（RankSVM）對音頻樣本進行成對比較並學習全局排序，且在音頻領域內進行，符合納入標準，因此給予5分。文本描述: “ranking short audio pieces based on crowdsourced annotations of tension, arousal and valence”，凸顯在音頻領域對聲音素材的排序任務。提出並實作：\"We construct several preference learned models, using the rank support vector machine algorithm, to predict the global rank of horror sounds across the three affective dimensions\"，明確包含偏好學習與排序目標。使用眾包平臺收集數據：\"Human preference annotations were gathered using a crowdsourcing platform, allowing participants to rank pairs of sounds on the perceived tension, arousal and valence\"，顯示有成對比較與人類偏好數據。整體系統流程清楚描述為：聲音庫 → 成對比較與註釋資料庫 → 訓練 RankSVM 模型 → 預測聲音的全局排序，證實存在學習元件。綜合以上證據，符合偏好學習在音頻領域的具體應用與學習需求，因此評分為最高等級5。",
@@ -292,9 +372,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5,5)",
-    "review_skipped": false,
-    "discard_reason": null
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
   },
   {
     "key": "han2020ordinal",
@@ -327,7 +417,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:2,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:2,2)"
+    "discard_reason": "exclude (junior:2,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "jayawardena2020ordinal",
@@ -360,7 +457,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "dong2020pyramid",
@@ -396,7 +500,14 @@
     "round-B_SeniorLead_evaluation": 1,
     "final_verdict": "exclude (senior:1)",
     "review_skipped": false,
-    "discard_reason": "exclude (senior:1)"
+    "discard_reason": "exclude (senior:1)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "zhou2021interactive",
@@ -429,7 +540,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021-04-14",
+      "published_date_iso": "2021-04-14"
+    }
   },
   {
     "key": "liu2021reinforcement",
@@ -462,7 +580,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    }
   },
   {
     "key": "lei2023audio",
@@ -495,7 +620,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "naini2023unsupervised",
@@ -528,7 +660,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023-06-04",
+      "published_date_iso": "2023-06-04"
+    }
   },
   {
     "key": "naini2023preference",
@@ -561,7 +700,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "wu2023interval",
@@ -594,7 +740,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2023",
+      "published_date_iso": "2023-01-01"
+    }
   },
   {
     "key": "liao2024baton",
@@ -627,7 +780,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "cideron2024musicrl",
@@ -660,7 +820,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "anastassiou2024seed",
@@ -693,7 +860,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   },
   {
     "key": "chu2024qwen2",
@@ -726,7 +900,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-07-15",
+      "published_date_iso": "2024-07-15"
+    }
   },
   {
     "key": "zhang2024speechalign",
@@ -759,7 +940,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-04-08",
+      "published_date_iso": "2024-04-08"
+    }
   },
   {
     "key": "wu2025adaptive",
@@ -792,7 +980,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "kumar2025using",
@@ -825,7 +1020,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024-11-24",
+      "published_date_iso": "2024-11-24"
+    }
   },
   {
     "key": "luo2025openomni",
@@ -858,7 +1060,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "nagpal2025speech",
@@ -891,7 +1100,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "gao2025emo",
@@ -924,7 +1140,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2025",
+      "published_date_iso": "2025-01-01"
+    }
   },
   {
     "key": "mckeown2011semaine",
@@ -938,7 +1161,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "REFERENCES",
     "reference_cut_line_no": 1216,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Based on the full text, the paper describes the SEMAINE database and annotation schemes for emotionally colored conversations, but there is no ranking of audio clips, A/B comparisons, or any RL training loop for an audio model. Although it is multimodal and audio-enabled, the work does not address preference learning as defined (ranking or comparison of audio segments) and is not a survey/review. Key evidence: (1) No mention of ranking, A/B tests, or learning objectives around audio preferences; (2) Focus on dataset creation, annotation schemes (FEELtrace, valence/activation), and SAL interaction scenarios rather than learning-to-rank or audio model training with preferences; (3) No explicit learning component or RL loop described. Missing: explicit retrievable evidence of a preference-learning mechanism or audio-model RL training loop to satisfy inclusion. Therefore, insufficient evidence for inclusion; lack of explicit ranking/learning data constitutes a deal-breaker.",
@@ -955,9 +1178,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:1,2)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
   },
   {
     "key": "manocha2020differentiable",
@@ -990,7 +1223,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "include (junior:5,5)",
     "review_skipped": false,
-    "discard_reason": null
+    "discard_reason": null,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    }
   },
   {
     "key": "cao2007learning",
@@ -1004,7 +1244,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 942,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "Evidence clearly shows the paper focuses on learning to rank in information retrieval for documents (e.g., TREC, OHSUMED, CSearch) with lists of documents and relevance judgments, and does not mention audio data, audio clips, or audio-domain applications. The inclusion criteria require preference learning within the audio domain (ranking or A/B comparisons of audio clips), with multimodal works allowed, but this paper’s domain is text/document retrieval, not audio. Although it contains a learning-to-rank method (ListNet) and a learning loop, there is no explicit audio component or audio RL model described. Therefore, it fails the audio-domain inclusion criterion; it is not a survey, and it does include learning, but the domain mismatch warrants exclusion. Missing retrievable basis for audio domain is the absence of any audio-related data, tasks, or features in the full text provided. One-sentence takeaway: the paper is about document ranking in IR, not audio, so it does not meet the audio-domain inclusion criteria.",
@@ -1021,9 +1261,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:1,2)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:before_start",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "2007",
+      "published_date_iso": "2007-01-01"
+    }
   },
   {
     "key": "gao2023scaling",
@@ -1056,7 +1306,14 @@
     "round-B_SeniorLead_evaluation": null,
     "final_verdict": "exclude (junior:1,2)",
     "review_skipped": false,
-    "discard_reason": "exclude (junior:1,2)"
+    "discard_reason": "exclude (junior:1,2)",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    }
   },
   {
     "key": "zhou2023beyond",
@@ -1070,7 +1327,7 @@
     "reference_cut_method": "heading",
     "reference_cut_marker": "References",
     "reference_cut_line_no": 2005,
-    "review_state": "reviewed",
+    "review_state": "cutoff_filtered",
     "fulltext_missing_or_unmatched": false,
     "round-A_JuniorNano_output": {
       "reasoning": "結論：不納入。此論文聚焦於語言模型的偏好學習與多目標對齊（MODPO/MORLHF/DPO），以及在安全對齊與長文問答任務上的實驗，屬於 NLP/語言模型領域，未涉及音頻資料、音頻偏好比較、或音頻模型的 RL 訓練循環，因此不符合「音頻域應用」的納入條件。支持證據：1) 文章標題與內容反覆出現 language models、RLHF、DPO/MORLHF、偏好對比等概念，明示為偏好學習研究；2) 實驗對象為安全對齊與長文問答，使用 BEAVERTAILS、QA-FEEDBACK 等文本相關數據集，無音頻資料或音頻評估；3) 非綜述性研究，具可實作的 MODPO 方法與實驗。反對證據或缺口：缺少任何音頻域的數據、音頻偏好比較、或音頻 RL 訓練循環的證據；未顯示將此方法應用於音頻或多模態（含音頻）的具體實驗或討論，因此無法滿足音頻領域的包含條件。缺少何種可追溯依據：需要具體的音頻數據與音頻偏好實驗證據，本文無此證據。",
@@ -1087,9 +1344,19 @@
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (junior:2,2)",
-    "review_skipped": false,
-    "discard_reason": "exclude (junior:2,2)"
+    "final_verdict": "exclude (cutoff_time_window)",
+    "review_skipped": true,
+    "discard_reason": "cutoff_time_window:unparseable_published_date",
+    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
+    "pre_cutoff_review_state": "cutoff_filtered",
+    "pre_cutoff_review_skipped": true,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "unparseable_published_date",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-10",
+      "published_date_iso": null
+    }
   },
   {
     "key": "team2024gemini",
@@ -1125,6 +1392,13 @@
     "round-B_SeniorLead_evaluation": 3,
     "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": "review_needs_followup"
+    "discard_reason": "review_needs_followup",
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
   }
 ]

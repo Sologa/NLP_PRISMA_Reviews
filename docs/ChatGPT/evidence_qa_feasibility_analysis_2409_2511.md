@@ -111,10 +111,10 @@ current metrics 以 `stage_split_criteria_migration` 這批檔案為準：
 
 1. `2409.13738`
    - Stage 1 F1 = `0.7500`
-   - Combined F1 = `0.7843`
+   - Combined F1 = `0.8235`
 2. `2511.13936`
-   - Stage 1 F1 = `0.8657`
-   - Combined F1 = `0.8814`
+   - Stage 1 F1 = `0.7407`
+   - Combined F1 = `0.7692`
 
 ## 1.5 歷史最佳表現（只作對照，不當 current state）
 
@@ -122,7 +122,7 @@ current metrics 以 `stage_split_criteria_migration` 這批檔案為準：
 
 1. `2511` 的 `criteria_2511_opv2` 曾把 Combined F1 拉到 `0.9206`。
 2. 但那一版的提升，很大部分來自 **operational hardening**，不是 source-faithful criteria 自然就能達到的表現。
-3. `2409` 在舊的 `criteria_2409_stage_split` 報告裡，Combined F1 曾到 `0.7778`，而 current migration run 是 `0.7843`；所以 `2409` 現在不是單純退步，而是「current state 已改成 faithful stage-split 後，瓶頸轉到 evidence / interpretation 層」。
+3. `2409` 在舊的 `criteria_2409_stage_split` 報告裡，Combined F1 曾到 `0.7778`，而 current migration run 是 `0.8235`；所以 `2409` 現在不是單純退步，而是「current state 已改成 faithful stage-split 後，瓶頸轉到 evidence / interpretation 層」。
 
 這一點很關鍵：
 
@@ -296,7 +296,7 @@ current state 已經明確要求：
 
 ## 5.2 `2511` 已經提供了一個很強的反向證據
 
-`2511` 的 current combined F1 是 `0.8814`，但歷史上的 `criteria_2511_opv2` 可以到 `0.9206`。
+`2511` 的 current combined F1 是 `0.7692`，但歷史上的 `criteria_2511_opv2` 可以到 `0.9206`。
 
 `docs/source_faithful_vs_operational_2409_2511_report.md` 也明確指出：
 
