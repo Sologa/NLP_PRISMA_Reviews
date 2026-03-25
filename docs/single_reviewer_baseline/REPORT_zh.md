@@ -1,20 +1,21 @@
 # Single Reviewer Baseline 總報告
 
-- 產生時間：`2026-03-25T11:39:25`
+- 產生時間：`2026-03-25T16:52:14`
 - CSV：`docs/single_reviewer_baseline/single_reviewer_runs_summary.csv`
 - 說明：本報告使用目前磁碟上各 run 的最新結果。若某些舊 run 曾被直接套用 `cutoff_jsons/<paper_id>.json` 的 `time_policy` 硬覆寫，這裡顯示的是覆寫後結果。
 
 ## 已完成 run
 
-- 已完成 paper-level 結果列數：`19`
-- 尚未完成 paper-level 結果列數：`3`
+- 已完成 paper-level 結果列數：`20`
+- 尚未完成 paper-level 結果列數：`2`
 
 ## 2307.05527
 
 | 排名 | 模型 | effort | F1 | Precision | Recall | 與現行完整 pipeline 差值 | run_id |
 | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
 | 1 | `gpt-5-mini` | `未顯式設定` | `0.9169` | `0.9675` | `0.8713` | `-0.0412` | `20260321_180142Z` |
-| 2 | `gpt-5-nano` | `未顯式設定` | `0.6299` | `0.9639` | `0.4678` | `-0.3282` | `20260321_173147Z` |
+| 2 | `gpt-5-mini` | `low` | `0.9130` | `0.9735` | `0.8596` | `-0.0450` | `20260325_gpt5mini_low_2307_sep` |
+| 3 | `gpt-5-nano` | `未顯式設定` | `0.6299` | `0.9639` | `0.4678` | `-0.3282` | `20260321_173147Z` |
 
 ## 2409.13738
 
@@ -52,12 +53,12 @@
 
 | 模型 | effort | paper | batch_status | cutoff後送審 | cutoff排除 | run_id |
 | --- | --- | --- | --- | ---: | ---: | --- |
-| `gpt-5-mini` | `low` | `2307.05527` | `validating` | `192` | `30` | `20260325_gpt5mini_low_2307_sep` |
-| `gpt-5-mini` | `low` | `2511.13936` | `validating` | `51` | `37` | `20260325_gpt5mini_low_2511_sep` |
+| `gpt-5-mini` | `low` | `2511.13936` | `in_progress` | `51` | `37` | `20260325_gpt5mini_low_2511_sep` |
 | `gpt-5-mini` | `low` | `2601.19926` | `in_progress` | `354` | `6` | `20260325_gpt5mini_low_2601_sep` |
 
 ## 補充觀察
 
 - `2409.13738` 目前最佳已完成結果是 `gpt-5-mini` / `low`，F1 = `0.8511`。
-- 原本的三篇合併 batch `20260325_gpt5mini_low_other3` 已改為取消重跑；目前 OpenAI 狀態為 `cancelling`，進度 `0/597`。
-- 已改成三個單篇 batch 重新送出，避免再被 597 requests 綁在同一個 queue。
+- `2307.05527` 新的 `gpt-5-mini low` 單篇 batch 已完成，F1 = `0.9130`。
+- 原本的三篇合併 batch `20260325_gpt5mini_low_other3` 已改為取消重跑；目前 OpenAI 狀態為 `cancelled`，進度 `0/597`。
+- 目前仍有兩個單篇 batch 未完成：`2511.13936` 與 `2601.19926`。
