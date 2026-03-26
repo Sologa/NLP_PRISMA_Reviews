@@ -1,6 +1,7 @@
 # QA 之前的實驗流程與結果整理報告
 
-日期：2026-03-18  
+日期：2026-03-26  
+版本註記：本版已對齊 cutoff-first retrofit 後的 3-reviewer / QA authority 與歷史指標。  
 範圍：本報告整理 `QA-first` 實驗啟動之前的主要實驗線，終點到 `stage_split_criteria_migration` 與目前 handoff 為止。  
 不納入範圍：`docs/ChatGPT/evidence_qa_feasibility_analysis_2409_2511.md` 與 `qa_first_experiments/` 內的 QA-first 實驗資產。  
 
@@ -61,7 +62,7 @@
 | --- | --- | ---: | ---: | --- | --- |
 | `2307.05527` | `senior_no_marker` | 0.9113 | 0.9057 | stable reference | 目前穩定，不是主要戰場。 |
 | `2409.13738` | `stage_split_criteria_migration` | 0.7500 | 0.8235 | current active | 已改成 stage-split source-faithful criteria，但還有 hard FP。 |
-| `2511.13936` | `stage_split_criteria_migration` | 0.7407 | 0.7692 | current active | 語義更乾淨，但比歷史上最激進的 operational 版本低。 |
+| `2511.13936` | `stage_split_criteria_migration` | 0.7407 | 0.7692 | current active | 語義更乾淨；cutoff-corrected 後，已不再落後於 repo 內追蹤的 `opv2` 分數。 |
 | `2601.19926` | `senior_no_marker` | 0.9761 | 0.9700 | stable reference | 對過嚴 senior 很脆弱，因此維持 no-marker。 |
 
 ### 2.2 QA 前最後的 production workflow
@@ -71,6 +72,7 @@
 | Runtime prompt 來源 | `scripts/screening/runtime_prompts/runtime_prompts.json` | 真正執行時讀這個 JSON，不再依賴舊 markdown prompt 模板。 |
 | Stage 1 criteria | `criteria_stage1/<paper_id>.json` | 給 title/abstract 用的「可觀測版」條件。 |
 | Stage 2 criteria | `criteria_stage2/<paper_id>.json` | 給 full text 用的完整 canonical 條件。 |
+| Pre-review cutoff | 強制先套用 `cutoff_jsons/<paper_id>.json` | 不符合時間窗的 candidate 不進 reviewer，直接以 `exclude (cutoff_time_window)` 處理。 |
 | Stage 1 routing | 兩位 junior；雙高分直接 include；雙低分直接 exclude；其餘送 `SeniorLead` | 先讓便宜 reviewer 篩一遍，模糊的再交給資深 reviewer。 |
 | Marker heuristic | 已移除 | 不再靠 reviewer 解釋文字裡有沒有某些關鍵字來決定流程。 |
 | Guidance 第三層 | 不採用 | 不再額外加一層「隱藏規則說明」，避免規則來源變成三套。 |
@@ -206,17 +208,17 @@
 
 | 順序 | 想回答什麼 | 代表結果 |
 | --- | --- | --- |
-| 0 | 原始起點表現如何？ | 四篇平均 Combined F1 = `0.7991` |
-| 1 | 單純 prompt 對齊能不能先把大問題修掉？ | 四篇平均 Combined F1 升到 `0.8980` |
-| 2 | 若盡量不漏掉真陽性，整體會不會更好？ | Recall 幾乎滿分，但 precision 大掉；平均 Combined F1 降到 `0.8435` |
-| 3 | 更積極的 senior 仲裁能否同時守住 precision 與 recall？ | 比 recall redesign 穩，但四篇平均 Combined F1 僅 `0.8214` |
-| 4 | 不看 reasoning 關鍵字，只看分數 routing，會不會更乾淨？ | 去掉 marker 規則版全面優於早期的 senior 仲裁重整版 |
-| 5 | 更保守的 senior 能否壓低 `2409/2511` 的 FP？ | `2409/2511` 進步，但 `2601` 大崩；`2601` Combined F1 掉到 `0.8860` |
+| 0 | 原始起點表現如何？ | 四篇平均 Combined F1 = `0.7575` |
+| 1 | 單純 prompt 對齊能不能先把大問題修掉？ | 四篇平均 Combined F1 升到 `0.8606` |
+| 2 | 若盡量不漏掉真陽性，整體會不會更好？ | Recall-first 仍會拉低 precision；平均 Combined F1 回落到 `0.8195` |
+| 3 | 更積極的 senior 仲裁能否同時守住 precision 與 recall？ | 比 recall redesign 更穩，但四篇平均 Combined F1 仍只有 `0.8121` |
+| 4 | 不看 reasoning 關鍵字，只看分數 routing，會不會更乾淨？ | `senior_no_marker` 平均 Combined F1 `0.8200`，仍優於 `senior_adjudication_v1` 的 `0.8121` |
+| 5 | 更保守的 senior 能否壓低 `2409/2511` 的 FP？ | `2409` 受益明顯，但 `2511` 只小幅改善，`2601` 反而掉到 `0.8704` |
 | 6 | 真正瓶頸到底在哪？ | 指出問題是「criteria 可觀測性」+「senior prompt 不可移植」的組合 |
 | 7 | 嚴格 senior 的效果是真效果，還是 rerun noise？ | 證明 effect 主要來自 senior prompt 本身，不是 noise |
-| 8 | `2511` 問題是不是主要卡在 criteria？ | Combined F1 到 `0.9206`，但方法學上被否決 |
-| 9 | `2409` 是否是 stage-mixing 問題？ | Combined F1 從 `0.6885` 升到 `0.7778` |
-| 10 | 高分到底是合理優化，還是超譯 criteria？ | 證實有些高分來自 criteria supertranslation |
+| 8 | `2511` 問題是不是主要卡在 criteria？ | cutoff-corrected 後，`opv2` Combined F1 為 `0.7692`，方法學風險仍在，但分數優勢已消失 |
+| 9 | `2409` 是否是 stage-mixing 問題？ | Combined F1 從 `0.7500` 升到 `0.8235` |
+| 10 | 高分到底是合理優化，還是超譯 criteria？ | 證實 methodology boundary 仍獨立存在；cutoff-corrected 後，`2511` 的 score gap 已明顯縮小 |
 | 11 | 如何在不偷加規則下，把 stage 差異正式落地？ | `2409` Combined F1 = `0.8235`；`2511` Combined F1 = `0.7692` |
 
 ## 5. 全域流程線：Stage 1 與 Combined 結果
@@ -227,23 +229,23 @@
 
 | 實驗版本 | `2307` | `2409` | `2511` | `2601` | 四篇平均 |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `before` | 0.8846 | 0.7391 | 0.8235 | 0.8760 | 0.8210 |
-| `prompt_only_v1` | 0.9551 | 0.6364 | 0.7895 | 0.9690 | 0.8385 |
-| `recall_redesign` | 0.9448 | 0.4468 | 0.5714 | 0.9682 | 0.7328 |
-| `senior_adjudication_v1` | 0.9563 | 0.6087 | 0.7229 | **0.9809** | 0.8172 |
-| `senior_no_marker` | **0.9113** | 0.6176 | 0.7160 | 0.9761 | 0.8188 |
-| `senior_prompt_tuned` | 0.9489 | **0.7636** | **0.8387** | 0.8896 | **0.8602** |
+| `before` | 0.8322 | 0.8095 | 0.6222 | 0.8723 | 0.7841 |
+| `prompt_only_v1` | 0.9113 | 0.7241 | 0.7241 | 0.9673 | 0.8317 |
+| `recall_redesign` | 0.9064 | 0.5250 | 0.5676 | 0.9665 | 0.7414 |
+| `senior_adjudication_v1` | 0.9080 | 0.7000 | 0.6885 | **0.9778** | 0.8186 |
+| `senior_no_marker` | **0.9113** | 0.7000 | 0.6557 | 0.9761 | 0.8108 |
+| `senior_prompt_tuned` | 0.9198 | **0.8400** | **0.6909** | 0.8779 | **0.8321** |
 
 ### 5.2 Combined F1 對照
 
 | 實驗版本 | `2307` | `2409` | `2511` | `2601` | 四篇平均 |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `before` | 0.8000 | 0.7556 | 0.8235 | 0.8567 | 0.7991 |
-| `prompt_only_v1` | 0.9429 | **0.8235** | 0.8710 | 0.9548 | **0.8980** |
-| `recall_redesign` | 0.9521 | 0.6269 | 0.8406 | 0.9545 | 0.8435 |
-| `senior_adjudication_v1` | 0.9426 | 0.6562 | 0.7179 | 0.9687 | 0.8214 |
-| `senior_no_marker` | **0.9057** | 0.6885 | 0.7941 | **0.9700** | 0.8535 |
-| `senior_prompt_tuned` | 0.9358 | 0.7778 | 0.8525 | 0.8860 | 0.8630 |
+| `before` | 0.7437 | 0.8095 | 0.6222 | 0.8547 | 0.7575 |
+| `prompt_only_v1` | 0.8959 | **0.8750** | **0.7200** | 0.9515 | **0.8606** |
+| `recall_redesign` | 0.8994 | 0.7119 | 0.7143 | 0.9527 | 0.8195 |
+| `senior_adjudication_v1` | 0.8889 | 0.7500 | 0.6441 | 0.9655 | 0.8121 |
+| `senior_no_marker` | **0.9057** | 0.7500 | 0.6545 | **0.9700** | 0.8200 |
+| `senior_prompt_tuned` | 0.8924 | **0.8750** | 0.6909 | 0.8704 | 0.8322 |
 
 ### 5.3 Stage 1 / Stage 2（全文後）分開看
 
@@ -258,23 +260,23 @@
 
 | 實驗版本 | `2307` Stage 1 | `2307` Stage 2 / 全文後 | `2409` Stage 1 | `2409` Stage 2 / 全文後 |
 | --- | ---: | ---: | ---: | ---: |
-| `before` | 0.8846 | 0.8000 | 0.7391 | 0.7556 |
-| `prompt_only_v1` | 0.9551 | 0.9429 | 0.6364 | **0.8235** |
-| `recall_redesign` | 0.9448 | 0.9521 | 0.4468 | 0.6269 |
-| `senior_adjudication_v1` | 0.9563 | 0.9426 | 0.6087 | 0.6562 |
-| `senior_no_marker` | **0.9113** | **0.9057** | 0.6176 | 0.6885 |
-| `senior_prompt_tuned` | 0.9489 | 0.9358 | **0.7636** | 0.7778 |
+| `before` | 0.8322 | 0.7437 | 0.8095 | 0.8095 |
+| `prompt_only_v1` | 0.9113 | 0.8959 | 0.7241 | **0.8750** |
+| `recall_redesign` | 0.9064 | 0.8994 | 0.5250 | 0.7119 |
+| `senior_adjudication_v1` | 0.9080 | 0.8889 | 0.7000 | 0.7500 |
+| `senior_no_marker` | **0.9113** | **0.9057** | 0.7000 | 0.7500 |
+| `senior_prompt_tuned` | 0.9198 | 0.8924 | **0.8400** | 0.8750 |
 
 表 5.3B `2511` / `2601`
 
 | 實驗版本 | `2511` Stage 1 | `2511` Stage 2 / 全文後 | `2601` Stage 1 | `2601` Stage 2 / 全文後 |
 | --- | ---: | ---: | ---: | ---: |
-| `before` | 0.8235 | 0.8235 | 0.8760 | 0.8567 |
-| `prompt_only_v1` | 0.7895 | **0.8710** | 0.9690 | 0.9548 |
-| `recall_redesign` | 0.5714 | 0.8406 | 0.9682 | 0.9545 |
-| `senior_adjudication_v1` | 0.7229 | 0.7179 | **0.9809** | 0.9687 |
-| `senior_no_marker` | 0.7160 | 0.7941 | 0.9761 | **0.9700** |
-| `senior_prompt_tuned` | **0.8387** | 0.8525 | 0.8896 | 0.8860 |
+| `before` | 0.6222 | 0.6222 | 0.8723 | 0.8547 |
+| `prompt_only_v1` | **0.7241** | **0.7200** | 0.9673 | 0.9515 |
+| `recall_redesign` | 0.5676 | 0.7143 | 0.9665 | 0.9527 |
+| `senior_adjudication_v1` | 0.6885 | 0.6441 | **0.9778** | 0.9655 |
+| `senior_no_marker` | 0.6557 | 0.6545 | 0.9761 | **0.9700** |
+| `senior_prompt_tuned` | 0.6909 | 0.6909 | 0.8779 | 0.8704 |
 
 ### 5.4 另外兩篇最佳 setting 的 confusion matrix
 
@@ -285,15 +287,15 @@
 
 | 階段 | TP | FP | TN | FN | 白話判讀 |
 | --- | ---: | ---: | ---: | ---: | --- |
-| Stage 1 | 165 | 7 | 40 | 6 | 已經很平衡，只有少量 FP 與 FN。 |
-| Stage 2 / 全文後 | 160 | 3 | 44 | 11 | 全文後 FP 更少，但 FN 增加一些，所以 recall 比 Stage 1 低。 |
+| Stage 1 | 149 | 7 | 40 | 22 | precision 穩，但召回不是滿分；失分主要在 FN。 |
+| Stage 2 / 全文後 | 144 | 3 | 44 | 27 | 全文後 FP 更少，但又多洗掉一些正例，所以 FN 進一步增加。 |
 
 表 5.4B `2601` 最佳 setting = `senior_no_marker`
 
 | 階段 | TP | FP | TN | FN | 白話判讀 |
 | --- | ---: | ---: | ---: | ---: | --- |
-| Stage 1 | 330 | 9 | 14 | 5 | 幾乎是高 TP、低 FP、低 FN 的穩定型。 |
-| Stage 2 / 全文後 | 328 | 11 | 12 | 7 | 全文後略多一些 FP/FN，但整體仍非常穩。 |
+| Stage 1 | 327 | 8 | 15 | 8 | 仍然是高 TP、低 FP、低 FN 的穩定型。 |
+| Stage 2 / 全文後 | 323 | 8 | 15 | 12 | 全文後沒有明顯 precision 崩盤，主要代價是 FN 增加。 |
 
 直接說這兩篇的失分結構：
 
@@ -306,11 +308,11 @@
 
 | 觀察 | 證據 | 白話說明 |
 | --- | --- | --- |
-| `prompt_only_v1` 是很強的早期跳升 | 平均 Combined F1 從 `0.7991` 升到 `0.8980` | 單純把 prompt 對齊，就先解掉了一大批明顯錯誤。 |
-| `recall_redesign` 雖然把 FN 壓低，但 precision 代價太大 | 平均 Stage 1 F1 從 `0.8385` 掉到 `0.7328` | 「寧可全收」會讓太多假陽性衝進來。 |
-| `senior_no_marker` 比 `senior_adjudication_v1` 更乾淨 | 四篇 combined 都是 no-marker 較好 | 代表 marker heuristic 不是好方向。 |
-| `senior_prompt_tuned` 不能全域採用 | `2409/2511` 進步，但 `2601` Combined F1 掉到 `0.8860` | 更嚴格的 senior 不是萬靈丹。 |
-| 四篇最佳版本不一致 | `2307/2601` 最好是 `senior_no_marker`；`2409/2511` 在這條線上最好是 `prompt_only_v1` | 同一套 global workflow 無法同時把四篇都推到最好。 |
+| `prompt_only_v1` 仍是很強的早期跳升 | 平均 Combined F1 從 `0.7575` 升到 `0.8606` | 單純把 prompt 對齊，仍可先解掉一大批明顯錯誤。 |
+| `recall_redesign` 雖然守住一些 recall，但 precision 代價太大 | 平均 Stage 1 F1 從 `0.8317` 掉到 `0.7414` | 「寧可全收」依然會讓太多假陽性衝進來。 |
+| `senior_no_marker` 仍比 `senior_adjudication_v1` 更乾淨 | 平均 Combined F1 `0.8200` 高於 `0.8121`；`2409` 兩者則是 tie | marker heuristic 仍不是好方向。 |
+| `senior_prompt_tuned` 不能全域採用 | `2409` 進步很大，但 `2601` Combined F1 掉到 `0.8704` | 更嚴格的 senior 只對部分 paper 有利。 |
+| 四篇最佳版本不一致 | `2307/2601` 最好是 `senior_no_marker`；`2409` 在這條線上是 `prompt_only_v1` 與 `senior_prompt_tuned` 並列最高；`2511` 則是 `prompt_only_v1` | 同一套 global workflow 仍無法同時把四篇都推到最好。 |
 
 ## 6. 診斷與驗證：為什麼不是再繼續調 senior
 
@@ -327,9 +329,9 @@
 
 | 比較面向 | `replay no-marker` vs `replay tuned` 結果 | 白話說明 |
 | --- | --- | --- |
-| `2409` | F1 `0.6176 -> 0.7925` | 更嚴格 senior 確實能壓掉很多 FP。 |
-| `2511` | F1 `0.7073 -> 0.8182` | 也有改善，但要付出一些 recall 代價。 |
-| `2601` | F1 `0.9765 -> 0.8727` | 同樣的嚴格策略對 `2601` 幾乎是災難。 |
+| `2409` | F1 `0.7000 -> 0.8571` | 更嚴格 senior 在 `2409` 仍能大幅壓掉 FP。 |
+| `2511` | F1 `0.6667 -> 0.6923` | 有改善，但幅度遠小於 `2409`。 |
+| `2601` | F1 `0.9748 -> 0.8671` | 同樣的嚴格策略對 `2601` 仍幾乎是災難。 |
 | 整體判斷 | tuned effect 不是 rerun noise | 問題不是「重跑剛好多了/壞了」，而是 senior prompt 真的改變了 decision 行為。 |
 
 ## 7. `2409` / `2511` 的 criteria 專案線
@@ -338,14 +340,14 @@
 
 | Paper | 版本 | 方法立場 | Stage 1 F1 | Combined F1 | 相對 `senior_no_marker` 變化 | QA 前狀態 |
 | --- | --- | --- | ---: | ---: | --- | --- |
-| `2409` | `senior_no_marker` | no-marker 基準線 | 0.6176 | 0.6885 | baseline | 歷史基準 |
-| `2409` | `senior_prompt_tuned` | 靠更嚴 senior 壓 FP | 0.7636 | 0.7778 | `+0.1460 / +0.0893` | 歷史比較，不採用為全域方案 |
-| `2409` | `criteria_2409_stage_split` | 先把 2409 criteria 拆成 Stage 1 / Stage 2 | 0.6885 | 0.7778 | `+0.0709 / +0.0893` | 歷史前身 |
-| `2409` | `stage_split_criteria_migration` | 正式 stage-split、source-faithful current architecture | 0.7500 | 0.8235 | `+0.1324 / +0.0958` | QA 前 current authority |
-| `2511` | `senior_no_marker` | no-marker 基準線 | 0.7160 | 0.7941 | baseline | 歷史基準 |
-| `2511` | `senior_prompt_tuned` | 靠更嚴 senior 壓 FP | 0.8387 | 0.8525 | `+0.1227 / +0.0583` | 歷史比較 |
-| `2511` | `criteria_2511_opv2` | operational hardening decision table | 0.8788 | 0.9206 | `+0.1627 / +0.1265` | 歷史高分，但方法學上否決 |
-| `2511` | `stage_split_criteria_migration` | 正式 stage-split、source-faithful current architecture | 0.7407 | 0.7692 | `+0.1496 / +0.0872` | QA 前 current authority |
+| `2409` | `senior_no_marker` | no-marker 基準線 | 0.7000 | 0.7500 | baseline | 歷史基準 |
+| `2409` | `senior_prompt_tuned` | 靠更嚴 senior 壓 FP | 0.8400 | 0.8750 | `+0.1400 / +0.1250` | 歷史比較，不採用為全域方案 |
+| `2409` | `criteria_2409_stage_split` | 先把 2409 criteria 拆成 Stage 1 / Stage 2 | 0.7500 | 0.8235 | `+0.0500 / +0.0735` | 歷史前身 |
+| `2409` | `stage_split_criteria_migration` | 正式 stage-split、source-faithful current architecture | 0.7500 | 0.8235 | `+0.0500 / +0.0735` | QA 前 current authority |
+| `2511` | `senior_no_marker` | no-marker 基準線 | 0.6557 | 0.6545 | baseline | 歷史基準 |
+| `2511` | `senior_prompt_tuned` | 靠更嚴 senior 壓 FP | 0.6909 | 0.6909 | `+0.0351 / +0.0364` | 歷史比較 |
+| `2511` | `criteria_2511_opv2` | operational hardening decision table | 0.7407 | 0.7692 | `+0.0850 / +0.1147` | 歷史專案；方法學上仍視為 historical only |
+| `2511` | `stage_split_criteria_migration` | 正式 stage-split、source-faithful current architecture | 0.7407 | 0.7692 | `+0.0850 / +0.1147` | QA 前 current authority |
 
 ### 7.2 `source-faithful` 與 `operational` 的歷史對照
 
@@ -353,18 +355,18 @@
 
 | Paper | 版本立場 | Stage 1 F1（3 runs mean） | Combined F1（3 runs mean） | 解讀 |
 | --- | --- | ---: | ---: | --- |
-| `2409` | `operational` | 0.6923 | 0.7827 | operational 有幫助，但不是唯一可行方向。 |
-| `2409` | `source-faithful` | **0.7999** | **0.8427** | 在 2409，上乾淨語義不一定比較差。 |
-| `2511` | `operational` | **0.8984** | **0.9120** | 2511 的高分很大一部分來自更強的 operational hardening。 |
-| `2511` | `source-faithful` | 0.8705 | 0.8784 | 語義較乾淨，但少了部分靠硬化規則換來的分數。 |
+| `2409` | `operational` | 0.7500 | 0.8290 | operational 仍有幫助，但不是唯一可行方向。 |
+| `2409` | `source-faithful` | **0.8551** | **0.8612** | 在 2409，乾淨語義的 cutoff-corrected 表現仍更好。 |
+| `2511` | `operational` | 0.7259 | **0.7225** | `2511` 的 operational 線只在 combined 保留些微優勢。 |
+| `2511` | `source-faithful` | **0.7352** | 0.6850 | 語義較乾淨，Stage 1 較好，但 combined 反而較低。 |
 
 ### 7.3 這組表格怎麼看
 
 | 問題 | 結論 | 白話說明 |
 | --- | --- | --- |
 | `2409` 的核心問題是什麼？ | stage-mixing + hard FP/evidence interpretation | Stage 1 只能看摘要，卻常被迫做接近全文等級的判斷。 |
-| `2511` 的核心問題是什麼？ | operational criteria 很能拿分，但容易越界 | 如果把模型友善的硬規則直接當成原 paper 規則，就會方法學失真。 |
-| 為什麼 `criteria_2511_opv2` 不採用？ | 分數高，但屬於 criteria supertranslation | 白話是「雖然考高分，但有作弊嫌疑」。 |
+| `2511` 的核心問題是什麼？ | boundary ambiguity + recall 壓力，比單純 hardening 更關鍵 | cutoff-corrected 後，`opv2` 已不再展示明顯分數優勢。 |
+| 為什麼 `criteria_2511_opv2` 不採用？ | 就算 cutoff-corrected 後和 current authority 同分，它仍屬於 criteria supertranslation | 問題已不再只是分數高低，而是規則來源是否合法。 |
 | 為什麼最後選 `stage_split_criteria_migration`？ | 它把規則來源、stage 差異、方法學邊界都切乾淨 | 雖然不是所有 paper 都拿到歷史最高分，但最能作為可維護的正式架構。 |
 
 ### 7.4 `2409` / `2511` 的問題拆解概念流程圖
@@ -404,6 +406,7 @@ stage 差異更清楚
 | 主題 | 最後採用結論 | 依據 | 白話說明 |
 | --- | --- | --- | --- |
 | Runtime prompt | 讀 `runtime_prompts.json` | prompt externalization + current handoff | Prompt 不再散在舊模板裡。 |
+| Pre-review cutoff | 先套用 `cutoff_jsons/<paper_id>.json` | cutoff retrofit + `results_manifest.json` | 不符合時間窗的 candidate 不進 reviewer。 |
 | Stage 1 routing | 雙高分 include；雙低分 exclude；其餘 senior | `senior_no_marker` 線 + `AGENTS.md` | routing 規則最後收斂成簡單、可解釋的數值規則。 |
 | `SeniorLead` | 必須保留 | adjudication 線歷史 + `AGENTS.md` | 不是拿掉 senior，而是讓 senior 只處理真正模糊的案子。 |
 | Marker heuristic | 移除 | `stage1_senior_no_marker_report.md` | 不再走「看 reasoning 關鍵字」的捷徑。 |
@@ -420,8 +423,8 @@ stage 差異更清楚
 | Paper | 代表性歷史高點 | Combined F1 | QA 前 current authority | Combined F1 | 為什麼不是直接採這個版本 |
 | --- | --- | ---: | --- | ---: | --- |
 | `2307` | `senior_no_marker` | 0.9057 | `senior_no_marker` | 0.9057 | 這篇剛好歷史高分與 current authority 一致。 |
-| `2409` | `prompt_only_v1`（全域流程線） | 0.8235 | `stage_split_criteria_migration` | 0.8235 | current authority 追求的是 stage-specific、source-faithful 架構，不只是單次分數。 |
-| `2511` | `criteria_2511_opv2` | 0.9206 | `stage_split_criteria_migration` | 0.7692 | `opv2` 有明顯 criteria supertranslation，因此方法學上不能升格成 current state。 |
+| `2409` | `prompt_only_v1`（全域流程線） | 0.8750 | `stage_split_criteria_migration` | 0.8235 | current authority 追求的是 stage-specific、source-faithful 架構，不只是單次分數。 |
+| `2511` | `criteria_2511_opv2` | 0.7692 | `stage_split_criteria_migration` | 0.7692 | cutoff-corrected 後兩者同分，但 `opv2` 仍是 criteria supertranslation，不能升格成 current state。 |
 | `2601` | `senior_no_marker` | 0.9700 | `senior_no_marker` | 0.9700 | 這篇對 strict senior 太敏感，所以維持 no-marker。 |
 
 ## 10. 為什麼 `2409` / `2511` 都還不到 `0.9`，以及 `stage_split_criteria_migration` 到底改了什麼
@@ -444,10 +447,10 @@ stage 差異更清楚
 
 | Paper | 設定 | Stage 1 F1 | Stage 2 / 全文後 Combined F1 | 相對 `senior_no_marker` 變化 | 白話解讀 |
 | --- | --- | ---: | ---: | --- | --- |
-| `2409` | `senior_no_marker` | 0.6176 | 0.6885 | baseline | 還沒正式拆開 stage-specific criteria 的基準線。 |
-| `2409` | `stage_split_criteria_migration` | 0.7500 | 0.8235 | `+0.1324 / +0.0958` | 拆開後明顯變好，但仍不到 `0.9`。 |
-| `2511` | `senior_no_marker` | 0.7160 | 0.7941 | baseline | 還沒正式拆開 stage-specific criteria 的基準線。 |
-| `2511` | `stage_split_criteria_migration` | 0.7407 | 0.7692 | `+0.1496 / +0.0872` | 拆開後也明顯變好，但仍不到 `0.9`。 |
+| `2409` | `senior_no_marker` | 0.7000 | 0.7500 | baseline | 還沒正式拆開 stage-specific criteria 的基準線。 |
+| `2409` | `stage_split_criteria_migration` | 0.7500 | 0.8235 | `+0.0500 / +0.0735` | 拆開後仍有明顯進步，但還不到 `0.9`。 |
+| `2511` | `senior_no_marker` | 0.6557 | 0.6545 | baseline | cutoff-corrected 後，這條基準線的 FN 壓力更清楚。 |
+| `2511` | `stage_split_criteria_migration` | 0.7407 | 0.7692 | `+0.0850 / +0.1147` | 拆開後不只 precision 變好，combined 也明顯優於 no-marker。 |
 
 這張表的重點不是「拆完還是不夠高」，而是：
 
@@ -463,32 +466,32 @@ stage 差異更清楚
 
 | 設定 | 階段 | TP | FP | TN | FN | 白話判讀 |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
-| `senior_no_marker` | Stage 1 | 21 | 26 | 31 | 0 | 幾乎完全不是漏收問題，而是保留太多假陽性。 |
-| `senior_no_marker` | Stage 2 / 全文後 | 21 | 19 | 38 | 0 | 全文後仍然是明顯 FP-heavy。 |
-| `stage_split_criteria_migration` | Stage 1 | 21 | 14 | 43 | 0 | FP 明顯下降，但主要問題仍是 FP。 |
-| `stage_split_criteria_migration` | Stage 2 / 全文後 | 20 | 10 | 47 | 1 | 仍以 FP 為主，只是比以前少很多。 |
+| `senior_no_marker` | Stage 1 | 21 | 18 | 41 | 0 | 幾乎完全不是漏收問題，而是保留太多假陽性。 |
+| `senior_no_marker` | Stage 2 / 全文後 | 21 | 14 | 45 | 0 | 全文後仍然是明顯 FP-heavy。 |
+| `stage_split_criteria_migration` | Stage 1 | 21 | 14 | 45 | 0 | Stage 1 仍以 FP 為主，但已比 no-marker 更乾淨。 |
+| `stage_split_criteria_migration` | Stage 2 / 全文後 | 21 | 9 | 50 | 0 | current state 仍是 FP-heavy，只是 FP 已再往下壓。 |
 
 表 10.2B `2511` confusion matrix 對照
 
 | 設定 | 階段 | TP | FP | TN | FN | 白話判讀 |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
-| `senior_no_marker` | Stage 1 | 29 | 22 | 32 | 1 | Stage 1 很明顯是 FP-heavy。 |
-| `senior_no_marker` | Stage 2 / 全文後 | 27 | 11 | 43 | 3 | 全文後 FP 仍多，但已不像 Stage 1 那麼失衡。 |
-| `stage_split_criteria_migration` | Stage 1 | 29 | 8 | 46 | 1 | Stage 1 的 FP 已大幅被壓下來。 |
-| `stage_split_criteria_migration` | Stage 2 / 全文後 | 26 | 3 | 51 | 4 | 到 current state，FP 已不多，反而 FN 稍微比 FP 更突出。 |
+| `senior_no_marker` | Stage 1 | 20 | 11 | 46 | 10 | Stage 1 不再是 FP-heavy，而是已經出現明顯 FN 壓力。 |
+| `senior_no_marker` | Stage 2 / 全文後 | 18 | 7 | 50 | 12 | 全文後更像 recall 不足，而不是 precision 崩盤。 |
+| `stage_split_criteria_migration` | Stage 1 | 20 | 4 | 53 | 10 | Stage 1 的 FP 已大幅被壓下來，主要剩下 FN。 |
+| `stage_split_criteria_migration` | Stage 2 / 全文後 | 20 | 2 | 55 | 10 | 到 current state，precision 很高，主要問題清楚轉成 FN / recall。 |
 
 直接回答「主要是在 FP 還是 FN」：
 
 | Paper | 看哪個階段 | 主要問題 | 白話說明 |
 | --- | --- | --- | --- |
 | `2409` | Stage 1 與全文後都一樣 | **主要是 FP** | 不管拆分前後，它都比較像「把太多不該收的留下來」。 |
-| `2511` | Stage 1 | **先是 FP** | 初篩時原本也很明顯是假陽性太多。 |
-| `2511` | current state 的全文後 | **變成 FP / FN 都有，但 FN 稍微更突出** | 因為 FP 已壓到只剩 `3`，但 FN 變成 `4`。 |
+| `2511` | Stage 1 | **主要是 FN** | cutoff-corrected 後，初篩最大的問題已經不是收太多，而是漏掉太多。 |
+| `2511` | current state 的全文後 | **明確是 FN / recall 壓力** | 因為 FP 已壓到只剩 `2`，但 FN 仍有 `10`。 |
 
 所以更精確的結論是：
 
 - `2409`：很明確是 **FP-dominant**。
-- `2511`：不是單純一邊崩盤；在 `senior_no_marker` 時比較像 **FP-heavy**，但到了 `stage_split_criteria_migration` 的 current state，**FP 已被大幅修掉，剩下變成邊界案造成的 FN/recall 壓力也開始明顯**。
+- `2511`：cutoff-corrected 後更清楚顯示它不是 precision 問題，而是 **FN / recall 壓力**；到了 `stage_split_criteria_migration` 的 current state，這個特徵更明顯。
 
 ### 10.3 `stage1/2 criteria 分開` 這個設定，整體到底改了什麼
 
@@ -566,12 +569,12 @@ stage 差異更清楚
 | Paper | 這個設定已經解掉什麼 | 這個設定還沒解掉什麼 | 所以為什麼還是不到 `0.9` |
 | --- | --- | --- | --- |
 | `2409` | 解掉 stage-mixing，也把很多不該在 Stage 1 硬判的條件往後移 | 沒解掉 process-adjacent / topic-adjacent hard FP | Stage 1 precision 仍只有 `0.6000`，全文後也只有 `0.7000`。 |
-| `2511` | 解掉一部分方法學混亂，讓 Stage 1 與 Stage 2 的責任更清楚 | 沒解掉 abstract-level boundary ambiguity | 全文後 precision `0.9091` 已不差，但 recall `0.6667` 仍被邊界案拉住。 |
+| `2511` | 解掉一部分方法學混亂，讓 Stage 1 與 Stage 2 的責任更清楚 | 沒解掉 abstract-level boundary ambiguity 與 cutoff-corrected 後暴露出的 recall 壓力 | 全文後 precision `0.9091` 已不差，但 recall `0.6667` 仍被邊界案拉住。 |
 
 最白話的說法是：
 
 - `2409`：現在比較像「規則拆乾淨了，但還是有很多看起來太像正例的假陽性」。
-- `2511`：現在比較像「規則拆乾淨了，但很多摘要還是很難穩定判斷它到底是 learning 還是 evaluation」。
+- `2511`：現在比較像「規則拆乾淨了，但很多摘要還是很難穩定判斷它到底是 learning 還是 evaluation，所以 recall 容易掉」。
 
 ### 10.7 `2409/2511` 跟 `2307/2601` 最大差別是什麼
 
@@ -604,9 +607,9 @@ stage 差異更清楚
 | QA 前觀察 | 證據 | 白話說明 |
 | --- | --- | --- |
 | `2409` 在 source-faithful current state 下仍有 residual FP | current Combined F1 = `0.8235` | 規則拆乾淨之後，剩下的問題更像是「證據怎麼被理解」，不是再加幾句 criteria 就能解。 |
-| `2511` 在乾淨語義下仍低於歷史 `opv2` | current Combined F1 = `0.7692`；`opv2` = `0.9206` | 代表過去部分高分來自 hardening；若不想作弊，就得換別的方式穩住 evidence interpretation。 |
-| 全域 strict senior 不能當解法 | `2601` tuned Combined F1 = `0.8860` | 不能再靠「把 senior 變更嚴」來救全部 paper。 |
-| Stage-split 已把 criteria 邊界整理乾淨 | current architecture 已正式採用 `criteria_stage1/` + `criteria_stage2/` | 既然 criteria 本體已經相對乾淨，下一步自然會往 evidence QA / synthesis 移動。 |
+| `2511` 在乾淨語義下仍有明顯 recall 壓力 | current Combined F1 = `0.7692`；precision `0.9091` 但 recall 只有 `0.6667` | 代表 `2511` 的主要剩餘問題更像是 evidence recognition，而不是再靠 hardening 多拿一些 precision。 |
+| 全域 strict senior 不能當解法 | `2601` tuned Combined F1 = `0.8704` | 不能再靠「把 senior 變更嚴」來救全部 paper。 |
+| Stage-split 已把 criteria 邊界整理乾淨 | current architecture 已正式採用 `criteria_stage1/` + `criteria_stage2/`，且 cutoff 先於 reviewer | 既然 criteria 本體與 prefilter 已經相對乾淨，下一步自然會往 evidence QA / synthesis 移動。 |
 
 ## 12. 來源檔案索引
 

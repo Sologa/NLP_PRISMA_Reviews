@@ -28,6 +28,8 @@ This folder contains screening-only scripts.
   - Runs full review for a paper ID and computes F1 in one command.
 - `evaluate_review_f1.py`
   - Compares review results with `is_evidence_base` labels and writes precision/recall/F1.
+- `audit_cutoff_vs_gold.py`
+  - Applies `cutoff_jsons/<paper_id>.json` as the only decision rule and audits it against `is_evidence_base` gold labels.
 - `review_results_debug.py`
   - Summarizes verdict distribution and reviewer disagreement/senior usage.
 
@@ -40,6 +42,8 @@ python3 scripts/screening/review_results_debug.py
 python3 scripts/screening/evaluate_review_f1.py 2511.13936 \
   --results screening/results/2511.13936_full/latte_review_results.json \
   --gold-metadata refs/2511.13936/metadata/title_abstracts_metadata-annotated.jsonl
+
+python3 scripts/screening/audit_cutoff_vs_gold.py
 ```
 
 Fulltext stage on top of base review:

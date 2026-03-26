@@ -1,6 +1,7 @@
 # 2307 / 2409 / 2511 / 2601 QA Forensic Error Analysis
 
-Date: 2026-03-20
+Date: 2026-03-26
+Revision note: this version is aligned to the cutoff-first retrofit and the cutoff-corrected QA/raw-result inventories.
 
 ## 1. Current-State Recap
 
@@ -8,6 +9,7 @@ Date: 2026-03-20
 - current runtime prompt authority 是 `scripts/screening/runtime_prompts/runtime_prompts.json`。
 - current production criteria authority 是 stage-split criteria：
   `criteria_stage1/2409.13738.json`、`criteria_stage2/2409.13738.json`、`criteria_stage1/2511.13936.json`、`criteria_stage2/2511.13936.json`。
+- repo-managed 3-reviewer / QA paths 現在都先套用 `cutoff_jsons/<paper_id>.json`；cutoff-failed rows 會直接寫成 `exclude (cutoff_time_window)`，不再進 reviewer routing。
 - `2409` 與 `2511` current score authority 仍是 `stage_split_criteria_migration`；本次 forensic analysis 的 primary targets 則是你指定的兩個 QA runs：
   `screening/results/qa_first_v1_2409_stage2_followup_2026-03-19/` 與
   `screening/results/qa_first_v1_global_repair_second_pass_2409_2511_2026-03-19/`。
@@ -21,6 +23,7 @@ Date: 2026-03-20
 - `Combined` verdict 不是直接拿 `latte_fulltext_review_results.json` 算；本報告使用
   `Stage 1 whole-set verdict + Stage 2 overwrite Stage 1 positive cases`
   重建 combined confusion inventory。
+- cutoff-excluded rows保留在 raw JSON 中，但在 inventory 裡一律當成 direct negative，不再視為 reviewer disagreement。
 - 全文證據只對 misclassified cases 做 targeted search，沒有先通讀整個 `refs/<paper>/mds/`。
 
 ## 2. Misclassification Inventory
@@ -28,7 +31,7 @@ Date: 2026-03-20
 ### 2.1 `2409`
 
 - Stage 1 FP:
-  `bellan2021process`, `bellan2022extracting`, `bellan2022process`, `bellan_gpt3_2022`, `bellan_pet_23`, `berti2023abstractions`, `bordignon2018natural`, `busch2023just`, `grohs2023large`, `kourani_process_modelling_with_llm`, `lopez2021challenges`, `maqbool2019comprehensive`, `neuberger_data_augment`, `riefer2016mining`, `robeer2016`, `sintoris2017extracting`, `van2018challenges`
+  `bellan2021process`, `bellan2022extracting`, `bellan2022process`, `bellan_gpt3_2022`, `bellan_pet_23`, `bordignon2018natural`, `busch2023just`, `lopez2021challenges`, `maqbool2019comprehensive`, `riefer2016mining`, `robeer2016`, `sintoris2017extracting`, `van2018challenges`
 - Stage 1 FN:
   `azevedo2018bpmn`
 - Combined FP:
@@ -36,20 +39,20 @@ Date: 2026-03-20
 - Combined FN:
   `azevedo2018bpmn`, `goossens2023extracting`, `halioui2018bioinformatic`, `neuberger2023beyond`, `qian2020approach`, `vda_extracting_declarative_process`
 - Gold-only unmatched keys, not counted as FP/FN:
-  `de2008stanford`, `dumas2018fundamentals`, `omg_bpmn`, `omg_dmn`, `omg_uml`, `weske2007business`
+  `de2008stanford`, `dumas2018fundamentals`, `omg_bpmn`, `weske2007business`
 
 ### 2.2 `2511`
 
 - Stage 1 FP:
-  `manocha2020differentiable`, `xu2025qwen2`
+  `manocha2020differentiable`
 - Stage 1 FN:
-  `chumbalov2020scalable`, `dong2020pyramid`, `huang2025step`, `jayawardena2020ordinal`, `parthasarathy2018preference`
+  `yang2010ranking`, `cao2012combining`, `cao2015speaker`, `lotfian2016practical`, `lotfian2016retrieving`, `parthasarathy2016using`, `parthasarathy2017ranking`, `parthasarathy2018preference`, `lopes2017modelling`, `chumbalov2020scalable`, `jayawardena2020ordinal`, `dong2020pyramid`, `huang2025step`
 - Combined FP:
   `manocha2020differentiable`
 - Combined FN:
-  `chumbalov2020scalable`, `dong2020pyramid`, `huang2025step`, `jayawardena2020ordinal`, `parthasarathy2018preference`, `wu2023interval`
+  `yang2010ranking`, `cao2012combining`, `cao2015speaker`, `lotfian2016practical`, `lotfian2016retrieving`, `parthasarathy2016using`, `parthasarathy2017ranking`, `parthasarathy2018preference`, `lopes2017modelling`, `chumbalov2020scalable`, `jayawardena2020ordinal`, `dong2020pyramid`, `wu2023interval`, `huang2025step`
 - Gold-only unmatched keys, not counted as FP/FN:
-  `bradley1952rank`, `itu20031534`, `luce1959individual`, `mantisnlp2023rlhf`
+  `mantisnlp2023rlhf`
 
 ## 3. 2409 Case Dossiers
 
@@ -201,13 +204,13 @@ Date: 2026-03-20
 - `title`: Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations
 - `abstract`: The perceptual evaluation of emotional attributes is noisy due to inconsistencies between annotators. The low inter-evaluator agreement arises due to the complex nature of emotions. Conventional approaches average scores provided by multiple annotators. While this approach reduces the influence of dissident annotations, previous studies have showed the value of considering individual evaluations to better capture the underlying ground-truth. One of these approaches is the qualitative agreement (QA) method, which provides an alternative framework that captures the inherent trends amongst the annotators. While previous studies have focused on using the QA method for time-continuous annotations from a fixed number of annotators, most emotional databases are annotated with attributes at the sentence-level (e.g., one global score per sentence). This study proposes a novel formulation based on the QA framework to estimate reliable sentence-level annotations for preference-learning. The proposed relative labels between pairs of sentences capture consistent trends across evaluators. The experimental evaluation shows that preference-learning methods to rank-order emotional attributes trained with the proposed QA-based labels achieve significantly better performance than the same algorithms trained with relative scores obtained by averaging absolute scores across annotators. These results show the benefits of QA-based labels for preference-learning using sentence-level annotations.
 - `gold label`: `True`
-- `predicted final verdict`: `exclude (junior:2,2)` at Stage 1; combined stayed exclude
-- `是哪一層出錯`: `Stage 1 early exclude` + `speech/audio domain miss`
-- `模型當時的主要判讀理由`: 模型承認它有 preference-learning，但因 title/abstract 沒看成 audio，就直接排除。
+- `predicted final verdict`: `exclude (cutoff_time_window)` at Stage 1; combined stayed exclude because pre-review cutoff filtered it before reviewer routing mattered
+- `是哪一層出錯`: `pre-review cutoff mismatch` + `gold/cutoff-window tension`
+- `模型當時的主要判讀理由`: 以目前 cutoff-corrected raw result 來看，這個 case 已經不是 reviewer 讀錯；它在 reviewer routing 之前就因 publication year `2018` 被標成 `before_start`，直接 cutoff 掉。
 - `全文 evidence`: `refs/2511.13936/mds/parthasarathy2018preference.md:21-33` abstract 結尾就有 `Index Terms: speech emotion recognition, preference-learning`；`refs/2511.13936/mds/parthasarathy2018preference.md:35-39` 開頭更直接說 emotion is conveyed in `speech`；`refs/2511.13936/mds/parthasarathy2018preference.md:89-96` 與 `:437-446` 清楚寫 pairwise comparisons create relative labels，並用 preference-learning 去 rank-order emotional attributes。
-- `為什麼這是一個 FP / FN`: 這是 FN。audio-domain evidence 其實在全文前幾行就很明顯，Stage 1 把它讀成非-audio 是直接漏讀。
-- `這是 clean model error，還是 borderline ambiguity`: `clean model error`。
-- `如果要寫詳解，最核心的一句話是什麼`: 這篇連 index terms 都寫了 `speech emotion recognition, preference-learning`，卻仍被 Stage 1 當成非-audio。
+- `為什麼這是一個 FP / FN`: 依目前 cutoff-corrected confusion inventory，它仍算 FN；但這個 FN 已不再是 reviewer reasoning 錯誤，而是 cutoff policy 與 gold label 之間的張力。
+- `這是 clean model error，還是 borderline ambiguity`: `policy mismatch`。paper 本身的 in-domain 證據很乾淨，但當前 repo cutoff 先於 reviewer 生效。
+- `如果要寫詳解，最核心的一句話是什麼`: 這篇現在被排掉，不是因為模型沒看懂 preference-learning，而是因為 cutoff-first policy 先把 2018 paper 擋掉了。
 
 ### 4.6 `huang2025step`
 
@@ -381,10 +384,11 @@ Date: 2026-03-20
 
 - `preference-vs-evaluation confusion`: `manocha2020differentiable` 是把 perceptual discrimination 誤當 preference learning；`huang2025step` 則是相反方向，把真正進 reward model / PPO 的 preference data 誤當 evaluation-only。
 - `pairwise/ranking/ordinal under-detection`: `wu2023interval`、`jayawardena2020ordinal`。典型錯法是看到 ordinal / label-conversion / loss-selection，就忘了 paper 其實明確使用 pairwise or relative ordinal signal。
-- `speech/audio domain miss`: `parthasarathy2018preference` 是最乾淨的例子；`jayawardena2020ordinal` 也有這個問題；`dong2020pyramid` 與 `chumbalov2020scalable` 則比較接近 title/abstract 不明顯導致的 gating miss。
+- `speech/audio domain miss`: `jayawardena2020ordinal` 是最乾淨的當前 reviewer 例子；`dong2020pyramid` 與 `chumbalov2020scalable` 則比較接近 title/abstract 不明顯導致的 gating miss。
+- `cutoff-policy mismatch`: `parthasarathy2018preference` 在 cutoff-corrected view 裡已不再是 reviewer miss，而是 cutoff window 先於 reviewer 生效所造成的 gold/cutoff 張力。
 - `multimodal-audio misread`: `huang2025step` 是 speech-text multimodal，但音訊仍是 AQTA core task；把 multimodal 誤讀成非-audio，會直接漏掉這類 paper。
 - `survey/review false trigger`: 在這兩個 QA runs 的 misclassified core set 中，不是主要家族；至少在這次深讀的 6 個 `2511` cases 裡，沒有看到 survey/review exclusion 被誤觸發成主因。
-- `stage1 gating error`: `2511` 的大宗傷害在 Stage 1。`chumbalov2020scalable`, `dong2020pyramid`, `huang2025step`, `jayawardena2020ordinal`, `parthasarathy2018preference` 都是在還沒進 fulltext closure 前就被擋掉。
+- `stage1 gating error`: `2511` 的大宗傷害仍在 Stage 1，只是現在要分開看 reviewer miss 與 cutoff miss；前者以 `chumbalov2020scalable`, `dong2020pyramid`, `huang2025step`, `jayawardena2020ordinal` 為代表，後者則是 `parthasarathy2018preference`。
 
 ### 7.3 `2307`
 
@@ -427,8 +431,8 @@ Date: 2026-03-20
 ## 9. Short Final Take
 
 - `2409` 的錯誤主軸不是「QA 整體太保守」這麼籠統，而是兩條更具體的 fault lines：一條是 publication-form closure 過頭，另一條是 target object boundary 太鬆或太亂。
-- `2511` 的錯誤主軸則更集中在 signal recognition：模型常常沒把 `speech = audio`、`pairwise/ordinal = preference signal`、以及 `RLHF reward-model training = learning component` 正確讀出來。
+- `2511` 的錯誤主軸則更集中在 signal recognition：模型常常沒把 `speech = audio`、`pairwise/ordinal = preference signal`、以及 `RLHF reward-model training = learning component` 正確讀出來；在 cutoff-corrected view 裡，另有一條獨立的 `cutoff-window vs gold` 張力需要和 reviewer error 分開看。
 - `2307` 額外暴露的是另一種問題：gold boundary 與較 source-faithful criteria wording 並不完全重合，尤其在 `symbolic music`, `video-conditioned audio`, `defense against synthetic audio misuse` 這幾群最明顯。
 - `2601` 則讓兩條 fault line 很清楚：一條是 MT/encoder-decoder exclusion 是否過頭，另一條是 pipeline 層面的全文檢索/匹配錯誤。
-- 最可修的錯誤是 `goossens2023extracting`, `vda_extracting_declarative_process`, `parthasarathy2018preference`, `huang2025step`, `serra_universal_2022`, `wilcox_2022_chapter` 這種全文證據非常直接、而模型或流程卻判反的 cases。
+- 最可修的錯誤是 `goossens2023extracting`, `vda_extracting_declarative_process`, `jayawardena2020ordinal`, `huang2025step`, `serra_universal_2022`, `wilcox_2022_chapter` 這種全文證據非常直接、而模型或流程卻判反的 cases。
 - 最難的邊界則是 `qian2020approach`, `wu2023interval`, `chumbalov2020scalable`, `ghose2020autofoley`, `liang_midi-sandwich_2019`, `marecek_balustrades_2019`, `zhang_closer_2023` 這些 publication/task-family/output-modality 本身就帶有真實 ambiguity 的 cases。

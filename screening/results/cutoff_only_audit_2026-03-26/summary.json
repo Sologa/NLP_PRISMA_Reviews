@@ -1,0 +1,289 @@
+{
+  "analysis_name": "cutoff_only_audit_vs_gold",
+  "generated_at": "2026-03-26T07:09:40.419221+00:00",
+  "repo_root": "/Users/xjp/Desktop/NLP_PRISMA_Reviews",
+  "output_dir": "screening/results/cutoff_only_audit_2026-03-26",
+  "paper_order": [
+    "2307.05527",
+    "2409.13738",
+    "2511.13936",
+    "2601.19926"
+  ],
+  "assumptions": {
+    "gold_positive_label": "is_evidence_base=true",
+    "cutoff_pass_interpretation": "include_or_keep",
+    "cutoff_fail_interpretation": "exclude",
+    "candidate_universe": "unique metadata keys",
+    "missing_or_unparseable_published_date_fails_cutoff": true
+  },
+  "papers": {
+    "2307.05527": {
+      "paper_id": "2307.05527",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "gold_path": "refs/2307.05527/metadata/title_abstracts_metadata-annotated.jsonl",
+      "cutoff_json_path": "cutoff_jsons/2307.05527.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2018-02-01",
+        "start_inclusive": true,
+        "end_date": "2023-02-01",
+        "end_inclusive": true,
+        "timezone": "UTC"
+      },
+      "dedup": {
+        "metadata_input_rows": 222,
+        "metadata_unique_keys": 222,
+        "metadata_duplicate_keys": {},
+        "gold_duplicate_keys": {}
+      },
+      "key_consistency": {
+        "missing_in_gold_count": 0,
+        "missing_in_gold_keys": [],
+        "missing_in_metadata_count": 0,
+        "missing_in_metadata_keys": [],
+        "verified_no_missing_keys_after_dedup": true,
+        "verified_2511_dedup_total_is_88": true
+      },
+      "total_candidates": 222,
+      "gold_positive_count": 171,
+      "gold_negative_count": 51,
+      "cutoff_status_counts": {
+        "before_start": 29,
+        "passed": 192,
+        "unparseable_published_date": 1
+      },
+      "confusion_matrix": {
+        "tp": 155,
+        "fp": 37,
+        "tn": 14,
+        "fn": 16
+      },
+      "metrics_if_cutoff_pass_means_include": {
+        "accuracy": 0.7613,
+        "precision": 0.8073,
+        "recall": 0.9064,
+        "f1": 0.854
+      },
+      "correct_predictions_via_cutoff_exclude": 14,
+      "correct_predictions_via_cutoff_pass": 155,
+      "all_correct_predictions_are_cutoffed": false,
+      "all_gold_true_are_cutoffed": false,
+      "gold_true_cutoffed_count": 16,
+      "gold_true_cutoffed_keys": [
+        "arik_neural_2018",
+        "bando_statistical_2018",
+        "bitton_modulated_2018",
+        "brunner_symbolic_2018",
+        "chen_musicality-novelty_2018",
+        "dieleman_challenge_2018",
+        "gu_multi-task_2018",
+        "hsu_hierarchical_2018",
+        "juvela_speaker-independent_2018",
+        "kameoka_convs2s-vc_2020",
+        "koh_rethinking_2018",
+        "lee_conditional_2018",
+        "wang_neural_2019-1",
+        "wilkinson_generative_2019",
+        "yoshimura_mel-cepstrum-based_2018",
+        "zhou2018voice"
+      ],
+      "core_question_answer": "No. Some correct predictions remain after cutoff (155 pass-and-correct, 16 gold-positive cutoffed)."
+    },
+    "2409.13738": {
+      "paper_id": "2409.13738",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "gold_path": "refs/2409.13738/metadata/title_abstracts_metadata-annotated.jsonl",
+      "cutoff_json_path": "cutoff_jsons/2409.13738.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": null,
+        "start_inclusive": true,
+        "end_date": "2023-06-30",
+        "end_inclusive": true,
+        "timezone": "UTC"
+      },
+      "dedup": {
+        "metadata_input_rows": 84,
+        "metadata_unique_keys": 84,
+        "metadata_duplicate_keys": {},
+        "gold_duplicate_keys": {}
+      },
+      "key_consistency": {
+        "missing_in_gold_count": 0,
+        "missing_in_gold_keys": [],
+        "missing_in_metadata_count": 0,
+        "missing_in_metadata_keys": [],
+        "verified_no_missing_keys_after_dedup": true,
+        "verified_2511_dedup_total_is_88": true
+      },
+      "total_candidates": 84,
+      "gold_positive_count": 21,
+      "gold_negative_count": 63,
+      "cutoff_status_counts": {
+        "after_end": 14,
+        "passed": 65,
+        "unparseable_published_date": 5
+      },
+      "confusion_matrix": {
+        "tp": 21,
+        "fp": 44,
+        "tn": 19,
+        "fn": 0
+      },
+      "metrics_if_cutoff_pass_means_include": {
+        "accuracy": 0.4762,
+        "precision": 0.3231,
+        "recall": 1.0,
+        "f1": 0.4884
+      },
+      "correct_predictions_via_cutoff_exclude": 19,
+      "correct_predictions_via_cutoff_pass": 21,
+      "all_correct_predictions_are_cutoffed": false,
+      "all_gold_true_are_cutoffed": false,
+      "gold_true_cutoffed_count": 0,
+      "gold_true_cutoffed_keys": [],
+      "core_question_answer": "No. Some correct predictions remain after cutoff (21 pass-and-correct, 0 gold-positive cutoffed)."
+    },
+    "2511.13936": {
+      "paper_id": "2511.13936",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "gold_path": "refs/2511.13936/metadata/title_abstracts_metadata-annotated.jsonl",
+      "cutoff_json_path": "cutoff_jsons/2511.13936.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2020-01-01",
+        "start_inclusive": true,
+        "end_date": "2025-11-17",
+        "end_inclusive": true,
+        "timezone": "UTC"
+      },
+      "dedup": {
+        "metadata_input_rows": 89,
+        "metadata_unique_keys": 88,
+        "metadata_duplicate_keys": {
+          "ouyang2022training": 2
+        },
+        "gold_duplicate_keys": {}
+      },
+      "key_consistency": {
+        "missing_in_gold_count": 0,
+        "missing_in_gold_keys": [],
+        "missing_in_metadata_count": 0,
+        "missing_in_metadata_keys": [],
+        "verified_no_missing_keys_after_dedup": true,
+        "verified_2511_dedup_total_is_88": true
+      },
+      "total_candidates": 88,
+      "gold_positive_count": 30,
+      "gold_negative_count": 58,
+      "cutoff_status_counts": {
+        "before_start": 32,
+        "passed": 51,
+        "unparseable_published_date": 5
+      },
+      "confusion_matrix": {
+        "tp": 21,
+        "fp": 30,
+        "tn": 28,
+        "fn": 9
+      },
+      "metrics_if_cutoff_pass_means_include": {
+        "accuracy": 0.5568,
+        "precision": 0.4118,
+        "recall": 0.7,
+        "f1": 0.5185
+      },
+      "correct_predictions_via_cutoff_exclude": 28,
+      "correct_predictions_via_cutoff_pass": 21,
+      "all_correct_predictions_are_cutoffed": false,
+      "all_gold_true_are_cutoffed": false,
+      "gold_true_cutoffed_count": 9,
+      "gold_true_cutoffed_keys": [
+        "cao2012combining",
+        "cao2015speaker",
+        "lopes2017modelling",
+        "lotfian2016practical",
+        "lotfian2016retrieving",
+        "parthasarathy2016using",
+        "parthasarathy2017ranking",
+        "parthasarathy2018preference",
+        "yang2010ranking"
+      ],
+      "core_question_answer": "No. Some correct predictions remain after cutoff (21 pass-and-correct, 9 gold-positive cutoffed)."
+    },
+    "2601.19926": {
+      "paper_id": "2601.19926",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "gold_path": "refs/2601.19926/metadata/title_abstracts_metadata-annotated.jsonl",
+      "cutoff_json_path": "cutoff_jsons/2601.19926.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": null,
+        "start_inclusive": true,
+        "end_date": "2025-07-31",
+        "end_inclusive": true,
+        "timezone": "UTC"
+      },
+      "dedup": {
+        "metadata_input_rows": 360,
+        "metadata_unique_keys": 360,
+        "metadata_duplicate_keys": {},
+        "gold_duplicate_keys": {}
+      },
+      "key_consistency": {
+        "missing_in_gold_count": 0,
+        "missing_in_gold_keys": [],
+        "missing_in_metadata_count": 0,
+        "missing_in_metadata_keys": [],
+        "verified_no_missing_keys_after_dedup": true,
+        "verified_2511_dedup_total_is_88": true
+      },
+      "total_candidates": 360,
+      "gold_positive_count": 336,
+      "gold_negative_count": 24,
+      "cutoff_status_counts": {
+        "passed": 354,
+        "unparseable_published_date": 6
+      },
+      "confusion_matrix": {
+        "tp": 333,
+        "fp": 21,
+        "tn": 3,
+        "fn": 3
+      },
+      "metrics_if_cutoff_pass_means_include": {
+        "accuracy": 0.9333,
+        "precision": 0.9407,
+        "recall": 0.9911,
+        "f1": 0.9652
+      },
+      "correct_predictions_via_cutoff_exclude": 3,
+      "correct_predictions_via_cutoff_pass": 333,
+      "all_correct_predictions_are_cutoffed": false,
+      "all_gold_true_are_cutoffed": false,
+      "gold_true_cutoffed_count": 3,
+      "gold_true_cutoffed_keys": [
+        "Warstadt:etal:2020",
+        "ettinger_what_2020",
+        "kuncoro-etal-2020-syntactic"
+      ],
+      "core_question_answer": "No. Some correct predictions remain after cutoff (333 pass-and-correct, 3 gold-positive cutoffed)."
+    }
+  },
+  "global_summary": {
+    "all_papers_have_all_correct_answers_cutoffed": false,
+    "papers_with_all_correct_answers_cutoffed": [],
+    "papers_with_any_gold_true_cutoffed": [
+      "2307.05527",
+      "2511.13936",
+      "2601.19926"
+    ],
+    "papers_with_zero_gold_true_cutoffed": [
+      "2409.13738"
+    ]
+  }
+}
