@@ -289,6 +289,7 @@ def _patch_rows_file(
     *,
     synthesize_missing_failed_rows: bool,
     preserve_metadata_order: bool,
+    fallback_restore_rows_by_key: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     paper_id = _infer_paper_id(path)
     payload, policy, audit = _cutoff_bundle(paper_id)
@@ -302,6 +303,7 @@ def _patch_rows_file(
         policy=policy,
         synthesize_missing_failed_rows=synthesize_missing_failed_rows,
         preserve_metadata_order=preserve_metadata_order,
+        fallback_restore_rows_by_key=fallback_restore_rows_by_key,
     )
     _write_json(path, rewritten["rows"])
     return {
@@ -311,6 +313,33 @@ def _patch_rows_file(
         "synthesized_count": rewritten["audit_payload"].get("synthesized_count", 0),
         "cutoff_excluded_count": audit.get("cutoff_excluded_count", 0),
     }
+
+
+def _stage1_fallback_rows_for_stage2(path: Path) -> dict[str, dict[str, Any]] | None:
+    sibling_candidates = [
+        path.parent / path.name.replace("latte_fulltext_review_results", "latte_review_results"),
+        path.parent / path.name.replace("latte_fulltext_review_from_run01", "latte_review_results"),
+    ]
+    for candidate in sibling_candidates:
+        if candidate.is_file():
+            rows = _read_json(candidate)
+            if isinstance(rows, list):
+                return {
+                    str(row.get("key") or "").strip(): row
+                    for row in rows
+                    if isinstance(row, dict) and str(row.get("key") or "").strip()
+                }
+
+    matches = sorted(path.parent.glob("latte_review_results*.json"))
+    if len(matches) == 1 and matches[0].is_file():
+        rows = _read_json(matches[0])
+        if isinstance(rows, list):
+            return {
+                str(row.get("key") or "").strip(): row
+                for row in rows
+                if isinstance(row, dict) and str(row.get("key") or "").strip()
+            }
+    return None
 
 
 def _patch_raw_results() -> dict[str, Any]:
@@ -349,6 +378,7 @@ def _patch_raw_results() -> dict[str, Any]:
                     path,
                     synthesize_missing_failed_rows=False,
                     preserve_metadata_order=False,
+                    fallback_restore_rows_by_key=_stage1_fallback_rows_for_stage2(path),
                 )
             )
 
@@ -358,6 +388,7 @@ def _patch_raw_results() -> dict[str, Any]:
                     path,
                     synthesize_missing_failed_rows=False,
                     preserve_metadata_order=False,
+                    fallback_restore_rows_by_key=_stage1_fallback_rows_for_stage2(path),
                 )
             )
 

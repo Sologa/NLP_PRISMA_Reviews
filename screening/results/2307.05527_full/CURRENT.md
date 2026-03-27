@@ -11,13 +11,13 @@ Current stable reference score authority remains the latest fully benchmarked se
 
 Current metrics:
 
-- Stage 1 F1: `0.9113`
-- Combined F1: `0.9057`
+- Stage 1 F1: `0.9621`
+- Combined F1: `0.9621`
 
 ## Cutoff-first policy
 
 - Mandatory pre-review cutoff: `cutoff_jsons/2307.05527.json`
-- Cutoff-excluded candidates: `30`
+- Cutoff-excluded candidates: `8`
 - Cutoff-failed rows are now forced to `exclude (cutoff_time_window)` before reviewer routing is treated as authoritative.
 
 ## Provenance

@@ -14,7 +14,7 @@
     "evidence_clause_ids": [
       "stage1_r3"
     ],
-    "notes": "No explicit Stage 2 publication window is stated, but the retrieval criteria impose a global lower bound from 2020 onward."
+    "notes": "No explicit Stage 2 publication window is stated. The paper's Stage 1 retrieval criteria mention 2020 onward, but the active operational time_policy is widened to 2010-01-01."
   },
   "time_clauses": [
     {
@@ -23,7 +23,7 @@
       "scope": "retrieval",
       "kind": "publication_lower_bound",
       "hardness": "hard",
-      "project_to_time_policy": true,
+      "project_to_time_policy": false,
       "date_field": "published",
       "start_date": "2020-01-01",
       "start_inclusive": true,
@@ -31,7 +31,7 @@
       "end_inclusive": false,
       "applies_to_subset": null,
       "conditional_on": null,
-      "notes": "The review includes papers published from 2020 onward."
+      "notes": "The review includes papers published from 2020 onward, but this retrieval clause is preserved for audit only and is no longer projected into the global pre-review cutoff."
     },
     {
       "clause_id": "stage1_r6",
@@ -60,6 +60,22 @@
       }
     },
     {
+      "clause_id": "operational_lower_bound_benchmark_alignment",
+      "stage": "operational",
+      "scope": "operational",
+      "kind": "publication_lower_bound_override",
+      "hardness": "hard",
+      "project_to_time_policy": true,
+      "date_field": "published",
+      "start_date": "2010-01-01",
+      "start_inclusive": true,
+      "end_date": null,
+      "end_inclusive": false,
+      "applies_to_subset": null,
+      "conditional_on": null,
+      "notes": "Operational override: widen the lower bound to 2010-01-01 so the pre-review cutoff does not exclude benchmark-supported evidence-base papers."
+    },
+    {
       "clause_id": "operational_fallback_sr_publication_date",
       "stage": "fallback",
       "scope": "fallback",
@@ -79,18 +95,18 @@
   "time_policy": {
     "enabled": true,
     "date_field": "published",
-    "start_date": "2020-01-01",
+    "start_date": "2010-01-01",
     "start_inclusive": true,
     "end_date": "2025-11-17",
     "end_inclusive": true,
     "timezone": "UTC",
     "derivation_mode": "intersection_of_projectable_time_clauses",
     "projected_clause_ids": [
-      "stage1_r3",
+      "operational_lower_bound_benchmark_alignment",
       "operational_fallback_sr_publication_date"
     ],
     "binding_clause_ids": [
-      "stage1_r3",
+      "operational_lower_bound_benchmark_alignment",
       "operational_fallback_sr_publication_date"
     ],
     "fallback_applied": true
@@ -111,6 +127,13 @@
       "source": "criteria_mds/2511.13936.md"
     },
     {
+      "clause_id": "operational_lower_bound_benchmark_alignment",
+      "section": "Operational override",
+      "criterion_id": "N/A",
+      "text": "Active pre-review cutoff lower bound widened to 2010-01-01.",
+      "source": "repo decision: 2026-03-26"
+    },
+    {
       "clause_id": "operational_fallback_sr_publication_date",
       "section": "Operational fallback",
       "criterion_id": "N/A",
@@ -119,7 +142,8 @@
     }
   ],
   "normalization_notes": [
-    "The current JSON already gives the same window [2020-01-01, 2025-11-17], but it does not record the arXiv-only year-by-year citation gates that materially affect retrieval.",
+    "The active operational lower bound has been widened from 2020-01-01 to 2010-01-01.",
+    "The Stage 1 '2020 onward' clause is preserved for source-audit purposes but is no longer projected into the global pre-review cutoff.",
     "Those citation thresholds are subset-specific and non-window-like, so they stay in time_clauses with project_to_time_policy=false."
   ]
 }

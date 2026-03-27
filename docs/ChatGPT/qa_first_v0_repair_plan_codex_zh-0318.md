@@ -8,7 +8,7 @@
    - Stage 2: `criteria_stage2/<paper_id>.json`
 3. current metrics authority 仍是 production baseline：
    - `2409.13738`: Stage 1 F1 `0.7500`, Combined F1 `0.8235`
-   - `2511.13936`: Stage 1 F1 `0.7407`, Combined F1 `0.7692`
+   - `2511.13936`: Stage 1 F1 `0.8788`, Combined F1 `0.9062`
 4. `qa_first_v0_2409_2511_2026-03-18` 是 experiment-only bundle，不是 production replacement。
 5. current workflow invariants 不變：
    - Stage 1 兩位 junior reviewer

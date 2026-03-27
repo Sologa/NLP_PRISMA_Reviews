@@ -1,6 +1,6 @@
 # NLP PRISMA Screening: Canonical Current Status Handoff
 
-Date: 2026-03-25
+Date: 2026-03-27
 Status: authoritative current-state handoff
 
 Use this file with:
@@ -21,10 +21,10 @@ Do not infer current state from older reports before reading this file.
 
 | Paper | Stage 1 authority | Combined authority | Stage 1 F1 | Combined F1 | Cutoff excluded |
 | --- | --- | --- | ---: | ---: | ---: |
-| `2307.05527` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | `0.9113` | `0.9057` | `30` |
-| `2409.13738` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | `0.7500` | `0.8235` | `19` |
-| `2511.13936` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | `0.7407` | `0.7692` | `37` |
-| `2601.19926` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | `0.9761` | `0.9700` | `6` |
+| `2307.05527` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | `0.9621` | `0.9621` | `8` |
+| `2409.13738` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | `0.7500` | `0.7500` | `15` |
+| `2511.13936` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | `0.8788` | `0.9062` | `11` |
+| `2601.19926` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | `0.9792` | `0.9731` | `0` |
 
 ## Workflow invariants
 
@@ -39,28 +39,28 @@ Do not infer current state from older reports before reading this file.
 - Stage 1: `screening/results/2307.05527_full/review_after_stage1_senior_no_marker_report.json`
 - Combined: `screening/results/2307.05527_full/combined_after_fulltext_senior_no_marker_report.json`
 - Cutoff policy: `cutoff_jsons/2307.05527.json`
-- Cutoff-excluded candidates: `30`
+- Cutoff-excluded candidates: `8`
 
 ### `2409.13738`
 
 - Stage 1: `screening/results/2409.13738_full/stage1_f1.stage_split_criteria_migration.json`
 - Combined: `screening/results/2409.13738_full/combined_f1.stage_split_criteria_migration.json`
 - Cutoff policy: `cutoff_jsons/2409.13738.json`
-- Cutoff-excluded candidates: `19`
+- Cutoff-excluded candidates: `15`
 
 ### `2511.13936`
 
 - Stage 1: `screening/results/2511.13936_full/stage1_f1.stage_split_criteria_migration.json`
 - Combined: `screening/results/2511.13936_full/combined_f1.stage_split_criteria_migration.json`
 - Cutoff policy: `cutoff_jsons/2511.13936.json`
-- Cutoff-excluded candidates: `37`
+- Cutoff-excluded candidates: `11`
 
 ### `2601.19926`
 
 - Stage 1: `screening/results/2601.19926_full/review_after_stage1_senior_no_marker_report.json`
 - Combined: `screening/results/2601.19926_full/combined_after_fulltext_senior_no_marker_report.json`
 - Cutoff policy: `cutoff_jsons/2601.19926.json`
-- Cutoff-excluded candidates: `6`
+- Cutoff-excluded candidates: `0`
 
 ## Read order reminder
 

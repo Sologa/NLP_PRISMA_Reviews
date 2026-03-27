@@ -10,15 +10,15 @@
 
 | Paper | Arm | Stage 1 F1 | Combined F1 | Stage 2 selected | Stage 2 reviewed | Cutoff excluded |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| `2409.13738` | `qa-only` | 0.7925 | 0.8261 | 32 | 32 | 19 |
-| `2409.13738` | `qa+synthesis` | 0.7778 | 0.8889 | 33 | 33 | 19 |
-| `2511.13936` | `qa-only` | 0.6522 | 0.6222 | 16 | 16 | 37 |
-| `2511.13936` | `qa+synthesis` | 0.6522 | 0.6222 | 16 | 16 | 37 |
+| `2409.13738` | `qa-only` | 0.7925 | 0.7925 | 32 | 0 | 15 |
+| `2409.13738` | `qa+synthesis` | 0.7636 | 0.7636 | 34 | 0 | 15 |
+| `2511.13936` | `qa-only` | 0.8519 | 0.8302 | 24 | 16 | 11 |
+| `2511.13936` | `qa+synthesis` | 0.8727 | 0.8519 | 25 | 16 | 11 |
 
 ## Baseline Authority
 
-- `2409.13738` current Stage 1 F1 = `0.7500`; Combined F1 = `0.8235`.
-- `2511.13936` current Stage 1 F1 = `0.7407`; Combined F1 = `0.7692`.
+- `2409.13738` current Stage 1 F1 = `0.7500`; Combined F1 = `0.7500`.
+- `2511.13936` current Stage 1 F1 = `0.8788`; Combined F1 = `0.9062`.
 
 ## Notes
 

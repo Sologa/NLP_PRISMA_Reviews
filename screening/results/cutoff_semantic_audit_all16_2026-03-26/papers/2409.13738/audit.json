@@ -1,0 +1,394 @@
+{
+  "paper_id": "2409.13738",
+  "availability": {
+    "paper_id": "2409.13738",
+    "cutoff_json": true,
+    "metadata": true,
+    "annotated_gold": true,
+    "pdf": true,
+    "md": true
+  },
+  "cutoff_json_path": "cutoff_jsons/2409.13738.json",
+  "time_policy": {
+    "enabled": true,
+    "date_field": "published",
+    "start_date": null,
+    "start_inclusive": true,
+    "end_date": "2023-06-30",
+    "end_inclusive": true,
+    "timezone": "UTC",
+    "derivation_mode": "intersection_of_projectable_time_clauses",
+    "projected_clause_ids": [
+      "stage2_i8_no_publication_restriction",
+      "paper_results_search_executed_june_2023",
+      "paper_limitations_manuscript_horizon_aug_2024",
+      "operational_fallback_sr_publication_date"
+    ],
+    "binding_clause_ids": [
+      "paper_results_search_executed_june_2023"
+    ],
+    "fallback_applied": false
+  },
+  "cutoff_semantics_snapshot": {
+    "source_faithful_screening_publication_policy": {
+      "status": "explicit_no_publication_restriction",
+      "enabled": false,
+      "date_field": "published",
+      "start_date": null,
+      "start_inclusive": true,
+      "end_date": null,
+      "end_inclusive": false,
+      "timezone": "UTC",
+      "evidence_clause_ids": [
+        "stage2_i8_no_publication_restriction"
+      ],
+      "notes": "The paper explicitly says there is no publication-year restriction in the screening criteria."
+    },
+    "normalization_notes": [
+      "This is the most important correction in the whole folder. The current file disables time filtering entirely because it follows the source-faithful Stage 2 rule only.",
+      "For the lazy one-shot prefilter you described, that is too weak: the June 2023 search-execution date is a real time constraint on the candidate pool and therefore must be projected into time_policy.",
+      "The August 2024 manuscript horizon and the SR publication-date fallback are kept for completeness, but neither is binding once the June 2023 clause is included.",
+      "The explicit 'no publication-year restriction' is still preserved under source_faithful_screening_publication_policy, so the file now cleanly records both the paper-literal rule and your operational prefilter."
+    ],
+    "evidence": [
+      {
+        "clause_id": "stage2_i8_no_publication_restriction",
+        "section": "Stage 2 Eligibility / Screening Criteria",
+        "criterion_id": "I8",
+        "text": "No publication-year restriction (i.e., do not exclude by year).",
+        "source": "criteria_corrected_3papers/2409.13738.md"
+      },
+      {
+        "clause_id": "paper_results_search_executed_june_2023",
+        "section": "Results",
+        "criterion_id": "N/A",
+        "text": "Our search queries were executed in June 2023 and the found papers span a time period from 2011 to 2023.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "paper_results_observed_corpus_span",
+        "section": "Results / Table 2 metadata",
+        "criterion_id": "N/A",
+        "text": "From 2011 to 2023.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "paper_methods_same_contribution_latest_version",
+        "section": "Methods / Inclusion Criteria footnote",
+        "criterion_id": "IC.2 footnote",
+        "text": "In case of multiple papers related to the same contribution, we reviewed the most recent paper.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "paper_limitations_manuscript_horizon_aug_2024",
+        "section": "Threats to Validity and Limitations",
+        "criterion_id": "N/A",
+        "text": "Publications after the preparation of this manuscript (August 2024) will also not be included.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "operational_fallback_sr_publication_date",
+        "section": "Operational fallback",
+        "criterion_id": "N/A",
+        "text": "Fallback upper bound uses the SR's own arXiv publication date (2024-09-10).",
+        "source": "paper: arxiv abs metadata"
+      }
+    ]
+  },
+  "current_cutoff_audit": {
+    "available": true,
+    "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+    "metadata_input_rows": 84,
+    "metadata_unique_keys": 84,
+    "metadata_duplicate_keys": {},
+    "cutoff_status_counts": {
+      "after_end": 15,
+      "passed": 69
+    },
+    "cutoff_status_samples": {
+      "after_end": [
+        {
+          "key": "berti2023abstractions",
+          "title": "Abstractions, Scenarios, and Prompt Definitions for Process Mining with LLMs: A Case Study",
+          "published_date": "2023-07",
+          "published_date_iso": "2023-07-01"
+        },
+        {
+          "key": "berti_evaluating_llm",
+          "title": "Evaluating Large Language Models in Process Mining: Capabilities, Benchmarks, and Evaluation Strategies",
+          "published_date": "2024",
+          "published_date_iso": "2024-01-01"
+        },
+        {
+          "key": "dong_self-collaboration_2024",
+          "title": "Self-Collaboration Code Generation via ChatGPT",
+          "published_date": "2024-09-27",
+          "published_date_iso": "2024-09-27"
+        }
+      ],
+      "passed": [
+        {
+          "key": "Davenport2019",
+          "title": "Insight-driven organization | Deloitte Insights",
+          "published_date": "2019",
+          "published_date_iso": "2019-01-01"
+        },
+        {
+          "key": "Devlin2019BERTPO",
+          "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "published_date": "2018",
+          "published_date_iso": "2018-01-01"
+        },
+        {
+          "key": "Eberts2021",
+          "title": "An End-to-end Model for Entity-level Relation Extraction using Multi-instance Learning",
+          "published_date": "2021-01-01",
+          "published_date_iso": "2021-01-01"
+        }
+      ]
+    },
+    "time_policy": {
+      "enabled": true,
+      "date_field": "published",
+      "start_date": null,
+      "start_inclusive": true,
+      "end_date": "2023-06-30",
+      "end_inclusive": true,
+      "timezone": "UTC",
+      "derivation_mode": "intersection_of_projectable_time_clauses",
+      "projected_clause_ids": [
+        "stage2_i8_no_publication_restriction",
+        "paper_results_search_executed_june_2023",
+        "paper_limitations_manuscript_horizon_aug_2024",
+        "operational_fallback_sr_publication_date"
+      ],
+      "binding_clause_ids": [
+        "paper_results_search_executed_june_2023"
+      ],
+      "fallback_applied": false
+    },
+    "normalization_notes": [
+      "This is the most important correction in the whole folder. The current file disables time filtering entirely because it follows the source-faithful Stage 2 rule only.",
+      "For the lazy one-shot prefilter you described, that is too weak: the June 2023 search-execution date is a real time constraint on the candidate pool and therefore must be projected into time_policy.",
+      "The August 2024 manuscript horizon and the SR publication-date fallback are kept for completeness, but neither is binding once the June 2023 clause is included.",
+      "The explicit 'no publication-year restriction' is still preserved under source_faithful_screening_publication_policy, so the file now cleanly records both the paper-literal rule and your operational prefilter."
+    ],
+    "evidence": [
+      {
+        "clause_id": "stage2_i8_no_publication_restriction",
+        "section": "Stage 2 Eligibility / Screening Criteria",
+        "criterion_id": "I8",
+        "text": "No publication-year restriction (i.e., do not exclude by year).",
+        "source": "criteria_corrected_3papers/2409.13738.md"
+      },
+      {
+        "clause_id": "paper_results_search_executed_june_2023",
+        "section": "Results",
+        "criterion_id": "N/A",
+        "text": "Our search queries were executed in June 2023 and the found papers span a time period from 2011 to 2023.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "paper_results_observed_corpus_span",
+        "section": "Results / Table 2 metadata",
+        "criterion_id": "N/A",
+        "text": "From 2011 to 2023.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "paper_methods_same_contribution_latest_version",
+        "section": "Methods / Inclusion Criteria footnote",
+        "criterion_id": "IC.2 footnote",
+        "text": "In case of multiple papers related to the same contribution, we reviewed the most recent paper.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "paper_limitations_manuscript_horizon_aug_2024",
+        "section": "Threats to Validity and Limitations",
+        "criterion_id": "N/A",
+        "text": "Publications after the preparation of this manuscript (August 2024) will also not be included.",
+        "source": "paper: arxiv html 2409.13738v1"
+      },
+      {
+        "clause_id": "operational_fallback_sr_publication_date",
+        "section": "Operational fallback",
+        "criterion_id": "N/A",
+        "text": "Fallback upper bound uses the SR's own arXiv publication date (2024-09-10).",
+        "source": "paper: arxiv abs metadata"
+      }
+    ]
+  },
+  "gold_audit": {
+    "available": true,
+    "gold_path": "refs/2409.13738/metadata/title_abstracts_metadata-annotated.jsonl",
+    "gold_input_rows": 84,
+    "gold_duplicate_keys": {},
+    "key_consistency": {
+      "missing_in_gold_count": 0,
+      "missing_in_gold_keys": [],
+      "missing_in_metadata_count": 0,
+      "missing_in_metadata_keys": [],
+      "common_key_count": 84,
+      "verified_no_missing_keys_after_dedup": true
+    },
+    "total_candidates": 84,
+    "gold_positive_count": 21,
+    "gold_negative_count": 63,
+    "confusion_matrix": {
+      "tp": 21,
+      "fp": 48,
+      "tn": 15,
+      "fn": 0
+    },
+    "metrics_if_cutoff_pass_means_include": {
+      "accuracy": 0.4286,
+      "precision": 0.3043,
+      "recall": 1.0,
+      "f1": 0.4667
+    },
+    "gold_positive_cutoffed": 0,
+    "gold_positive_cutoffed_keys": [],
+    "correct_via_cutoff_exclude": 15,
+    "correct_via_cutoff_pass": 21,
+    "high_risk_gold_cutoff": false
+  },
+  "pdf_semantic_audit": {
+    "pdf_path": "refs/2409.13738/2409.13738.pdf",
+    "page_count": 50,
+    "detected_features": {
+      "has_explicit_inclusion_time_window": true,
+      "has_search_execution_date": true,
+      "has_search_time_range": true,
+      "has_secondary_search": true,
+      "has_no_publication_restriction": false,
+      "has_citation_gate": true,
+      "has_analysis_range": false,
+      "has_submitted_or_published_language": false
+    },
+    "cutoff_feature_signals": {
+      "binding_clause_ids": [
+        "paper_results_search_executed_june_2023"
+      ],
+      "projected_clause_ids": [
+        "stage2_i8_no_publication_restriction",
+        "paper_results_search_executed_june_2023",
+        "paper_limitations_manuscript_horizon_aug_2024",
+        "operational_fallback_sr_publication_date"
+      ],
+      "has_stage1_binding": false,
+      "has_stage2_binding": false,
+      "binding_from_stage1_only": false,
+      "binding_uses_fallback": false,
+      "binding_uses_search_execution": true,
+      "binding_uses_citation_gate": false,
+      "fallback_applied": false,
+      "evidence_mentions_no_publication_restriction": true,
+      "evidence_mentions_submitted_or_published": false,
+      "evidence_mentions_citation_gate": false
+    },
+    "snippets": [
+      {
+        "page_number": 3,
+        "line_index": 25,
+        "score": 6,
+        "cue_types": [
+          "search",
+          "eligibility"
+        ],
+        "quote": "The rest of the paper is structured as follows. Section 2 discusses other review papers on automated process extraction. Section 3 outlines our systematic review approach, including source databases, keywords, exclusion and inclusion criteria, and classification criteria. Sections 4-7 present our data synthesis results, including answers to the research questions. Section 8 summarises important observations from",
+        "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+      },
+      {
+        "page_number": 7,
+        "line_index": 45,
+        "score": 9,
+        "cue_types": [
+          "search",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "Following title and abstract screening, 70 articles were retained for full-text screening. In the end, 20 articles were found to fully meet our inclusion/exclusion criteria. Our search queries were executed in June 2023 and the found papers span a time period 7",
+        "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+      },
+      {
+        "page_number": 6,
+        "line_index": 20,
+        "score": 3,
+        "cue_types": [
+          "citation"
+        ],
+        "quote": "Process Extraction “Process Extraction” OR Process Management “Process Management” OR Business Process Elicita- “Business Process Elicitation” OR tion Decision Model and Nota- “Decision Model and Notation” OR",
+        "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+      },
+      {
+        "page_number": 4,
+        "line_index": 8,
+        "score": 7,
+        "cue_types": [
+          "search",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "in 2016 by Riefer et al. [18], reviewing 5 papers in total. The authors analyzed 3 aspects, namely textual input, text analysis, and model generation. Bordignon et al. [7] performed a systematic review of works up to 2016 that apply NLP to the first 3 BPM lifecycle phases (i.e., identification, discovery and analysis), and categorised the NLP tools utilised. Maqbool et al. [6] covers process extraction up to 2018,",
+        "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+      },
+      {
+        "page_number": 5,
+        "line_index": 3,
+        "score": 6,
+        "cue_types": [
+          "search",
+          "eligibility"
+        ],
+        "quote": "considered the title, abstract, and author’s keywords metadata fields in our search. We removed duplicates from the search results and downloaded the remaining papers. The papers’ titles, abstracts and keywords were screened for eligibility based on the inclusion/exclusion criteria described in the subsections below. In case a paper was still considered inconclusive after screening, it was fully reviewed to determine",
+        "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+      }
+    ],
+    "semantic_risk_verdict": "possible_retrieval_vs_screening_confusion",
+    "secondary_flags": {
+      "parser_issue_flag": false,
+      "cutoff_derivation_issue_flag": false,
+      "retrieval_vs_screening_confusion_flag": true,
+      "scope_mismatch_flag": true,
+      "manual_review_flag": false
+    },
+    "verdict_reasons": [
+      "PDF 表示 search/retrieval 沒有 publication-year hard restriction，但 active cutoff 仍把 search-side 時間線投成全域 eligibility。",
+      "Active cutoff 綁定 search execution timing，但 PDF 沒有把它寫成全域 screening eligibility。",
+      "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+    ],
+    "high_attention": true
+  },
+  "historical_comparison": {
+    "old_summary_path": "screening/results/cutoff_only_audit_2026-03-26/summary.json",
+    "overlap_paper_id": "2409.13738",
+    "differences": {
+      "cutoff_status_counts": {
+        "old": {
+          "after_end": 14,
+          "passed": 65,
+          "unparseable_published_date": 5
+        },
+        "new": {
+          "after_end": 15,
+          "passed": 69
+        }
+      },
+      "confusion_matrix": {
+        "old": {
+          "tp": 21,
+          "fp": 44,
+          "tn": 19,
+          "fn": 0
+        },
+        "new": {
+          "tp": 21,
+          "fp": 48,
+          "tn": 15,
+          "fn": 0
+        }
+      }
+    },
+    "status": "changed"
+  }
+}

@@ -216,7 +216,7 @@ handoff 把 `2409` 的剩餘問題濃縮成：
 |---|---|---:|---:|---:|---|
 | `2307.05527` | `senior_no_marker` | 0.9796 | 0.8421 | 0.9057 | 高分穩定，不是主戰場 |
 | `2409.13738` | `criteria_2409_stage_split` | 0.6364 | 1.0000 | 0.7778 | 目前最大 bottleneck |
-| `2511.13936` | `criteria_2511_opv2` | 0.8788 | 0.6667 | 0.9206 | 主問題大致已解 |
+| `2511.13936` | `criteria_2511_opv2` | 0.8788 | 0.7000 | 0.9206 | 主問題大致已解 |
 | `2601.19926` | `senior_no_marker` | 0.9758 | 0.9642 | 0.9700 | 很強且容易被 strict senior 修壞 |
 
 **表 2 說明**  
@@ -231,7 +231,7 @@ handoff 把 `2409` 的剩餘問題濃縮成：
 | Review | frozen replay 對比 | Precision 變化 | Recall 變化 | 解讀 |
 |---|---|---:|---:|---|
 | `2409` | `senior_no_marker` -> `senior_prompt_tuned` | 0.4468 -> 0.6563 | 1.0000 -> 1.0000 | strict senior 對 `2409` 確實有幫助 |
-| `2511` | `senior_no_marker` -> `senior_prompt_tuned` | 0.5577 -> 0.7500 | 0.6667 -> 0.9000 | 有幫助，但伴隨 recall 代價 |
+| `2511` | `senior_no_marker` -> `senior_prompt_tuned` | 0.5577 -> 0.7500 | 0.7000 -> 0.9000 | 有幫助，但伴隨 recall 代價 |
 | `2601` | `senior_no_marker` -> `senior_prompt_tuned` | 0.9623 -> 0.9778 | 0.9910 -> 0.7881 | precision 小升，但 recall 明顯受傷 |
 
 **表 2A 說明**  

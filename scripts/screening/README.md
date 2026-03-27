@@ -30,6 +30,8 @@ This folder contains screening-only scripts.
   - Compares review results with `is_evidence_base` labels and writes precision/recall/F1.
 - `audit_cutoff_vs_gold.py`
   - Applies `cutoff_jsons/<paper_id>.json` as the only decision rule and audits it against `is_evidence_base` gold labels.
+- `audit_publication_date_parse.py`
+  - Audits `published_date` parse coverage with the live parser in `cutoff_time_filter.py` and can compare before/after runs.
 - `review_results_debug.py`
   - Summarizes verdict distribution and reviewer disagreement/senior usage.
 
@@ -44,6 +46,14 @@ python3 scripts/screening/evaluate_review_f1.py 2511.13936 \
   --gold-metadata refs/2511.13936/metadata/title_abstracts_metadata-annotated.jsonl
 
 python3 scripts/screening/audit_cutoff_vs_gold.py
+
+python3 scripts/screening/audit_publication_date_parse.py run \
+  --output-dir screening/results/publication_date_parse_audit_2026-03-26/baseline_current_parser
+
+python3 scripts/screening/audit_publication_date_parse.py compare \
+  --before screening/results/publication_date_parse_audit_2026-03-26/baseline_current_parser \
+  --after screening/results/publication_date_parse_audit_2026-03-26/after_parser_fix \
+  --output-dir screening/results/publication_date_parse_audit_2026-03-26
 ```
 
 Fulltext stage on top of base review:

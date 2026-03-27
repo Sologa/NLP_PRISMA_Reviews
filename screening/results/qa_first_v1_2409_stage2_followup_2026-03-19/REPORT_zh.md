@@ -10,11 +10,11 @@
 
 | Paper | Arm | Stage 1 F1 | Combined F1 | Stage 2 selected | Stage 2 reviewed | Cutoff excluded |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| `2409.13738` | `qa+synthesis` | 0.7407 | 0.7692 | 33 | 33 | 19 |
+| `2409.13738` | `qa+synthesis` | 0.7407 | 0.7407 | 33 | 0 | 15 |
 
 ## Baseline Authority
 
-- `2409.13738` current Stage 1 F1 = `0.7500`; Combined F1 = `0.8235`.
+- `2409.13738` current Stage 1 F1 = `0.7500`; Combined F1 = `0.7500`.
 
 ## Notes
 

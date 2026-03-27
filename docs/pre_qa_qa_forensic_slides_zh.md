@@ -162,8 +162,8 @@ SeniorLead 仲裁重整
 | --- | --- | ---: | ---: | --- | ---: |
 | `2307` | `senior_no_marker` | `0.9113` | `0.9057` | `senior_no_marker` | `0.9057` |
 | `2409` | `stage_split_criteria_migration` | `0.7500` | `0.8235` | `prompt_only_v1` | `0.8235` |
-| `2511` | `stage_split_criteria_migration` | `0.7407` | `0.7692` | `criteria_2511_opv2` | `0.9206` |
-| `2601` | `senior_no_marker` | `0.9761` | `0.9700` | `senior_no_marker` | `0.9700` |
+| `2511` | `stage_split_criteria_migration` | `0.8788` | `0.9062` | `criteria_2511_opv2` | `0.9062` |
+| `2601` | `senior_no_marker` | `0.9792` | `0.9731` | `senior_no_marker` | `0.9731` |
 
 白話：
 
@@ -181,7 +181,7 @@ SeniorLead 仲裁重整
 | `prompt_only_v1` | 0.9429 | **0.8235** | 0.8710 | 0.9548 | **0.8980** |
 | `recall_redesign` | 0.9521 | 0.6269 | 0.8406 | 0.9545 | 0.8435 |
 | `senior_adjudication_v1` | 0.9426 | 0.6562 | 0.7179 | 0.9687 | 0.8214 |
-| `senior_no_marker` | **0.9057** | 0.6885 | 0.7941 | **0.9700** | 0.8535 |
+| `senior_no_marker` | **0.9057** | 0.6885 | 0.7941 | **0.9731** | 0.8553 |
 | `senior_prompt_tuned` | 0.9358 | 0.7778 | 0.8525 | 0.8860 | 0.8630 |
 
 白話：
@@ -215,7 +215,7 @@ SeniorLead 仲裁重整
 | Paper | current state | Stage 1 confusion matrix | Combined confusion matrix | 主要問題 |
 | --- | --- | --- | --- | --- |
 | `2409` | `stage_split_criteria_migration` | `TP 21 / FP 14 / TN 45 / FN 0` | `TP 21 / FP 9 / TN 50 / FN 0` | 明顯是 FP-heavy。 |
-| `2511` | `stage_split_criteria_migration` | `TP 20 / FP 4 / TN 53 / FN 10` | `TP 20 / FP 2 / TN 55 / FN 10` | FP 已降很多，但 FN / recall 壓力開始比較明顯。 |
+| `2511` | `stage_split_criteria_migration` | `TP 29 / FP 7 / TN 50 / FN 1` | `TP 29 / FP 5 / TN 52 / FN 1` | cutoff 修正後，current state 已回到高位，只剩少量 residual edge cases。 |
 
 白話：
 
@@ -249,7 +249,7 @@ SeniorLead 仲裁重整
 | QA 前觀察 | 白話解讀 |
 | --- | --- |
 | `2409` current Combined F1 只有 `0.8235` | rules 拆乾淨了，但 residual FP 還很多。 |
-| `2511` current Combined F1 只有 `0.7692` | 規則語義乾淨了，但摘要邊界仍常判不穩。 |
+| `2511` current Combined F1 已回到 `0.9062` | cutoff 修正後，current baseline 已不再是主要瓶頸。 |
 | `strict senior` 不能全域套用 | `2601` 對過嚴 senior 很敏感。 |
 | stage-split 已把 criteria 整理乾淨 | 下一步比較像是證據怎麼被抽出、怎麼被整理。 |
 
@@ -341,7 +341,7 @@ QA v1 second-pass
 
 | Source | `2409` Stage 1 | `2409` Combined | `2511` Stage 1 | `2511` Combined | 白話結論 |
 | --- | ---: | ---: | ---: | ---: | --- |
-| current production | `0.7500` | `0.8235` | `0.7407` | `0.7692` | pre-QA 正式基準。 |
+| current production | `0.7500` | `0.8235` | `0.8788` | `0.9062` | pre-QA 正式基準；`2511` cutoff 修正後已回到 >0.9。 |
 | QA v0 | `0.7119` | `0.8333` | `0.8727` | `0.8519` | `2409` Combined 曾短暫更高；`2511` 沒贏 current。 |
 | QA v1 first-pass | `0.5753` | `0.8333` | `0.6383` | `0.8571` | first-pass 的 Stage 1 幾乎被 `maybe flood` 拖垮。 |
 | QA v1 second-pass | `0.6774` | `0.7500` | `0.8772` | `0.8727` | `2511` 明顯救回，`2409` hygiene 修好但 Combined 變差。 |
@@ -367,7 +367,7 @@ QA v1 second-pass
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | `2307.05527` | `0.8924` | 141 | 4 | 47 | 30 | `-0.0657` | 直接讀全文反而比 current 差，代表它不需要這種重做法。 |
 | `2409.13738` | `0.7692` | 20 | 11 | 52 | 1 | `-0.0151` | 幾乎沒比 current 好，表示 `2409` 問題不只是 Stage 1。 |
-| `2511.13936` | `0.9062` | 29 | 5 | 53 | 1 | `+0.0249` | 直接讀全文反而贏 current，表示 `2511` 很大一部分痛點確實在前段 gating /摘要判讀。 |
+| `2511.13936` | `0.9062` | 29 | 5 | 53 | 1 | `+0.0000` | 直接讀全文與 current 打平，表示 cutoff 修正後的 current baseline 已吸收這條收益。 |
 | `2601.19926` | `0.9691` | 329 | 14 | 10 | 7 | `-0.0042` | 幾乎和 current 差不多，沒有顯著收益。 |
 
 四篇 pooled：
@@ -404,8 +404,8 @@ QA v1 second-pass
 
 | 版本 | 階段 | TP | FP | TN | FN | 白話判讀 |
 | --- | --- | ---: | ---: | ---: | ---: | --- |
-| current production | Stage 1 | 29 | 8 | 46 | 1 | pre-QA 已不差。 |
-| current production | Combined | 26 | 3 | 51 | 4 | 當前問題偏 recall。 |
+| current production | Stage 1 | 29 | 7 | 50 | 1 | cutoff 修正後，baseline 幾乎已穩。 |
+| current production | Combined | 29 | 5 | 52 | 1 | current baseline 已到 `0.9062`，不再是明顯 recall-collapse。 |
 | QA v0 | Stage 1 | 24 | 1 | 53 | 6 | 超高 precision，但漏收較多。 |
 | QA v0 | Combined | 23 | 1 | 53 | 7 | Combined 被 FN 拖住。 |
 | QA v1 first-pass | Stage 1 | 30 | 34 | 20 | 0 | `maybe flood` 導致 FP 失控。 |
@@ -420,7 +420,7 @@ QA v1 second-pass
 | Paper | Stage 1 FP / FN 重點 | Combined FP / FN 重點 |
 | --- | --- | --- |
 | `2409` | FP 很多，如 `bellan2022extracting`, `robeer2016`；FN 有 `azevedo2018bpmn` | FP 有 `bellan2022extracting`, `bellan_gpt3_2022`, `robeer2016`；FN 有 `goossens2023extracting`, `qian2020approach`, `vda_extracting_declarative_process` 等 |
-| `2511` | FP 有 `manocha2020differentiable`, `xu2025qwen2`；FN 有 `chumbalov2020scalable`, `huang2025step`, `parthasarathy2018preference` 等 | FP 主要剩 `manocha2020differentiable`；FN 有 `wu2023interval`, `chumbalov2020scalable`, `huang2025step` 等 |
+| `2511` | current baseline 只剩少量 FP 與單一 unmatched gold case；QA 線則仍有 `chumbalov2020scalable`, `huang2025step`, `parthasarathy2018preference` 等 FN | QA 線的失誤現在比 current baseline 更值得分析 |
 
 白話：
 
@@ -438,7 +438,7 @@ QA v1 second-pass
 | `source-target inversion` | `azevedo2018bpmn` | 先看到 model->text，就漏掉 paper 其實也有 text->model。 |
 | `preference-vs-evaluation confusion` | `manocha2020differentiable`, `huang2025step` | 一篇把 evaluation 誤認成 preference learning，另一篇把真的 reward learning 誤看成 evaluation。 |
 | `pairwise / ranking / ordinal under-detection` | `wu2023interval`, `jayawardena2020ordinal` | paper 明明用了相對排序訊號，模型卻沒讀出來。 |
-| `speech/audio domain miss` | `parthasarathy2018preference`, `chumbalov2020scalable` | 明明有 audio / speech 線索，但 Stage 1 沒抓到。 |
+| `speech/audio domain miss` | `chumbalov2020scalable`, `parthasarathy2018preference` | 這類 case 在 QA 歷史線仍會漏掉，但 current production 已不再把 `parthasarathy2018preference` 當 cutoff case。 |
 
 ---
 
@@ -677,11 +677,11 @@ QA v1 second-pass
 | pre-QA 系統最後長什麼樣？ | `runtime_prompts.json` + stage-split criteria + Stage 1 routing + `SeniorLead`。 |
 | 哪兩篇最難？ | `2409` 與 `2511`。 |
 | 為什麼 `2409` 還低？ | 核心是 FP-heavy，process-adjacent 與 publication-form closure 容易出錯。 |
-| 為什麼 `2511` 還低？ | preference signal、audio domain、learning vs evaluation 的邊界常被讀錯。 |
+| 為什麼 `2511` 曾經難？ | preference signal、audio domain、learning vs evaluation 的邊界常被讀錯；但 cutoff 修正後 current baseline 已回到 `0.9062`。 |
 | QA-first 想解什麼？ | 不是再改 formal criteria，而是把 evidence 先拆成固定 QA，再根據答案做判斷。 |
 | QA second-pass 成功了嗎？ | `2511` 成功很多；`2409` hygiene 修好了，但 Combined F1 掉到 `0.7500`。 |
 | `2409` follow-up 成功了嗎？ | 沒有。FP 壓低了，但 recall 掉太多，Combined 只有 `0.7692`。 |
-| 新增的 `stage2-only` baseline 告訴我們什麼？ | `2511` 直接全文可到 `0.9062`，但 `2409` 只有 `0.7692`，所以 `2511` 更像前段 gating 問題，`2409` 則連全文判讀也仍難。 |
+| 新增的 `stage2-only` baseline 告訴我們什麼？ | `2511` 直接全文與 current 打平在 `0.9062`，表示 cutoff 修正後 baseline 已吸收主要收益；`2409` 仍只有 `0.7692`，所以它依然更像全文判讀本身也難。 |
 
 ---
 

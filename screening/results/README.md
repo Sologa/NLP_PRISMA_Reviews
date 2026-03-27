@@ -11,10 +11,10 @@ Read order for current state:
 
 | Paper | Current authority | Stage 1 path | Combined path | Stage 1 F1 | Combined F1 | Cutoff excluded |
 | --- | --- | --- | --- | ---: | ---: | ---: |
-| `2307.05527` | `latest_fully_benchmarked_senior_no_marker` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | 0.9113 | 0.9057 | 30 |
-| `2409.13738` | `current_stage_split` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | 0.7500 | 0.8235 | 19 |
-| `2511.13936` | `current_stage_split` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | 0.7407 | 0.7692 | 37 |
-| `2601.19926` | `latest_fully_benchmarked_senior_no_marker` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | 0.9761 | 0.9700 | 6 |
+| `2307.05527` | `latest_fully_benchmarked_senior_no_marker` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | 0.9113 | 0.9113 | 29 |
+| `2409.13738` | `current_stage_split` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | 0.7500 | 0.7500 | 15 |
+| `2511.13936` | `current_stage_split` | `stage1_f1.stage_split_criteria_migration.json` | `combined_f1.stage_split_criteria_migration.json` | 0.8788 | 0.9062 | 11 |
+| `2601.19926` | `latest_fully_benchmarked_senior_no_marker` | `review_after_stage1_senior_no_marker_report.json` | `combined_after_fulltext_senior_no_marker_report.json` | 0.9792 | 0.9731 | 0 |
 
 ## Current runtime invariants
 

@@ -315,6 +315,11 @@ def build_parser() -> argparse.ArgumentParser:
     review.add_argument("--junior-nano-reasoning-effort", default=None)
     review.add_argument("--junior-mini-reasoning-effort", default=None)
     review.add_argument("--senior-reasoning-effort", default="medium")
+    review.add_argument(
+        "--repo-cutoff-preprint-split-submitted-date",
+        action="store_true",
+        help="啟用 repo cutoff 的 arXiv preprint submitted/published split mode。",
+    )
 
     fulltext_review = add_subparser("fulltext-review", help="（選用）跑 Full-text 再審查")
     fulltext_review.add_argument("--base-review-results", type=Path, default=None, help="base review 結果 JSON（預設 workspace/review/latte_review_results.json）")
@@ -341,6 +346,11 @@ def build_parser() -> argparse.ArgumentParser:
     fulltext_review.add_argument("--junior-nano-reasoning-effort", default=None)
     fulltext_review.add_argument("--junior-mini-reasoning-effort", default=None)
     fulltext_review.add_argument("--senior-reasoning-effort", default="medium")
+    fulltext_review.add_argument(
+        "--repo-cutoff-preprint-split-submitted-date",
+        action="store_true",
+        help="啟用 repo cutoff 的 arXiv preprint submitted/published split mode。",
+    )
 
     snowball = add_subparser("snowball", help="（選用）LatteReview → ASReview + snowballing")
     snowball.add_argument("--review-results", type=Path, default=None)
@@ -708,6 +718,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             junior_nano_reasoning_effort=args.junior_nano_reasoning_effort,
             junior_mini_reasoning_effort=args.junior_mini_reasoning_effort,
             senior_reasoning_effort=args.senior_reasoning_effort,
+            repo_cutoff_preprint_split_submitted_date=args.repo_cutoff_preprint_split_submitted_date,
         )
         print(result)
         return 0
@@ -732,6 +743,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             junior_nano_reasoning_effort=args.junior_nano_reasoning_effort,
             junior_mini_reasoning_effort=args.junior_mini_reasoning_effort,
             senior_reasoning_effort=args.senior_reasoning_effort,
+            repo_cutoff_preprint_split_submitted_date=args.repo_cutoff_preprint_split_submitted_date,
         )
         print(result)
         return 0

@@ -85,391 +85,277 @@
     "review_state": "cutoff_filtered"
   },
   {
-    "key": "yang2010ranking",
     "title": "Ranking-based emotion recognition for music organization and retrieval",
-    "base_final_verdict": "include (junior:4)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/yang2010ranking.md",
-    "fulltext_chars_total": 73317,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 1216.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Determining the emotion of a song that best characterizes the affective content of the song is a challenging issue due to the difficulty of collecting reliable ground truth data and the semantic gap between human's perception and the music signal of the song. To address this issue, we represent an emotion as a point in the Cartesian space with valence and arousal as the dimensions and determine the coordinates of a song by the relative emotion of the song with respect to other songs. We also develop an RBF-ListNet algorithm to optimize the ranking-based objective function of our approach. The cognitive load of annotation, the accuracy of emotion recognition, and the subjective quality of the proposed approach are extensively evaluated. Experimental results show that this ranking-based approach simplifies emotion annotation and enhances the reliability of the ground truth. The performance of our algorithm for valence recognition reaches 0.326 in Gamma statistic.",
+    "key": "yang2010ranking",
     "round-A_JuniorNano_output": {
-      "reasoning": "This paper uses a music emotion tournament with pairwise comparisons and trains a learning-to-rank model (RBF-ListNet) on audio data to rank songs by emotion, meeting the preference-learning and audio-domain criteria with explicit learning signals.",
+      "reasoning": "The abstract describes ranking-based learning-to-rank (RBF-ListNet) for emotion recognition in music and mentions comparing relative emotions across songs, indicating a ranking/preference learning component in the audio domain.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "This paper uses a music emotion tournament with pairwise comparisons and trains a learning-to-rank model (RBF-ListNet) on audio data to rank songs by emotion, meeting the preference-learning and audio-domain criteria with explicit learning signals.",
+    "round-A_JuniorNano_reasoning": "The abstract describes ranking-based learning-to-rank (RBF-ListNet) for emotion recognition in music and mentions comparing relative emotions across songs, indicating a ranking/preference learning component in the audio domain.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper presents a learning-to-rank approach for music emotion recognition, where emotion annotations are obtained through pairwise comparisons (ranking) of music pieces, specifically via a music emotion tournament design. It utilizes pairwise and listwise preference signals for training models on audio features, fulfilling the preference learning component and audio-domain application. It is not a survey or review article, and the preference signals are explicitly used for learning rather than just evaluation. Therefore, the paper meets all inclusion criteria and none of the exclusion criteria.",
-      "evaluation": 5
+      "reasoning": "The paper focuses on ranking-based emotion recognition for music, involving relative emotion comparisons between songs and optimizing a ranking-based objective using the RBF-ListNet algorithm, which suggests a preference learning approach applied in the audio domain; however, it is not explicitly stated that the ranking comparisons are used for learning through preference signals rather than solely evaluation, so some uncertainty remains.",
+      "evaluation": 4
     },
-    "round-A_JuniorMini_reasoning": "The paper presents a learning-to-rank approach for music emotion recognition, where emotion annotations are obtained through pairwise comparisons (ranking) of music pieces, specifically via a music emotion tournament design. It utilizes pairwise and listwise preference signals for training models on audio features, fulfilling the preference learning component and audio-domain application. It is not a survey or review article, and the preference signals are explicitly used for learning rather than just evaluation. Therefore, the paper meets all inclusion criteria and none of the exclusion criteria.",
-    "round-A_JuniorMini_evaluation": 5,
+    "round-A_JuniorMini_reasoning": "The paper focuses on ranking-based emotion recognition for music, involving relative emotion comparisons between songs and optimizing a ranking-based objective using the RBF-ListNet algorithm, which suggests a preference learning approach applied in the audio domain; however, it is not explicitly stated that the ranking comparisons are used for learning through preference signals rather than solely evaluation, so some uncertainty remains.",
+    "round-A_JuniorMini_evaluation": 4,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "final_verdict": "include (junior:5,4)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2010",
       "published_date_iso": "2010-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "cao2012combining",
     "title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
-    "base_final_verdict": "include (senior:5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/cao2012combining.md",
-    "fulltext_chars_total": 20403,
-    "fulltext_chars_used": 18139,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "8. References",
-    "reference_cut_line_no": 492.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "We introduce a novel emotion recognition approach which integrates ranking models. The approach is speaker independent, yet it is designed to exploit information from utterances from the same speaker in the test set before making predictions. It achieves much higher precision in identifying emotional utterances than a conventional SVM classifier. Furthermore we test several possibilities for combining conventional classification and predictions based on ranking. All combinations improve overall prediction accuracy. All experiments are performed on the FAU AIBO database which contains realistic spontaneous emotional speech. Our best combination system achieves 6.6% absolute improvement over the Interspeech 2009 emotion challenge baseline system on the 5-class classification tasks.",
+    "key": "cao2012combining",
     "round-A_JuniorNano_output": {
-      "reasoning": "The full text describes ranking SVMs trained to rank utterances for a target emotion and a two-pass system combining ranking scores with a conventional SVM classifier, using audio features on spontaneous speech FAU AIBO corpus, satisfying learning-based, audio-domain preference/ranking criteria.",
+      "reasoning": "Reasoning: It explicitly uses ranking models for learning (integration of ranking with classification) in an audio emotion-recognition task, tests ranking/classification combinations on spontaneous speech (FAU AIBO), and reports performance gains over a baseline; these indicate a learning component driven by ranking signals, satisfying the preference-learning criterion.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "The full text describes ranking SVMs trained to rank utterances for a target emotion and a two-pass system combining ranking scores with a conventional SVM classifier, using audio features on spontaneous speech FAU AIBO corpus, satisfying learning-based, audio-domain preference/ranking criteria.",
+    "round-A_JuniorNano_reasoning": "Reasoning: It explicitly uses ranking models for learning (integration of ranking with classification) in an audio emotion-recognition task, tests ranking/classification combinations on spontaneous speech (FAU AIBO), and reports performance gains over a baseline; these indicate a learning component driven by ranking signals, satisfying the preference-learning criterion.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper explicitly introduces and utilizes ranking SVMs, a preference learning approach based on pairwise ranking of utterances for emotion recognition in spontaneous speech, which involves learning from comparisons of audio items (utterances) and is applied in the audio domain. It goes beyond evaluation by integrating these ranking models into training and combining them with conventional classifiers, demonstrating improved performance. Therefore, it meets the inclusion criteria for preference learning with audio-domain application and includes a preference-learning component, not merely evaluation.",
+      "reasoning": "The paper discusses integrating ranking models with classification to improve emotion recognition from spontaneous speech, indicating use of ranking methods within an audio-domain task; however, the abstract does not explicitly clarify whether preference learning is used for training or optimization rather than just evaluation, so inclusion is promising but not fully confirmed based on title and abstract alone.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_reasoning": "The paper discusses integrating ranking models with classification to improve emotion recognition from spontaneous speech, indicating use of ranking methods within an audio-domain task; however, the abstract does not explicitly clarify whether preference learning is used for training or optimization rather than just evaluation, so inclusion is promising but not fully confirmed based on title and abstract alone.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The abstract explicitly says the approach “integrates ranking models” and tests “predictions based on ranking” combined with classification to improve emotion recognition on the FAU AIBO spontaneous-speech corpus, indicating ranking is used as part of the model/prediction (not just evaluation) and thus meets the preference-learning + audio-domain inclusion criteria. Score 5: strong include because ranking models are used within the learning/prediction pipeline on audio data.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The paper explicitly introduces and utilizes ranking SVMs, a preference learning approach based on pairwise ranking of utterances for emotion recognition in spontaneous speech, which involves learning from comparisons of audio items (utterances) and is applied in the audio domain. It goes beyond evaluation by integrating these ranking models into training and combining them with conventional classifiers, demonstrating improved performance. Therefore, it meets the inclusion criteria for preference learning with audio-domain application and includes a preference-learning component, not merely evaluation.",
-    "round-A_JuniorMini_evaluation": 5,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-B_SeniorLead_reasoning": "The abstract explicitly says the approach “integrates ranking models” and tests “predictions based on ranking” combined with classification to improve emotion recognition on the FAU AIBO spontaneous-speech corpus, indicating ranking is used as part of the model/prediction (not just evaluation) and thus meets the preference-learning + audio-domain inclusion criteria. Score 5: strong include because ranking models are used within the learning/prediction pipeline on audio data.",
+    "round-B_SeniorLead_evaluation": 5,
+    "final_verdict": "include (senior:5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2012",
       "published_date_iso": "2012-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "cao2015speaker",
     "title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
-    "base_final_verdict": "include (junior:5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/cao2015speaker.md",
-    "fulltext_chars_total": 70303,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "References",
-    "reference_cut_line_no": 755.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "We introduce a ranking approach for emotion recognition which naturally incorporates information about the general expressivity of speakers. We demonstrate that our approach leads to substantial gains in accuracy compared to conventional approaches. We train ranking SVMs for individual emotions, treating the data from each speaker as a separate query, and combine the predictions from all rankers to perform multi-class prediction. The ranking method provides two natural benefits. It captures speaker specific information even in speaker-independent training/testing conditions. It also incorporates the intuition that each utterance can express a mix of possible emotion and that considering the degree to which each emotion is expressed can be productively exploited to identify the dominant emotion. We compare the performance of the rankers and their combination to standard SVM classification approaches on two publicly available datasets of acted emotional speech, Berlin and LDC, as well as on spontaneous emotional data from the FAU Aibo dataset. On acted data, ranking approaches exhibit significantly better performance compared to SVM classification both in distinguishing a specific emotion from all others and in multi-class prediction. On the spontaneous data, which contains mostly neutral utterances with a relatively small portion of less intense emotional utterances, ranking-based classifiers again achieve much higher precision in identifying emotional utterances than conventional SVM classifiers. In addition, we discuss the complementarity of conventional SVM and ranking-based classifiers. On all three datasets we find dramatically higher accuracy for the test items on whose prediction the two methods agree compared to the accuracy of individual methods. Furthermore on the spontaneous data the ranking and standard classification are complementary and we obtain marked improvement when we combine the two classifiers by late-stage fusion.",
+    "key": "cao2015speaker",
     "round-A_JuniorNano_output": {
-      "reasoning": "Evidence of learning-to-rank: the authors 'train ranking SVMs for individual emotions' and specify that 'the ranker for emotion m is learned from pairs Um,i,* > Un,i,* such that m and n are different', i.e., pairwise preferences are used as the learning objective (not only evaluation), with ranking outputs used for multi-class emotion prediction in audio speech data.",
+      "reasoning": "The abstract presents a ranking-based learning approach (ranking SVMs) for emotion recognition in speech, using per-speaker queries and combining rankers, and evaluates on acted and spontaneous datasets, indicating a learning component grounded in preference signals rather than mere evaluation; this aligns with the inclusion criteria for preference learning in the audio domain.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "Evidence of learning-to-rank: the authors 'train ranking SVMs for individual emotions' and specify that 'the ranker for emotion m is learned from pairs Um,i,* > Un,i,* such that m and n are different', i.e., pairwise preferences are used as the learning objective (not only evaluation), with ranking outputs used for multi-class emotion prediction in audio speech data.",
+    "round-A_JuniorNano_reasoning": "The abstract presents a ranking-based learning approach (ranking SVMs) for emotion recognition in speech, using per-speaker queries and combining rankers, and evaluates on acted and spontaneous datasets, indicating a learning component grounded in preference signals rather than mere evaluation; this aligns with the inclusion criteria for preference learning in the audio domain.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper clearly introduces a ranking approach to emotion recognition from speech, explicitly using pairwise comparisons within speaker utterances to learn ranking SVM models (\"The ranker for emotion m is learned from pairs Um,i,* > Un,i,* such that m and n are different\"), thus satisfying the inclusion criteria for preference learning. The domain is clearly audio-based as it focuses on speech emotion recognition. The work is not a survey or review article. Therefore, the paper fulfills the inclusion criteria based on the operational definitions of preference learning through ranking with audio-domain application and learning components.",
+      "reasoning": "The paper proposes a ranking approach for speaker-sensitive emotion recognition using ranking SVMs that explicitly treats data from each speaker separately, effectively incorporating preference learning via comparisons (ranking) of emotional expressions in speech, fulfilling both the preference-learning and audio-domain criteria for inclusion.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The paper clearly introduces a ranking approach to emotion recognition from speech, explicitly using pairwise comparisons within speaker utterances to learn ranking SVM models (\"The ranker for emotion m is learned from pairs Um,i,* > Un,i,* such that m and n are different\"), thus satisfying the inclusion criteria for preference learning. The domain is clearly audio-based as it focuses on speech emotion recognition. The work is not a survey or review article. Therefore, the paper fulfills the inclusion criteria based on the operational definitions of preference learning through ranking with audio-domain application and learning components.",
+    "round-A_JuniorMini_reasoning": "The paper proposes a ranking approach for speaker-sensitive emotion recognition using ranking SVMs that explicitly treats data from each speaker separately, effectively incorporating preference learning via comparisons (ranking) of emotional expressions in speech, fulfilling both the preference-learning and audio-domain criteria for inclusion.",
     "round-A_JuniorMini_evaluation": 5,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "final_verdict": "include (junior:5,5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2015",
       "published_date_iso": "2015-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "lotfian2016practical",
     "title": "Practical considerations on the use of preference learning for ranking emotional speech",
-    "base_final_verdict": "include (junior:5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/lotfian2016practical.md",
-    "fulltext_chars_total": 31069,
-    "fulltext_chars_used": 24651,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "7. REFERENCES",
-    "reference_cut_line_no": 690.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "A speech emotion retrieval system aims to detect a subset of data with specific expressive content. Preference learning represents an appealing framework to rank speech samples in terms of continuous attributes such as arousal and valence. The training of ranking classifiers usually requires pairwise samples where one is preferred over the other according to a specific criterion. For emotional databases, these relative labels are not available and are very difficult to collect. As an alternative, they can be derived from existing absolute emotional labels. For continuous attributes, we can create relative rankings by forming pairs with high and low values of a specific attribute which are separated by a predefined margin. This approach raises questions about efficient approaches for building such a training set, which is important to improve the performance of the emotional retrieval system. This paper analyzes practical considerations in training ranking classifiers including optimum number of pairs used during training, and the margin used to define the relative labels. We compare the preference learning approach to binary classifier and regression models. The experimental results on a spontaneous emotional database indicate that a rank-based classifier with fine-tuned parameters outperforms the other two approaches in both arousal and valence dimensions.",
+    "key": "lotfian2016practical",
     "round-A_JuniorNano_output": {
-      "reasoning": "Explicit use of preference learning to rank speech samples (derive relative labels via margins on continuous arousal/valence, train Rank-SVM with audio features from SEMAINE, compare to SVM/SVR, and show improved P@K), indicating clear inclusion of a ranking/relative preference component in the audio domain.",
+      "reasoning": "The abstract explicitly frames ranking emotional speech via preference learning, discusses training with pairwise/relative labels derived from absolute emotions, compares it to binary/regression models, and reports superior performance on arousal and valence, indicating a learning-based audio preference method.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "Explicit use of preference learning to rank speech samples (derive relative labels via margins on continuous arousal/valence, train Rank-SVM with audio features from SEMAINE, compare to SVM/SVR, and show improved P@K), indicating clear inclusion of a ranking/relative preference component in the audio domain.",
+    "round-A_JuniorNano_reasoning": "The abstract explicitly frames ranking emotional speech via preference learning, discusses training with pairwise/relative labels derived from absolute emotions, compares it to binary/regression models, and reports superior performance on arousal and valence, indicating a learning-based audio preference method.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper explicitly studies preference learning through the use of Rank-SVM to rank emotional speech samples based on relative preference labels derived from pairwise comparisons of continuous emotional attributes (arousal and valence). It discusses the creation of relative rankings from absolute emotional labels by forming pairs with a predefined margin, and compares preference learning against binary classification and regression. Audio is the core modality (emotional speech), and the paper includes a learning component centered on preference ranking rather than evaluation only. Therefore, it meets all inclusion criteria and avoids the exclusion criteria.",
+      "reasoning": "The paper explicitly discusses the use of preference learning applied to ranking emotional speech audio samples based on continuous attributes (arousal and valence). It involves learning ranking classifiers using pairwise comparisons derived from absolute emotional labels, which aligns closely with the inclusion criteria requiring preference-based learning in the audio domain. There is no indication that the paper is a survey or uses preferences only for evaluation, supporting a strong inclusion signal.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The paper explicitly studies preference learning through the use of Rank-SVM to rank emotional speech samples based on relative preference labels derived from pairwise comparisons of continuous emotional attributes (arousal and valence). It discusses the creation of relative rankings from absolute emotional labels by forming pairs with a predefined margin, and compares preference learning against binary classification and regression. Audio is the core modality (emotional speech), and the paper includes a learning component centered on preference ranking rather than evaluation only. Therefore, it meets all inclusion criteria and avoids the exclusion criteria.",
+    "round-A_JuniorMini_reasoning": "The paper explicitly discusses the use of preference learning applied to ranking emotional speech audio samples based on continuous attributes (arousal and valence). It involves learning ranking classifiers using pairwise comparisons derived from absolute emotional labels, which aligns closely with the inclusion criteria requiring preference-based learning in the audio domain. There is no indication that the paper is a survey or uses preferences only for evaluation, supporting a strong inclusion signal.",
     "round-A_JuniorMini_evaluation": 5,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "final_verdict": "include (junior:5,5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2016",
       "published_date_iso": "2016-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "lotfian2016retrieving",
     "title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/lotfian2016retrieving.md",
-    "fulltext_chars_total": 31183,
-    "fulltext_chars_used": 23616,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "7. References",
-    "reference_cut_line_no": 580.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Preference learning is an appealing approach for affective recognition. Instead of predicting the underlying emotional class of a sample, this framework relies on pairwise comparisons to rank-order the testing data according to an emotional dimension. This framework is relevant not only for continuous attributes such as arousal or valence, but also for categorical classes (e.g., is this sample happier than the other?). A preference learning system for categorical classes can have applications in several domains including retrieving emotional behaviors conveying a target emotion, and defining the emotional intensity associated with a given class. One important challenge to build such a system is to define relative labels defining the preference between training samples. Instead of building these labels from scratch, we propose a probabilistic framework that creates relative labels from existing categorical annotations. The approach considers individual assessments instead of consensus labels, creating a metrics that is sensitive to the underlying ambiguity of emotional classes. The proposed metric quantifies the likelihood that a sample belong to a target emotion. We build happy, angry and sad rank-classifiers using this metric. We evaluate the approach over cross-corpus experiments, showing improved performance over binary classifiers and rank-based classifiers trained with consensus labels.",
+    "key": "lotfian2016retrieving",
     "round-A_JuniorNano_output": {
-      "reasoning": "The paper explicitly defines a probabilistic relevance score to generate pairwise preferences and trains Gaussian process preference learning and Rank-SVM rankers for categorical emotions in speech, using audio features (OpenSMILE) on IEMOCAP and MSP-IMPROV, which demonstrates learning-based ranking in audio-domain.",
-      "evaluation": 5
+      "reasoning": "The abstract presents a probabilistic, preference-learning framework with pairwise comparisons to rank samples, indicating a learning/optimization component, but it does not explicitly specify the audio modality, so evidence for audio-domain inclusion is incomplete.",
+      "evaluation": 3
     },
-    "round-A_JuniorNano_reasoning": "The paper explicitly defines a probabilistic relevance score to generate pairwise preferences and trains Gaussian process preference learning and Rank-SVM rankers for categorical emotions in speech, using audio features (OpenSMILE) on IEMOCAP and MSP-IMPROV, which demonstrates learning-based ranking in audio-domain.",
-    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorNano_reasoning": "The abstract presents a probabilistic, preference-learning framework with pairwise comparisons to rank samples, indicating a learning/optimization component, but it does not explicitly specify the audio modality, so evidence for audio-domain inclusion is incomplete.",
+    "round-A_JuniorNano_evaluation": 3,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper explicitly proposes a preference learning framework using pairwise comparisons derived from categorical emotion labels of audio speech samples, applying preference learning algorithms (Gaussian process and Rank-SVM) to rank emotional intensity of speech segments, thus satisfying the inclusion criteria of preference learning and audio-domain application with a learning component.",
-      "evaluation": 5
+      "reasoning": "The paper addresses preference learning using pairwise comparisons in affective recognition, with a probabilistic framework for creating relative labels from categorical emotional annotations. However, there is no explicit mention of audio data or that audio is a core modality, which is a required inclusion criterion for this review stage. Therefore, while the preference learning aspect is clear, the audio-domain application is uncertain based on the title and abstract alone, leading to an uncertain inclusion decision.",
+      "evaluation": 3
     },
-    "round-A_JuniorMini_reasoning": "The paper explicitly proposes a preference learning framework using pairwise comparisons derived from categorical emotion labels of audio speech samples, applying preference learning algorithms (Gaussian process and Rank-SVM) to rank emotional intensity of speech segments, thus satisfying the inclusion criteria of preference learning and audio-domain application with a learning component.",
-    "round-A_JuniorMini_evaluation": 5,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The paper addresses preference learning using pairwise comparisons in affective recognition, with a probabilistic framework for creating relative labels from categorical emotional annotations. However, there is no explicit mention of audio data or that audio is a core modality, which is a required inclusion criterion for this review stage. Therefore, while the preference learning aspect is clear, the audio-domain application is uncertain based on the title and abstract alone, leading to an uncertain inclusion decision.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The abstract clearly describes a preference-learning approach for affective recognition (pairwise comparisons, rank-classifiers, probabilistic relative-labels from categorical emotion annotations), so the preference-learning signal is present; however, the title and abstract do not specify the audio modality (could be visual, text, or multimodal), so audio-domain inclusion is uncertain — both junior reviewers raised the same missing-modality concern. Given the absent explicit mention of audio, I reserve judgment pending modality details.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "The abstract clearly describes a preference-learning approach for affective recognition (pairwise comparisons, rank-classifiers, probabilistic relative-labels from categorical emotion annotations), so the preference-learning signal is present; however, the title and abstract do not specify the audio modality (could be visual, text, or multimodal), so audio-domain inclusion is uncertain — both junior reviewers raised the same missing-modality concern. Given the absent explicit mention of audio, I reserve judgment pending modality details.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2016",
       "published_date_iso": "2016-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "parthasarathy2016using",
     "title": "Using agreement on direction of change to build rank-based emotion classifiers",
-    "base_final_verdict": "include (senior:4)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/parthasarathy2016using.md",
-    "fulltext_chars_total": 82718,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 1889.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Automatic emotion recognition in realistic domains is a challenging task given the subtle expressive behaviors that occur during human interactions. The challenges start with noisy emotional descriptors provided by multiple evaluators, which are characterized by low interevaluator agreement. Studies have suggested that evaluators are more consistent in detecting qualitative relations between episodes (i.e., emotional contrasts), rather than absolute scores (i.e., the actual emotion). Based on these observations, this study explores the use of relative labels to train machine learning algorithms that can rank expressive behaviors. Instead of deriving relative labels from expensive and time-consuming subjective evaluations, the labels are extracted from existing time-continuous evaluations over expressive attributes annotated with FEELTRACE. We rely on the qualitative agreement (QA) analysis to estimate relative labels which are used to train rank-based classifiers (rankers). The experimental evaluation on the SEMAINE database demonstrates the benefits of the proposed approach. The ranking performance using the QA-based labels compare favorably against preference learning rankers trained with relative labels obtained by simply aggregating the absolute values of the emotional traces across evaluators, which is the common approach used by other studies.",
+    "key": "parthasarathy2016using",
     "round-A_JuniorNano_output": {
-      "reasoning": "Strong inclusion: it explicitly develops rank-based emotion classifiers trained on QA-derived relative labels and uses acoustic features (audio core) within a learning framework (preference/ranking), not just evaluation. Key signals include: (1) central idea to define relative labels derived from FEELTRACE and train rank-based classifiers (rankers); (2) discussion of preference learning algorithms and rank-ordering of samples; (3) evaluation with acoustic features, and mention that rankers trained with only acoustic features were included; (4) use of QA to enable learning from relative changes rather than absolute scores; (5) dataset (SEMAINE) and multi-dimension emotion annotations (arousal, valence, power, expectation) confirming audio-emotion learning context.",
-      "evaluation": 5
+      "reasoning": "The abstract describes learning with relative/QA-derived labels to train rank-based classifiers for emotion expression (ranking/pairwise preferences) and compares against other ranking methods, evaluated on SEMAINE; this fits a preference-learning component in an audio/multi-modal emotion domain, so it should be included at Stage 1 high-recall.",
+      "evaluation": 4
     },
-    "round-A_JuniorNano_reasoning": "Strong inclusion: it explicitly develops rank-based emotion classifiers trained on QA-derived relative labels and uses acoustic features (audio core) within a learning framework (preference/ranking), not just evaluation. Key signals include: (1) central idea to define relative labels derived from FEELTRACE and train rank-based classifiers (rankers); (2) discussion of preference learning algorithms and rank-ordering of samples; (3) evaluation with acoustic features, and mention that rankers trained with only acoustic features were included; (4) use of QA to enable learning from relative changes rather than absolute scores; (5) dataset (SEMAINE) and multi-dimension emotion annotations (arousal, valence, power, expectation) confirming audio-emotion learning context.",
-    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorNano_reasoning": "The abstract describes learning with relative/QA-derived labels to train rank-based classifiers for emotion expression (ranking/pairwise preferences) and compares against other ranking methods, evaluated on SEMAINE; this fits a preference-learning component in an audio/multi-modal emotion domain, so it should be included at Stage 1 high-recall.",
+    "round-A_JuniorNano_evaluation": 4,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper focuses on preference learning in the audio domain by using pairwise comparisons (relative rankings) derived from time-continuous emotional annotations to train rank-based emotion classifiers; audio is a core modality, with experiments on audio data focusing on emotion recognition, and the preference learning component uses relative labels rather than only numeric ratings, satisfying the inclusion criteria.",
-      "evaluation": 5
+      "reasoning": "The paper focuses on building rank-based emotion classifiers using relative labels derived from qualitative agreement, which is a form of preference learning involving rankings and comparisons of expressive behaviors. While the domain is emotion recognition, the abstract does not explicitly mention audio as a core modality or part of the multi-modal data. Given the inclusion criteria require audio domain application, and the abstract lacks clear audio modality evidence, the relevance to audio preference learning is uncertain, warranting a cautious approach.",
+      "evaluation": 3
     },
-    "round-A_JuniorMini_reasoning": "The paper focuses on preference learning in the audio domain by using pairwise comparisons (relative rankings) derived from time-continuous emotional annotations to train rank-based emotion classifiers; audio is a core modality, with experiments on audio data focusing on emotion recognition, and the preference learning component uses relative labels rather than only numeric ratings, satisfying the inclusion criteria.",
-    "round-A_JuniorMini_evaluation": 5,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The paper focuses on building rank-based emotion classifiers using relative labels derived from qualitative agreement, which is a form of preference learning involving rankings and comparisons of expressive behaviors. While the domain is emotion recognition, the abstract does not explicitly mention audio as a core modality or part of the multi-modal data. Given the inclusion criteria require audio domain application, and the abstract lacks clear audio modality evidence, the relevance to audio preference learning is uncertain, warranting a cautious approach.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The abstract describes using relative labels (qualitative agreement derived from FEELTRACE continuous annotations) to train rank-based emotion classifiers and evaluates on the SEMAINE database, which is an audio–visual conversational corpus—this indicates a clear preference-learning/ranking component applied in an audio-inclusive multimodal emotion domain; two junior reviews gave 4 and 3 but the mention of ranking, FEELTRACE, and SEMAINE supports inclusion. I therefore rate this as likely to include (4) because it demonstrably uses ranking/relative labels for emotion recognition in an audio-containing dataset.",
+      "evaluation": 4
+    },
+    "round-B_SeniorLead_reasoning": "The abstract describes using relative labels (qualitative agreement derived from FEELTRACE continuous annotations) to train rank-based emotion classifiers and evaluates on the SEMAINE database, which is an audio–visual conversational corpus—this indicates a clear preference-learning/ranking component applied in an audio-inclusive multimodal emotion domain; two junior reviews gave 4 and 3 but the mention of ranking, FEELTRACE, and SEMAINE supports inclusion. I therefore rate this as likely to include (4) because it demonstrably uses ranking/relative labels for emotion recognition in an audio-containing dataset.",
+    "round-B_SeniorLead_evaluation": 4,
+    "final_verdict": "include (senior:4)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2016",
       "published_date_iso": "2016-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "parthasarathy2017ranking",
     "title": "Ranking emotional attributes with deep neural networks",
-    "base_final_verdict": "include (junior:5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/parthasarathy2017ranking.md",
-    "fulltext_chars_total": 30808,
-    "fulltext_chars_used": 23606,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "8. REFERENCES",
-    "reference_cut_line_no": 558.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Studies have shown that ranking emotional attributes through preference learning methods has significant advantages over conventional emotional classification/regression frameworks. Preference learning is particularly appealing for retrieval tasks, where the goal is to identify speech conveying target emotional behaviors (e.g., positive samples with low arousal). With recent advances in deep neural networks (DNNs), this study explores whether a preference learning framework relying on deep learning can outperform conventional ranking algorithms. We use a deep learning ranker implemented with the RankNet algorithm to evaluate preference between emotional sentences in terms of dimensional attributes (arousal, valence and dominance). The results show improved performance over ranking algorithms trained with support vector machine (SVM) (i.e., RankSVM). The results are significantly better than performance reported in previous work, demonstrating the potential of RankNet to retrieve speech with target emotional behaviors.",
+    "key": "parthasarathy2017ranking",
     "round-A_JuniorNano_output": {
-      "reasoning": "The article explicitly trains ranking models using RankNet with pairwise comparisons and margin-based relative labels for arousal, valence, and dominance on speech data (USC-IEMOCAP for training and MSP-IMPROV for testing), compares to RankSVM and a DNN regression baseline, and uses ranking-based evaluation metrics, which satisfies inclusion criteria for preference learning in the audio domain.",
+      "reasoning": "This abstract explicitly uses a deep learning ranker (RankNet) to evaluate preferences between emotional sentences, i.e., ranking/pairwise comparison in the audio domain, which fits the preference-learning and ranking criteria for inclusion.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "The article explicitly trains ranking models using RankNet with pairwise comparisons and margin-based relative labels for arousal, valence, and dominance on speech data (USC-IEMOCAP for training and MSP-IMPROV for testing), compares to RankSVM and a DNN regression baseline, and uses ranking-based evaluation metrics, which satisfies inclusion criteria for preference learning in the audio domain.",
+    "round-A_JuniorNano_reasoning": "This abstract explicitly uses a deep learning ranker (RankNet) to evaluate preferences between emotional sentences, i.e., ranking/pairwise comparison in the audio domain, which fits the preference-learning and ranking criteria for inclusion.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper explicitly focuses on preference learning in the audio domain by ranking emotional attributes of speech using pairwise comparisons, with clear use of preference signals for training neural network rankers (RankNet and RankSVM). It compares various preference learning methods using pairwise relative labels derived from annotated emotional scores, fulfilling the inclusion criteria for preference signals used in learning and audio-domain application. The paper is not a survey/review and involves optimization based on preference learning rather than just evaluation.",
+      "reasoning": "The paper clearly focuses on ranking emotional attributes using preference learning methods with deep neural networks, explicitly involving pairwise preference evaluation between emotional sentences in audio, satisfying the preference learning and audio-domain criteria for inclusion.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The paper explicitly focuses on preference learning in the audio domain by ranking emotional attributes of speech using pairwise comparisons, with clear use of preference signals for training neural network rankers (RankNet and RankSVM). It compares various preference learning methods using pairwise relative labels derived from annotated emotional scores, fulfilling the inclusion criteria for preference signals used in learning and audio-domain application. The paper is not a survey/review and involves optimization based on preference learning rather than just evaluation.",
+    "round-A_JuniorMini_reasoning": "The paper clearly focuses on ranking emotional attributes using preference learning methods with deep neural networks, explicitly involving pairwise preference evaluation between emotional sentences in audio, satisfying the preference learning and audio-domain criteria for inclusion.",
     "round-A_JuniorMini_evaluation": 5,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "final_verdict": "include (junior:5,5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2017",
       "published_date_iso": "2017-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "parthasarathy2018preference",
     "title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/parthasarathy2018preference.md",
-    "fulltext_chars_total": 33747,
-    "fulltext_chars_used": 26077,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "7. References",
-    "reference_cut_line_no": 701.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "The perceptual evaluation of emotional attributes is noisy due to inconsistencies between annotators. The low inter-evaluator agreement arises due to the complex nature of emotions. Conventional approaches average scores provided by multiple annotators. While this approach reduces the influence of dissident annotations, previous studies have showed the value of considering individual evaluations to better capture the underlying ground-truth. One of these approaches is the qualitative agreement (QA) method, which provides an alternative framework that captures the inherent trends amongst the annotators. While previous studies have focused on using the QA method for time-continuous annotations from a fixed number of annotators, most emotional databases are annotated with attributes at the sentence-level (e.g., one global score per sentence). This study proposes a novel formulation based on the QA framework to estimate reliable sentence-level annotations for preference-learning. The proposed relative labels between pairs of sentences capture consistent trends across evaluators. The experimental evaluation shows that preference-learning methods to rank-order emotional attributes trained with the proposed QA-based labels achieve significantly better performance than the same algorithms trained with relative scores obtained by averaging absolute scores across annotators. These results show the benefits of QA-based labels for preference-learning using sentence-level annotations.",
+    "key": "parthasarathy2018preference",
     "round-A_JuniorNano_output": {
-      "reasoning": "The paper defines and optimizes a preference-learning framework (RankNet/RankMargin) trained on QA-based relative labels for sentence-level emotional attributes in an audio-domain corpus (MSP-Podcast), with explicit learning signals and pairwise comparisons rather than only final absolute scores, satisfying inclusion criteria for audio-domain, learning-based ranking, and non-survey content (e.g., 3.1 QA for sentence-level annotations, 3.2 method, 4.3 implementation, 4.1 MSP-Podcast, and 5 results showing QA-based labels improve ranking).",
-      "evaluation": 5
+      "reasoning": "The title/abstract describe a QA-based, preference-learning approach for sentence-level emotional annotations and ranking of sentences, which fits the preference-learning criterion. However, there is no explicit mention of audio data or audio as a core modality in the abstract, so confirmation of audio-domain inclusion cannot be made from the abstract alone.",
+      "evaluation": 3
     },
-    "round-A_JuniorNano_reasoning": "The paper defines and optimizes a preference-learning framework (RankNet/RankMargin) trained on QA-based relative labels for sentence-level emotional attributes in an audio-domain corpus (MSP-Podcast), with explicit learning signals and pairwise comparisons rather than only final absolute scores, satisfying inclusion criteria for audio-domain, learning-based ranking, and non-survey content (e.g., 3.1 QA for sentence-level annotations, 3.2 method, 4.3 implementation, 4.1 MSP-Podcast, and 5 results showing QA-based labels improve ranking).",
-    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorNano_reasoning": "The title/abstract describe a QA-based, preference-learning approach for sentence-level emotional annotations and ranking of sentences, which fits the preference-learning criterion. However, there is no explicit mention of audio data or audio as a core modality in the abstract, so confirmation of audio-domain inclusion cannot be made from the abstract alone.",
+    "round-A_JuniorNano_evaluation": 3,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper explicitly proposes and evaluates a preference-learning framework using relative pairwise comparisons derived from sentence-level emotional annotations, thereby involving ranking of audio clips based on emotional attributes (arousal, valence, dominance). The study employs deep learning models trained with preference-based losses (RankNet and RankMargin) using qualitative agreement (QA)-based relative labels, clearly fulfilling the preference-learning component criterion. The work applies directly to speech emotion recognition, an audio-domain task, using acoustic features extracted from speech sentences. Therefore, the study meets the inclusion criteria, including preference-learning with relative comparisons in an audio-domain application, and is not a survey/review. Hence, it should be strongly included.",
-      "evaluation": 5
+      "reasoning": "The paper proposes a preference-learning method for sentence-level emotional annotations and compares pairs of sentences to capture relative emotional trends, indicating a preference learning component; however, it is unclear if the audio domain is involved since the abstract does not explicitly mention audio data or audio clips, which is critical for inclusion.",
+      "evaluation": 3
     },
-    "round-A_JuniorMini_reasoning": "The paper explicitly proposes and evaluates a preference-learning framework using relative pairwise comparisons derived from sentence-level emotional annotations, thereby involving ranking of audio clips based on emotional attributes (arousal, valence, dominance). The study employs deep learning models trained with preference-based losses (RankNet and RankMargin) using qualitative agreement (QA)-based relative labels, clearly fulfilling the preference-learning component criterion. The work applies directly to speech emotion recognition, an audio-domain task, using acoustic features extracted from speech sentences. Therefore, the study meets the inclusion criteria, including preference-learning with relative comparisons in an audio-domain application, and is not a survey/review. Hence, it should be strongly included.",
-    "round-A_JuniorMini_evaluation": 5,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The paper proposes a preference-learning method for sentence-level emotional annotations and compares pairs of sentences to capture relative emotional trends, indicating a preference learning component; however, it is unclear if the audio domain is involved since the abstract does not explicitly mention audio data or audio clips, which is critical for inclusion.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The title and abstract clearly describe a preference-learning approach that uses QA-derived relative (pairwise) labels to rank sentence-level emotional attributes—evidence that the paper involves learning from pairwise preferences—but they do not state the data modality (no explicit mention of audio clips or audio-domain application). Both junior reviewers also flagged this missing modality evidence and gave a 3. Because modality is unresolved (could be text or multimodal) and Stage 1 prefers high recall, I vote to keep it uncertain rather than exclude.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "The title and abstract clearly describe a preference-learning approach that uses QA-derived relative (pairwise) labels to rank sentence-level emotional attributes—evidence that the paper involves learning from pairwise preferences—but they do not state the data modality (no explicit mention of audio clips or audio-domain application). Both junior reviewers also flagged this missing modality evidence and gave a 3. Because modality is unresolved (could be text or multimodal) and Stage 1 prefers high recall, I vote to keep it uncertain rather than exclude.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2018",
       "published_date_iso": "2018-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
-    "key": "lopes2017modelling",
     "title": "Modelling affect for horror soundscapes",
-    "base_final_verdict": "include (junior:5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/lopes2017modelling.md",
-    "fulltext_chars_total": 81867,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 1458.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "The feeling of horror within movies or games relies on the audience's perception of a tense atmosphere-often achieved through sound accompanied by the on-screen drama-guiding its emotional experience throughout the scene or game-play sequence. These progressions are often crafted through an a priori knowledge of how a scene or game-play sequence will playout, and the intended emotional patterns a game director wants to transmit. The appropriate design of sound becomes even more challenging once the scenery and the general context is autonomously generated by an algorithm. Towards realizing sound-based affective interaction in games this paper explores the creation of computational models capable of ranking short audio pieces based on crowdsourced annotations of tension, arousal and valence. Affect models are trained via preference learning on over a thousand annotations with the use of support vector machines, whose inputs are low-level features extracted from the audio assets of a comprehensive sound library. The models constructed in this work are able to predict the tension, arousal and valence elicited by sound, respectively, with an accuracy of approximately 65%, 66% and 72%.",
+    "key": "lopes2017modelling",
     "round-A_JuniorNano_output": {
-      "reasoning": "The paper explicitly builds RankSVM models trained on crowdsourced pairwise rankings of horror sounds to predict global emotion ranks (tension/arousal/valence), i.e., a clear preference-learning workflow in the audio domain.",
+      "reasoning": "The abstract explicitly describes ranking audio clips using preference learning with crowdsourced annotations of tension/arousal/valence, an audio-domain learning/prediction task, which aligns with the inclusion criteria for preference-based learning and audio-domain ranking.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "The paper explicitly builds RankSVM models trained on crowdsourced pairwise rankings of horror sounds to predict global emotion ranks (tension/arousal/valence), i.e., a clear preference-learning workflow in the audio domain.",
+    "round-A_JuniorNano_reasoning": "The abstract explicitly describes ranking audio clips using preference learning with crowdsourced annotations of tension/arousal/valence, an audio-domain learning/prediction task, which aligns with the inclusion criteria for preference-based learning and audio-domain ranking.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper explicitly involves preference learning through the use of RankSVM to learn global rankings from pairwise human annotations of horror soundscapes (\"several preference learned models, using the rank support vector machine algorithm\"; \"Participant responses are obtained via a crowdsourcing methodology and subsequently stored into a database\"; \"annotations obtained from crowdsourcing will train data-driven computational models\") and is fully within the audio domain focusing on affect modelling of sound in horror games. It does not use preferences only for evaluation, but rather as a training signal for computational models. The paper is not a survey/review article. Therefore, it meets all key inclusion criteria and no exclusion criteria apply.",
+      "reasoning": "The paper presents preference learning via ranking short audio pieces based on crowdsourced annotations to model affect in horror soundscapes, which satisfies both the preference learning component and audio-domain application criteria required for inclusion. There is no indication that it is a survey, and learning is involved rather than using preferences solely for evaluation.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The paper explicitly involves preference learning through the use of RankSVM to learn global rankings from pairwise human annotations of horror soundscapes (\"several preference learned models, using the rank support vector machine algorithm\"; \"Participant responses are obtained via a crowdsourcing methodology and subsequently stored into a database\"; \"annotations obtained from crowdsourcing will train data-driven computational models\") and is fully within the audio domain focusing on affect modelling of sound in horror games. It does not use preferences only for evaluation, but rather as a training signal for computational models. The paper is not a survey/review article. Therefore, it meets all key inclusion criteria and no exclusion criteria apply.",
+    "round-A_JuniorMini_reasoning": "The paper presents preference learning via ranking short audio pieces based on crowdsourced annotations to model affect in horror soundscapes, which satisfies both the preference learning component and audio-domain application criteria required for inclusion. There is no indication that it is a survey, and learning is involved rather than using preferences solely for evaluation.",
     "round-A_JuniorMini_evaluation": 5,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "final_verdict": "include (junior:5,5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2017",
       "published_date_iso": "2017-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
     "key": "han2020ordinal",
@@ -1300,179 +1186,132 @@
     }
   },
   {
-    "key": "mckeown2011semaine",
     "title": "The semaine database: Annotated multimodal records of emotionally colored conversations between a person and a limited agent",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/mckeown2011semaine.md",
-    "fulltext_chars_total": 75267,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 1216.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "SEMAINE has created a large audiovisual database as a part of an iterative approach to building Sensitive Artificial Listener (SAL) agents that can engage a person in a sustained, emotionally colored conversation. Data used to build the agents came from interactions between users and an \"operator” simulating a SAL agent, in different configurations: Solid SAL (designed so that operators displayed an appropriate nonverbal behavior) and Semi-automatic SAL (designed so that users' experience approximated interacting with a machine). We then recorded user interactions with the developed system, Automatic SAL, comparing the most communicatively competent version to versions with reduced nonverbal skills. High quality recording was provided by five high-resolution, high-framerate cameras, and four microphones, recorded synchronously. Recordings total 150 participants, for a total of 959 conversations with individual SAL characters, lasting approximately 5 minutes each. Solid SAL recordings are transcribed and extensively annotated: 6-8 raters per clip traced five affective dimensions and 27 associated categories. Other scenarios are labeled on the same pattern, but less fully. Additional information includes FACS annotation on selected extracts, identification of laughs, nods, and shakes, and measures of user engagement with the automatic system. The material is available through a web-accessible database.",
+    "key": "mckeown2011semaine",
     "round-A_JuniorNano_output": {
-      "reasoning": "No evidence of ranking/pairwise preferences or learning optimization; the paper describes a multimodal annotated dataset and does not implement preference learning.",
-      "evaluation": 1
-    },
-    "round-A_JuniorNano_reasoning": "No evidence of ranking/pairwise preferences or learning optimization; the paper describes a multimodal annotated dataset and does not implement preference learning.",
-    "round-A_JuniorNano_evaluation": 1,
-    "round-A_JuniorMini_output": {
-      "reasoning": "The paper describes the SEMAINE database containing multimodal recordings of emotionally colored conversations and associated annotations mainly focusing on emotion recognition and affective computing. There is no explicit mention of preference learning, ranking or pairwise comparisons of audio clips, nor any preference-driven reinforcement learning loop utilizing preference signals. Preference signals appear absent or used solely for evaluation, with the core focus on affective state annotation and analysis rather than audio preference modeling or learning. Hence, it does not meet the inclusion criteria that require preference learning or ranking related to audio.",
-      "evaluation": 1
-    },
-    "round-A_JuniorMini_reasoning": "The paper describes the SEMAINE database containing multimodal recordings of emotionally colored conversations and associated annotations mainly focusing on emotion recognition and affective computing. There is no explicit mention of preference learning, ranking or pairwise comparisons of audio clips, nor any preference-driven reinforcement learning loop utilizing preference signals. Preference signals appear absent or used solely for evaluation, with the core focus on affective state annotation and analysis rather than audio preference modeling or learning. Hence, it does not meet the inclusion criteria that require preference learning or ranking related to audio.",
-    "round-A_JuniorMini_evaluation": 1,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
-    "cutoff_filter": {
-      "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
-      "published_date_raw": "2011",
-      "published_date_iso": "2011-01-01"
-    },
-    "review_state": "cutoff_filtered"
-  },
-  {
-    "key": "lotfian2017building",
-    "title": "Building naturalistic emotionally balanced speech corpus by retrieving emotional speech from existing podcast recordings",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/lotfian2017building.md",
-    "fulltext_chars_total": 78573,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 1324.0,
-    "fulltext_missing_or_unmatched": false,
-    "round-A_JuniorNano_output": {
-      "reasoning": "The paper explicitly uses ranking-based retrieval methods (GP-Rank, SVM-rank) to select audio segments with target arousal/valence (e.g., 'Fig. 5. Precision at K of different retrieval methods: BOC-DL, SVM-rank, Gaussian-process rank (GP-rank)' and 'GP-Rank is the method that creates the best separation between the retrieved sentences for low and high valence'), demonstrating a preference-learning component in the audio domain; it also states that 'we retrieved 2,317 sentences' which were 'emotionally evaluated' via crowdsourcing, confirming the learning-to-rank setup in an audio corpus construction context.",
-      "evaluation": 5
-    },
-    "round-A_JuniorNano_reasoning": "The paper explicitly uses ranking-based retrieval methods (GP-Rank, SVM-rank) to select audio segments with target arousal/valence (e.g., 'Fig. 5. Precision at K of different retrieval methods: BOC-DL, SVM-rank, Gaussian-process rank (GP-rank)' and 'GP-Rank is the method that creates the best separation between the retrieved sentences for low and high valence'), demonstrating a preference-learning component in the audio domain; it also states that 'we retrieved 2,317 sentences' which were 'emotionally evaluated' via crowdsourcing, confirming the learning-to-rank setup in an audio corpus construction context.",
-    "round-A_JuniorNano_evaluation": 5,
-    "round-A_JuniorMini_output": {
-      "reasoning": "The paper involves training and applying machine learning algorithms, including preference learning (GP-rank), to retrieve audio segments with targeted emotional content from podcasts, which indicates a learning/optimization component based on preference signals (ranking segments by emotions). Hence, it explicitly includes a preference-learning component in the audio domain. There is no indication that preference is used only for evaluation; instead, it is integral to data retrieval and corpus building. Therefore, it meets inclusion criteria and does not meet any exclusion criteria.",
-      "evaluation": 5
-    },
-    "round-A_JuniorMini_reasoning": "The paper involves training and applying machine learning algorithms, including preference learning (GP-rank), to retrieve audio segments with targeted emotional content from podcasts, which indicates a learning/optimization component based on preference signals (ranking segments by emotions). Hence, it explicitly includes a preference-learning component in the audio domain. There is no indication that preference is used only for evaluation; instead, it is integral to data retrieval and corpus building. Therefore, it meets inclusion criteria and does not meet any exclusion criteria.",
-    "round-A_JuniorMini_evaluation": 5,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
-    "cutoff_filter": {
-      "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
-      "published_date_raw": "2017",
-      "published_date_iso": "2017-01-01"
-    },
-    "review_state": "cutoff_filtered"
-  },
-  {
-    "key": "busso2016msp",
-    "title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/busso2016msp.md",
-    "fulltext_chars_total": 95464,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 1983.0,
-    "fulltext_missing_or_unmatched": false,
-    "round-A_JuniorNano_output": {
-      "reasoning": "The paper describes the MSP-IMPROV corpus and reports classification performance, inter-evaluator agreement, and naturalness judgments, with majority voting to merge labels, but there is no evidence of learning/optimization driven by preferences, rankings, or pairwise audio-item comparisons (no ranking/AB tests or RL loop).",
-      "evaluation": 1
-    },
-    "round-A_JuniorNano_reasoning": "The paper describes the MSP-IMPROV corpus and reports classification performance, inter-evaluator agreement, and naturalness judgments, with majority voting to merge labels, but there is no evidence of learning/optimization driven by preferences, rankings, or pairwise audio-item comparisons (no ranking/AB tests or RL loop).",
-    "round-A_JuniorNano_evaluation": 1,
-    "round-A_JuniorMini_output": {
-      "reasoning": "The paper introduces the MSP-IMPROV corpus focusing on emotion perception with controlled lexical content but different emotions, collected via dyadic improvisations by actors. The paper emphasizes perceptual evaluations using crowd-sourcing for categorical and attribute-based emotion annotations, but there is no evidence of preference learning components such as ranking, pairwise/A-B comparisons used for training or optimization, or any reinforcement learning driven by preferences. The preference signals mentioned are only used for evaluation, and there is no indication that preference signals are used for learning. Therefore, it fails the inclusion criteria of having a preference-learning component and is focused on evaluation only.",
-      "evaluation": 1
-    },
-    "round-A_JuniorMini_reasoning": "The paper introduces the MSP-IMPROV corpus focusing on emotion perception with controlled lexical content but different emotions, collected via dyadic improvisations by actors. The paper emphasizes perceptual evaluations using crowd-sourcing for categorical and attribute-based emotion annotations, but there is no evidence of preference learning components such as ranking, pairwise/A-B comparisons used for training or optimization, or any reinforcement learning driven by preferences. The preference signals mentioned are only used for evaluation, and there is no indication that preference signals are used for learning. Therefore, it fails the inclusion criteria of having a preference-learning component and is focused on evaluation only.",
-    "round-A_JuniorMini_evaluation": 1,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
-    "cutoff_filter": {
-      "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
-      "published_date_raw": "2016",
-      "published_date_iso": "2016-01-01"
-    },
-    "review_state": "cutoff_filtered"
-  },
-  {
-    "key": "lopes2015sonancia",
-    "title": "Sonancia : sonification of procedurally generated game levels",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/lopes2015sonancia.md",
-    "fulltext_chars_total": 26260,
-    "fulltext_chars_used": 22808,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "References",
-    "reference_cut_line_no": 427.0,
-    "fulltext_missing_or_unmatched": false,
-    "round-A_JuniorNano_output": {
-      "reasoning": "The article focuses on audio as a core modality (level sonification with instrument-based and intensity-based selection and real-time mixing) and even cites planned future work to train a neural network on crowd-sourced intensity judgments, but there is no implemented preference-learning, ranking, or A/B comparison component in the presented text; evidence for explicit preference learning is thus absent, yielding an uncertain/partial inclusion signal (score 3).",
+      "reasoning": "Abstract describes a multimodal audiovisual database (SEMAINE) for building SAL agents with affective annotations, but provides no explicit evidence of preference learning, ranking, or optimization for audio items; thus inclusion cannot be confirmed from title/abstract alone and remains uncertain.",
       "evaluation": 3
     },
-    "round-A_JuniorNano_reasoning": "The article focuses on audio as a core modality (level sonification with instrument-based and intensity-based selection and real-time mixing) and even cites planned future work to train a neural network on crowd-sourced intensity judgments, but there is no implemented preference-learning, ranking, or A/B comparison component in the presented text; evidence for explicit preference learning is thus absent, yielding an uncertain/partial inclusion signal (score 3).",
+    "round-A_JuniorNano_reasoning": "Abstract describes a multimodal audiovisual database (SEMAINE) for building SAL agents with affective annotations, but provides no explicit evidence of preference learning, ranking, or optimization for audio items; thus inclusion cannot be confirmed from title/abstract alone and remains uncertain.",
     "round-A_JuniorNano_evaluation": 3,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper focuses on procedural generation and sonification of game levels, detailing methods to create and mix sounds for immersion, but it does not discuss any preference learning component, ranking, A/B comparisons of audio clips, or use preference signals for training or optimization; thus, it does not meet the inclusion criteria for preference learning in audio.",
-      "evaluation": 1
+      "reasoning": "The paper describes a multimodal database involving emotionally colored audio-visual conversations, but does not mention any preference learning, ranking, or optimization based on preference signals; preference is not explicitly discussed for training or learning though audio is a core modality, therefore it lacks clear evidence of preference-driven learning components required for inclusion, but the multi-modal and audio-focused nature suggests possible relevance pending more evidence.",
+      "evaluation": 3
     },
-    "round-A_JuniorMini_reasoning": "The paper focuses on procedural generation and sonification of game levels, detailing methods to create and mix sounds for immersion, but it does not discuss any preference learning component, ranking, A/B comparisons of audio clips, or use preference signals for training or optimization; thus, it does not meet the inclusion criteria for preference learning in audio.",
-    "round-A_JuniorMini_evaluation": 1,
+    "round-A_JuniorMini_reasoning": "The paper describes a multimodal database involving emotionally colored audio-visual conversations, but does not mention any preference learning, ranking, or optimization based on preference signals; preference is not explicitly discussed for training or learning though audio is a core modality, therefore it lacks clear evidence of preference-driven learning components required for inclusion, but the multi-modal and audio-focused nature suggests possible relevance pending more evidence.",
+    "round-A_JuniorMini_evaluation": 3,
     "round-B_SeniorLead_output": {
-      "reasoning": "Inclusion requires an implemented preference-learning signal (rankings/A–B/pairwise preferences or preference-driven training/optimization). The paper contains no such implemented component: it uses an “intensity value [that] consists of an empirical measure obtained from human listeners” (used to pick/mix sounds) but does not convert these into rankings/pairwise preferences nor use them to train or optimize an audio model. The only mention of learning is future work: “an artificial neural network will be created and trained through a crowd-sourced methodology” to classify intensity — this is planned but not implemented. The text contains no A/B comparisons, pairwise preference data, preference-driven RL loop, or any preference-learning training process. Two junior reviewers gave 3 and 1; based on explicit textual evidence (empirical intensity labels only, and only a future plan for training) the paper should be excluded from the preference-learning-in-audio set. (Summary sentence: no implemented preference-learning or ranking/A–B comparison is present in the full text.)",
-      "evaluation": 1
+      "reasoning": "The abstract describes the SEMAINE multimodal audiovisual database with rich affective annotations and high-quality audio/video recordings (150 participants, 959 conversations) which makes it topically relevant to audio-domain work, but it contains no mention of pairwise/ranking preference signals, A/B comparisons, or any preference-driven learning/optimization (only human affect ratings and annotations are described); both junior reviewers also flagged uncertainty. Because preference-learning components are not explicitly reported in the title/abstract, but audio is a core modality, inclusion is uncertain pending full-text evidence.",
+      "evaluation": 3
     },
-    "round-B_SeniorLead_reasoning": "Inclusion requires an implemented preference-learning signal (rankings/A–B/pairwise preferences or preference-driven training/optimization). The paper contains no such implemented component: it uses an “intensity value [that] consists of an empirical measure obtained from human listeners” (used to pick/mix sounds) but does not convert these into rankings/pairwise preferences nor use them to train or optimize an audio model. The only mention of learning is future work: “an artificial neural network will be created and trained through a crowd-sourced methodology” to classify intensity — this is planned but not implemented. The text contains no A/B comparisons, pairwise preference data, preference-driven RL loop, or any preference-learning training process. Two junior reviewers gave 3 and 1; based on explicit textual evidence (empirical intensity labels only, and only a future plan for training) the paper should be excluded from the preference-learning-in-audio set. (Summary sentence: no implemented preference-learning or ranking/A–B comparison is present in the full text.)",
-    "round-B_SeniorLead_evaluation": 1,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-B_SeniorLead_reasoning": "The abstract describes the SEMAINE multimodal audiovisual database with rich affective annotations and high-quality audio/video recordings (150 participants, 959 conversations) which makes it topically relevant to audio-domain work, but it contains no mention of pairwise/ranking preference signals, A/B comparisons, or any preference-driven learning/optimization (only human affect ratings and annotations are described); both junior reviewers also flagged uncertainty. Because preference-learning components are not explicitly reported in the title/abstract, but audio is a core modality, inclusion is uncertain pending full-text evidence.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2011",
+      "published_date_iso": "2011-01-01"
+    }
+  },
+  {
+    "title": "Building naturalistic emotionally balanced speech corpus by retrieving emotional speech from existing podcast recordings",
+    "abstract": "The lack of a large, natural emotional database is one of the key barriers to translate results on speech emotion recognition in controlled conditions into real-life applications. Collecting emotional databases is expensive and time demanding, which limits the size of existing corpora. Current approaches used to collect spontaneous databases tend to provide unbalanced emotional content, which is dictated by the given recording protocol (e.g., positive for colloquial conversations, negative for discussion or debates). The size and speaker diversity are also limited. This paper proposes a novel approach to effectively build a large, naturalistic emotional database with balanced emotional content, reduced cost and reduced manual labor. It relies on existing spontaneous recordings obtained from audio-sharing websites. The proposed approach combines machine learning algorithms to retrieve recordings conveying balanced emotional content with a cost effective annotation process using crowdsourcing, which make it possible to build a large scale speech emotional database. This approach provides natural emotional renditions from multiple speakers, with different channel conditions and conveying balanced emotional content that are difficult to obtain with alternative data collection protocols.",
+    "key": "lotfian2017building",
+    "round-A_JuniorNano_output": {
+      "reasoning": "One-sentence explanation: The abstract describes building a large naturalistic emotional speech corpus by retrieving emotional speech from podcasts and annotating via crowdsourcing, but there is no explicit evidence of ranking, pairwise comparisons, or preference-driven learning in the abstract, so a cautious score of 3 is warranted.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_reasoning": "One-sentence explanation: The abstract describes building a large naturalistic emotional speech corpus by retrieving emotional speech from podcasts and annotating via crowdsourcing, but there is no explicit evidence of ranking, pairwise comparisons, or preference-driven learning in the abstract, so a cautious score of 3 is warranted.",
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on building an emotional speech corpus from existing recordings, without mentioning any preference learning components such as pairwise comparisons, rankings, or preference-driven optimization; since preference signals or learning are not explicitly indicated, more information is needed to determine inclusion.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_reasoning": "The paper focuses on building an emotional speech corpus from existing recordings, without mentioning any preference learning components such as pairwise comparisons, rankings, or preference-driven optimization; since preference signals or learning are not explicitly indicated, more information is needed to determine inclusion.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The title and abstract describe retrieving emotional speech from podcasts and using crowdsourced annotation to build a large, balanced emotional speech corpus; there is no mention of pairwise/ranking comparisons, preference signals, or preference-driven learning/optimization in the abstract (both junior reviewers also flagged this lack), so evidence for inclusion under the preference-learning criterion is insufficient.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "The title and abstract describe retrieving emotional speech from podcasts and using crowdsourced annotation to build a large, balanced emotional speech corpus; there is no mention of pairwise/ranking comparisons, preference signals, or preference-driven learning/optimization in the abstract (both junior reviewers also flagged this lack), so evidence for inclusion under the preference-learning criterion is insufficient.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2017",
+      "published_date_iso": "2017-01-01"
+    }
+  },
+  {
+    "title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+    "abstract": "We present the MSP-IMPROV corpus, a multimodal emotional database, where the goal is to have control over lexical content and emotion while also promoting naturalness in the recordings. Studies on emotion perception often require stimuli with fixed lexical content, but that convey different emotions. These stimuli can also serve as an instrument to understand how emotion modulates speech at the phoneme level, in a manner that controls for coarticulation. Such audiovisual data are not easily available from natural recordings. A common solution is to record actors reading sentences that portray different emotions, which may not produce natural behaviors. We propose an alternative approach in which we define hypothetical scenarios for each sentence that are carefully designed to elicit a particular emotion. Two actors improvise these emotion-specific situations, leading them to utter contextualized, non-read renditions of sentences that have fixed lexical content and convey different emotions. We describe the context in which this corpus was recorded, the key features of the corpus, the areas in which this corpus can be useful, and the emotional content of the recordings. The paper also provides the performance for speech and facial emotion classifiers. The analysis brings novel classification evaluations where we study the performance in terms of inter-evaluator agreement and naturalness perception, leveraging the large size of the audiovisual database.",
+    "key": "busso2016msp",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The MSP-IMPROV abstract presents a multimodal emotion-perception corpus with fixed lexical content and analyses of classifiers for speech and facial emotion, but it does not mention ranking, pairwise comparisons, preference signals, or any learning/optimization loop driven by preferences. Since Stage 1 screening requires evidence of preference learning or explicit preference signals to include, the abstract provides insufficient evidence to classify it as a preference-learning paper; thus a cautious score is warranted. No explicit ranking or learning component described.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_reasoning": "The MSP-IMPROV abstract presents a multimodal emotion-perception corpus with fixed lexical content and analyses of classifiers for speech and facial emotion, but it does not mention ranking, pairwise comparisons, preference signals, or any learning/optimization loop driven by preferences. Since Stage 1 screening requires evidence of preference learning or explicit preference signals to include, the abstract provides insufficient evidence to classify it as a preference-learning paper; thus a cautious score is warranted. No explicit ranking or learning component described.",
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper presents a multimodal emotional database with controlled lexical content and emotion conveyed through dyadic interactions, focusing on naturalness in emotion perception; however, the abstract does not mention any ranking, A/B comparisons, or preference-learning components involving audio, which are required for inclusion under the specified criteria. Given the lack of explicit preference learning or comparison elements, but the relevance to audio and emotion perception, the appropriate score is uncertain rather than exclusionary.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_reasoning": "The paper presents a multimodal emotional database with controlled lexical content and emotion conveyed through dyadic interactions, focusing on naturalness in emotion perception; however, the abstract does not mention any ranking, A/B comparisons, or preference-learning components involving audio, which are required for inclusion under the specified criteria. Given the lack of explicit preference learning or comparison elements, but the relevance to audio and emotion perception, the appropriate score is uncertain rather than exclusionary.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The MSP-IMPROV abstract describes a multimodal acted corpus for emotion perception with controlled lexical content and reports classifier evaluations, but it does not mention any ranking/pairwise comparisons, preference signals, or preference-driven learning/optimization (no RL or preference-based training described). Both junior reviewers also flagged insufficient evidence and scored 3; given the lack of explicit preference components in the title/abstract, I assign an uncertain score to preserve high recall until full text is inspected.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "The MSP-IMPROV abstract describes a multimodal acted corpus for emotion perception with controlled lexical content and reports classifier evaluations, but it does not mention any ranking/pairwise comparisons, preference signals, or preference-driven learning/optimization (no RL or preference-based training described). Both junior reviewers also flagged insufficient evidence and scored 3; given the lack of explicit preference components in the title/abstract, I assign an uncertain score to preserve high recall until full text is inspected.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2016",
+      "published_date_iso": "2016-01-01"
+    }
+  },
+  {
+    "title": "Sonancia : sonification of procedurally generated game levels",
+    "abstract": "How can creative elements brought from level design effec-tively be coupled with audio in order to create tense and en-gaging player experiences? In this paper the above question is posed through the sonification of procedurally generated dig-ital game levels. The paper details some initial approaches and methodologies for achieving this core aim.",
+    "key": "lopes2015sonancia",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract discusses sonification of procedurally generated game levels and mentions initial approaches/methodologies, but provides no evidence of learning/optimization or explicit preference signals (rankings, A/B tests, or RL-driven optimization). Therefore the evidence for preference-learning-based inclusion is insufficient, so score 3.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_reasoning": "The abstract discusses sonification of procedurally generated game levels and mentions initial approaches/methodologies, but provides no evidence of learning/optimization or explicit preference signals (rankings, A/B tests, or RL-driven optimization). Therefore the evidence for preference-learning-based inclusion is insufficient, so score 3.",
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on sonification of procedurally generated game levels, indicating an audio-domain application, but the abstract lacks any explicit mention of preference learning, ranking, A/B comparisons, or optimization based on preferences. Without evidence of preference signals used for learning or evaluation explicitly tied to preference-based learning, it is unclear if this paper meets the inclusion criteria for preference learning.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_reasoning": "The paper focuses on sonification of procedurally generated game levels, indicating an audio-domain application, but the abstract lacks any explicit mention of preference learning, ranking, A/B comparisons, or optimization based on preferences. Without evidence of preference signals used for learning or evaluation explicitly tied to preference-based learning, it is unclear if this paper meets the inclusion criteria for preference learning.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "Both junior reviewers scored 3 and I agree: the title/abstract describe sonification of procedurally generated game levels and initial methodologies but contain no mention of preference learning, pairwise/A–B comparisons, rankings, or RL-driven preference optimization, so evidence is insufficient to include at this stage.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "Both junior reviewers scored 3 and I agree: the title/abstract describe sonification of procedurally generated game levels and initial methodologies but contain no mention of preference learning, pairwise/A–B comparisons, rankings, or RL-driven preference optimization, so evidence is insufficient to include at this stage.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
+    "cutoff_filter": {
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2015",
       "published_date_iso": "2015-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
     "key": "huang2022mulan",
@@ -1556,47 +1395,36 @@
     }
   },
   {
-    "key": "metallinou2013annotation",
     "title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/metallinou2013annotation.md",
-    "fulltext_chars_total": 46524,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 769.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Human emotional and cognitive states evolve with variable intensity and clarity through the course of social interactions and experiences, and they are continuously influenced by a variety of input multimodal information from the environment and the interaction participants. This has motivated the development of a new area within affective computing that treats emotions as continuous variables and examines their representation, annotation and modeling. In this work, we use as a starting point the continuous emotional annotation that we performed on a large, multimodal database, and discuss annotation challenges, design decisions, annotation results and lessons learned from this effort, in the context of existing literature. Additionally, we discuss a variety of open questions for future research in terms of labeling, combining and processing continuous assessments of emotional and cognitive states.",
+    "key": "metallinou2013annotation",
     "round-A_JuniorNano_output": {
-      "reasoning": "The paper focuses on continuous emotional annotation and processing in a multimodal (audio/video) dataset, with no evidence of learning/optimization driven by pairwise or ranking preferences, no ranking of audio items or explicit preference signals used for training, and it does not present a preference-learning component; it discusses annotation tools and analysis of continuous ratings rather than preference-based learning.",
-      "evaluation": 1
+      "reasoning": "The abstract focuses on annotation of continuous emotional attributes and labeling challenges in a multimodal context; it does not mention rankings, pairwise preferences, or a learning/optimization component, so evidence for preference-learning in audio or multi-modal settings is not explicit.",
+      "evaluation": 3
     },
-    "round-A_JuniorNano_reasoning": "The paper focuses on continuous emotional annotation and processing in a multimodal (audio/video) dataset, with no evidence of learning/optimization driven by pairwise or ranking preferences, no ranking of audio items or explicit preference signals used for training, and it does not present a preference-learning component; it discusses annotation tools and analysis of continuous ratings rather than preference-based learning.",
-    "round-A_JuniorNano_evaluation": 1,
+    "round-A_JuniorNano_reasoning": "The abstract focuses on annotation of continuous emotional attributes and labeling challenges in a multimodal context; it does not mention rankings, pairwise preferences, or a learning/optimization component, so evidence for preference-learning in audio or multi-modal settings is not explicit.",
+    "round-A_JuniorNano_evaluation": 3,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper focuses on continuous emotional annotation and processing of affective states using multimodal data, primarily discussing annotation challenges, data collection, and analysis of subjective continuous ratings of activation, valence, and dominance in theatrical improvisation videos. There is no evidence of preference learning or ranking/comparison of audio clips, nor any indication of a preference-driven learning or optimization loop. The work is related to emotion recognition and affective computing, without involving preference signals or pairwise comparisons for learning. Thus, it fails to meet the inclusion criteria of preference learning with audio domain relevance.",
-      "evaluation": 1
+      "reasoning": "The paper focuses on continuous emotional annotation and processing in multimodal settings, discussing challenges and opportunities, but it does not mention any preference learning, audio-domain application as a core modality, or ranking/pairwise comparisons relevant to preference signals or learning, thus it does not provide enough evidence to meet inclusion criteria based on title and abstract alone.",
+      "evaluation": 3
     },
-    "round-A_JuniorMini_reasoning": "The paper focuses on continuous emotional annotation and processing of affective states using multimodal data, primarily discussing annotation challenges, data collection, and analysis of subjective continuous ratings of activation, valence, and dominance in theatrical improvisation videos. There is no evidence of preference learning or ranking/comparison of audio clips, nor any indication of a preference-driven learning or optimization loop. The work is related to emotion recognition and affective computing, without involving preference signals or pairwise comparisons for learning. Thus, it fails to meet the inclusion criteria of preference learning with audio domain relevance.",
-    "round-A_JuniorMini_evaluation": 1,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The paper focuses on continuous emotional annotation and processing in multimodal settings, discussing challenges and opportunities, but it does not mention any preference learning, audio-domain application as a core modality, or ranking/pairwise comparisons relevant to preference signals or learning, thus it does not provide enough evidence to meet inclusion criteria based on title and abstract alone.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "Both junior reviewers rated this a 3; the title and abstract describe continuous emotional annotation and analysis of a multimodal database with discussion of annotation challenges and open questions, but they do not mention any ranking/pairwise preferences, preference-driven learning/optimization, or that audio is a core modality. Because the abstract reads like an annotation/survey-style paper and lacks explicit evidence of preference signals or preference-learning components, there is insufficient information to include it confidently, so I give an uncertain signal to preserve recall.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated this a 3; the title and abstract describe continuous emotional annotation and analysis of a multimodal database with discussion of annotation challenges and open questions, but they do not mention any ranking/pairwise preferences, preference-driven learning/optimization, or that audio is a core modality. Because the abstract reads like an annotation/survey-style paper and lacks explicit evidence of preference signals or preference-learning components, there is insufficient information to include it confidently, so I give an uncertain signal to preserve recall.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2013",
       "published_date_iso": "2013-01-01"
-    },
-    "review_state": "cutoff_filtered"
+    }
   },
   {
     "key": "cao2007learning",
@@ -1642,50 +1470,36 @@
     "review_state": "cutoff_filtered"
   },
   {
-    "key": "kilgour2018fr",
     "title": "Fréchet Audio Distance: A Metric for Evaluating Music Enhancement Algorithms",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/kilgour2018fr.md",
-    "fulltext_chars_total": 38538,
-    "fulltext_chars_used": 28701,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "References",
-    "reference_cut_line_no": 436.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "We propose the Fréchet Audio Distance (FAD), a novel, reference-free evaluation metric for music enhancement algorithms. We demonstrate how typical evaluation metrics for speech enhancement and blind source separation can fail to accurately measure the perceived effect of a wide variety of distortions. As an alternative, we propose adapting the Fréchet Inception Distance (FID) metric used to evalu",
+    "key": "kilgour2018fr",
     "round-A_JuniorNano_output": {
-      "reasoning": "This paper includes explicit pairwise audio comparisons and a ranking of parameter configurations using a Plackett-Luce model, demonstrating a preference-learning component in the audio domain (not a survey). Specifically: 'The collected set of pair-wise evaluations was then ranked using a Plackett-Luce model, which estimates a worth value for each parameter configuration'; 'we asked raters to compare two different distortions on the same 5 s of audio'; '69 300 pair-wise comparisons'; 'Magnatagatune dataset' as the audio-domain basis for evaluation. These establish both preference signals and learning from those preferences, meeting inclusion criteria for audio-domain preference learning with a learning/optimization element, and not constituting a mere survey/review.",
-      "evaluation": 5
-    },
-    "round-A_JuniorNano_reasoning": "This paper includes explicit pairwise audio comparisons and a ranking of parameter configurations using a Plackett-Luce model, demonstrating a preference-learning component in the audio domain (not a survey). Specifically: 'The collected set of pair-wise evaluations was then ranked using a Plackett-Luce model, which estimates a worth value for each parameter configuration'; 'we asked raters to compare two different distortions on the same 5 s of audio'; '69 300 pair-wise comparisons'; 'Magnatagatune dataset' as the audio-domain basis for evaluation. These establish both preference signals and learning from those preferences, meeting inclusion criteria for audio-domain preference learning with a learning/optimization element, and not constituting a mere survey/review.",
-    "round-A_JuniorNano_evaluation": 5,
-    "round-A_JuniorMini_output": {
-      "reasoning": "The paper proposes a reference-free metric (FAD) for evaluating music enhancement algorithms and compares various audio distortions using this metric versus human perceptual ratings. While it involves human evaluations comparing audio pairs to assess utility of the metric, these preference signals are used solely for evaluation purposes, not for any learning or optimization. The paper does not describe any preference learning or learning component that utilizes these preferences for training models. Thus, it meets the criterion of preference signals being used only for evaluation without learning, which is an exclusion criterion. Therefore, it should not be included as it lacks a preference-learning component involving ranking/A-B comparisons used for learning optimization.",
+      "reasoning": "The abstract introduces Fréchet Audio Distance as a metric to evaluate music enhancement algorithms and provides no evidence of learning/optimization driven by preference signals or rankings of audio items, thus it does not meet the preference-learning inclusion criteria and should likely be excluded.",
       "evaluation": 2
     },
-    "round-A_JuniorMini_reasoning": "The paper proposes a reference-free metric (FAD) for evaluating music enhancement algorithms and compares various audio distortions using this metric versus human perceptual ratings. While it involves human evaluations comparing audio pairs to assess utility of the metric, these preference signals are used solely for evaluation purposes, not for any learning or optimization. The paper does not describe any preference learning or learning component that utilizes these preferences for training models. Thus, it meets the criterion of preference signals being used only for evaluation without learning, which is an exclusion criterion. Therefore, it should not be included as it lacks a preference-learning component involving ranking/A-B comparisons used for learning optimization.",
-    "round-A_JuniorMini_evaluation": 2,
-    "round-B_SeniorLead_output": {
-      "reasoning": "Brief conclusion: Include (5) — the paper contains explicit pairwise preference data and a learned ranking from those preferences. Evidence: the authors state they “asked raters to compare the effect of two different distortions on the same 5 s of audio” and report “69 300 pair-wise comparisons”; they then write “The collected set of pair-wise evaluations was then ranked using a Plackett-Luce model, which estimates a worth value for each parameter configuration.” This is direct use of pairwise preference signals and a preference-modeling step (Plackett–Luce) to infer rankings/worth values, satisfying the inclusion definition (ranking/A-B comparisons and learning from preferences), even if the preferences were used to evaluate the proposed metric rather than to train an enhancement model. (Junior reviewers: Nano correctly flagged the pairwise comparisons and ranking; Mini’s point that preferences were used for evaluation is true but does not override the inclusion criterion that counts pairwise ranking and preference-model fitting as preference learning.)",
-      "evaluation": 5
+    "round-A_JuniorNano_reasoning": "The abstract introduces Fréchet Audio Distance as a metric to evaluate music enhancement algorithms and provides no evidence of learning/optimization driven by preference signals or rankings of audio items, thus it does not meet the preference-learning inclusion criteria and should likely be excluded.",
+    "round-A_JuniorNano_evaluation": 2,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper proposes a metric for evaluating music enhancement algorithms, which suggests an audio-domain application, but there is no explicit mention of preference learning, ranking, or pairwise comparisons used for learning; therefore, inclusion is uncertain based on the provided title and abstract.",
+      "evaluation": 3
     },
-    "round-B_SeniorLead_reasoning": "Brief conclusion: Include (5) — the paper contains explicit pairwise preference data and a learned ranking from those preferences. Evidence: the authors state they “asked raters to compare the effect of two different distortions on the same 5 s of audio” and report “69 300 pair-wise comparisons”; they then write “The collected set of pair-wise evaluations was then ranked using a Plackett-Luce model, which estimates a worth value for each parameter configuration.” This is direct use of pairwise preference signals and a preference-modeling step (Plackett–Luce) to infer rankings/worth values, satisfying the inclusion definition (ranking/A-B comparisons and learning from preferences), even if the preferences were used to evaluate the proposed metric rather than to train an enhancement model. (Junior reviewers: Nano correctly flagged the pairwise comparisons and ranking; Mini’s point that preferences were used for evaluation is true but does not override the inclusion criterion that counts pairwise ranking and preference-model fitting as preference learning.)",
-    "round-B_SeniorLead_evaluation": 5,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:unparseable_published_date",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The paper proposes a metric for evaluating music enhancement algorithms, which suggests an audio-domain application, but there is no explicit mention of preference learning, ranking, or pairwise comparisons used for learning; therefore, inclusion is uncertain based on the provided title and abstract.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The title and abstract describe a new evaluation metric (Fréchet Audio Distance) for music enhancement and emphasize reference-free evaluation, with no mention of preference learning, pairwise/A-B comparisons, or using preference signals for training; junior reviews suggested exclusion but were split (2 and 3). Missing: any explicit use of human/synthetic preference signals, ranking, or preference-driven optimization—so under the high-recall rule I mark this as uncertain rather than excluded.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "The title and abstract describe a new evaluation metric (Fréchet Audio Distance) for music enhancement and emphasize reference-free evaluation, with no mention of preference learning, pairwise/A-B comparisons, or using preference signals for training; junior reviews suggested exclusion but were split (2 and 3). Missing: any explicit use of human/synthetic preference signals, ranking, or preference-driven optimization—so under the high-recall rule I mark this as uncertain rather than excluded.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "unparseable_published_date",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2018-12",
-      "published_date_iso": null
-    },
-    "review_state": "cutoff_filtered"
+      "published_date_iso": "2018-12-01"
+    }
   },
   {
     "key": "mittag2021nisqa",
@@ -1769,47 +1583,36 @@
     }
   },
   {
-    "key": "xu2025qwen2",
     "title": "Qwen2.5-Omni Technical Report",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/xu2025qwen2.md",
-    "fulltext_chars_total": 70842,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "References",
-    "reference_cut_line_no": 1047.0,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "In this report, we present Qwen2.5-Omni, an end-to-end multimodal model designed to perceive diverse modalities, including text, images, audio, and video, while simultaneously generating text and natural speech responses in a streaming manner. To enable the streaming of multimodal information inputs, both audio and visual encoders utilize a block-wise processing approach. To synchronize the timest",
+    "key": "xu2025qwen2",
     "round-A_JuniorNano_output": {
-      "reasoning": "Evidence of preference-driven optimization: a reinforcement learning phase to improve stability of speech generation and a LDPO(Pθ; Pref) objective with Pref signals for word and label outputs, plus DPO-style training in Talker, indicating explicit preference learning rather than evaluation-only use.",
-      "evaluation": 5
+      "reasoning": "Abstract describes Qwen2.5-Omni as an end-to-end multimodal model handling text, images, audio, and video with streaming text and speech outputs. It mentions streaming-enabled encoders but provides no evidence of preference learning (ranking, A/B comparisons, or preference signals) or a preference-driven RL loop. Given the absence of explicit learning evidence for preferences in the title/abstract, the screening signal is uncertain; thus, score = 3.",
+      "evaluation": 3
     },
-    "round-A_JuniorNano_reasoning": "Evidence of preference-driven optimization: a reinforcement learning phase to improve stability of speech generation and a LDPO(Pθ; Pref) objective with Pref signals for word and label outputs, plus DPO-style training in Talker, indicating explicit preference learning rather than evaluation-only use.",
-    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorNano_reasoning": "Abstract describes Qwen2.5-Omni as an end-to-end multimodal model handling text, images, audio, and video with streaming text and speech outputs. It mentions streaming-enabled encoders but provides no evidence of preference learning (ranking, A/B comparisons, or preference signals) or a preference-driven RL loop. Given the absence of explicit learning evidence for preferences in the title/abstract, the screening signal is uncertain; thus, score = 3.",
+    "round-A_JuniorNano_evaluation": 3,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper presents Qwen2.5-Omni, a multimodal model that includes an audio modality as a core component and explicitly incorporates a preference learning component. Evidence includes the use of reinforcement learning for improving speech generation stability (\"We introduce a reinforcement learning phase to improve the stability of speech generation\"), and the presence of DPO (Direct Preference Optimization) to enhance generation stability, indicating optimization driven by preference signals rather than evaluation alone. Audio is core to the model's function, with detailed audio understanding and generation modules, meeting the audio-domain inclusion. The paper is not a survey or review. Therefore, it meets inclusion criteria of audio-domain work with preference-driven optimization, not merely evaluation.",
-      "evaluation": 5
+      "reasoning": "The abstract describes Qwen2.5-Omni as a multimodal model handling various modalities including audio, but does not mention any preference learning, pairwise comparisons, rankings, or any learning related to preferences in audio. There is no clear evidence of preference learning or optimization in the audio domain based on title and abstract alone.",
+      "evaluation": 3
     },
-    "round-A_JuniorMini_reasoning": "The paper presents Qwen2.5-Omni, a multimodal model that includes an audio modality as a core component and explicitly incorporates a preference learning component. Evidence includes the use of reinforcement learning for improving speech generation stability (\"We introduce a reinforcement learning phase to improve the stability of speech generation\"), and the presence of DPO (Direct Preference Optimization) to enhance generation stability, indicating optimization driven by preference signals rather than evaluation alone. Audio is core to the model's function, with detailed audio understanding and generation modules, meeting the audio-domain inclusion. The paper is not a survey or review. Therefore, it meets inclusion criteria of audio-domain work with preference-driven optimization, not merely evaluation.",
-    "round-A_JuniorMini_evaluation": 5,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:unparseable_published_date",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The abstract describes Qwen2.5-Omni as a multimodal model handling various modalities including audio, but does not mention any preference learning, pairwise comparisons, rankings, or any learning related to preferences in audio. There is no clear evidence of preference learning or optimization in the audio domain based on title and abstract alone.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "Both junior reviewers rated 3; the abstract describes Qwen2.5-Omni as a multimodal model that includes audio and streaming speech output, but it contains no mention of preference learning methods (pairwise/A–B comparisons, ranking signals, or preference-driven RL) and is truncated before training-details—so evidence for preference-based audio learning is absent and incomplete, meriting a cautious/uncertain inclusion signal.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "Both junior reviewers rated 3; the abstract describes Qwen2.5-Omni as a multimodal model that includes audio and streaming speech output, but it contains no mention of preference learning methods (pairwise/A–B comparisons, ranking signals, or preference-driven RL) and is truncated before training-details—so evidence for preference-based audio learning is absent and incomplete, meriting a cautious/uncertain inclusion signal.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "unparseable_published_date",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2025-03",
-      "published_date_iso": null
-    },
-    "review_state": "cutoff_filtered"
+      "published_date_iso": "2025-03-01"
+    }
   },
   {
     "key": "hurst2024gpt",

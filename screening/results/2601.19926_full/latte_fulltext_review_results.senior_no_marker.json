@@ -1750,49 +1750,32 @@
     }
   },
   {
-    "key": "ettinger_what_2020",
     "title": "What BERT Is Not: Lessons from a New Suite of Psycholinguistic Diagnostics for Language Models",
-    "base_final_verdict": "include (junior:5,4)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ettinger_what_2020.md",
-    "fulltext_chars_total": 62703,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "References",
-    "reference_cut_line_no": 1343.0,
-    "review_state": "cutoff_filtered",
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Pre-training by language modeling has become a popular and successful approach to NLP tasks, but we have yet to understand exactly what linguistic capacities these pre-training processes confer upon models. In this paper we introduce a suite of diagnostics drawn from human language experiments, which allow us to ask targeted questions about information used by language models for generating predictions in context. As a case study, we apply these diagnostics to the popular BERT model, finding that it can generally distinguish good from bad completions involving shared category or role reversal, albeit with less sensitivity than humans, and it robustly retrieves noun hypernyms, but it struggles with challenging inference and role-based event prediction— and, in particular, it shows clear insensitivity to the contextual impacts of negation.",
+    "key": "ettinger_what_2020",
     "round-A_JuniorNano_output": {
-      "reasoning": "結論：3。不確定/需要更多證據。理由如下：本文以 BERT 這類 Transformer 模型為對象，透過心理語言學實驗派生的診斷測試，對語言模型的語言能力進行實證評估，涵蓋語義角色、事件知識、否定等語義相關領域，並探討在上下文預測中的表現與敏感度，屬於對 Transformer 模型的實證分析。然而，研究之核心並非直接評估或分析語法結構知識，而是「超越傳統語法測試」的廣義語言能力診斷，著重於語義、常識推理與否定等非純語法任務，以及與語法相關但非專注於語法依存/結構的測試。因此，缺乏明確聚焦於語法結構知識的直接實證證據，難以確定是否完全符合「分析語法結構或語法知識在 TLMs 的實證評估」的嚴格 inclusion 標準。Evidence 指向：1) 使用 BERT（Transformer）並進行實證評估，符合模型類型與實證特徵；2) 重點放在語義、角色、否定等非純語法任務，且主張超越語法測試；3) 文中自述測試集合較小且未宣稱全面覆蓋語法依存或長距依存等語法層面。缺乏直接的語法結構測試證據，需更多能直接評估語法知識的實驗。",
-      "evaluation": 3
-    },
-    "round-A_JuniorNano_reasoning": "結論：3。不確定/需要更多證據。理由如下：本文以 BERT 這類 Transformer 模型為對象，透過心理語言學實驗派生的診斷測試，對語言模型的語言能力進行實證評估，涵蓋語義角色、事件知識、否定等語義相關領域，並探討在上下文預測中的表現與敏感度，屬於對 Transformer 模型的實證分析。然而，研究之核心並非直接評估或分析語法結構知識，而是「超越傳統語法測試」的廣義語言能力診斷，著重於語義、常識推理與否定等非純語法任務，以及與語法相關但非專注於語法依存/結構的測試。因此，缺乏明確聚焦於語法結構知識的直接實證證據，難以確定是否完全符合「分析語法結構或語法知識在 TLMs 的實證評估」的嚴格 inclusion 標準。Evidence 指向：1) 使用 BERT（Transformer）並進行實證評估，符合模型類型與實證特徵；2) 重點放在語義、角色、否定等非純語法任務，且主張超越語法測試；3) 文中自述測試集合較小且未宣稱全面覆蓋語法依存或長距依存等語法層面。缺乏直接的語法結構測試證據，需更多能直接評估語法知識的實驗。",
-    "round-A_JuniorNano_evaluation": 3,
-    "round-A_JuniorMini_output": {
-      "reasoning": "Inclusion criteria: The study is about Transformer-based language models (BERT is a Transformer-based LM as per the paper). The paper empirically assesses linguistic capabilities, including syntactic knowledge such as semantic role interpretation, word order sensitivity, and role reversal—though its main scope extends beyond syntax to pragmatics and negation. The study analyzes BERT's output probabilities and word prediction accuracies on psycholinguistic diagnostics that include syntactic phenomena, e.g., semantic role and event knowledge testing (Section 5.2 ROLE-88). This qualifies as an empirical assessment or analysis of syntactic knowledge in TLMs.\n\nExclusion criteria: The paper does not focus on non-transformer architectures and does not focus on encoder-decoder architectures or MT-focused models. Also, it has a clear empirical component with controlled tests and data-driven evaluation.\n\nKey evidence: The study explicitly states testing for \"semantic role and event knowledge\" (Section 5.2) which relates to syntactic structure understanding. It tests sensitivity to role reversals, which depends on syntactic roles. It analyzes probability outputs of BERT (a Transformer LM) on these tasks quantitatively (Section 9). Therefore, the criteria about empirical syntactic assessment on Transformer LMs is satisfied.\n\nNo evidence contradicts inclusion criteria, and no critical information about syntactic empirical analysis is missing.\n\nHence, the paper strongly meets inclusion criteria and does not meet exclusion criteria.",
+      "reasoning": "The abstract reports an empirical diagnostic study applied to BERT (a Transformer LM) to probe information used in predictions, including syntactic/grammatical processing tasks and effects of negation, indicating analysis of syntactic knowledge in a TLM.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "Inclusion criteria: The study is about Transformer-based language models (BERT is a Transformer-based LM as per the paper). The paper empirically assesses linguistic capabilities, including syntactic knowledge such as semantic role interpretation, word order sensitivity, and role reversal—though its main scope extends beyond syntax to pragmatics and negation. The study analyzes BERT's output probabilities and word prediction accuracies on psycholinguistic diagnostics that include syntactic phenomena, e.g., semantic role and event knowledge testing (Section 5.2 ROLE-88). This qualifies as an empirical assessment or analysis of syntactic knowledge in TLMs.\n\nExclusion criteria: The paper does not focus on non-transformer architectures and does not focus on encoder-decoder architectures or MT-focused models. Also, it has a clear empirical component with controlled tests and data-driven evaluation.\n\nKey evidence: The study explicitly states testing for \"semantic role and event knowledge\" (Section 5.2) which relates to syntactic structure understanding. It tests sensitivity to role reversals, which depends on syntactic roles. It analyzes probability outputs of BERT (a Transformer LM) on these tasks quantitatively (Section 9). Therefore, the criteria about empirical syntactic assessment on Transformer LMs is satisfied.\n\nNo evidence contradicts inclusion criteria, and no critical information about syntactic empirical analysis is missing.\n\nHence, the paper strongly meets inclusion criteria and does not meet exclusion criteria.",
-    "round-A_JuniorMini_evaluation": 5,
-    "round-B_SeniorLead_output": {
-      "reasoning": "Decision summary (stated before score): The paper should be included (4 = 可能納入) — it empirically assesses syntactic-relevant knowledge in a Transformer LM (BERT) but is not primarily a syntactic-structure probing paper and lacks broader direct syntactic analyses.\n\nEvidence aligned to criteria (all citations drawn from the provided full text):\n\n1) Paper studies Transformer-based language models (required):\n- Title and repeated text identify the model as BERT, a Transformer-based LM (e.g., Abstract: “As a case study, we apply these diagnostics to the popular BERT model”; multiple mentions of “BERT”, “BERTLARGE”, “BERTBASE”). This satisfies the criterion that the study is about a Transformer LM.\n\n2) Paper empirically assesses/analyzes syntactic structure or syntactic knowledge in TLMs (required):\n- The ROLE-88 dataset is explicitly described as targeting “event knowledge and semantic role interpretation” and requires models to “interpret semantic roles from sentence syntax” (Section 5.2: “Accurate prediction on this set requires a model to interpret semantic roles from sentence syntax, and apply event knowledge...”).\n- The sensitivity test for ROLE-88 evaluates the model’s ability to distinguish role reversals based on noun order (“testing whether LMs will show similar difficulty distinguishing appropriate continuations based on word order and semantic role”).\n- The paper reports empirical results on these tests (Discussion/Results sections summarize performance, e.g., BERTLARGE accuracy numbers and sensitivity findings), and explicitly states it “not only compare[s] word probabilities—we also examine word prediction accuracies directly” (Section 3). These are concrete, empirical evaluations using model probabilities and accuracies.\n- The paper situates itself relative to prior syntactic LM work (Related Work cites Linzen et al., Gulordava et al., Marvin and Linzen, etc.), indicating engagement with syntactic-awareness evaluation literature.\n\nWhy this supports inclusion: The ROLE-88 task operationalizes sensitivity to word order and semantic-role mapping (which are core aspects of syntactic interpretation), and the authors run empirical experiments with BERT producing quantitative results on those items. That constitutes an empirical assessment of syntactic-relevant behavior in a Transformer LM.\n\n3) Limitations / Missing evidence (why I do not give the top score):\n- The paper repeatedly emphasizes that its diagnostics “extend beyond the primarily syntactic focus” (Section 1 / Section 3: “tests targeting commonsense/pragmatic inference, semantic roles and event knowledge, category membership, and negation”), signaling that the primary focus is semantic/pragmatic phenomena rather than a concentrated, comprehensive syntactic-structure analysis.\n- There is no evidence in the provided text of standard syntactic-probing methodologies (e.g., dedicated probing classifiers for POS/dependency/constituency, layer-wise or head-wise syntactic probing, analysis of long-distance hierarchical dependencies) that would indicate a broad or deep empirical focus on syntactic structure itself. The syntactic-relevant tests are relatively narrow (role reversals / word-order sensitivity) and the authors also note small test-set sizes drawn from psycholinguistic items.\n- The authors themselves caution that the datasets are small and not comprehensive: “Because these sets are small, we must also be conservative in the strength of our conclusions” (Section 11). This reduces the strength of claims about general syntactic competence.\n\nConclusion and brief justification (1-sentence): I assign 4 because the paper does empirically evaluate syntactic-relevant phenomena (semantic-role/role-reversal and word-order sensitivity) in a Transformer LM (BERT), meeting the inclusion criterion, but its primary emphasis is broader (semantic/pragmatic/negation) and it lacks comprehensive, dedicated syntactic-structure probing analyses, so it is a moderate — but not maximal — match for a strictly syntax-focused inclusion.",
+    "round-A_JuniorNano_reasoning": "The abstract reports an empirical diagnostic study applied to BERT (a Transformer LM) to probe information used in predictions, including syntactic/grammatical processing tasks and effects of negation, indicating analysis of syntactic knowledge in a TLM.",
+    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The study analyzes BERT, a Transformer-based model, using psycholinguistic diagnostics that involve syntactic and semantic aspects such as role reversals and negation, which relates to empirical assessment of syntactic knowledge; thus it fits the inclusion criteria rather well though the focus is also on semantic inference.",
       "evaluation": 4
     },
-    "round-B_SeniorLead_reasoning": "Decision summary (stated before score): The paper should be included (4 = 可能納入) — it empirically assesses syntactic-relevant knowledge in a Transformer LM (BERT) but is not primarily a syntactic-structure probing paper and lacks broader direct syntactic analyses.\n\nEvidence aligned to criteria (all citations drawn from the provided full text):\n\n1) Paper studies Transformer-based language models (required):\n- Title and repeated text identify the model as BERT, a Transformer-based LM (e.g., Abstract: “As a case study, we apply these diagnostics to the popular BERT model”; multiple mentions of “BERT”, “BERTLARGE”, “BERTBASE”). This satisfies the criterion that the study is about a Transformer LM.\n\n2) Paper empirically assesses/analyzes syntactic structure or syntactic knowledge in TLMs (required):\n- The ROLE-88 dataset is explicitly described as targeting “event knowledge and semantic role interpretation” and requires models to “interpret semantic roles from sentence syntax” (Section 5.2: “Accurate prediction on this set requires a model to interpret semantic roles from sentence syntax, and apply event knowledge...”).\n- The sensitivity test for ROLE-88 evaluates the model’s ability to distinguish role reversals based on noun order (“testing whether LMs will show similar difficulty distinguishing appropriate continuations based on word order and semantic role”).\n- The paper reports empirical results on these tests (Discussion/Results sections summarize performance, e.g., BERTLARGE accuracy numbers and sensitivity findings), and explicitly states it “not only compare[s] word probabilities—we also examine word prediction accuracies directly” (Section 3). These are concrete, empirical evaluations using model probabilities and accuracies.\n- The paper situates itself relative to prior syntactic LM work (Related Work cites Linzen et al., Gulordava et al., Marvin and Linzen, etc.), indicating engagement with syntactic-awareness evaluation literature.\n\nWhy this supports inclusion: The ROLE-88 task operationalizes sensitivity to word order and semantic-role mapping (which are core aspects of syntactic interpretation), and the authors run empirical experiments with BERT producing quantitative results on those items. That constitutes an empirical assessment of syntactic-relevant behavior in a Transformer LM.\n\n3) Limitations / Missing evidence (why I do not give the top score):\n- The paper repeatedly emphasizes that its diagnostics “extend beyond the primarily syntactic focus” (Section 1 / Section 3: “tests targeting commonsense/pragmatic inference, semantic roles and event knowledge, category membership, and negation”), signaling that the primary focus is semantic/pragmatic phenomena rather than a concentrated, comprehensive syntactic-structure analysis.\n- There is no evidence in the provided text of standard syntactic-probing methodologies (e.g., dedicated probing classifiers for POS/dependency/constituency, layer-wise or head-wise syntactic probing, analysis of long-distance hierarchical dependencies) that would indicate a broad or deep empirical focus on syntactic structure itself. The syntactic-relevant tests are relatively narrow (role reversals / word-order sensitivity) and the authors also note small test-set sizes drawn from psycholinguistic items.\n- The authors themselves caution that the datasets are small and not comprehensive: “Because these sets are small, we must also be conservative in the strength of our conclusions” (Section 11). This reduces the strength of claims about general syntactic competence.\n\nConclusion and brief justification (1-sentence): I assign 4 because the paper does empirically evaluate syntactic-relevant phenomena (semantic-role/role-reversal and word-order sensitivity) in a Transformer LM (BERT), meeting the inclusion criterion, but its primary emphasis is broader (semantic/pragmatic/negation) and it lacks comprehensive, dedicated syntactic-structure probing analyses, so it is a moderate — but not maximal — match for a strictly syntax-focused inclusion.",
-    "round-B_SeniorLead_evaluation": 4,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:unparseable_published_date",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The study analyzes BERT, a Transformer-based model, using psycholinguistic diagnostics that involve syntactic and semantic aspects such as role reversals and negation, which relates to empirical assessment of syntactic knowledge; thus it fits the inclusion criteria rather well though the focus is also on semantic inference.",
+    "round-A_JuniorMini_evaluation": 4,
+    "round-B_SeniorLead_output": null,
+    "round-B_SeniorLead_reasoning": null,
+    "round-B_SeniorLead_evaluation": null,
+    "final_verdict": "include (junior:5,4)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "unparseable_published_date",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2020-12",
-      "published_date_iso": null
+      "published_date_iso": "2020-12-01"
     }
   },
   {
@@ -4048,46 +4031,32 @@
     }
   },
   {
-    "key": "kuncoro-etal-2020-syntactic",
     "title": "Syntactic Structure Distillation Pretraining for Bidirectional Encoders",
-    "base_final_verdict": "include (junior:5,5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/kuncoro-etal-2020-syntactic.md",
-    "fulltext_chars_total": 76821,
-    "fulltext_chars_used": 36039,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "References",
-    "reference_cut_line_no": 1407.0,
-    "review_state": "cutoff_filtered",
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Textual representation learners trained on large amounts of data have achieved notable success on downstream tasks; intriguingly, they have also performed well on challenging tests of syntactic competence. Hence, it remains an open question whether scalable learners like BERT can become fully proficient in the syntax of natural language by virtue of data scale alone, or whether they still benefit from more explicit syntactic biases. To answer this question, we introduce a knowledge distillation strategy for injecting syntactic biases into BERT pretraining, by distilling the syntactically informative predictions of a hierarchical—albeit harder to scale—syntactic language model. Since BERT models masked words in bidirectional context, we propose to distill the approximate marginal distribution over words in context from the syntactic LM. Our approach reduces relative error by 2–21% on a diverse set of structured prediction tasks, although we obtain mixed results on the GLUE benchmark. Our findings demonstrate the benefits of syntactic biases, even for representation learners that exploit large amounts of data, and contribute to a better understanding of where syntactic biases are helpful in benchmarks of natural language understanding.",
+    "key": "kuncoro-etal-2020-syntactic",
     "round-A_JuniorNano_output": {
-      "reasoning": "Evidence supports inclusion: the paper uses Transformer-based BERT (structure-distilled BERT), introduces a structure distillation pipeline from an explicit syntactic RNNG teacher to inject syntactic biases, and provides empirical evaluation across six structured prediction tasks (phrase-structure parsing in-domain and out-of-domain, dependency parsing, SRL, coreference, and a CCG probe) plus GLUE, reporting consistent gains on structured tasks (2%–21% relative error reductions) and mixed results on GLUE, which aligns with the goal of analyzing syntactic knowledge in TLMs.",
+      "reasoning": "The abstract explicitly investigates syntactic biases in Transformer-based language models (BERT) via a distillation approach and reports empirical improvements on structured prediction tasks, satisfying stage-1 focus on syntactic knowledge in TLMs without relying on full text.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "Evidence supports inclusion: the paper uses Transformer-based BERT (structure-distilled BERT), introduces a structure distillation pipeline from an explicit syntactic RNNG teacher to inject syntactic biases, and provides empirical evaluation across six structured prediction tasks (phrase-structure parsing in-domain and out-of-domain, dependency parsing, SRL, coreference, and a CCG probe) plus GLUE, reporting consistent gains on structured tasks (2%–21% relative error reductions) and mixed results on GLUE, which aligns with the goal of analyzing syntactic knowledge in TLMs.",
+    "round-A_JuniorNano_reasoning": "The abstract explicitly investigates syntactic biases in Transformer-based language models (BERT) via a distillation approach and reports empirical improvements on structured prediction tasks, satisfying stage-1 focus on syntactic knowledge in TLMs without relying on full text.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The study titled \"Syntactic Structure Distillation Pretraining for Bidirectional Encoders\" explicitly focuses on Transformer-based language models, specifically BERT, a well-known Transformer encoder. Evidence from the abstract and full text shows they empirically investigate and improve syntactic competence by integrating hierarchical syntactic biases from Recurrent Neural Network Grammars (RNNGs) into BERT pretraining through knowledge distillation.\n\nRegarding inclusion criteria: \n- The study is about Transformer-based language models: confirmed by multiple mentions of BERT being the student model in the distillation process.\n- The study empirically assesses or analyzes syntactic structure or knowledge: supported by experiments on six structured prediction tasks including phrase-structure parsing, dependency parsing, semantic role labeling, coreference resolution, the CCG supertagging probe, and GLUE, showing syntactic improvements.\n\nRegarding exclusion criteria:\n- The primary focus is not on non-transformer architectures: although RNNG is used as a teacher model (which is not a Transformer), the main model studied and enhanced is BERT (a Transformer).\n- The paper is not about encoder-decoder architectures oriented towards machine translation.\n- The paper does have a clear empirical component involving multiple benchmarks and ablations.\n\nThus, the evidence fully satisfies the inclusion criteria and does not meet exclusion criteria.\n\nFinal evaluation score: 5 (strongly include).",
+      "reasoning": "The paper focuses on Transformer-based language models (specifically BERT), empirically assesses syntactic knowledge by distilling syntactic biases into pretraining, and presents evaluation on syntax-sensitive tasks, meeting the inclusion criteria well without exclusion evidence.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The study titled \"Syntactic Structure Distillation Pretraining for Bidirectional Encoders\" explicitly focuses on Transformer-based language models, specifically BERT, a well-known Transformer encoder. Evidence from the abstract and full text shows they empirically investigate and improve syntactic competence by integrating hierarchical syntactic biases from Recurrent Neural Network Grammars (RNNGs) into BERT pretraining through knowledge distillation.\n\nRegarding inclusion criteria: \n- The study is about Transformer-based language models: confirmed by multiple mentions of BERT being the student model in the distillation process.\n- The study empirically assesses or analyzes syntactic structure or knowledge: supported by experiments on six structured prediction tasks including phrase-structure parsing, dependency parsing, semantic role labeling, coreference resolution, the CCG supertagging probe, and GLUE, showing syntactic improvements.\n\nRegarding exclusion criteria:\n- The primary focus is not on non-transformer architectures: although RNNG is used as a teacher model (which is not a Transformer), the main model studied and enhanced is BERT (a Transformer).\n- The paper is not about encoder-decoder architectures oriented towards machine translation.\n- The paper does have a clear empirical component involving multiple benchmarks and ablations.\n\nThus, the evidence fully satisfies the inclusion criteria and does not meet exclusion criteria.\n\nFinal evaluation score: 5 (strongly include).",
+    "round-A_JuniorMini_reasoning": "The paper focuses on Transformer-based language models (specifically BERT), empirically assesses syntactic knowledge by distilling syntactic biases into pretraining, and presents evaluation on syntax-sensitive tasks, meeting the inclusion criteria well without exclusion evidence.",
     "round-A_JuniorMini_evaluation": 5,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:unparseable_published_date",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "final_verdict": "include (junior:5,5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "unparseable_published_date",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2020-12",
-      "published_date_iso": null
+      "published_date_iso": "2020-12-01"
     }
   },
   {
@@ -13148,40 +13117,35 @@
     }
   },
   {
-    "key": "Devlin:etal:2019",
     "title": "\"BERT: Pre-training of deep bidirectional transformers for language understanding\"",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Devlin:etal:2019.md",
-    "fulltext_chars_total": 0,
-    "fulltext_chars_used": 0,
-    "reference_cut_applied": false,
-    "reference_cut_method": "none",
-    "reference_cut_marker": null,
-    "reference_cut_line_no": null,
-    "review_state": "cutoff_filtered",
-    "fulltext_missing_or_unmatched": true,
-    "round-A_JuniorNano_output": null,
-    "round-A_JuniorNano_reasoning": null,
-    "round-A_JuniorNano_evaluation": null,
-    "round-A_JuniorMini_output": null,
-    "round-A_JuniorMini_reasoning": null,
-    "round-A_JuniorMini_evaluation": null,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:unparseable_published_date",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "abstract": "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers. Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers. As a result, the pre-trained BERT model can be fine-tuned with just one additional output layer to create state-of-the-art models for a wide range of tasks, such as question answering and language inference, without substantial task-specific architecture modifications. BERT is conceptually simple and empirically powerful. It obtains new state-of-the-art results on eleven natural language processing tasks, including pushing the GLUE score to 80.5% (7.7% point absolute improvement), MultiNLI accuracy to 86.7% (4.6% point absolute improvement), SQuAD v1.1 question answering Test F1 to 93.2 (1.5 point absolute improvement) and SQuAD v2.0 Test F1 to 83.1 (5.1 point absolute improvement).",
+    "key": "Devlin:etal:2019",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract describes BERT pretraining and downstream task performance but does not include explicit analysis of syntactic structure or syntax knowledge.",
+      "evaluation": 3
+    },
+    "round-A_JuniorNano_reasoning": "The abstract describes BERT pretraining and downstream task performance but does not include explicit analysis of syntactic structure or syntax knowledge.",
+    "round-A_JuniorNano_evaluation": 3,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper clearly focuses on a Transformer-based language model (BERT) and empirically evaluates its performance on multiple NLP tasks; however, the abstract does not explicitly mention any empirical assessment or analysis of syntactic structure or syntactic knowledge, so it is unclear if the study addresses the specific topic of syntactic knowledge required for inclusion.",
+      "evaluation": 3
+    },
+    "round-A_JuniorMini_reasoning": "The paper clearly focuses on a Transformer-based language model (BERT) and empirically evaluates its performance on multiple NLP tasks; however, the abstract does not explicitly mention any empirical assessment or analysis of syntactic structure or syntactic knowledge, so it is unclear if the study addresses the specific topic of syntactic knowledge required for inclusion.",
+    "round-A_JuniorMini_evaluation": 3,
+    "round-B_SeniorLead_output": {
+      "reasoning": "The paper clearly proposes BERT, a Transformer-based language model with extensive empirical downstream results (meeting the TLM criterion), but the abstract contains no explicit evidence of empirical assessment or analysis of syntactic structure or syntactic knowledge (e.g., probing or targeted syntactic evaluations), so inclusion is uncertain and should proceed to full review for confirmation.",
+      "evaluation": 3
+    },
+    "round-B_SeniorLead_reasoning": "The paper clearly proposes BERT, a Transformer-based language model with extensive empirical downstream results (meeting the TLM criterion), but the abstract contains no explicit evidence of empirical assessment or analysis of syntactic structure or syntactic knowledge (e.g., probing or targeted syntactic evaluations), so inclusion is uncertain and should proceed to full review for confirmation.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "unparseable_published_date",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2018-10",
-      "published_date_iso": null
+      "published_date_iso": "2018-10-01"
     }
   },
   {
@@ -13219,40 +13183,32 @@
     }
   },
   {
-    "key": "Warstadt:etal:2020",
     "title": "BLiMP: The Benchmark of Linguistic Minimal Pairs for English",
-    "base_final_verdict": "include (junior:5,5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Warstadt:etal:2020.md",
-    "fulltext_chars_total": 0,
-    "fulltext_chars_used": 0,
-    "reference_cut_applied": false,
-    "reference_cut_method": "none",
-    "reference_cut_marker": null,
-    "reference_cut_line_no": null,
-    "review_state": "cutoff_filtered",
-    "fulltext_missing_or_unmatched": true,
-    "round-A_JuniorNano_output": null,
-    "round-A_JuniorNano_reasoning": null,
-    "round-A_JuniorNano_evaluation": null,
-    "round-A_JuniorMini_output": null,
-    "round-A_JuniorMini_reasoning": null,
-    "round-A_JuniorMini_evaluation": null,
+    "abstract": "We introduce The Benchmark of Linguistic Minimal Pairs (BLiMP), 1 a challenge set for evaluating the linguistic knowledge of language models (LMs) on major grammatical phenomena in English. BLiMP consists of 67 individual datasets, each containing 1,000 minimal pairs—that is, pairs of minimally different sentences that contrast in grammatical acceptability and isolate specific phenomenon in syntax, morphology, or semantics. We generate the data according to linguist-crafted grammar templates, and human aggregate agreement with the labels is 96.4%. We evaluate n-gram, LSTM, and Transformer (GPT-2 and Transformer-XL) LMs by observing whether they assign a higher probability to the acceptable sentence in each minimal pair. We find that state-of-the-art models identify morphological contrasts related to agreement reliably, but they struggle with some subtle semantic and syntactic phenomena, such as negative polarity items and extraction islands.",
+    "key": "Warstadt:etal:2020",
+    "round-A_JuniorNano_output": {
+      "reasoning": "The abstract explicitly introduces a benchmark for evaluating linguistic knowledge and syntactic phenomena in language models, including Transformer-based models (GPT-2, Transformer-XL), which matches the TLM syntax assessment criteria.",
+      "evaluation": 5
+    },
+    "round-A_JuniorNano_reasoning": "The abstract explicitly introduces a benchmark for evaluating linguistic knowledge and syntactic phenomena in language models, including Transformer-based models (GPT-2, Transformer-XL), which matches the TLM syntax assessment criteria.",
+    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The study clearly evaluates Transformer language models (GPT-2 and Transformer-XL) on their syntactic knowledge via minimal pairs designed to test grammatical phenomena, meeting the inclusion criteria.",
+      "evaluation": 5
+    },
+    "round-A_JuniorMini_reasoning": "The study clearly evaluates Transformer language models (GPT-2 and Transformer-XL) on their syntactic knowledge via minimal pairs designed to test grammatical phenomena, meeting the inclusion criteria.",
+    "round-A_JuniorMini_evaluation": 5,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:unparseable_published_date",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "final_verdict": "include (junior:5,5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "unparseable_published_date",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2020-12",
-      "published_date_iso": null
+      "published_date_iso": "2020-12-01"
     }
   },
   {

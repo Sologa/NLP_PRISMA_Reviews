@@ -113,8 +113,8 @@ current metrics 以 `stage_split_criteria_migration` 這批檔案為準：
    - Stage 1 F1 = `0.7500`
    - Combined F1 = `0.8235`
 2. `2511.13936`
-   - Stage 1 F1 = `0.7407`
-   - Combined F1 = `0.7692`
+   - Stage 1 F1 = `0.8788`
+   - Combined F1 = `0.9062`
 
 ## 1.5 歷史最佳表現（只作對照，不當 current state）
 
@@ -296,12 +296,12 @@ current state 已經明確要求：
 
 ## 5.2 `2511` 已經提供了一個很強的反向證據
 
-`2511` 的 current combined F1 是 `0.7692`，但歷史上的 `criteria_2511_opv2` 可以到 `0.9206`。
+`2511` 的 current combined F1 現在是 `0.9062`，而 `criteria_2511_opv2` 在 cutoff 修正後也同樣是 `0.9062`。
 
-`docs/source_faithful_vs_operational_2409_2511_report.md` 也明確指出：
+這表示：
 
-1. 回退到 source-faithful 後，`2511` 的 combined recall 顯著下降。
-2. 這說明過去 performance 的一大部分，來自 operational hardening，而不是 source-faithful criteria 自己就能帶來的穩定度。
+1. `2511` 已不再存在「`opv2` 明顯高於 current authority」的分數差。
+2. 下一步若考慮 evidence QA，重點不該再是把 baseline 從低點拉回來，而是判斷 residual edge cases 是否值得額外結構化支援。
 
 既然現在又不能把那些 hardening 再塞回 criteria，最自然的替代方案，就是把那些「本來偷偷埋在 criteria 裡的 operational support」，搬到 extraction / synthesis / reviewer support 層。
 

@@ -12,8 +12,8 @@ This report reflects the cutoff-corrected repository state after enforcing pre-r
 
 | Paper | Stage 1 F1 | Combined F1 | Cutoff excluded |
 | --- | ---: | ---: | ---: |
-| `2409.13738` | 0.7500 | 0.8235 | 19 |
-| `2511.13936` | 0.7407 | 0.7692 | 37 |
+| `2409.13738` | 0.7500 | 0.7500 | 15 |
+| `2511.13936` | 0.8788 | 0.9062 | 11 |
 
 ## Interpretation
 

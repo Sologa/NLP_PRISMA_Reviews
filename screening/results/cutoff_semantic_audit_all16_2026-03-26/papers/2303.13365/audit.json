@@ -1,0 +1,175 @@
+{
+  "paper_id": "2303.13365",
+  "availability": {
+    "paper_id": "2303.13365",
+    "cutoff_json": true,
+    "metadata": false,
+    "annotated_gold": false,
+    "pdf": true,
+    "md": true
+  },
+  "cutoff_json_path": "cutoff_jsons/2303.13365.json",
+  "time_policy": {
+    "enabled": true,
+    "date_field": "published",
+    "start_date": "2012-01-01",
+    "start_inclusive": true,
+    "end_date": "2022-03-31",
+    "end_inclusive": true,
+    "timezone": "UTC",
+    "derivation_mode": "intersection_of_projectable_time_clauses",
+    "projected_clause_ids": [
+      "stage2_i1"
+    ],
+    "binding_clause_ids": [
+      "stage2_i1"
+    ],
+    "fallback_applied": false
+  },
+  "cutoff_semantics_snapshot": {
+    "source_faithful_screening_publication_policy": {
+      "status": "explicit_window",
+      "enabled": true,
+      "date_field": "published",
+      "start_date": "2012-01-01",
+      "start_inclusive": true,
+      "end_date": "2022-03-31",
+      "end_inclusive": true,
+      "timezone": "UTC",
+      "evidence_clause_ids": [
+        "stage2_i1"
+      ]
+    },
+    "normalization_notes": [
+      "This paper has a direct Stage 2 screening-time window; no fallback is needed.",
+      "Because the only projectable clause is Stage 2 I1, the operational time_policy is identical to the source-faithful screening policy."
+    ],
+    "evidence": [
+      {
+        "clause_id": "stage2_i1",
+        "section": "Stage 2 Screening Criteria",
+        "criterion_id": "I1",
+        "text": "Published between January 2012 and March 2022.",
+        "source": "criteria_mds/2303.13365.md"
+      }
+    ]
+  },
+  "current_cutoff_audit": {
+    "available": false,
+    "metadata_path": "refs/2303.13365/metadata/title_abstracts_metadata.jsonl",
+    "metadata_input_rows": 0,
+    "metadata_unique_keys": 0,
+    "metadata_duplicate_keys": {},
+    "cutoff_status_counts": {},
+    "cutoff_status_samples": {}
+  },
+  "gold_audit": {
+    "available": false,
+    "gold_path": "refs/2303.13365/metadata/title_abstracts_metadata-annotated.jsonl"
+  },
+  "pdf_semantic_audit": {
+    "pdf_path": "refs/2303.13365/2303.13365.pdf",
+    "page_count": 12,
+    "detected_features": {
+      "has_explicit_inclusion_time_window": true,
+      "has_search_execution_date": true,
+      "has_search_time_range": true,
+      "has_secondary_search": true,
+      "has_no_publication_restriction": false,
+      "has_citation_gate": false,
+      "has_analysis_range": false,
+      "has_submitted_or_published_language": false
+    },
+    "cutoff_feature_signals": {
+      "binding_clause_ids": [
+        "stage2_i1"
+      ],
+      "projected_clause_ids": [
+        "stage2_i1"
+      ],
+      "has_stage1_binding": false,
+      "has_stage2_binding": true,
+      "binding_from_stage1_only": false,
+      "binding_uses_fallback": false,
+      "binding_uses_search_execution": false,
+      "binding_uses_citation_gate": false,
+      "fallback_applied": false,
+      "evidence_mentions_no_publication_restriction": false,
+      "evidence_mentions_submitted_or_published": false,
+      "evidence_mentions_citation_gate": false
+    },
+    "snippets": [
+      {
+        "page_number": 1,
+        "line_index": 29,
+        "score": 10,
+        "cue_types": [
+          "search",
+          "eligibility",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "future research directions. To achieve this, we conducted a systematic literature review to outline the current state-of-the-art of NLP and ML techniques in RF by selecting 257 papers from common used libraries. The search result is filtered by defining inclusion and exclusion criteria and 47 relevant studies between 2012 and 2022 are selected. We found that heuristic NLP approaches are the most common NLP techniques used for automatic RF, primary operating on structured and semi-structured data. This study also revealed that Deep",
+        "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+      },
+      {
+        "page_number": 4,
+        "line_index": 46,
+        "score": 10,
+        "cue_types": [
+          "search",
+          "eligibility",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "articles are investigated by third author, who is an expert in NLP domain and was not involved the distribution of the resulting papers in each year. by the search process by considering the inclusion As can be seen in this figure, in 2021 the domain and exclusion criteria. A satisfactory result is pre- gained more interest and highest number of publi- sented from pilot study, which proves the suitabil- cation were published. Additionally, Figure 2 indi-",
+        "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+      },
+      {
+        "page_number": 8,
+        "line_index": 24,
+        "score": 3,
+        "cue_types": [
+          "manual_scope"
+        ],
+        "quote": "7 Future Directions REFERENCES In the following we discuss directions to complete Datasets of 162 requirements and the corresponding the current actions and further future work on RF. rcm-extractor output. https://github.com/",
+        "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+      },
+      {
+        "page_number": 2,
+        "line_index": 4,
+        "score": 7,
+        "cue_types": [
+          "search",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "Three research questions were formulated for our lected articles that generates UML diagram by ap- Systematic Literature Review (SLR). By answer- plying NLP techniques are investigated in (Da- ing these research questions, the state of the art of wood et al., 2017; Abdelnabi et al., 2021). These RF is evaluated. We identify current challenges works emphasize on immaturity of research area of community and provide guidelines to address as most of the current processes are not automated.",
+        "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+      },
+      {
+        "page_number": 3,
+        "line_index": 23,
+        "score": 7,
+        "cue_types": [
+          "search",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "cluding Supervised learning, Unsupervised learn- coverage of existing publication most major pub- ing and Reinforcement learning (Cepukenas et al., lishers in Software Engineering are investigated. 2015; Li et al., 2020). ML is used to solve var- The following research libraries are used to find ious real world issues. Applying ML techniques the related studies for RF. improves different RE tasks such as classification • ACM Digital Library (http://dl.acm.org)",
+        "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+      }
+    ],
+    "semantic_risk_verdict": "no_apparent_issue",
+    "secondary_flags": {
+      "parser_issue_flag": false,
+      "cutoff_derivation_issue_flag": false,
+      "retrieval_vs_screening_confusion_flag": false,
+      "scope_mismatch_flag": false,
+      "manual_review_flag": false
+    },
+    "verdict_reasons": [],
+    "high_attention": false
+  },
+  "historical_comparison": null
+}

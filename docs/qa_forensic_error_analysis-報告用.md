@@ -204,13 +204,13 @@ Revision note: this version is aligned to the cutoff-first retrofit and the cuto
 - `title`: Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations
 - `abstract`: The perceptual evaluation of emotional attributes is noisy due to inconsistencies between annotators. The low inter-evaluator agreement arises due to the complex nature of emotions. Conventional approaches average scores provided by multiple annotators. While this approach reduces the influence of dissident annotations, previous studies have showed the value of considering individual evaluations to better capture the underlying ground-truth. One of these approaches is the qualitative agreement (QA) method, which provides an alternative framework that captures the inherent trends amongst the annotators. While previous studies have focused on using the QA method for time-continuous annotations from a fixed number of annotators, most emotional databases are annotated with attributes at the sentence-level (e.g., one global score per sentence). This study proposes a novel formulation based on the QA framework to estimate reliable sentence-level annotations for preference-learning. The proposed relative labels between pairs of sentences capture consistent trends across evaluators. The experimental evaluation shows that preference-learning methods to rank-order emotional attributes trained with the proposed QA-based labels achieve significantly better performance than the same algorithms trained with relative scores obtained by averaging absolute scores across annotators. These results show the benefits of QA-based labels for preference-learning using sentence-level annotations.
 - `gold label`: `True`
-- `predicted final verdict`: `exclude (cutoff_time_window)` at Stage 1; combined stayed exclude because pre-review cutoff filtered it before reviewer routing mattered
-- `是哪一層出錯`: `pre-review cutoff mismatch` + `gold/cutoff-window tension`
-- `模型當時的主要判讀理由`: 以目前 cutoff-corrected raw result 來看，這個 case 已經不是 reviewer 讀錯；它在 reviewer routing 之前就因 publication year `2018` 被標成 `before_start`，直接 cutoff 掉。
+- `predicted final verdict`: `exclude (junior:2,2)` at Stage 1; combined stayed exclude because這個 QA arm 在 Stage 1 就把它關掉，沒有送進後續正向覆寫。
+- `是哪一層出錯`: `Stage 1 early exclude` + `speech/preference signal under-recognition`
+- `模型當時的主要判讀理由`: current QA raw result 已不再把它當 cutoff case；真正發生的是兩位 junior 都把它讀成 annotation / agreement methodology paper，沒有把 speech emotion + pairwise preference-learning signal 判成 in-scope。
 - `全文 evidence`: `refs/2511.13936/mds/parthasarathy2018preference.md:21-33` abstract 結尾就有 `Index Terms: speech emotion recognition, preference-learning`；`refs/2511.13936/mds/parthasarathy2018preference.md:35-39` 開頭更直接說 emotion is conveyed in `speech`；`refs/2511.13936/mds/parthasarathy2018preference.md:89-96` 與 `:437-446` 清楚寫 pairwise comparisons create relative labels，並用 preference-learning 去 rank-order emotional attributes。
-- `為什麼這是一個 FP / FN`: 依目前 cutoff-corrected confusion inventory，它仍算 FN；但這個 FN 已不再是 reviewer reasoning 錯誤，而是 cutoff policy 與 gold label 之間的張力。
-- `這是 clean model error，還是 borderline ambiguity`: `policy mismatch`。paper 本身的 in-domain 證據很乾淨，但當前 repo cutoff 先於 reviewer 生效。
-- `如果要寫詳解，最核心的一句話是什麼`: 這篇現在被排掉，不是因為模型沒看懂 preference-learning，而是因為 cutoff-first policy 先把 2018 paper 擋掉了。
+- `為什麼這是一個 FP / FN`: 這是 FN，而且現在已能乾淨歸因為 reviewer miss。paper 本身同時明示 `speech emotion recognition` 與 `preference-learning`，但這條 QA arm 還是把它過早排除。
+- `這是 clean model error，還是 borderline ambiguity`: `clean model error`。摘要與全文都已經提供足夠的 audio-domain / pairwise-learning 訊號。
+- `如果要寫詳解，最核心的一句話是什麼`: 這篇不是 cutoff 問題；它是 current QA arm 沒把 speech-emotion preference learning 讀成正例。
 
 ### 4.6 `huang2025step`
 
@@ -385,10 +385,10 @@ Revision note: this version is aligned to the cutoff-first retrofit and the cuto
 - `preference-vs-evaluation confusion`: `manocha2020differentiable` 是把 perceptual discrimination 誤當 preference learning；`huang2025step` 則是相反方向，把真正進 reward model / PPO 的 preference data 誤當 evaluation-only。
 - `pairwise/ranking/ordinal under-detection`: `wu2023interval`、`jayawardena2020ordinal`。典型錯法是看到 ordinal / label-conversion / loss-selection，就忘了 paper 其實明確使用 pairwise or relative ordinal signal。
 - `speech/audio domain miss`: `jayawardena2020ordinal` 是最乾淨的當前 reviewer 例子；`dong2020pyramid` 與 `chumbalov2020scalable` 則比較接近 title/abstract 不明顯導致的 gating miss。
-- `cutoff-policy mismatch`: `parthasarathy2018preference` 在 cutoff-corrected view 裡已不再是 reviewer miss，而是 cutoff window 先於 reviewer 生效所造成的 gold/cutoff 張力。
+- `cutoff-policy mismatch`: 在 `2511` current rerun 後已不是 primary failure family；像 `parthasarathy2018preference` 這類 case 已回到 reviewer / Stage 1 miss bucket。
 - `multimodal-audio misread`: `huang2025step` 是 speech-text multimodal，但音訊仍是 AQTA core task；把 multimodal 誤讀成非-audio，會直接漏掉這類 paper。
 - `survey/review false trigger`: 在這兩個 QA runs 的 misclassified core set 中，不是主要家族；至少在這次深讀的 6 個 `2511` cases 裡，沒有看到 survey/review exclusion 被誤觸發成主因。
-- `stage1 gating error`: `2511` 的大宗傷害仍在 Stage 1，只是現在要分開看 reviewer miss 與 cutoff miss；前者以 `chumbalov2020scalable`, `dong2020pyramid`, `huang2025step`, `jayawardena2020ordinal` 為代表，後者則是 `parthasarathy2018preference`。
+- `stage1 gating error`: `2511` 的主要傷害仍在 Stage 1；代表 case 包含 `chumbalov2020scalable`, `dong2020pyramid`, `huang2025step`, `jayawardena2020ordinal`, `parthasarathy2018preference`。
 
 ### 7.3 `2307`
 
@@ -431,7 +431,7 @@ Revision note: this version is aligned to the cutoff-first retrofit and the cuto
 ## 9. Short Final Take
 
 - `2409` 的錯誤主軸不是「QA 整體太保守」這麼籠統，而是兩條更具體的 fault lines：一條是 publication-form closure 過頭，另一條是 target object boundary 太鬆或太亂。
-- `2511` 的錯誤主軸則更集中在 signal recognition：模型常常沒把 `speech = audio`、`pairwise/ordinal = preference signal`、以及 `RLHF reward-model training = learning component` 正確讀出來；在 cutoff-corrected view 裡，另有一條獨立的 `cutoff-window vs gold` 張力需要和 reviewer error 分開看。
+- `2511` 的錯誤主軸則更集中在 signal recognition：模型常常沒把 `speech = audio`、`pairwise/ordinal = preference signal`、以及 `RLHF reward-model training = learning component` 正確讀出來；`2511` cutoff 修正後，這些 case 應直接當 reviewer / QA error 看待，不需要再混入 cutoff 張力敘事。
 - `2307` 額外暴露的是另一種問題：gold boundary 與較 source-faithful criteria wording 並不完全重合，尤其在 `symbolic music`, `video-conditioned audio`, `defense against synthetic audio misuse` 這幾群最明顯。
 - `2601` 則讓兩條 fault line 很清楚：一條是 MT/encoder-decoder exclusion 是否過頭，另一條是 pipeline 層面的全文檢索/匹配錯誤。
 - 最可修的錯誤是 `goossens2023extracting`, `vda_extracting_declarative_process`, `jayawardena2020ordinal`, `huang2025step`, `serra_universal_2022`, `wilcox_2022_chapter` 這種全文證據非常直接、而模型或流程卻判反的 cases。

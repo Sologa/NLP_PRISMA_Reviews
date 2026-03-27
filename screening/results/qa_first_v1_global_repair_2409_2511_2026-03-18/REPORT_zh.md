@@ -10,13 +10,13 @@
 
 | Paper | Arm | Stage 1 F1 | Combined F1 | Stage 2 selected | Stage 2 reviewed | Cutoff excluded |
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
-| `2409.13738` | `qa+synthesis` | 0.6774 | 0.8889 | 41 | 41 | 19 |
-| `2511.13936` | `qa+synthesis` | 0.6176 | 0.6383 | 38 | 38 | 37 |
+| `2409.13738` | `qa+synthesis` | 0.6562 | 0.6562 | 43 | 0 | 15 |
+| `2511.13936` | `qa+synthesis` | 0.6742 | 0.7059 | 59 | 38 | 11 |
 
 ## Baseline Authority
 
-- `2409.13738` current Stage 1 F1 = `0.7500`; Combined F1 = `0.8235`.
-- `2511.13936` current Stage 1 F1 = `0.7407`; Combined F1 = `0.7692`.
+- `2409.13738` current Stage 1 F1 = `0.7500`; Combined F1 = `0.7500`.
+- `2511.13936` current Stage 1 F1 = `0.8788`; Combined F1 = `0.9062`.
 
 ## Notes
 

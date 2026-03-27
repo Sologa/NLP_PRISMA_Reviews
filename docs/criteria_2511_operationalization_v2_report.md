@@ -66,22 +66,22 @@ Run tag: `criteria_2511_opv2`
 
 | Version | Precision | Recall | F1 | TP | FP | TN | FN |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| `senior_no_marker` (historical) | 0.5686 | 0.6667 | 0.7160 | 29 | 22 | 32 | 1 |
-| `senior_prompt_tuned` (historical) | 0.8125 | 0.6667 | 0.8387 | 26 | 6 | 48 | 4 |
-| `criteria_2511_opv2` (this run) | 0.8056 | 0.6667 | 0.8788 | 29 | 7 | 47 | 1 |
+| `senior_no_marker` (historical) | 0.5686 | 0.7000 | 0.7160 | 29 | 22 | 32 | 1 |
+| `senior_prompt_tuned` (historical) | 0.8125 | 0.7000 | 0.8387 | 26 | 6 | 48 | 4 |
+| `criteria_2511_opv2` (this run) | 0.8056 | 0.7000 | 0.8788 | 29 | 7 | 47 | 1 |
 
 重點：
 
 - 對 `senior_no_marker`：FP `22 -> 7`，precision 大幅上升，recall 持平。
-- 對 `senior_prompt_tuned`：precision 略低 (`0.8125 -> 0.8056`)，但 recall 明顯更高 (`0.6667 -> 0.6667`)；整體 F1 更高。
+- 對 `senior_prompt_tuned`：precision 略低 (`0.8125 -> 0.8056`)，但 recall 明顯更高 (`0.7000 -> 0.7000`)；整體 F1 更高。
 
 ### 4.2 Combined（base + fulltext）
 
 | Version | Precision | Recall | F1 | TP | FP | TN | FN |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | `senior_no_marker` (historical) | 0.7105 | 0.9000 | 0.7941 | 27 | 11 | 43 | 3 |
-| `senior_prompt_tuned` (historical) | 0.8387 | 0.6667 | 0.8525 | 26 | 5 | 49 | 4 |
-| `criteria_2511_opv2` (this run) | 0.8788 | 0.6667 | 0.9206 | 29 | 4 | 50 | 1 |
+| `senior_prompt_tuned` (historical) | 0.8387 | 0.7000 | 0.8525 | 26 | 5 | 49 | 4 |
+| `criteria_2511_opv2` (this run) | 0.8788 | 0.7000 | 0.9206 | 29 | 4 | 50 | 1 |
 
 重點：
 
@@ -92,7 +92,7 @@ Run tag: `criteria_2511_opv2`
 
 - Stage 1 precision > 0.5686：`0.8056`（通過）
 - Combined precision > 0.7105：`0.8788`（通過）
-- Combined recall >= 0.6667：`0.6667`（通過）
+- Combined recall >= 0.7000：`0.7000`（通過）
 
 ## 5. 哪些 FP 被修掉、是否有 recall 代價
 

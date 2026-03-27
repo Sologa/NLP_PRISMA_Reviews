@@ -1,72 +1,66 @@
 [
   {
-    "key": "kaur_time_2023",
     "title": "Time out of Mind: Generating Rate of Speech conditioned on emotion and speaker",
-    "base_final_verdict": "maybe (senior:3)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
-    "fulltext_chars_total": 30049,
-    "fulltext_chars_used": 20068,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "References",
-    "reference_cut_line_no": 312,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Voice synthesis has seen significant improvements in the past decade resulting in highly intelligible voices. Further investigations have resulted in models that can produce variable speech, including conditional emotional expression. The problem lies, however, in a focus on phrase-level modifications and prosodic vocal features. Using the CREMA-D dataset we have trained a GAN conditioned on emotion to generate worth lengths for a given input text. These word lengths are relative to neutral speech and can be provided, through speech synthesis markup language (SSML) to a text-to-speech (TTS) system to generate more expressive speech. Additionally, a generative model is also trained using implicit maximum likelihood estimation (IMLE) and a comparative analysis with GANs is included. We were able to achieve better performances on objective measures for neutral speech, and better time alignment for happy speech when compared to an out-of-box model. However, further investigation of subjective evaluation is required.",
+    "key": "kaur_time_2023",
     "round-A_JuniorNano_output": {
-      "reasoning": "This is a full-length research paper (arXiv preprint) on generating speech prosody (rate of speech) conditioned on emotion and speaker using generative audio models (GAN/IMLE) with audio outputs and no reliance on non-audio outputs; thus it satisfies all inclusion criteria and none of the exclusions.",
+      "reasoning": "Although the item targets generative audio (speech synthesis with emotion conditioning), it appears to be an abstract rather than a full paper, thus failing the requirement for a long-form publication.",
+      "evaluation": 1
+    },
+    "round-A_JuniorNano_reasoning": "Although the item targets generative audio (speech synthesis with emotion conditioning), it appears to be an abstract rather than a full paper, thus failing the requirement for a long-form publication.",
+    "round-A_JuniorNano_evaluation": 1,
+    "round-A_JuniorMini_output": {
+      "reasoning": "The paper focuses on a generative audio model (GAN and IMLE) conditioned on emotion to generate speech timing features for speech synthesis, with output entirely in the audio domain, matching the inclusion criteria; it is a full research study and does not appear to meet any exclusion criteria regarding content or publication form, though subjective evaluation is pending.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "This is a full-length research paper (arXiv preprint) on generating speech prosody (rate of speech) conditioned on emotion and speaker using generative audio models (GAN/IMLE) with audio outputs and no reliance on non-audio outputs; thus it satisfies all inclusion criteria and none of the exclusions.",
-    "round-A_JuniorNano_evaluation": 5,
-    "round-A_JuniorMini_output": {
-      "reasoning": "The paper presents generative models (GAN and IMLE) specifically designed for generating word lengths for speech synthesis conditioned on emotion and speaker, focusing on generating an audio output (speech) through these models, which fits the inclusion criteria of focusing on generative audio models and their application in speech synthesis; it is a full research paper with details on methodology, experiments, and results. It does not cover ethical implications but meets the primary focus on generative audio models with an audio output. Therefore, it should be included based on the provided criteria.",
-      "evaluation": 4
+    "round-A_JuniorMini_reasoning": "The paper focuses on a generative audio model (GAN and IMLE) conditioned on emotion to generate speech timing features for speech synthesis, with output entirely in the audio domain, matching the inclusion criteria; it is a full research study and does not appear to meet any exclusion criteria regarding content or publication form, though subjective evaluation is pending.",
+    "round-A_JuniorMini_evaluation": 5,
+    "round-B_SeniorLead_output": {
+      "reasoning": "Both junior reviewers noted relevant points: JuniorNano flagged that only an abstract is provided (arguing it may not be a full paper) and recommended exclusion; JuniorMini judged it as a full research study focused on generative audio and recommended inclusion. Substantively, the title/abstract clearly describe a generative-audio contribution (GAN and IMLE models to generate word lengths for emotional TTS) and the output domain is audio, so it meets the topical inclusion criteria. However, the inclusion criteria explicitly require a full research paper (not an extended abstract), and the supplied item is only an abstract with no indication of publication form — so I cannot verify that requirement. Because the topic fits but the publication form is indeterminate, the correct decision is uncertain.",
+      "evaluation": 3
     },
-    "round-A_JuniorMini_reasoning": "The paper presents generative models (GAN and IMLE) specifically designed for generating word lengths for speech synthesis conditioned on emotion and speaker, focusing on generating an audio output (speech) through these models, which fits the inclusion criteria of focusing on generative audio models and their application in speech synthesis; it is a full research paper with details on methodology, experiments, and results. It does not cover ethical implications but meets the primary focus on generative audio models with an audio output. Therefore, it should be included based on the provided criteria.",
-    "round-A_JuniorMini_evaluation": 4,
-    "round-B_SeniorLead_output": null,
-    "round-B_SeniorLead_reasoning": null,
-    "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:4)",
+    "round-B_SeniorLead_reasoning": "Both junior reviewers noted relevant points: JuniorNano flagged that only an abstract is provided (arguing it may not be a full paper) and recommended exclusion; JuniorMini judged it as a full research study focused on generative audio and recommended inclusion. Substantively, the title/abstract clearly describe a generative-audio contribution (GAN and IMLE models to generate word lengths for emotional TTS) and the output domain is audio, so it meets the topical inclusion criteria. However, the inclusion criteria explicitly require a full research paper (not an extended abstract), and the supplied item is only an abstract with no indication of publication form — so I cannot verify that requirement. Because the topic fits but the publication form is indeterminate, the correct decision is uncertain.",
+    "round-B_SeniorLead_evaluation": 3,
+    "final_verdict": "maybe (senior:3)",
     "review_skipped": false,
-    "discard_reason": null,
+    "discard_reason": "review_needs_followup",
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
       "cutoff_status": "passed",
       "cutoff_pass": true,
       "published_date_raw": "2023",
-      "published_date_iso": "2023-01-01"
+      "published_date_iso": "2023-01-01",
+      "cutoff_split_mode": true,
+      "cutoff_record_source": "arxiv",
+      "cutoff_interval_start_iso": "2023-01-29",
+      "cutoff_interval_end_iso": "2023-01-29",
+      "cutoff_peer_review_status": "preprint",
+      "cutoff_peer_review_status_basis": "default_preprint",
+      "cutoff_date_basis": "submitted_date",
+      "cutoff_date_role": "preprint",
+      "cutoff_raw_value": "2023-01-29T02:58:01Z"
     }
   },
   {
-    "key": "mccarthy_hooligan_2020",
     "title": "HooliGAN: Robust, High Quality Neural Vocoding",
-    "base_final_verdict": "include (junior:4)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/mccarthy_hooligan_2020.md",
-    "fulltext_chars_total": 23004,
-    "fulltext_chars_used": 19328,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "7. References",
-    "reference_cut_line_no": 508,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Recent developments in generative models have shown that deep learning combined with traditional digital signal processing (DSP) techniques could successfully generate convincing violin samples [1], that source-excitation combined with WaveNet yields high-quality vocoders [2, 3] and that generative adversarial network (GAN) training can improve naturalness [4, 5]. By combining the ideas in these models we introduce HooliGAN, a robust vocoder that has state of the art results, finetunes very well to smaller datasets (<30 minutes of speechdata) and generates audio at 2.2MHz on GPU and 35kHz on CPU. We also show a simple modification to Tacotron-basedmodels that allows seamless integration with HooliGAN. Results from our listening tests show the proposed model's ability to consistently output high-quality audio with a variety of datasets, big and small. We provide samples at the following demo page: https://resemble-ai.github.io/hooligan_demo/",
+    "key": "mccarthy_hooligan_2020",
     "round-A_JuniorNano_output": {
-      "reasoning": "This is a full-length paper introducing a generative audio model (HooliGAN) with audio synthesis outputs, MOS-based evaluation, and experiments across datasets, satisfying the generative-audio focus and not falling under non-audio or non-full-paper exclusions.",
-      "evaluation": 5
+      "reasoning": "The item centers on a generative audio model (HooliGAN) with audio output, detailing model architecture and evaluation, which aligns with the inclusion criteria focusing on generative audio models as the primary topic; it appears to be a full research paper (not clearly an abstract, book chapter, or non-full paper).",
+      "evaluation": 4
     },
-    "round-A_JuniorNano_reasoning": "This is a full-length paper introducing a generative audio model (HooliGAN) with audio synthesis outputs, MOS-based evaluation, and experiments across datasets, satisfying the generative-audio focus and not falling under non-audio or non-full-paper exclusions.",
-    "round-A_JuniorNano_evaluation": 5,
+    "round-A_JuniorNano_reasoning": "The item centers on a generative audio model (HooliGAN) with audio output, detailing model architecture and evaluation, which aligns with the inclusion criteria focusing on generative audio models as the primary topic; it appears to be a full research paper (not clearly an abstract, book chapter, or non-full paper).",
+    "round-A_JuniorNano_evaluation": 4,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper presents HooliGAN, a novel generative neural vocoder model that synthesizes high-quality speech audio from acoustic features, focusing specifically on generative audio models with audio as the sole output domain; it is a full research paper and discusses a generative audio model as the main focus without infringing the exclusion criteria.",
+      "reasoning": "The paper 'HooliGAN: Robust, High Quality Neural Vocoding' introduces HooliGAN, a novel generative audio model focused on neural vocoding, which fits the inclusion criteria of focusing on generative audio models and producing audio output exclusively. It is a full research paper presenting a model that generates high-quality audio, without discussing other modalities or non-full-paper formats, and no ethical implications are directly addressed but this is not among the exclusion criteria. Therefore, the paper meets all inclusion and none of the exclusion criteria.",
       "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The paper presents HooliGAN, a novel generative neural vocoder model that synthesizes high-quality speech audio from acoustic features, focusing specifically on generative audio models with audio as the sole output domain; it is a full research paper and discusses a generative audio model as the main focus without infringing the exclusion criteria.",
+    "round-A_JuniorMini_reasoning": "The paper 'HooliGAN: Robust, High Quality Neural Vocoding' introduces HooliGAN, a novel generative audio model focused on neural vocoding, which fits the inclusion criteria of focusing on generative audio models and producing audio output exclusively. It is a full research paper presenting a model that generates high-quality audio, without discussing other modalities or non-full-paper formats, and no ethical implications are directly addressed but this is not among the exclusion criteria. Therefore, the paper meets all inclusion and none of the exclusion criteria.",
     "round-A_JuniorMini_evaluation": 5,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5)",
+    "final_verdict": "include (junior:4,5)",
     "review_skipped": false,
     "discard_reason": null,
     "cutoff_filter": {
@@ -74,38 +68,38 @@
       "cutoff_status": "passed",
       "cutoff_pass": true,
       "published_date_raw": "2020",
-      "published_date_iso": "2020-01-01"
+      "published_date_iso": "2020-01-01",
+      "cutoff_split_mode": true,
+      "cutoff_record_source": "arxiv",
+      "cutoff_interval_start_iso": "2020-08-06",
+      "cutoff_interval_end_iso": "2020-08-06",
+      "cutoff_peer_review_status": "preprint",
+      "cutoff_peer_review_status_basis": "default_preprint",
+      "cutoff_date_basis": "submitted_date",
+      "cutoff_date_role": "preprint",
+      "cutoff_raw_value": "2020-08-06T07:37:32Z"
     }
   },
   {
-    "key": "bollepalli_generative_2017",
     "title": "Generative adversarial network-based glottal waveform model for statistical parametric speech synthesis",
-    "base_final_verdict": "include (junior:4)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/bollepalli_generative_2017.md",
-    "fulltext_chars_total": 28187,
-    "fulltext_chars_used": 20872,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "6. References",
-    "reference_cut_line_no": 540,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Recent studies have shown that text-to-speech synthesis quality can be improved by using glottal vocoding. This refers to vocoders that parameterize speech into two parts, the glottal excitation and vocal tract, that occur in the human speech production apparatus. Current glottal vocoders generate the glottal excitation waveform by using deep neural networks (DNNs). However, the squared error-based training of the present glottal excitation models is limited to generating conditional average waveforms, which fails to capture the stochastic variation of the waveforms. As a result, shaped noise is added as post-processing. In this study, we propose a new method for predicting glottal waveforms by generative adversarial networks (GANs). GANs are generative models that aim to embed the data distribution in a latent space, enabling generation of new instances very similar to the original by randomly sampling the latent distribution. The glottal pulses generated by GANs show a stochastic component similar to natural glottal pulses. In our experiments, we compare synthetic speech generated using glottal waveforms produced by both DNNs and GANs. The results show that the newly proposed GANs achieve synthesis quality comparable to that of widely-used DNNs, without using an additive noise component.",
+    "key": "bollepalli_generative_2017",
     "round-A_JuniorNano_output": {
-      "reasoning": "This item is a full-length research paper focusing on a GAN-based generative audio model for glottal waveform synthesis in SPSS, with audio output and an emphasis on generative audio, and it meets the inclusion criteria without falling into any exclusion criteria.",
+      "reasoning": "The title/abstract describe a GAN-based generative model that produces glottal waveforms for speech synthesis, a clearly audio-focused generative model with full paper content and no non-audio outputs.",
       "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "This item is a full-length research paper focusing on a GAN-based generative audio model for glottal waveform synthesis in SPSS, with audio output and an emphasis on generative audio, and it meets the inclusion criteria without falling into any exclusion criteria.",
+    "round-A_JuniorNano_reasoning": "The title/abstract describe a GAN-based generative model that produces glottal waveforms for speech synthesis, a clearly audio-focused generative model with full paper content and no non-audio outputs.",
     "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper primarily focuses on the development and evaluation of generative adversarial networks (GANs) for modeling glottal excitation waveforms in statistical parametric speech synthesis, which is a generative audio model producing audio waveforms as output; it is a full research paper and meets all inclusion criteria without violating any exclusion criteria.",
-      "evaluation": 5
+      "reasoning": "The study focuses on a generative audio model, specifically a generative adversarial network (GAN) for producing glottal waveforms to synthesize speech, which is a primary audio output; it is a full research paper discussing a generative model applied solely to audio synthesis without involving other modalities or ethical implications explicitly, but meets the inclusion criteria about generative audio model focus and being full-form research; thus, it fits inclusion criteria and none of the exclusion criteria.",
+      "evaluation": 4
     },
-    "round-A_JuniorMini_reasoning": "The paper primarily focuses on the development and evaluation of generative adversarial networks (GANs) for modeling glottal excitation waveforms in statistical parametric speech synthesis, which is a generative audio model producing audio waveforms as output; it is a full research paper and meets all inclusion criteria without violating any exclusion criteria.",
-    "round-A_JuniorMini_evaluation": 5,
+    "round-A_JuniorMini_reasoning": "The study focuses on a generative audio model, specifically a generative adversarial network (GAN) for producing glottal waveforms to synthesize speech, which is a primary audio output; it is a full research paper discussing a generative model applied solely to audio synthesis without involving other modalities or ethical implications explicitly, but meets the inclusion criteria about generative audio model focus and being full-form research; thus, it fits inclusion criteria and none of the exclusion criteria.",
+    "round-A_JuniorMini_evaluation": 4,
     "round-B_SeniorLead_output": null,
     "round-B_SeniorLead_reasoning": null,
     "round-B_SeniorLead_evaluation": null,
-    "final_verdict": "include (junior:5)",
+    "final_verdict": "include (junior:5,4)",
     "review_skipped": false,
     "discard_reason": null,
     "cutoff_filter": {
@@ -113,53 +107,54 @@
       "cutoff_status": "passed",
       "cutoff_pass": true,
       "published_date_raw": "2019",
-      "published_date_iso": "2019-01-01"
+      "published_date_iso": "2019-01-01",
+      "cutoff_split_mode": true,
+      "cutoff_record_source": "arxiv",
+      "cutoff_interval_start_iso": "2019-03-14",
+      "cutoff_interval_end_iso": "2019-03-14",
+      "cutoff_peer_review_status": "peer_reviewed",
+      "cutoff_peer_review_status_basis": "journal_ref",
+      "cutoff_date_basis": "submitted_date_fallback",
+      "cutoff_date_role": "peer_reviewed",
+      "cutoff_raw_value": "2019-03-14T12:53:45Z"
     }
   },
   {
-    "key": "huang2018music",
     "title": "Music Transformer",
-    "base_final_verdict": "include (junior:5)",
-    "fulltext_review_mode": "inline",
-    "fulltext_source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
-    "fulltext_chars_total": 45827,
-    "fulltext_chars_used": 30896,
-    "reference_cut_applied": true,
-    "reference_cut_method": "heading",
-    "reference_cut_marker": "REFERENCES",
-    "reference_cut_line_no": 466,
-    "fulltext_missing_or_unmatched": false,
+    "abstract": "Music relies heavily on repetition to build structure and meaning. Self-reference occurs on multiple timescales, from motifs to phrases to reusing of entire sections of music, such as in pieces with ABA structure. The Transformer (Vaswani et al., 2017), a sequence model based on self-attention, has achieved compelling results in many generation tasks that require maintaining long-range coherence. This suggests that self-attention might also be well-suited to modeling music. In musical composition and performance, however, relative timing is critically important. Existing approaches for representing relative positional information in the Transformer modulate attention based on pairwise distance (Shaw et al., 2018). This is impractical for long sequences such as musical compositions since their memory complexity for intermediate relative information is quadratic in the sequence length. We propose an algorithm that reduces their intermediate memory requirement to linear in the sequence length. This enables us to demonstrate that a Transformer with our modified relative attention mechanism can generate minute-long compositions (thousands of steps, four times the length modeled in Oore et al., 2018) with compelling structure, generate continuations that coherently elaborate on a given motif, and in a seq2seq setup generate accompaniments conditioned on melodies. We evaluate the Transformer with our relative attention mechanism on two datasets, JSB Chorales and Piano-e-Competition, and obtain state-of-the-art results on the latter.",
+    "key": "huang2018music",
     "round-A_JuniorNano_output": {
-      "reasoning": "This is a technical music-generation paper focusing on a Transformer-based model, but the inclusion criteria require discussion of the ethical implications of generative audio models, which is not addressed.",
-      "evaluation": 1
+      "reasoning": "The abstract describes a Transformer-based model for music generation with a novel relative-attention mechanism aimed at long sequences, evaluated on standard music datasets, indicating a clear generative music modeling focus suitable for inclusion.",
+      "evaluation": 5
     },
-    "round-A_JuniorNano_reasoning": "This is a technical music-generation paper focusing on a Transformer-based model, but the inclusion criteria require discussion of the ethical implications of generative audio models, which is not addressed.",
-    "round-A_JuniorNano_evaluation": 1,
+    "round-A_JuniorNano_reasoning": "The abstract describes a Transformer-based model for music generation with a novel relative-attention mechanism aimed at long sequences, evaluated on standard music datasets, indicating a clear generative music modeling focus suitable for inclusion.",
+    "round-A_JuniorNano_evaluation": 5,
     "round-A_JuniorMini_output": {
-      "reasoning": "The paper presents a detailed study on a generative model (Transformer with relative attention) for symbolic music generation, fully focusing on audio synthesis in the music domain; it is a full-length research paper but does not discuss ethical implications of generative audio models such as deception, fraud, or copyright issues, which is part of the inclusion criteria. Despite that, it focuses primarily on generative audio models with audio as the output, meeting the generative audio model focus criteria without addressing ethical implications explicitly. Hence, it fits the scope of generative audio models but lacks the ethical implications focus.",
-      "evaluation": 3
+      "reasoning": "The paper clearly introduces a generative audio model focused on music generation using a Transformer architecture with relative attention, which addresses long sequences in music composition and achieves state-of-the-art results on relevant datasets, aligning well with the inclusion criteria for generative audio models outputting audio.",
+      "evaluation": 5
     },
-    "round-A_JuniorMini_reasoning": "The paper presents a detailed study on a generative model (Transformer with relative attention) for symbolic music generation, fully focusing on audio synthesis in the music domain; it is a full-length research paper but does not discuss ethical implications of generative audio models such as deception, fraud, or copyright issues, which is part of the inclusion criteria. Despite that, it focuses primarily on generative audio models with audio as the output, meeting the generative audio model focus criteria without addressing ethical implications explicitly. Hence, it fits the scope of generative audio models but lacks the ethical implications focus.",
-    "round-A_JuniorMini_evaluation": 3,
-    "round-B_SeniorLead_output": {
-      "reasoning": "Both junior reviewers noted that this is a full-length technical paper introducing a generative music model (Music Transformer) that produces symbolic/music outputs, but it contains no discussion of the ethical, legal, or social implications of generative audio (e.g., deception, copyright, consent, misuse). While it meets the ‘‘generative audio model’’ and full-paper requirements, it fails the primary inclusion requirement that the study address the ethical implications of generative audio models; therefore it should be excluded. (Brief explanation: the paper does not discuss ethical implications required by the inclusion criteria.)",
-      "evaluation": 1
-    },
-    "round-B_SeniorLead_reasoning": "Both junior reviewers noted that this is a full-length technical paper introducing a generative music model (Music Transformer) that produces symbolic/music outputs, but it contains no discussion of the ethical, legal, or social implications of generative audio (e.g., deception, copyright, consent, misuse). While it meets the ‘‘generative audio model’’ and full-paper requirements, it fails the primary inclusion requirement that the study address the ethical implications of generative audio models; therefore it should be excluded. (Brief explanation: the paper does not discuss ethical implications required by the inclusion criteria.)",
-    "round-B_SeniorLead_evaluation": 1,
-    "final_verdict": "exclude (cutoff_time_window)",
-    "review_skipped": true,
-    "discard_reason": "cutoff_time_window:before_start",
-    "pre_cutoff_final_verdict": "exclude (cutoff_time_window)",
-    "pre_cutoff_review_state": "cutoff_filtered",
-    "pre_cutoff_review_skipped": true,
+    "round-A_JuniorMini_reasoning": "The paper clearly introduces a generative audio model focused on music generation using a Transformer architecture with relative attention, which addresses long sequences in music composition and achieves state-of-the-art results on relevant datasets, aligning well with the inclusion criteria for generative audio models outputting audio.",
+    "round-A_JuniorMini_evaluation": 5,
+    "round-B_SeniorLead_output": null,
+    "round-B_SeniorLead_reasoning": null,
+    "round-B_SeniorLead_evaluation": null,
+    "final_verdict": "include (junior:5,5)",
+    "review_skipped": false,
     "cutoff_filter": {
       "cutoff_policy_enabled": true,
-      "cutoff_status": "before_start",
-      "cutoff_pass": false,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
       "published_date_raw": "2018",
-      "published_date_iso": "2018-01-01"
-    },
-    "review_state": "cutoff_filtered"
+      "published_date_iso": "2018-01-01",
+      "cutoff_split_mode": true,
+      "cutoff_record_source": "arxiv",
+      "cutoff_interval_start_iso": "2018-09-12",
+      "cutoff_interval_end_iso": "2018-09-12",
+      "cutoff_peer_review_status": "preprint",
+      "cutoff_peer_review_status_basis": "default_preprint",
+      "cutoff_date_basis": "submitted_date",
+      "cutoff_date_role": "preprint",
+      "cutoff_raw_value": "2018-09-12T07:15:26Z"
+    }
   }
 ]

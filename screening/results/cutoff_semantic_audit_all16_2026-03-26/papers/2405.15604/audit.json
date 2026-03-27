@@ -1,0 +1,332 @@
+{
+  "paper_id": "2405.15604",
+  "availability": {
+    "paper_id": "2405.15604",
+    "cutoff_json": true,
+    "metadata": true,
+    "annotated_gold": false,
+    "pdf": true,
+    "md": true
+  },
+  "cutoff_json_path": "cutoff_jsons/2405.15604.json",
+  "time_policy": {
+    "enabled": true,
+    "date_field": "published",
+    "start_date": "2017-01-01",
+    "start_inclusive": true,
+    "end_date": "2023-12-31",
+    "end_inclusive": true,
+    "timezone": "UTC",
+    "derivation_mode": "intersection_of_projectable_time_clauses",
+    "projected_clause_ids": [
+      "stage1_r3",
+      "stage2_i1"
+    ],
+    "binding_clause_ids": [
+      "stage1_r3",
+      "stage2_i1"
+    ],
+    "fallback_applied": false
+  },
+  "cutoff_semantics_snapshot": {
+    "source_faithful_screening_publication_policy": {
+      "status": "explicit_window",
+      "enabled": true,
+      "date_field": "published",
+      "start_date": "2017-01-01",
+      "start_inclusive": true,
+      "end_date": "2023-12-31",
+      "end_inclusive": true,
+      "timezone": "UTC",
+      "evidence_clause_ids": [
+        "stage2_i1"
+      ]
+    },
+    "normalization_notes": [
+      "The current file already lands on the right global window, but it drops important non-window time logic: per-year top-k balancing and year-conditioned citation thresholds.",
+      "The revised file keeps those clauses explicit so Codex can choose whether to implement them later."
+    ],
+    "evidence": [
+      {
+        "clause_id": "stage1_r3",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R3",
+        "text": "Temporal filter: exclude papers from 2016 or older (i.e., focus on publications from 2017 onwards).",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage1_r5",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R5",
+        "text": "To even out yearly coverage, sample the top 5 papers per query and year by influential citations.",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage1_r6",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R6",
+        "text": "For papers up to (and including) year 2021: exclude papers with fewer than 2 citations (as stated in the pipeline figure).",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage1_r7",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R7",
+        "text": "For years 2022 and 2023: relax restrictions and do not remove papers with less than two influential citations.",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage2_i1",
+        "section": "Stage 2 Screening Criteria",
+        "criterion_id": "I1",
+        "text": "Manually assessed candidate works are within years 2017 to 2023 (titles and abstracts manually assessed for relevance).",
+        "source": "criteria_mds/2405.15604.md"
+      }
+    ]
+  },
+  "current_cutoff_audit": {
+    "available": true,
+    "metadata_path": "refs/2405.15604/metadata/title_abstracts_metadata.jsonl",
+    "metadata_input_rows": 244,
+    "metadata_unique_keys": 244,
+    "metadata_duplicate_keys": {},
+    "cutoff_status_counts": {
+      "after_end": 4,
+      "before_start": 38,
+      "passed": 202
+    },
+    "cutoff_status_samples": {
+      "after_end": [
+        {
+          "key": "JiangXNX24",
+          "title": "ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs",
+          "published_date": "2024",
+          "published_date_iso": "2024-01-01"
+        },
+        {
+          "key": "JurafskyM24",
+          "title": "booktitle Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition ( edition3 ed.)",
+          "published_date": "2024",
+          "published_date_iso": "2024-01-01"
+        },
+        {
+          "key": "ShahamHAS24",
+          "title": "Multilingual Instruction Tuning With Just a Pinch of Multilinguality",
+          "published_date": "2024",
+          "published_date_iso": "2024-01-01"
+        }
+      ],
+      "before_start": [
+        {
+          "key": "AndersonFJG16",
+          "title": "SPICE: Semantic Propositional Image Caption Evaluation",
+          "published_date": "2016",
+          "published_date_iso": "2016-01-01"
+        },
+        {
+          "key": "BanerjeeL05",
+          "title": "METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments",
+          "published_date": "2005",
+          "published_date_iso": "2005-01-01"
+        },
+        {
+          "key": "BengioDV00",
+          "title": "A Neural Probabilistic Language Model",
+          "published_date": "2000",
+          "published_date_iso": "2000-01-01"
+        }
+      ],
+      "passed": [
+        {
+          "key": "AbdallaWRN23",
+          "title": "The Elephant in the Room: Analyzing the Presence of Big Tech in Natural Language Processing Research",
+          "published_date": "2023",
+          "published_date_iso": "2023-01-01"
+        },
+        {
+          "key": "AbhishekSSS22",
+          "title": "XAlign: Cross-lingual Fact-to-Text Alignment and Generation for Low-Resource Languages",
+          "published_date": "2022-02-01",
+          "published_date_iso": "2022-02-01"
+        },
+        {
+          "key": "AchiamAAA24",
+          "title": "GPT-4 Technical Report",
+          "published_date": "2023",
+          "published_date_iso": "2023-01-01"
+        }
+      ]
+    },
+    "time_policy": {
+      "enabled": true,
+      "date_field": "published",
+      "start_date": "2017-01-01",
+      "start_inclusive": true,
+      "end_date": "2023-12-31",
+      "end_inclusive": true,
+      "timezone": "UTC",
+      "derivation_mode": "intersection_of_projectable_time_clauses",
+      "projected_clause_ids": [
+        "stage1_r3",
+        "stage2_i1"
+      ],
+      "binding_clause_ids": [
+        "stage1_r3",
+        "stage2_i1"
+      ],
+      "fallback_applied": false
+    },
+    "normalization_notes": [
+      "The current file already lands on the right global window, but it drops important non-window time logic: per-year top-k balancing and year-conditioned citation thresholds.",
+      "The revised file keeps those clauses explicit so Codex can choose whether to implement them later."
+    ],
+    "evidence": [
+      {
+        "clause_id": "stage1_r3",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R3",
+        "text": "Temporal filter: exclude papers from 2016 or older (i.e., focus on publications from 2017 onwards).",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage1_r5",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R5",
+        "text": "To even out yearly coverage, sample the top 5 papers per query and year by influential citations.",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage1_r6",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R6",
+        "text": "For papers up to (and including) year 2021: exclude papers with fewer than 2 citations (as stated in the pipeline figure).",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage1_r7",
+        "section": "Stage 1 Retrieval Criteria",
+        "criterion_id": "R7",
+        "text": "For years 2022 and 2023: relax restrictions and do not remove papers with less than two influential citations.",
+        "source": "criteria_mds/2405.15604.md"
+      },
+      {
+        "clause_id": "stage2_i1",
+        "section": "Stage 2 Screening Criteria",
+        "criterion_id": "I1",
+        "text": "Manually assessed candidate works are within years 2017 to 2023 (titles and abstracts manually assessed for relevance).",
+        "source": "criteria_mds/2405.15604.md"
+      }
+    ]
+  },
+  "gold_audit": {
+    "available": false,
+    "gold_path": "refs/2405.15604/metadata/title_abstracts_metadata-annotated.jsonl"
+  },
+  "pdf_semantic_audit": {
+    "pdf_path": "refs/2405.15604/2405.15604.pdf",
+    "page_count": 36,
+    "detected_features": {
+      "has_explicit_inclusion_time_window": true,
+      "has_search_execution_date": true,
+      "has_search_time_range": true,
+      "has_secondary_search": true,
+      "has_no_publication_restriction": false,
+      "has_citation_gate": true,
+      "has_analysis_range": true,
+      "has_submitted_or_published_language": false
+    },
+    "cutoff_feature_signals": {
+      "binding_clause_ids": [
+        "stage1_r3",
+        "stage2_i1"
+      ],
+      "projected_clause_ids": [
+        "stage1_r3",
+        "stage2_i1"
+      ],
+      "has_stage1_binding": true,
+      "has_stage2_binding": true,
+      "binding_from_stage1_only": false,
+      "binding_uses_fallback": false,
+      "binding_uses_search_execution": false,
+      "binding_uses_citation_gate": false,
+      "fallback_applied": false,
+      "evidence_mentions_no_publication_restriction": false,
+      "evidence_mentions_submitted_or_published": false,
+      "evidence_mentions_citation_gate": true
+    },
+    "snippets": [
+      {
+        "page_number": 5,
+        "line_index": 20,
+        "score": 7,
+        "cue_types": [
+          "eligibility",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "2.3 Manual Assessment Eligibility criteria. We manually assess the titles and abstracts of 279 works from 2017 to 2023 to judge their relevance regarding text generation. We remove papers that are too specific for the scope of this review (e.g., multimodality) and eliminate works that employ studies to another field of study (e.g., medicine). We release a table of our relevance",
+        "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+      },
+      {
+        "page_number": 4,
+        "line_index": 14,
+        "score": 8,
+        "cue_types": [
+          "search",
+          "citation",
+          "cutoff_hint"
+        ],
+        "quote": "Select top 5 papers by infl. 1127 31 Exclude irrelevant papers citations per query and year Exclude papers until 2021 58",
+        "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+      },
+      {
+        "page_number": 35,
+        "line_index": 13,
+        "score": 7,
+        "cue_types": [
+          "manual_scope",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). Association for Computational Linguistics. https://doi.org/10.18653/v1/2023.acl-long.179 [239] Renjie Zheng, Mingbo Ma, and Liang Huang. 2018. Multi-Reference Training with Pseudo-References for Neural Translation and Text Generation. In Proc. of EMNLP. Association for Computational Linguistics, Brussels, Belgium, 3188–3197. https://doi.org/10.18653/v1/D18-1357 [240] Wanjun Zhong, Duyu Tang, Zenan Xu, et al. 2020. Neural Deepfake Detection with Factual Structure of Text. In Proc. of EMNLP. Association for",
+        "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+      },
+      {
+        "page_number": 5,
+        "line_index": 9,
+        "score": 8,
+        "cue_types": [
+          "search",
+          "citation",
+          "cutoff_hint"
+        ],
+        "quote": "Our initial collection, which consists of 1669 publications, is reduced to 1464 papers when adding the temporal filter. Citation criteria. Next, we filter the results using Semantic Scholar’s influential citations [189]. An influential citation traces key works that another work relies on, e.g., measured by citations in specific paper locations, research overlap, or content similarity work [189]. Influential citations, therefore, provide a proxy for measuring a publication’s impact on other publications in the field. To even out the distribution of papers regarding yearly coverage, we sample the top five",
+        "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+      },
+      {
+        "page_number": 5,
+        "line_index": 12,
+        "score": 8,
+        "cue_types": [
+          "search",
+          "citation",
+          "cutoff_hint"
+        ],
+        "quote": "content similarity work [189]. Influential citations, therefore, provide a proxy for measuring a publication’s impact on other publications in the field. To even out the distribution of papers regarding yearly coverage, we sample the top five papers per query and year by influential citations, yielding 337 papers. We select papers with more than two influential citations until 2021 to estimate papers of high influence in text generation. We treat recent works differently as older papers tend to have more citations than recent ones, although both can be similarly impactful [1, 196]. Thus, we relax",
+        "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+      }
+    ],
+    "semantic_risk_verdict": "no_apparent_issue",
+    "secondary_flags": {
+      "parser_issue_flag": false,
+      "cutoff_derivation_issue_flag": false,
+      "retrieval_vs_screening_confusion_flag": false,
+      "scope_mismatch_flag": false,
+      "manual_review_flag": false
+    },
+    "verdict_reasons": [],
+    "high_attention": false
+  },
+  "historical_comparison": null
+}

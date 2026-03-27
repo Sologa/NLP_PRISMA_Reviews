@@ -1,6 +1,7 @@
 # Cutoff Gold-Positive 問題診斷備忘錄
 
 Date: 2026-03-26
+Revision note: 已對齊 `2511.13936` / `2601.19926` cutoff policy 變更後的 current disk state。
 
 ## 結論先行
 
@@ -8,148 +9,81 @@ Date: 2026-03-26
 
 這不是一般 precision 問題，而是 pre-review hard filter 的 recall 問題。一旦在 cutoff 階段被砍掉，後面的 reviewer、senior adjudication、fulltext evidence 都不會再有機會修正。
 
-本次 `cutoff-only` audit 顯示：
+但 current rerun 顯示，`2511` 與 `2601` 的主要 cutoff 問題現在都已經被修正：
 
-| Paper | Gold+ total | Gold+ cutoffed | 主風險 |
+| Paper | Gold+ total | Gold+ cutoffed | current 狀態 |
 | --- | ---: | ---: | --- |
-| `2307.05527` | 171 | 16 | cutoff window 與 benchmark gold scope 可能不一致 |
-| `2409.13738` | 21 | 0 | 這篇不是主問題，可當 control |
-| `2511.13936` | 30 | 9 | cutoff lower bound 與 gold scope 明顯衝突 |
-| `2601.19926` | 336 | 3 | 日期 parsing 過嚴，屬實作層 bug |
+| `2307.05527` | 171 | 16 | 仍有 cutoff/gold scope 張力，尚未在這次修復範圍內解決 |
+| `2409.13738` | 21 | 0 | 一直不是主問題，可視為 control |
+| `2511.13936` | 30 | 0 | 原先的 lower-bound derivation 問題已移除，cutoff 不再誤殺 gold positives |
+| `2601.19926` | 336 | 0 | `%Y-%m` parser bug 已修復，`2020-12` 類 metadata 不再被誤判 |
 
 參考工件：
 
 - `screening/results/cutoff_only_audit_2026-03-26/summary.json`
-- `screening/results/cutoff_only_audit_2026-03-26/report.md`
+- `screening/results/cutoff_only_audit_2026-03-26_rerun_2511_2601_new_cutoff/summary.json`
+- `screening/results/cutoff_semantic_audit_all16_2026-03-26/summary.json`
+- `screening/results/publication_date_parse_audit_2026-03-26/summary.json`
 
-## 為什麼這件事嚴重
+## 1. `2511.13936`：原本是 derivation / semantics 問題，現在已修正
 
-- `gold-positive cutoffed` 是 hard false negative。
-- 這種錯誤發生在 reviewer 之前，所以不是 prompt tuning 或 senior routing 可以補救的問題。
-- 如果 cutoff layer 的語義和 gold benchmark 的語義不一致，後面所有分數都會建立在錯的 candidate universe 上。
-- 如果 cutoff layer 只是 parser 太嚴，也會把本來應該保留的 paper 機械式刪掉。
+舊版 `cutoff_jsons/2511.13936.json` 把 `published from 2020 onward` 投影成全域 pre-review lower bound，會把一批 `2010-2018` 的 gold-positive 直接砍掉。
 
-## 現在已知的三種 failure mode
+current cutoff file 已改成不再把那個 retrieval-time 描述硬投影為全域 hard lower bound；對 current runtime 而言：
 
-### 1. `2307.05527`: window 與 gold scope 可能不一致
+- `gold_positive_cutoffed = 0`
+- `parthasarathy2018preference` 這類 case 現在是 `cutoff_pass = true`
+- `2511` 的問題已不再是 cutoff 先砍掉正確 paper，而是 reviewer / Stage 1 本身如何讀 preference signal
 
-`cutoff_jsons/2307.05527.json` 的 active window 是 `2018-02-01 .. 2023-02-01`。
+所以現在最準的一句話是：
 
-但被 cutoff 掉的 16 個 gold-positive 幾乎全部都是 `2017` 或 `2018-01-01` 類型的 metadata 日期，例如：
+> `2511` 的 cutoff mismatch 已經修掉；剩下的錯誤應回到 reviewer 判讀與 evidence interpretation 層分析。
 
-- `arik_neural_2018` -> `2018-01-01` -> `before_start`
-- `zhou2018voice` -> `2018-01-01` -> `before_start`
-- `kameoka_convs2s-vc_2020` -> metadata 其實是 `2018` -> `before_start`
-- `wilkinson_generative_2019` -> metadata 其實是 `2018` -> `before_start`
+## 2. `2601.19926`：原本是 `%Y-%m` parser bug，現在已修正
 
-這表示至少有兩種可能：
+舊 parser 不接受 `%Y-%m`，所以 `2020-12` 會被標成 `unparseable_published_date`，像：
 
-- review paper 的 hard cutoff 窗口本來就比 gold benchmark 更窄；
-- 或 metadata 使用的是 arXiv first-posted / preprint date，但 gold 是依照 evidence-base inclusion 在更寬鬆語義下整理。
+- `Warstadt:etal:2020`
+- `ettinger_what_2020`
+- `kuncoro-etal-2020-syntactic`
 
-不管是哪一種，現象都不是 reviewer 判斷錯，而是 cutoff 層先把 gold-positive 砍掉。
+current parser 已接受 `%Y-%m`，publication-date parse audit 也顯示：
 
-### 2. `2511.13936`: lower bound 與 gold benchmark 明顯衝突
+- `papers_with_year_month_issues_after = []`
+- `2601.19926` 不再有 `2020-12` 型 unparseable case
+- `gold_positive_cutoffed = 0`
 
-`cutoff_jsons/2511.13936.json` 的 active lower bound 是 `2020-01-01`。
+所以現在最準的一句話是：
 
-但被 cutoff 掉的 9 個 gold-positive 全都在 `2010-2018`：
+> `2601` 的 cutoff 問題已經不是語義問題，而是已修復完成的 parser bug。
 
-- `yang2010ranking`
-- `cao2012combining`
-- `cao2015speaker`
-- `lotfian2016practical`
-- `lotfian2016retrieving`
-- `parthasarathy2016using`
-- `parthasarathy2017ranking`
-- `parthasarathy2018preference`
-- `lopes2017modelling`
+## 3. `2409.13738` 與 `2307.05527` 的角色
 
-這是目前最明顯的語義衝突 case：
+- `2409` 在 current 與舊 audit 中都沒有 `gold-positive cutoffed` 問題，它仍適合當 control。
+- `2307` 仍保留明顯的 cutoff/gold scope tension；這一篇不能直接套用 `2511` / `2601` 的修法敘事。
 
-- 如果 `Published from 2020 onward` 是 review paper 自己真的要當 hard retrieval/screening gate，那這 9 篇不應該出現在 gold-positive。
-- 如果這 9 篇本來就是 benchmark 中應保留的 evidence base，那 `2020 onward` 就不能在目前 pipeline 中被當作 pre-review hard filter 直接套到 benchmark universe。
-
-換句話說，`2511` 比較不像 parser bug，而像是「cutoff artifact 的 operational semantics 和 benchmark target semantics 並不一致」。
-
-### 3. `2601.19926`: parser bug / normalization bug
-
-`2601.19926` 沒有 substantive window mismatch 的跡象。被 cutoff 掉的 3 個 gold-positive 都是：
-
-- `Warstadt:etal:2020` -> `2020-12`
-- `ettinger_what_2020` -> `2020-12`
-- `kuncoro-etal-2020-syntactic` -> `2020-12`
-
-它們的 cutoff status 全部是 `unparseable_published_date`。
-
-這與目前 parser 實作一致：`scripts/screening/cutoff_time_filter.py` 只接受
-
-- `%Y-%m-%d`
-- `%Y/%m/%d`
-- `%B %d, %Y`
-- `%b %d, %Y`
-- `%Y`
-
-但不接受 `%Y-%m`。
-
-所以 `2601` 的問題不是 review paper 語義，而是 cutoff parser 對 `YYYY-MM` 過嚴，導致機械式 false exclude。
-
-## 2409.13738 的角色
-
-`2409.13738` 在本次 audit 裡 `gold-positive cutoffed = 0`。
-
-它不應該是這次 root cause 分析的主戰場。更好的用法是把它當 control：
-
-- cutoff layer 可以 work；
-- 問題不是「所有 paper 都被 cutoff 搞壞」；
-- 真正需要解釋的是為什麼 `2307`、`2511`、`2601` 會出現不同型態的 gold-positive cutoffed。
-
-## 外部分析時一定要看的原始來源
-
-如果要請 ChatGPT 或其他外部模型分析，必須先看這三篇 SR 原文 PDF，而不是只看衍生 criteria 檔：
-
-- `refs/2307.05527/2307.05527.pdf`
-- `refs/2511.13936/2511.13936.pdf`
-- `refs/2601.19926/2601.19926.pdf`
-
-補充：
-
-- `refs/<paper_id>/<paper_id>.md` 在這三篇目前不是乾淨的正文 markdown，不適合作為主要閱讀來源。
-- `2409.13738` 可以不看原文或只當對照，不是這次主問題。
-
-## 外部分析最需要回答的問題
-
-1. `2307` 和 `2511` 的 `gold-positive cutoffed`，到底是 benchmark 定義與 review paper 原文不一致，還是 cutoff artifact 把 retrieval-time clause 誤升格成 screening-time hard filter？
-2. `2511` 的 `Published from 2020 onward` 在原文中，究竟是 search-space / retrieval convenience，還是作者真的把它當 evidence eligibility 的 hard boundary？
-3. `2307` 的 `2018-02-01` 下界，在原文中是否應該直接裁掉 `2018-01` 類 paper，還是 benchmark gold 其實採用了較寬鬆的 evidence-base 定義？
-4. `2601` 是否只需要 parser normalization 修正即可清除這 3 筆 FN？
-5. 修正應該落在哪一層：
-   - `cutoff_jsons`
-   - `cutoff_time_filter.py`
-   - benchmark interpretation
-   - 或某篇 paper 的 special-case policy
-
-## 建議的判讀順序
-
-1. 先讀 `AGENTS.md`。
-2. 再讀 `docs/chatgpt_current_status_handoff.md`。
-3. 再讀 `screening/results/results_manifest.json`。
-4. 再讀本次 audit：
-   - `screening/results/cutoff_only_audit_2026-03-26/summary.json`
-   - `screening/results/cutoff_only_audit_2026-03-26/report.md`
-5. 再讀三個 active cutoff files：
-   - `cutoff_jsons/2307.05527.json`
-   - `cutoff_jsons/2511.13936.json`
-   - `cutoff_jsons/2601.19926.json`
-6. 最後一定要看三篇 SR 原文 PDF：
-   - `refs/2307.05527/2307.05527.pdf`
-   - `refs/2511.13936/2511.13936.pdf`
-   - `refs/2601.19926/2601.19926.pdf`
-
-## 現階段最保守的 repo-level判斷
+## 4. 現階段最保守的 repo-level 判斷
 
 - 不應把 `gold-positive cutoffed` 視為小誤差。
-- `2601` 幾乎可以直接視為 parser bug。
-- `2511` 大概率是 benchmark scope 與 cutoff semantics 的硬衝突。
-- `2307` 很可能也是 scope/semantics mismatch，但需要回到原文核實 `2018-02-01` 的語義邊界。
-- 在完成原文核實前，不應草率把這三篇的問題統一歸因成同一種 cutoff bug。
+- 但對 `2511` 與 `2601`，current evidence 已支持「主要 cutoff 問題已解決」。
+- `2511` 現在不該再被描述成 `current cutoff mismatch`；它應回到 reviewer / QA error taxonomy。
+- `2601` 現在不該再被描述成 `current parser-only issue`；parser fix 已落地，current cutoff excludes = `0`。
+- `2307` 仍需要保留 scope / semantics mismatch 的獨立診斷。
+
+## 5. 建議的閱讀順序
+
+1. `AGENTS.md`
+2. `docs/chatgpt_current_status_handoff.md`
+3. `screening/results/results_manifest.json`
+4. `screening/results/2511.13936_full/CURRENT.md`
+5. `screening/results/2601.19926_full/CURRENT.md`
+6. 再看：
+   - `screening/results/cutoff_only_audit_2026-03-26_rerun_2511_2601_new_cutoff/summary.json`
+   - `screening/results/cutoff_semantic_audit_all16_2026-03-26/summary.json`
+   - `screening/results/publication_date_parse_audit_2026-03-26/summary.json`
+
+## 6. 一句話版本
+
+- `2511`: cutoff derivation 問題已修正，current 誤差不再來自 cutoff 先砍 paper。
+- `2601`: `%Y-%m` parser bug 已修正，current cutoff 不再誤殺 `2020-12` 類正例。
+- `2307`: 仍保留獨立的 cutoff/gold scope 張力，不能混為同一類。

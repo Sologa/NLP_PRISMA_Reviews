@@ -10,17 +10,17 @@
 
 | Paper | Candidates | Reviewed | Direct F1 | Delta vs current combined | Cutoff excluded | Retrieval failed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `2307.05527` | 222 | 192 | 0.8400 | -0.0657 | 30 | 0 |
-| `2409.13738` | 84 | 65 | 0.8163 | -0.0072 | 19 | 0 |
-| `2511.13936` | 89 | 52 | 0.7547 | -0.0145 | 37 | 0 |
-| `2601.19926` | 360 | 354 | 0.9674 | -0.0026 | 6 | 0 |
+| `2307.05527` | 222 | 192 | 0.8400 | -0.0713 | 29 | 0 |
+| `2409.13738` | 84 | 65 | 0.8163 | +0.0663 | 15 | 0 |
+| `2511.13936` | 89 | 52 | 0.9062 | +0.0000 | 11 | 0 |
+| `2601.19926` | 360 | 354 | 0.9691 | -0.0041 | 0 | 0 |
 
 ## Baseline Authority
 
-- `2307.05527` current authority：`latest fully benchmarked senior_no_marker`，Combined F1 = `0.9057`。
-- `2409.13738` current authority：`stage_split_criteria_migration`，Combined F1 = `0.8235`。
-- `2511.13936` current authority：`stage_split_criteria_migration`，Combined F1 = `0.7692`。
-- `2601.19926` current authority：`latest fully benchmarked senior_no_marker`，Combined F1 = `0.9700`。
+- `2307.05527` current authority：`latest fully benchmarked senior_no_marker`，Combined F1 = `0.9113`。
+- `2409.13738` current authority：`stage_split_criteria_migration`，Combined F1 = `0.7500`。
+- `2511.13936` current authority：`stage_split_criteria_migration`，Combined F1 = `0.9062`。
+- `2601.19926` current authority：`latest fully benchmarked senior_no_marker`，Combined F1 = `0.9731`。
 
 ## Notes
 

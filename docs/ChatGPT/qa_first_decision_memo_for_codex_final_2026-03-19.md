@@ -22,7 +22,7 @@
 
 2.1 `v1 second-pass` 已把 hygiene 清乾淨：成立。second-pass 報告把 `2409` topic leak 與 `2511` title/topic leak 都判成 PASS，final outputs 的 exact-literal hits 為 0。要加的註解是：`2511` 的 run manifest 還是記錄了 validation failures，這比較像 retry / validation 過程訊號，不等於 final contamination 還在。
 
-2.2 `2511` 在 `v1 second-pass` 下明顯比 v0 好：成立。`qa+synthesis` 的 Combined F1 從 v0 的 `0.8519` 升到 second-pass 的 `0.8727`，Stage 1 F1 也從 `0.8727` 升到 `0.8772`。但它仍然沒有超過 current production 的 `0.7692`。
+2.2 `2511` 在 `v1 second-pass` 下明顯比 v0 好：成立。`qa+synthesis` 的 Combined F1 從 v0 的 `0.8519` 升到 second-pass 的 `0.8727`，Stage 1 F1 也從 `0.8727` 升到 `0.8772`。但 cutoff 修正後的 current production 已是 `0.9062`，所以 QA 線依然沒有超過 baseline。
 
 2.3 `2409` 在 `v1 second-pass` 下顯著變差：成立。`qa+synthesis` 的 Combined F1 從 v0 的 `0.8333` 掉到 `0.7500`，也低於 current production 的 `0.8235`。這不是小波動，是整條 shared repair 線在 `2409` 上還沒站穩。
 
@@ -56,7 +56,7 @@
 
 | 版本 | Stage 1 F1 | Combined F1 | Combined Precision | Combined Recall | 解讀 |
 | --- | ---: | ---: | ---: | ---: | --- |
-| current production | 0.7407 | 0.7692 | 0.9091 | 0.6667 | 現行 production 參考線。 |
+| current production | 0.8788 | 0.9062 | 0.8529 | 0.9667 | cutoff 修正後的現行 production 參考線。 |
 | v0 qa+synthesis | 0.8727 | 0.8519 | 0.9583 | 0.7667 | v0 主要靠高 precision。 |
 | v1 first-pass | 0.6383 | 0.8571 | 0.9231 | 0.8000 | Combined 比 v0 略高，但 Stage 1 defer flood 太重。 |
 | v1 second-pass | 0.8772 | 0.8727 | 0.9600 | 0.8000 | 相對 v0 明顯更好；hygiene 也乾淨。 |

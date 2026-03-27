@@ -21,6 +21,7 @@ ENABLE_FULLTEXT_REVIEW="${ENABLE_FULLTEXT_REVIEW:-0}"
 FULLTEXT_REVIEW_MODE="${FULLTEXT_REVIEW_MODE:-inline}"
 FULLTEXT_INLINE_HEAD_CHARS="${FULLTEXT_INLINE_HEAD_CHARS:-24000}"
 FULLTEXT_INLINE_TAIL_CHARS="${FULLTEXT_INLINE_TAIL_CHARS:-12000}"
+REPO_CUTOFF_PREPRINT_SPLIT_SUBMITTED_DATE="${REPO_CUTOFF_PREPRINT_SPLIT_SUBMITTED_DATE:-}"
 
 TOP_K_SUFFIX="full"
 TOP_K_ARG=""
@@ -63,6 +64,16 @@ else
   CRITERIA_STAGE1_PATH="${CRITERIA_STAGE1_PATH:-${CRITERIA_SOURCE_PATH}}"
   CRITERIA_STAGE2_PATH="${CRITERIA_STAGE2_PATH:-${CRITERIA_STAGE2_SOURCE_PATH}}"
   FULLTEXT_ROOT="${FULLTEXT_ROOT:-}"
+fi
+
+CUTOFF_SPLIT_ARG=()
+if [[ "${PAPER_ID:-}" == "2307.05527" ]]; then
+  if [[ -z "${REPO_CUTOFF_PREPRINT_SPLIT_SUBMITTED_DATE}" ]]; then
+    REPO_CUTOFF_PREPRINT_SPLIT_SUBMITTED_DATE="1"
+  fi
+  if [[ "${REPO_CUTOFF_PREPRINT_SPLIT_SUBMITTED_DATE}" == "1" ]]; then
+    CUTOFF_SPLIT_ARG+=(--repo-cutoff-preprint-split-submitted-date)
+  fi
 fi
 
 WORKSPACE_ROOT="${WORKSPACE_ROOT:-${ROOT_DIR}/screening/workspaces}"
@@ -200,6 +211,9 @@ REVIEW_CMD=(
 if [[ -n "${TOP_K_ARG}" ]]; then
   REVIEW_CMD+=(--top-k "${TOP_K_ARG}")
 fi
+if [[ ${#CUTOFF_SPLIT_ARG[@]} -gt 0 ]]; then
+  REVIEW_CMD+=("${CUTOFF_SPLIT_ARG[@]}")
+fi
 "${REVIEW_CMD[@]}"
 
 echo "[done] output=${OUTPUT_PATH}"
@@ -264,7 +278,8 @@ if [[ "${ENABLE_FULLTEXT_REVIEW}" == "1" ]]; then
     --output "${FULLTEXT_OUTPUT_PATH}" \
     --fulltext-review-mode "${FULLTEXT_REVIEW_MODE}" \
     --fulltext-inline-head-chars "${FULLTEXT_INLINE_HEAD_CHARS}" \
-    --fulltext-inline-tail-chars "${FULLTEXT_INLINE_TAIL_CHARS}"
+    --fulltext-inline-tail-chars "${FULLTEXT_INLINE_TAIL_CHARS}" \
+    "${CUTOFF_SPLIT_ARG[@]}"
 
   if [[ -n "${RUN_TAG:-}" ]]; then
     TAGGED_FULLTEXT_OUTPUT_PATH="${OUTPUT_DIR}/latte_fulltext_review_results.${RUN_TAG}.json"

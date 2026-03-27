@@ -11,13 +11,13 @@ Current active score authority is the stage-split criteria migration metrics:
 
 Current metrics:
 
-- Stage 1 F1: `0.7407`
-- Combined F1: `0.7692`
+- Stage 1 F1: `0.8788`
+- Combined F1: `0.9062`
 
 ## Cutoff-first policy
 
 - Mandatory pre-review cutoff: `cutoff_jsons/2511.13936.json`
-- Cutoff-excluded candidates: `37`
+- Cutoff-excluded candidates: `11`
 - Cutoff-failed rows are now forced to `exclude (cutoff_time_window)` before reviewer routing is treated as authoritative.
 
 ## Provenance

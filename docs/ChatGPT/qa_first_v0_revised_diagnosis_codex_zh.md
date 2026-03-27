@@ -94,13 +94,13 @@
 
 | Arm          |   Stage1 F1 |   Combined F1 |   Stage1 Precision |   Stage1 Recall |   Combined Precision |   Combined Recall |   Stage2 selected |
 |:-------------|------------:|--------------:|-------------------:|----------------:|---------------------:|------------------:|------------------:|
-| baseline     |      0.7407 |        0.7692 |             0.8333 |          0.6667 |               0.9091 |            0.6667 |                37 |
+| baseline     |      0.8788 |        0.9062 |             0.8056 |          0.9667 |               0.8529 |            0.9667 |                36 |
 | qa-only      |      0.8519 |        0.8302 |             0.9583 |          0.7667 |               0.9565 |            0.7333 |                24 |
 | qa+synthesis |      0.8727 |        0.8519 |             0.9600 |          0.8000 |               0.9583 |            0.7667 |                25 |
 
 解讀：  
 - `2511` 兩個 arm 的 precision 都很高，但 recall 明顯崩掉。 [M]
-- baseline Stage 1 recall `0.6667`，`qa-only` 掉到 `0.7667`，`qa+synthesis` 也只有 `0.8000`。 [M]
+- baseline Stage 1 recall 已是 `0.9667`，`qa-only` 掉到 `0.7667`，`qa+synthesis` 也只有 `0.8000`。 [M]
 - baseline Stage 2 selected `37`，`qa-only` 剩 `24`，`qa+synthesis` 也只有 `25`。 [M]
 - 這是**過早排掉 TP**，不是 FP 太多。 [M]
 
@@ -363,7 +363,7 @@ v0 evaluator 就很容易把它壓成 `1` / `2`，而不是 `3 -> SeniorLead -> 
 3. 所以 `qa+synthesis` 的淨效果是：
    - 比 `qa-only` **少一點過度保守**
    - 但又被 binding bug 拉回去  
-   最終只做到 `0.8302 -> 0.8519`，仍低於 baseline `0.7692`。 [M]
+   最終只做到 `0.8302 -> 0.8519`，在 cutoff 修正後更明顯低於 baseline `0.9062`。 [M]
 
 ## 7. QA-only vs QA+synthesis：修正版判斷
 

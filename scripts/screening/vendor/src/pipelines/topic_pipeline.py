@@ -23,7 +23,7 @@ import time
 import types
 import unicodedata
 import xml.etree.ElementTree as ET
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date, datetime, timedelta, timezone
 from difflib import SequenceMatcher
 from importlib import util as importlib_util
@@ -41,6 +41,7 @@ from scripts.screening.cutoff_time_filter import (
     TimePolicy as RepoTimePolicy,
     apply_cutoff_to_results as repo_apply_cutoff_to_results,
     cutoff_json_path as repo_cutoff_json_path,
+    evaluate_record as repo_evaluate_cutoff_record,
     load_time_policy as repo_load_time_policy,
 )
 
@@ -200,6 +201,8 @@ def _normalize_review_metadata(entry: Dict[str, object]) -> Dict[str, object]:
         metadata.setdefault("arxiv_id", source_metadata.get("id") or source_metadata.get("arxiv_id"))
         metadata.setdefault("source_id", source_metadata.get("id"))
         metadata.setdefault("doi", source_metadata.get("doi"))
+        metadata.setdefault("comment", source_metadata.get("comment"))
+        metadata.setdefault("journal_ref", source_metadata.get("journal_ref"))
 
     metadata.setdefault("title", str(entry.get("title") or ""))
     metadata.setdefault("summary", entry.get("summary"))
@@ -213,6 +216,10 @@ def _normalize_review_metadata(entry: Dict[str, object]) -> Dict[str, object]:
     metadata.setdefault("year", entry.get("publication_year"))
     metadata.setdefault("publication_year", entry.get("publication_year"))
     metadata.setdefault("arxiv_id", entry.get("arxiv_id"))
+    metadata.setdefault("source", entry.get("source"))
+    metadata.setdefault("source_id", entry.get("source_id"))
+    metadata.setdefault("doi", entry.get("doi"))
+    metadata.setdefault("source_metadata", entry.get("source_metadata"))
     metadata.setdefault("key", entry.get("key"))
 
     return metadata
@@ -4597,6 +4604,7 @@ def _load_repo_cutoff_policy(
     workspace: TopicWorkspace,
     metadata_path: Optional[Path] = None,
     base_review_results_path: Optional[Path] = None,
+    preprint_split_submitted_date: bool = False,
 ) -> Tuple[str, Dict[str, object], RepoTimePolicy]:
     """Load canonical cutoff policy from `cutoff_jsons/<paper_id>.json`."""
 
@@ -4615,6 +4623,8 @@ def _load_repo_cutoff_policy(
         )
 
     payload, policy = repo_load_time_policy(cutoff_path)
+    if preprint_split_submitted_date:
+        policy = replace(policy, preprint_split_submitted_date=True)
     payload = dict(payload)
     payload["_cutoff_json_path"] = str(cutoff_path.relative_to(REPO_ROOT))
     return paper_id, payload, policy
@@ -4679,6 +4689,18 @@ def _extract_verdict_label(value: Any) -> str:
     return match.group(1) if match else ""
 
 
+def _review_metadata_record_key(entry: Dict[str, object]) -> str:
+    metadata = _normalize_review_metadata(entry)
+    return str(
+        metadata.get("key")
+        or entry.get("key")
+        or metadata.get("arxiv_id")
+        or entry.get("arxiv_id")
+        or extract_arxiv_id_from_record(entry)
+        or ""
+    ).strip()
+
+
 def _load_review_metadata_records(path: Path) -> List[Dict[str, object]]:
     if not path.exists():
         raise FileNotFoundError(f"找不到 metadata 檔案：{path}")
@@ -4707,20 +4729,54 @@ def _load_review_metadata_records(path: Path) -> List[Dict[str, object]]:
     raise ValueError(f"Unsupported metadata payload format: {path}")
 
 
+def _repo_full_metadata_path_for_paper(paper_id: str) -> Path:
+    return REPO_ROOT / "refs" / paper_id / "metadata" / "title_abstracts_full_metadata.jsonl"
+
+
+def _load_repo_full_metadata_by_key(paper_id: str) -> Dict[str, Dict[str, object]]:
+    full_metadata_path = _repo_full_metadata_path_for_paper(paper_id)
+    if not full_metadata_path.exists():
+        raise FileNotFoundError(f"找不到 repo full metadata：{full_metadata_path}")
+    rows = _load_review_metadata_records(full_metadata_path)
+    return {
+        key: row
+        for row in rows
+        if isinstance(row, dict)
+        for key in [_review_metadata_record_key(row)]
+        if key
+    }
+
+
+def _merge_review_metadata_with_repo_full_metadata(
+    records: List[Dict[str, object]],
+    *,
+    paper_id: str,
+) -> List[Dict[str, object]]:
+    full_metadata_by_key = _load_repo_full_metadata_by_key(paper_id)
+    merged_rows: List[Dict[str, object]] = []
+    for entry in records:
+        if not isinstance(entry, dict):
+            continue
+        merged = dict(entry)
+        key = _review_metadata_record_key(merged)
+        full_row = full_metadata_by_key.get(key)
+        if isinstance(full_row, dict):
+            source_metadata = full_row.get("source_metadata")
+            if isinstance(source_metadata, dict):
+                merged["source_metadata"] = dict(source_metadata)
+            for field in ("source", "source_id", "match_status", "title"):
+                if field not in merged or merged.get(field) in (None, ""):
+                    merged[field] = full_row.get(field)
+        merged_rows.append(merged)
+    return merged_rows
+
+
 def _metadata_rows_by_key(records: List[Dict[str, object]]) -> Dict[str, Dict[str, object]]:
     rows: Dict[str, Dict[str, object]] = {}
     for entry in records:
         if not isinstance(entry, dict):
             continue
-        metadata = _normalize_review_metadata(entry)
-        key = str(
-            metadata.get("key")
-            or entry.get("key")
-            or metadata.get("arxiv_id")
-            or entry.get("arxiv_id")
-            or extract_arxiv_id_from_record(entry)
-            or ""
-        ).strip()
+        key = _review_metadata_record_key(entry)
         if not key:
             continue
         rows[key] = entry
@@ -4892,6 +4948,7 @@ def run_latte_review(
     junior_nano_reasoning_effort: Optional[str] = None,
     junior_mini_reasoning_effort: Optional[str] = None,
     senior_reasoning_effort: str = "medium",
+    repo_cutoff_preprint_split_submitted_date: bool = False,
 ) -> Dict[str, object]:
     """Run LatteReview's Title/Abstract workflow and write results JSON."""
 
@@ -4920,9 +4977,10 @@ def run_latte_review(
         criteria_path=criteria_path,
     )
     criteria_payload = _load_criteria_payload_from_path(resolved_stage1_criteria_path)
-    _, repo_cutoff_payload, repo_cutoff_policy = _load_repo_cutoff_policy(
+    paper_id, repo_cutoff_payload, repo_cutoff_policy = _load_repo_cutoff_policy(
         workspace=workspace,
         metadata_path=metadata_path,
+        preprint_split_submitted_date=repo_cutoff_preprint_split_submitted_date,
     )
     resolved_start = start_date
     if resolved_start is None and repo_cutoff_policy.start_date is not None:
@@ -4944,9 +5002,9 @@ def run_latte_review(
     if not exclusion_criteria:
         exclusion_criteria = "論文若與主題無關，或缺乏可判斷的英文題名/摘要/方法描述則排除。"
 
-    payload = _read_json(metadata_path)
-    if not isinstance(payload, list):
-        raise ValueError("arXiv metadata payload must be a list")
+    payload = _load_review_metadata_records(metadata_path)
+    if repo_cutoff_preprint_split_submitted_date:
+        payload = _merge_review_metadata_with_repo_full_metadata(payload, paper_id=paper_id)
 
     rows: List[Dict[str, object]] = []
     discarded: List[Dict[str, object]] = []
@@ -4958,6 +5016,11 @@ def run_latte_review(
     resolved_start_date = _parse_date_bound(resolved_start, label="--start-date") if resolved_start else None
     discard_after_date = resolved_end
     cutoff_date = _parse_date_bound(discard_after_date, label="discard_after_date") if discard_after_date else None
+    review_cutoff_policy = replace(
+        repo_cutoff_policy,
+        start_date=resolved_start_date,
+        end_date=cutoff_date,
+    )
 
     def _get_record_key(record_metadata: Dict[str, object], fallback_title: str, fallback_arxiv_id: str) -> str:
         key = record_metadata.get("key")
@@ -5001,18 +5064,14 @@ def run_latte_review(
             continue
         cleaned_title = " ".join(title.split())
         cleaned_abstract = " ".join(abstract.split()) if abstract else ""
-        published_date = _extract_publication_date(metadata)
+        cutoff_record = dict(entry)
+        cutoff_record.update(metadata)
+        cutoff_decision = repo_evaluate_cutoff_record(cutoff_record, review_cutoff_policy)
         discard_reason: Optional[str] = None
         if normalized_discard_title and _normalize_title_for_match(cleaned_title) == normalized_discard_title:
             discard_reason = "title_matches_exclude_title"
-        elif resolved_start_date and published_date is None:
-            discard_reason = "missing_publication_date_for_start_cutoff"
-        elif resolved_start_date and published_date and published_date < resolved_start_date:
-            discard_reason = f"published_before_start_cutoff:{published_date.isoformat()}"
-        elif cutoff_date and published_date is None:
-            discard_reason = "missing_publication_date_for_cutoff"
-        elif cutoff_date and published_date and published_date >= cutoff_date:
-            discard_reason = f"published_on_or_after_cutoff:{published_date.isoformat()}"
+        elif not bool(cutoff_decision.get("cutoff_pass")):
+            discard_reason = f"cutoff_time_window:{cutoff_decision.get('cutoff_status')}"
         if discard_reason:
             discarded.append(
                 {
@@ -5214,6 +5273,7 @@ def run_latte_fulltext_review(
     junior_nano_reasoning_effort: Optional[str] = None,
     junior_mini_reasoning_effort: Optional[str] = None,
     senior_reasoning_effort: str = "medium",
+    repo_cutoff_preprint_split_submitted_date: bool = False,
 ) -> Dict[str, object]:
     """Run LatteReview full-text workflow and write results JSON."""
 
@@ -5239,7 +5299,6 @@ def run_latte_fulltext_review(
 
     metadata_path = Path(arxiv_metadata_path) if arxiv_metadata_path else workspace.arxiv_metadata_path
     metadata_records = _load_review_metadata_records(metadata_path)
-    metadata_by_key = _metadata_rows_by_key(metadata_records)
 
     base_results = Path(base_review_results_path) if base_review_results_path else workspace.review_results_path
     if not base_results.exists():
@@ -5256,11 +5315,15 @@ def run_latte_fulltext_review(
         base_review_results_path=base_results,
     )
     criteria_payload = _load_criteria_payload_from_path(resolved_stage2_criteria_path)
-    _, repo_cutoff_payload, repo_cutoff_policy = _load_repo_cutoff_policy(
+    paper_id, repo_cutoff_payload, repo_cutoff_policy = _load_repo_cutoff_policy(
         workspace=workspace,
         metadata_path=metadata_path,
         base_review_results_path=base_results,
+        preprint_split_submitted_date=repo_cutoff_preprint_split_submitted_date,
     )
+    if repo_cutoff_preprint_split_submitted_date:
+        metadata_records = _merge_review_metadata_with_repo_full_metadata(metadata_records, paper_id=paper_id)
+    metadata_by_key = _metadata_rows_by_key(metadata_records)
 
     inclusion_criteria, exclusion_criteria = _criteria_payload_to_strings(criteria_payload)
     criteria_context = _criteria_context_from_payload(criteria_payload)

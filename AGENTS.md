@@ -163,10 +163,10 @@ Note: there is not yet a same-level stage-split migration rerun for `2601`. Use 
 
 | Paper | Current criteria source | Current score authority | Stage 1 F1 | Combined F1 | Status |
 | --- | --- | --- | ---: | ---: | --- |
-| `2307.05527` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9113` | `0.9057` | stable reference |
+| `2307.05527` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9621` | `0.9621` | stable reference |
 | `2409.13738` | `criteria_stage1/` + `criteria_stage2/` | `stage_split_criteria_migration` | `0.7500` | `0.8235` | current active |
-| `2511.13936` | `criteria_stage1/` + `criteria_stage2/` | `stage_split_criteria_migration` | `0.7407` | `0.7692` | current active |
-| `2601.19926` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9761` | `0.9700` | stable reference |
+| `2511.13936` | `criteria_stage1/` + `criteria_stage2/` | `stage_split_criteria_migration` | `0.8788` | `0.9062` | current active |
+| `2601.19926` | `criteria_stage1/` + `criteria_stage2/` | latest fully benchmarked `senior_no_marker` | `0.9792` | `0.9731` | stable reference |
 
 Important:
 

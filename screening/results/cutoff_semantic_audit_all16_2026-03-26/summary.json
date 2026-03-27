@@ -1,0 +1,4548 @@
+{
+  "analysis_name": "cutoff_semantic_audit_all16",
+  "generated_at": "2026-03-26T11:32:24.053922+00:00",
+  "repo_root": "/Users/xjp/Desktop/NLP_PRISMA_Reviews",
+  "output_dir": "screening/results/cutoff_semantic_audit_all16_2026-03-26",
+  "paper_order": [
+    "2303.13365",
+    "2306.12834",
+    "2307.05527",
+    "2310.07264",
+    "2312.05172",
+    "2401.09244",
+    "2405.15604",
+    "2407.17844",
+    "2409.13738",
+    "2503.04799",
+    "2507.07741",
+    "2507.18910",
+    "2509.11446",
+    "2510.01145",
+    "2511.13936",
+    "2601.19926"
+  ],
+  "assumptions": {
+    "uses_current_cutoff_runtime": true,
+    "uses_active_cutoff_jsons": true,
+    "pdf_extraction_backend": "pdftotext -layout",
+    "gold_positive_label": "is_evidence_base=true",
+    "current_parser_supports_year_month": true,
+    "historical_memos_do_not_override_current_runtime": true
+  },
+  "availability_summary": {
+    "paper_count": 16,
+    "cutoff_json_available_count": 16,
+    "pdf_available_count": 16,
+    "metadata_available_count": 14,
+    "annotated_gold_count": 5,
+    "metadata_missing_papers": [
+      "2303.13365",
+      "2407.17844"
+    ],
+    "annotated_gold_papers": [
+      "2307.05527",
+      "2409.13738",
+      "2509.11446",
+      "2511.13936",
+      "2601.19926"
+    ]
+  },
+  "paper_groups": {
+    "gold_backed_papers": [
+      "2307.05527",
+      "2409.13738",
+      "2509.11446",
+      "2511.13936",
+      "2601.19926"
+    ],
+    "no_gold_papers": [
+      "2303.13365",
+      "2306.12834",
+      "2310.07264",
+      "2312.05172",
+      "2401.09244",
+      "2405.15604",
+      "2407.17844",
+      "2503.04799",
+      "2507.07741",
+      "2507.18910",
+      "2510.01145"
+    ]
+  },
+  "aggregate_lists": {
+    "2511_like_candidate_papers": [
+      "2306.12834",
+      "2401.09244",
+      "2409.13738"
+    ],
+    "parser_only_issue_papers": [],
+    "cutoff_derivation_issue_papers": [
+      "2307.05527",
+      "2310.07264",
+      "2509.11446",
+      "2511.13936"
+    ],
+    "retrieval_vs_screening_confusion_papers": [
+      "2306.12834",
+      "2401.09244",
+      "2409.13738"
+    ],
+    "needs_manual_review_papers": [
+      "2407.17844"
+    ],
+    "scope_mismatch_papers": [
+      "2306.12834",
+      "2307.05527",
+      "2310.07264",
+      "2401.09244",
+      "2409.13738",
+      "2509.11446",
+      "2511.13936"
+    ],
+    "high_risk_gold_cutoff_papers": [
+      "2307.05527"
+    ],
+    "worth_pushing_to_github": [
+      "2306.12834",
+      "2307.05527",
+      "2310.07264",
+      "2401.09244",
+      "2407.17844",
+      "2409.13738",
+      "2509.11446",
+      "2511.13936"
+    ],
+    "not_worth_pushing_now": [
+      "2303.13365",
+      "2312.05172",
+      "2405.15604",
+      "2503.04799",
+      "2507.07741",
+      "2507.18910",
+      "2510.01145",
+      "2601.19926"
+    ],
+    "changed_vs_cutoff_only_audit_2026_03_26": [
+      "2307.05527",
+      "2409.13738",
+      "2511.13936",
+      "2601.19926"
+    ]
+  },
+  "papers": {
+    "2303.13365": {
+      "paper_id": "2303.13365",
+      "availability": {
+        "paper_id": "2303.13365",
+        "cutoff_json": true,
+        "metadata": false,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2303.13365.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2012-01-01",
+        "start_inclusive": true,
+        "end_date": "2022-03-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage2_i1"
+        ],
+        "binding_clause_ids": [
+          "stage2_i1"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_window",
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2012-01-01",
+          "start_inclusive": true,
+          "end_date": "2022-03-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i1"
+          ]
+        },
+        "normalization_notes": [
+          "This paper has a direct Stage 2 screening-time window; no fallback is needed.",
+          "Because the only projectable clause is Stage 2 I1, the operational time_policy is identical to the source-faithful screening policy."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage2_i1",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I1",
+            "text": "Published between January 2012 and March 2022.",
+            "source": "criteria_mds/2303.13365.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": false,
+        "metadata_path": "refs/2303.13365/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 0,
+        "metadata_unique_keys": 0,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {},
+        "cutoff_status_samples": {}
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2303.13365/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2303.13365/2303.13365.pdf",
+        "page_count": 12,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": false,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage2_i1"
+          ],
+          "projected_clause_ids": [
+            "stage2_i1"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": true,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 1,
+            "line_index": 29,
+            "score": 10,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "future research directions. To achieve this, we conducted a systematic literature review to outline the current state-of-the-art of NLP and ML techniques in RF by selecting 257 papers from common used libraries. The search result is filtered by defining inclusion and exclusion criteria and 47 relevant studies between 2012 and 2022 are selected. We found that heuristic NLP approaches are the most common NLP techniques used for automatic RF, primary operating on structured and semi-structured data. This study also revealed that Deep",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 4,
+            "line_index": 46,
+            "score": 10,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "articles are investigated by third author, who is an expert in NLP domain and was not involved the distribution of the resulting papers in each year. by the search process by considering the inclusion As can be seen in this figure, in 2021 the domain and exclusion criteria. A satisfactory result is pre- gained more interest and highest number of publi- sented from pilot study, which proves the suitabil- cation were published. Additionally, Figure 2 indi-",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 8,
+            "line_index": 24,
+            "score": 3,
+            "cue_types": [
+              "manual_scope"
+            ],
+            "quote": "7 Future Directions REFERENCES In the following we discuss directions to complete Datasets of 162 requirements and the corresponding the current actions and further future work on RF. rcm-extractor output. https://github.com/",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 2,
+            "line_index": 4,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "Three research questions were formulated for our lected articles that generates UML diagram by ap- Systematic Literature Review (SLR). By answer- plying NLP techniques are investigated in (Da- ing these research questions, the state of the art of wood et al., 2017; Abdelnabi et al., 2021). These RF is evaluated. We identify current challenges works emphasize on immaturity of research area of community and provide guidelines to address as most of the current processes are not automated.",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 23,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "cluding Supervised learning, Unsupervised learn- coverage of existing publication most major pub- ing and Reinforcement learning (Cepukenas et al., lishers in Software Engineering are investigated. 2015; Li et al., 2020). ML is used to solve var- The following research libraries are used to find ious real world issues. Applying ML techniques the related studies for RF. improves different RE tasks such as classification • ACM Digital Library (http://dl.acm.org)",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": null
+    },
+    "2306.12834": {
+      "paper_id": "2306.12834",
+      "availability": {
+        "paper_id": "2306.12834",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2306.12834.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2016-01-01",
+        "start_inclusive": true,
+        "end_date": "2022-12-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r1"
+        ],
+        "binding_clause_ids": [
+          "stage1_r1"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": false,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": []
+        },
+        "normalization_notes": [
+          "The paper does not state a publication-time screening rule in Stage 2.",
+          "Under the proposed cutoff_jsons semantics, the Stage 1 retrieval period is still projected into time_policy because the program applies the intersection of projectable hard time clauses before later-stage review."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r1",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R1",
+            "text": "Search period: 2016–2022.",
+            "source": "criteria_mds/2306.12834.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2306.12834/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 263,
+        "metadata_unique_keys": 263,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "before_start": 40,
+          "passed": 223
+        },
+        "cutoff_status_samples": {
+          "before_start": [
+            {
+              "key": "SPASIC2014605",
+              "title": "Text mining of cancer-related information: Review of current status and future directions",
+              "published_date": "2014",
+              "published_date_iso": "2014-01-01"
+            },
+            {
+              "key": "adler2014more",
+              "title": "More than half of US hospitals have at least a basic EHR, but stage 2 criteria remain challenging for most",
+              "published_date": "2014",
+              "published_date_iso": "2014-01-01"
+            },
+            {
+              "key": "anderson2015monitoring",
+              "title": "Monitoring suicidal patients in primary care using electronic health records",
+              "published_date": "2015-01-01",
+              "published_date_iso": "2015-01-01"
+            }
+          ],
+          "passed": [
+            {
+              "key": "Augmented2022",
+              "title": "Augmented Intelligence in Healthcare: A Pragmatic and Integrated Analysis. Studies in Computational Intelligence",
+              "published_date": "2022",
+              "published_date_iso": "2022-01-01"
+            },
+            {
+              "key": "Building2019",
+              "title": "Building Machine Learning and Deep Learning Models on Google Cloud Platform",
+              "published_date": "2019",
+              "published_date_iso": "2019-01-01"
+            },
+            {
+              "key": "Cairns2021Building",
+              "title": "Building on Antimicrobial Stewardship Programs Through Integration with Electronic Medical Records: The Australian Experience",
+              "published_date": "2021-01-11",
+              "published_date_iso": "2021-01-11"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2016-01-01",
+          "start_inclusive": true,
+          "end_date": "2022-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r1"
+          ],
+          "binding_clause_ids": [
+            "stage1_r1"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "The paper does not state a publication-time screening rule in Stage 2.",
+          "Under the proposed cutoff_jsons semantics, the Stage 1 retrieval period is still projected into time_policy because the program applies the intersection of projectable hard time clauses before later-stage review."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r1",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R1",
+            "text": "Search period: 2016–2022.",
+            "source": "criteria_mds/2306.12834.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2306.12834/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2306.12834/2306.12834.pdf",
+        "page_count": 58,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": false,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r1"
+          ],
+          "projected_clause_ids": [
+            "stage1_r1"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": true,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 6,
+            "line_index": 24,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "cutoff_hint"
+            ],
+            "quote": "also have been focused on analysing and identifying clinical narratives through ML or DL methods. B) Exclusion Criteria: Research works that were published as a preprint, with preliminary work or without peer review, were excluded. Editorials and review papers were also on the exclusion list. After the initial screening, the",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 6,
+            "line_index": 36,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "manual_scope"
+            ],
+            "quote": "7 from BioMed Central, 8 from Wiley Online Library. Of these, 119 papers were excluded based on our exclusion criteria. An additional 101 papers were identified from the reference lists of retrieved articles. Four of these titles were duplicates and thus excluded, 1 article was not available for review, and ten did not match our criteria. The remaining 127 papers were retrieved for full-text",
+            "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+          },
+          {
+            "page_number": 18,
+            "line_index": 22,
+            "score": 3,
+            "cue_types": [
+              "manual_scope"
+            ],
+            "quote": "aid patients with severe illnesses in articulating what they value most and wish to occur with their medical treatment. Medical professionals can use this in- formation to create a care plan based on the patient’s values and preferences. In light of the context, Lee et al. [66] developed an automated method for identifying goals of goal-of-care discussion using NLP approaches. In brief, a",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 38,
+            "line_index": 8,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "citation",
+              "cutoff_hint"
+            ],
+            "quote": "inclusion and exclusion criteria for downloading and organising the papers. Then, Elias Hossain, under the instructions of Rajib Rana, conducted a litera- ture search and completed a full-text review, finding gaps, challenges, citations, data analysis, illustrations, and future directions. The study was reviewed and edited by Rajib Rana, Niall Higgins, Jeffrey Soar, Prabal Datta Barua, Anthony",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 6,
+            "line_index": 2,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "2 Methodology 2.1 Literature search and selection strategy We searched eleven electronic databases from 2016 to 2022. Significant contri- butions have been made to NLP research in the last six years [30]. This search was done through well-established outlets hosting a wide range of high-quality",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "possible_retrieval_vs_screening_confusion",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": true,
+          "scope_mismatch_flag": true,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [
+          "Current cutoff 主要來自 Stage 1 retrieval/search period，PDF 未顯示等價的 Stage 2 eligibility time rule。",
+          "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": null
+    },
+    "2307.05527": {
+      "paper_id": "2307.05527",
+      "availability": {
+        "paper_id": "2307.05527",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": true,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2307.05527.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2018-02-01",
+        "start_inclusive": true,
+        "end_date": "2023-02-01",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r2",
+          "stage2_i5"
+        ],
+        "binding_clause_ids": [
+          "stage1_r2",
+          "stage2_i5"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_window",
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2018-02-01",
+          "start_inclusive": true,
+          "end_date": "2023-02-01",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i5"
+          ]
+        },
+        "normalization_notes": [
+          "This file already encoded the correct window numerically, but the revised schema now records both the Stage 1 and Stage 2 clauses explicitly.",
+          "Because the retrieval and screening windows are identical, the operational intersection is unchanged."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r2",
+            "section": "Stage 1 Retrieval / Search-space definition",
+            "criterion_id": "R2",
+            "text": "Temporal window (search and eligibility window): 2018-02-01 to 2023-02-01.",
+            "source": "criteria_corrected_3papers/2307.05527.md"
+          },
+          {
+            "clause_id": "stage2_i5",
+            "section": "Stage 2 Eligibility / Screening Criteria",
+            "criterion_id": "I5",
+            "text": "Temporal window: submitted/published within 2018-02-01 to 2023-02-01.",
+            "source": "criteria_corrected_3papers/2307.05527.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 222,
+        "metadata_unique_keys": 222,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "before_start": 29,
+          "passed": 193
+        },
+        "cutoff_status_samples": {
+          "before_start": [
+            {
+              "key": "acemoglu2018artificial",
+              "title": "Artificial Intelligence, Automation and Work",
+              "published_date": "2018",
+              "published_date_iso": "2018-01-01"
+            },
+            {
+              "key": "arik_neural_2018",
+              "title": "Neural Voice Cloning with a Few Samples",
+              "published_date": "2018",
+              "published_date_iso": "2018-01-01"
+            },
+            {
+              "key": "bando_statistical_2018",
+              "title": "Statistical Speech Enhancement Based on Probabilistic Integration of Variational Autoencoder and Non-Negative Matrix Factorization",
+              "published_date": "2017",
+              "published_date_iso": "2017-01-01"
+            }
+          ],
+          "passed": [
+            {
+              "key": "Fried2019talkinghead",
+              "title": "Text-based editing of talking-head video",
+              "published_date": "2019",
+              "published_date_iso": "2019-01-01"
+            },
+            {
+              "key": "Jonell2020lets",
+              "title": "Let's Face It: Probabilistic Multi-modal Interlocutor-aware Generation of Facial Gestures in Dyadic Settings",
+              "published_date": "2020",
+              "published_date_iso": "2020-01-01"
+            },
+            {
+              "key": "Li2021Robust",
+              "title": "Robust Detection of Machine-induced Audio Attacks in Intelligent Audio Systems with Microphone Array",
+              "published_date": "2021",
+              "published_date_iso": "2021-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2018-02-01",
+          "start_inclusive": true,
+          "end_date": "2023-02-01",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r2",
+            "stage2_i5"
+          ],
+          "binding_clause_ids": [
+            "stage1_r2",
+            "stage2_i5"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "This file already encoded the correct window numerically, but the revised schema now records both the Stage 1 and Stage 2 clauses explicitly.",
+          "Because the retrieval and screening windows are identical, the operational intersection is unchanged."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r2",
+            "section": "Stage 1 Retrieval / Search-space definition",
+            "criterion_id": "R2",
+            "text": "Temporal window (search and eligibility window): 2018-02-01 to 2023-02-01.",
+            "source": "criteria_corrected_3papers/2307.05527.md"
+          },
+          {
+            "clause_id": "stage2_i5",
+            "section": "Stage 2 Eligibility / Screening Criteria",
+            "criterion_id": "I5",
+            "text": "Temporal window: submitted/published within 2018-02-01 to 2023-02-01.",
+            "source": "criteria_corrected_3papers/2307.05527.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": true,
+        "gold_path": "refs/2307.05527/metadata/title_abstracts_metadata-annotated.jsonl",
+        "gold_input_rows": 222,
+        "gold_duplicate_keys": {},
+        "key_consistency": {
+          "missing_in_gold_count": 0,
+          "missing_in_gold_keys": [],
+          "missing_in_metadata_count": 0,
+          "missing_in_metadata_keys": [],
+          "common_key_count": 222,
+          "verified_no_missing_keys_after_dedup": true
+        },
+        "total_candidates": 222,
+        "gold_positive_count": 171,
+        "gold_negative_count": 51,
+        "confusion_matrix": {
+          "tp": 155,
+          "fp": 38,
+          "tn": 13,
+          "fn": 16
+        },
+        "metrics_if_cutoff_pass_means_include": {
+          "accuracy": 0.7568,
+          "precision": 0.8031,
+          "recall": 0.9064,
+          "f1": 0.8516
+        },
+        "gold_positive_cutoffed": 16,
+        "gold_positive_cutoffed_keys": [
+          "arik_neural_2018",
+          "bando_statistical_2018",
+          "bitton_modulated_2018",
+          "brunner_symbolic_2018",
+          "chen_musicality-novelty_2018",
+          "dieleman_challenge_2018",
+          "gu_multi-task_2018",
+          "hsu_hierarchical_2018",
+          "juvela_speaker-independent_2018",
+          "kameoka_convs2s-vc_2020",
+          "koh_rethinking_2018",
+          "lee_conditional_2018",
+          "wang_neural_2019-1",
+          "wilkinson_generative_2019",
+          "yoshimura_mel-cepstrum-based_2018",
+          "zhou2018voice"
+        ],
+        "correct_via_cutoff_exclude": 13,
+        "correct_via_cutoff_pass": 155,
+        "high_risk_gold_cutoff": true
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2307.05527/2307.05527.pdf",
+        "page_count": 16,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": false,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": true
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r2",
+            "stage2_i5"
+          ],
+          "projected_clause_ids": [
+            "stage1_r2",
+            "stage2_i5"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": true,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": true,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 3,
+            "line_index": 65,
+            "score": 10,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "does not include extended abstracts or book chapters, nor any other 1 Initially, the search was targeted around “deep generative audio models”, but it became form of writing outside of full research papers. The main text and clear quite quickly that the “deep” part of the term was too narrow and not widely included appendices were analyzed, but no supplemental materials adopted until recently (this search only resulted in 242 articles).",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 34,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "cutoff_hint"
+            ],
+            "quote": "(in Section 3.1.1), a keyword search was iteratively performed until positive broader impacts beyond their scientific scope. the desired pool of research was included by the cast net. After many iterations of specific keywords such as “music”, “speech”, 2.3 Research Questions and “sound”, the author eventually expanded the search to sim-",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 11,
+            "line_index": 10,
+            "score": 10,
+            "cue_types": [
+              "eligibility",
+              "manual_scope",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "cross-domain singing voice conversion. arXiv preprint arXiv:2008.02830 (2020). [50] Aditya Ramesh, Prafulla Dhariwal, Alex Nichol, Casey Chu, and Mark Chen. 2022. Hierarchical text-conditional image generation with clip latents. arXiv A REFERENCES FOR WORKS INCLUDED IN preprint arXiv:2204.06125 (2022). [51] Melanie R Roberts. 2009. Realizing societal benefit from academic research: SYSTEMATIC LITERATURE REVIEW",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 11,
+            "line_index": 14,
+            "score": 7,
+            "cue_types": [
+              "citation",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "[51] Melanie R Roberts. 2009. Realizing societal benefit from academic research: SYSTEMATIC LITERATURE REVIEW Analysis of the National Science Foundation’s broader impacts criterion. Social Epistemology 23, 3-4 (2009), 199–219. This appendix includes the full citation for each of the 171 works [52] Negar Rostamzadeh, Emily Denton, and Linda Petrini. 2021. Ethics and creativity included in the full text analysis in the systematic literature review. in computer vision. arXiv preprint arXiv:2112.03111 (2021).",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 46,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "cutoff_hint"
+            ],
+            "quote": "in 444 potential articles meeting the criteria. After examining the the field examined? articles included in this search, it quickly became clear that a large portion of the state-of-the-art research papers were either published 3 DATA AND METHODOLOGY outside of this domain at conferences such as Neural Information",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          }
+        ],
+        "semantic_risk_verdict": "possible_cutoff_derivation_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": true,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": true,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [
+          "PDF/criteria 使用 submitted/published 語義，但 current cutoff 只投到 published_date。",
+          "Gold-backed audit 顯示 active cutoff 已經砍到 gold-positive。",
+          "Gold-positive 被 cutoff 且 paper 有 secondary/manual inclusion path，表示 cutoff universe 和實際 review scope 可能脫節。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": {
+        "old_summary_path": "screening/results/cutoff_only_audit_2026-03-26/summary.json",
+        "overlap_paper_id": "2307.05527",
+        "differences": {
+          "cutoff_status_counts": {
+            "old": {
+              "before_start": 29,
+              "passed": 192,
+              "unparseable_published_date": 1
+            },
+            "new": {
+              "before_start": 29,
+              "passed": 193
+            }
+          },
+          "confusion_matrix": {
+            "old": {
+              "tp": 155,
+              "fp": 37,
+              "tn": 14,
+              "fn": 16
+            },
+            "new": {
+              "tp": 155,
+              "fp": 38,
+              "tn": 13,
+              "fn": 16
+            }
+          }
+        },
+        "status": "changed"
+      }
+    },
+    "2310.07264": {
+      "paper_id": "2310.07264",
+      "availability": {
+        "paper_id": "2310.07264",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2310.07264.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": null,
+        "start_inclusive": true,
+        "end_date": "2023-10-11",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "operational_fallback_sr_publication_date"
+        ],
+        "binding_clause_ids": [
+          "operational_fallback_sr_publication_date"
+        ],
+        "fallback_applied": true
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": false,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": []
+        },
+        "normalization_notes": [
+          "There is no extracted Stage 1 or Stage 2 publication-time rule in the repo criteria file.",
+          "The fallback remains necessary if the program requires a deterministic upper bound for early time-based prefiltering."
+        ],
+        "evidence": [
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "No explicit publication-time restriction in criteria. Applied the review paper's own publication date as the upper bound: 2023-10-11T07:40:46Z in refs/2310.07264/metadata.json.",
+            "source": "cutoff_jsons/2310.07264.json"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2310.07264/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 107,
+        "metadata_unique_keys": 107,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "after_end": 1,
+          "passed": 106
+        },
+        "cutoff_status_samples": {
+          "after_end": [
+            {
+              "key": "fernandez2020attention",
+              "title": "An attention Long Short-Term Memory based system for automatic classification of speech intelligibility",
+              "published_date": "2024-02-05",
+              "published_date_iso": "2024-02-05"
+            }
+          ],
+          "passed": [
+            {
+              "key": "accardo1998algorithm",
+              "title": "An algorithm for the automatic differentiation between the speech of normals and patients with Friedreich's ataxia based on the short-time fractal dimension",
+              "published_date": "1998",
+              "published_date_iso": "1998-01-01"
+            },
+            {
+              "key": "ackermann1995kinematic",
+              "title": "Kinematic analysis of lower lip movements in ataxic dysarthria",
+              "published_date": "1995-12-01",
+              "published_date_iso": "1995-12-01"
+            },
+            {
+              "key": "akkocc2012empirical",
+              "title": "An empirical comparison of conventional techniques, neural networks and the three stage hybrid Adaptive Neuro Fuzzy Inference System (ANFIS) model for credit scoring analysis: The case of Turkish credit card data",
+              "published_date": "2012",
+              "published_date_iso": "2012-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": "2023-10-11",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "binding_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "fallback_applied": true
+        },
+        "normalization_notes": [
+          "There is no extracted Stage 1 or Stage 2 publication-time rule in the repo criteria file.",
+          "The fallback remains necessary if the program requires a deterministic upper bound for early time-based prefiltering."
+        ],
+        "evidence": [
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "No explicit publication-time restriction in criteria. Applied the review paper's own publication date as the upper bound: 2023-10-11T07:40:46Z in refs/2310.07264/metadata.json.",
+            "source": "cutoff_jsons/2310.07264.json"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2310.07264/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2310.07264/2310.07264.pdf",
+        "page_count": 14,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": false,
+          "has_search_execution_date": false,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "projected_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": true,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": true,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 1,
+            "line_index": 28,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "eligibility"
+            ],
+            "quote": "techniques for this purpose. We will systematically review the literature on the automatic clas- sification of dysarthria severity levels. Sources of information will include electronic databases and grey literature. Selection criteria will be established based on relevance to the research questions. Data extraction will include methodologies used, the type of features extracted for classification, and AI techniques employed. The findings of this systematic review will",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 11,
+            "line_index": 36,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "recognition and evaluated on the TORGO dataset, which This publication was made by International Research contains diverse severity samples. Still, there is no spe- Collaboration Co-Fund (IRCC) Cycle 06 (2023-2024) cific classification model based on these features. No. IRCC-2023-223 from the Qatar National Research Microprosody Analysis: Investigate features that Fund (a member of the Qatar Foundation). The state- capture fine-grained temporal variations within short ments made herein are solely the responsibility of the",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 12,
+            "line_index": 24,
+            "score": 7,
+            "cue_types": [
+              "manual_scope",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "[13] Y.-J. Park, J.-M. Lee, Effect of acupuncture intervention and [35] L. Xu, J. Liss, V. Berisha, Dysarthria detection based on a manipulation types on poststroke dysarthria: a systematic re- deep learning model with a clinically-interpretable layer, JASA view and meta-analysis, Evidence-Based Complementary and Express Letters 3 (2023) 015201. Alternative Medicine 2020 (2020). [36] R. D. Kent, G. Weismer, J. F. Kent, H. K. Vorperian, J. R. Duffy, [14] A. K. Shanmugam, R. Marimuthu, A critical analysis and Acoustic studies of dysarthric speech: Methods, progress, and",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 7,
+            "line_index": 55,
+            "score": 3,
+            "cue_types": [
+              "citation"
+            ],
+            "quote": "features including( ZCR (Zero Crossing Rate), Spectral to-Noise Ratio, Harmonic Energy, Harmonic Energy centroid, spectral roll-off) and Mel spectrogram using of Residue, Harmonic-to-Signal Ratio, and Glottal-to- KNN, and SVM classifiers and evaluated their work on Noise Excitation Ratio and reached 96%. In their work, Torgo with an accuracy of 95% using SVM for mel they discovered that Harmonic-related features could spectrogram. distinguish intelligibility levels and achieve the highest",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 12,
+            "line_index": 48,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "Berry, J. R. Green, “you say severe, i say mild”: Toward and language 80 (2002) 449–464. an empirical classification of dysarthria severity, Journal of [42] U. Ayvaz, H. Gürüler, F. Khan, N. Ahmed, T. Whangbo, Speech, Language, and Hearing Research 64 (2021) 4718–4735. A. Bobomirzaevich, Automatic speaker recognition using [20] M. R. McNeil, K. J. Ballard, J. R. Duffy, J. Wambaugh, P. van mel-frequency cepstral coefficients through machine learning, Lieshout, B. Maassen, H. Terband, Apraxia of speech theory, CMC-Computers Materials & Continua 71 (2022).",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "possible_cutoff_derivation_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": true,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": true,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [
+          "Active time_policy 依賴 operational fallback，而不是 paper-literal 的明確時間條款。",
+          "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": null
+    },
+    "2312.05172": {
+      "paper_id": "2312.05172",
+      "availability": {
+        "paper_id": "2312.05172",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2312.05172.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2000-01-01",
+        "start_inclusive": true,
+        "end_date": "2025-12-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage2_i1"
+        ],
+        "binding_clause_ids": [
+          "stage2_i1"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_window",
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2000-01-01",
+          "start_inclusive": true,
+          "end_date": "2025-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i1"
+          ]
+        },
+        "normalization_notes": [
+          "Only Stage 2 I1 can be projected to a global publication-date window.",
+          "The citation rule (E4) and per-year record caps (R13/R14) must be preserved as non-window time logic; they should not be silently dropped."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage2_i1",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I1",
+            "text": "Publication date between 2000 and 2025.",
+            "source": "criteria_mds/2312.05172.md"
+          },
+          {
+            "clause_id": "stage2_e4",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "E4",
+            "text": "For studies published prior to 2017: has fewer than 10 citations in total.",
+            "source": "criteria_mds/2312.05172.md"
+          },
+          {
+            "clause_id": "stage1_r13",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R13",
+            "text": "For years 2000–2022: limit screening to the first 300 records in each database.",
+            "source": "criteria_mds/2312.05172.md"
+          },
+          {
+            "clause_id": "stage1_r14",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R14",
+            "text": "For years 2023–2025: limit screening to 30 records per database (no relevant results found beyond this threshold).",
+            "source": "criteria_mds/2312.05172.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2312.05172/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 149,
+        "metadata_unique_keys": 149,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "passed": 149
+        },
+        "cutoff_status_samples": {
+          "passed": [
+            {
+              "key": "Bahdanau2014",
+              "title": "Neural Machine Translation by Jointly Learning to Align and Translate",
+              "published_date": "2014-09-01",
+              "published_date_iso": "2014-09-01"
+            },
+            {
+              "key": "Baziotis2019",
+              "title": "SEQ ^3: Differentiable Sequence-to-Sequence-to-Sequence Autoencoder for Unsupervised Abstractive Sentence Compression",
+              "published_date": "2019",
+              "published_date_iso": "2019-01-01"
+            },
+            {
+              "key": "Beauchemin2023Meaning",
+              "title": "MeaningBERT: assessing meaning preservation between sentences",
+              "published_date": "2023-09-22",
+              "published_date_iso": "2023-09-22"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2000-01-01",
+          "start_inclusive": true,
+          "end_date": "2025-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage2_i1"
+          ],
+          "binding_clause_ids": [
+            "stage2_i1"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "Only Stage 2 I1 can be projected to a global publication-date window.",
+          "The citation rule (E4) and per-year record caps (R13/R14) must be preserved as non-window time logic; they should not be silently dropped."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage2_i1",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I1",
+            "text": "Publication date between 2000 and 2025.",
+            "source": "criteria_mds/2312.05172.md"
+          },
+          {
+            "clause_id": "stage2_e4",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "E4",
+            "text": "For studies published prior to 2017: has fewer than 10 citations in total.",
+            "source": "criteria_mds/2312.05172.md"
+          },
+          {
+            "clause_id": "stage1_r13",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R13",
+            "text": "For years 2000–2022: limit screening to the first 300 records in each database.",
+            "source": "criteria_mds/2312.05172.md"
+          },
+          {
+            "clause_id": "stage1_r14",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R14",
+            "text": "For years 2023–2025: limit screening to 30 records per database (no relevant results found beyond this threshold).",
+            "source": "criteria_mds/2312.05172.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2312.05172/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2312.05172/2312.05172.pdf",
+        "page_count": 30,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage2_i1"
+          ],
+          "projected_clause_ids": [
+            "stage2_i1"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": true,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": true
+        },
+        "snippets": [
+          {
+            "page_number": 3,
+            "line_index": 24,
+            "score": 10,
+            "cue_types": [
+              "eligibility",
+              "citation",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "works providing a full-text article; and iv) journal and conference publications. Unpublished works such as dissertation studies, theses and technical reports were excluded from this review. Due to the large number of works, studies with few citations (less than 10 citations in total) that were published prior to 2017 were also excluded from this review. All articles were collected by searching relevant papers in the following databases: i) Google Scholar; ii) Scopus; iii) ACM Digital Library; iv) Springer Digital Library; v) IEEE Explore Digital Library; and vi) ArXiv. In addition, the",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 33,
+            "score": 10,
+            "cue_types": [
+              "search",
+              "citation",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "way. We initially searched using all the specified criteria for the years 2000 to 2022, limiting our search to the first 300 records in each database to maintain a manageable result pool. We then repeated this process for the years 2023 to 2025, limiting our search to 30 records per database, as no relevant results were found beyond this threshold. A total of 1,633 records were collected via digital databases (Google Scholar n = 330, Scopus n = 330, ACM Digital Library n = 330, Springer Digital Library n = 330, IEEE Explore Digital Library n = 129, ArXiv n = 120) and hand",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 27,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "manual_scope"
+            ],
+            "quote": "All articles were collected by searching relevant papers in the following databases: i) Google Scholar; ii) Scopus; iii) ACM Digital Library; iv) Springer Digital Library; v) IEEE Explore Digital Library; and vi) ArXiv. In addition, the reference lists of the extracted papers were manually searched for additional relevant papers. The following search query was used to identify relevant papers: (“sentence summarization” OR “sentence compression” OR “sentence splitting” OR “split and rephrase”). We arrived at this query by starting from (‘sentence compression”",
+            "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 39,
+            "score": 8,
+            "cue_types": [
+              "eligibility",
+              "citation",
+              "cutoff_hint"
+            ],
+            "quote": "records were excluded during the title and abstract screening since they did not fall within the scope of this review. After reviewing the full-text, records were excluded for eligibility due to language issues (n = 3), publication date (n = 1), few citations (n = 95) and unpublished works (n = 12). During the study selection, 130 records fully met the initial criteria and are included in this review. The study selection flowgram is shown in detail in Fig. 2.",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 4,
+            "line_index": 1,
+            "score": 10,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "PRIME AI paper PRISMA 2020 flow diagram for new systematic reviews which included searches of databases and registers only",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": null
+    },
+    "2401.09244": {
+      "paper_id": "2401.09244",
+      "availability": {
+        "paper_id": "2401.09244",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2401.09244.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": null,
+        "start_inclusive": true,
+        "end_date": "2023-07-29",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r1",
+          "operational_fallback_sr_publication_date"
+        ],
+        "binding_clause_ids": [
+          "stage1_r1"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": false,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": []
+        },
+        "normalization_notes": [
+          "This is a substantive correction relative to the current file: the existing JSON only records the fallback upper bound, but misses the tighter search-execution date.",
+          "Under the proposed semantics, the final time_policy uses the intersection of all projectable clauses, so the binding upper bound becomes 2023-07-29, not 2024-01-17."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r1",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R1",
+            "text": "Search conducted on July 29, 2023.",
+            "source": "criteria_mds/2401.09244.md"
+          },
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "No explicit publication-time restriction in criteria. Applied the review paper's own publication date as the upper bound: 2024-01-17T14:44:27Z in refs/2401.09244/metadata.json.",
+            "source": "cutoff_jsons/2401.09244.json"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2401.09244/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 207,
+        "metadata_unique_keys": 207,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "after_end": 2,
+          "passed": 205
+        },
+        "cutoff_status_samples": {
+          "after_end": [
+            {
+              "key": "lai2023haspeede3",
+              "title": "Haspeede3 at evalita 2023: Overview of the political and religious hate speech detection task",
+              "published_date": "2023-09-07",
+              "published_date_iso": "2023-09-07"
+            },
+            {
+              "key": "roy2023probing",
+              "title": "Probing LLMs for hate speech detection: strengths and vulnerabilities",
+              "published_date": "2023-10-19",
+              "published_date_iso": "2023-10-19"
+            }
+          ],
+          "passed": [
+            {
+              "key": "8004907",
+              "title": "Exploring linguistic features for extremist texts detection (on the material of Russian-speaking illegal texts)",
+              "published_date": "2017-07-01",
+              "published_date_iso": "2017-07-01"
+            },
+            {
+              "key": "Fortuna2017AutomaticDO",
+              "title": "Automatic detection of hate speech in text: an overview of the topic and dataset annotation with hierarchical classes",
+              "published_date": "2017-07-07",
+              "published_date_iso": "2017-07-07"
+            },
+            {
+              "key": "Romim2020HateSD",
+              "title": "Hate speech detection in the bengali language: A dataset and its baseline evaluation",
+              "published_date": "2020-12",
+              "published_date_iso": "2020-12-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": "2023-07-29",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r1",
+            "operational_fallback_sr_publication_date"
+          ],
+          "binding_clause_ids": [
+            "stage1_r1"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "This is a substantive correction relative to the current file: the existing JSON only records the fallback upper bound, but misses the tighter search-execution date.",
+          "Under the proposed semantics, the final time_policy uses the intersection of all projectable clauses, so the binding upper bound becomes 2023-07-29, not 2024-01-17."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r1",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R1",
+            "text": "Search conducted on July 29, 2023.",
+            "source": "criteria_mds/2401.09244.md"
+          },
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "No explicit publication-time restriction in criteria. Applied the review paper's own publication date as the upper bound: 2024-01-17T14:44:27Z in refs/2401.09244/metadata.json.",
+            "source": "cutoff_jsons/2401.09244.json"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2401.09244/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2401.09244/2401.09244.pdf",
+        "page_count": 35,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r1"
+          ],
+          "projected_clause_ids": [
+            "stage1_r1",
+            "operational_fallback_sr_publication_date"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": true,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": true,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 4,
+            "line_index": 29,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "eligibility"
+            ],
+            "quote": "Database Records Total Identified records Full-text records Article included in the (n=643) Total Identified records assessed for screening assessed for eligibility systematic review",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 4,
+            "line_index": 54,
+            "score": 9,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "“between language”, “cross linguistic”, “transfer”, “code switch”, “zero shot”, “few shot”. Search Process. In addition to studies matching the 99 keyword pairs above, we also identify and include 5 additional studies cited in relevant surveys. This search was conducted on July 29th, 2023. Eligibility Criteria. Following removal of duplicates and irrelevant papers, the remainder 455 publications were checked against the inclusion / exclusion criteria in Table 1.",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 19,
+            "score": 3,
+            "cue_types": [
+              "manual_scope"
+            ],
+            "quote": "we shed light on the current challenges and future research opportunities in this field. Furthermore, we have made our survey resources available online, including two comprehensive tables that provide accessible references to the multilingual datasets and CLTL methods used in the reviewed literature. CCS Concepts: • Computing methodologies → Natural language processing; Machine learning; • Human- centered computing → Collaborative and social computing.",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 47,
+            "score": 3,
+            "cue_types": [
+              "citation"
+            ],
+            "quote": "Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and 127 the full citation on the first page. Copyrights for components of this work owned by others than ACM must be honored. Abstracting with credit is permitted. To copy otherwise, or republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee. Request permissions from permissions@acm.org.",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 31,
+            "line_index": 47,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "Urdu. ACM Transactions on Asian and Low-Resource Language Information Processing 20, 1, Article 9 (Mar. 2021). [93] Svetlana Kiritchenko, Isar Nejadgholi, and Kathleen C Fraser. 2021. Confronting abusive language online: A survey from the ethical and human rights perspective. Artificial Intelligence Research 71 (2021), 431–478. [94] Gregory Koch, Richard Zemel, Ruslan Salakhutdinov, et al. 2015. Siamese neural networks for one-shot image recognition. In ICML deep learning workshop, Vol. 2. Lille.",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "possible_retrieval_vs_screening_confusion",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": true,
+          "scope_mismatch_flag": true,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [
+          "Current cutoff 主要來自 Stage 1 retrieval/search period，PDF 未顯示等價的 Stage 2 eligibility time rule。",
+          "Active cutoff 綁定 search execution timing，但 PDF 沒有把它寫成全域 screening eligibility。",
+          "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": null
+    },
+    "2405.15604": {
+      "paper_id": "2405.15604",
+      "availability": {
+        "paper_id": "2405.15604",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2405.15604.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2017-01-01",
+        "start_inclusive": true,
+        "end_date": "2023-12-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r3",
+          "stage2_i1"
+        ],
+        "binding_clause_ids": [
+          "stage1_r3",
+          "stage2_i1"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_window",
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2017-01-01",
+          "start_inclusive": true,
+          "end_date": "2023-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i1"
+          ]
+        },
+        "normalization_notes": [
+          "The current file already lands on the right global window, but it drops important non-window time logic: per-year top-k balancing and year-conditioned citation thresholds.",
+          "The revised file keeps those clauses explicit so Codex can choose whether to implement them later."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r3",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R3",
+            "text": "Temporal filter: exclude papers from 2016 or older (i.e., focus on publications from 2017 onwards).",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage1_r5",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R5",
+            "text": "To even out yearly coverage, sample the top 5 papers per query and year by influential citations.",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage1_r6",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R6",
+            "text": "For papers up to (and including) year 2021: exclude papers with fewer than 2 citations (as stated in the pipeline figure).",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage1_r7",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R7",
+            "text": "For years 2022 and 2023: relax restrictions and do not remove papers with less than two influential citations.",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage2_i1",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I1",
+            "text": "Manually assessed candidate works are within years 2017 to 2023 (titles and abstracts manually assessed for relevance).",
+            "source": "criteria_mds/2405.15604.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2405.15604/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 244,
+        "metadata_unique_keys": 244,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "after_end": 4,
+          "before_start": 38,
+          "passed": 202
+        },
+        "cutoff_status_samples": {
+          "after_end": [
+            {
+              "key": "JiangXNX24",
+              "title": "ArtPrompt: ASCII Art-based Jailbreak Attacks against Aligned LLMs",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            },
+            {
+              "key": "JurafskyM24",
+              "title": "booktitle Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition ( edition3 ed.)",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            },
+            {
+              "key": "ShahamHAS24",
+              "title": "Multilingual Instruction Tuning With Just a Pinch of Multilinguality",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            }
+          ],
+          "before_start": [
+            {
+              "key": "AndersonFJG16",
+              "title": "SPICE: Semantic Propositional Image Caption Evaluation",
+              "published_date": "2016",
+              "published_date_iso": "2016-01-01"
+            },
+            {
+              "key": "BanerjeeL05",
+              "title": "METEOR: An Automatic Metric for MT Evaluation with Improved Correlation with Human Judgments",
+              "published_date": "2005",
+              "published_date_iso": "2005-01-01"
+            },
+            {
+              "key": "BengioDV00",
+              "title": "A Neural Probabilistic Language Model",
+              "published_date": "2000",
+              "published_date_iso": "2000-01-01"
+            }
+          ],
+          "passed": [
+            {
+              "key": "AbdallaWRN23",
+              "title": "The Elephant in the Room: Analyzing the Presence of Big Tech in Natural Language Processing Research",
+              "published_date": "2023",
+              "published_date_iso": "2023-01-01"
+            },
+            {
+              "key": "AbhishekSSS22",
+              "title": "XAlign: Cross-lingual Fact-to-Text Alignment and Generation for Low-Resource Languages",
+              "published_date": "2022-02-01",
+              "published_date_iso": "2022-02-01"
+            },
+            {
+              "key": "AchiamAAA24",
+              "title": "GPT-4 Technical Report",
+              "published_date": "2023",
+              "published_date_iso": "2023-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2017-01-01",
+          "start_inclusive": true,
+          "end_date": "2023-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r3",
+            "stage2_i1"
+          ],
+          "binding_clause_ids": [
+            "stage1_r3",
+            "stage2_i1"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "The current file already lands on the right global window, but it drops important non-window time logic: per-year top-k balancing and year-conditioned citation thresholds.",
+          "The revised file keeps those clauses explicit so Codex can choose whether to implement them later."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r3",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R3",
+            "text": "Temporal filter: exclude papers from 2016 or older (i.e., focus on publications from 2017 onwards).",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage1_r5",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R5",
+            "text": "To even out yearly coverage, sample the top 5 papers per query and year by influential citations.",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage1_r6",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R6",
+            "text": "For papers up to (and including) year 2021: exclude papers with fewer than 2 citations (as stated in the pipeline figure).",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage1_r7",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R7",
+            "text": "For years 2022 and 2023: relax restrictions and do not remove papers with less than two influential citations.",
+            "source": "criteria_mds/2405.15604.md"
+          },
+          {
+            "clause_id": "stage2_i1",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I1",
+            "text": "Manually assessed candidate works are within years 2017 to 2023 (titles and abstracts manually assessed for relevance).",
+            "source": "criteria_mds/2405.15604.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2405.15604/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2405.15604/2405.15604.pdf",
+        "page_count": 36,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": true,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r3",
+            "stage2_i1"
+          ],
+          "projected_clause_ids": [
+            "stage1_r3",
+            "stage2_i1"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": true,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": true
+        },
+        "snippets": [
+          {
+            "page_number": 5,
+            "line_index": 20,
+            "score": 7,
+            "cue_types": [
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "2.3 Manual Assessment Eligibility criteria. We manually assess the titles and abstracts of 279 works from 2017 to 2023 to judge their relevance regarding text generation. We remove papers that are too specific for the scope of this review (e.g., multimodality) and eliminate works that employ studies to another field of study (e.g., medicine). We release a table of our relevance",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 4,
+            "line_index": 14,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "citation",
+              "cutoff_hint"
+            ],
+            "quote": "Select top 5 papers by infl. 1127 31 Exclude irrelevant papers citations per query and year Exclude papers until 2021 58",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 35,
+            "line_index": 13,
+            "score": 7,
+            "cue_types": [
+              "manual_scope",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "In Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers). Association for Computational Linguistics. https://doi.org/10.18653/v1/2023.acl-long.179 [239] Renjie Zheng, Mingbo Ma, and Liang Huang. 2018. Multi-Reference Training with Pseudo-References for Neural Translation and Text Generation. In Proc. of EMNLP. Association for Computational Linguistics, Brussels, Belgium, 3188–3197. https://doi.org/10.18653/v1/D18-1357 [240] Wanjun Zhong, Duyu Tang, Zenan Xu, et al. 2020. Neural Deepfake Detection with Factual Structure of Text. In Proc. of EMNLP. Association for",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 5,
+            "line_index": 9,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "citation",
+              "cutoff_hint"
+            ],
+            "quote": "Our initial collection, which consists of 1669 publications, is reduced to 1464 papers when adding the temporal filter. Citation criteria. Next, we filter the results using Semantic Scholar’s influential citations [189]. An influential citation traces key works that another work relies on, e.g., measured by citations in specific paper locations, research overlap, or content similarity work [189]. Influential citations, therefore, provide a proxy for measuring a publication’s impact on other publications in the field. To even out the distribution of papers regarding yearly coverage, we sample the top five",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 5,
+            "line_index": 12,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "citation",
+              "cutoff_hint"
+            ],
+            "quote": "content similarity work [189]. Influential citations, therefore, provide a proxy for measuring a publication’s impact on other publications in the field. To even out the distribution of papers regarding yearly coverage, we sample the top five papers per query and year by influential citations, yielding 337 papers. We select papers with more than two influential citations until 2021 to estimate papers of high influence in text generation. We treat recent works differently as older papers tend to have more citations than recent ones, although both can be similarly impactful [1, 196]. Thus, we relax",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": null
+    },
+    "2407.17844": {
+      "paper_id": "2407.17844",
+      "availability": {
+        "paper_id": "2407.17844",
+        "cutoff_json": true,
+        "metadata": false,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2407.17844.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2020-01-01",
+        "start_inclusive": true,
+        "end_date": "2024-04-30",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r1",
+          "stage1_r5"
+        ],
+        "binding_clause_ids": [
+          "stage1_r1",
+          "stage1_r5"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": false,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": []
+        },
+        "normalization_notes": [
+          "This is another substantive correction relative to the current file: the existing JSON keeps only the lower bound and misses the effective upper bound implied by the search month.",
+          "Using 2024-04-30 is an operational projection of the latest possible date inside the reported search month; if you later want a stricter interpretation, this can be replaced by a separate exact search timestamp when available."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r1",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R1",
+            "text": "Search performed in April 2024.",
+            "source": "criteria_mds/2407.17844.md"
+          },
+          {
+            "clause_id": "stage1_r5",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R5",
+            "text": "Year filter: 2020 onwards.",
+            "source": "criteria_mds/2407.17844.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": false,
+        "metadata_path": "refs/2407.17844/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 0,
+        "metadata_unique_keys": 0,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {},
+        "cutoff_status_samples": {}
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2407.17844/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2407.17844/2407.17844.pdf",
+        "page_count": 24,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": true,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r1",
+            "stage1_r5"
+          ],
+          "projected_clause_ids": [
+            "stage1_r1",
+            "stage1_r5"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": true,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": true,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 3,
+            "line_index": 11,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "cutoff_hint"
+            ],
+            "quote": "open-source resources for PD classification, up to March 2024. The rest of the paper is structured as follows. In Section 2, the eligibility criteria, exclusion criteria, and search procedure are described. In Section 3, E2E learning approaches based on applied Deep Neural Network (DNN) architectures, such as Convolutional Neural Networks (CNNs), Long Short-Term Memory networks (LSTMs), and Transformers, are",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 4,
+            "line_index": 5,
+            "score": 9,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "2.1. Search Procedure and Identification Criteria The search was performed in April 2024, using the following databases: Google Scholar, SpringerLink, and IEEE Xplore. The year filter was 2020 onwards. The search comprised the following search terms: “speech processing Parkinson”, “speech recognition",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 17,
+            "line_index": 8,
+            "score": 3,
+            "cue_types": [
+              "manual_scope"
+            ],
+            "quote": "Table A1. Publicly available speech-based datasets for PD research. # and ↑ stand for number of (speakers) and ascending order of publication, respectively. Data Dataset (Year) ↑ Source & References # Speakers Transcripts Disease Severity Language Overall Speech Time Quality Speech Task(s)",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 33,
+            "score": 3,
+            "cue_types": [
+              "citation"
+            ],
+            "quote": "Keywords: Parkinson’s disease; speech classification; deep learning; speech processing; speech diagnosis; Artificial Intelligence; end-to-end; transfer learning; deep acoustic feature extraction Citation: van Gelderen, L.; Tejedor- Garcia, C. Innovative Speech-Based Deep Learning Approaches for",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 14,
+            "line_index": 55,
+            "score": 9,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "The goal of this work was to provide an overview of innovative speech-based DL approaches for PD classification. Given the rapid advancements in this field, we prioritized the most recent and innovative approaches from 33 research works published between 2020 and March 2024. This systematic literature review makes a significant contribution to the field by addressing a gap in which no comprehensive systematic review has previously",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "needs_manual_review",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": true
+        },
+        "verdict_reasons": [
+          "Abstract/summary 與 methodology 都提到 2020–2024 範圍，但其是 review scope 還是 hard screening gate 仍偏灰區。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": null
+    },
+    "2409.13738": {
+      "paper_id": "2409.13738",
+      "availability": {
+        "paper_id": "2409.13738",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": true,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2409.13738.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": null,
+        "start_inclusive": true,
+        "end_date": "2023-06-30",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage2_i8_no_publication_restriction",
+          "paper_results_search_executed_june_2023",
+          "paper_limitations_manuscript_horizon_aug_2024",
+          "operational_fallback_sr_publication_date"
+        ],
+        "binding_clause_ids": [
+          "paper_results_search_executed_june_2023"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_no_publication_restriction",
+          "enabled": false,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i8_no_publication_restriction"
+          ],
+          "notes": "The paper explicitly says there is no publication-year restriction in the screening criteria."
+        },
+        "normalization_notes": [
+          "This is the most important correction in the whole folder. The current file disables time filtering entirely because it follows the source-faithful Stage 2 rule only.",
+          "For the lazy one-shot prefilter you described, that is too weak: the June 2023 search-execution date is a real time constraint on the candidate pool and therefore must be projected into time_policy.",
+          "The August 2024 manuscript horizon and the SR publication-date fallback are kept for completeness, but neither is binding once the June 2023 clause is included.",
+          "The explicit 'no publication-year restriction' is still preserved under source_faithful_screening_publication_policy, so the file now cleanly records both the paper-literal rule and your operational prefilter."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage2_i8_no_publication_restriction",
+            "section": "Stage 2 Eligibility / Screening Criteria",
+            "criterion_id": "I8",
+            "text": "No publication-year restriction (i.e., do not exclude by year).",
+            "source": "criteria_corrected_3papers/2409.13738.md"
+          },
+          {
+            "clause_id": "paper_results_search_executed_june_2023",
+            "section": "Results",
+            "criterion_id": "N/A",
+            "text": "Our search queries were executed in June 2023 and the found papers span a time period from 2011 to 2023.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "paper_results_observed_corpus_span",
+            "section": "Results / Table 2 metadata",
+            "criterion_id": "N/A",
+            "text": "From 2011 to 2023.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "paper_methods_same_contribution_latest_version",
+            "section": "Methods / Inclusion Criteria footnote",
+            "criterion_id": "IC.2 footnote",
+            "text": "In case of multiple papers related to the same contribution, we reviewed the most recent paper.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "paper_limitations_manuscript_horizon_aug_2024",
+            "section": "Threats to Validity and Limitations",
+            "criterion_id": "N/A",
+            "text": "Publications after the preparation of this manuscript (August 2024) will also not be included.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "Fallback upper bound uses the SR's own arXiv publication date (2024-09-10).",
+            "source": "paper: arxiv abs metadata"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 84,
+        "metadata_unique_keys": 84,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "after_end": 15,
+          "passed": 69
+        },
+        "cutoff_status_samples": {
+          "after_end": [
+            {
+              "key": "berti2023abstractions",
+              "title": "Abstractions, Scenarios, and Prompt Definitions for Process Mining with LLMs: A Case Study",
+              "published_date": "2023-07",
+              "published_date_iso": "2023-07-01"
+            },
+            {
+              "key": "berti_evaluating_llm",
+              "title": "Evaluating Large Language Models in Process Mining: Capabilities, Benchmarks, and Evaluation Strategies",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            },
+            {
+              "key": "dong_self-collaboration_2024",
+              "title": "Self-Collaboration Code Generation via ChatGPT",
+              "published_date": "2024-09-27",
+              "published_date_iso": "2024-09-27"
+            }
+          ],
+          "passed": [
+            {
+              "key": "Davenport2019",
+              "title": "Insight-driven organization | Deloitte Insights",
+              "published_date": "2019",
+              "published_date_iso": "2019-01-01"
+            },
+            {
+              "key": "Devlin2019BERTPO",
+              "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+              "published_date": "2018",
+              "published_date_iso": "2018-01-01"
+            },
+            {
+              "key": "Eberts2021",
+              "title": "An End-to-end Model for Entity-level Relation Extraction using Multi-instance Learning",
+              "published_date": "2021-01-01",
+              "published_date_iso": "2021-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": "2023-06-30",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage2_i8_no_publication_restriction",
+            "paper_results_search_executed_june_2023",
+            "paper_limitations_manuscript_horizon_aug_2024",
+            "operational_fallback_sr_publication_date"
+          ],
+          "binding_clause_ids": [
+            "paper_results_search_executed_june_2023"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "This is the most important correction in the whole folder. The current file disables time filtering entirely because it follows the source-faithful Stage 2 rule only.",
+          "For the lazy one-shot prefilter you described, that is too weak: the June 2023 search-execution date is a real time constraint on the candidate pool and therefore must be projected into time_policy.",
+          "The August 2024 manuscript horizon and the SR publication-date fallback are kept for completeness, but neither is binding once the June 2023 clause is included.",
+          "The explicit 'no publication-year restriction' is still preserved under source_faithful_screening_publication_policy, so the file now cleanly records both the paper-literal rule and your operational prefilter."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage2_i8_no_publication_restriction",
+            "section": "Stage 2 Eligibility / Screening Criteria",
+            "criterion_id": "I8",
+            "text": "No publication-year restriction (i.e., do not exclude by year).",
+            "source": "criteria_corrected_3papers/2409.13738.md"
+          },
+          {
+            "clause_id": "paper_results_search_executed_june_2023",
+            "section": "Results",
+            "criterion_id": "N/A",
+            "text": "Our search queries were executed in June 2023 and the found papers span a time period from 2011 to 2023.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "paper_results_observed_corpus_span",
+            "section": "Results / Table 2 metadata",
+            "criterion_id": "N/A",
+            "text": "From 2011 to 2023.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "paper_methods_same_contribution_latest_version",
+            "section": "Methods / Inclusion Criteria footnote",
+            "criterion_id": "IC.2 footnote",
+            "text": "In case of multiple papers related to the same contribution, we reviewed the most recent paper.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "paper_limitations_manuscript_horizon_aug_2024",
+            "section": "Threats to Validity and Limitations",
+            "criterion_id": "N/A",
+            "text": "Publications after the preparation of this manuscript (August 2024) will also not be included.",
+            "source": "paper: arxiv html 2409.13738v1"
+          },
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "Fallback upper bound uses the SR's own arXiv publication date (2024-09-10).",
+            "source": "paper: arxiv abs metadata"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": true,
+        "gold_path": "refs/2409.13738/metadata/title_abstracts_metadata-annotated.jsonl",
+        "gold_input_rows": 84,
+        "gold_duplicate_keys": {},
+        "key_consistency": {
+          "missing_in_gold_count": 0,
+          "missing_in_gold_keys": [],
+          "missing_in_metadata_count": 0,
+          "missing_in_metadata_keys": [],
+          "common_key_count": 84,
+          "verified_no_missing_keys_after_dedup": true
+        },
+        "total_candidates": 84,
+        "gold_positive_count": 21,
+        "gold_negative_count": 63,
+        "confusion_matrix": {
+          "tp": 21,
+          "fp": 48,
+          "tn": 15,
+          "fn": 0
+        },
+        "metrics_if_cutoff_pass_means_include": {
+          "accuracy": 0.4286,
+          "precision": 0.3043,
+          "recall": 1.0,
+          "f1": 0.4667
+        },
+        "gold_positive_cutoffed": 0,
+        "gold_positive_cutoffed_keys": [],
+        "correct_via_cutoff_exclude": 15,
+        "correct_via_cutoff_pass": 21,
+        "high_risk_gold_cutoff": false
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2409.13738/2409.13738.pdf",
+        "page_count": 50,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "paper_results_search_executed_june_2023"
+          ],
+          "projected_clause_ids": [
+            "stage2_i8_no_publication_restriction",
+            "paper_results_search_executed_june_2023",
+            "paper_limitations_manuscript_horizon_aug_2024",
+            "operational_fallback_sr_publication_date"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": true,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": true,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 3,
+            "line_index": 25,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "eligibility"
+            ],
+            "quote": "The rest of the paper is structured as follows. Section 2 discusses other review papers on automated process extraction. Section 3 outlines our systematic review approach, including source databases, keywords, exclusion and inclusion criteria, and classification criteria. Sections 4-7 present our data synthesis results, including answers to the research questions. Section 8 summarises important observations from",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 7,
+            "line_index": 45,
+            "score": 9,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "Following title and abstract screening, 70 articles were retained for full-text screening. In the end, 20 articles were found to fully meet our inclusion/exclusion criteria. Our search queries were executed in June 2023 and the found papers span a time period 7",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 6,
+            "line_index": 20,
+            "score": 3,
+            "cue_types": [
+              "citation"
+            ],
+            "quote": "Process Extraction “Process Extraction” OR Process Management “Process Management” OR Business Process Elicita- “Business Process Elicitation” OR tion Decision Model and Nota- “Decision Model and Notation” OR",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 4,
+            "line_index": 8,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "in 2016 by Riefer et al. [18], reviewing 5 papers in total. The authors analyzed 3 aspects, namely textual input, text analysis, and model generation. Bordignon et al. [7] performed a systematic review of works up to 2016 that apply NLP to the first 3 BPM lifecycle phases (i.e., identification, discovery and analysis), and categorised the NLP tools utilised. Maqbool et al. [6] covers process extraction up to 2018,",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 5,
+            "line_index": 3,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "eligibility"
+            ],
+            "quote": "considered the title, abstract, and author’s keywords metadata fields in our search. We removed duplicates from the search results and downloaded the remaining papers. The papers’ titles, abstracts and keywords were screened for eligibility based on the inclusion/exclusion criteria described in the subsections below. In case a paper was still considered inconclusive after screening, it was fully reviewed to determine",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          }
+        ],
+        "semantic_risk_verdict": "possible_retrieval_vs_screening_confusion",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": true,
+          "scope_mismatch_flag": true,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [
+          "PDF 表示 search/retrieval 沒有 publication-year hard restriction，但 active cutoff 仍把 search-side 時間線投成全域 eligibility。",
+          "Active cutoff 綁定 search execution timing，但 PDF 沒有把它寫成全域 screening eligibility。",
+          "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": {
+        "old_summary_path": "screening/results/cutoff_only_audit_2026-03-26/summary.json",
+        "overlap_paper_id": "2409.13738",
+        "differences": {
+          "cutoff_status_counts": {
+            "old": {
+              "after_end": 14,
+              "passed": 65,
+              "unparseable_published_date": 5
+            },
+            "new": {
+              "after_end": 15,
+              "passed": 69
+            }
+          },
+          "confusion_matrix": {
+            "old": {
+              "tp": 21,
+              "fp": 44,
+              "tn": 19,
+              "fn": 0
+            },
+            "new": {
+              "tp": 21,
+              "fp": 48,
+              "tn": 15,
+              "fn": 0
+            }
+          }
+        },
+        "status": "changed"
+      }
+    },
+    "2503.04799": {
+      "paper_id": "2503.04799",
+      "availability": {
+        "paper_id": "2503.04799",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2503.04799.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2016-01-01",
+        "start_inclusive": true,
+        "end_date": "2024-12-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage2_i2"
+        ],
+        "binding_clause_ids": [
+          "stage2_i2"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_window",
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2016-01-01",
+          "start_inclusive": true,
+          "end_date": "2024-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i2"
+          ]
+        },
+        "normalization_notes": [
+          "This file only needs schema expansion; the numeric window is already correct."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage2_i2",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I2",
+            "text": "Published between 2016 and 2024.",
+            "source": "criteria_mds/2503.04799.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2503.04799/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 131,
+        "metadata_unique_keys": 131,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "after_end": 1,
+          "before_start": 21,
+          "passed": 109
+        },
+        "cutoff_status_samples": {
+          "after_end": [
+            {
+              "key": "GoogleAIBlog",
+              "title": "Introducing Translatotron: An End-to-End Speech-to-Speech Translation Model",
+              "published_date": "2025",
+              "published_date_iso": "2025-01-01"
+            }
+          ],
+          "before_start": [
+            {
+              "key": "10.3115/1073083.1073135",
+              "title": "BLEU: a method for automatic evaluation of machine translation",
+              "published_date": "2001-01-01",
+              "published_date_iso": "2001-01-01"
+            },
+            {
+              "key": "5453745",
+              "title": "Research on k-means Clustering Algorithm: An Improved k-means Clustering Algorithm",
+              "published_date": "2010-04",
+              "published_date_iso": "2010-04-01"
+            },
+            {
+              "key": "58337",
+              "title": "Backpropagation through time: what it does and how to do it",
+              "published_date": "1990",
+              "published_date_iso": "1990-01-01"
+            }
+          ],
+          "passed": [
+            {
+              "key": "10.1007/978-3-031-48312-7_21",
+              "title": "Direct Vs Cascaded Speech-to-Speech Translation Using Transformer",
+              "published_date": "2023",
+              "published_date_iso": "2023-01-01"
+            },
+            {
+              "key": "10229412",
+              "title": "Speech-to-speech Low-resource Translation",
+              "published_date": "2023-08",
+              "published_date_iso": "2023-08-01"
+            },
+            {
+              "key": "10446418",
+              "title": "Generation-Based Target Speech Extraction with Speech Discretization and Vocoder",
+              "published_date": "2024-04-14",
+              "published_date_iso": "2024-04-14"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2016-01-01",
+          "start_inclusive": true,
+          "end_date": "2024-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage2_i2"
+          ],
+          "binding_clause_ids": [
+            "stage2_i2"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "This file only needs schema expansion; the numeric window is already correct."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage2_i2",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I2",
+            "text": "Published between 2016 and 2024.",
+            "source": "criteria_mds/2503.04799.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2503.04799/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2503.04799/2503.04799.pdf",
+        "page_count": 54,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": false,
+          "has_analysis_range": true,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage2_i2"
+          ],
+          "projected_clause_ids": [
+            "stage2_i2"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": true,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 8,
+            "line_index": 38,
+            "score": 3,
+            "cue_types": [
+              "eligibility"
+            ],
+            "quote": "state-of-the-art advancements in direct Speech-to-Speech Translation (S2ST) enabled by machine learning techniques. It includes extensive literature search, clearly ar- ticulated inclusion and exclusion criteria, and rigorous assessment protocols ensur- ing proper integration of relevant research and high-quality research for an effective overview. Relevant articles for this analysis is collected through in-depth searching on",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 44,
+            "line_index": 18,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "[38] Jaffer Khan, Alamelu Raman, Nithya Sambamoorthy, and Kanniga Prashanth. Research Methodology (Methods, Approaches And Techniques). 09 2023. [39] Robert Streijl and David Hands. Mean opinion score (mos) revisited: methods",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 24,
+            "line_index": 7,
+            "score": 3,
+            "cue_types": [
+              "manual_scope"
+            ],
+            "quote": "of each model to build stronger features in S2ST systems by extracting individ- ual features, normalizing them, and combining them through weighted averaging or concatenation. By utilizing these complementary strengths, fused features enhance translation quality and improve generalization across various acoustic conditions, with the ESPnet-ST-v2 achieving significant improvements in BLEU scores. For ex-",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 10,
+            "line_index": 14,
+            "score": 6,
+            "cue_types": [
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "S2ST. The criteria for inclusion included: • Articles published between 2016 and 2024 related to the state-of-the-art work done in machine learning regarding S2ST.",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 6,
+            "score": 4,
+            "cue_types": [
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "1 Department of Computer Science, Aligarh Muslim University, Aligarh, Uttar Pradesh, India. arXiv:2503.04799v1 [cs.CL] 3 Mar 2025",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": null
+    },
+    "2507.07741": {
+      "paper_id": "2507.07741",
+      "availability": {
+        "paper_id": "2507.07741",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2507.07741.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2018-01-01",
+        "start_inclusive": true,
+        "end_date": "2024-12-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r3",
+          "stage2_i3"
+        ],
+        "binding_clause_ids": [
+          "stage2_i3"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_window",
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2018-01-01",
+          "start_inclusive": true,
+          "end_date": "2024-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i3"
+          ]
+        },
+        "normalization_notes": [
+          "The current JSON reaches the same numeric result by Stage-2 priority. The revised file records the stronger derivation explicitly as an intersection of Stage 1 and Stage 2 windows.",
+          "Stage 2 I3 is binding because it tightens both the lower and the upper bound."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r3",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R3",
+            "text": "Retrieval publication-date range: 2014 until February 27, 2025.",
+            "source": "criteria_mds/2507.07741.md"
+          },
+          {
+            "clause_id": "stage2_i3",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I3",
+            "text": "Analysis set focuses on papers published between 2018 and 2024 (the resulting eligible set for analysis).",
+            "source": "criteria_mds/2507.07741.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2507.07741/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 189,
+        "metadata_unique_keys": 188,
+        "metadata_duplicate_keys": {
+          "chuang2021non": 2
+        },
+        "cutoff_status_counts": {
+          "after_end": 1,
+          "before_start": 32,
+          "passed": 155
+        },
+        "cutoff_status_samples": {
+          "after_end": [
+            {
+              "key": "zhou_improving_2025",
+              "title": "Improving Zero-Shot Chinese-English Code-Switching ASR with kNN-CTC and Gated Monolingual Datastores",
+              "published_date": "2025",
+              "published_date_iso": "2025-01-01"
+            }
+          ],
+          "before_start": [
+            {
+              "key": "Amazouz2017",
+              "title": "Addressing Code-Switching in French/Algerian Arabic Speech",
+              "published_date": "2017",
+              "published_date_iso": "2017-01-01"
+            },
+            {
+              "key": "AnusuyaKatti2009",
+              "title": "Speech Recognition by Machine, A Review",
+              "published_date": "2010",
+              "published_date_iso": "2010-01-01"
+            },
+            {
+              "key": "DBLP:journals/ijclclp/TakezawaKMS07",
+              "title": "Multilingual Spoken Language Corpus Development for Communication Research",
+              "published_date": "2006",
+              "published_date_iso": "2006-01-01"
+            }
+          ],
+          "passed": [
+            {
+              "key": "10096317",
+              "title": "Code-Switching Text Generation and Injection in Mandarin-English ASR",
+              "published_date": "2023-06-04",
+              "published_date_iso": "2023-06-04"
+            },
+            {
+              "key": "10274649",
+              "title": "Cyclic Transfer Learning for Mandarin-English Code-Switching Speech Recognition",
+              "published_date": "2023",
+              "published_date_iso": "2023-01-01"
+            },
+            {
+              "key": "10389662",
+              "title": "LAE-ST-MOE: Boosted Language-Aware Encoder Using Speech Translation Auxiliary Task for E2E Code-Switching ASR",
+              "published_date": "2023-12-16",
+              "published_date_iso": "2023-12-16"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2018-01-01",
+          "start_inclusive": true,
+          "end_date": "2024-12-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r3",
+            "stage2_i3"
+          ],
+          "binding_clause_ids": [
+            "stage2_i3"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "The current JSON reaches the same numeric result by Stage-2 priority. The revised file records the stronger derivation explicitly as an intersection of Stage 1 and Stage 2 windows.",
+          "Stage 2 I3 is binding because it tightens both the lower and the upper bound."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r3",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R3",
+            "text": "Retrieval publication-date range: 2014 until February 27, 2025.",
+            "source": "criteria_mds/2507.07741.md"
+          },
+          {
+            "clause_id": "stage2_i3",
+            "section": "Stage 2 Screening Criteria",
+            "criterion_id": "I3",
+            "text": "Analysis set focuses on papers published between 2018 and 2024 (the resulting eligible set for analysis).",
+            "source": "criteria_mds/2507.07741.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2507.07741/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2507.07741/2507.07741.pdf",
+        "page_count": 20,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": false,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": true,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage2_i3"
+          ],
+          "projected_clause_ids": [
+            "stage1_r3",
+            "stage2_i3"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": true,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 2,
+            "line_index": 7,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "eligibility"
+            ],
+            "quote": "or dialects between sentences) and intra-sentential currently represents the mainstream in ASR tech- code-switching, where language switches happen nology. Furthermore, our analysis includes all pa- within a single sentence. The latter is most chal- pers that fit our search and inclusion criteria, which lenging for speech systems and what is typically is constrained only by the recency of the studied addressed in the surveyed literature. E2E systems; indeed, over half of the papers in our",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 55,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "banking and financial, healthcare, and retail (Grand 1.1 Code-switching View Research, 2024). Such widespread adoption of ASR highlights the need and desire for high People engage in CS in their communication for performing systems across different languages and many and varied reasons, such as a speaker’s fa-",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 11,
+            "line_index": 22,
+            "score": 3,
+            "cue_types": [
+              "manual_scope"
+            ],
+            "quote": "language model for code-switching automatic speech recognition. In 2024 Tenth International Conference References on Communications and Electronics (ICCE), pages 387–391. Ahmed Amine Ben Abdallah, Ata Kabboudi, Amir Ka-",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 9,
+            "line_index": 65,
+            "score": 3,
+            "cue_types": [
+              "citation"
+            ],
+            "quote": "reference (N ): WER = (S + I + D)/N . rithm to enable multi-reference evaluation. They Character Error Rate (CER) offers a higher level apply PolyWER across two dimensions: translitera- of granularity by employing the same principle tion with a CER threshold for allowed variations in of WER but on a character-level. It is particularly orthography, or translation with a cosine similarity useful for languages that lack word boundaries such threshold to allow synonyms.",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 2,
+            "line_index": 3,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "the structure—and the embedded language—which cessing Winata et al. (2023) present a comprehen- provides the foreign words or phrases (Weller et al., sive survey of code-switching, covering decades 2022). Code-switching is often categorized into of research in NLP. Our work complements these two types: inter-sentential (switching languages efforts by focusing exclusively on E2E ASR, which or dialects between sentences) and intra-sentential currently represents the mainstream in ASR tech-",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": null
+    },
+    "2507.18910": {
+      "paper_id": "2507.18910",
+      "availability": {
+        "paper_id": "2507.18910",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2507.18910.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2017-01-01",
+        "start_inclusive": true,
+        "end_date": "2025-06-30",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r6"
+        ],
+        "binding_clause_ids": [
+          "stage1_r6"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": null,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage1_r6"
+          ],
+          "notes": "No explicit publication-time eligibility rule is stated in the final screening criteria. The usable window appears in the retrieval criteria."
+        },
+        "normalization_notes": [
+          "The current JSON already captures the numeric window correctly; the main revision is schema expansion and clearer documentation that this is a retrieval-stage window rather than an explicit Stage 2 eligibility rule.",
+          "The phrase 'end of mid-2025' is normalized to 2025-06-30."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r6",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R6",
+            "text": "Publication year from 2017 to end of mid-2025.",
+            "source": "criteria_mds/2507.18910.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2507.18910/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 159,
+        "metadata_unique_keys": 151,
+        "metadata_duplicate_keys": {
+          "Eibich2024": 2,
+          "Es2023": 2,
+          "Juseon2025": 2,
+          "Katsis2025": 2,
+          "Momii2024": 2,
+          "Petroni2021": 2,
+          "Singal2024": 2,
+          "Yu2024": 2
+        },
+        "cutoff_status_counts": {
+          "before_start": 1,
+          "passed": 150
+        },
+        "cutoff_status_samples": {
+          "before_start": [
+            {
+              "key": "Sukhbaatar2015",
+              "title": "End-to-End Memory Networks",
+              "published_date": "2015",
+              "published_date_iso": "2015-01-01"
+            }
+          ],
+          "passed": [
+            {
+              "key": "AbdulKhaliq2024",
+              "title": "RAGAR, Your Falsehood RADAR: RAG-Augmented Reasoning for Political Fact-Checking using Multimodal LLMs",
+              "published_date": "2024-04",
+              "published_date_iso": "2024-04-01"
+            },
+            {
+              "key": "Akkiraju2024FACTS",
+              "title": "FACTS About Building Retrieval Augmented Generation-based Chatbots",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            },
+            {
+              "key": "An2025",
+              "title": "HyperRAG: Enhancing Quality-Efficiency Tradeoffs in Retrieval-Augmented Generation with Reranker KV-Cache Reuse",
+              "published_date": "2025",
+              "published_date_iso": "2025-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2017-01-01",
+          "start_inclusive": true,
+          "end_date": "2025-06-30",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r6"
+          ],
+          "binding_clause_ids": [
+            "stage1_r6"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "The current JSON already captures the numeric window correctly; the main revision is schema expansion and clearer documentation that this is a retrieval-stage window rather than an explicit Stage 2 eligibility rule.",
+          "The phrase 'end of mid-2025' is normalized to 2025-06-30."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r6",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R6",
+            "text": "Publication year from 2017 to end of mid-2025.",
+            "source": "criteria_mds/2507.18910.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2507.18910/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2507.18910/2507.18910.pdf",
+        "page_count": 33,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r6"
+          ],
+          "projected_clause_ids": [
+            "stage1_r6"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": true,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 3,
+            "line_index": 60,
+            "score": 7,
+            "cue_types": [
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "Anthology, IEEE Xplore, ACM Digital Library, and • English Language: For consistency and to Google Scholar. We included documents published support thorough evaluation, only English texts from 2017 up to the end of mid 2025, covering early were included. end 3",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 2,
+            "line_index": 3,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "loop [e.g., 35, 10]. In parallel, industry adoption Since its formal introduction in the seminal work of RAG has been swift: leading tech companies of [52] in 2020, Retrieval-Augmented Generation have integrated retrieval-augmented generators into (RAG) has witnessed rapid advancements, marked search engines, virtual assistants, and enterprise by a significant surge in research interest and question-answering applications [33, 60]. RAG now",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 15,
+            "score": 6,
+            "cue_types": [
+              "eligibility",
+              "manual_scope"
+            ],
+            "quote": "on the above-listed databases, resulting in a pool of strategy, inclusion/exclusion criteria, and approach references that included journal articles, conference to data synthesis. Section 3 (Foundations papers, technical reports, and white papers.",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 19,
+            "line_index": 33,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "citation"
+            ],
+            "quote": "BEIR 31-task zero-shot retrieval benchmark MTRAG Multi-turn reasoning benchmark TREC RAG Track Unified eval. of retrieval, generation, citation Tooling RAGAS Evaluates factual consistency and grounding",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 24,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "Section 4 (Year-by-Year Progress) presents all search results and removing duplicates. Abstracts a chronological synthesis of RAG developments and titles were checked to confirm alignment with from 2017 onward, highlighting key research the RAG focus. If a work concentrated solely on milestones. Section 5 (RAG for Proprietary retrieval or generation in isolation, without discussing data and Industry Implementation) examines how these components integrate, it was set aside for",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": null
+    },
+    "2509.11446": {
+      "paper_id": "2509.11446",
+      "availability": {
+        "paper_id": "2509.11446",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": true,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2509.11446.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": null,
+        "start_inclusive": true,
+        "end_date": "2025-09-14",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "operational_fallback_sr_publication_date"
+        ],
+        "binding_clause_ids": [
+          "operational_fallback_sr_publication_date"
+        ],
+        "fallback_applied": true
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": null,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": [],
+          "notes": "No explicit publication-time constraint appears in the extracted criteria."
+        },
+        "normalization_notes": [
+          "This file still needs fallback because the current extracted criteria do not contain any projectable time clause.",
+          "The fallback is intentionally weak and should be replaced if a future criteria correction file adds a search date or an explicit publication window."
+        ],
+        "evidence": [
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-09-14).",
+            "source": "paper: arxiv abs metadata"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2509.11446/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 164,
+        "metadata_unique_keys": 164,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "passed": 164
+        },
+        "cutoff_status_samples": {
+          "passed": [
+            {
+              "key": "10.1007/978-3-031-88531-0_13",
+              "title": "LACE-HC: A Lightweight Attention-Based Classifier for Efficient Hierarchical Classification of Software Requirements",
+              "published_date": "2025",
+              "published_date_iso": "2025-01-01"
+            },
+            {
+              "key": "10.1007/978-3-031-88531-0_15",
+              "title": "Automatic Prompt Engineering: The Case of Requirements Classification",
+              "published_date": "2025",
+              "published_date_iso": "2025-01-01"
+            },
+            {
+              "key": "10.1007/978-3-031-88531-0_7",
+              "title": "FeReRe: Feedback Requirements Relation Using Large Language Models",
+              "published_date": "2025",
+              "published_date_iso": "2025-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": "2025-09-14",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "binding_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "fallback_applied": true
+        },
+        "normalization_notes": [
+          "This file still needs fallback because the current extracted criteria do not contain any projectable time clause.",
+          "The fallback is intentionally weak and should be replaced if a future criteria correction file adds a search date or an explicit publication window."
+        ],
+        "evidence": [
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-09-14).",
+            "source": "paper: arxiv abs metadata"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": true,
+        "gold_path": "refs/2509.11446/metadata/title_abstracts_metadata-annotated.jsonl",
+        "gold_input_rows": 164,
+        "gold_duplicate_keys": {},
+        "key_consistency": {
+          "missing_in_gold_count": 0,
+          "missing_in_gold_keys": [],
+          "missing_in_metadata_count": 0,
+          "missing_in_metadata_keys": [],
+          "common_key_count": 164,
+          "verified_no_missing_keys_after_dedup": true
+        },
+        "total_candidates": 164,
+        "gold_positive_count": 74,
+        "gold_negative_count": 90,
+        "confusion_matrix": {
+          "tp": 74,
+          "fp": 90,
+          "tn": 0,
+          "fn": 0
+        },
+        "metrics_if_cutoff_pass_means_include": {
+          "accuracy": 0.4512,
+          "precision": 0.4512,
+          "recall": 1.0,
+          "f1": 0.6218
+        },
+        "gold_positive_cutoffed": 0,
+        "gold_positive_cutoffed_keys": [],
+        "correct_via_cutoff_exclude": 0,
+        "correct_via_cutoff_pass": 74,
+        "high_risk_gold_cutoff": false
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2509.11446/2509.11446.pdf",
+        "page_count": 73,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": true,
+          "has_citation_gate": true,
+          "has_analysis_range": true,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "projected_clause_ids": [
+            "operational_fallback_sr_publication_date"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": true,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": true,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 16,
+            "line_index": 8,
+            "score": 8,
+            "cue_types": [
+              "no_restriction",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "A total of 74 primary studies on the use of LLMs for requirements en- gineering were published between 2023 and 2024. Although the search time had no boundary, no paper in the field referred to LLMs before 2023 ac- cording to our search results. Despite the fact that generative pre-trained transformers already existed already in 2018 with GPT-1, we argue that",
+            "rationale": "PDF 明確表示沒有 publication-year restriction，與任何 active cutoff 年限高度相關。"
+          },
+          {
+            "page_number": 55,
+            "line_index": 8,
+            "score": 9,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "manual_scope"
+            ],
+            "quote": "i.e., Scopus. To address these problems, we piloted the search string and also integrated part of the consolidated string from Zhao et al. [27], which was focused on NLP4RE. Furthermore, we included a secondary search, system- atically analysing a wide range of relevant RE and SE venues. This approach aimed to improve coverage and capture any relevant papers that the initial",
+            "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+          },
+          {
+            "page_number": 12,
+            "line_index": 27,
+            "score": 10,
+            "cue_types": [
+              "search",
+              "manual_scope",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "database coverage. The search focused on primary studies published between 2020 to 2024 in major SE/RE conferences and journals. Table 1 illustartes the selected venues for manual search. On December 18, 2024, we perfomed the secondary search using publications from these venues. After removing duplicates, screening them, and after using the same inclusion and exclusion",
+            "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+          },
+          {
+            "page_number": 11,
+            "line_index": 21,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "manual_scope"
+            ],
+            "quote": "tify relevant studies focusing on the application of LLMs to RE. The process was conducted in two main stages: an initial digital library search and a complementary issue-to-issue search. Figure 2 summarises the main steps of this process and their outcomes. All steps were performed by the first author of the paper, who double-checked with the last author in case of doubts8 .",
+            "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+          },
+          {
+            "page_number": 61,
+            "line_index": 5,
+            "score": 7,
+            "cue_types": [
+              "citation",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "IEEE, 2023. [37] K. Ronanki, C. Berger, J. Horkoff, Investigating ChatGPT’s potential to assist in requirements elicitation processes, in: 2023 49th Euromi- cro Conference on Software Engineering and Advanced Applications (SEAA), IEEE, 2023, pp. 354–361.",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          }
+        ],
+        "semantic_risk_verdict": "possible_cutoff_derivation_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": true,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": true,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [
+          "Active time_policy 依賴 operational fallback，而不是 paper-literal 的明確時間條款。",
+          "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": null
+    },
+    "2510.01145": {
+      "paper_id": "2510.01145",
+      "availability": {
+        "paper_id": "2510.01145",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": false,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2510.01145.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2020-01-01",
+        "start_inclusive": true,
+        "end_date": "2025-07-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r7",
+          "stage2_i2"
+        ],
+        "binding_clause_ids": [
+          "stage1_r7",
+          "stage2_i2"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "explicit_window",
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2020-01-01",
+          "start_inclusive": true,
+          "end_date": "2025-07-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage2_i2"
+          ],
+          "notes": "The paper states the same publication window in both retrieval and screening criteria."
+        },
+        "normalization_notes": [
+          "The current JSON already has the right numeric window.",
+          "The revised file makes the duplication explicit so Codex can see that Stage 1 and Stage 2 agree rather than inferring a hidden priority rule."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r7",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R7",
+            "text": "Published from January 2020 to July 2025.",
+            "source": "criteria_mds/2510.01145.md"
+          },
+          {
+            "clause_id": "stage2_i2",
+            "section": "Stage 2 Eligibility / Screening Criteria",
+            "criterion_id": "I2",
+            "text": "Published from January 2020 to July 2025.",
+            "source": "criteria_mds/2510.01145.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2510.01145/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 123,
+        "metadata_unique_keys": 113,
+        "metadata_duplicate_keys": {
+          "alabi2024afrihubert": 2,
+          "ejigu2024large": 2,
+          "emezue2023afrodigits": 2,
+          "emezue2025naijavoices": 2,
+          "nzeyimana2023kinspeak": 2,
+          "olatunji2023afrispeech": 2,
+          "peterson2022openasr21": 2,
+          "ritchie2022large": 2,
+          "sirora2024shona": 2,
+          "tachbelie2023lexical": 2
+        },
+        "cutoff_status_counts": {
+          "before_start": 8,
+          "passed": 105
+        },
+        "cutoff_status_samples": {
+          "before_start": [
+            {
+              "key": "Barnard2014",
+              "title": "The NCHLT Speech Corpus of the Eleven Official South African Languages",
+              "published_date": "2014",
+              "published_date_iso": "2014-01-01"
+            },
+            {
+              "key": "Besacier2016",
+              "title": "Automatic Speech Recognition for Under-Resourced Languages: A Survey",
+              "published_date": "2014-01-01",
+              "published_date_iso": "2014-01-01"
+            },
+            {
+              "key": "NationsOnline2025",
+              "title": "Languages of Africa",
+              "published_date": "1997-03-06",
+              "published_date_iso": "1997-03-06"
+            }
+          ],
+          "passed": [
+            {
+              "key": "Adelani2024",
+              "title": "ÌròyìnSpeech: A Yoruba News Reading Speech Corpus",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            },
+            {
+              "key": "Chisanga2021",
+              "title": "BembaSpeech: A Bemba Language Speech Corpus for ASR in Zambia",
+              "published_date": "2021",
+              "published_date_iso": "2021-01-01"
+            },
+            {
+              "key": "Diouf2024",
+              "title": "Kallaama: A Transcribed Speech Dataset about Agriculture in the Three Most Widely Spoken Languages in Senegal",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2020-01-01",
+          "start_inclusive": true,
+          "end_date": "2025-07-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r7",
+            "stage2_i2"
+          ],
+          "binding_clause_ids": [
+            "stage1_r7",
+            "stage2_i2"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "The current JSON already has the right numeric window.",
+          "The revised file makes the duplication explicit so Codex can see that Stage 1 and Stage 2 agree rather than inferring a hidden priority rule."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r7",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R7",
+            "text": "Published from January 2020 to July 2025.",
+            "source": "criteria_mds/2510.01145.md"
+          },
+          {
+            "clause_id": "stage2_i2",
+            "section": "Stage 2 Eligibility / Screening Criteria",
+            "criterion_id": "I2",
+            "text": "Published from January 2020 to July 2025.",
+            "source": "criteria_mds/2510.01145.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": false,
+        "gold_path": "refs/2510.01145/metadata/title_abstracts_metadata-annotated.jsonl"
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2510.01145/2510.01145.pdf",
+        "page_count": 29,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": false,
+          "has_analysis_range": true,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r7",
+            "stage2_i2"
+          ],
+          "projected_clause_ids": [
+            "stage1_r7",
+            "stage2_i2"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": true,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 2,
+            "line_index": 9,
+            "score": 6,
+            "cue_types": [
+              "search",
+              "eligibility"
+            ],
+            "quote": "circumstances make text-based digital systems inaccessible to most of the population. Africans primarily speak in their local languages, and hence they do not use English or French locally, so automatic speech recognition (ASR) emerges as a significant research field for digital inclusion. Despite this need, mainstream voice assistants like Siri, Alexa, and Google Assistant recognize no African languages. Early efforts like ALFFA [18] created Swahili, Hausa, Amharic, and Wolof,",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 19,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "Automatic Speech Recognition (ASR) has achieved remarkable global progress, yet African low-resource languages remain rigorously underrepresented, producing barriers to digital inclusion across the continent with more than +2000 languages. This systematic literature review (SLR) explores research on ASR for African languages with a focus on datasets, models and training methods, evaluation techniques, challenges, and recommends future directions. We employ the PRISMA 2020 procedures and search DBLP, ACM Digital",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 21,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "with more than +2000 languages. This systematic literature review (SLR) explores research on ASR for African languages with a focus on datasets, models and training methods, evaluation techniques, challenges, and recommends future directions. We employ the PRISMA 2020 procedures and search DBLP, ACM Digital Library, Google Scholar, Semantic Scholar, and arXiv for studies published between January 2020 and July 2025. We include studies related to ASR datasets, models or metrics for African languages, while excluding",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 5,
+            "line_index": 39,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "reviewed papers, Google Scholar and Semantic Scholar allow larger interdisciplinary discovery, while ArXiv accommodates preprints and open-access contributions. The final data of the search from all the databases was July 1, 2025. 3.2.3 Study Quality Assessment. The SLR protocol provides a framework for reviewing ASR systems in African low-resource languages. The procedure entails retrieving primary studies from relevant",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 6,
+            "line_index": 28,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "decrease to 6 publications, fewer than half a year earlier. Generally, the trend indicates a consistent rise in publications between 2021 to 2024 with a dramatic sink in 2025, which is obvious as this research is carried out at the mid of the 2025. 4.1.3 What types of venues did authors utilize for ASR studies on African low-resource languages? Based on figure 3, conference papers were the most adopted venue with 40.3% of total outcome,",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": null
+    },
+    "2511.13936": {
+      "paper_id": "2511.13936",
+      "availability": {
+        "paper_id": "2511.13936",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": true,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2511.13936.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": "2010-01-01",
+        "start_inclusive": true,
+        "end_date": "2025-11-17",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "operational_lower_bound_benchmark_alignment",
+          "operational_fallback_sr_publication_date"
+        ],
+        "binding_clause_ids": [
+          "operational_lower_bound_benchmark_alignment",
+          "operational_fallback_sr_publication_date"
+        ],
+        "fallback_applied": true
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": null,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage1_r3"
+          ],
+          "notes": "No explicit Stage 2 publication window is stated. The paper's Stage 1 retrieval criteria mention 2020 onward, but the active operational time_policy is widened to 2010-01-01."
+        },
+        "normalization_notes": [
+          "The active operational lower bound has been widened from 2020-01-01 to 2010-01-01.",
+          "The Stage 1 '2020 onward' clause is preserved for source-audit purposes but is no longer projected into the global pre-review cutoff.",
+          "Those citation thresholds are subset-specific and non-window-like, so they stay in time_clauses with project_to_time_policy=false."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r3",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R3",
+            "text": "Published from 2020 onward.",
+            "source": "criteria_mds/2511.13936.md"
+          },
+          {
+            "clause_id": "stage1_r6",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R6",
+            "text": "For arXiv papers, the citation count must meet year-specific thresholds (2020: 28, 2021: 22, 2022: 32, 2023: 90, 2024: 13, 2025: 1).",
+            "source": "criteria_mds/2511.13936.md"
+          },
+          {
+            "clause_id": "operational_lower_bound_benchmark_alignment",
+            "section": "Operational override",
+            "criterion_id": "N/A",
+            "text": "Active pre-review cutoff lower bound widened to 2010-01-01.",
+            "source": "repo decision: 2026-03-26"
+          },
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-11-17).",
+            "source": "paper: arxiv abs metadata"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 89,
+        "metadata_unique_keys": 88,
+        "metadata_duplicate_keys": {
+          "ouyang2022training": 2
+        },
+        "cutoff_status_counts": {
+          "before_start": 11,
+          "passed": 77
+        },
+        "cutoff_status_samples": {
+          "before_start": [
+            {
+              "key": "bradley1952rank",
+              "title": "Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons",
+              "published_date": "1952",
+              "published_date_iso": "1952-01-01"
+            },
+            {
+              "key": "cao2007learning",
+              "title": "Learning to rank: from pairwise approach to listwise approach",
+              "published_date": "2007",
+              "published_date_iso": "2007-01-01"
+            },
+            {
+              "key": "carterette2008here",
+              "title": "Here or there: Preference judgments for relevance",
+              "published_date": "2008",
+              "published_date_iso": "2008-01-01"
+            }
+          ],
+          "passed": [
+            {
+              "key": "al2023speech",
+              "title": "Speech Emotion Recognition: A Comprehensive Survey",
+              "published_date": "2023",
+              "published_date_iso": "2023-01-01"
+            },
+            {
+              "key": "anastassiou2024seed",
+              "title": "Seed-tts: A family of high-quality versatile speech generation models",
+              "published_date": "2024",
+              "published_date_iso": "2024-01-01"
+            },
+            {
+              "key": "busso2016msp",
+              "title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+              "published_date": "2016",
+              "published_date_iso": "2016-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": "2010-01-01",
+          "start_inclusive": true,
+          "end_date": "2025-11-17",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "operational_lower_bound_benchmark_alignment",
+            "operational_fallback_sr_publication_date"
+          ],
+          "binding_clause_ids": [
+            "operational_lower_bound_benchmark_alignment",
+            "operational_fallback_sr_publication_date"
+          ],
+          "fallback_applied": true
+        },
+        "normalization_notes": [
+          "The active operational lower bound has been widened from 2020-01-01 to 2010-01-01.",
+          "The Stage 1 '2020 onward' clause is preserved for source-audit purposes but is no longer projected into the global pre-review cutoff.",
+          "Those citation thresholds are subset-specific and non-window-like, so they stay in time_clauses with project_to_time_policy=false."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r3",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R3",
+            "text": "Published from 2020 onward.",
+            "source": "criteria_mds/2511.13936.md"
+          },
+          {
+            "clause_id": "stage1_r6",
+            "section": "Stage 1 Retrieval Criteria",
+            "criterion_id": "R6",
+            "text": "For arXiv papers, the citation count must meet year-specific thresholds (2020: 28, 2021: 22, 2022: 32, 2023: 90, 2024: 13, 2025: 1).",
+            "source": "criteria_mds/2511.13936.md"
+          },
+          {
+            "clause_id": "operational_lower_bound_benchmark_alignment",
+            "section": "Operational override",
+            "criterion_id": "N/A",
+            "text": "Active pre-review cutoff lower bound widened to 2010-01-01.",
+            "source": "repo decision: 2026-03-26"
+          },
+          {
+            "clause_id": "operational_fallback_sr_publication_date",
+            "section": "Operational fallback",
+            "criterion_id": "N/A",
+            "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-11-17).",
+            "source": "paper: arxiv abs metadata"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": true,
+        "gold_path": "refs/2511.13936/metadata/title_abstracts_metadata-annotated.jsonl",
+        "gold_input_rows": 88,
+        "gold_duplicate_keys": {},
+        "key_consistency": {
+          "missing_in_gold_count": 0,
+          "missing_in_gold_keys": [],
+          "missing_in_metadata_count": 0,
+          "missing_in_metadata_keys": [],
+          "common_key_count": 88,
+          "verified_no_missing_keys_after_dedup": true
+        },
+        "total_candidates": 88,
+        "gold_positive_count": 30,
+        "gold_negative_count": 58,
+        "confusion_matrix": {
+          "tp": 30,
+          "fp": 47,
+          "tn": 11,
+          "fn": 0
+        },
+        "metrics_if_cutoff_pass_means_include": {
+          "accuracy": 0.4659,
+          "precision": 0.3896,
+          "recall": 1.0,
+          "f1": 0.5607
+        },
+        "gold_positive_cutoffed": 0,
+        "gold_positive_cutoffed_keys": [],
+        "correct_via_cutoff_exclude": 11,
+        "correct_via_cutoff_pass": 30,
+        "high_risk_gold_cutoff": false
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2511.13936/2511.13936.pdf",
+        "page_count": 27,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": true,
+          "has_search_execution_date": false,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "operational_lower_bound_benchmark_alignment",
+            "operational_fallback_sr_publication_date"
+          ],
+          "projected_clause_ids": [
+            "operational_lower_bound_benchmark_alignment",
+            "operational_fallback_sr_publication_date"
+          ],
+          "has_stage1_binding": false,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": false,
+          "binding_uses_fallback": true,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": true,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": true
+        },
+        "snippets": [
+          {
+            "page_number": 7,
+            "line_index": 20,
+            "score": 13,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "manual_scope",
+              "cutoff_hint"
+            ],
+            "quote": "3.5 Final Selection and Inclusion In total, this search yielded 116 published papers, 345 arXiv papers, and 60 cited works for potential inclusion in the literature review. For each paper, the abstract, introduction, and conclusion were read to assess eligibility. A paper was deemed eligible if it satisfied the following criteria:",
+            "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+          },
+          {
+            "page_number": 7,
+            "line_index": 39,
+            "score": 11,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "manual_scope"
+            ],
+            "quote": "cited works from 60 to 22. During the review process no duplicates were identified. These identified papers were then read in full for final considerations of inclusion. During the full read-through, we further exclude 4 published works, 2 arXiv works, and 9 cited works. 30 total works were thus included in this survey, 10 from the venue search, 7 from arXiv, and 13 cited works. Figure 2 summarizes the literature screening and selection process following the PRISMA framework. We provide",
+            "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+          },
+          {
+            "page_number": 22,
+            "line_index": 3,
+            "score": 7,
+            "cue_types": [
+              "manual_scope",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "[12] Paul F Christiano, Jan Leike, Tom Brown, Miljan Martic, Shane Legg, and Dario Amodei. 2017. Deep reinforcement learning from human preferences. Advances in neural information processing systems 30 (2017). [13] Yunfei Chu, Jin Xu, Qian Yang, Haojie Wei, Xipin Wei, Zhifang Guo, Yichong Leng, Yuanjun Lv, Jinzheng He, Junyang Lin, et al. 2024. Qwen2-audio",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 5,
+            "line_index": 26,
+            "score": 8,
+            "cue_types": [
+              "search",
+              "citation",
+              "cutoff_hint"
+            ],
+            "quote": "literature retrieval and screening process inspired by the PRISMA framework [55]. This involved a keyword-based search across top-tier machine learning and audio research venues, as well as arXiv for non-peer-reviewed but timely work. Papers were filtered by publication date, keyword relevance, venue prominence, and citation-based thresholds. Each candidate paper was assessed against predefined inclusion criteria centered on audio-based preference learning. This process yielded 30 works for inclusion, comprising published papers, arXiv preprints, and works cited by the",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 7,
+            "line_index": 8,
+            "score": 10,
+            "cue_types": [
+              "search",
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "areas. Including arXiv enables us to capture emerging and pre-publication works that are often critical to ongoing developments. Due to the volume of arXiv publications containing the selected keywords since 2020, we included only those within the top 20th percentile by citation count (e.g., “≥ 32 cites for 2022 papers”). This threshold was determined based on the observation that 9% (10/116) of papers from the venue-based search were potentially relevant, and we assumed an 11%",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          }
+        ],
+        "semantic_risk_verdict": "possible_cutoff_derivation_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": true,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": true,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [
+          "Active time_policy 依賴 operational fallback，而不是 paper-literal 的明確時間條款。",
+          "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+        ],
+        "high_attention": true
+      },
+      "historical_comparison": {
+        "old_summary_path": "screening/results/cutoff_only_audit_2026-03-26/summary.json",
+        "overlap_paper_id": "2511.13936",
+        "differences": {
+          "cutoff_status_counts": {
+            "old": {
+              "before_start": 32,
+              "passed": 51,
+              "unparseable_published_date": 5
+            },
+            "new": {
+              "before_start": 11,
+              "passed": 77
+            }
+          },
+          "gold_positive_cutoffed": {
+            "old": 9,
+            "new": 0
+          },
+          "confusion_matrix": {
+            "old": {
+              "tp": 21,
+              "fp": 30,
+              "tn": 28,
+              "fn": 9
+            },
+            "new": {
+              "tp": 30,
+              "fp": 47,
+              "tn": 11,
+              "fn": 0
+            }
+          }
+        },
+        "status": "changed"
+      }
+    },
+    "2601.19926": {
+      "paper_id": "2601.19926",
+      "availability": {
+        "paper_id": "2601.19926",
+        "cutoff_json": true,
+        "metadata": true,
+        "annotated_gold": true,
+        "pdf": true,
+        "md": true
+      },
+      "cutoff_json_path": "cutoff_jsons/2601.19926.json",
+      "time_policy": {
+        "enabled": true,
+        "date_field": "published",
+        "start_date": null,
+        "start_inclusive": true,
+        "end_date": "2025-07-31",
+        "end_inclusive": true,
+        "timezone": "UTC",
+        "derivation_mode": "intersection_of_projectable_time_clauses",
+        "projected_clause_ids": [
+          "stage1_r1"
+        ],
+        "binding_clause_ids": [
+          "stage1_r1"
+        ],
+        "fallback_applied": false
+      },
+      "cutoff_semantics_snapshot": {
+        "source_faithful_screening_publication_policy": {
+          "status": "not_explicitly_stated",
+          "enabled": null,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": null,
+          "end_inclusive": false,
+          "timezone": "UTC",
+          "evidence_clause_ids": [
+            "stage1_r1"
+          ],
+          "notes": "The corrected criteria state only an upper cut-off date and do not add a separate Stage 2 publication window."
+        },
+        "normalization_notes": [
+          "The current JSON already captures the corrected cut-off date correctly.",
+          "The revised file mainly upgrades the schema so the file is consistent with the rest of the folder."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r1",
+            "section": "Stage 1 Retrieval Criteria (corrected)",
+            "criterion_id": "R1",
+            "text": "Cut-off date: 31 July 2025.",
+            "source": "criteria_corrected_3papers/2601.19926.md"
+          }
+        ]
+      },
+      "current_cutoff_audit": {
+        "available": true,
+        "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+        "metadata_input_rows": 360,
+        "metadata_unique_keys": 360,
+        "metadata_duplicate_keys": {},
+        "cutoff_status_counts": {
+          "passed": 360
+        },
+        "cutoff_status_samples": {
+          "passed": [
+            {
+              "key": "Belinkov:2022",
+              "title": "Probing Classifiers: Promises, Shortcomings, and Advances",
+              "published_date": "2022",
+              "published_date_iso": "2022-01-01"
+            },
+            {
+              "key": "Devlin:etal:2019",
+              "title": "\"BERT: Pre-training of deep bidirectional transformers for language understanding\"",
+              "published_date": "2018-10",
+              "published_date_iso": "2018-10-01"
+            },
+            {
+              "key": "Kim2020Are",
+              "title": "Are Pre-trained Language Models Aware of Phrases? Simple but Strong Baselines for Grammar Induction",
+              "published_date": "2020",
+              "published_date_iso": "2020-01-01"
+            }
+          ]
+        },
+        "time_policy": {
+          "enabled": true,
+          "date_field": "published",
+          "start_date": null,
+          "start_inclusive": true,
+          "end_date": "2025-07-31",
+          "end_inclusive": true,
+          "timezone": "UTC",
+          "derivation_mode": "intersection_of_projectable_time_clauses",
+          "projected_clause_ids": [
+            "stage1_r1"
+          ],
+          "binding_clause_ids": [
+            "stage1_r1"
+          ],
+          "fallback_applied": false
+        },
+        "normalization_notes": [
+          "The current JSON already captures the corrected cut-off date correctly.",
+          "The revised file mainly upgrades the schema so the file is consistent with the rest of the folder."
+        ],
+        "evidence": [
+          {
+            "clause_id": "stage1_r1",
+            "section": "Stage 1 Retrieval Criteria (corrected)",
+            "criterion_id": "R1",
+            "text": "Cut-off date: 31 July 2025.",
+            "source": "criteria_corrected_3papers/2601.19926.md"
+          }
+        ]
+      },
+      "gold_audit": {
+        "available": true,
+        "gold_path": "refs/2601.19926/metadata/title_abstracts_metadata-annotated.jsonl",
+        "gold_input_rows": 360,
+        "gold_duplicate_keys": {},
+        "key_consistency": {
+          "missing_in_gold_count": 0,
+          "missing_in_gold_keys": [],
+          "missing_in_metadata_count": 0,
+          "missing_in_metadata_keys": [],
+          "common_key_count": 360,
+          "verified_no_missing_keys_after_dedup": true
+        },
+        "total_candidates": 360,
+        "gold_positive_count": 336,
+        "gold_negative_count": 24,
+        "confusion_matrix": {
+          "tp": 336,
+          "fp": 24,
+          "tn": 0,
+          "fn": 0
+        },
+        "metrics_if_cutoff_pass_means_include": {
+          "accuracy": 0.9333,
+          "precision": 0.9333,
+          "recall": 1.0,
+          "f1": 0.9655
+        },
+        "gold_positive_cutoffed": 0,
+        "gold_positive_cutoffed_keys": [],
+        "correct_via_cutoff_exclude": 0,
+        "correct_via_cutoff_pass": 336,
+        "high_risk_gold_cutoff": false
+      },
+      "pdf_semantic_audit": {
+        "pdf_path": "refs/2601.19926/2601.19926.pdf",
+        "page_count": 40,
+        "detected_features": {
+          "has_explicit_inclusion_time_window": false,
+          "has_search_execution_date": true,
+          "has_search_time_range": true,
+          "has_secondary_search": true,
+          "has_no_publication_restriction": false,
+          "has_citation_gate": true,
+          "has_analysis_range": false,
+          "has_submitted_or_published_language": false
+        },
+        "cutoff_feature_signals": {
+          "binding_clause_ids": [
+            "stage1_r1"
+          ],
+          "projected_clause_ids": [
+            "stage1_r1"
+          ],
+          "has_stage1_binding": true,
+          "has_stage2_binding": false,
+          "binding_from_stage1_only": true,
+          "binding_uses_fallback": false,
+          "binding_uses_search_execution": false,
+          "binding_uses_citation_gate": false,
+          "fallback_applied": false,
+          "evidence_mentions_no_publication_restriction": false,
+          "evidence_mentions_submitted_or_published": false,
+          "evidence_mentions_citation_gate": false
+        },
+        "snippets": [
+          {
+            "page_number": 2,
+            "line_index": 76,
+            "score": 7,
+            "cue_types": [
+              "eligibility",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "exclusion. This is both for transparency and to facilitate fur- tion, selection, and annotation. We set our cut-off ther studies regarding aspects other than those covered in the date for inclusion to July 31, 2025. present review.",
+            "rationale": "PDF 直接把時間條件寫進 inclusion/eligibility/exclusion 描述。"
+          },
+          {
+            "page_number": 1,
+            "line_index": 50,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "become the engine behind a global shift in AI, based architectures, acquire rich syntactic repre- producing fluent text across diverse languages. A sentations early during pretraining (Chang and growing body of research is examining how mod- Bergen, 2023), localize much of this information ern LMs acquire, represent, and deploy linguistic in their middle layers, and encode at least some knowledge (Rogers et al., 2020; Zhou et al., 2025; syntactic relations via specialized attention heads",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          },
+          {
+            "page_number": 2,
+            "line_index": 5,
+            "score": 3,
+            "cue_types": [
+              "manual_scope"
+            ],
+            "quote": "Keyword Review-based Search Snowballing identification stage, we followed a broad-stroke (i) All references cited by reviews Reviews",
+            "rationale": "PDF 片段與 cutoff 的時間語義有直接關聯。"
+          },
+          {
+            "page_number": 2,
+            "line_index": 68,
+            "score": 3,
+            "cue_types": [
+              "citation"
+            ],
+            "quote": "we only considered the studies listed in that section. 2 If a review had more than 100 citations, we reviewed the 2 Method top 30-40% (sorted by relevance as determined by Google Scholar), otherwise all citations were checked.",
+            "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+          },
+          {
+            "page_number": 3,
+            "line_index": 116,
+            "score": 7,
+            "cue_types": [
+              "search",
+              "time",
+              "cutoff_hint"
+            ],
+            "quote": "tigated, languages tested, and experimental ma- BERT was published (Devlin et al., 2019), peak- terials employed. To establish the syntactic cat- ing in 2022 and decreasing afterwards (although egories, we applied a bottom-up approach: We note that coverage of 2025 in the database finished started from the terms used in the studies them- in July, so 2025 probably increased with respect to selves to describe the phenomena analysed, and 2024). As could be expected, initially most work",
+            "rationale": "PDF 把時間條件放在 search/query/filter 流程中，可能只是 retrieval 邊界。"
+          }
+        ],
+        "semantic_risk_verdict": "no_apparent_issue",
+        "secondary_flags": {
+          "parser_issue_flag": false,
+          "cutoff_derivation_issue_flag": false,
+          "retrieval_vs_screening_confusion_flag": false,
+          "scope_mismatch_flag": false,
+          "manual_review_flag": false
+        },
+        "verdict_reasons": [],
+        "high_attention": false
+      },
+      "historical_comparison": {
+        "old_summary_path": "screening/results/cutoff_only_audit_2026-03-26/summary.json",
+        "overlap_paper_id": "2601.19926",
+        "differences": {
+          "cutoff_status_counts": {
+            "old": {
+              "passed": 354,
+              "unparseable_published_date": 6
+            },
+            "new": {
+              "passed": 360
+            }
+          },
+          "gold_positive_cutoffed": {
+            "old": 3,
+            "new": 0
+          },
+          "confusion_matrix": {
+            "old": {
+              "tp": 333,
+              "fp": 21,
+              "tn": 3,
+              "fn": 3
+            },
+            "new": {
+              "tp": 336,
+              "fp": 24,
+              "tn": 0,
+              "fn": 0
+            }
+          }
+        },
+        "status": "changed"
+      }
+    }
+  }
+}

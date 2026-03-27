@@ -1,0 +1,260 @@
+{
+  "paper_id": "2509.11446",
+  "availability": {
+    "paper_id": "2509.11446",
+    "cutoff_json": true,
+    "metadata": true,
+    "annotated_gold": true,
+    "pdf": true,
+    "md": true
+  },
+  "cutoff_json_path": "cutoff_jsons/2509.11446.json",
+  "time_policy": {
+    "enabled": true,
+    "date_field": "published",
+    "start_date": null,
+    "start_inclusive": true,
+    "end_date": "2025-09-14",
+    "end_inclusive": true,
+    "timezone": "UTC",
+    "derivation_mode": "intersection_of_projectable_time_clauses",
+    "projected_clause_ids": [
+      "operational_fallback_sr_publication_date"
+    ],
+    "binding_clause_ids": [
+      "operational_fallback_sr_publication_date"
+    ],
+    "fallback_applied": true
+  },
+  "cutoff_semantics_snapshot": {
+    "source_faithful_screening_publication_policy": {
+      "status": "not_explicitly_stated",
+      "enabled": null,
+      "date_field": "published",
+      "start_date": null,
+      "start_inclusive": true,
+      "end_date": null,
+      "end_inclusive": false,
+      "timezone": "UTC",
+      "evidence_clause_ids": [],
+      "notes": "No explicit publication-time constraint appears in the extracted criteria."
+    },
+    "normalization_notes": [
+      "This file still needs fallback because the current extracted criteria do not contain any projectable time clause.",
+      "The fallback is intentionally weak and should be replaced if a future criteria correction file adds a search date or an explicit publication window."
+    ],
+    "evidence": [
+      {
+        "clause_id": "operational_fallback_sr_publication_date",
+        "section": "Operational fallback",
+        "criterion_id": "N/A",
+        "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-09-14).",
+        "source": "paper: arxiv abs metadata"
+      }
+    ]
+  },
+  "current_cutoff_audit": {
+    "available": true,
+    "metadata_path": "refs/2509.11446/metadata/title_abstracts_metadata.jsonl",
+    "metadata_input_rows": 164,
+    "metadata_unique_keys": 164,
+    "metadata_duplicate_keys": {},
+    "cutoff_status_counts": {
+      "passed": 164
+    },
+    "cutoff_status_samples": {
+      "passed": [
+        {
+          "key": "10.1007/978-3-031-88531-0_13",
+          "title": "LACE-HC: A Lightweight Attention-Based Classifier for Efficient Hierarchical Classification of Software Requirements",
+          "published_date": "2025",
+          "published_date_iso": "2025-01-01"
+        },
+        {
+          "key": "10.1007/978-3-031-88531-0_15",
+          "title": "Automatic Prompt Engineering: The Case of Requirements Classification",
+          "published_date": "2025",
+          "published_date_iso": "2025-01-01"
+        },
+        {
+          "key": "10.1007/978-3-031-88531-0_7",
+          "title": "FeReRe: Feedback Requirements Relation Using Large Language Models",
+          "published_date": "2025",
+          "published_date_iso": "2025-01-01"
+        }
+      ]
+    },
+    "time_policy": {
+      "enabled": true,
+      "date_field": "published",
+      "start_date": null,
+      "start_inclusive": true,
+      "end_date": "2025-09-14",
+      "end_inclusive": true,
+      "timezone": "UTC",
+      "derivation_mode": "intersection_of_projectable_time_clauses",
+      "projected_clause_ids": [
+        "operational_fallback_sr_publication_date"
+      ],
+      "binding_clause_ids": [
+        "operational_fallback_sr_publication_date"
+      ],
+      "fallback_applied": true
+    },
+    "normalization_notes": [
+      "This file still needs fallback because the current extracted criteria do not contain any projectable time clause.",
+      "The fallback is intentionally weak and should be replaced if a future criteria correction file adds a search date or an explicit publication window."
+    ],
+    "evidence": [
+      {
+        "clause_id": "operational_fallback_sr_publication_date",
+        "section": "Operational fallback",
+        "criterion_id": "N/A",
+        "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-09-14).",
+        "source": "paper: arxiv abs metadata"
+      }
+    ]
+  },
+  "gold_audit": {
+    "available": true,
+    "gold_path": "refs/2509.11446/metadata/title_abstracts_metadata-annotated.jsonl",
+    "gold_input_rows": 164,
+    "gold_duplicate_keys": {},
+    "key_consistency": {
+      "missing_in_gold_count": 0,
+      "missing_in_gold_keys": [],
+      "missing_in_metadata_count": 0,
+      "missing_in_metadata_keys": [],
+      "common_key_count": 164,
+      "verified_no_missing_keys_after_dedup": true
+    },
+    "total_candidates": 164,
+    "gold_positive_count": 74,
+    "gold_negative_count": 90,
+    "confusion_matrix": {
+      "tp": 74,
+      "fp": 90,
+      "tn": 0,
+      "fn": 0
+    },
+    "metrics_if_cutoff_pass_means_include": {
+      "accuracy": 0.4512,
+      "precision": 0.4512,
+      "recall": 1.0,
+      "f1": 0.6218
+    },
+    "gold_positive_cutoffed": 0,
+    "gold_positive_cutoffed_keys": [],
+    "correct_via_cutoff_exclude": 0,
+    "correct_via_cutoff_pass": 74,
+    "high_risk_gold_cutoff": false
+  },
+  "pdf_semantic_audit": {
+    "pdf_path": "refs/2509.11446/2509.11446.pdf",
+    "page_count": 73,
+    "detected_features": {
+      "has_explicit_inclusion_time_window": true,
+      "has_search_execution_date": true,
+      "has_search_time_range": true,
+      "has_secondary_search": true,
+      "has_no_publication_restriction": true,
+      "has_citation_gate": true,
+      "has_analysis_range": true,
+      "has_submitted_or_published_language": false
+    },
+    "cutoff_feature_signals": {
+      "binding_clause_ids": [
+        "operational_fallback_sr_publication_date"
+      ],
+      "projected_clause_ids": [
+        "operational_fallback_sr_publication_date"
+      ],
+      "has_stage1_binding": false,
+      "has_stage2_binding": false,
+      "binding_from_stage1_only": false,
+      "binding_uses_fallback": true,
+      "binding_uses_search_execution": false,
+      "binding_uses_citation_gate": false,
+      "fallback_applied": true,
+      "evidence_mentions_no_publication_restriction": false,
+      "evidence_mentions_submitted_or_published": false,
+      "evidence_mentions_citation_gate": false
+    },
+    "snippets": [
+      {
+        "page_number": 16,
+        "line_index": 8,
+        "score": 8,
+        "cue_types": [
+          "no_restriction",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "A total of 74 primary studies on the use of LLMs for requirements en- gineering were published between 2023 and 2024. Although the search time had no boundary, no paper in the field referred to LLMs before 2023 ac- cording to our search results. Despite the fact that generative pre-trained transformers already existed already in 2018 with GPT-1, we argue that",
+        "rationale": "PDF 明確表示沒有 publication-year restriction，與任何 active cutoff 年限高度相關。"
+      },
+      {
+        "page_number": 55,
+        "line_index": 8,
+        "score": 9,
+        "cue_types": [
+          "search",
+          "eligibility",
+          "manual_scope"
+        ],
+        "quote": "i.e., Scopus. To address these problems, we piloted the search string and also integrated part of the consolidated string from Zhao et al. [27], which was focused on NLP4RE. Furthermore, we included a secondary search, system- atically analysing a wide range of relevant RE and SE venues. This approach aimed to improve coverage and capture any relevant papers that the initial",
+        "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+      },
+      {
+        "page_number": 12,
+        "line_index": 27,
+        "score": 10,
+        "cue_types": [
+          "search",
+          "manual_scope",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "database coverage. The search focused on primary studies published between 2020 to 2024 in major SE/RE conferences and journals. Table 1 illustartes the selected venues for manual search. On December 18, 2024, we perfomed the secondary search using publications from these venues. After removing duplicates, screening them, and after using the same inclusion and exclusion",
+        "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+      },
+      {
+        "page_number": 11,
+        "line_index": 21,
+        "score": 6,
+        "cue_types": [
+          "search",
+          "manual_scope"
+        ],
+        "quote": "tify relevant studies focusing on the application of LLMs to RE. The process was conducted in two main stages: an initial digital library search and a complementary issue-to-issue search. Figure 2 summarises the main steps of this process and their outcomes. All steps were performed by the first author of the paper, who double-checked with the last author in case of doubts8 .",
+        "rationale": "PDF 顯示除了資料庫 search 外，還有 manual/cited/secondary 路徑，容易和單一 cutoff universe 脫節。"
+      },
+      {
+        "page_number": 61,
+        "line_index": 5,
+        "score": 7,
+        "cue_types": [
+          "citation",
+          "time",
+          "cutoff_hint"
+        ],
+        "quote": "IEEE, 2023. [37] K. Ronanki, C. Berger, J. Horkoff, Investigating ChatGPT’s potential to assist in requirements elicitation processes, in: 2023 49th Euromi- cro Conference on Software Engineering and Advanced Applications (SEAA), IEEE, 2023, pp. 354–361.",
+        "rationale": "PDF 提到 citation threshold / percentile，這通常更接近 retrieval convenience 而非 evidence eligibility。"
+      }
+    ],
+    "semantic_risk_verdict": "possible_cutoff_derivation_issue",
+    "secondary_flags": {
+      "parser_issue_flag": false,
+      "cutoff_derivation_issue_flag": true,
+      "retrieval_vs_screening_confusion_flag": false,
+      "scope_mismatch_flag": true,
+      "manual_review_flag": false
+    },
+    "verdict_reasons": [
+      "Active time_policy 依賴 operational fallback，而不是 paper-literal 的明確時間條款。",
+      "PDF 顯示 secondary/manual/cited inclusion path，單一 cutoff universe 與 paper scope 可能不一致。"
+    ],
+    "high_attention": true
+  },
+  "historical_comparison": null
+}
