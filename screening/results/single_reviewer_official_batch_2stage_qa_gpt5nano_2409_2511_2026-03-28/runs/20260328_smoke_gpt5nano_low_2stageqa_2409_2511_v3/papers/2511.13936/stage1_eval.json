@@ -1,0 +1,118 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "page2021prisma",
+    "candidate_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+    "stage": "stage1",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "source_record_provenance": {
+      "record_key": "page2021prisma",
+      "record_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+      "source": "pubmed",
+      "source_id": "34446261",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+      "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/page2021prisma.md",
+      "fulltext_available": true
+    },
+    "stage_score": 2,
+    "scoring_basis": "unresolved_without_direct_negative",
+    "decision_recommendation": "exclude",
+    "positive_fit_evidence_ids": [],
+    "direct_negative_evidence_ids": [],
+    "unresolved_core_evidence_ids": [],
+    "deferred_core_evidence_ids": [],
+    "criterion_mapping": [],
+    "criterion_conflicts": [],
+    "decision_rationale": "There is no Stage 1 evidence supporting audio-domain preference-learning fit in the provided synthesis; all relevant fields indicate absence or counterevidence, making a clear core fit unlikely at Stage 1.",
+    "manual_review_needed": false,
+    "routing_note": "No credible Stage1 path detected for audio-domain preference-learning; proceed to Stage 2 only if new evidence emerges."
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "han2020ordinal",
+    "candidate_title": "Ordinal learning for emotion recognition in customer service calls",
+    "stage": "stage1",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "source_record_provenance": {
+      "record_key": "han2020ordinal",
+      "record_title": "Ordinal learning for emotion recognition in customer service calls",
+      "source": "openalex",
+      "source_id": "10.1109/icassp40776.2020.9053648",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+      "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/han2020ordinal.md",
+      "fulltext_available": true
+    },
+    "stage_score": 3,
+    "scoring_basis": "unresolved_without_direct_negative",
+    "decision_recommendation": "maybe",
+    "positive_fit_evidence_ids": [
+      "audio_domain_fit",
+      "preference_learning_signal"
+    ],
+    "direct_negative_evidence_ids": [],
+    "unresolved_core_evidence_ids": [
+      "rating_to_ranking_signal"
+    ],
+    "deferred_core_evidence_ids": [],
+    "criterion_mapping": [
+      {
+        "criterion_text": "Audio-domain fit evidenced by emotion recognition in customer service calls (audio domain).",
+        "status": "supported",
+        "support_ids": [
+          "audio_domain_fit"
+        ]
+      }
+    ],
+    "criterion_conflicts": [],
+    "decision_rationale": "Stage 1 shows direct audio-domain relevance and a preference-learning signal (ordinal information) within the abstract, but key signals about ranking conversion (rating_to_ranking_signal) remain unclear, creating an unresolved path to stable core fit.",
+    "manual_review_needed": false,
+    "routing_note": "Proceed to Stage 2 for full-text confirmation."
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "hurst2024gpt",
+    "candidate_title": "Gpt-4o system card",
+    "stage": "stage1",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "source_record_provenance": {
+      "record_key": "hurst2024gpt",
+      "record_title": "Gpt-4o system card",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2410.21276",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+      "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/hurst2024gpt.md",
+      "fulltext_available": true
+    },
+    "stage_score": 3,
+    "scoring_basis": "unresolved_without_direct_negative",
+    "decision_recommendation": "maybe",
+    "positive_fit_evidence_ids": [
+      "audio_domain_fit"
+    ],
+    "direct_negative_evidence_ids": [],
+    "unresolved_core_evidence_ids": [],
+    "deferred_core_evidence_ids": [],
+    "criterion_mapping": [
+      {
+        "criterion_text": "Audio-domain alignment: evidence that the paper's content is applicable in the audio domain and discusses audio processing or models.",
+        "status": "supported",
+        "support_ids": [
+          "audio_domain_fit"
+        ]
+      }
+    ],
+    "criterion_conflicts": [],
+    "decision_rationale": "Stage 1 shows audio-domain relevance via direct support for audio-domain applicability, but explicit preference-learning signals are not demonstrated in the abstract; no direct negative evidence identified.",
+    "manual_review_needed": false,
+    "routing_note": "Proceed to Stage 2 for full-text confirmation."
+  }
+]

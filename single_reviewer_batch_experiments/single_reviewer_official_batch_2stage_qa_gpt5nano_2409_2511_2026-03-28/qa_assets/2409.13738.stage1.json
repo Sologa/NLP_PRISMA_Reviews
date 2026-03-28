@@ -1,0 +1,48 @@
+{
+  "paper_id": "2409.13738",
+  "stage": "stage1",
+  "topic": "NLP4PBM: process extraction from natural-language text",
+  "topic_definition": "Only use title/abstract evidence. Focus on whether the paper specifically covers NLP for extracting process models or process representations from natural-language text. Defer full-text-only checks to Stage 2.",
+  "questions": [
+    {
+      "qid": "S1_CORE_FIT",
+      "criterion_family": "core_topic_fit",
+      "question": "Does the title/abstract explicitly indicate NLP for process extraction from natural-language text?",
+      "candidate_synthesis_fields": [
+        "core_topic_fit"
+      ]
+    },
+    {
+      "qid": "S1_PROCESS_TARGET",
+      "criterion_family": "process_representation_target",
+      "question": "Does the observable task signal connect natural-language text to extraction or construction of a process model / process representation / decisional model?",
+      "candidate_synthesis_fields": [
+        "process_representation_target"
+      ]
+    },
+    {
+      "qid": "S1_NON_TARGET_SCOPE",
+      "criterion_family": "non_target_scope",
+      "question": "Is there direct title/abstract evidence that the paper is actually about process redesign, matching, prediction, sentiment analysis, individual labels, or generating natural text from processes instead of process extraction?",
+      "candidate_synthesis_fields": [
+        "non_target_scope"
+      ]
+    },
+    {
+      "qid": "S1_SECONDARY_SIGNAL",
+      "criterion_family": "secondary_research_signal",
+      "question": "Does the title/abstract clearly indicate that the paper is a survey, review, or other secondary research article?",
+      "candidate_synthesis_fields": [
+        "secondary_research_signal"
+      ]
+    },
+    {
+      "qid": "S1_DEFER_SIGNAL",
+      "criterion_family": "defer_to_stage2",
+      "question": "If the core fit looks plausible but incomplete from title/abstract alone, note the unresolved fit and what Stage 2 should confirm.",
+      "candidate_synthesis_fields": [
+        "stage2_defer_signal"
+      ]
+    }
+  ]
+}

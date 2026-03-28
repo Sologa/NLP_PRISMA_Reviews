@@ -1,0 +1,238 @@
+[
+  {
+    "key": "devlin_bert",
+    "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    "paper_id": "2409.13738",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "stage_model": "two_stage_qa",
+    "review_state": "batch_error",
+    "review_skipped": false,
+    "failed_phase": "stage1_qa",
+    "discard_reason": "batch_error",
+    "final_verdict": "maybe (review_state:batch_error)",
+    "stage1_stage_score": null,
+    "stage1_decision_recommendation": null,
+    "stage2_stage_score": null,
+    "stage2_decision_recommendation": null,
+    "stage1_eval_path": null,
+    "stage2_eval_path": null,
+    "stage1_synthesis_path": null,
+    "stage2_synthesis_path": null,
+    "source_record_provenance": {
+      "record_key": "devlin_bert",
+      "record_title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source": "arxiv",
+      "source_id": "1810.04805v2",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2409.13738.json",
+      "criteria_stage2_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/devlin_bert.md",
+      "fulltext_available": true
+    },
+    "review_output": {
+      "custom_id": "stage1_qa__2409.13738__devlin_bert",
+      "status": "parse_or_validation_failed",
+      "context": {
+        "paper_id": "2409.13738",
+        "candidate_key": "devlin_bert",
+        "candidate_title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+        "phase": "stage1_qa",
+        "provenance": {
+          "record_key": "devlin_bert",
+          "record_title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "source": "arxiv",
+          "source_id": "1810.04805v2",
+          "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+          "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+          "criteria_stage1_path": "criteria_stage1/2409.13738.json",
+          "criteria_stage2_path": "criteria_stage2/2409.13738.json",
+          "fulltext_candidate_path": "refs/2409.13738/mds/devlin_bert.md",
+          "fulltext_available": true
+        }
+      },
+      "error_type": "ValueError",
+      "error": "qa_source_path mismatch",
+      "raw_output": {
+        "id": "batch_req_69c6d8a68ae8819086cf89e22c35193b",
+        "custom_id": "stage1_qa__2409.13738__devlin_bert",
+        "response": {
+          "status_code": 200,
+          "request_id": "0acbe682-c289-4426-a873-b132f6475cb8",
+          "body": {
+            "id": "chatcmpl-DO71TyMyYb3pgU74WNxUKxKRNgvZL",
+            "object": "chat.completion",
+            "created": 1774639239,
+            "model": "gpt-5-nano-2025-08-07",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"paper_id\": \"2409.13738\",\n  \"candidate_key\": \"devlin_bert\",\n  \"candidate_title\": \"BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding\",\n  \"stage\": \"stage1\",\n  \"workflow_arm\": \"single-reviewer-official-batch-2stage-qa\",\n  \"qa_source_path\": \"qa_assets/2409.13738.stage1.json\",\n  \"source_record_provenance\": {\n    \"record_key\": \"devlin_bert\",\n    \"record_title\": \"BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding\",\n    \"source\": \"arxiv\",\n    \"source_id\": \"1810.04805v2\",\n    \"metadata_path\": \"refs/2409.13738/metadata/title_abstracts_metadata.jsonl\",\n    \"runtime_prompts_path\": \"scripts/screening/runtime_prompts/runtime_prompts.json\",\n    \"criteria_stage1_path\": \"criteria_stage1/2409.13738.json\",\n    \"criteria_stage2_path\": \"criteria_stage2/2409.13738.json\",\n    \"fulltext_candidate_path\": \"refs/2409.13738/mds/devlin_bert.md\",\n    \"fulltext_available\": true\n  },\n  \"reviewer_guardrails_applied\": [\n    \"title_abstract_only\",\n    \"no_extra_hardening\"\n  ],\n  \"answers\": [\n    {\n      \"qid\": \"S1_CORE_FIT\",\n      \"criterion_family\": \"core_topic_fit\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"The abstract describes a language representation model (BERT) and its pre-training for NLP tasks; it does not indicate any focus on NLP for process extraction from natural-language text.\",\n      \"supporting_quotes\": [\n        \"We introduce a new language representation model called BERT\",\n        \"to create state-of-the-art models for a wide range of tasks, such as question answering and language inference\"\n      ],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"core_topic_fit\"\n      ]\n    },\n    {\n      \"qid\": \"S1_PROCESS_TARGET\",\n      \"criterion_family\": \"process_representation_target\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"The abstract does not mention extraction or construction of process models or representations from natural-language text; it focuses on pre-training a language model for general NLP tasks.\",\n      \"supporting_quotes\": [\n        \"a new language representation model called BERT\",\n        \"state-of-the-art models for a wide range of tasks\"\n      ],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"process_representation_target\"\n      ]\n    },\n    {\n      \"qid\": \"S1_NON_TARGET_SCOPE\",\n      \"criterion_family\": \"non_target_scope\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"The abstract centers on a foundational NLP model and its capabilities across tasks, not on process redesign, matching, prediction, sentiment analysis, or generating natural text from processes.\",\n      \"supporting_quotes\": [\n        \"We introduce a new language representation model called BERT\",\n        \"to create state-of-the-art models for a wide range of tasks\"\n      ],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"non_target_scope\"\n      ]\n    },\n    {\n      \"qid\": \"S1_SECONDARY_SIGNAL\",\n      \"criterion_family\": \"secondary_research_signal\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"The abstract describes an original model paper with experimental results, not a survey or review.\",\n      \"supporting_quotes\": [\n        \"We introduce a new language representation model\",\n        \"state-of-the-art results on eleven natural language processing tasks\"\n      ],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"secondary_research_signal\"\n      ]\n    },\n    {\n      \"qid\": \"S1_DEFER_SIGNAL\",\n      \"criterion_family\": \"defer_to_stage2\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"From the title and abstract alone, there is no plausible partial fit suggesting a Stage 2 deferment for confirmation; the core fit is not indicated here.\",\n      \"supporting_quotes\": [],\n      \"locations\": [],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"stage2_defer_signal\"\n      ]\n    }\n  ]\n}",
+                  "refusal": null,
+                  "annotations": []
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 2914,
+              "completion_tokens": 1978,
+              "total_tokens": 4892,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 832,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "service_tier": "default",
+            "system_fingerprint": null
+          }
+        },
+        "error": null
+      }
+    },
+    "fulltext_source_path": "refs/2409.13738/mds/devlin_bert.md",
+    "fulltext_resolution_status": null
+  },
+  {
+    "key": "du2022_r-gqa",
+    "title": "Retrieval-Augmented Generative Question Answering for Event Argument Extraction",
+    "paper_id": "2409.13738",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "stage_model": "two_stage_qa",
+    "review_state": "batch_error",
+    "review_skipped": false,
+    "failed_phase": "stage1_qa",
+    "discard_reason": "batch_error",
+    "final_verdict": "maybe (review_state:batch_error)",
+    "stage1_stage_score": null,
+    "stage1_decision_recommendation": null,
+    "stage2_stage_score": null,
+    "stage2_decision_recommendation": null,
+    "stage1_eval_path": null,
+    "stage2_eval_path": null,
+    "stage1_synthesis_path": null,
+    "stage2_synthesis_path": null,
+    "source_record_provenance": {
+      "record_key": "du2022_r-gqa",
+      "record_title": "Retrieval-Augmented Generative Question Answering for Event Argument Extraction",
+      "source": "crossref",
+      "source_id": "10.18653/v1/2022.emnlp-main.307",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2409.13738.json",
+      "criteria_stage2_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/du2022_r-gqa.md",
+      "fulltext_available": true
+    },
+    "review_output": {
+      "custom_id": "stage1_qa__2409.13738__du2022_r-gqa",
+      "status": "parse_or_validation_failed",
+      "context": {
+        "paper_id": "2409.13738",
+        "candidate_key": "du2022_r-gqa",
+        "candidate_title": "Retrieval-Augmented Generative Question Answering for Event Argument Extraction",
+        "phase": "stage1_qa",
+        "provenance": {
+          "record_key": "du2022_r-gqa",
+          "record_title": "Retrieval-Augmented Generative Question Answering for Event Argument Extraction",
+          "source": "crossref",
+          "source_id": "10.18653/v1/2022.emnlp-main.307",
+          "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+          "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+          "criteria_stage1_path": "criteria_stage1/2409.13738.json",
+          "criteria_stage2_path": "criteria_stage2/2409.13738.json",
+          "fulltext_candidate_path": "refs/2409.13738/mds/du2022_r-gqa.md",
+          "fulltext_available": true
+        }
+      },
+      "error_type": "ValueError",
+      "error": "qa_source_path mismatch",
+      "raw_output": {
+        "id": "batch_req_69c6d8a63ac48190afa18199a1731ba7",
+        "custom_id": "stage1_qa__2409.13738__du2022_r-gqa",
+        "response": {
+          "status_code": 200,
+          "request_id": "182a6277-2c52-419f-bcbd-ebf794336776",
+          "body": {
+            "id": "chatcmpl-DO70W8k3cahnAbtzSNRbmbFXrd5Kn",
+            "object": "chat.completion",
+            "created": 1774639180,
+            "model": "gpt-5-nano-2025-08-07",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"paper_id\": \"2409.13738\",\n  \"candidate_key\": \"du2022_r-gqa\",\n  \"candidate_title\": \"Retrieval-Augmented Generative Question Answering for Event Argument Extraction\",\n  \"stage\": \"stage1\",\n  \"workflow_arm\": \"single-reviewer-official-batch-2stage-qa\",\n  \"qa_source_path\": \"qa_assets/2409.13738.stage1.json\",\n  \"source_record_provenance\": {\n    \"record_key\": \"du2022_r-gqa\",\n    \"record_title\": \"Retrieval-Augmented Generative Question Answering for Event Argument Extraction\",\n    \"source\": \"crossref\",\n    \"source_id\": \"10.18653/v1/2022.emnlp-main.307\",\n    \"metadata_path\": \"refs/2409.13738/metadata/title_abstracts_metadata.jsonl\",\n    \"runtime_prompts_path\": \"scripts/screening/runtime_prompts/runtime_prompts.json\",\n    \"criteria_stage1_path\": \"criteria_stage1/2409.13738.json\",\n    \"criteria_stage2_path\": \"criteria_stage2/2409.13738.json\",\n    \"fulltext_candidate_path\": \"refs/2409.13738/mds/du2022_r-gqa.md\",\n    \"fulltext_available\": true\n  },\n  \"reviewer_guardrails_applied\": [\n    \"title_abstract_only\",\n    \"no_extra_hardening\"\n  ],\n  \"answers\": [\n    {\n      \"qid\": \"S1_NON_TARGET_SCOPE\",\n      \"criterion_family\": \"non_target_scope\",\n      \"answer_state\": \"present\",\n      \"state_basis\": \"direct_support\",\n      \"answer_rationale\": \"The abstract discusses event argument extraction and generation-based QA methods, which do not indicate NLP for process extraction from natural-language text.\",\n      \"supporting_quotes\": [\n        \"Event argument extraction has long been studied as a sequential prediction problem\",\n        \"we propose a retrieval-augmented generative QA model (R-GQA) for event argument extraction\"\n      ],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"non_target_scope\"\n      ]\n    }\n  ]\n}",
+                  "refusal": null,
+                  "annotations": []
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 2887,
+              "completion_tokens": 1144,
+              "total_tokens": 4031,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 640,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "service_tier": "default",
+            "system_fingerprint": null
+          }
+        },
+        "error": null
+      }
+    },
+    "fulltext_source_path": "refs/2409.13738/mds/du2022_r-gqa.md",
+    "fulltext_resolution_status": null
+  },
+  {
+    "key": "berti2023abstractions",
+    "title": "Abstractions, Scenarios, and Prompt Definitions for Process Mining with LLMs: A Case Study",
+    "paper_id": "2409.13738",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "stage_model": "two_stage_qa",
+    "review_state": "cutoff_filtered",
+    "review_skipped": true,
+    "failed_phase": null,
+    "discard_reason": "cutoff_time_window:after_end",
+    "final_verdict": "exclude (cutoff_time_window)",
+    "stage1_stage_score": null,
+    "stage1_decision_recommendation": null,
+    "stage2_stage_score": null,
+    "stage2_decision_recommendation": null,
+    "stage1_eval_path": null,
+    "stage2_eval_path": null,
+    "stage1_synthesis_path": null,
+    "stage2_synthesis_path": null,
+    "source_record_provenance": null,
+    "review_output": {
+      "cutoff_filter": {
+        "cutoff_policy_enabled": true,
+        "cutoff_status": "after_end",
+        "cutoff_pass": false,
+        "published_date_raw": "2023-07",
+        "published_date_iso": "2023-07-01"
+      }
+    },
+    "fulltext_source_path": null,
+    "fulltext_resolution_status": null
+  }
+]

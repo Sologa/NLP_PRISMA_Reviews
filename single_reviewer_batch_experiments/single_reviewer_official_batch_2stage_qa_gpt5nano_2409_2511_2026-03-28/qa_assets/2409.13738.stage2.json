@@ -1,0 +1,58 @@
+{
+  "paper_id": "2409.13738",
+  "stage": "stage2",
+  "topic": "NLP4PBM: process extraction from natural-language text",
+  "topic_definition": "Use full text plus Stage 1 handoff. Confirm the canonical Stage 2 criteria without inventing extra hard exclusions.",
+  "questions": [
+    {
+      "qid": "S2_FULLTEXT_ELIGIBILITY",
+      "criterion_family": "paper_type_language_fulltext",
+      "question": "Does the full text support that the paper is a full research article, English, and usable as a full-text study?",
+      "candidate_synthesis_fields": [
+        "paper_type_language_fulltext"
+      ]
+    },
+    {
+      "qid": "S2_PRIMARY_ORIGINAL",
+      "criterion_family": "primary_original_research",
+      "question": "Does the full text support that the paper is a primary research article with an original contribution rather than secondary research?",
+      "candidate_synthesis_fields": [
+        "primary_original_research",
+        "secondary_research_signal"
+      ]
+    },
+    {
+      "qid": "S2_CORE_FIT",
+      "criterion_family": "core_topic_fit",
+      "question": "Does the full text confirm that the paper specifically covers NLP for process extraction from natural-language text?",
+      "candidate_synthesis_fields": [
+        "core_topic_fit",
+        "process_representation_target"
+      ]
+    },
+    {
+      "qid": "S2_NON_TARGET_SCOPE",
+      "criterion_family": "non_target_scope",
+      "question": "Does the full text show that the paper is actually about process redesign, matching, prediction, sentiment analysis, individual labels, or generating natural text from processes instead of process extraction?",
+      "candidate_synthesis_fields": [
+        "non_target_scope"
+      ]
+    },
+    {
+      "qid": "S2_METHOD_CONCRETENESS",
+      "criterion_family": "concrete_method",
+      "question": "Does the paper explicate a concrete method instead of only superficially discussing an applied method?",
+      "candidate_synthesis_fields": [
+        "concrete_method"
+      ]
+    },
+    {
+      "qid": "S2_EMPIRICAL_VALIDATION",
+      "criterion_family": "empirical_validation",
+      "question": "Does the full text describe experiments or evaluation that empirically validate the method?",
+      "candidate_synthesis_fields": [
+        "empirical_validation"
+      ]
+    }
+  ]
+}

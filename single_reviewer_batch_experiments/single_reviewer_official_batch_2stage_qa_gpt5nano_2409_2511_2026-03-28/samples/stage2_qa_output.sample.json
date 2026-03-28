@@ -1,0 +1,45 @@
+{
+  "paper_id": "2511.13936",
+  "candidate_key": "sample_candidate",
+  "candidate_title": "Sample Candidate",
+  "stage": "stage2",
+  "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+  "qa_source_path": "qa_assets/2511.13936.stage2.json",
+  "reviewer_guardrails_applied": [
+    "fulltext_only_evidence",
+    "no_extra_hardening"
+  ],
+  "source_record_provenance": {
+    "record_key": "sample_candidate",
+    "record_title": "Sample Candidate",
+    "source": "sample",
+    "source_id": "sample",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+    "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+    "fulltext_candidate_path": "refs/2511.13936/mds/sample_candidate.md",
+    "fulltext_available": true
+  },
+  "answers": [
+    {
+      "qid": "S2_PREF_SIGNAL",
+      "criterion_family": "preference_learning_signal",
+      "answer_state": "present",
+      "state_basis": "direct_support",
+      "answer_rationale": "The method compares paired audio clips and learns from the resulting preferences.",
+      "supporting_quotes": [
+        "we train the model from paired audio preference comparisons"
+      ],
+      "locations": [
+        "method"
+      ],
+      "missingness_reason": null,
+      "stage2_handoff_note": null,
+      "conflict_note": null,
+      "candidate_synthesis_fields": [
+        "preference_learning_signal"
+      ]
+    }
+  ]
+}

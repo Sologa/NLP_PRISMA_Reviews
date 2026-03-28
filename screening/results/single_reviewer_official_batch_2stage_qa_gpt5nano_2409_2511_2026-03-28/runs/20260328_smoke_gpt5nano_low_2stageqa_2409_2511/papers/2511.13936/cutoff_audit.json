@@ -1,0 +1,103 @@
+{
+  "paper_id": "2511.13936",
+  "cutoff_json_path": "cutoff_jsons/2511.13936.json",
+  "time_policy": {
+    "enabled": true,
+    "date_field": "published",
+    "start_date": "2010-01-01",
+    "start_inclusive": true,
+    "end_date": "2025-11-17",
+    "end_inclusive": true,
+    "timezone": "UTC",
+    "derivation_mode": "intersection_of_projectable_time_clauses",
+    "projected_clause_ids": [
+      "operational_lower_bound_benchmark_alignment",
+      "operational_fallback_sr_publication_date"
+    ],
+    "binding_clause_ids": [
+      "operational_lower_bound_benchmark_alignment",
+      "operational_fallback_sr_publication_date"
+    ],
+    "fallback_applied": true
+  },
+  "evidence": [
+    {
+      "clause_id": "stage1_r3",
+      "section": "Stage 1 Retrieval Criteria",
+      "criterion_id": "R3",
+      "text": "Published from 2020 onward.",
+      "source": "criteria_mds/2511.13936.md"
+    },
+    {
+      "clause_id": "stage1_r6",
+      "section": "Stage 1 Retrieval Criteria",
+      "criterion_id": "R6",
+      "text": "For arXiv papers, the citation count must meet year-specific thresholds (2020: 28, 2021: 22, 2022: 32, 2023: 90, 2024: 13, 2025: 1).",
+      "source": "criteria_mds/2511.13936.md"
+    },
+    {
+      "clause_id": "operational_lower_bound_benchmark_alignment",
+      "section": "Operational override",
+      "criterion_id": "N/A",
+      "text": "Active pre-review cutoff lower bound widened to 2010-01-01.",
+      "source": "repo decision: 2026-03-26"
+    },
+    {
+      "clause_id": "operational_fallback_sr_publication_date",
+      "section": "Operational fallback",
+      "criterion_id": "N/A",
+      "text": "Fallback upper bound uses the SR's own arXiv publication date (2025-11-17).",
+      "source": "paper: arxiv abs metadata"
+    }
+  ],
+  "normalization_notes": [
+    "The active operational lower bound has been widened from 2020-01-01 to 2010-01-01.",
+    "The Stage 1 '2020 onward' clause is preserved for source-audit purposes but is no longer projected into the global pre-review cutoff.",
+    "Those citation thresholds are subset-specific and non-window-like, so they stay in time_clauses with project_to_time_policy=false."
+  ],
+  "candidate_total_before_cutoff": 4,
+  "candidate_total_after_cutoff": 3,
+  "cutoff_excluded_count": 1,
+  "status_counts": {
+    "passed": 3,
+    "before_start": 1
+  },
+  "rows": [
+    {
+      "key": "page2021prisma",
+      "title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2021",
+      "published_date_iso": "2021-01-01"
+    },
+    {
+      "key": "han2020ordinal",
+      "title": "Ordinal learning for emotion recognition in customer service calls",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2020",
+      "published_date_iso": "2020-01-01"
+    },
+    {
+      "key": "bradley1952rank",
+      "title": "Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "before_start",
+      "cutoff_pass": false,
+      "published_date_raw": "1952",
+      "published_date_iso": "1952-01-01"
+    },
+    {
+      "key": "hurst2024gpt",
+      "title": "Gpt-4o system card",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2024",
+      "published_date_iso": "2024-01-01"
+    }
+  ]
+}

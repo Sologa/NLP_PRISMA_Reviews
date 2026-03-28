@@ -1,0 +1,340 @@
+[
+  {
+    "key": "page2021prisma",
+    "title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+    "paper_id": "2511.13936",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "stage_model": "two_stage_qa",
+    "review_state": "batch_error",
+    "review_skipped": false,
+    "failed_phase": "stage1_qa",
+    "discard_reason": "batch_error",
+    "final_verdict": "maybe (review_state:batch_error)",
+    "stage1_stage_score": null,
+    "stage1_decision_recommendation": null,
+    "stage2_stage_score": null,
+    "stage2_decision_recommendation": null,
+    "stage1_eval_path": null,
+    "stage2_eval_path": null,
+    "stage1_synthesis_path": null,
+    "stage2_synthesis_path": null,
+    "source_record_provenance": {
+      "record_key": "page2021prisma",
+      "record_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+      "source": "pubmed",
+      "source_id": "34446261",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+      "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/page2021prisma.md",
+      "fulltext_available": true
+    },
+    "review_output": {
+      "custom_id": "stage1_qa__2511.13936__page2021prisma",
+      "status": "parse_or_validation_failed",
+      "context": {
+        "paper_id": "2511.13936",
+        "candidate_key": "page2021prisma",
+        "candidate_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+        "phase": "stage1_qa",
+        "provenance": {
+          "record_key": "page2021prisma",
+          "record_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+          "source": "pubmed",
+          "source_id": "34446261",
+          "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+          "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+          "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+          "fulltext_candidate_path": "refs/2511.13936/mds/page2021prisma.md",
+          "fulltext_available": true
+        }
+      },
+      "error_type": "ValueError",
+      "error": "qa_source_path mismatch",
+      "raw_output": {
+        "id": "batch_req_69c6d8a638b48190993defb391be7f7b",
+        "custom_id": "stage1_qa__2511.13936__page2021prisma",
+        "response": {
+          "status_code": 200,
+          "request_id": "cd6355e3-6a48-476a-b3e5-e29f2e0396a7",
+          "body": {
+            "id": "chatcmpl-DO71TBtoIiBA5XA7cyOo8QCYJT1cB",
+            "object": "chat.completion",
+            "created": 1774639239,
+            "model": "gpt-5-nano-2025-08-07",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"paper_id\": \"2511.13936\",\n  \"candidate_key\": \"page2021prisma\",\n  \"candidate_title\": \"The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.\",\n  \"stage\": \"stage1\",\n  \"workflow_arm\": \"single-reviewer-official-batch-2stage-qa\",\n  \"qa_source_path\": \"qa_assets/2511.13936.stage1.json\",\n  \"source_record_provenance\": {\n    \"record_key\": \"page2021prisma\",\n    \"record_title\": \"The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.\",\n    \"source\": \"pubmed\",\n    \"source_id\": \"34446261\",\n    \"metadata_path\": \"refs/2511.13936/metadata/title_abstracts_metadata.jsonl\",\n    \"runtime_prompts_path\": \"scripts/screening/runtime_prompts/runtime_prompts.json\",\n    \"criteria_stage1_path\": \"criteria_stage1/2511.13936.json\",\n    \"criteria_stage2_path\": \"criteria_stage2/2511.13936.json\",\n    \"fulltext_candidate_path\": \"refs/2511.13936/mds/page2021prisma.md\",\n    \"fulltext_available\": true\n  },\n  \"reviewer_guardrails_applied\": [\n    \"title_abstract_only\",\n    \"no_extra_hardening\"\n  ],\n  \"answers\": [\n    {\n      \"qid\": \"S1_PREF_SIGNAL\",\n      \"criterion_family\": \"preference_learning_signal\",\n      \"answer_state\": \"unclear\",\n      \"state_basis\": \"insufficient_signal\",\n      \"answer_rationale\": \"The abstract discusses PRISMA guidelines for reporting systematic reviews. It does not mention audio data, ranking, A/B comparisons, or any preference-learning signals.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"preference_learning_signal\"\n      ]\n    },\n    {\n      \"qid\": \"S1_RATING_TO_RANKING\",\n      \"criterion_family\": \"rating_to_ranking_signal\",\n      \"answer_state\": \"unclear\",\n      \"state_basis\": \"insufficient_signal\",\n      \"answer_rationale\": \"No mention of numeric ratings or conversion to rankings in the title/abstract.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"rating_to_ranking_signal\"\n      ]\n    },\n    {\n      \"qid\": \"S1_RL_LOOP\",\n      \"criterion_family\": \"rl_audio_training_loop\",\n      \"answer_state\": \"unclear\",\n      \"state_basis\": \"insufficient_signal\",\n      \"answer_rationale\": \"Abstract does not indicate an RL training loop for an audio model.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"rl_audio_training_loop\"\n      ]\n    },\n    {\n      \"qid\": \"S1_AUDIO_DOMAIN\",\n      \"criterion_family\": \"audio_domain_fit\",\n      \"answer_state\": \"unclear\",\n      \"state_basis\": \"insufficient_signal\",\n      \"answer_rationale\": \"Abstract addresses guidelines for systematic reviews in general; it does not specify application to the audio domain.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"audio_domain_fit\"\n      ]\n    },\n    {\n      \"qid\": \"S1_EVAL_ONLY\",\n      \"criterion_family\": \"evaluation_only_negative\",\n      \"answer_state\": \"unclear\",\n      \"state_basis\": \"insufficient_signal\",\n      \"answer_rationale\": \"No explicit statement about preferences being used only for evaluation in the abstract.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"evaluation_only_negative\"\n      ]\n    },\n    {\n      \"qid\": \"S1_SECONDARY_SIGNAL\",\n      \"criterion_family\": \"secondary_research_signal\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"insufficient_signal\",\n      \"answer_rationale\": \"The abstract/paper presents a guideline for reporting systematic reviews rather than indicating that the work is a survey or review article.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"secondary_research_signal\"\n      ]\n    }\n  ]\n}",
+                  "refusal": null,
+                  "annotations": []
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 2924,
+              "completion_tokens": 2201,
+              "total_tokens": 5125,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 1088,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "service_tier": "default",
+            "system_fingerprint": null
+          }
+        },
+        "error": null
+      }
+    },
+    "fulltext_source_path": "refs/2511.13936/mds/page2021prisma.md",
+    "fulltext_resolution_status": null
+  },
+  {
+    "key": "han2020ordinal",
+    "title": "Ordinal learning for emotion recognition in customer service calls",
+    "paper_id": "2511.13936",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "stage_model": "two_stage_qa",
+    "review_state": "batch_error",
+    "review_skipped": false,
+    "failed_phase": "stage1_qa",
+    "discard_reason": "batch_error",
+    "final_verdict": "maybe (review_state:batch_error)",
+    "stage1_stage_score": null,
+    "stage1_decision_recommendation": null,
+    "stage2_stage_score": null,
+    "stage2_decision_recommendation": null,
+    "stage1_eval_path": null,
+    "stage2_eval_path": null,
+    "stage1_synthesis_path": null,
+    "stage2_synthesis_path": null,
+    "source_record_provenance": {
+      "record_key": "han2020ordinal",
+      "record_title": "Ordinal learning for emotion recognition in customer service calls",
+      "source": "openalex",
+      "source_id": "10.1109/icassp40776.2020.9053648",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+      "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/han2020ordinal.md",
+      "fulltext_available": true
+    },
+    "review_output": {
+      "custom_id": "stage1_qa__2511.13936__han2020ordinal",
+      "status": "parse_or_validation_failed",
+      "context": {
+        "paper_id": "2511.13936",
+        "candidate_key": "han2020ordinal",
+        "candidate_title": "Ordinal learning for emotion recognition in customer service calls",
+        "phase": "stage1_qa",
+        "provenance": {
+          "record_key": "han2020ordinal",
+          "record_title": "Ordinal learning for emotion recognition in customer service calls",
+          "source": "openalex",
+          "source_id": "10.1109/icassp40776.2020.9053648",
+          "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+          "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+          "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+          "fulltext_candidate_path": "refs/2511.13936/mds/han2020ordinal.md",
+          "fulltext_available": true
+        }
+      },
+      "error_type": "ValueError",
+      "error": "qa_source_path mismatch",
+      "raw_output": {
+        "id": "batch_req_69c6d8a6321081908440675c1ec4758f",
+        "custom_id": "stage1_qa__2511.13936__han2020ordinal",
+        "response": {
+          "status_code": 200,
+          "request_id": "44184691-c4c7-4438-a156-f5472d024626",
+          "body": {
+            "id": "chatcmpl-DO71TJEkqCOoD7FkJZ20O7N4j5YIS",
+            "object": "chat.completion",
+            "created": 1774639239,
+            "model": "gpt-5-nano-2025-08-07",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\n  \"paper_id\": \"2511.13936\",\n  \"candidate_key\": \"han2020ordinal\",\n  \"candidate_title\": \"Ordinal learning for emotion recognition in customer service calls\",\n  \"stage\": \"stage1\",\n  \"workflow_arm\": \"single-reviewer-official-batch-2stage-qa\",\n  \"qa_source_path\": \"qa_assets/2511.13936.stage1.json\",\n  \"source_record_provenance\": {\n    \"record_key\": \"han2020ordinal\",\n    \"record_title\": \"Ordinal learning for emotion recognition in customer service calls\",\n    \"source\": \"openalex\",\n    \"source_id\": \"10.1109/icassp40776.2020.9053648\",\n    \"metadata_path\": \"refs/2511.13936/metadata/title_abstracts_metadata.jsonl\",\n    \"runtime_prompts_path\": \"scripts/screening/runtime_prompts/runtime_prompts.json\",\n    \"criteria_stage1_path\": \"criteria_stage1/2511.13936.json\",\n    \"criteria_stage2_path\": \"criteria_stage2/2511.13936.json\",\n    \"fulltext_candidate_path\": \"refs/2511.13936/mds/han2020ordinal.md\",\n    \"fulltext_available\": true\n  },\n  \"reviewer_guardrails_applied\": [\n    \"title_abstract_only\",\n    \"no_extra_hardening\"\n  ],\n  \"answers\": [\n    {\n      \"qid\": \"S1_PREF_SIGNAL\",\n      \"criterion_family\": \"preference_learning_signal\",\n      \"answer_state\": \"present\",\n      \"state_basis\": \"direct_support\",\n      \"answer_rationale\": \"The abstract discusses ordinal information and transforms the task into binary sub-tasks predicting whether an utterance's emotion is larger than a rank, indicating a ranking/preference signal within the audio domain.\",\n      \"supporting_quotes\": [\n        \"ordinal information between emotional ranks\",\n        \"a series of binary SER sub-tasks predicting whether an utterance's emotion is larger than a rank\"\n      ],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"preference_learning_signal\"\n      ]\n    },\n    {\n      \"qid\": \"S1_RATING_TO_RANKING\",\n      \"criterion_family\": \"rating_to_ranking_signal\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"The abstract mentions ordinal information and ranking tasks but does not mention numeric ratings being converted to rankings.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"rating_to_ranking_signal\"\n      ]\n    },\n    {\n      \"qid\": \"S1_RL_LOOP\",\n      \"criterion_family\": \"rl_audio_training_loop\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"There is no mention of a reinforcement learning training loop in the abstract.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"rl_audio_training_loop\"\n      ]\n    },\n    {\n      \"qid\": \"S1_AUDIO_DOMAIN\",\n      \"criterion_family\": \"audio_domain_fit\",\n      \"answer_state\": \"present\",\n      \"state_basis\": \"direct_support\",\n      \"answer_rationale\": \"The task is emotion recognition in customer service calls, which is audio; the abstract mentions audio-domain related terms and datasets.\",\n      \"supporting_quotes\": [\n        \"emotion recognition in customer service calls\",\n        \"IEMOCAP corpus\"\n      ],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"audio_domain_fit\"\n      ]\n    },\n    {\n      \"qid\": \"S1_EVAL_ONLY\",\n      \"criterion_family\": \"evaluation_only_negative\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"The abstract describes methodological approach (ordinal learning with CORAL) rather than using preferences solely for evaluation.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"evaluation_only_negative\"\n      ]\n    },\n    {\n      \"qid\": \"S1_SECONDARY_SIGNAL\",\n      \"criterion_family\": \"secondary_research_signal\",\n      \"answer_state\": \"absent\",\n      \"state_basis\": \"direct_counterevidence\",\n      \"answer_rationale\": \"The abstract presents a methodological contribution, not a survey/review.\",\n      \"supporting_quotes\": [],\n      \"locations\": [\n        \"abstract\"\n      ],\n      \"missingness_reason\": null,\n      \"stage2_handoff_note\": null,\n      \"conflict_note\": null,\n      \"candidate_synthesis_fields\": [\n        \"secondary_research_signal\"\n      ]\n    }\n  ]\n}",
+                  "refusal": null,
+                  "annotations": []
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 2943,
+              "completion_tokens": 1814,
+              "total_tokens": 4757,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 640,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "service_tier": "default",
+            "system_fingerprint": null
+          }
+        },
+        "error": null
+      }
+    },
+    "fulltext_source_path": "refs/2511.13936/mds/han2020ordinal.md",
+    "fulltext_resolution_status": null
+  },
+  {
+    "key": "bradley1952rank",
+    "title": "Rank Analysis of Incomplete Block Designs: I. The Method of Paired Comparisons",
+    "paper_id": "2511.13936",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "stage_model": "two_stage_qa",
+    "review_state": "cutoff_filtered",
+    "review_skipped": true,
+    "failed_phase": null,
+    "discard_reason": "cutoff_time_window:before_start",
+    "final_verdict": "exclude (cutoff_time_window)",
+    "stage1_stage_score": null,
+    "stage1_decision_recommendation": null,
+    "stage2_stage_score": null,
+    "stage2_decision_recommendation": null,
+    "stage1_eval_path": null,
+    "stage2_eval_path": null,
+    "stage1_synthesis_path": null,
+    "stage2_synthesis_path": null,
+    "source_record_provenance": null,
+    "review_output": {
+      "cutoff_filter": {
+        "cutoff_policy_enabled": true,
+        "cutoff_status": "before_start",
+        "cutoff_pass": false,
+        "published_date_raw": "1952",
+        "published_date_iso": "1952-01-01"
+      }
+    },
+    "fulltext_source_path": null,
+    "fulltext_resolution_status": null
+  },
+  {
+    "key": "hurst2024gpt",
+    "title": "Gpt-4o system card",
+    "paper_id": "2511.13936",
+    "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+    "stage_model": "two_stage_qa",
+    "review_state": "batch_error",
+    "review_skipped": false,
+    "failed_phase": "stage1_qa",
+    "discard_reason": "batch_error",
+    "final_verdict": "maybe (review_state:batch_error)",
+    "stage1_stage_score": null,
+    "stage1_decision_recommendation": null,
+    "stage2_stage_score": null,
+    "stage2_decision_recommendation": null,
+    "stage1_eval_path": null,
+    "stage2_eval_path": null,
+    "stage1_synthesis_path": null,
+    "stage2_synthesis_path": null,
+    "source_record_provenance": {
+      "record_key": "hurst2024gpt",
+      "record_title": "Gpt-4o system card",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2410.21276",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+      "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/hurst2024gpt.md",
+      "fulltext_available": true
+    },
+    "review_output": {
+      "custom_id": "stage1_qa__2511.13936__hurst2024gpt",
+      "status": "parse_or_validation_failed",
+      "context": {
+        "paper_id": "2511.13936",
+        "candidate_key": "hurst2024gpt",
+        "candidate_title": "Gpt-4o system card",
+        "phase": "stage1_qa",
+        "provenance": {
+          "record_key": "hurst2024gpt",
+          "record_title": "Gpt-4o system card",
+          "source": "openalex",
+          "source_id": "10.48550/arxiv.2410.21276",
+          "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+          "criteria_stage1_path": "criteria_stage1/2511.13936.json",
+          "criteria_stage2_path": "criteria_stage2/2511.13936.json",
+          "fulltext_candidate_path": "refs/2511.13936/mds/hurst2024gpt.md",
+          "fulltext_available": true
+        }
+      },
+      "error_type": "ValueError",
+      "error": "qa_source_path mismatch",
+      "raw_output": {
+        "id": "batch_req_69c6d8a639488190a897c56d0450c565",
+        "custom_id": "stage1_qa__2511.13936__hurst2024gpt",
+        "response": {
+          "status_code": 200,
+          "request_id": "7366f8a6-103c-4a10-ab91-4df1ab19dd6a",
+          "body": {
+            "id": "chatcmpl-DO71Tg0ibjHCtSzmmnbIV9DhvL9gx",
+            "object": "chat.completion",
+            "created": 1774639239,
+            "model": "gpt-5-nano-2025-08-07",
+            "choices": [
+              {
+                "index": 0,
+                "message": {
+                  "role": "assistant",
+                  "content": "{\"paper_id\":\"2511.13936\",\"candidate_key\":\"hurst2024gpt\",\"candidate_title\":\"Gpt-4o system card\",\"stage\":\"stage1\",\"workflow_arm\":\"single-reviewer-official-batch-2stage-qa\",\"qa_source_path\":\"qa_assets/2511.13936.stage1.json\",\"source_record_provenance\":{\"record_key\":\"hurst2024gpt\",\"record_title\":\"Gpt-4o system card\",\"source\":\"openalex\",\"source_id\":\"10.48550/arxiv.2410.21276\",\"metadata_path\":\"refs/2511.13936/metadata/title_abstracts_metadata.jsonl\",\"runtime_prompts_path\":\"scripts/screening/runtime_prompts/runtime_prompts.json\",\"criteria_stage1_path\":\"criteria_stage1/2511.13936.json\",\"criteria_stage2_path\":\"criteria_stage2/2511.13936.json\",\"fulltext_candidate_path\":\"refs/2511.13936/mds/hurst2024gpt.md\",\"fulltext_available\":true},\"reviewer_guardrails_applied\":[\"title_abstract_only\",\"no_extra_hardening\"],\"answers\":[{\"qid\":\"S1_PREF_SIGNAL\",\"criterion_family\":\"preference_learning_signal\",\"answer_state\":\"absent\",\"state_basis\":\"direct_counterevidence\",\"answer_rationale\":\"Abstract does not mention ranking, A/B comparisons, or other explicit comparative preference signals for audio clips.\",\"supporting_quotes\":[],\"locations\":[\"abstract\"],\"missingness_reason\":null,\"stage2_handoff_note\":null,\"conflict_note\":null,\"candidate_synthesis_fields\":[\"preference_learning_signal\"]},{\"qid\":\"S1_RATING_TO_RANKING\",\"criterion_family\":\"rating_to_ranking_signal\",\"answer_state\":\"absent\",\"state_basis\":\"direct_counterevidence\",\"answer_rationale\":\"No evidence of numeric ratings being converted into rankings is present in the abstract.\",\"supporting_quotes\":[],\"locations\":[\"abstract\"],\"missingness_reason\":null,\"stage2_handoff_note\":null,\"conflict_note\":null,\"candidate_synthesis_fields\":[\"rating_to_ranking_signal\"]},{\"qid\":\"S1_RL_LOOP\",\"criterion_family\":\"rl_audio_training_loop\",\"answer_state\":\"absent\",\"state_basis\":\"direct_counterevidence\",\"answer_rationale\":\"Abstract mentions end-to-end training across modalities but does not describe an RL training loop for an audio model.\",\"supporting_quotes\":[],\"locations\":[\"abstract\"],\"missingness_reason\":null,\"stage2_handoff_note\":null,\"conflict_note\":null,\"candidate_synthesis_fields\":[\"rl_audio_training_loop\"]},{\"qid\":\"S1_AUDIO_DOMAIN\",\"criterion_family\":\"audio_domain_fit\",\"answer_state\":\"present\",\"state_basis\":\"direct_support\",\"answer_rationale\":\"Abstract describes GPT-4o as an autoregressive model that handles text, audio, image, and video inputs/outputs, indicating application in the audio domain (multimodal with audio).\",\"supporting_quotes\":[\"accepts as input any combination of text, audio, image, and video\",\"trained end-to-end across text, vision, and audio\"],\"locations\":[\"abstract\"],\"missingness_reason\":null,\"stage2_handoff_note\":null,\"conflict_note\":null,\"candidate_synthesis_fields\":[\"audio_domain_fit\"]},{\"qid\":\"S1_EVAL_ONLY\",\"criterion_family\":\"evaluation_only_negative\",\"answer_state\":\"absent\",\"state_basis\":\"direct_counterevidence\",\"answer_rationale\":\"Abstract discusses capabilities and evaluations but does not state preference signals are used only for evaluation without learning.\",\"supporting_quotes\":[],\"locations\":[\"abstract\"],\"missingness_reason\":null,\"stage2_handoff_note\":null,\"conflict_note\":null,\"candidate_synthesis_fields\":[\"evaluation_only_negative\"]},{\"qid\":\"S1_SECONDARY_SIGNAL\",\"criterion_family\":\"secondary_research_signal\",\"answer_state\":\"absent\",\"state_basis\":\"direct_counterevidence\",\"answer_rationale\":\"Abstract does not indicate the paper is a survey or review.\",\"supporting_quotes\":[],\"locations\":[\"abstract\"],\"missingness_reason\":null,\"stage2_handoff_note\":null,\"conflict_note\":null,\"candidate_synthesis_fields\":[\"secondary_research_signal\"]}]}",
+                  "refusal": null,
+                  "annotations": []
+                },
+                "finish_reason": "stop"
+              }
+            ],
+            "usage": {
+              "prompt_tokens": 3006,
+              "completion_tokens": 1488,
+              "total_tokens": 4494,
+              "prompt_tokens_details": {
+                "cached_tokens": 0,
+                "audio_tokens": 0
+              },
+              "completion_tokens_details": {
+                "reasoning_tokens": 640,
+                "audio_tokens": 0,
+                "accepted_prediction_tokens": 0,
+                "rejected_prediction_tokens": 0
+              }
+            },
+            "service_tier": "default",
+            "system_fingerprint": null
+          }
+        },
+        "error": null
+      }
+    },
+    "fulltext_source_path": "refs/2511.13936/mds/hurst2024gpt.md",
+    "fulltext_resolution_status": null
+  }
+]

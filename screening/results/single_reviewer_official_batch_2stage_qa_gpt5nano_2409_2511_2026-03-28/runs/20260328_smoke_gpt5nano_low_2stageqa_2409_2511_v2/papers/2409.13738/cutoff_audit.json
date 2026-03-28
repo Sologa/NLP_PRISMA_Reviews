@@ -1,0 +1,110 @@
+{
+  "paper_id": "2409.13738",
+  "cutoff_json_path": "cutoff_jsons/2409.13738.json",
+  "time_policy": {
+    "enabled": true,
+    "date_field": "published",
+    "start_date": null,
+    "start_inclusive": true,
+    "end_date": "2023-06-30",
+    "end_inclusive": true,
+    "timezone": "UTC",
+    "derivation_mode": "intersection_of_projectable_time_clauses",
+    "projected_clause_ids": [
+      "stage2_i8_no_publication_restriction",
+      "paper_results_search_executed_june_2023",
+      "paper_limitations_manuscript_horizon_aug_2024",
+      "operational_fallback_sr_publication_date"
+    ],
+    "binding_clause_ids": [
+      "paper_results_search_executed_june_2023"
+    ],
+    "fallback_applied": false
+  },
+  "evidence": [
+    {
+      "clause_id": "stage2_i8_no_publication_restriction",
+      "section": "Stage 2 Eligibility / Screening Criteria",
+      "criterion_id": "I8",
+      "text": "No publication-year restriction (i.e., do not exclude by year).",
+      "source": "criteria_corrected_3papers/2409.13738.md"
+    },
+    {
+      "clause_id": "paper_results_search_executed_june_2023",
+      "section": "Results",
+      "criterion_id": "N/A",
+      "text": "Our search queries were executed in June 2023 and the found papers span a time period from 2011 to 2023.",
+      "source": "paper: arxiv html 2409.13738v1"
+    },
+    {
+      "clause_id": "paper_results_observed_corpus_span",
+      "section": "Results / Table 2 metadata",
+      "criterion_id": "N/A",
+      "text": "From 2011 to 2023.",
+      "source": "paper: arxiv html 2409.13738v1"
+    },
+    {
+      "clause_id": "paper_methods_same_contribution_latest_version",
+      "section": "Methods / Inclusion Criteria footnote",
+      "criterion_id": "IC.2 footnote",
+      "text": "In case of multiple papers related to the same contribution, we reviewed the most recent paper.",
+      "source": "paper: arxiv html 2409.13738v1"
+    },
+    {
+      "clause_id": "paper_limitations_manuscript_horizon_aug_2024",
+      "section": "Threats to Validity and Limitations",
+      "criterion_id": "N/A",
+      "text": "Publications after the preparation of this manuscript (August 2024) will also not be included.",
+      "source": "paper: arxiv html 2409.13738v1"
+    },
+    {
+      "clause_id": "operational_fallback_sr_publication_date",
+      "section": "Operational fallback",
+      "criterion_id": "N/A",
+      "text": "Fallback upper bound uses the SR's own arXiv publication date (2024-09-10).",
+      "source": "paper: arxiv abs metadata"
+    }
+  ],
+  "normalization_notes": [
+    "This is the most important correction in the whole folder. The current file disables time filtering entirely because it follows the source-faithful Stage 2 rule only.",
+    "For the lazy one-shot prefilter you described, that is too weak: the June 2023 search-execution date is a real time constraint on the candidate pool and therefore must be projected into time_policy.",
+    "The August 2024 manuscript horizon and the SR publication-date fallback are kept for completeness, but neither is binding once the June 2023 clause is included.",
+    "The explicit 'no publication-year restriction' is still preserved under source_faithful_screening_publication_policy, so the file now cleanly records both the paper-literal rule and your operational prefilter."
+  ],
+  "candidate_total_before_cutoff": 3,
+  "candidate_total_after_cutoff": 2,
+  "cutoff_excluded_count": 1,
+  "status_counts": {
+    "passed": 2,
+    "after_end": 1
+  },
+  "rows": [
+    {
+      "key": "devlin_bert",
+      "title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2018",
+      "published_date_iso": "2018-01-01"
+    },
+    {
+      "key": "du2022_r-gqa",
+      "title": "Retrieval-Augmented Generative Question Answering for Event Argument Extraction",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "passed",
+      "cutoff_pass": true,
+      "published_date_raw": "2022",
+      "published_date_iso": "2022-01-01"
+    },
+    {
+      "key": "berti2023abstractions",
+      "title": "Abstractions, Scenarios, and Prompt Definitions for Process Mining with LLMs: A Case Study",
+      "cutoff_policy_enabled": true,
+      "cutoff_status": "after_end",
+      "cutoff_pass": false,
+      "published_date_raw": "2023-07",
+      "published_date_iso": "2023-07-01"
+    }
+  ]
+}

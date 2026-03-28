@@ -1,0 +1,56 @@
+{
+  "paper_id": "2511.13936",
+  "stage": "stage1",
+  "topic": "Preference-based learning in audio applications",
+  "topic_definition": "Only use title/abstract evidence. Keep source-faithful boundaries: preference learning in audio, possible RL loop for an audio model, audio-domain applicability, and exclusion of preference-only-for-evaluation work.",
+  "questions": [
+    {
+      "qid": "S1_PREF_SIGNAL",
+      "criterion_family": "preference_learning_signal",
+      "question": "Does the title/abstract indicate ranking, A/B comparison, or other comparative preference signals for audio clips?",
+      "candidate_synthesis_fields": [
+        "preference_learning_signal"
+      ]
+    },
+    {
+      "qid": "S1_RATING_TO_RANKING",
+      "criterion_family": "rating_to_ranking_signal",
+      "question": "If numeric ratings are mentioned, is there observable title/abstract evidence that they are converted into rankings or comparative preference signals?",
+      "candidate_synthesis_fields": [
+        "rating_to_ranking_signal"
+      ]
+    },
+    {
+      "qid": "S1_RL_LOOP",
+      "criterion_family": "rl_audio_training_loop",
+      "question": "If explicit comparisons are absent, does the title/abstract indicate an RL training loop for an audio model?",
+      "candidate_synthesis_fields": [
+        "rl_audio_training_loop"
+      ]
+    },
+    {
+      "qid": "S1_AUDIO_DOMAIN",
+      "criterion_family": "audio_domain_fit",
+      "question": "Is the paper applied within the audio domain, including multimodal work that clearly includes audio?",
+      "candidate_synthesis_fields": [
+        "audio_domain_fit"
+      ]
+    },
+    {
+      "qid": "S1_EVAL_ONLY",
+      "criterion_family": "evaluation_only_negative",
+      "question": "Does the title/abstract directly indicate that preferences are used only for evaluation, with no learning component?",
+      "candidate_synthesis_fields": [
+        "evaluation_only_negative"
+      ]
+    },
+    {
+      "qid": "S1_SECONDARY_SIGNAL",
+      "criterion_family": "secondary_research_signal",
+      "question": "Does the title/abstract clearly indicate that the paper is a survey or review article?",
+      "candidate_synthesis_fields": [
+        "secondary_research_signal"
+      ]
+    }
+  ]
+}

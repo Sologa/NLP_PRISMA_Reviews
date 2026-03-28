@@ -1,0 +1,45 @@
+{
+  "paper_id": "2409.13738",
+  "candidate_key": "sample_candidate",
+  "candidate_title": "Sample Candidate",
+  "stage": "stage1",
+  "workflow_arm": "single-reviewer-official-batch-2stage-qa",
+  "qa_source_path": "qa_assets/2409.13738.stage1.json",
+  "reviewer_guardrails_applied": [
+    "title_abstract_only",
+    "no_extra_hardening"
+  ],
+  "source_record_provenance": {
+    "record_key": "sample_candidate",
+    "record_title": "Sample Candidate",
+    "source": "sample",
+    "source_id": "sample",
+    "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+    "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "criteria_stage1_path": "criteria_stage1/2409.13738.json",
+    "criteria_stage2_path": "criteria_stage2/2409.13738.json",
+    "fulltext_candidate_path": "refs/2409.13738/mds/sample_candidate.md",
+    "fulltext_available": true
+  },
+  "answers": [
+    {
+      "qid": "S1_CORE_FIT",
+      "criterion_family": "core_topic_fit",
+      "answer_state": "present",
+      "state_basis": "direct_support",
+      "answer_rationale": "The abstract explicitly states the paper extracts process models from text using NLP.",
+      "supporting_quotes": [
+        "extract process models from textual descriptions using NLP"
+      ],
+      "locations": [
+        "abstract"
+      ],
+      "missingness_reason": null,
+      "stage2_handoff_note": null,
+      "conflict_note": null,
+      "candidate_synthesis_fields": [
+        "core_topic_fit"
+      ]
+    }
+  ]
+}
