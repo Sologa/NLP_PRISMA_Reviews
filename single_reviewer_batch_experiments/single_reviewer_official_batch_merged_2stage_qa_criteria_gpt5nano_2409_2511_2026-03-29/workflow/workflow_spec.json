@@ -1,0 +1,43 @@
+{
+  "workflow_id": "single-reviewer-official-batch-merged-2stage-qa-criteria",
+  "aliases": [
+    "single-reviewer-merged-2stage-qa-criteria",
+    "official-batch-merged-2stage"
+  ],
+  "workflow_arm": "single-reviewer-official-batch-merged-2stage-qa-criteria",
+  "stage_model": "merged_two_stage_qa_criteria_score_authoritative",
+  "supported_phases": [
+    {
+      "phase_id": "stage1_review",
+      "stage": "stage1",
+      "template": "templates/01_stage1_merged_review_TEMPLATE.md",
+      "asset_pattern": "assets/{paper_id}.stage1.json",
+      "output_filename": "stage1_review.json",
+      "uses_fulltext": false,
+      "requires_prior_stage": false
+    },
+    {
+      "phase_id": "stage2_review",
+      "stage": "stage2",
+      "template": "templates/02_stage2_merged_review_TEMPLATE.md",
+      "asset_pattern": "assets/{paper_id}.stage2.json",
+      "output_filename": "stage2_review.json",
+      "uses_fulltext": true,
+      "requires_prior_stage": true
+    }
+  ],
+  "gate_policy": {
+    "selection_phase": "stage1_review",
+    "advance_decisions": [
+      "include",
+      "maybe"
+    ],
+    "stop_decisions": [
+      "exclude"
+    ]
+  },
+  "result_mapping": {
+    "cutoff_verdict": "exclude (cutoff_time_window)",
+    "stage_verdict_format": "{decision} ({stage}:{score})"
+  }
+}

@@ -1,0 +1,420 @@
+[
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The provided document is a full English research paper with full text available, showing a complete paper structure from Abstract and Introduction through Related Work and Conclusion.",
+      "The paper is a primary and original research study; it states that it explores, for the first time in literature, using in-context learning over pre-trained language models for process extraction from textual documents.",
+      "The work specifically applies NLP to process extraction from natural-language process descriptions, aiming to transform text into structured process representations and extracting activities, participants, performs relations, and directly-follow relations from text.",
+      "The paper presents a concrete GPT-3 and in-context-learning method and empirically validates it in an Empirical Assessment with explicit research questions, defined extraction tasks, and experiments using the PET dataset."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "The title and abstract explicitly target extracting business process entities and relations from text using pre-trained language models and in-context learning.",
+      "Section 2.1 defines process extraction from text as transforming textual descriptions of processes into structured representations, up to formal process model diagrams.",
+      "Section 3.1 specifies extraction of activities, participants, the performing relation, and the sequence relation between activities.",
+      "Section 4 is titled Empirical Assessment and introduces RQ1/RQ2, tasks T1-T3, model settings, and reported results."
+    ],
+    "decision_rationale": "The full text directly satisfies all Stage 2 inclusion criteria. It is a full English article with available full text, presents an original primary research contribution, is explicitly about NLP-based process extraction from natural-language business process descriptions, and includes a concrete method with empirical evaluation. No Stage 2 exclusion criterion is supported by the provided evidence.",
+    "paper_id": "2409.13738",
+    "candidate_key": "bellan_gpt3_2022",
+    "candidate_title": "\"Extracting Business Process Entities and Relations from Text Using Pre-trained Language Models and In-Context Learning\"",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "bellan_gpt3_2022",
+      "record_title": "\"Extracting Business Process Entities and Relations from Text Using Pre-trained Language Models and In-Context Learning\"",
+      "source": "manual",
+      "source_id": "\"Extracting Business Process Entities and Relations from Text Using Pre-trained Language Models and In-Context Learning\"",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/bellan_gpt3_2022.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The manuscript is explicitly labeled \"Research Article\"; the full text is available and written in English.",
+      "It is a primary original study that presents a new contribution: \"we propose a Machine Translation (MT) like approach\".",
+      "It specifically covers NLP-based extraction/generation of a BPMN business process model from natural-language textual descriptions.",
+      "It describes a concrete method and reports empirical validation through quantitative similarity evaluation and expert evaluation."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "First page states \"Research Article\".",
+      "Introduction states: \"Natural Language Processing (NLP) plays an essential role in dealing with the available textual documents to extract the models.\"",
+      "Section 4 states: \"Our approach consists of two main phases: natural language analysis and modeling language generation.\"",
+      "The method describes intermediate representations including a \"Concept Map\" and a \"Text Graph\" for generating BPMN diagrams from text.",
+      "Evaluation states: \"we implemented the proposed approach in java and used it to conduct the experiments\" using Friedrich's dataset of 47 textual process descriptions.",
+      "Results report the generated models are \"more than 81% similar\" to manually created diagrams, with an additional expert/usefulness evaluation."
+    ],
+    "decision_rationale": "The full text clearly meets all Stage 2 inclusion criteria. It is an English full research article with an original proposed method, it directly targets deriving BPMN business process models from natural-language text using NLP-based analysis, and it provides both a concrete methodological description and empirical validation. No exclusion criterion is supported by the provided title, abstract, or full text.",
+    "paper_id": "2409.13738",
+    "candidate_key": "sonbol2023machine",
+    "candidate_title": "A Machine Translation Like Approach to Generate Business Process Model from Textual Description",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "sonbol2023machine",
+      "record_title": "A Machine Translation Like Approach to Generate Business Process Model from Textual Description",
+      "source": "crossref",
+      "source_id": "10.1007/s42979-023-01742-z",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/sonbol2023machine.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Full text is available; the paper is written in English and presented as a complete research article.",
+      "It is a primary study proposing an original two-phase method for converting textual requirements to BPMN diagrams.",
+      "The method specifically uses NLP on natural-language textual requirements to extract fact types and build a BPMN process model.",
+      "The paper describes a concrete pipeline and reports empirical validation on ten case studies with quantitative accuracy."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract/Section 3: the method has two phases: '1) analysis of textual requirements with natural language processing and 2) BPMN generation'.",
+      "Section 3.1 details preprocessing, POS tagging, dependency parsing with Stanza, semantic analysis, and fact type extraction.",
+      "Section 3.2 gives rules for mapping fact types onto BPMN elements and generating the BPMN diagram via a spreadsheet-based description.",
+      "Results/conclusion: the method was applied to ten case studies and reports MMRE 7.17% and accuracy 92.83%."
+    ],
+    "decision_rationale": "The full text directly matches the review scope: it extracts a BPMN process model from natural-language textual requirements using an explicit NLP-based pipeline and rule-based mapping. It is a full English research article, presents an original method, and includes empirical validation with quantitative results. No Stage 2 exclusion criterion is triggered.",
+    "paper_id": "2409.13738",
+    "candidate_key": "sholiq2022generating",
+    "candidate_title": "Generating BPMN diagram from textual requirements",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "sholiq2022generating",
+      "record_title": "Generating BPMN diagram from textual requirements",
+      "source": "openalex",
+      "source_id": "https://openalex.org/W4306955967",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/sholiq2022generating.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "This is a full English journal research article with full text available.",
+      "The paper presents an original automated approach proposed by the authors.",
+      "It specifically uses NLP on natural-language user stories and acceptance criteria to extract a business process model.",
+      "It describes a concrete extraction pipeline and reports empirical validation with quantitative metrics."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "The paper states it 'propose[s] an automated approach to extract business process models from requirements' presented as user stories and acceptance criteria.",
+      "Introduction says the approach derives a business process model from acceptance criteria written in GWT format using natural language processing (NLP) techniques.",
+      "Methods use Stanford CoreNLP for coreference resolution, tokenization, POS tagging, and dependency parsing, then Prolog rules to detect activities and symbols of the activity diagram.",
+      "Section 3.3 reports evaluation against manual diagrams with TP=47, FN=1, FP=2, recall 97%, precision 94%, and accuracy 94%."
+    ],
+    "decision_rationale": "The full text directly satisfies all Stage 2 inclusion criteria. It is a full English research article that presents an original method using NLP to analyze natural-language user stories and acceptance criteria and generate UML activity diagrams as business process models. The method is concretely specified through CoreNLP-based preprocessing, rule-based artifact extraction, and diagram generation, and it is empirically validated on case studies with quantitative results. No Stage 2 exclusion criterion is triggered.",
+    "paper_id": "2409.13738",
+    "candidate_key": "nasiri2023automatic",
+    "candidate_title": "Automatic generation of business process models from user stories",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "nasiri2023automatic",
+      "record_title": "Automatic generation of business process models from user stories",
+      "source": "openalex",
+      "source_id": "https://openalex.org/W4307562134",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/nasiri2023automatic.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 4,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The provided full text is an English research paper with method, evaluation, related work, and conclusion sections.",
+      "The paper presents an original primary contribution: a round-trip framework for synchronizing BPMN models and natural-language text.",
+      "Section 2.3 explicitly describes NLP-based BPMN process model generation from natural-language text.",
+      "The paper gives a concrete pipeline and reports two experiments for empirical validation."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The paper is broader than extraction alone because it also includes model-to-text generation.",
+      "Validation is framed as equivalence/synchronization assessment rather than direct extraction-accuracy measurement."
+    ],
+    "evidence_highlights": [
+      "\"This work proposes a round-trip framework for automatically maintaining the consistency of processes representations...\"",
+      "\"Text to Model: BPMN Process Model Generation from Natural Language Texts\"",
+      "\"It uses NLP techniques to extract and parse texts to identify BPMN process model elements and create/update the model.\"",
+      "\"The framework was implemented using Java standard technology and evaluated through experiments.\""
+    ],
+    "decision_rationale": "Full-text evidence supports the Stage 2 inclusion criteria. This is a full English primary research paper with an original, concrete framework, and it explicitly contains an NLP text-to-model component that extracts BPMN process model elements from natural-language text. Although the contribution is broader round-trip synchronization and the evaluation is not a direct extraction benchmark, the paper still specifically covers NLP-enabled process extraction from text and should be included.",
+    "paper_id": "2409.13738",
+    "candidate_key": "azevedo2018bpmn",
+    "candidate_title": "BPMN Model and Text Instructions Automatic Synchronization",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "azevedo2018bpmn",
+      "record_title": "BPMN Model and Text Instructions Automatic Synchronization",
+      "source": "crossref",
+      "source_id": "10.5220/0006809604840491",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/azevedo2018bpmn.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 4,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Paper is a full research article with full text available and written in English.",
+      "Paper is a primary study presenting an original contribution through mapping rules and a prototype.",
+      "Paper specifically applies NLP to identify process-model elements in natural-language texts for process extraction.",
+      "Paper explicates a concrete rule-based method and empirically validates it."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The main reported output is process-element identification; full end-to-end process model assembly is less explicit."
+    ],
+    "evidence_highlights": [
+      "The full text is an ICEIS 2017 conference paper spanning pages 250-261.",
+      "The paper states it proposes a semi-automatic approach to identify process elements in natural language texts.",
+      "The paper says it combined a large set of Natural Language Processing tools with mapping rules.",
+      "The method describes 33 mapping rules for activities, events, XOR, AND, and swimlanes.",
+      "The introduction says that identifying process elements assists construction of a process template and can thus extract process models.",
+      "Evaluation reports 56 texts, 387 sentences, and 91.92% overall accuracy.",
+      "Survey validation reports 93.33% agreement with the mapping rules.",
+      "The conclusion says the approach can be considered a prerequisite for generating preprocessed text."
+    ],
+    "decision_rationale": "The full text is an English conference research article presenting an original NLP-based, rule-driven method and prototype for identifying BPMN/process elements in natural-language texts. It provides concrete methodological detail and empirical validation through both quantitative experiments and a survey. The paper explicitly connects element identification to extracting process models from text, so it meets the Stage 2 inclusion criteria overall, although its emphasis is more on semi-automatic extraction of process elements than on full end-to-end model assembly.",
+    "paper_id": "2409.13738",
+    "candidate_key": "ferreira2017semi",
+    "candidate_title": "A Semi-automatic Approach to Identify Business Process Elements in Natural Language Texts",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "ferreira2017semi",
+      "record_title": "A Semi-automatic Approach to Identify Business Process Elements in Natural Language Texts",
+      "source": "crossref",
+      "source_id": "10.5220/0006305902500261",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/ferreira2017semi.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The paper is a full English journal research article and the full text is available.",
+      "It is a primary research paper presenting an original extension/refinement of a process elicitation and modeling method/tool.",
+      "The full text explicitly uses text mining and natural language interpretation to extract process model elements from natural-language stories.",
+      "It describes a concrete extraction workflow and reports empirical validation in two case studies."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "\"...text mining techniques and natural language interpretation for the automatic generation of process models from stories.\"",
+      "\"The second stage is responsible for examining told stories in order to extract process models elements: activities, flow, events, business rules, entries and exits.\"",
+      "\"In this stage we apply text mining algorithms ... to identify the basic elements (activities, actors, events), as well as logical and temporal relationships among them (flows), facilitating workflow generation.\"",
+      "\"In the case studies conducted, we evaluated the quality of the stories by comparing the resulting process models with previous ones elaborated using the traditional interview-based approach.\""
+    ],
+    "decision_rationale": "The full text directly satisfies the Stage 2 criteria. It is an English full research article with an original contribution, centered on using text mining/NLP to extract workflow/process information from natural-language stories and generate process models. The paper provides a concrete multi-stage method and empirically evaluates it through two case studies with reported extraction results, so no exclusion criterion is triggered.",
+    "paper_id": "2409.13738",
+    "candidate_key": "goncalves2011let",
+    "candidate_title": "Let Me Tell You a Story - On How to Build Process Models",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "goncalves2011let",
+      "record_title": "Let Me Tell You a Story - On How to Build Process Models",
+      "source": "crossref",
+      "source_id": "10.3217/jucs-017-02-0276",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/goncalves2011let.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 4,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Full English text is available, with abstract, introduction, method, experiments, and conclusion.",
+      "The paper is primary research proposing the original PEWP method.",
+      "It explicitly targets process extraction from documents, and the method analyzes verbs and nouns in natural language.",
+      "It provides concrete algorithms and quantitative validation against TF-IDF on five topics using NDPM and recall."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The extracted result is presented as step-sequence process information with associated nouns, not explicitly as a richer formal process-model notation."
+    ],
+    "evidence_highlights": [
+      "Title: \"PEWP: Process extraction based on word position in documents\".",
+      "\"Here, process extraction is defined as extracting the process (step sequence) information from documents\".",
+      "\"Ansj Tokenizer\" is used to segment documents, filter stop words, and retain verbs and nouns.",
+      "Section III gives Algorithm 1-3 for verb-noun relations, start-step finding, and verb-flow extraction.",
+      "Section IV compares PEWP with TF-IDF on five topics and reports NDPM and recall in Tables II-III."
+    ],
+    "decision_rationale": "The full text directly supports the Stage 2 inclusion criteria: this is an English full paper with an original PEWP method, it explicitly addresses process extraction from natural-language documents, and it describes concrete extraction algorithms plus quantitative experiments. No exclusion criterion is triggered. I assign a 4 rather than 5 because the output is framed mainly as step-sequence/process information rather than being explicitly expressed in a richer formal process-model notation.",
+    "paper_id": "2409.13738",
+    "candidate_key": "chen2014pewp",
+    "candidate_title": "PEWP: Process extraction based on word position in documents",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "chen2014pewp",
+      "record_title": "PEWP: Process extraction based on word position in documents",
+      "source": "openalex",
+      "source_id": "https://openalex.org/W2006480487",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/chen2014pewp.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [
+      "The paper specifically covers using NLP to generate business process models from natural-language organizational documentation."
+    ],
+    "triggered_exclusion_points": [
+      "The full text explicitly labels the work as a \"Doctoral Consortium paper\" rather than a full research article.",
+      "The paper does not report completed empirical validation; experiments and evaluation are described as future work."
+    ],
+    "uncertain_points": [
+      "The text mentions a \"novel transformation approach,\" but it is unclear how much original completed contribution is actually presented in this paper."
+    ],
+    "evidence_highlights": [
+      "\"This Doctoral Consortium paper discusses how NLP can be applied ... to automatically generate business process models from existing documentation within the organization.\"",
+      "\"The extraction can be achieved by applying well known NLP techniques such as Part of Speech tagging, Named Entity Recognition and Co-reference Resolution.\"",
+      "\"The evaluation methodology using graph edit distance will be created reporting the results.\"",
+      "\"In this step a series of experiments will be conducted to determine the performance of the prototype tool...\"",
+      "\"The research is still at an early stage.\""
+    ],
+    "decision_rationale": "The paper is clearly on-topic for NLP-based extraction of business process models from text, but Stage 2 requires a full research article with a concrete method and empirical validation. The full text identifies itself as a doctoral consortium paper, states that the research is still at an early stage, and presents evaluation and experiments in future tense rather than reporting completed results. Therefore it does not satisfy the full-paper and empirical-validation requirements and should be excluded.",
+    "paper_id": "2409.13738",
+    "candidate_key": "sintoris2017extracting",
+    "candidate_title": "Extracting Business Process Models Using Natural Language Processing (NLP) Techniques",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "sintoris2017extracting",
+      "record_title": "Extracting Business Process Models Using Natural Language Processing (NLP) Techniques",
+      "source": "openalex",
+      "source_id": "https://openalex.org/W2745975416",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/sintoris2017extracting.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 2,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [
+      "Full text is available, the paper is written in English, and it is presented as a full paper.",
+      "The paper is a primary research article presenting an original contribution.",
+      "The paper specifically covers NLP-based extraction of business process/BPMN models from natural-language text."
+    ],
+    "triggered_exclusion_points": [
+      "The full text does not clearly describe experiments to empirically validate the method."
+    ],
+    "uncertain_points": [
+      "The paper says the prototype was 'tested against a test set', but it does not report the setup, metrics, or aggregated results.",
+      "Section 4 provides one case study example; whether that alone counts as sufficient empirical validation is unclear."
+    ],
+    "evidence_highlights": [
+      "Introduction: the paper presents 'a new method for extracting business process from natural language text'.",
+      "Section 3 defines a five-step pipeline from participants extraction and SVO extraction to BPMN diagram generation.",
+      "Section 3.5 says the prototype was implemented in Python using SpaCy, with syntax parsing and WordNet-based semantic support.",
+      "Section 3.5 states the prototype was 'tested against a test set of natural language business process descriptions'.",
+      "Section 4 is a single 'Case Study Example' with a generated spreadsheet model and BPMN diagram, without explicit validation results."
+    ],
+    "decision_rationale": "The paper is clearly in scope for NLP-enabled process extraction and presents an original, concrete method for transforming natural-language descriptions into BPMN models. However, Stage 2 also requires that the paper describe experiments for empirical validation. Here the full text only briefly states that the prototype was tested on a set of descriptions and then shows one case study example; it does not clearly report an evaluation procedure or validation results. Because that required inclusion point is not clearly supported, the paper leans to exclusion at Stage 2.",
+    "paper_id": "2409.13738",
+    "candidate_key": "honkisz2018concept",
+    "candidate_title": "A Concept for Generating Business Process Models from Natural Language Description",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "honkisz2018concept",
+      "record_title": "A Concept for Generating Business Process Models from Natural Language Description",
+      "source": "crossref",
+      "source_id": "10.1007/978-3-319-99365-2_8",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/honkisz2018concept.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The provided full text is a complete English research article with abstract, method, empirical assessment, related work, and conclusion sections.",
+      "The paper presents an original primary contribution, stating it explores \"for the first time in literature\" GPT-3 and in-context learning for process extraction from textual documents.",
+      "The study specifically uses NLP for process extraction from natural-language process descriptions, targeting activities, participants, performs relations, and directly-follow relations.",
+      "The paper describes a concrete prompt-based GPT-3 extraction method and reports empirical evaluation with defined research questions, tasks, and the PET dataset."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "\"Process extraction from text can be regarded as the specific problem of finding algorithmic functions that transform textual descriptions of processes into structured representations.\"",
+      "\"In this paper we explore, for the first time in literature, the feasibility of using in-context learning over the pre-trained language models to perform process extraction from textual documents.\"",
+      "Section 3/3.1 describes the extraction pipeline, prompts, questions Q1-Q3, and GPT-3-based implementation.",
+      "Section 4 \"Empirical Assessment\" defines RQ1/RQ2 and tasks T1-T3, and the paper concludes that the results \"highlighted the potential of the in-context learning approach.\""
+    ],
+    "decision_rationale": "The full text directly satisfies all Stage 2 inclusion criteria: it is a full English primary research paper, it explicitly studies NLP-based process extraction from natural-language text, it presents a concrete GPT-3/in-context-learning extraction method, and it empirically evaluates that method. No exclusion criterion is supported by the provided text.",
+    "paper_id": "2409.13738",
+    "candidate_key": "bellan2022extracting",
+    "candidate_title": "Extracting business process entities and relations from text using pre-trained language models and in-context learning",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "bellan2022extracting",
+      "record_title": "Extracting business process entities and relations from text using pre-trained language models and in-context learning",
+      "source": "manual",
+      "source_id": "local:bellan2022extracting",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/bellan2022extracting.md",
+      "fulltext_available": true
+    }
+  }
+]

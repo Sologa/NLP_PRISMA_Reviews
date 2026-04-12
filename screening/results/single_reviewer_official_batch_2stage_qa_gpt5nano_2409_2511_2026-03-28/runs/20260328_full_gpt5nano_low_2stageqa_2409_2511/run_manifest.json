@@ -101,7 +101,7 @@
       "phase": "stage2_eval",
       "batch_artifact_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_qa_gpt5nano_2409_2511_2026-03-28/runs/20260328_full_gpt5nano_low_2stageqa_2409_2511/batch_jobs/stage2_eval/gpt-5-nano",
       "batch_id": "batch_69c7ebc51618819085f112f133ef5e4c",
-      "batch_status": "validating",
+      "batch_status": "completed",
       "request_count": 76,
       "paper_preparation": {
         "2409.13738": {
@@ -113,8 +113,63 @@
           "request_count": 46
         }
       },
-      "upload_file_id": "file-AhrJAg2HevKCjqmA7AZmGt"
+      "upload_file_id": "file-AhrJAg2HevKCjqmA7AZmGt",
+      "batch_completed_at": 1774736339,
+      "batch_output_file_id": "file-QpmDkSinh3tgb3xSsuQV2f",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 76,
+        "failure_count": 0,
+        "missing_count": 0
+      }
     }
   },
-  "model_preflight_id": "gpt-5-nano"
+  "model_preflight_id": "gpt-5-nano",
+  "mode": "collect",
+  "baseline": {
+    "2409.13738": {
+      "combined": {
+        "path": "screening/results/2409.13738_full/combined_f1.stage_split_criteria_migration.json",
+        "f1": 0.7499999999999999
+      }
+    },
+    "2511.13936": {
+      "combined": {
+        "path": "screening/results/2511.13936_full/combined_f1.stage_split_criteria_migration.json",
+        "f1": 0.90625
+      }
+    }
+  },
+  "summaries": [
+    {
+      "paper_id": "2409.13738",
+      "candidate_total": 84,
+      "cutoff_pass_count": 69,
+      "cutoff_excluded_count": 15,
+      "stage2_selected_count": 35,
+      "reviewed_count": 60,
+      "missing_count": 0,
+      "results_path": "screening/results/single_reviewer_official_batch_2stage_qa_gpt5nano_2409_2511_2026-03-28/runs/20260328_full_gpt5nano_low_2stageqa_2409_2511/papers/2409.13738/single_reviewer_batch_results.json",
+      "metrics_path": "screening/results/single_reviewer_official_batch_2stage_qa_gpt5nano_2409_2511_2026-03-28/runs/20260328_full_gpt5nano_low_2stageqa_2409_2511/papers/2409.13738/single_reviewer_batch_f1.json",
+      "precision": 0.5757575757575758,
+      "recall": 0.9047619047619048,
+      "f1": 0.7037037037037038,
+      "delta_vs_current_combined": -0.04629629629629606
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_total": 88,
+      "cutoff_pass_count": 77,
+      "cutoff_excluded_count": 11,
+      "stage2_selected_count": 50,
+      "reviewed_count": 73,
+      "missing_count": 0,
+      "results_path": "screening/results/single_reviewer_official_batch_2stage_qa_gpt5nano_2409_2511_2026-03-28/runs/20260328_full_gpt5nano_low_2stageqa_2409_2511/papers/2511.13936/single_reviewer_batch_results.json",
+      "metrics_path": "screening/results/single_reviewer_official_batch_2stage_qa_gpt5nano_2409_2511_2026-03-28/runs/20260328_full_gpt5nano_low_2stageqa_2409_2511/papers/2511.13936/single_reviewer_batch_f1.json",
+      "precision": 0.6388888888888888,
+      "recall": 0.7666666666666667,
+      "f1": 0.696969696969697,
+      "delta_vs_current_combined": -0.20928030303030298
+    }
+  ]
 }

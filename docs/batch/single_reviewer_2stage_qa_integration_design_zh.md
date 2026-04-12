@@ -58,7 +58,20 @@
 
 ### 2.2 current single reviewer baseline 是什麼
 
-目前 single reviewer official-batch baseline 以 [single_reviewer_official_batch_experiments_usage_zh.md](./single_reviewer_official_batch_experiments_usage_zh.md) 為主，代表性 bundle 是：
+截至 `2026-04-06`，single reviewer official-batch baseline 已分成兩個層次：
+
+1. **current baseline**
+
+- `single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06`
+- two-stage direct review
+- cutoff-first
+- Stage 1 使用 `criteria_stage1/<paper_id>.json`
+- Stage 2 使用 `criteria_stage2/<paper_id>.json`
+- Stage 1 `exclude` 停止；Stage 1 `include/maybe` 才進 Stage 2
+
+2. **historical direct-review line**
+
+這是先前的 official-batch direct-review 實驗線，代表性 bundle 是：
 
 - `single_reviewer_batch_experiments/single_reviewer_official_batch_gpt5_all4_2026-03-22/`
 
@@ -72,11 +85,17 @@
 - 沒有 QA extraction layer
 - 沒有 evidence synthesis layer
 
-換句話說，現在的 official-batch single reviewer 不是 2-stage workflow，而是：
+換句話說，**historical** official-batch single reviewer direct-review 不是 2-stage workflow，而是：
 
 ```text
 cutoff -> fulltext direct review -> single verdict
 ```
+
+這條 one-stage fulltext direct-review 線現在應被視為：
+
+- historical comparison line
+- 不再是 current baseline 定義
+- 仍保留其既有 run 作為對照，不刪除、不回寫
 
 ### 2.3 現有 QA-first bundle 的正確定位
 

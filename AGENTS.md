@@ -249,7 +249,163 @@ This order is required to avoid confusing:
 - Main current issue: high sensitivity to overly strict senior behavior
 - Do not touch casually: global strict senior prompt tuning
 
-## 9. Candidate next experiment (separate thread only)
+## 9. Current single-reviewer baseline
+
+This section covers the current single-reviewer experimental baseline family.
+
+Important scope note:
+
+- This is an experimental baseline track, not the adopted production architecture.
+- Do not describe it as replacing the production multi-reviewer workflow.
+- Do not use single-reviewer baseline scores as the repo's production score authority.
+
+### Current status
+
+- Current single-reviewer baseline is `two-stage direct-review`.
+- Historical `one-stage fulltext direct-review` runs remain comparison artifacts only.
+- Current summary document: `docs/single_reviewer_baseline/REPORT_zh.md`
+- Current summary CSV: `docs/single_reviewer_baseline/single_reviewer_runs_summary.csv`
+
+### Current bundle and scope
+
+- Current bundle manifest: `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/manifest.json`
+- Bundle status: `experiment_only`
+- Current bundle scope: `2409.13738`, `2511.13936`
+- Current bundle workflow id: `single-reviewer-official-batch-2stage-direct-review`
+- Current stage model label: `two_stage_direct_review`
+
+As of the current baseline report:
+
+- `2409.13738` and `2511.13936` have completed current two-stage baseline runs.
+- `2307.05527` and `2601.19926` do not yet have corresponding current two-stage baseline reruns.
+
+### Current entrypoint and helper files
+
+- Main runner: `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/tools/run_experiment.py`
+- Workflow spec: `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/workflow/workflow_spec.json`
+- Batch helper: `scripts/screening/openai_batch_runner.py`
+- Metrics evaluator: `scripts/screening/evaluate_review_f1.py`
+- Baseline summarizer: `scripts/screening/summarize_single_reviewer_baselines.py`
+
+### Current inputs
+
+- Runtime prompts: `scripts/screening/runtime_prompts/runtime_prompts.json`
+- Stage 1 criteria: `criteria_stage1/<paper_id>.json`
+- Stage 2 criteria: `criteria_stage2/<paper_id>.json`
+- Pre-review cutoff: `cutoff_jsons/<paper_id>.json`
+- Metadata: `refs/<paper_id>/metadata/title_abstracts_metadata.jsonl`
+- Gold labels: `refs/<paper_id>/metadata/title_abstracts_metadata-annotated.jsonl`
+- Full text: `refs/<paper_id>/mds/*.md`
+
+### Current two-stage direct-review workflow
+
+The current single-reviewer baseline applies this order:
+
+1. Apply `cutoff_jsons/<paper_id>.json` before review.
+2. Run `stage1_review` using `criteria_stage1/<paper_id>.json` on title/abstract-observable evidence.
+3. Advance only Stage 1 `include` or `maybe` decisions to `stage2_review`.
+4. Run `stage2_review` using `criteria_stage2/<paper_id>.json` with full text when resolvable.
+5. Assemble final per-paper results and compute both Stage 1 and combined metrics.
+
+Gate policy for the current two-stage baseline:
+
+- Advance decisions: `include`, `maybe`
+- Stop decision: `exclude`
+- Cutoff-failed rows remain authoritative `exclude (cutoff_time_window)` rows
+
+### Current runner modes
+
+The current runner supports:
+
+- `--mode submit`
+- `--mode collect`
+- `--mode run`
+
+The current runner also supports:
+
+- `--phase stage1_review`
+- `--phase stage2_review`
+- `--phase all`
+
+Important:
+
+- `--phase all` is only valid with `--mode run`
+- `stage2_review` depends on collected `stage1_review` outputs
+
+### Current result locations
+
+Current two-stage runs write to:
+
+- `screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/<run_id>/`
+
+Within each current run:
+
+- Phase batch artifacts:
+  - `batch_jobs/stage1_review/<model>/`
+  - `batch_jobs/stage2_review/<model>/`
+- Per-paper artifacts:
+  - `papers/<paper_id>/cutoff_audit.json`
+  - `papers/<paper_id>/fulltext_resolution_audit.json`
+  - `papers/<paper_id>/stage1_review.json`
+  - `papers/<paper_id>/stage2_review.json`
+  - `papers/<paper_id>/selected_for_stage2.keys.txt`
+  - `papers/<paper_id>/stage1_results.json`
+  - `papers/<paper_id>/stage1_f1.json`
+  - `papers/<paper_id>/single_reviewer_batch_results.json`
+  - `papers/<paper_id>/single_reviewer_batch_f1.json`
+- Run-level artifacts:
+  - `run_manifest.json`
+  - `REPORT_zh.md`
+
+### How current single-reviewer metrics are computed
+
+Metric computation is currently handled by:
+
+- `scripts/screening/evaluate_review_f1.py`
+
+Current evaluation behavior:
+
+- Gold label field is `is_evidence_base`
+- `positive_mode` defaults to `include_or_maybe`
+- `include` is positive
+- `maybe` is positive under current default evaluation
+- `exclude` is negative
+
+Current metric outputs include:
+
+- `precision`
+- `recall`
+- `f1`
+- `tp`
+- `fp`
+- `tn`
+- `fn`
+
+For the current two-stage baseline:
+
+- Stage 1 metrics are computed from `papers/<paper_id>/stage1_results.json`
+- Combined metrics are computed from `papers/<paper_id>/single_reviewer_batch_results.json`
+- Run summaries compare these values against the current per-paper authority recorded in `screening/results/results_manifest.json`
+
+### Historical single-reviewer baseline
+
+Historical official-batch single-reviewer runs still exist under bundles such as:
+
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_gpt5_all4_2026-03-22`
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_gpt54_all4_2026-03-22`
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_gpt5mini_all4_2026-03-22`
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_gpt5nano_all4_2026-03-22`
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_gpt54mini_all4_2026-03-22`
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_gpt54nano_all4_2026-03-21`
+
+Treat these as:
+
+- historical one-stage direct-review baselines
+- comparison artifacts
+- not the current single-reviewer baseline definition
+- not the repo's production score authority
+
+## 10. Candidate next experiment (separate thread only)
 
 The following document is a candidate next-step analysis, not an adopted architectural state:
 
@@ -265,7 +421,7 @@ Treat it as:
 
 If this direction is pursued, do it in a separate conversation and label it explicitly as a new experiment.
 
-## 10. Short current-state reminder for future prompts
+## 11. Short current-state reminder for future prompts
 
 Use this when opening a new external chat:
 
@@ -282,6 +438,31 @@ Current score authority is:
 Read AGENTS.md, docs/chatgpt_current_status_handoff.md, and screening/results/results_manifest.json first.
 ```
 
-## 11. K-Dense note
+## 12. graphify
+
+This repository may maintain a local `graphify` knowledge graph under `graphify-out/`.
+
+Current local graph scope, when present:
+
+- `scripts/screening/`
+
+Operational rules:
+
+- Treat `graphify-out/` as a local analysis artifact, not as repo-tracked source of truth.
+- For workflow tracing, reviewer routing, runtime prompt loading, batch execution, or cross-file architecture questions inside the current graph scope, consult `graphify-out/GRAPH_REPORT.md` before broad raw-file search when the graph exists.
+- Use `graphify-out/graph.html` for interactive navigation, `graphify-out/graph.json` for machine-readable graph data, and `graphify-out/GRAPH_REPORT.md` for the plain-language audit summary.
+- Treat `INFERRED` edges as leads rather than final truth; verify important claims against the underlying source files before relying on them.
+- If the graph is missing or stale after meaningful changes to the scoped files, rebuild with `graphify scripts/screening --update` or `graphify scripts/screening` for a full rebuild.
+- Do not commit or push `graphify-out/` or transient `.graphify_*` working files.
+
+## 13. K-Dense note
 
 If future work expands into many concurrent experimental tracks, use `www.k-dense.ai` to manage the workflow rather than re-explaining the same context in multiple threads.
+
+## 14. User interaction defaults
+
+These defaults apply unless the user explicitly requests otherwise.
+
+- Do not output prompts or similar working materials as files by default.
+- When the user asks for a prompt, output it directly in the chat so the user can copy it.
+- Only create a file for a prompt or similar text artifact if the user explicitly asks for file output.

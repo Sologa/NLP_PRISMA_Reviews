@@ -1,0 +1,58 @@
+{
+  "paper_id": "2409.13738",
+  "stage": "stage1",
+  "topic": "NLP4PBM: process extraction from natural-language text",
+  "topic_definition": "Stage 1 only uses title and abstract. Judge whether the paper specifically covers NLP for process extraction from natural-language text. Do not turn missing title/abstract evidence into new hard exclusions.",
+  "decision_policy": "Recommend exclude when any exclusion criterion is clearly triggered or when the title/abstract directly contradicts the core process-extraction fit. Recommend maybe when the paper appears plausibly relevant but decisive details remain unresolved from title/abstract alone. Recommend include only when the observable Stage 1 fit is directly supported and no exclusion criterion is triggered.",
+  "criteria": [
+    {
+      "criterion_id": "I1_CORE_EXPLICIT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Title/abstract explicitly indicates that the paper specifically covers the use of NLP for process extraction from natural language text.",
+      "criterion_question": "Does the title/abstract directly state or clearly imply that the paper specifically uses NLP for process extraction from natural-language text?",
+      "assessment_policy": "Prefer UNCLEAR rather than NO when the paper looks process-related but the extraction target is not explicit."
+    },
+    {
+      "criterion_id": "I2_PROCESS_TARGET",
+      "criterion_type": "inclusion",
+      "criterion_text": "Observable task signal links natural-language text to process-model or process-representation extraction/construction objectives.",
+      "criterion_question": "Does the observable task signal link natural-language text to extraction or construction of a process model, process representation, BPMN/DMN model, or similar process artifact?",
+      "assessment_policy": "Entity extraction alone is not automatically enough unless the title/abstract directly ties it to process-model or decision-model construction."
+    },
+    {
+      "criterion_id": "I3_DEFER_PLAUSIBLE",
+      "criterion_type": "inclusion",
+      "criterion_text": "When the core fit is plausible but title/abstract evidence is incomplete, keep maybe and defer final confirmation to Stage 2 instead of adding new hard exclusions.",
+      "criterion_question": "If the core fit is plausible but incomplete from title/abstract alone, is there a clear reason to defer this candidate to Stage 2 rather than exclude it now?",
+      "assessment_policy": "Use YES only when there is a plausible positive path that needs full-text confirmation."
+    },
+    {
+      "criterion_id": "E1_NOT_TARGET_FIT",
+      "criterion_type": "exclusion",
+      "criterion_text": "Title/abstract clearly indicates the study is not specifically covering NLP for process extraction from natural language text.",
+      "criterion_question": "Does the title/abstract clearly indicate that the study is not specifically about NLP for process extraction from natural-language text?",
+      "assessment_policy": "Use YES for direct mismatch, not for generic absence of detail."
+    },
+    {
+      "criterion_id": "E2_NON_TARGET_BPM_TASKS",
+      "criterion_type": "exclusion",
+      "criterion_text": "Observable non-target examples from EC.3: NLP for process redesign, matching, or process prediction.",
+      "criterion_question": "Does the title/abstract show that the paper is about process redesign, matching, or process prediction rather than process extraction?",
+      "assessment_policy": "Use YES only when the non-target task is the paper's explicit focus."
+    },
+    {
+      "criterion_id": "E3_NON_TARGET_TEXT_TASKS",
+      "criterion_type": "exclusion",
+      "criterion_text": "Observable non-target examples from EC.3: sentiment analysis, works targeting individual labels instead of natural text, or studies on generating natural text from processes.",
+      "criterion_question": "Does the title/abstract show a non-target text task such as sentiment analysis, individual-label prediction, or natural-language generation from processes instead of process extraction?",
+      "assessment_policy": "Use YES only when the non-target family is directly supported."
+    },
+    {
+      "criterion_id": "E4_SECONDARY_RESEARCH",
+      "criterion_type": "exclusion",
+      "criterion_text": "Survey/review papers are excluded when title/abstract clearly indicates secondary research.",
+      "criterion_question": "Does the title/abstract clearly indicate that this is a survey, review, or other secondary research article?",
+      "assessment_policy": "Use YES only for explicit secondary-research signals."
+    }
+  ]
+}

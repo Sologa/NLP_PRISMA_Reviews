@@ -1,0 +1,73 @@
+[
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Paper pertains to preference learning via ranking (uses ranking SVMs to rank utterances by emotion).",
+      "Applied within the audio domain (evaluated on acted and spontaneous speech datasets: Berlin, LDC, FAU Aibo).",
+      "Paper is an original research article (not a survey or review) with a learning component (training ranking models)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "\"We introduce a ranking approach for emotion recognition which naturally incorporates information about the general expressivity of speakers.\"",
+      "\"We train ranking SVMs for individual emotions, treating the data from each speaker as a separate query.\"",
+      "\"We compare the performance of the rankers ... on two publicly available datasets of acted emotional speech, Berlin and LDC, as well as on spontaneous emotional data from the FAU Aibo dataset.\""
+    ],
+    "decision_rationale": "The full text explicitly describes training ranking SVMs (a preference-based learning/ranking method) and applies them to audio speech datasets (Berlin, LDC, FAU Aibo). The work is an original experimental study with a learning component rather than a survey, and does not use preferences solely for evaluation. Therefore it satisfies the Stage 2 inclusion criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "cao2015speaker",
+    "candidate_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "cao2015speaker",
+      "record_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
+      "source": "pubmed",
+      "source_id": "25422534",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/cao2015speaker.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Paper collects pairwise (same/different) human judgments on audio pairs (binary responses h ∈ {0,1}).",
+      "Work is applied within the audio domain (speech recordings with perturbations: noise, reverb, compression, etc.).",
+      "Learned a deep neural network metric from collected human judgments and uses the differentiable metric as a loss to train/improve an audio model (speech denoising).",
+      "Paper is an original research study (not a survey or review)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Full text: 'We present a listener with two recordings, a reference x_ref and perturbed signal x_per, and ask if these two recordings are exactly same or different, and record the binary response h ∈ {0,1}.'",
+      "Full text: 'Recordings are modified by injecting various perturbations ... including noise, reverb, equalization distortion, and compression.'",
+      "Full text: 'Next, we train a neural network with this data, and use the learned representation to construct a distance metric that measures the difference between two audio signals.'",
+      "Full text: 'we show that using the new metric as a loss function improves the performance of a state of the art denoising network.'",
+      "Title/abstract and full text describe dataset collection, model training, experiments and results — indicating original empirical work rather than a survey."
+    ],
+    "decision_rationale": "The full text explicitly describes collecting pairwise human preference judgments (same/different) on audio pairs, training a neural network on those judgments to produce a differentiable perceptual metric, and applying that metric as a loss to improve a speech enhancement model. The work is squarely within the audio domain and is original research (not a survey). No exclusion criteria (preferences used only for evaluation) are triggered, so the paper meets Stage 2 inclusion criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "stage": "stage2",
+    "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "manocha2020differentiable",
+      "record_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2020-1191",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/manocha2020differentiable.md",
+      "fulltext_available": true
+    }
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "run_id": "20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated",
+  "bundle_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06",
+  "manifest_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/manifest.json",
+  "workflow_spec_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/workflow/workflow_spec.json",
+  "run_manifest_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated/run_manifest.json",
+  "results_root": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06",
+  "run_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated",
+  "model": "gpt-5.4",
+  "endpoint": "/v1/chat/completions",
+  "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+  "stage_model": "two_stage_direct_review",
+  "papers": [
+    "2409.13738"
+  ],
+  "max_records": null,
+  "candidate_keys_file": null,
+  "reasoning_effort": "xhigh",
+  "phase_jobs": {
+    "stage1_review": {
+      "phase": "stage1_review",
+      "batch_artifact_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated/batch_jobs/stage1_review/gpt-5.4",
+      "batch_id": null,
+      "batch_status": "consolidated_success",
+      "request_count": 69,
+      "paper_preparation": {
+        "2409.13738": {
+          "candidate_total": 84,
+          "cutoff_pass_count": 69,
+          "cutoff_excluded_count": 15,
+          "request_count": 69
+        }
+      },
+      "source_attempt_run_ids": [
+        "20260409_probe_2409_gpt54_xhigh_stage1",
+        "20260410_retry1_gpt54_xhigh_stage1_2409"
+      ],
+      "parsed_summary": {
+        "success_count": 69,
+        "failure_count": 0,
+        "missing_count": 0
+      }
+    },
+    "stage2_review": {
+      "phase": "stage2_review",
+      "batch_artifact_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated/batch_jobs/stage2_review/gpt-5.4",
+      "batch_id": null,
+      "batch_status": "consolidated_success",
+      "request_count": 26,
+      "paper_preparation": {
+        "2409.13738": {
+          "selected_for_stage2_count": 26,
+          "request_count": 26
+        }
+      },
+      "source_attempt_run_ids": [
+        "20260410_retry1_gpt54_xhigh_stage2_2409",
+        "20260411_retry2_gpt54_xhigh_stage2_2409"
+      ],
+      "parsed_summary": {
+        "success_count": 26,
+        "failure_count": 0,
+        "missing_count": 0
+      }
+    }
+  },
+  "model_preflight_id": "gpt-5.4",
+  "mode": "collect",
+  "baseline": {
+    "2409.13738": {
+      "stage1": {
+        "path": "screening/results/2409.13738_full/stage1_f1.stage_split_criteria_migration.json",
+        "f1": 0.7499999999999999
+      },
+      "combined": {
+        "path": "screening/results/2409.13738_full/combined_f1.stage_split_criteria_migration.json",
+        "f1": 0.7499999999999999
+      }
+    }
+  },
+  "summaries": [
+    {
+      "paper_id": "2409.13738",
+      "candidate_total": 84,
+      "cutoff_pass_count": 69,
+      "cutoff_excluded_count": 15,
+      "stage2_selected_count": 26,
+      "reviewed_count": 69,
+      "missing_count": 0,
+      "stage1_results_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated/papers/2409.13738/stage1_results.json",
+      "stage1_metrics_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated/papers/2409.13738/stage1_f1.json",
+      "stage1_precision": 0.7307692307692307,
+      "stage1_recall": 0.9047619047619048,
+      "stage1_f1": 0.8085106382978723,
+      "delta_vs_current_stage1": 0.0585106382978724,
+      "results_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated/papers/2409.13738/single_reviewer_batch_results.json",
+      "metrics_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/20260410_full_gpt54_xhigh_2stagedirect_2409_consolidated/papers/2409.13738/single_reviewer_batch_f1.json",
+      "precision": 0.8095238095238095,
+      "recall": 0.8095238095238095,
+      "f1": 0.8095238095238095,
+      "delta_vs_current_combined": 0.059523809523809645
+    }
+  ]
+}

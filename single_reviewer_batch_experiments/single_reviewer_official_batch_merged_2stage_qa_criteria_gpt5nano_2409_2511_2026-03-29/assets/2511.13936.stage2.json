@@ -1,0 +1,44 @@
+{
+  "paper_id": "2511.13936",
+  "stage": "stage2",
+  "topic": "Preference-Based Learning in Audio Applications",
+  "topic_definition": "Stage 2 confirms the canonical source-faithful eligibility on full text. The paper must pertain to preference learning under the review's definition, be applied within the audio domain, and not be a survey/review article. Evaluation-only use of preferences is excluded.",
+  "decision_policy": "Recommend include only when the full text supports an in-scope preference-learning path, supports audio-domain fit, and does not trigger any exclusion. Recommend exclude when preferences are evaluation-only, when the work is out of audio scope, or when the paper is a survey/review. Recommend maybe only for genuinely unresolved full-text edge cases.",
+  "criteria": [
+    {
+      "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper pertains to preference learning, defined as ranking or A/B comparison of two or more audio clips; numeric ratings count only when converted to rankings; preferences may be human or synthetic; papers without explicit comparisons are still eligible when they contain an RL training loop for an audio model.",
+      "criterion_question": "Does the full text support an in-scope preference-learning path, including explicit comparisons, ratings converted to rankings, or an RL training loop for an audio model?",
+      "assessment_policy": "Use NO when the full text does not support any eligible preference-learning path."
+    },
+    {
+      "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper is applied within the audio domain. Multimodal works including audio are treated as within the audio domain.",
+      "criterion_question": "Does the full text support that the work is in the audio domain, including multimodal work that clearly includes audio?",
+      "assessment_policy": "Use NO when the work is not actually applied to audio."
+    },
+    {
+      "criterion_id": "I3_NOT_SURVEY_REVIEW",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper is not a survey or review article.",
+      "criterion_question": "Does the full text support that this is not a survey or review article?",
+      "assessment_policy": "Use NO when the full text instead supports a survey or review."
+    },
+    {
+      "criterion_id": "E1_EVALUATION_ONLY",
+      "criterion_type": "exclusion",
+      "criterion_text": "Studies that use preferences solely for evaluation, with no learning component, are excluded.",
+      "criterion_question": "Does the full text show that preferences are used only for evaluation and not for model learning or alignment?",
+      "assessment_policy": "Use YES only for clear evaluation-only preference usage."
+    },
+    {
+      "criterion_id": "E2_SURVEY_REVIEW",
+      "criterion_type": "exclusion",
+      "criterion_text": "Survey or review articles are excluded.",
+      "criterion_question": "Does the full text show that this is a survey or review article?",
+      "assessment_policy": "Use YES only for explicit survey/review evidence."
+    }
+  ]
+}
