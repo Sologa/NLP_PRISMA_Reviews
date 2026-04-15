@@ -1,0 +1,168 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_FULL_RESEARCH_ENGLISH_FULLTEXT",
+        "status": "NO",
+        "supporting_quotes": [
+          "This Doctoral Consortium paper discusses how NLP can be applied in the domain of BPM in order to automatically generate business process models from existing documentation within the organization.",
+          "2017 IEEE 19th Conference on Business Informatics",
+          "The text is written in English and the full paper text is available and examined."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text is available and in English, but the paper self-identifies as a 'Doctoral Consortium' contribution rather than a standard full research article; under the canonical paper-type requirement this does not meet 'full research article'."
+      },
+      {
+        "criterion_id": "I2_PRIMARY_RESEARCH",
+        "status": "YES",
+        "supporting_quotes": [
+          "The aim of the present research is to explore how NLP can be applied in the BPM domain in order to automatically generate business process models from existing documentation within an organization.",
+          "By pursuing this research goal, we evaluated related works in the field of BPM and NLP, developed a novel transformation approach, and created and evaluated it.",
+          "The prototype tool as a software project will be written in Java and will combine three major independent linguistic tools, namely the Stanford Parser, WordNet and FrameNet."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents an original research program (prototype, transformation approach, planned evaluation) rather than a secondary review."
+      },
+      {
+        "criterion_id": "I3_CORE_PROCESS_EXTRACTION_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The main idea is that from the syntactic and grammatical structure of a sentence the components of a business process model can be derived (i.e. activities, resources, tasks, patterns).",
+          "The extraction can be achieved by applying well known NLP techniques such as Part of Speech tagging, Named Entity Recognition and Co-reference Resolution.",
+          "In the last stage the extracted information is mapped to BMPN elements and the final model is created.",
+          "The project has two main components. The first component, which will be called Text-to-Process from now on, is responsible for processing the text input and generating the model."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text explicitly describes using NLP to extract and map textual elements into BPMN process models, satisfying the core process-extraction requirement."
+      },
+      {
+        "criterion_id": "I4_CONCRETE_METHOD_AND_VALIDATION",
+        "status": "NO",
+        "supporting_quotes": [
+          "The project has two main components. ... The three distinct phases, the sentence level analysis, the text level analysis and the process model generation are being described below.",
+          "Evaluation. In this step a series of experiments will be conducted to determine the performance of the prototype tool before and after our additions.",
+          "VII. RESULTS TO DATE AND THEIR VALIDITY - The research is still at an early stage."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper describes a concrete method and a prototype design, but the text states the research is at an early stage and presents planned/ongoing evaluation rather than completed empirical validation; the canonical requirement for empirical validation is not met in the full text."
+      },
+      {
+        "criterion_id": "E1_PAPER_TYPE_FAIL",
+        "status": "YES",
+        "supporting_quotes": [
+          "This Doctoral Consortium paper discusses how NLP can be applied in the domain of BPM in order to automatically generate business process models from existing documentation within the organization.",
+          "2017 IEEE 19th Conference on Business Informatics"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper explicitly describes itself as a Doctoral Consortium contribution; under the stage criterion that requires a 'full research article' this constitutes a paper-type failure."
+      },
+      {
+        "criterion_id": "E2_SECONDARY_RESEARCH",
+        "status": "NO",
+        "supporting_quotes": [
+          "By pursuing this research goal, we evaluated related works in the field of BPM and NLP, developed a novel transformation approach, and created and evaluated it.",
+          "The prototype tool as a software project will be written in Java and will combine three major independent linguistic tools..."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The content and planned contributions indicate original primary research, not a secondary review article."
+      },
+      {
+        "criterion_id": "E3_NON_TARGET_SCOPE",
+        "status": "NO",
+        "supporting_quotes": [
+          "The aim of the present research is to explore how NLP can be applied in the BPM domain in order to automatically generate business process models from existing documentation within an organization.",
+          "In the last stage the extracted information is mapped to BMPN elements and the final model is created."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work targets extracting process model elements from natural-language text; it is within the topic scope."
+      },
+      {
+        "criterion_id": "E4_SUPERFICIAL_OR_NO_VALIDATION",
+        "status": "YES",
+        "supporting_quotes": [
+          "VII. RESULTS TO DATE AND THEIR VALIDITY - The research is still at an early stage.",
+          "Evaluation. In this step a series of experiments will be conducted to determine the performance of the prototype tool before and after our additions."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper notes that experiments are planned and that work is at an early stage; no completed empirical validation or reported experimental results are presented in the full text."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "Senior adjudicator follows the full text: although the paper is original research and explicitly targets NLP-based extraction of BPMN process models (I2, I3 satisfied), the document self-identifies as a 'Doctoral Consortium' contribution (not a canonical full research article) and explicitly reports that results/evaluation are still at an early stage with experiments planned but not reported. These two exclusion conditions (E1 and E4) are triggered by the full text and per the decision policy any exclusion leads to an overall exclude (stage_score in the 1-2 range).",
+    "manual_review_needed": false,
+    "routing_note": "Senior adjudication completed for Stage 2; exclusion recommended based on paper-type and lack of completed empirical validation.",
+    "short_summary": "Full text confirms NLP-to-BPMN extraction focus and primary-research intent but self-identifies as a Doctoral Consortium paper and lacks completed empirical validation; exclude.",
+    "adjudication_source": "junior_nano",
+    "disagreement_resolution": "Resolved conflicts by prioritizing explicit full-text statements: the paper self-identifies as a 'Doctoral Consortium' contribution and declares 'The research is still at an early stage' with experiments described as to be conducted. These full-text facts overrule the junior_mini reading that treated the work as a completed full research article with empirical validation. Thus I1 and I4 are set to NO and the corresponding exclusions E1 and E4 set to YES, producing an overall exclude.",
+    "overridden_fields": [
+      "I1_FULL_RESEARCH_ENGLISH_FULLTEXT",
+      "I4_CONCRETE_METHOD_AND_VALIDATION",
+      "E1_PAPER_TYPE_FAIL",
+      "E4_SUPERFICIAL_OR_NO_VALIDATION",
+      "stage_score"
+    ],
+    "paper_id": "2409.13738",
+    "candidate_key": "sintoris2017extracting",
+    "candidate_title": "Extracting Business Process Models Using Natural Language Processing (NLP) Techniques",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2409_2026-04-15/assets/merged/2409.13738.stage2.json",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "sintoris2017extracting",
+      "record_title": "Extracting Business Process Models Using Natural Language Processing (NLP) Techniques",
+      "source": "openalex",
+      "source_id": "https://openalex.org/W2745975416",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/sintoris2017extracting.md",
+      "fulltext_available": true
+    },
+    "role": "senior",
+    "disagreement_summary": {
+      "stage": "stage2",
+      "junior_nano_decision": "exclude",
+      "junior_mini_decision": "include",
+      "criterion_conflicts": [
+        {
+          "criterion_id": "E1_PAPER_TYPE_FAIL",
+          "junior_nano_status": "YES",
+          "junior_mini_status": "NO"
+        },
+        {
+          "criterion_id": "E4_SUPERFICIAL_OR_NO_VALIDATION",
+          "junior_nano_status": "YES",
+          "junior_mini_status": "NO"
+        },
+        {
+          "criterion_id": "I1_FULL_RESEARCH_ENGLISH_FULLTEXT",
+          "junior_nano_status": "NO",
+          "junior_mini_status": "YES"
+        },
+        {
+          "criterion_id": "I4_CONCRETE_METHOD_AND_VALIDATION",
+          "junior_nano_status": "NO",
+          "junior_mini_status": "YES"
+        }
+      ],
+      "unclear_criterion_ids": [],
+      "route_to_senior": true,
+      "reasons": [
+        "decision_disagreement",
+        "criterion_conflict"
+      ],
+      "auto_final_decision": null,
+      "auto_resolution_stage_score": null,
+      "final_source": "senior"
+    }
+  }
+]

@@ -1,0 +1,195 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Preference learning is an appealing approach for affective recognition",
+          "this framework relies on pairwise comparisons to rank-order the testing data according to an emotional dimension",
+          "We build happy, angry and sad rank-classifiers using this metric",
+          "The goal of the emotion rankers is to retrieve the target emotions from the entire corpus",
+          "We use the relevance score to train preference learning algorithms using the IEMOCAP database",
+          "We consider two rank classifiers: preference learning with Gaussian process and Rank-SVM",
+          "The preference learning algorithm for categorical emotions outperforms binary classifiers"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text clearly describes preference learning via pairwise comparisons and training rank classifiers using preference signals, thus satisfying the inclusion criterion."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The study uses cross-corpus evaluation relying on the interactive emotional dyadic motion capture database (IEMOCAP) and the MSP-IMPROV corpus",
+          "The IEMOCAP and MSP-IMPROV databases contain audio recordings of emotional speech",
+          "The acoustic features extracted include prosodic, spectral and voice quality features from speech signals",
+          "Emotion recognition from speech has been limited to few studies [18–20]",
+          "We apply speaker dependent feature normalization and extract high level descriptors using OpenSMILE"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes the corpus and features as audio/speech based, confirming the audio domain application."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This paper proposes a novel method to derive relative labels for preference learning using categorical emotions",
+          "We build rank-based classifiers and evaluate the approach over cross-corpus experiments",
+          "We compare our proposed method to a rank-based approach and binary classifiers",
+          "The work includes methodology, experiments, and original results rather than survey or review content"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text describes original research, methodology, and experiments, confirming it is not a survey or review article."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "We build happy, angry and sad rank-classifiers using this metric",
+          "We evaluate the approach over cross-corpus experiments, showing improved performance over other classifiers",
+          "The preference learning algorithms are trained using the relevance scores to create emotional rankers",
+          "We train models and use preference signals as training labels, not just for evaluation"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper clearly uses preference learning to train models for emotion recognition, thus preferences are not evaluation-only."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This paper proposes a probabilistic framework and performs experimental evaluation",
+          "The paper describes datasets, methodology, results, and future work, indicative of original research",
+          "References include related work but the paper itself is not structured as a survey"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper is an original research article and not a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text fully supports an in-scope preference-learning path applied clearly within the audio domain, without triggering any exclusion criteria such as evaluation-only preference or survey/review article. Accordingly, the paper meets all Stage 2 inclusion criteria for recommendation.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict confirming inclusion.",
+    "short_summary": "Full text confirms the paper is a research study applying preference learning to audio-based emotion recognition, meeting all inclusion and no exclusion criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lotfian2016retrieving",
+    "candidate_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lotfian2016retrieving",
+      "record_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2016-1052",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016retrieving.md",
+      "fulltext_available": true
+    },
+    "role": "junior_mini"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "we propose a ranking-based approach that determines the coordinates of a song in the 2-D emotion space by the relative emotion of the song with respect to other songs",
+          "we propose a novel learning-to-rank algorithm called RBF-ListNet to rank the emotion of a collection of music pieces",
+          "the preference matrix, with each entry representing whether object is ranked higher than another, used to approximate a global order",
+          "rankings are used to train a regression model to compute ranking scores",
+          "the proposed RBF-ListNet algorithm performs consistently well for different datasets and utilizes a ranking-based cost function"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text provides explicit ranking-based preference learning using pairwise comparisons and a learning-to-rank algorithm (RBF-ListNet), fulfilling the inclusion definition."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Ranking-Based Emotion Recognition for Music Organization and Retrieval",
+          "music emotion recognition (MER) in the research community because music has rich emotion content and because human’s response to music listening is often related to emotion",
+          "we represent each song as a point in the 2-D emotion space",
+          "music pieces are annotated and ranked according to perceived emotion",
+          "features are extracted to represent the music signal"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The entire study focuses on music emotion recognition, operating on audio signals and music pieces, which clearly satisfies the audio domain requirement."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "We propose a new approach that ranks rather than rates the emotion of music pieces",
+          "We develop an RBF-ListNet algorithm to optimize the ranking-based objective function",
+          "Experimental results show that this ranking-based approach simplifies emotion annotation and enhances ground truth reliability",
+          "we conduct an extensive performance study to evaluate the proposed methods both subjectively and objectively",
+          "The authors present novel algorithms, experiments, and performance studies"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper clearly presents original research contributions, algorithms, and experiments, and is not a survey or review article."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "we develop an RBF-ListNet algorithm to optimize the ranking-based objective function",
+          "train a computational model to estimate ranking scores from features based on pairwise comparison data",
+          "experimental results show improved performance of the proposed algorithm",
+          "the learning-to-rank model is trained using preference data rather than only evaluating",
+          "the preference signal is used to train and optimize the ranking model"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Preferences are used as training signals within a learning-to-rank model, not solely for evaluation."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "the paper introduces a novel ranking-based emotion recognition approach",
+          "development of the RBF-ListNet algorithm",
+          "extensive experiments and evaluations are conducted",
+          "there is no mention or indication of the paper being a survey or review"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No evidence indicates that this is a survey or review article; it is original research."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text explicitly describes an in-scope preference-learning method using pairwise emotion ranking, applies it to the audio domain (music emotion recognition), and is a primary research article with learning rather than evaluation-only preferences. No exclusion criteria are triggered. Thus, per policy, recommend include.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict based on canonical full-text criteria.",
+    "short_summary": "Explicit ranking-based preference learning in music emotion recognition; audio domain fit confirmed; original research, not survey; preferences used for learning, not evaluation.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2010ranking",
+    "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2010ranking",
+      "record_title": "Ranking-based emotion recognition for music organization and retrieval",
+      "source": "openalex",
+      "source_id": "10.1109/tasl.2010.2064164",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
+      "fulltext_available": true
+    },
+    "role": "junior_mini"
+  }
+]

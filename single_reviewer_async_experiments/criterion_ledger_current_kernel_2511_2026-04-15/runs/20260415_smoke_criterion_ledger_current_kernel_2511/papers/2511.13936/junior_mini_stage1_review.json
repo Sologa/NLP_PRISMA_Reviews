@@ -1,0 +1,452 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Title: Top Publications - Computer Science",
+          "Abstract: Accessed: 2025-03-19"
+        ],
+        "missingness_reason": "No mention of preference-learning signals, rankings, or A/B comparisons in title or abstract.",
+        "notes": "The title and abstract contain no evidence of preference-learning signals related to audio or any domain."
+      },
+      {
+        "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Title: Top Publications - Computer Science",
+          "Abstract: Accessed: 2025-03-19"
+        ],
+        "missingness_reason": "No mention of numeric ratings or their conversion to preference signals.",
+        "notes": "No numeric ratings or ranking conversions are mentioned in title or abstract."
+      },
+      {
+        "criterion_id": "I3_RL_AUDIO_LOOP",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Title: Top Publications - Computer Science",
+          "Abstract: Accessed: 2025-03-19"
+        ],
+        "missingness_reason": "No indication of RL training loops or audio models in title or abstract.",
+        "notes": "No RL loops or audio model training mentioned."
+      },
+      {
+        "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Title: Top Publications - Computer Science",
+          "Abstract: Accessed: 2025-03-19"
+        ],
+        "missingness_reason": "No mention or implication of audio domain or multimodal including audio.",
+        "notes": "The title and abstract do not indicate any connection to the audio domain."
+      },
+      {
+        "criterion_id": "I5_NOT_SURVEY_REVIEW",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": "The title and abstract provide no information about paper type or detailed content.",
+        "notes": "Cannot determine if this is a survey or review or a primary study from the minimal metadata provided."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "No evidence of preferences used only for evaluation in title or abstract."
+        ],
+        "missingness_reason": null,
+        "notes": "No mention of preferences or of evaluation-only use."
+      },
+      {
+        "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+        "status": "YES",
+        "supporting_quotes": [
+          "Title: Top Publications - Computer Science",
+          "Abstract: Accessed: 2025-03-19"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The title and abstract clearly do not indicate any audio domain application; instead, it appears to be a general list related to computer science publications."
+      },
+      {
+        "criterion_id": "E3_SURVEY_REVIEW",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": "The abstract is minimal and does not clarify article type, so cannot confirm if this is a survey or review.",
+        "notes": "Not enough evidence to confirm it is a survey/review article."
+      }
+    ],
+    "stage_score": 1,
+    "decision_rationale": "Title and abstract lack all evidence for audio preference-learning relevance and clearly indicate non-audio domain; exclusion criterion E2_NOT_AUDIO_DOMAIN is triggered, thus recommend exclude.",
+    "manual_review_needed": false,
+    "routing_note": "Exclude due to clear non-audio domain and absence of preference-learning signals.",
+    "short_summary": "No indication of preference-learning or audio domain; clearly out of scope.",
+    "paper_id": "2511.13936",
+    "candidate_key": "google_scholar_hindex",
+    "candidate_title": "Top Publications - Computer Science",
+    "stage": "stage1",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage1.json",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "google_scholar_hindex",
+      "record_title": "Top Publications - Computer Science",
+      "source": "manual",
+      "source_id": "https://scholar.google.com/citations?view_op=top_venues&hl=en",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/google_scholar_hindex.md",
+      "fulltext_available": true
+    },
+    "role": "junior_mini"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "status": "YES",
+        "supporting_quotes": [
+          "this framework relies on pairwise comparisons to rank-order the testing data according to an emotional dimension",
+          "A preference learning system for categorical classes"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract explicitly states pairwise comparisons and preference learning approach in audio affective recognition."
+      },
+      {
+        "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "instead of building these labels from scratch, we propose a probabilistic framework that creates relative labels from existing categorical annotations"
+        ],
+        "missingness_reason": null,
+        "notes": "No mention of numeric ratings or conversion to rankings; focus is on pairwise comparisons and categorical labels."
+      },
+      {
+        "criterion_id": "I3_RL_AUDIO_LOOP",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "no indication of an RL training loop for an audio model in the title or abstract"
+        ],
+        "missingness_reason": null,
+        "notes": "Abstract does not mention reinforcement learning or RL training loops."
+      },
+      {
+        "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Preference learning is an appealing approach for affective recognition",
+          "applications in several domains including retrieving emotional behaviors conveying a target emotion"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract implies application to affective recognition, which is an audio domain task."
+      },
+      {
+        "criterion_id": "I5_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "We build happy, angry and sad rank-classifiers using this metric",
+          "We evaluate the approach over cross-corpus experiments"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Describes original method development and evaluation, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "A preference learning system for categorical classes can have applications",
+          "We build happy, angry and sad rank-classifiers",
+          "We evaluate the approach"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Paper includes a learning component, not preference used only for evaluation."
+      },
+      {
+        "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Preference learning is an appealing approach for affective recognition",
+          "emotional classes",
+          "retrieving emotional behaviors"
+        ],
+        "missingness_reason": null,
+        "notes": "Content clearly related to affective audio recognition, negating exclusion."
+      },
+      {
+        "criterion_id": "E3_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "We build... We evaluate..."
+        ],
+        "missingness_reason": null,
+        "notes": "Paper is original research, not a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The title and abstract explicitly indicate preference-learning signals via pairwise comparisons in an audio affective recognition context, with original experiments and no exclusion criteria triggered. This fully satisfies the inclusion criteria.",
+    "manual_review_needed": false,
+    "routing_note": "Advance to Stage 2 for full text verification of preference learning in audio domain.",
+    "short_summary": "Explicit pairwise preference-learning in audio affective recognition with original experiments and no exclusions.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lotfian2016retrieving",
+    "candidate_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+    "stage": "stage1",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage1.json",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lotfian2016retrieving",
+      "record_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2016-1052",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016retrieving.md",
+      "fulltext_available": true
+    },
+    "role": "junior_mini"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "status": "YES",
+        "supporting_quotes": [
+          "determine the coordinates of a song by the relative emotion of the song with respect to other songs",
+          "develop an RBF-ListNet algorithm to optimize the ranking-based objective function"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper explicitly uses relative emotion to rank songs, indicating preference-learning signals in audio."
+      },
+      {
+        "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "abstract does not mention numeric ratings or conversion to rankings"
+        ],
+        "missingness_reason": null,
+        "notes": "No indication of numeric ratings converted to preference signals."
+      },
+      {
+        "criterion_id": "I3_RL_AUDIO_LOOP",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "no mention of reinforcement learning or RL training loop"
+        ],
+        "missingness_reason": null,
+        "notes": "RL training loop for audio models is not indicated."
+      },
+      {
+        "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "emotion recognition for music organization and retrieval",
+          "affective content of the song",
+          "coordinates of a song by the relative emotion"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Clearly applied in the audio domain with music as the subject."
+      },
+      {
+        "criterion_id": "I5_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "we represent an emotion as a point in the Cartesian space",
+          "we also develop an RBF-ListNet algorithm",
+          "experimental results show"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Original method development and experiments suggest it is not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "abstract indicates learning component via ranking-based objective function optimization"
+        ],
+        "missingness_reason": null,
+        "notes": "Preferences are used for learning, not solely for evaluation."
+      },
+      {
+        "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "music domain is directly referenced indicating audio domain"
+        ],
+        "missingness_reason": null,
+        "notes": "Clear audio domain application."
+      },
+      {
+        "criterion_id": "E3_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "experimental approach and algorithm development imply primary study"
+        ],
+        "missingness_reason": null,
+        "notes": "No evidence that this is a survey or review article."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "Title and abstract explicitly indicate preference-learning via ranking in audio domain, with no exclusion criteria triggered. The paper develops and evaluates a new ranking-based algorithm for emotion recognition in music.",
+    "manual_review_needed": false,
+    "routing_note": "Advance to Stage 2 for full-text confirmation of methods and results.",
+    "short_summary": "Explicit ranking-based preference learning for emotion recognition in music; clear audio domain focus; original study with learning component.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2010ranking",
+    "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
+    "stage": "stage1",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage1.json",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2010ranking",
+      "record_title": "Ranking-based emotion recognition for music organization and retrieval",
+      "source": "openalex",
+      "source_id": "10.1109/tasl.2010.2064164",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
+      "fulltext_available": true
+    },
+    "role": "junior_mini"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "We cast the problem as training a machine learning program to predict the geographical origin of pieces of music.",
+          "The experimental results indicate that Random forest regression produces significantly better results than KNN."
+        ],
+        "missingness_reason": "No indication of preference-learning signals such as ranking or A/B comparison over audio clips.",
+        "notes": "No explicit preference or comparison signal in title/abstract."
+      },
+      {
+        "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Described them using 2 different sets of standard audio descriptors using MARSYAS."
+        ],
+        "missingness_reason": "No mention of numeric ratings or conversion to preference or rankings in title/abstract.",
+        "notes": "No ratings mentioned, so criterion not directly applicable but cannot confirm no preference."
+      },
+      {
+        "criterion_id": "I3_RL_AUDIO_LOOP",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "The methods used are K-Nearest Neighbors and Random forest regression which are robust to the non-standard structure of data."
+        ],
+        "missingness_reason": "No mention of reinforcement learning training loops in title/abstract.",
+        "notes": "No evidence of RL audio training loop."
+      },
+      {
+        "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We collected 1,142 pieces of music from 73 countries/areas, and described them using 2 different sets of standard audio descriptors using MARSYAS.",
+          "Predicting the geographical origin of music"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is clearly in the audio domain since it uses audio descriptors and music."
+      },
+      {
+        "criterion_id": "I5_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "We investigate the distribution of music from around the world",
+          "10-fold cross validation was used in all experiments."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper describes original experiments and data collection, not a survey or review article."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "We cast the problem as training a machine learning program to predict the geographical origin of pieces of music.",
+          "The best performing algorithm achieved a mean great circle distance error of 3,113 km."
+        ],
+        "missingness_reason": null,
+        "notes": "There is no direct indication that preferences are used only for evaluation; rather, a learning task is described."
+      },
+      {
+        "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "We collected pieces of music described using audio descriptors.",
+          "Predicting the geographical origin of music"
+        ],
+        "missingness_reason": null,
+        "notes": "The study is clearly in the audio domain."
+      },
+      {
+        "criterion_id": "E3_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Original experiments with cross-validation and machine learning performance reported."
+        ],
+        "missingness_reason": null,
+        "notes": "No survey or review signals detected."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "No explicit indication of preference-learning signals or RL audio loops in the title/abstract despite the audio domain fit and original study nature. According to policy, exclusion is recommended due to absence of preference-learning evidence.",
+    "manual_review_needed": false,
+    "routing_note": "Exclude due to absence of preference-based learning signals.",
+    "short_summary": "The paper is audio domain and original research but lacks explicit preference-learning evidence in title/abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhou2014predicting",
+    "candidate_title": "Predicting the geographical origin of music",
+    "stage": "stage1",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage1.json",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhou2014predicting",
+      "record_title": "Predicting the geographical origin of music",
+      "source": "openalex",
+      "source_id": "10.1109/icdm.2014.73",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhou2014predicting.md",
+      "fulltext_available": true
+    },
+    "role": "junior_mini"
+  }
+]

@@ -1,0 +1,580 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "The emotional labels for the corpus were collected through crowd-sourced perceptual evaluations",
+          "We implement emotion recognition experiments using all the sentences from the MSP-IMPROV corpus",
+          "We evaluate the performance of speech emotion classifiers using the emotional labels as ground truth"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text describes dataset creation, perceptual annotation, and standard supervised classifier training/evaluation. There is no evidence of ranking/A-B comparisons, conversion of ratings into preference rankings, or an RL training loop for an audio model."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The MSP-IMPROV corpus, a multimodal emotional database",
+          "This is an acted audiovisual database that explores emotional behaviors during conversational dyadic improvisations",
+          "We evaluate the performance of speech and facial emotion classifiers"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is clearly applied to audio/visual speech emotion data; audio is a primary modality used for analysis and classification."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "We present the MSP-IMPROV corpus, a multimodal emotional database",
+          "The focus of this paper is the introduction of the MSP-IMPROV corpus, describing the context in which it was recorded, the key features of the corpus, the areas where this corpus can be useful, and the emotional content of the recordings",
+          "This section describes the elicitation technique, the setup used to collect the corpus, and the post-processing steps"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Paper reports original data collection, experimental design, and analyses rather than a survey or literature review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "We implement emotion recognition experiments using all the sentences from the MSP-IMPROV corpus",
+          "We evaluate the performance of speech emotion classifiers using the emotional labels as ground truth",
+          "The classiﬁers are trained and tested with these sentences using acoustic or facial features, using the same approach described before (SVM classiﬁers, 12 fold LOSO cross-validation)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Although perceptual evaluations are used, the paper also describes training and testing of supervised emotion classifiers with those labels. There is no evidence that 'preferences' (in the review's sense: pairwise/ranking signals or preference-based learning) are used solely for evaluation; moreover, the annotations are used as ground truth for classifier training/evaluation rather than indicating a preference-only evaluation protocol."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "The MSP-IMPROV is an acted audiovisual database that explores emotional behaviors during conversational dyadic improvisations",
+          "The focus of this paper is the introduction of the MSP-IMPROV corpus"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No indication the paper is a survey or review; it presents new corpus collection and experiments."
+      }
+    ],
+    "stage_score": 1,
+    "decision_rationale": "The full text does not present any in-scope preference-learning path (no rankings/pairwise A-B preferences, no conversion of ratings into preference signals, and no RL training loop for audio). The work is in the audio domain and is not a survey. Although the paper includes perceptual evaluations and supervised classifier training, these are standard annotations and supervised learning for emotion recognition rather than preference-based learning. Under the decision policy, absence of any eligible preference-learning path leads to exclusion (stage_score = 1).",
+    "manual_review_needed": false,
+    "routing_note": "Senior Stage 2 adjudication completed: exclude due to lack of any preference-learning path in full text.",
+    "short_summary": "MSP-IMPROV is a multimodal audio-visual emotion corpus paper with perceptual annotations and supervised emotion-recognition experiments; full text contains no preference-learning signals (rankings/pairwise comparisons or RL loops), so it is out of scope and excluded.",
+    "adjudication_source": "junior_nano",
+    "disagreement_resolution": "Juniors conflicted only on E1 (evaluation-only). I resolved this by reading the full text: while many perceptual evaluations and numeric ratings are reported, the paper describes using those annotations as ground truth for supervised classifier training and evaluation (SVMs, LOSO cross-validation). There is no use of preference signals (pairwise/ranking) nor any preference-based training loop. Therefore E1 is not triggered (set to NO). Because I1 is also NO (no in-scope preference-learning path), the paper is excluded. The final decision follows junior_nano's assessment of E1 and overall fit.",
+    "overridden_fields": [
+      "E1_EVALUATION_ONLY",
+      "stage_score"
+    ],
+    "paper_id": "2511.13936",
+    "candidate_key": "busso2016msp",
+    "candidate_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "busso2016msp",
+      "record_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2016.2515617",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/busso2016msp.md",
+      "fulltext_available": true
+    },
+    "role": "senior",
+    "disagreement_summary": {
+      "stage": "stage2",
+      "junior_nano_decision": "exclude",
+      "junior_mini_decision": "exclude",
+      "criterion_conflicts": [
+        {
+          "criterion_id": "E1_EVALUATION_ONLY",
+          "junior_nano_status": "NO",
+          "junior_mini_status": "YES"
+        }
+      ],
+      "unclear_criterion_ids": [],
+      "route_to_senior": true,
+      "reasons": [
+        "criterion_conflict"
+      ],
+      "auto_final_decision": null,
+      "auto_resolution_stage_score": null,
+      "final_source": "senior"
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "Each trial has multiple stimuli ... After listening to each signal, the participants are asked to rate the quality of each sound on a continuous scale from 0 to 100 using a set of sliders.",
+          "After data cleaning is complete, the scaled ratings for each stimulus are averaged and this is used as the MOS for the corresponding signal.",
+          "We further develop a novel approach that predicts human quality ratings using a pyramid bidirectional long short term memory (pBLSTM) network with an attention mechanism.",
+          "The model is optimized using the mean-squared error loss and Adam optimization. It is trained for 100 epochs."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text shows collection of numeric MOS ratings and supervised regression to predict MOS. The paper contains no ranking or pairwise/A-B comparisons, no conversion of ratings into comparative preference signals, and no RL training loop for an audio model—so it does not meet the inclusion definition of preference learning."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "we collect and predict the perceptual quality of real-world speech signals that are evaluated by human listeners.",
+          "In this study, we conduct a large-scale listening test on real-world data and collect 180,000 subjective quality ratings through Amazon’s Mechanical Turk (MTurk) using two publically-available speech corpora.",
+          "We first use the COnversational Speech In Noisy Environments (COSINE) corpus ... We also use the Voices Obscured in Complex Environmental Settings (VOiCES) corpus."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Paper explicitly studies speech/speech-quality on COSINE and VOiCES corpora and describes signal processing and spectrogram features—clearly within the audio domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this study, we conduct a large-scale listening test on real-world data and collect 180,000 subjective quality ratings ...",
+          "We further develop a novel approach that predicts human quality ratings using a pyramid bidirectional long short term memory (pBLSTM) network with an attention mechanism.",
+          "The experimental results demonstrate the superiority of the proposed model in contrast to the baseline models and several state-of-the-art methods."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents original dataset collection, data cleaning, and a new predictive model with experiments—not a survey or review article."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "We further develop an encoder-decoder model with attention mechanism to non-intrusively predict the perceived speech quality of these real-world signals.",
+          "The model is optimized using the mean-squared error loss and Adam optimization. It is trained for 100 epochs.",
+          "The proposed model achieves statistically lower estimation errors than prior assessment approaches, where the predicted scores strongly correlate with human judgments."
+        ],
+        "counter_quotes": [
+          "After data cleaning is complete, the scaled ratings for each stimulus are averaged and this is used as the MOS for the corresponding signal."
+        ],
+        "missingness_reason": null,
+        "notes": "Preferences (MOS ratings) are used as supervised training targets for a learned model (regression predicting MOS), so preferences are not used solely for post-hoc evaluation without learning. Although this is not 'preference learning' per the inclusion definition, it is not an evaluation-only study with no learning component."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "We first collect a large quality rating dataset by conducting crowdsourced listening studies on two real-world corpora.",
+          "The collected dataset will also be made available to facilitate future research efforts."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Paper reports primary data collection and modeling; nothing in the full text indicates a survey or review format."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "Full text confirms the paper is in the audio domain and is not a survey; it also trains a supervised model to predict MOS from collected ratings (so preferences are not purely evaluation-only). However, it lacks any in-scope preference-learning pathway as defined (no rankings/pairwise A/B comparisons, no conversion of ratings into comparative preference signals, and no RL training loop). Under the decision policy, absence of an in-scope preference-learning path warrants exclusion.",
+    "manual_review_needed": false,
+    "routing_note": "Senior adjudication completed for Stage 2.",
+    "short_summary": "Paper collects crowdsourced MOS ratings and trains a supervised model to predict MOS for speech signals. No ranking/pairwise preference signals or RL-based preference learning are present; therefore excluded under Stage 2 criteria.",
+    "adjudication_source": "hybrid",
+    "disagreement_resolution": "The junior reviewers conflicted only on E1_EVALUATION_ONLY (junior_nano: NO, junior_mini: YES). Senior review of the full text shows clear supervised learning to predict MOS (quotes: model trained with MSE and Adam for 100 epochs; predicted scores correlated with human judgments), so preferences are not 'solely for evaluation' and E1 is set to NO (agreeing with junior_nano). Nevertheless, because the paper contains no ranking/pairwise comparisons, no conversion of ratings into comparative preferences, and no RL loop, I1_PREFERENCE_LEARNING_FIT is set to NO. That missing inclusion criterion drives the final exclusion decision and stage_score = 2.",
+    "overridden_fields": [
+      "E1_EVALUATION_ONLY",
+      "stage_score"
+    ],
+    "paper_id": "2511.13936",
+    "candidate_key": "dong2020pyramid",
+    "candidate_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "dong2020pyramid",
+      "record_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2020-2809",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/dong2020pyramid.md",
+      "fulltext_available": true
+    },
+    "role": "senior",
+    "disagreement_summary": {
+      "stage": "stage2",
+      "junior_nano_decision": "maybe",
+      "junior_mini_decision": "exclude",
+      "criterion_conflicts": [
+        {
+          "criterion_id": "E1_EVALUATION_ONLY",
+          "junior_nano_status": "NO",
+          "junior_mini_status": "YES"
+        }
+      ],
+      "unclear_criterion_ids": [],
+      "route_to_senior": true,
+      "reasons": [
+        "decision_disagreement",
+        "criterion_conflict"
+      ],
+      "auto_final_decision": null,
+      "auto_resolution_stage_score": null,
+      "final_source": "senior"
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "we use as a starting point the continuous emotional annotation that we performed on a large, multimodal database",
+          "discuss annotation challenges, design decisions, annotation results and lessons learned from this effort",
+          "continuous emotional annotation",
+          "discrete annotations of global emotional content of each performance"
+        ],
+        "missingness_reason": null,
+        "notes": "Full text describes continuous emotional annotation and analysis; there are no pairwise/ranking/A-B preference comparisons, no conversion of numeric ratings into preference rankings, and no RL training loop for an audio model. Therefore it does not meet the preference-learning inclusion criterion."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The collected data contains full body Motion Capture information from both participants, speech obtained from close-talking microphones and videos from two HD cameras located at opposite sides of the recording space.",
+          "We focus on the data annotation process in terms of emotional content using the videos of the performances."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper clearly uses audio (speech from close‑talking microphones) as part of a multimodal dataset; thus it is within the audio domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this work, we use as a starting point the continuous emotional annotation that we performed on a large, multimodal database, and discuss annotation challenges, design decisions, annotation results and lessons learned from this effort, in the context of existing literature.",
+          "Our analysis of the resulting annotations shows that continuous rating of long clips containing nonprototypical emotional expressions is a challenging task, and humans tend to be better at rating attributes in relative, rather than in absolute, terms."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper reports original annotation work, data analysis, and design decisions rather than presenting itself as a literature survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "Examples of work that avoid discretizing the emotional dimensions include [6], [7] where regression approaches, such as Support Vector Regression (SVR), were used to estimate continuous dimensional attributes from speech cues of presegmented utterances.",
+          "In our previous work, we have utilized a generative GMM-based method for continuous emotion estimation based on multimodal information, that is shown to outperform LSTM regression [21]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is no evidence that preferences (as defined by the review: pairwise/ranking signals) are used even for evaluation-only purposes. The paper centers on annotation methodology and analysis; while it references and mentions regression/generative modeling for continuous emotion estimation, this is not preference-based evaluation-only usage. Thus E1 (clear evaluation-only preference usage) is not supported."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "we use as a starting point the continuous emotional annotation that we performed on a large, multimodal database, and discuss annotation challenges, design decisions, annotation results and lessons learned from this effort",
+          "Additionally, we discuss a variety of open questions for future research in terms of labeling, combining and processing continuous assessments of emotional and cognitive states."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text documents original data collection and annotation analysis; it is not a survey/review article."
+      }
+    ],
+    "stage_score": 1,
+    "decision_rationale": "Final recommendation: exclude. Although the paper is clearly in the audio domain and is not a survey, the full text does not present any in-scope preference-learning path (no pairwise/ranking comparisons, no conversion of ratings into preference signals, and no RL loop). Per the decision policy, lack of the required preference-learning signal mandates exclusion.",
+    "manual_review_needed": false,
+    "routing_note": "Senior adjudication completed for Stage 2; excluded due to absence of any preference-learning path.",
+    "short_summary": "Multimodal affective annotation paper with audio data but no preference-learning (ranking/A-B) or RL training loop; exclude.",
+    "adjudication_source": "junior_nano",
+    "disagreement_resolution": "Juniors agreed on I1 (NO), I2 (YES) and I3 (YES) but conflicted on E1 (evaluation-only). I resolved the conflict in favor of the junior_nano reading: the full text contains continuous emotion annotations and discussion of aggregation/modeling methods, but no evidence that 'preferences' (as defined by the review) are present even for evaluation-only purposes. The mini reviewer interpreted the annotation/analysis focus as evaluation-only and marked E1=YES; however the paper does not present preference signals or an explicit evaluation-only use of such preferences, so E1 is set to NO.",
+    "overridden_fields": [
+      "E1_EVALUATION_ONLY"
+    ],
+    "paper_id": "2511.13936",
+    "candidate_key": "metallinou2013annotation",
+    "candidate_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "metallinou2013annotation",
+      "record_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
+      "source": "openalex",
+      "source_id": "10.1109/fg.2013.6553804",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/metallinou2013annotation.md",
+      "fulltext_available": true
+    },
+    "role": "senior",
+    "disagreement_summary": {
+      "stage": "stage2",
+      "junior_nano_decision": "exclude",
+      "junior_mini_decision": "exclude",
+      "criterion_conflicts": [
+        {
+          "criterion_id": "E1_EVALUATION_ONLY",
+          "junior_nano_status": "NO",
+          "junior_mini_status": "YES"
+        }
+      ],
+      "unclear_criterion_ids": [],
+      "route_to_senior": true,
+      "reasons": [
+        "criterion_conflict"
+      ],
+      "auto_final_decision": null,
+      "auto_resolution_stage_score": null,
+      "final_source": "senior"
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "For the instruction-tuning phase we finetuned Gemini 1.5 models on a collection of multimodal data (containing paired instructions and appropriate responses), with further tuning based on human preference data."
+        ],
+        "counter_quotes": [
+          "We refer readers to the Gemini 1.0 Technical Report (Gemini-Team et al., 2023) for further information."
+        ],
+        "missingness_reason": null,
+        "notes": "Full text explicitly states the model was tuned using human preference data during instruction tuning, which indicates the presence of preference signals in training. However, the paper does not describe an in-scope preference-learning path specific to audio (e.g., ranking or A/B comparisons of audio clips, conversion of numeric ratings into rankings for audio, or an RL training loop applied to an audio model). Because preference data is mentioned but modality-specific methodology and the form of preference signal (ranking/pairwise/RL for audio) are not described, the eligibility for an in-scope audio preference-learning path remains unresolved."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "including multiple long documents and hours of video and audio",
+          "improve the state-of-the-art in long-document QA, long-video QA and long-context ASR",
+          "the model is natively multimodal and supports interleaving of data from different modalities, it can support a mix of audio, visual, text, and code inputs in the same input sequence.",
+          "this context length enables Gemini 1.5 Pro models to comfortably process almost five days of audio recordings (i.e., 107 hours)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text repeatedly and clearly describes audio as a target modality (long-context ASR, hours of audio, processing large amounts of audio), so the work is within the audio domain (including multimodal inputs that include audio)."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this report, we introduce the Gemini 1.5 family of models, representing the next generation of highly compute-efficient multimodal models",
+          "we provide an overview of the model architecture and present the results of large-scale quantitative evaluations comparing Gemini 1.5 Pro and 1.5 Flash to other LLMs",
+          "We present detailed evaluations for the models’ long context capabilities followed by evaluations of their core capabilities"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents original model development, training details, and empirical evaluations rather than summarizing prior work; it reads as primary research, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "For the instruction-tuning phase we finetuned Gemini 1.5 models on a collection of multimodal data (containing paired instructions and appropriate responses), with further tuning based on human preference data."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text indicates preference data was used for tuning the model (instruction tuning), which implies use in training/fine-tuning rather than solely for evaluation; therefore the exclusion 'evaluation-only' does not apply."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this report, we introduce the Gemini 1.5 family of models",
+          "we provide an overview of the model architecture and present the results of large-scale quantitative evaluations"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text documents new models, training, and empirical results, not a survey or literature review; so the survey/review exclusion is not triggered."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "Audio-domain fit is clear and the paper is primary research (not a survey). The full text explicitly states the models underwent instruction tuning with 'further tuning based on human preference data', showing preference signals were used in training. However, the manuscript does not describe an explicit in-scope preference-learning path tied to audio (no detailed description of ranking/A-B comparisons over audio clips, numeric-rating-to-ranking conversions for audio, or an RL training loop for an audio model). Given this ambiguity, the conservative and source-faithful decision is 'maybe' (stage_score 3) pending modality- and method-specific confirmation.",
+    "manual_review_needed": false,
+    "routing_note": "Senior adjudication resolved the ambiguity at Stage 2 by retaining 'unclear' for the specific preference-learning fit while confirming audio fit and that the work is not a survey; recommend follow-up only if downstream selection requires explicit audio-preference-method details.",
+    "short_summary": "Paper is clearly multimodal with substantial audio content and uses human preference data in instruction tuning, but the full text lacks explicit description that those preference signals implement an in-scope audio preference-learning path (ranking/pairwise/RL). Outcome: maybe (3).",
+    "adjudication_source": "junior_nano",
+    "disagreement_resolution": "Junior ledgers diverged only on I1_PREFERENCE_LEARNING_FIT (junior_nano: UNCLEAR; junior_mini: NO). I resolved in favor of the junior_nano reading: the full text explicitly mentions tuning with human preference data (supporting potential preference-learning), but it does not provide the modality-specific details required to confirm an in-scope audio preference-learning path. Therefore I mark I1 as UNCLEAR rather than a definitive NO and set stage_score to 3 (maybe).",
+    "overridden_fields": [
+      "I1_PREFERENCE_LEARNING_FIT",
+      "stage_score"
+    ],
+    "paper_id": "2511.13936",
+    "candidate_key": "team2024gemini",
+    "candidate_title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "team2024gemini",
+      "record_title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2403.05530",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/team2024gemini.md",
+      "fulltext_available": true
+    },
+    "role": "senior",
+    "disagreement_summary": {
+      "stage": "stage2",
+      "junior_nano_decision": "maybe",
+      "junior_mini_decision": "exclude",
+      "criterion_conflicts": [
+        {
+          "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+          "junior_nano_status": "UNCLEAR",
+          "junior_mini_status": "NO"
+        }
+      ],
+      "unclear_criterion_ids": [
+        "I1_PREFERENCE_LEARNING_FIT"
+      ],
+      "route_to_senior": true,
+      "reasons": [
+        "decision_disagreement",
+        "criterion_conflict",
+        "criterion_unclear"
+      ],
+      "auto_final_decision": null,
+      "auto_resolution_stage_score": null,
+      "final_source": "senior"
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Approaches to converting interval labels to ROLs typically involve pairwise comparisons between all pairs of interval labels at different times and retain information about the relationship (greater/lesser) and discarding details of interval label values [9, 16, 17].",
+          "Given a time series of arousal/valence ratings, yr = yr1:T, obtained from rater r over the time interval t ∈[1, T], we aim to find a corresponding time series of AOLs, Sr = Sr1:T, with each element drawn from a finite set of N possible AOLs γ = {γ1, · · · , γN}.",
+          "For both yr1:T and Sr1:T, we carry out pair-wise comparisons across all frames, resulting in the comparison matrices Mr and f Mr respectively, as shown in Figure 3. Specifically, each entry in the matrix Mr is given by: Mrpq = ↑, yrq > yrp; ↓, yrq < yrp; =, yrq = yrp."
+        ],
+        "counter_quotes": [
+          "No mention of training a model using pairwise preference comparisons or an RL training loop with preference feedback."
+        ],
+        "missingness_reason": null,
+        "notes": "The paper explicitly converts numerical interval ratings into ordinal labels (including relative/ROL-style comparisons) and implements pairwise comparison matrices over timepoints; per the Stage 2 definition, conversion of numeric ratings into comparative/ordinal signals satisfies an in-scope preference-learning path even though the HMM is trained on interval observations rather than on explicit pairwise preference annotations."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We validate the proposed approach by comparing the converted ordinal labels to original interval labels and the categorical labels for the same speech using the publicly available MSP-Podcast and MSP-Conversation corpora.",
+          "The MSP-Podcast corpus is a large naturalistic speech emotional dataset that is collected from real-life podcast recordings [13].",
+          "Speech emotion recognition plays an important role in human-machine interactions and has received increasing interest in affective computing [1]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Experiments and validation are performed on speech emotion corpora; the work is squarely in the audio/speech domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This paper presents a novel approach to map time-continuous interval labels to time-continuous ordinal labels based on a hidden Markov model that integrates rater specific absolute ordinal state distributions with transition probabilities based on relative ordinal information.",
+          "Experimental results on the publicly available MSP-Podcast and MSP-Conversations datasets demonstrate that the converted ordinal labels yield higher inter-rater agreement compared to original interval labels, while retaining pertinent information from the original ratings."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The manuscript describes a novel method and empirical validation; it is primary research rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "During optimization, individual GMMs are estimated to each individual rater for initial state observation probability. ... Finally, the Baum-Welch algorithm is used to train the HMM [18], and Viterbi decoding [19] is used to infer the ordinal sequence, S.",
+          "The proposed HMM consists of two key components: (i) state observation probabilities ... and (ii) state transition probabilities ... The transition probabilities of HMM are initialized to be identical for all raters ... They are further optimized during training for each rater to capture their individual transition characteristics."
+        ],
+        "counter_quotes": [
+          "We validate the proposed approach by comparing the converted ordinal labels to original interval labels and the categorical labels for the same speech."
+        ],
+        "missingness_reason": null,
+        "notes": "Although the paper includes validation comparisons, it also contains a learning/training component (HMM parameter estimation via Baum-Welch) that produces converted ordinal labels from interval observations. Preferences are not used solely for post-hoc evaluation; there is an explicit model-training step tied to producing ordinal labels."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This paper presents a novel approach to convert time-varying interval affect labels to time-varying ordinal affect labels.",
+          "Experimental results on the publicly available MSP-Podcast and MSP-Conversations datasets demonstrate that the converted ordinal labels yield higher inter-rater agreement compared to original interval labels, while retaining pertinent information from the original ratings."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The manuscript reports original methodology and experiments; there is no indication it is a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "Full text shows a valid in-scope preference signal: conversion of numeric interval ratings into ordinal/relative comparisons (ROL) and explicit use of pairwise comparison matrices. The work is applied to speech datasets (MSP-Podcast/Conversation) and is original research with an HMM trained via Baum-Welch (i.e., a learning component), so no exclusion criteria apply. Per the decision policy, all inclusion criteria are satisfied and no exclusion is triggered; recommend include (stage_score=5).",
+    "manual_review_needed": false,
+    "routing_note": "Senior adjudication completed for Stage 2.",
+    "short_summary": "The paper proposes and trains an HMM-based method to convert time-continuous interval emotion ratings into time-continuous ordinal labels (including relative comparisons), evaluates on speech corpora, and is primary research rather than a survey; it meets inclusion criteria and is not evaluation-only.",
+    "adjudication_source": "hybrid",
+    "disagreement_resolution": "Junior ledgers conflicted on whether the paper presents an in-scope preference-learning path (I1) and whether preferences are evaluation-only (E1). I reviewed the full text: it explicitly describes converting interval (numeric) ratings into ROL-style comparative signals (including pairwise framewise comparisons and construction of comparison matrices Mr and fMr) and also trains HMMs (Baum-Welch) to produce AOL sequences. Therefore I resolved I1 in favor of junior_nano (YES) because conversion of numeric ratings into ordinal/relative comparisons meets the criterion. I resolved E1 in favor of junior_nano (NO) because the paper contains an explicit model-training step (HMM parameter estimation) rather than using preferences solely for post-hoc evaluation. Overall I followed the junior_nano judgment and issue a final include.",
+    "overridden_fields": [
+      "I1_PREFERENCE_LEARNING_FIT",
+      "E1_EVALUATION_ONLY",
+      "stage_score"
+    ],
+    "paper_id": "2511.13936",
+    "candidate_key": "wu2023interval",
+    "candidate_title": "From Interval to Ordinal: A HMM based Approach for Emotion Label Conversion",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "wu2023interval",
+      "record_title": "From Interval to Ordinal: A HMM based Approach for Emotion Label Conversion",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2023-2213",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/wu2023interval.md",
+      "fulltext_available": true
+    },
+    "role": "senior",
+    "disagreement_summary": {
+      "stage": "stage2",
+      "junior_nano_decision": "include",
+      "junior_mini_decision": "exclude",
+      "criterion_conflicts": [
+        {
+          "criterion_id": "E1_EVALUATION_ONLY",
+          "junior_nano_status": "NO",
+          "junior_mini_status": "YES"
+        },
+        {
+          "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+          "junior_nano_status": "YES",
+          "junior_mini_status": "NO"
+        }
+      ],
+      "unclear_criterion_ids": [],
+      "route_to_senior": true,
+      "reasons": [
+        "decision_disagreement",
+        "criterion_conflict"
+      ],
+      "auto_final_decision": null,
+      "auto_resolution_stage_score": null,
+      "final_source": "senior"
+    }
+  }
+]

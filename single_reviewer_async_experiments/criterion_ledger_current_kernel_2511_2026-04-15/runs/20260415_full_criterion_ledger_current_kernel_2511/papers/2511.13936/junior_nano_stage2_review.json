@@ -1,0 +1,2832 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "we investigate two novel extension techniques that can significantly enhance model performance: speech factorization via self-distillation and preference biasing through reinforcement learning (RL).",
+          "For the latter, we employ RL techniques [Kaelbling et al., 1996, Li, 2017] and demonstrate their effectiveness in improving robustness, speaker similarity, and controllability.",
+          "Specifically, we use REINFORCE to fine-tune two versions based on the original zero-shot ICL model (Seed-TTSICL) using different reward functions: Seed-TTSRL-SIM-WER, which uses the SIM and WER objective metrics as rewards to improve speaker similarity and robustness, and Seed-TTSRL-SER, which uses the accuracy of the SER model as a reward to improve emotion controllability.",
+          "we introduce a novel RL-based post-training extension for Seed-TTS, which holistically improves the model."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes preference-biasing via reinforcement learning and RL-based post-training, providing a clear RL path for optimization of audio preferences."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Seed-TTS is a family of large-scale autoregressive text-to-speech (TTS) models capable of generating speech that is virtually indistinguishable from human speech.",
+          "Serving as a foundation model for speech generation, Seed-TTS can perform various tasks, such as speech ICL, controllable TTS, voice conversion, timbre generation, and speaking style transfer."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is clearly situated in speech/audio generation and discusses audio-domain applications and capabilities."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "Seed-TTS is a family of large-scale autoregressive text-to-speech (TTS) models capable of generating speech that is virtually indistinguishable from human speech.",
+          "Our key contributions are as follows: We introduce Seed-TTS, a family of speech generation models capable of generating highly expressive, human-like speech."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents original models, methods, and experiments with explicit contributions, typical of a research article rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "we introduce a novel RL-based post-training extension for Seed-TTS, which holistically improves the model.",
+          "For the latter, we employ RL techniques ... and demonstrate their effectiveness in improving robustness, speaker similarity, and controllability."
+        ],
+        "counter_quotes": [
+          "The RL-based post-training extension implies a learning component rather than evaluation-only usage."
+        ],
+        "missingness_reason": null,
+        "notes": "The presence of reinforcement learning, post-training optimization, and reward-based improvements indicates a learning path rather than evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "Seed-TTS is a family of large-scale autoregressive text-to-speech (TTS) models capable of generating speech that is virtually indistinguishable from human speech.",
+          "Our key contributions are as follows: We introduce Seed-TTS, a family of speech generation models capable of generating highly expressive, human-like speech."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents original methods and results rather than a survey/review format."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text provides a clear in-scope preference-learning pathway through reinforcement learning and preference-biasing in an audio model, satisfies audio-domain fit, and is not a survey/review. There are explicit RL-based learning components (post-training and reward-based optimization), aligning with the decision policy to include.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Seed-TTS paper demonstrates RL-based preference-biasing and post-training in the audio domain, meeting Stage 2 eligibility and triggering include.",
+    "paper_id": "2511.13936",
+    "candidate_key": "anastassiou2024seed",
+    "candidate_title": "Seed-tts: A family of high-quality versatile speech generation models",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "anastassiou2024seed",
+      "record_title": "Seed-tts: A family of high-quality versatile speech generation models",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2406.02430",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/anastassiou2024seed.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "The MSP-IMPROV corpus, a multimodal emotional database",
+          "We implement emotion recognition experiments using all the sentences from the MSP-IMPROV corpus",
+          "The emotional labels for the corpus were collected through crowd-sourced perceptual evaluations"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit in-scope preference-learning signals (rankings/pairwise comparisons or RL training loops) are described in the full text."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The MSP-IMPROV corpus, a multimodal emotional database",
+          "This is an acted audiovisual database that explores emotional behaviors during conversation",
+          "The paper also provides the performance for speech and facial emotion classifiers"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Paper clearly concerns audio/visual speech emotion data and includes speech emotion classifiers."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "The MSP-IMPROV is an acted audiovisual database that explores emotional behaviors during conversational dyadic improvisations",
+          "The focus of this paper is the introduction of the MSP-IMPROV corpus, describing the context in which it was recorded, the key features of the corpus, the areas where this corpus can be useful, and the emotional content of the recordings",
+          "This section describes the elicitation technique, the setup used to collect the corpus, and the post-processing steps"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; it introduces and describes a dataset."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "The emotional labels for the corpus were collected through crowd-sourced perceptual evaluations",
+          "We implement emotion recognition experiments using all the sentences from the MSP-IMPROV corpus",
+          "The results show classification performance for all the data"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is a learning component (emotion recognition experiments) rather than evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "The MSP-IMPROV is an acted audiovisual database that explores emotional behaviors during conversational dyadic improvisations",
+          "The focus of this paper is the introduction of the MSP-IMPROV corpus"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review article."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "The full text does not support an in-scope preference-learning path (I1=NO). It is clearly in the audio domain (I2=YES), and is not a survey (I3=YES). Exclusion criteria E1 and E2 are not triggered. Therefore, the paper should be excluded under Stage 2 criteria.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": " MSP-IMPROV corpus paper does not present explicit preference-learning signals; it is an audio-visual emotion dataset with learning components, not a preference-learning work.",
+    "paper_id": "2511.13936",
+    "candidate_key": "busso2016msp",
+    "candidate_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "busso2016msp",
+      "record_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2016.2515617",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/busso2016msp.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce a novel emotion recognition approach which integrates ranking models.",
+          "Ranking SVMs are a typical pairwise method for designing ranking models.",
+          "Furthermore we test several possibilities for combining conventional classification and predictions based on ranking.",
+          "By ranking emotion estimates we can sort all utterances from a sample of speech with respect to the degree of a particular emotional expression."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes ranking-based preference learning and its integration with classification in an audio-domain emotion recognition task."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "All experiments are performed on the FAU AIBO database which contains realistic spontaneous emotional speech."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The study uses an audio-domain spontaneous speech dataset; supports audio-domain fit."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper, we introduced a novel ranking model for emotion recognition.",
+          "In this study, we first adapt ranking SVMs for the emotion recognition tasks."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents a primary research study (ranking model for emotion recognition) and is not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "We introduced a novel emotion recognition approach which integrates ranking models.",
+          "All combinations improve overall prediction accuracy.",
+          "To train a ranking SVM, we define a partial ordering to form pairs only from utterances from the same speaker and consider all utterances that convey the target emotion to have higher scores than utterances that convey any other emotion.",
+          "The ranking-derived classiﬁer has 10% better accuracy in identifying Anger and 4% better for Emphatic utterances.",
+          "By combining the two approaches, we achieve performance better than that of either individual classifier."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is an explicit learning component (ranking models, training, and combination with conventional classifiers), not evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this paper we introduced a ranking model for emotion recognition."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text describes original experimental work, not a survey or review article."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in the audio domain and does not trigger any exclusion (not a survey/review, not evaluation-only). Therefore Stage 2 verdict is include.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Ranking-based preference learning in audio is demonstrated with learning components; not a survey; not evaluation-only.",
+    "paper_id": "2511.13936",
+    "candidate_key": "cao2012combining",
+    "candidate_title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "cao2012combining",
+      "record_title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2012-116",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/cao2012combining.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We train ranking SVMs for individual emotions, treating the data from each speaker as a separate query, and combine the predictions from all rankers to perform multi-class prediction.",
+          "We introduce a ranking approach for emotion recognition which naturally incorporates information about the general expressivity of speakers.",
+          "The ranking method provides two natural benefits."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly describes a ranking-based, preference-learning path for emotion recognition in audio."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper we show that ranking approaches lead to considerable and consistent improvement of prediction accuracy compared to conventional classification on both acted and natural spontaneous emotional speech.",
+          "In this section we evaluate the effectiveness of the ranking SVM approach to emotion recognition and contrast their performance with conventional SVM classification on two publicly available datasets of acted speech, Berlin and LDC.",
+          "The FAU Aibo emotion corpus contains spontaneous speech and the majority of utterances in it are neutral."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is clearly situated in speech/audio domains (acted and spontaneous emotional speech; FAU Aibo)."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper we show that ranking approaches lead to considerable and consistent improvement of prediction accuracy compared to conventional classification on both acted and natural spontaneous emotional speech.",
+          "In addition, we discuss the complementarity of conventional SVM and ranking-based classifiers."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper reports original methodology and empirical results rather than being a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "We train ranking SVMs for individual emotions"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work includes a learning component (training ranking SVMs), not merely evaluation."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "Ranking approaches to the task of emotion recognition offer a way of sorting all utterances in a given sample of speech from the same speaker with respect to the degree with which they convey a particular emotion.",
+          "We introduce a ranking approach for emotion recognition which naturally incorporates information about the general expressivity of speakers."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text describes an empirical study with experiments and does not present a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports an in-scope preference-learning path in audio (ranking-based learning for emotion recognition in speech), with an explicit learning component, applied to audio data, and no evidence of survey/review or evaluation-only usage.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Ranking-based preference learning for emotion recognition in speech; audio-domain applicability; not a survey; include Stage 2.",
+    "paper_id": "2511.13936",
+    "candidate_key": "cao2015speaker",
+    "candidate_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "cao2015speaker",
+      "record_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
+      "source": "pubmed",
+      "source_id": "25422534",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/cao2015speaker.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Direct Preference Optimization",
+          "By obtaining the dataset D with the triplet data (x, yw, yl), where x is the input sequence with input audio, and yw and yl are the human-annotated good and bad responses respectively",
+          "Direct Preference Optimization We employ DPO (Rafailov et al., 2024) to further optimize models to follow human preferences."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Qwen2-Audio is a large-scale audio-language model, which is capable of accepting various audio signal inputs and performing audio analysis or direct textual responses with regard to speech instructions.",
+          "In the audio analysis mode, users can leverage Qwen2-Audio to analyze a diverse range of audio types, including speech, sound, music, or various mixed audio forms."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text describes audio-domain capabilities and audio interaction modes."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "Qwen2-Audio Technical Report",
+          "Qwen2-Audio is open-sourced with the aim of fostering the advancement of the multi-modal language community."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text is presented as a technical report, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "Direct Preference Optimization We employ DPO (Rafailov et al., 2024) to further optimize models to follow human preferences.",
+          "Additionally, DPO has optimized the model’s performance in terms of factuality and adherence to desired behavior."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text shows a learning/optimization component (DPO) rather than evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "Qwen2-Audio Technical Report",
+          "In this paper, we present Qwen2-Audio, which builds upon Qwen-Audio’s capability to analyze various types of audio while also being endowed with voice interaction abilities."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey/review; documented as a technical report with original progress."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio and no exclusion criterion is triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "chu2024qwen2",
+    "candidate_title": "Qwen2-Audio Technical Report",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "chu2024qwen2",
+      "record_title": "Qwen2-Audio Technical Report",
+      "source": "semantic_scholar",
+      "source_id": "8ca1fdca69d780881f905ef9a4612e62f49a1014",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/chu2024qwen2.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We deploy MusicLM to users and collect a substantial dataset comprising 300,000 pairwise preferences.",
+          "Using Reinforcement Learning from Human Feedback (RLHF), we train MusicRL-U, the first text-to-music model that incorporates human feedback at scale."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path in the audio domain via explicit pairwise preferences and RLHF-based learning."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "MusicRL, the first music generation system finetuned from human feedback.",
+          "MusicLM is an autoregressive model for generating music from text descriptions.",
+          "pretrained autoregressive MusicLM model of discrete audio tokens"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is explicitly about music/audio generation and RL finetuning of a music model, clearly within the audio domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this work, we introduce MusicRL, the first text-to-music generative model aligned with human preferences.",
+          "To the best of our knowledge, MusicRL is the first music generation system that shows the benefits from integrating feedback from hundreds of thousands of users."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Original research with experiments and without survey/review framing."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "MusicRL is a pretrained autoregressive MusicLM model of discrete audio tokens finetuned with reinforcement learning to maximise sequence-level rewards.",
+          "Using Reinforcement Learning from Human Feedback (RLHF), we train MusicRL-U, the first text-to-music model that incorporates human feedback at scale.",
+          "We deploy MusicLM to users and collect a substantial dataset comprising 300,000 pairwise preferences."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text describes learning signals and RL fine-tuning, not evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this work, we introduce MusicRL, the first text-to-music generative model aligned with human preferences.",
+          "This work is the first music generation system that shows the benefits from integrating feedback from hundreds of thousands of users."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; it presents original methodology and experiments."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in the audio domain (pairwise user preferences) and includes RLHF-based learning for an audio model. It is not a survey or evaluation-only work, and no exclusion criteria are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Stage 2 canonical criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "cideron2024musicrl",
+    "candidate_title": "Musicrl: Aligning music generation to human preferences",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "cideron2024musicrl",
+      "record_title": "Musicrl: Aligning music generation to human preferences",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2402.04229",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/cideron2024musicrl.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "we collect and predict the perceptual quality of real-world speech signals that are evaluated by human listeners.",
+          "We first collect a large quality rating dataset by conducting crowdsourced listening studies on two real-world corpora.",
+          "an encoder-decoder model with attention mechanism to non-intrusively predict the perceived speech quality of these real-world signals.",
+          "the key difference between this proposed approach and related approaches, is that our approach predicts mean-opinion scores of real-world signals using a novel deep-learning framework."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text describes MOS/Ratings and learning for predicting MOS, but does not present explicit ranking, pairwise comparisons, or a reinforcement-learning loop that would constitute explicit preference-learning per the criterion."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "predicts the perceptual quality of real-world speech signals",
+          "crowdsourced listening studies on two real-world corpora"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Audio-domain evidence is clear: real-world speech signals, COSINE/VOiCES corpora, crowdsourced listening tests."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this study, we conduct a large-scale listening test on real-world data and collect 180,000 subjective quality ratings through Amazon’s Mechanical Turk (MTurk) using two publicly-available speech corpora.",
+          "This platform provides a diverse population of participants at a significantly lower cost to facilitate accurate and rapid testing."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work presents a primary empirical study with data collection and model development, not a survey/review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "we develop an encoder-decoder model with attention mechanism to non-intrusively predict the perceived speech quality of these real-world signals.",
+          "The model is optimized using the mean-squared error loss and Adam optimization. It is trained for 100 epochs.",
+          "The proposed model achieves statistically lower estimation errors than prior assessment approaches, where the predicted scores strongly correlate with human judgments."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is a learning component that trains a model to predict MOS, not evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "We first collect a large quality rating dataset by conducting crowdsourced listening studies on two real-world corpora.",
+          "In this study, we conduct a large-scale listening test on real-world data and collect 180,000 subjective quality ratings through Amazon’s Mechanical Turk (MTurk) using two publicly-available speech corpora."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper reports original data collection and model development, not a survey or review article."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "The full text demonstrates audio-domain learning via MOS prediction and data collection, but it does not provide explicit evidence of an in-scope preference-learning path (rankings, pairwise comparisons, or an RL training loop) required by I1. Therefore, it is not clearly in-scope for Stage 2 inclusion, though it is in the audio domain and not a survey. Resulting assessment is 'maybe'.",
+    "manual_review_needed": true,
+    "routing_note": "Edge-case in Stage 2 adjudication due to lack of explicit preference-learning signals (I1); requires senior review.",
+    "short_summary": "Stage 2 assessment finds audio-domain learning paper with MOS prediction but no explicit preference-learning signals; verdict remains 'maybe' pending senior adjudication.",
+    "paper_id": "2511.13936",
+    "candidate_key": "dong2020pyramid",
+    "candidate_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "dong2020pyramid",
+      "record_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2020-2809",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/dong2020pyramid.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "In reinforcement learning from human feedback, it is common to optimize against a reward model trained to predict human preferences."
+        ],
+        "counter_quotes": [
+          "\"The observations are text prompts and the policy is used to generate a response to the prompt.\""
+        ],
+        "missingness_reason": null,
+        "notes": "The paper discusses preference-learning concepts (prediction of human preferences) but is in NLP, not audio, so it does not meet the audio-domain requirement."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "The observations are text prompts and the policy is used to generate a response to the prompt.",
+          "The prompts are drawn from a broad range of natural language instructions describing different language model tasks."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No audio-domain content; NLP domain only."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "Our main results are empirically validated functional forms for the gold reward model scores R as a function of the Kullback–Leibler divergence from the initial policy to the optimized policy KL := DKL (π ∥πinit), which depends on the method of optimization used.",
+          "We use a synthetic setup that is described in Section 2, in which labels are supplied by a “gold-standard” reward model (RM) instead of humans."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents empirical results from a synthetic setup; not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "a learned RM is used to provide the reward signal for the response, which is used by either RL or BoN for optimization.",
+          "We study how the gold reward model score changes as we optimize against the proxy reward model using either reinforcement learning or best-of-n sampling."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Learning component is present; not evaluation-only."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this work, we use a synthetic setup that is described in Section 2, in which labels are supplied by a “gold-standard” reward model (RM) instead of humans.",
+          "The synthetic gold reward is used to label pairs of rollouts from the policy given the same prompt to create synthetic RM training data."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey; empirical study with synthetic data."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "Stage 2 excludes due to lack of audio-domain fit (I2_AUDIO_DOMAIN_FIT = NO). The paper is an NLP study on reward models and RLHF in text, which does not meet the audio-domain criterion for inclusion, despite not being a survey or evaluation-only work.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Not audio-domain; excluded under Stage 2 criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "gao2023scaling",
+    "candidate_title": "Scaling laws for reward model overoptimization",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "gao2023scaling",
+      "record_title": "Scaling laws for reward model overoptimization",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2210.10760",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/gao2023scaling.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "To construct pairwise preference data for Emo-DPO fine-tuning (see Fig 1 (b)), we treat dj defined above as the positive instance (eg. happy). For the negative instance, we sample from the training data other instances that share the same xj (text input) but have different emotional speech outputs (eg. neutral).",
+          "The DPO objective is defined as: LDPO(π; πsft) = −E(d+j ,d−j)∼Dpref [ log σ (β log π(y+ j |E, xj) πsft(y+ j |E, xj) − β log π(y− j |E, xj) πsft(y− j |E, xj))]"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly shows pairwise preference data construction and a DPO objective for Emo-DPO learning."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Current emotional TTS models pre-dominantly conduct supervised training to learn the conversion from text and desired emotion to its emotional speech, focusing on a single emotion per text-speech pair.",
+          "We propose Emo-DPO training through direct preference optimization (DPO) with an LLM-based TTS neural architecture, as illustrated in Fig 1."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text is clearly in the audio domain (emotional TTS) and discusses audio outputs."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "Beyond Single Emotions: we propose Emo-DPO, a novel controllable emotional TTS approach that leverages direct preference optimization to differentiate subtle differences between emotions for the first time",
+          "This paper presents a controllable emotional TTS approach with the integration of emotion-aware TTS-LLM architecture, opening doors for advancing emotional speech synthesis in the era of LLMs."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "These indicate a primary research contribution rather than a survey/review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "Motivation: Yet, simply conducting instruction tuning on π may be insufficient, as the model only learns to generate the correct output without fully understanding why it is correct. To equip the model with the ability to capture subtle differences between the desired emotional speech and other emotions with the same semantic content, we turn to preference learning to further refine its performance.",
+          "The DPO objective essentially maximizes the likelihood of π generating y+ while minimizing the likelihood of generating y− conditioned on xj and the emotion trigger word E."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work uses preference learning for model training, not evaluation-only use."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This paper presents a controllable emotional TTS approach with the integration of emotion-aware TTS-LLM architecture, opening doors for advancing emotional speech synthesis in the era of LLMs.",
+          "Our contributions of this paper include: 1) Beyond Single Emotions: we propose Emo-DPO, a novel controllable emotional TTS approach that leverages direct preference optimization to differentiate subtle differences between emotions for the first time"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey/review; presents a method and experiments."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio and does not trigger any exclusion criteria (not a survey, not evaluation-only). All five stage-2 criteria are satisfied, justifying an include verdict.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Emo-DPO full text satisfies all Stage 2 criteria for in-scope preference learning in audio; not a survey or evaluation-only; includes explicit pairwise preference learning and learning objectives.",
+    "paper_id": "2511.13936",
+    "candidate_key": "gao2025emo",
+    "candidate_title": "Emo-dpo: Controllable emotional speech synthesis through direct preference optimization",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "gao2025emo",
+      "record_title": "Emo-dpo: Controllable emotional speech synthesis through direct preference optimization",
+      "source": "openalex",
+      "source_id": "10.1109/icassp49660.2025.10888737",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/gao2025emo.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "ordinal speech emotion recognition (SER) tasks",
+          "A multi-class ordinal SER task is transformed into a series of binary SER sub-tasks predicting whether an utterance's emotion is larger than a rank",
+          "Specifically, instead of the typical one-hot label encoding for categorical classification, our emotional labels are encoded following a non-orthogonal recipe to reflect ranks.",
+          "loss L is designed to weight larger classiﬁcation errors more, because more of the individual cross entropy terms corresponding to binary classiﬁers will be violated.",
+          "the binary SER classifers share the same weight parameters W but has independent bias units bk"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports ranking-based preference learning via CORAL for ordinal SER in audio."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "ordinal speech emotion recognition (SER) tasks",
+          "speech emotion recognition (SER) tasks",
+          "Experimental results on a real-world call center dataset and the widely employed IEMOCAP corpus demonstrate the effectiveness of VGGish-CORAL"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work targets speech emotion recognition in audio using call center data and IEMOCAP, i.e., clearly within the audio domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper, we present a CORAL based end-to-end modelling approach toward the ordinal SER task where the human’s emotions are classified into a fixed number of rank-order labels.",
+          "6. CONCLUSION",
+          "In this paper, we present a CORAL based end-to-end modelling approach toward the ordinal SER task..."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The article describes an original methodological contribution with experiments, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this paper, we present a CORAL based end-to-end modelling approach toward the ordinal SER task",
+          "the loss function is designed to weight larger classiﬁcation errors more",
+          "Specifically, instead of the typical one-hot label encoding for categorical classification, our emotional labels are encoded reflecting ranks"
+        ],
+        "counter_quotes": [
+          "the final rank of an utterance can be predicted based on the results of a series of binary SER sub-tasks"
+        ],
+        "missingness_reason": null,
+        "notes": "The work clearly includes a learning component and optimization objective, not evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this paper, we present a CORAL based end-to-end modelling approach toward the ordinal SER task where the human’s emotions are classiﬁed into a fixed number of rank-order labels.",
+          "6. CONCLUSION",
+          "Experimental evaluation is conducted on both a real-world call center dataset and the IEMOCAP corpus."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text describes original research with experimental validation, not a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio (ordinal SER with binary sub-tasks reflecting rankings), the work is clearly in the audio domain, and no exclusion criteria are triggered (not a survey; not evaluation-only).",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical Stage 2 eligibility satisfied: ordinal preference-learning for audio SER via CORAL; not a survey; learning-based; audio-domain.",
+    "paper_id": "2511.13936",
+    "candidate_key": "han2020ordinal",
+    "candidate_title": "Ordinal learning for emotion recognition in customer service calls",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "han2020ordinal",
+      "record_title": "Ordinal learning for emotion recognition in customer service calls",
+      "source": "openalex",
+      "source_id": "10.1109/icassp40776.2020.9053648",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/han2020ordinal.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "During the post-training phase, we conducted task-specific SFT for TTS and ASR tasks, while implementing SFT with diversified high-quality datasets combined with RLHF for AQTA tasks to enhance response quality."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "RLHF indicates a learning path for preferences; the paper includes RLHF in AQTA tasks."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Real-time speech interaction, serving as a fundamental interface for human-machine collaboration",
+          "a 130B-parameter unified speech-text multi-modal model that achieves unified understanding and generation"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract clearly situates the work in the audio/speech domain and multimodal audio-text modeling."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "Step-Audio, the first production-ready open-source framework for intelligent speech interaction that harmonizes comprehension and generation through four key innovations."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The manuscript presents original contributions; not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "During the post-training phase, we conducted task-specific SFT for TTS and ASR tasks, while implementing SFT with diversified high-quality datasets combined with RLHF for AQTA tasks to enhance response quality."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The presence of post-training SFT and RLHF shows learning rather than evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "Step-Audio, the first production-ready open-source framework for intelligent speech interaction that harmonizes comprehension and generation through four key innovations.",
+          "Key contributions include: 1) a 130B-parameter unified speech-text multi-modal model that achieves unified understanding and generation; 2) a generative speech data engine that establishes an affordable voice cloning framework;"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; presents a system with concrete contributions."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text demonstrates an in-scope preference-learning path via RLHF, is applied in the audio domain, and is not a survey/review. Therefore, it should be included under Stage 2 as per the decision policy.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Stage 2 criteria satisfied: in-scope preference learning for audio, with no exclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "huang2025step",
+      "record_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+      "source": "semantic_scholar",
+      "source_id": "2b0669aa0c839d5e398999704666b3e483e28692",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/huang2025step.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper, we better align the evaluation metrics and learning objectives by using estimated subjective quality scores as a reward signal in a Reinforcement Learning through Human Feedback (RLHF) framework, which is used to fine-tune existing enhancement approaches.",
+          "Our main contributions are that: (1) we provide a generalized RLHF training framework, one of the first attempts in the current literature that we know of, that uses RL to fine-tune an existing speech enhancement model with a MOS-based reward function."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "RLHF-based learning with MOS reward; explicit pairwise ranking not required due to RLHF."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We evaluate our proposed methodology on the commonly used, publicly available VoiceBank+DEMAND dataset.",
+          "speech enhancement algorithms"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Audio-domain application evidenced by speech enhancement focus and VoiceBank+DEMAND dataset."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper, we better align the evaluation metrics and learning objectives by using estimated subjective quality scores as a reward signal in a Reinforcement Learning through Human Feedback (RLHF) framework, which is used to fine-tune existing enhancement approaches.",
+          "Our main contributions are that: (1) we provide a generalized RLHF training framework, one of the first attempts in the current literature that we know of, that uses RL to fine-tune an existing speech enhancement model with a MOS-based reward function"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Original method with MOS-based RLHF; not a survey."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "the RLHF framework to fine-tune an existing speech enhancement approach by optimizing performance using a MOS-based reward model.",
+          "we propose a reinforcement learning from human feedback (RLHF) framework to fine-tune an existing speech enhancement approach by optimizing performance"
+        ],
+        "counter_quotes": [
+          "Our results show that the RLHF-finetuned model has the best performance across different benchmarks for both objective and MOS-based speech quality assessment metrics on the Voicebank+DEMAND dataset."
+        ],
+        "missingness_reason": null,
+        "notes": "Learning component present; MOS as reward in RLHF."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "In this paper, we present an RLHF fine-tuning framework for speech enhancement.",
+          "We also conduct an ablation study to quantify how a policy gradient affects performance and to assess the effect that reward functions have on policy gradient optimization."
+        ],
+        "missingness_reason": null,
+        "notes": "Not a survey; original method with experimental results."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text demonstrates an in-scope preference-learning path via RLHF with MOS-based rewards, applied to audio-domain speech enhancement, and is not a survey or evaluation-only work. No exclusions are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Stage 2 criteria are satisfied: in-scope preference learning in audio; original method; not evaluation-only or survey.",
+    "paper_id": "2511.13936",
+    "candidate_key": "kumar2025using",
+    "candidate_title": "Using RLHF to Align Speech Enhancement Approaches to Mean-Opinion Quality Scores",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "kumar2025using",
+      "record_title": "Using RLHF to Align Speech Enhancement Approaches to Mean-Opinion Quality Scores",
+      "source": "crossref",
+      "source_id": "10.32388/ehck66",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/kumar2025using.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "This article introduces a novel preference learning framework that simultaneously considers both the intended and the perceived labels while addressing the mismatches between them.",
+          "we propose three sets of ranking rules to generate multi-scale relevant scores for preference learning",
+          "Three ranking models with support vector machine (SVM), deep neural networks (DNN), and gradient boosting decision trees (GBDT) are developed"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "in different modalities of audio-only, visual-only, and audio-visual",
+          "The study explicitly addresses multimodal emotion recognition involving audio and visual modalities"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is within the audio modality domain (audio-visual is explicitly mentioned)."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this article, we develop novel preference learning models for multimodal emotion recognition that address the mismatch between the perceived labels on different modalities, as well as the mismatch between the intended and perceived emotions in each modality.",
+          "We conduct extensive evaluation of the proposed multimodal ranking rules and preference learning models on the CREMA-D dataset.",
+          "In contrast to previous studies that relied on either the intended or the perceived emotion labels, we argue that both intended and perceived labels contain valuable information about how humans express and perceive emotions, which should be collectively mined to improve the accuracy of emotion recognition."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work presents original models and evaluations; it is not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "For each target emotion, we train an emotion ranker using three pairwise learning to rank models",
+          "The outputs of the emotion ranker are used to sort all utterances based on their relevances to the target emotion",
+          "our results demonstrate that all three preference learning models significantly outperform the conventional classifiers baselines"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is a clear learning component; not evaluation-only."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This article introduces a novel preference learning framework",
+          "We conduct extensive evaluation of the proposed multimodal ranking rules and preference learning models"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey/review; reports original methods and experimental results."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio (audio-visual) domain and no exclusion criteria are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lei2023audio",
+    "candidate_title": "Audio-visual emotion recognition with preference learning based on intended and multi-modal perceived labels",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lei2023audio",
+      "record_title": "Audio-visual emotion recognition with preference learning based on intended and multi-modal perceived labels",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2023.3234777",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lei2023audio.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "To alleviate this issue, we formulate the BATON, a framework designed to enhance the alignment between generated audio and text prompt using human preference feedback.",
+          "Firstly, we curated a dataset containing both prompts and the corresponding generated audio, which was then annotated based on human feedback.",
+          "Secondly, we introduced a reward model using the constructed dataset, which can mimic human preference by assigning rewards to input text-audio pairs.",
+          "Finally, we employed the reward model to fine-tune an off-the-shelf text-to-audio model."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text describes explicit use of human-preference signals and a reward-driven learning workflow for audio alignment, satisfying the in-scope preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Text-to-audio (TTA) generation is a promising application that concentrates on synthesizing diverse audio from text prompts.",
+          "Finally, we employed the reward model to fine-tune an off-the-shelf text-to-audio model.",
+          "The audio reward models are utilized to enhance an off-the-shelf TTA model in terms of the integrity and temporal relationship of audio events."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work centers on text-to-audio generation and fine-tuning of a TTA model, clearly applying within the audio domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "To the best of our knowledge, this is the first work to improve the alignment of TTA models through human preference feedback.",
+          "our main contributions are as follows: We generate a dataset with 4.8K text-audio pairs across 200 audio event categories, in which 2.7K samples are annotated by human annotators.",
+          "Using the constructed dataset, we train an audio reward model to predict the TTA alignment score reflecting human preference."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents original contributions with dataset, reward model, and fine-tuning experiments, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "Finally, we employed the reward model to fine-tune an off-the-shelf text-to-audio model.",
+          "After obtaining the audio reward model rϕ(c, x), we combine it with the original conditional audio distribution p(x|c), resulting in a new probability distribution ˜p(x|c) = f(rϕ(c, x))p(x|c).",
+          "our objective is to update the model p with parameters θ by maximizing the probability, i.e., minimizing the following loss function: L1(θ) = E[−log ˜pθ(x|c)] = E[−rϕ(c, x) log pθ(x|c)]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes learning and fine-tuning of the text-to-audio model using a reward model, not purely evaluation."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "We generate a dataset with 4.8K text-audio pairs across 200 audio event categories, in which 2.7K samples are annotated by human annotators.",
+          "The audio reward models are utilized to enhance an off-the-shelf TTA model in terms of the integrity and temporal relationship of audio events.",
+          "The paper proposes BATON, a plug-and-play fine-tuning framework for improving alignment via human feedback."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text describes original experimental work with datasets and model training, not a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text provides explicit support for in-scope preference-learning in the audio domain, with explicit human preference signals, a reward-model-based learning pipeline, and fine-tuning of a text-to-audio model. It is not a survey or evaluation-only work, and no exclusion criteria are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "BATON satisfies canonical Stage 2 criteria: preference learning in audio, explicit learning workflow with human feedback, and non-survey, non-evaluation-only setup.",
+    "paper_id": "2511.13936",
+    "candidate_key": "liao2024baton",
+    "candidate_title": "Baton: Aligning text-to-audio model with human preference feedback",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "liao2024baton",
+      "record_title": "Baton: Aligning text-to-audio model with human preference feedback",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2402.00744",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/liao2024baton.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper, we propose a novel ETTS framework with reinforcement learning, denoted as i-ETTS.",
+          "we formulate a training strategy under reinforcement learning, which employs an interactive game between the ETTS system and SER.",
+          "The reward function correlated with the SER evaluation metric.",
+          "Specifically, upon generating the end-of-sequence (EOS) token, the pre-trained SER is used to evaluate how well the generated mel spectrum feature y'i matches the reference emotion label l'i.",
+          "The policy gradient strategy was used to perform back-propagation, and optimize the ETTS model to achieves maximum reward."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "RL-based learning loop for audio model satisfies the in-scope preference-learning path under the provided criteria."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Emotional text-to-speech synthesis (ETTS)",
+          "our emotional text-to-speech synthesis model is built on the GST-based Tacotron network."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Directly audio-domain (speech synthesis) with SER interactions."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This paper studies an interactive emotional text-to-speech synthesis paradigm",
+          "Experimental results demonstrate that i-ETTS consistently outperforms the state-of-the-art baselines",
+          "To our best knowledge, this is the first study of reinforcement learning in emotional speech synthesis."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Original research with experiments; not a survey."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "we propose a novel ETTS framework with reinforcement learning, denoted as i-ETTS.",
+          "we formulate a training strategy under reinforcement learning, which employs an interactive game between the ETTS system and SER.",
+          "The reward function correlated with the SER accuracy."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Presence of learning component (RL-based optimization) rules out evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "The main contributions of this paper are summarized as follows: 1) we introduce a novel interactive emotional text-to-speech synthesis paradigm that overcomes emotion confusion problem; 2) we formulate the training problem with RL, and optimize the ETTS model with policy gradient and a reward function correlated with the SER accuracy; 3) we utilize an iterative training strategy for a stable training procedure.",
+          "This paper studies an interactive training paradigm for emotional TTS, denoted as i-ETTS, to synthesize emotional speech with accurate emotion category."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey; the paper presents contributions and experiments."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio and no exclusion criterion is triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "liu2021reinforcement",
+    "candidate_title": "Reinforcement learning for emotional text-to-speech synthesis with improved emotion discriminability",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "liu2021reinforcement",
+      "record_title": "Reinforcement learning for emotional text-to-speech synthesis with improved emotion discriminability",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2021-1236",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/liu2021reinforcement.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "ranking short audio pieces based on crowdsourced annotations of tension, arousal and valence",
+          "Affect models are trained via preference learning on over a thousand annotations with the use of support vector machines"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "A sound library of horror soundscapes is used and subsequently annotated by individual participants.",
+          "All audio assets were chosen from the existing database of 97 sound assets featured in the horror game generation system Sonancia [15]. Audio files consist of short audio loops between 5 and 10 seconds long."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is clearly grounded in audio domain content (horror soundscapes, audio assets, short loops)."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This paper explores the creation of computational models capable of ranking short audio pieces based on crowdsourced annotations of tension, arousal and valence.",
+          "The models constructed in this work are able to predict the tension, arousal and valence elicited by sound, respectively"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents original modelling work rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "Affect models are trained via preference learning on over a thousand annotations",
+          "RankSVM models, using both the linear and RBF kernels, were trained to predict the annotated user preferences on both datasets in conjunction with sequential forward feature selection."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Preferences are used as part of model training, not solely for evaluation."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This paper explores the creation of computational models capable of ranking short audio pieces based on crowdsourced annotations of tension, arousal and valence.",
+          "We construct several preference learned models, using the rank support vector machine algorithm [12], to predict the global rank of horror sounds across the three affective dimensions of the Schimmack and Grob model [13]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is original research focused on modelling and evaluation, not a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio and no exclusion criterion is triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lopes2017modelling",
+    "candidate_title": "Modelling affect for horror soundscapes",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lopes2017modelling",
+      "record_title": "Modelling affect for horror soundscapes",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2017.2695460",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lopes2017modelling.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Preference learning represents an appealing framework to rank speech samples in terms of continuous attributes such as arousal and valence.",
+          "The training of ranking classifiers usually requires pairwise samples where one is preferred over the other according to a specific criterion.",
+          "Our study explores practical implementations of this framework, comparing the results with other conventional machine learning methods."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "rank speech samples in terms of continuous attributes such as arousal and valence.",
+          "This paper studies practical con- siderations in employing preference learning for emotional speech retrieval, providing comparison to other alternative machine learning solutions.",
+          "This study relies on the sustained emotionally coloured machine-human interaction using nonverbal expression (SEMAINE) database."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Audio-domain applicability is explicit (speech emotion, SEMAINE database)."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This study systematically analyzes different tradeoffs in building the training set for preference learning for valence and arousal.",
+          "This paper analyzes practical considerations in employing preference learning for emotional speech retrieval, providing comparison to other alternative machine learning solutions."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review article; reports empirical analysis."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "The training of ranking classifiers usually requires pairwise samples where one is preferred over the other according to a specific criterion.",
+          "We will train the preference learning classifiers with multiple examples to rank speaking turns in the test set according to their arousal or valence scores.",
+          "This study uses Rank-SVM as our preference learning algorithm."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is a learning component; not evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This study systematically analyzes different tradeoffs in building the training set for preference learning for valence and arousal.",
+          "This paper analyzes practical considerations in employing preference learning for emotional speech retrieval, providing comparison to other alternative machine learning solutions."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review article; includes experimental study."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in the audio domain, with explicit pairwise ranking of speech samples and learning-based methods (Rank-SVM). It is not a survey or evaluation-only work; no exclusion criteria are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lotfian2016practical",
+    "candidate_title": "Practical considerations on the use of preference learning for ranking emotional speech",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lotfian2016practical",
+      "record_title": "Practical considerations on the use of preference learning for ranking emotional speech",
+      "source": "openalex",
+      "source_id": "10.1109/icassp.2016.7472670",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016practical.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Preference learning is an appealing approach for affective recognition.",
+          "We are interested in building rank-based classifiers for categorical labels.",
+          "We build happy, angry and sad rank-classifiers using this metric.",
+          "The proposed method is to define a relevance score which is created by considering all the individual evaluations assigned to the data.",
+          "We use the relevance score to train preference learning algorithms."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The MSP-IMPROV database [9] is an audiovisual corpus collected to explore emotional behaviors during dyadic improvisations.",
+          "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception.",
+          "The cross-corpus evaluation is conducted by training the models on the IEMOCAP corpus [8] and testing the models on the MSP-IMPROV database [9],",
+          "This study uses cross-corpus evaluation relying on the interac- tive emotional dyadic motion capture database (IEMOCAP) database [8] and the MSP-IMPROV corpus [9]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper relies on MSP-IMPROV/IEMOCAP datasets (audio/ audiovisual) and discusses acoustic features; demonstrates audio-domain applicability."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This study proposes a novel method to derive relative labels, establishing preference between pairwise samples for a target emotion.",
+          "We use these labels to train preference learning algorithms, creating emotional rankers for sadness, happiness, and anger.",
+          "The experimental evaluation demonstrated that the precision rate in retrieving target categorical emotions are higher than the ones achieved with an alternative method using consensus labels, or with standard binary classifiers."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents original research with methodology and experiments; not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "this framework relies on pairwise comparisons to rank-order the testing data according to an emotional dimension",
+          "We build happy, angry and sad rank-classifiers using this metric.",
+          "We use the relevance score to train preference learning algorithms.",
+          "The goal of the emotion rankers is to retrieve the target emotions from the entire corpus."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The framework and experiments indicate learning components (rankers trained via GP/Rank-SVM), not evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This study proposes a novel method to derive relative labels, establishing preference between pairwise samples for a target emotion.",
+          "We use these labels to train preference learning algorithms, creating emotional rankers for sadness, happiness, and anger.",
+          "The experimental evaluation demonstrated that the precision rate in retrieving target categorical emotions are higher than the ones achieved with an alternative method using consensus labels, or with standard binary classifiers."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The article presents original methodology and experiments; no indication that it is a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text demonstrates a canonical in-scope preference-learning path, is applied to audio-related datasets (IEMOCAP/MSP-IMPROV), is not a survey/review, and includes a learning component rather than evaluation-only usage. Therefore it meets Stage 2 inclusion criteria with no exclusions triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lotfian2016retrieving",
+    "candidate_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lotfian2016retrieving",
+      "record_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2016-1052",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016retrieving.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "OpenOmni introduces a two-stage training method combining omnimodal alignment and speech generation to develop a state-of-the-art omnimodal large language model.",
+          "OpenOmni ... the self-aware emotional empathy capability is further integrated into the omnimodal model through direct preference optimization for emotional speech",
+          "Based on this observation, the policy model can be directly optimized on the human feedback preference pair (yw, yl).",
+          "In the speech generation phase, a lightweight decoder facilitates real-time emotional speech through training on speech tasks and preference learning.",
+          "The Direct Emotional Preference Optimization (DEPO) algorithm"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly uses preference learning in the emotion-focused speech generation pipeline and provides a clear DEPO pathway, including optimization on explicit preference pairs."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "emotional speech synthesis",
+          "to equip OpenOmni with the real-time speech generation ability",
+          "we adopt a streaming speech decoder for real-time speech generation",
+          "Trains a lightweight speech decoder with preference learning for real-time emotional speech synthesis"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper centers on audio/speech generation, including real-time emotional speech synthesis and a streaming speech decoder, indicating a direct audio-domain application."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "OpenOmni introduces a two-stage training method combining omnimodal alignment and speech generation to develop a state-of-the-art omnimodal large language model.",
+          "Comprehensive Experiments: We provide extensive comparative experiments and ablation studies to demonstrate the effectiveness and efficiency of our proposed method."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work presents a novel model with empirical experiments and contributions, not a survey or review article."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "In the speech generation phase, a lightweight decoder facilitates real-time emotional speech through training on speech tasks and preference learning.",
+          "the Direct Emotional Preference Optimization (DEPO) algorithm",
+          "to optimize emotional speech preferences directly."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text describes learning and optimization using preferences to train models, not solely evaluation of existing outputs."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "OpenOmni introduces a two-stage training method combining omnimodal alignment and speech generation to develop a state-of-the-art omnimodal large language model.",
+          "Comprehensive Experiments: We provide extensive comparative experiments and ablation studies to demonstrate the effectiveness and efficiency of our proposed method."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents a novel method with experiments rather than a survey or review."
+      }
+    ],
+    "stage_score": 4,
+    "decision_rationale": "The full text supports an in-scope preference-learning path within the audio domain and does not trigger the exclusions for evaluation-only or survey/review. While there are three clearly affirmative criteria (I1, I2, I3), E1 and E2 are not satisfied, resulting in a stage score of 4 (include) per the policy.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "OpenOmni demonstrates in-scope preference learning in audio with non-survey, non-evaluation-only usage; audio-domain fit is explicit; exclusions not triggered.",
+    "paper_id": "2511.13936",
+    "candidate_key": "luo2025openomni",
+    "candidate_title": "Openomni: Large language models pivot zero-shot omnimodal alignment across language with real-time self-aware emotional speech synthesis",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "luo2025openomni",
+      "record_title": "Openomni: Large language models pivot zero-shot omnimodal alignment across language with real-time self-aware emotional speech synthesis",
+      "source": "manual",
+      "source_id": "local:luo2025openomni",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/luo2025openomni.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+          "To do so, we first collect a large scale dataset of human judgments wherein subjects are asked an easy question: whether two audio recordings sound the same or different.",
+          "Thus, our contributions are as follows: (1) a framework for collecting crowdsourced human JND judgments for audio recordings; (2) a differentiable perceptual loss model trained on these data;",
+          "we train a neural network with this data, and use the learned representation to construct a distance metric that measures the difference between two audio signals.",
+          "Finally we show that using the new metric as a loss function improves the performance of a state of the art denoising network."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes a learning path based on pairwise audio preferences (identical or different) and uses it to train a differentiable perceptual metric."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Many audio processing tasks require perceptual assessment.",
+          "We present a listener with two recordings, a reference xref and perturbed signal xper, and ask if these two recordings are exactly same or different."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work centers on audio recordings, perturbations of audio, and audio processing tasks; clearly within the audio domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "We propose a new perceptual audio metric based on just-noticeable differences (JNDs) – the minimal change at which a difference is perceived.",
+          "We collect a dataset of human judgments using crowdsourcing tools",
+          "The data collection process relies on active learning to efficiently sample such artifacts near the JND level.",
+          "Thus, our contributions are as follows: (1) a framework for collecting crowdsourced human JND judgments for audio recordings; (2) a differentiable perceptual loss model trained on these data"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper reports original data collection and modeling work (experimental study), not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "Since it is a deep network, the metric is differentiable, making it suitable as a loss function for other tasks.",
+          "Finally we show that using the new metric as a loss function improves the performance of a state of the art denoising network."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work uses the learned metric to train and optimize a denoising model, i.e., there is a learning component rather than evaluation-only use of the preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "The dataset, code and resulting metric, as well as listening test examples – are all available from our project page.",
+          "We collect a dataset of human judgments using crowdsourcing tools",
+          "We train this network for 1000 epochs, taking ≈3 days to complete",
+          "Thus, our contributions are as follows: (1) a framework ... (5) the dataset, code and listening test examples"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The content is empirical and experimental, not a survey or review article."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio, demonstrates audio-domain application, and is not a survey or evaluation-only work. No exclusion criteria are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Strong Stage 2 include: audio preference-learning via JND-based differentiable metric with learning-based application.",
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "manocha2020differentiable",
+      "record_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2020-1191",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/manocha2020differentiable.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text discusses continuous emotional annotation but contains no explicit preference-learning signal (pairwise/ranking/A-B comparisons) or RL training loop."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The collected data contains full body Motion Capture information from both participants, speech obtained from close-talking microphones and videos from two HD cameras located at opposite sides of the recording space."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text explicitly mentions audio data via speech from close-talking microphones; thus audio-domain fit."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this work, we use as a starting point the continuous emotional annotation that we performed on a large, multimodal database, and discuss annotation challenges, design decisions, annotation results and lessons learned from this effort, in the context of existing literature."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper reports original annotation work rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No evidence of preference signals being used solely for evaluation without learning; the paper focuses on annotation and methodology rather than learning from preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review article; original research on annotation."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "Stage 2 verdict: exclude. The paper does not present an explicit preference-learning path (I1 is NO), despite audio-domain involvement (I2 YES) and non-survey status (I3 YES). With I1 not satisfied and no explicit exclusion signals triggered, the work is not eligible for Stage 2 inclusion.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict: exclude.",
+    "short_summary": "Stage 2 not eligible: lacks explicit preference-learning content; audio-domain inclusion does not compensate for missing criterion I1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "metallinou2013annotation",
+    "candidate_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "metallinou2013annotation",
+      "record_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
+      "source": "openalex",
+      "source_id": "10.1109/fg.2013.6553804",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/metallinou2013annotation.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "tuning it further with reinforcement learning on human preference (RLHF) enables it to adapt better to disordered speech",
+          "we then use RL with rewards based on syntactic and semantic accuracy measures",
+          "Meaning Preservation reward model",
+          "The final reward signal R(x, y; y∗) := γ · MP(y, y∗) + ln(1 − WER(y, y∗))",
+          "we explore tuning the model with a reward from two sources of feedback, (1) WER between the transcript and ground truth, (2) Meaning Preservation (MP)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "RLHF and an explicit RL-based learning loop are described to optimize an audio-model, satisfying an in-scope preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "\"Speech Recognition with LLMs Adapted to Disordered Speech Using Reinforcement Learning\"",
+          "processing speech inputs",
+          "disordered speech",
+          "recognize speech",
+          "This model can then be tuned as a regular LLM without any changes to the architecture or training infrastructure."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is explicitly about ASR in the audio domain, including disordered speech, and uses audio tokens as part of the LLM pipeline."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper we proposed a new strategy for ASR adapted to a different domain such as disordered speech based on an existing LLM backbone.",
+          "Our proposed technique uses a frozen audio encoder and existing LLM architecture, and demonstrates how audio tokens can be mapped to text tokens in the language model and tuned to enable the LLM to recognize speech.",
+          "Our experiments were on the open source Gemma model"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents original methodology and experiments rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "tuning it further with reinforcement learning on human preference (RLHF)",
+          "We then use RL with rewards based on syntactic and semantic accuracy measures",
+          "Meaning Preservation reward model",
+          "The final reward signal R(x, y; y∗) := γ · MP(y, y∗) + ln(1 − WER(y, y∗))"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The preferences are used to drive learning (RLHF) and not solely for evaluation; there is an explicit learning component."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this paper we proposed a new strategy for ASR adapted to a different domain such as disordered speech based on an existing LLM backbone.",
+          "Our proposed technique uses a frozen audio encoder and existing LLM architecture, and demonstrates how audio tokens can be mapped to text tokens in the language model and tuned to enable the LLM to recognize speech."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is not a survey or review; it presents a novel ASR approach with RLHF."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports an in-scope preference-learning path in the audio domain (RLHF and an RL-based tuning loop for ASR on disordered speech) and triggers no exclusions (not a survey; includes learning components).",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical Stage 2 eligibility satisfied: in-scope preference learning for audio; not a survey; not evaluation-only.",
+    "paper_id": "2511.13936",
+    "candidate_key": "nagpal2025speech",
+    "candidate_title": "Speech recognition with LLMs adapted to disordered speech using reinforcement learning",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "nagpal2025speech",
+      "record_title": "Speech recognition with LLMs adapted to disordered speech using reinforcement learning",
+      "source": "openalex",
+      "source_id": "10.1109/icassp49660.2025.10888006",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/nagpal2025speech.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "An important task in human-computer interaction is to rank speech samples according to their expressive content.",
+          "A preference learning framework is appropriate for obtaining an emotional rank for a set of speech samples.",
+          "We propose a novel formulation to obtain ordinal labels from existing attribute scores that leverages the anchoring process by considering preference across consecutive annotations."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The MSP-Podcast corpus [27], which is a publicly available database containing over 166 hours of speech annotated with emotional labels.",
+          "Each turn of the dataset was annotated for the attributes of arousal (calm versus active), valence (negative versus positive), and dominance (weak versus strong) by at least five annotators."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Audio-domain application as described (speech samples with emotion attributes)."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "The experiments show that the use of the proposed anchor-based ordinal labels leads to significantly better performance than models trained using existing alternative labels.",
+          "This study hypothesizes that considering the preference between annotations assigned by a worker to immediately consecutive sentences during a perceptual evaluation session can lead to more reliable relative labels than considering trends across absolute scores."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; presents an experimental method and results."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "The RankNet framework, which was initially presented by Burges [24], employs a probabilistic cost function to train a model to differentiate between pairs of data points using gradient descent.",
+          "We compare all three implementations of the proposed and baseline labels using the RankNet framework.",
+          "These results indicate that using the proposed anchor-based ordinal labels results in better preference learning models."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is a learning component with RankNet and training labels; not evaluation-only."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This study hypothesizes that considering the preference between annotations assigned by a worker to immediately consecutive sentences during a perceptual evaluation session can lead to more reliable relative labels than considering trends across absolute scores.",
+          "The experiments show that the use of the proposed anchor-based ordinal labels leads to significantly better performance than models trained using existing alternative labels.",
+          "Our study focuses on relative labels for emotional attributes."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; primary research with experiments."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio and no exclusion criteria are triggered. It presents an audio-domain preference learning method (anchor-based ordinal labels) with RankNet training and experiments showing improved performance; paper is not a survey or evaluation-only; no exclusion criteria are satisfied.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "naini2023preference",
+    "candidate_title": "Preference Learning Labels by Anchoring on Consecutive Annotations",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "naini2023preference",
+      "record_title": "Preference Learning Labels by Anchoring on Consecutive Annotations",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2023-1108",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/naini2023preference.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Retrieving speech samples that have specific expressive content has many applications.",
+          "It is desirable to build a preference learning framework that ranks speech samples according to emotional attribute values that generalize well to new domains.",
+          "A popular architecture for preference learning is the RankNet framework, which uses a function to obtain the preference between pairs of speech sentences.",
+          "This study implements RankNet using state-of-the-art domain adaptation strategies to increase the generalization of the models when evaluated on a different domain."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "we implement our preference-learning based speech emotion recognition (SER) system using ladder networks and adversarial domain adaptation.",
+          "ranks speech samples according to emotional attribute values",
+          "The MSP-Podcast corpus [31] as the source domain. We use release 1.10 consisting of 104,267 speaking turns from different audio recordings with Creative Commons licenses."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text clearly situates the work in audio (speech emotion recognition) and evaluates with audio datasets."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This study explores two unsupervised approaches that have been successfully implemented on SER: ladder network [22], using intermediate layer representation reconstructions, and adversarial domain adaptation (DA) [23], using domain classification implemented with a gradient reversal.",
+          "This is the first attempt to make a preference learning-based SER model robust to different domains."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The article presents original methodology and experimental results rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "The RankNet algorithm was introduced by Burges [20].",
+          "The function f(·) is trained using the ground truth labels with preferences between sample pairs.",
+          "The cost function L = −¯Pij log Pij − (1 −¯Pij) log(1 −Pij) is the cross entropy between the expected probability ¯Pij and actual probability Pij, which is used to train the parameters of the function f(·)."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper describes learning/training of RankNet, not evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text presents an original experimental study rather than a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio and no exclusion criterion is triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Stage 2 criteria are satisfied: the paper discusses preference learning in audio with RankNet, not a survey, and includes a learning component.",
+    "paper_id": "2511.13936",
+    "candidate_key": "naini2023unsupervised",
+    "candidate_title": "Unsupervised Domain Adaptation for Preference Learning Based Speech Emotion Recognition",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "naini2023unsupervised",
+      "record_title": "Unsupervised Domain Adaptation for Preference Learning Based Speech Emotion Recognition",
+      "source": "semantic_scholar",
+      "source_id": "02b78ca6de66023924cffe33bae338de144f47fa",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/naini2023unsupervised.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "This study explores the use of relative labels to train machine learning algorithms that can rank expressive behaviors.",
+          "We rely on the qualitative agreement (QA) analysis to estimate relative labels which are used to train rank-based classifiers (rankers).",
+          "One of the key requirements is for machine learning algorithms that rank-order samples in terms of a given emotional attribute, rather than assigning a value or a class."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes deriving relative labels and training rank-based classifiers, i.e., a preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The experimental evaluation on the SEMAINE database demonstrates the benefits of the proposed approach.",
+          "SEMAINE database (SEMAINE stands for Sustained Emotionally colored Machine-human Interaction using Nonverbal Expression). It is a large audiovisual database that consists of dyadic interactions between a ‘user’ (human) and an ‘operator’ (either a human or a virtual agent).",
+          "The study relies on arousal, valence, power and expectation ... The FEELTRACE toolkit records frame-by-frame the location of the mouse’s cursor over a graphical user interface, in which the axes represents the given dimension."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is demonstrated on the SEMAINE audiovisual dataset and discusses audio- and audiovisual-emotional analysis, indicating audio-domain applicability."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This study relies on a large audiovisual database and presents an experimental evaluation of a proposed approach.",
+          "This paper takes up that challenge.",
+          "The results show that using QA-based labels has numerical as well as conceptual advantages."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents original experimental methodology and evaluation rather than a survey or review article."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "the QA approach transforms raw traces into matrices that capture the meaningful ordinal information in them, and the results show improvements",
+          "the labels are used to train rank-based classifiers (rankers).",
+          "The QA-based labels are used to train rank-based rankers"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text repeatedly describes learning-based use of relative labels to train rankers, not evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This study relies on the SEMAINE database (an audiovisual corpus) and presents experimental evaluations of a proposed approach.",
+          "The experimental evaluation on the SEMAINE database demonstrates the benefits of the proposed approach.",
+          "This is original experimental work, not a survey or review."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Evidence indicates primary research with experiments; no indication this is a survey/review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports an in-scope preference-learning path (ranking/emotion-related rankings) in the audio domain (audiovisual dataset SEMAINE) and does not trigger any exclusion (not a survey/review; learning is explicit; not evaluation-only). Therefore Stage 2 verdict is include.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical Stage 2 eligibility criteria are satisfied: in-scope preference-learning path, audio-domain fit, not a survey/review; not evaluation-only.",
+    "paper_id": "2511.13936",
+    "candidate_key": "parthasarathy2016using",
+    "candidate_title": "Using agreement on direction of change to build rank-based emotion classifiers",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "parthasarathy2016using",
+      "record_title": "Using agreement on direction of change to build rank-based emotion classifiers",
+      "source": "openalex",
+      "source_id": "10.1109/taslp.2016.2593944",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2016using.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "ranking emotional attributes through preference learning methods has significant advantages over conventional emotional classification/regression frameworks",
+          "We implement the approach creating a ranker for each emotional attribute (e.g., an arousal ranker).",
+          "This study trains rankers using RankNet, which has a DNN architecture [18]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "identify speech conveying target emotional behaviors (e.g., positive samples with low arousal)",
+          "This study relies on two emotional databases with conversational speech, where we train the models with the USC-IEMOCAP [22] corpus, and we test the models with the MSP-IMPROV corpus [23].",
+          "This study only uses speech."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Affirmed to be in the audio domain; includes speech signals."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This study relies on two emotional databases with conversational speech, where we train the models with the USC-IEMOCAP [22] corpus, and we test the models with the MSP-IMPROV corpus [23].",
+          "This work was funded by NSF CAREER award IIS-1453781.",
+          "This study explores whether a preference learning framework relying on deep learning can outperform conventional ranking algorithms.",
+          "The results show improved performance over ranking algorithms trained with support vector machine (SVM) (i.e., RankSVM)."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Original experiments; not a survey."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "This study trains rankers using RankNet, which has a DNN architecture [18].",
+          "we compare ranking algorithms RankNet, RankSVM, and DNNRegression.",
+          "ranking emotional attributes (arousal, valence, and dominance)."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text shows a learning component rather than evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "to the best of our knowledge, this is the first study that systematically evaluates emotional rankers with DNN.",
+          "This study trains rankers using RankNet, which has a DNN architecture [18]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey/review; presents experimental study with RankNet for emotion ranking."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text meets in-scope criteria for Stage 2: it clearly presents a preference-learning path (pairwise ranking with RankNet) in the audio domain (speech emotion attribute ranking), is not a survey, and is not evaluation-only. No exclusion criteria are triggered, so the paper is includeable per the decision policy.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Parthasarathy et al. 2017 presents an audio-domain preference-learning approach (RankNet) for ranking emotional attributes; not a survey; learning component present; qualifies for Stage 2 inclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "parthasarathy2017ranking",
+    "candidate_title": "Ranking emotional attributes with deep neural networks",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "parthasarathy2017ranking",
+      "record_title": "Ranking emotional attributes with deep neural networks",
+      "source": "openalex",
+      "source_id": "10.1109/icassp.2017.7953107",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2017ranking.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The proposed relative labels between pairs of sentences capture consistent trends across evaluators.",
+          "The experimental evaluation shows that preference-learning methods to rank-order emotional attributes trained with the proposed QA-based labels achieve significantly better performance than the same algorithms trained with relative scores across annotators.",
+          "This study proposes a novel formulation based on the QA framework to estimate reliable sentence-level annotations for preference-learning."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path, including pairwise comparisons and QA-based labels used to train ranking models."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "MSP-Podcast corpus",
+          "The MSP-Podcast corpus [23]. The collection of the corpus is an ongoing effort, where this version contains 22,630 sentences collected from audio-sharing websites.",
+          "The sentences are annotated by at least five annotators for the emotional attributes: arousal, valence, and dominance. This study uses the MSP-Podcast corpus."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is conducted on an audio-focused corpus (MSP-Podcast) with acoustic features, confirming audio-domain applicability."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This study proposes a novel formulation based on the QA framework to estimate reliable sentence-level annotations for preference-learning.",
+          "The main contributions of this study are (a) defining a novel QA-based relative label for sentence-level annotations, and (b) training preference-learning with RankNet and RankMargin losses."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The content corresponds to original research presenting methods and experiments, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "The network’s parameters are trained to minimize the corresponding losses.",
+          "The proposed QA-based labels are used to train preference-learning methods to rank-order sentences."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Preferences are used to train models, not used solely for evaluation; there is an explicit learning component."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This study proposes a novel formulation based on the QA framework to estimate reliable sentence-level annotations for preference-learning.",
+          "The main contributions of this study are (a) defining a novel QA-based relative label for sentence-level annotations, and (b) training preference-learning with RankNet and RankMargin losses."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review article; presented as a primary research study with methodology and experiments."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports an in-scope preference-learning path in the audio domain, with explicit learning components and no exclusion criteria triggered (not a survey, not evaluation-only). Therefore, include.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied. The paper presents audio-domain preference-learning with QA-based relative labels and explicit learning, not a survey or evaluation-only study.",
+    "paper_id": "2511.13936",
+    "candidate_key": "parthasarathy2018preference",
+    "candidate_title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "parthasarathy2018preference",
+      "record_title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2018-2478",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2018preference.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "instruction-tuning phase we finetuned Gemini 1.5 models on a collection of multimodal data (containing paired instructions and appropriate responses), with further tuning based on human preference data."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text references tuning with human preference data but does not explicitly describe an in-scope preference-learning path (e.g., explicit ranking, A/B comparisons over audio clips, or an RL training loop for an audio model). This remains unresolved from the provided full text."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "hours of video and audio",
+          "long-context ASR"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract and sections repeatedly reference audio modalities and long-context ASR, indicating clear applicability to the audio domain (multimodal with audio)."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this report, we introduce the Gemini 1.5 family of models"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents original model development and evaluation rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "instruction-tuning phase we finetuned Gemini 1.5 models on a collection of multimodal data (containing paired instructions and appropriate responses), with further tuning based on human preference data."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Preference signals are used as part of model tuning, not solely for evaluation."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this report, we introduce the Gemini 1.5 family of models"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review article; the text describes original model development and results."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "The full text supports in-scope audio-domain relevance (I2) and is not a survey/review (I3, E2). It includes learning-related tuning with human preference data (E1, I1) but does not provide explicit, explicit preference-learning signals such as pairwise rankings or RL loops for audio within the full text, leaving I1 UNCLEAR. Therefore, a Stage 2 decision of maybe (stage_score 3) is warranted, with manual review needed to resolve I1 definitively.",
+    "manual_review_needed": true,
+    "routing_note": "Stage 2 final verdict pending adjudication on I1_PREFERENCE_LEARNING_FIT.",
+    "short_summary": "Audio-domain relevance is established; not a survey; learning via human preference data is indicated but explicit preference-learning signals are not clearly described in the full text.",
+    "paper_id": "2511.13936",
+    "candidate_key": "team2024gemini",
+    "candidate_title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "team2024gemini",
+      "record_title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2403.05530",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/team2024gemini.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Numerous studies have demonstrated that humans excel at comparing two options rather than assigning absolute labels [4–6]. Thus, a growing body of work has recognised their importance and adopted ordinal regression or preference learning frameworks for emotion recognition [7–10].",
+          "Approaches to converting interval labels to ROLs typically involve pairwise comparisons between all pairs of interval labels at different times and retain information about the relationship (greater/lesser) and discarding details of interval label values [9, 16, 17]."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly discusses preference learning in emotion recognition and references pairwise comparisons as a core mechanism, indicating an in-scope preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The MSP-Podcast corpus is a large naturalistic speech emotional dataset that is collected from real-life podcast recordings [13].",
+          "The MSP-Conversation dataset is a subset of MSP-Podcast dataset [20]. It is labelled with time continuous ratings within the range [-100, 100] on arousal, valence and dominance by 4-11 different raters.",
+          "To validate the converted AOLs, we compare it with both the original interval labels as well as categorical labels obtained independently to describe the same data."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work explicitly uses speech/emotion corpora (audio domain) for validation and experiments."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This paper presents a novel approach to convert time-continuous interval labels to time-continuous AOLs based on a hidden Markov model that integrates rater specific absolute ordinal state distributions with transition probabilities based on relative ordinal information."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The article describes a primary research method and experimental validation, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "Baum-Welch algorithm is used to train the HMM [18], and Viterbi decoding [19] is used to infer the ordinal sequence, S."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is a training/learning component (HMM training) rather than evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This paper presents a novel approach to convert time-continuous interval labels to time-continuous AOLs based on a hidden Markov model that integrates rater specific absolute ordinal state distributions with transition probabilities based on relative ordinal information."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text describes a primary research method; it is not a survey or review article."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference-learning in the audio domain and does not trigger any exclusion criteria. It presents a learning-based approach to convert interval labels to ordinal representations using an HMM and validates on audio datasets, fulfilling I1, I2, and I3 while not activating E1 or E2.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Audio-domain primary research paper on converting interval affect labels to time-varying ordinal labels using a learning-based HMM; supported by pairwise preference concepts and validated on MSP audio corpora; not a survey.",
+    "paper_id": "2511.13936",
+    "candidate_key": "wu2023interval",
+    "candidate_title": "From Interval to Ordinal: A HMM based Approach for Emotion Label Conversion",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "wu2023interval",
+      "record_title": "From Interval to Ordinal: A HMM based Approach for Emotion Label Conversion",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2023-2213",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/wu2023interval.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We start with an online model pretrained by maximum likelihood, and use reinforcement learning to finetune the model for online use.",
+          "The finetuning objective leverages both a novel reward model that provides feedback on both harmonic and temporal coherency between melody and chord",
+          "our reward models align well with human preferences, as shown in Figure 3.",
+          "positive and negative melody-chord pairs constructed from a dataset"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text describes an RL finetuning framework with reward models and discusses alignment with human preferences, satisfying the in-scope preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "an online generative model for improvising chord accompaniment to user melody",
+          "ReaLchords opens the door to live jamming",
+          "harmonic and temporal coherency between melody and chord"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Direct application to audio/music domain with online accompaniment."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "This paper introduces ReaLchords, a generative model tailored for online adaptive musical accompaniment.",
+          "We develop key algorithmic components (Figure 2) needed to produce an online adaptive accompaniment model that is amenable to interactive use."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work presents a novel model and experiments rather than a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "max θ E x∼pdata y∼πθ(·|x) R(x, y) −β DKL(πθ( · | x) ∥ ϕω( · | x)).",
+          "The final training objective in ReaLchords is a sum of the reward and the distillation loss (center).",
+          "Namely, in addition to maximizing RL rewards R(x, y), we minimize KL-divergence from a pretrained MLE anchor model ϕω(y | x)."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper explicitly defines RL-based learning with a distillation term, not an evaluation-only use of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "This paper introduces ReaLchords, a generative model tailored for online adaptive musical accompaniment.",
+          "Our contributions and findings are as follows: 1 Listen to audio examples here: https://storage.googleapis.com/realchords/index.html."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; it reports a novel model and empirical results."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "Full text demonstrates in-scope preference-learning oriented RL training in the audio domain and contains no exclusion criteria violations (not a survey, not evaluation-only).",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Stage 2 canonical eligibility criteria are satisfied; include.",
+    "paper_id": "2511.13936",
+    "candidate_key": "wu2025adaptive",
+    "candidate_title": "Adaptive accompaniment with ReaLchords",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "wu2025adaptive",
+      "record_title": "Adaptive accompaniment with ReaLchords",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2506.14723",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/wu2025adaptive.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "we propose a ranking-based approach that determines the coordinates of a song in the 2-D emotion space by the relative emotion of the song with respect to other songs",
+          "we propose a novel learning-to-rank algorithm called RBF-ListNet to rank the emotion of a collection of music pieces",
+          "The subjects only have to make pairwise comparison of the songs"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text directly supports the preference-learning path."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "\"Ranking-Based Emotion Recognition for Music Organization and Retrieval\"",
+          "music organization and retrieval"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is explicitly situated in the music/audio domain and discusses music emotion recognition and retrieval."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this paper, we have presented a novel ranking-based emotion recognition approach for applications to music organization and retrieval",
+          "This work represents one of the first attempts that apply learning-to-rank to the field of music information retrieval (Section IV)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper presents an original ranking-based approach and positions itself as one of the first attempts in applying learning-to-rank to MIR."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "we rank a collection of music pieces by emotion and then determine the emotion values of each music piece by its relative emotion with respect to other music pieces",
+          "we can also use a learning-to-rank algorithm to directly optimize a ranking-based objective function for better accuracy",
+          "train a regression model to compute the ranking scores"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is a learning component driven by ranking objectives, not evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this paper, we have presented a novel ranking-based emotion recognition approach for applications to music organization and retrieval",
+          "this work represents one of the first attempts that apply learning-to-rank to the field of music information retrieval"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text frames this as an original research contribution rather than a survey/review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in the audio domain and does not trigger any exclusion criteria (not evaluation-only, not a survey).",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict: include.",
+    "short_summary": "Canonical full-text criteria are satisfied: ranking-based, learning-to-rank approach for emotion in audio/music; not a survey; includes explicit pairwise comparisons.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2010ranking",
+    "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2010ranking",
+      "record_title": "Ranking-based emotion recognition for music organization and retrieval",
+      "source": "openalex",
+      "source_id": "10.1109/tasl.2010.2064164",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "A standard method for collecting human preferences involves prompting the model to produce two distinct responses to a query, after which annotators are asked to select the one they prefer.",
+          "However, we construct the preference codec dataset by contrasting the golden codec tokens against synthetic codec tokens.",
+          "Following these steps, we can get the preference codec dataset Dpf = {(x, yg, ys)}N i=1.",
+          "From results in Table 2, we can conclude that humans prefer speech reconstructed from golden AR tokens over that from synthetic AR tokens, indicating that the constructed preference codec dataset effectively aligns with human preferences."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes constructing a preference dataset and using preference-based optimization to align codec language models for speech, which directly satisfies in-scope preference learning."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "SpeechAlign: Aligning Speech Generation to Human Preferences",
+          "SpeechAlign involves constructing a preference codec dataset contrasting golden codec tokens against synthetic tokens.",
+          "Speech language models have significantly advanced in generating realistic speech",
+          "we randomly sample N speech-text pairs P = {(s, x)}N i=1 from LibriSpeech dataset"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is explicitly framed around speech/speech-language models, uses LibriSpeech data, and targets speech generation in the audio domain."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "We propose SpeechAlign, an iterative self-improving strategy that aligns speech language models to human preferences.",
+          "This paper first analyzes the distribution gap existing in current neural codec language models and propose to solve it by learning from human feedback."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents a novel method with experiments and results, not a survey or review."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this section, we introduce how we conduct preference optimization to align codec language models using preference codec dataset, including Chain-of-Hindsight (Liu et al., 2023b), Direct Preference Optimization (Rafailov et al., 2023), RLHF-PPO (Ouyang et al., 2022) and Best-of-N Sampling.",
+          "Following a complete cycle, we iteratively perform preference dataset collection and preference-aware optimization to convert weak codec language models to stronger ones continually.",
+          "Preference optimization Boosts Speech Generation"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There are explicit learning/optimization components driven by human feedback, not evaluation-only usage."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "SpeechAlign is the first work enable codec language models to learn from human feedback."
+        ],
+        "counter_quotes": [
+          "This paper first analyzes the distribution gap existing in current neural codec language models and propose to solve it by learning from human feedback."
+        ],
+        "missingness_reason": null,
+        "notes": "The work is described as a novel primary research contribution, not a survey or review."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio (speech) with explicit construction of a preference dataset contrasting golden vs synthetic tokens and multiple preference-optimization strategies. No exclusion criteria are triggered (not a survey, not evaluation-only, and audio-domain applicable).",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "SpeechAlign demonstrates preference-based learning in the audio domain, via a constructed preference dataset and iterative optimization to align speech generation to human preferences; not a survey, and not evaluation-only.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhang2024speechalign",
+    "candidate_title": "SpeechAlign: Aligning Speech Generation to Human Preferences",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhang2024speechalign",
+      "record_title": "SpeechAlign: Aligning Speech Generation to Human Preferences",
+      "source": "semantic_scholar",
+      "source_id": "a85a882fb7d9af9a2734440f4eae19c8393f0301",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhang2024speechalign.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_PREFERENCE_LEARNING_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "the system samples candidate solutions, asks the user to provide preferential feedback on them, and iterates this procedure until finding the desired solution",
+          "we implement it into a melody composition system that combines a deep generative model with Bayesian optimization",
+          "In such parametric content creation scenarios, the user’s task is to search for an appropriate parameter set that produces the desired content. To facilitate this task execution, researchers have investigated user-in-the-loop optimization"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly describes preferential feedback in a loop and a learning path using Bayesian optimization in an audio domain."
+      },
+      {
+        "criterion_id": "I2_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "melody composition system",
+          "melodies",
+          "generative melody composition"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The system is a melody generation system, an audio domain application."
+      },
+      {
+        "criterion_id": "I3_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "SHORT-PAPER Interactive Exploration-Exploitation Balancing for Generative Melody Composition",
+          "IUI '21, April 14–17, 2021, College Station, TX, USA",
+          "In this work, we investigate a novel approach to enhance this interactive process"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The presence of a short-paper, conference paper with experimental evaluation indicates non-survey original research."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "the system samples candidate solutions, asks the user to provide preferential feedback on them, and iterates this procedure until finding the desired solution",
+          "we implement it into a melody composition system that combines a deep generative model with Bayesian optimization",
+          "We conducted a simulated experiment"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is an active learning/optimization flow not just evaluation; many passages describe building a system that learns from preferences."
+      },
+      {
+        "criterion_id": "E2_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "SHORT-PAPER Interactive Exploration-Exploitation Balancing for Generative Melody Composition",
+          "We conducted a user study",
+          "We conducted a simulated experiment"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper is not a survey or review; it reports experiments and an implemented system."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope preference learning in audio and no exclusion criterion is triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhou2021interactive",
+    "candidate_title": "Interactive Exploration-Exploitation Balancing for Generative Melody Composition",
+    "stage": "stage2",
+    "workflow_arm": "criterion_ledger_current_kernel",
+    "qa_asset_path": "single_reviewer_async_experiments/criterion_ledger_current_kernel_2511_2026-04-15/assets/merged/2511.13936.stage2.json",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhou2021interactive",
+      "record_title": "Interactive Exploration-Exploitation Balancing for Generative Melody Composition",
+      "source": "semantic_scholar",
+      "source_id": "150f89deca428b39ebaf6782bb2dce0ca8e8093b",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhou2021interactive.md",
+      "fulltext_available": true
+    },
+    "role": "junior_nano"
+  }
+]
