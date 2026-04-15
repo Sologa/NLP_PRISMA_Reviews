@@ -1,0 +1,65 @@
+[
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "Full text content is not provided in the prompt to verify Stage 2 criteria.",
+      "Title/abstract do not reveal evidence of preference-based learning in audio; Stage 2 requires explicit content in full text."
+    ],
+    "evidence_highlights": [],
+    "decision_rationale": "Stage 2 cannot confirm inclusion or exclusion because full text evidence for preference-based learning in audio is unavailable in the prompt; based on title/abstract alone, there is no explicit support for Stage 2 inclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "google_scholar_hindex",
+    "candidate_title": "Top Publications - Computer Science",
+    "stage": "stage2",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "google_scholar_hindex",
+      "record_title": "Top Publications - Computer Science",
+      "source": "manual",
+      "source_id": "https://scholar.google.com/citations?view_op=top_venues&hl=en",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/google_scholar_hindex.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The paper uses a ranking-based approach to emotion recognition in music, directly ranking a collection of music pieces by emotion rather than assigning absolute emotion values.",
+      "It develops a learning-to-rank algorithm (RBF-ListNet) to rank music pieces by emotion, which is applied within the audio domain (music organization and retrieval).",
+      "The work is not a survey or review; it presents a novel method with empirical evaluation and analysis."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "ranking-based emotion annotation and the proposed RBF-ListNet ranking model",
+      "music emotion tournament using pairwise comparisons to build a ranking",
+      "empirical evaluation including Gamma statistics (0.326) and subjective assessments"
+    ],
+    "decision_rationale": "The full text directly satisfies Stage 2 inclusion criteria: it pertains to preference-based learning in audio through ranking and learning-to-rank for MER, introduces an explicit learning model (RBF-ListNet), and provides empirical evaluation. There is no indication of survey/review content or exclusion conditions being met.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2010ranking",
+    "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
+    "stage": "stage2",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2010ranking",
+      "record_title": "Ranking-based emotion recognition for music organization and retrieval",
+      "source": "openalex",
+      "source_id": "10.1109/tasl.2010.2064164",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
+      "fulltext_available": true
+    }
+  }
+]

@@ -1,0 +1,176 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_TRANSFORMER_LM_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We consider Llama-3-8B (Dubey et al., 2024) and Aya-23-8B (Aryabumi et al., 2024).",
+          "In this work, we train a set of sparse autoen-coders on the intermediate activations of Llama-3-8B (Dubey et al., 2024) and Aya-3-8B (Aryabumi et al., 2024) and locate (massively) multilingual features for various morphosyntactic concepts."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text directly references transformer-based LM families (Llama-3-8B, Aya-23-8B) and uses their activations."
+      },
+      {
+        "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+        "status": "YES",
+        "supporting_quotes": [
+          "We design experiments to quantify the degree to which these concepts are shared across languages, and validate their role in the models generations.",
+          "We train a probing classifier for each combination of morphosyntactic concept (e.g., gender) and language (e.g., English).",
+          "Given labeled classification data, we may train logistic regressions to map from the activations of frozen intermediate layers of pre-trained models to the task labels."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Paper conducts explicit empirical analysis of morphosyntactic concepts via probing classifiers and causal interventions across languages."
+      },
+      {
+        "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+        "status": "NO",
+        "supporting_quotes": [
+          "Models. We consider Llama-3-8B (Dubey et al., 2024) and Aya-23-8B (Aryabumi et al., 2024)."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No evidence that the work focuses on non-transformer or MT-encoder-decoder architectures; rather, it analyzes transformer LMs and uses MT as a downstream task."
+      },
+      {
+        "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+        "status": "NO",
+        "supporting_quotes": [
+          "We design experiments to quantify the degree to which these concepts are shared across languages, and validate their role in the models generations.",
+          "We train a probing classifier for each combination of morphosyntactic concept (e.g., gender) and language (e.g., English).",
+          "We then quantify the extent of cross-lingual feature sharing for morphosyntactic concepts, and later evaluate the selectivity of targeted morphosyntactic concept interventions."
+        ],
+        "counter_quotes": [
+          "In this work, we train a set of sparse autoen-coders on the intermediate activations of Llama-3-8B (Dubey et al., 2024) and Aya-3-8B (Aryabumi et al., 2024) and locate (massively) multilingual features for various morphosyntactic concepts."
+        ],
+        "missingness_reason": null,
+        "notes": "There is clear empirical syntax analysis via morphosyntactic probing and interventions; E2 does not apply."
+      },
+      {
+        "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+        "status": "NO",
+        "supporting_quotes": [
+          "We design experiments to quantify the degree to which these concepts are shared across languages, and validate their role in the models generations.",
+          "We leverage this property in a machine translation setting to (i) demonstrate the functional selectivity of the discovered morphosyntactic features",
+          "We restrict our analysis to tense (Past vs. Present), gender (Masc. vs. Fem.), and number (Sing. vs. Plural)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper provides empirical components (probing, ablations, translation experiments), not a survey/position paper."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text clearly demonstrates Transformer LM focus and empirical syntax analysis with no triggering exclusions. All inclusion criteria are satisfied and exclusion criteria are not triggered, yielding an include verdict (stage_score 5).",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "The paper is about Transformer-based language models and empirically analyzes syntactic/morphosyntactic representations across typologically diverse languages; no exclusion criteria are triggered.",
+    "paper_id": "2601.19926",
+    "candidate_key": "brinkmann_large_2025",
+    "candidate_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_2stage_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2601.19926.stage2.json",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "brinkmann_large_2025",
+      "record_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+      "source": "crossref",
+      "source_id": "10.18653/v1/2025.naacl-long.312",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/brinkmann_large_2025.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_TRANSFORMER_LM_FIT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "Large Language Models (LLMs)",
+          "Our large-scale experiments, spanning 100+ LLMs and 150k minimal pairs in three languages"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text references LLMs but does not explicitly state Transformer-based language models."
+      },
+      {
+        "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce a novel analysis that leverages linguistic minimal pairs to probe the internal linguistic representations of Large Language Models (LLMs).",
+          "Our large-scale experiments, spanning 100+ LLMs and 150k minimal pairs in three languages, reveal properties of linguistic similarity from four key aspects: consistency across LLMs, relation to theoretical categorizations, dependency to semantic context, and cross-lingual alignment of relevant phenomena.",
+          "Subject-Verb Agreement (morphology)",
+          "Binding (syntax-semantics)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work conducts empirical analysis on linguistic phenomena, including syntax, across many LLMs."
+      },
+      {
+        "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+        "status": "NO",
+        "supporting_quotes": [
+          "A comprehensive range of 104 LLMs from Huggingface was employed; the complete list is provided in Appendix A.",
+          "104 LLMs"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit focus on non-transformer architectures or MT-focused encoder-decoder systems is evident; the work centers on LLMs."
+      },
+      {
+        "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+        "status": "NO",
+        "supporting_quotes": [
+          "Activations",
+          "Difference",
+          "Subject-Verb Agreement (morphology)",
+          "Binding (syntax-semantics)",
+          "NPI licensing",
+          "sentential negation NPI licensor present"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper analyzes syntactic phenomena and provides empirical syntax-focused analysis across languages."
+      },
+      {
+        "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+        "status": "NO",
+        "supporting_quotes": [
+          "Our large-scale experiments, spanning 100+ LLMs and 150k minimal pairs in three languages",
+          "Conclusion Our comprehensive analysis of linguistic similarity in LLMs, spanning over 100 models and 150k minimal pairs across three languages, reveals several key insights."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work includes original empirical experiments; it is not a secondary study."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "The full text provides clear empirical syntax analysis on large language models, but explicit Transformer-LM labeling is not guaranteed by the text alone. No exclusion criteria are triggered. Therefore the work falls into a maybe scenario pending canonical full-text confirmation.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Empirical syntax analysis is present; Transformer-LM fit is not explicitly stated; no exclusions triggered.",
+    "paper_id": "2601.19926",
+    "candidate_key": "zhou_linguistic_2025",
+    "candidate_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_2stage_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2601.19926.stage2.json",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "zhou_linguistic_2025",
+      "record_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+      "source": "manual",
+      "source_id": "https://aclanthology.org/2025.coling-main.459/",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/zhou_linguistic_2025.md",
+      "fulltext_available": true
+    }
+  }
+]

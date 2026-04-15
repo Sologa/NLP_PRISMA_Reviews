@@ -1,0 +1,111 @@
+[
+  {
+    "stage_score": 4,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract identifies MusicLM as a model generating high-fidelity music from text descriptions, i.e., a generative audio model.",
+      "Abstract indicates the primary focus is on generating music from text (a generative audio model/application).",
+      "Output domain is audio/music (music generation) as described in the abstract."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The Stage 1 topic is 'The Ethical Implications of Generative Audio Models'; the abstract does not discuss ethics, so alignment with the ethical scope is not explicit.",
+      "Evidence for Stage 1 criteria beyond generative-audio focus (e.g., full-paper status, appendices scope) is not evident from the title/abstract alone."
+    ],
+    "evidence_highlights": [
+      "\"a model generating high-fidelity music from text descriptions\"",
+      "It generates music at 24 kHz that remains consistent over several minutes.",
+      "MusicLM can be conditioned on both text and a melody",
+      "MusicCaps, a dataset composed of 5.5k music-text pairs"
+    ],
+    "decision_rationale": "The abstract clearly supports inclusion under the Stage 1 criterion of a generative audio model with primary focus on audio generation, which aligns with the 'any_of' requirement. However, the ethics-focused Stage 1 topic is not addressed in the abstract, introducing some uncertainty about alignment with the ethical scope. Given the explicit generative-audio focus, inclusion is recommended, with caveats about ethics alignment not being evidenced in the title/abstract.",
+    "paper_id": "2307.05527",
+    "candidate_key": "agostinelli2023musiclm",
+    "candidate_title": "MusicLM: Generating Music From Text",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "agostinelli2023musiclm",
+      "record_title": "MusicLM: Generating Music From Text",
+      "source": "arxiv",
+      "source_id": "2301.11325v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/agostinelli2023musiclm.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Topic is not audio-focused: title/abstract describe deep generative modelling across VAEs, GANs, normalizing flows, etc., with no emphasis on audio as the central output.",
+      "Output domain is not explicitly audio-only or audio-centric in the abstract.",
+      "Paper appears to be a general survey of generative models rather than specifically about generative audio models."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses deep generative models (VAEs, GANs, normalizing flows, energy-based and autoregressive models) with no explicit audio focus.",
+      "The work is a comparative review of general generative modelling approaches, not an audio-specific study."
+    ],
+    "decision_rationale": "Stage 1 assessment shows no explicit support in title/abstract for an audio-focused generative modelling paper. The inclusion criteria require a primary focus on generative audio models with audio-only output, which is not demonstrated here.",
+    "paper_id": "2307.05527",
+    "candidate_key": "bond2021deep",
+    "candidate_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "bond2021deep",
+      "record_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+      "source": "arxiv",
+      "source_id": "2103.04922v4",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/bond2021deep.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract describes a full research paper introducing a generative audio model (Jukebox) with methods and results.",
+      "Topic is generative audio modeling with output in the audio domain (music with singing in raw audio).",
+      "Abstract states the model uses multi-scale VQ-VAE and autoregressive Transformers to generate audio.",
+      "Abstract notes conditioning capabilities on artist, genre, and unaligned lyrics to steer style and singing."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not address ethical implications or societal impact; Stage 1 ethics-focused topic would typically expect discussion of ethics, but the abstract clearly centers on the technical model."
+    ],
+    "evidence_highlights": [
+      "Generates music with singing in the raw audio domain.",
+      "Multi-scale VQ-VAE to compress to discrete codes and autoregressive Transformers.",
+      "Condition on artist and genre to steer musical and vocal style, and on unaligned lyrics for controllability.",
+      "Claims high-fidelity, diverse songs with coherence over minutes."
+    ],
+    "decision_rationale": "Stage 1 evidence from title/abstract clearly supports inclusion: the paper is a generative audio model with audio output and provides technical details and results. While ethics are not addressed in the abstract, the inclusion criteria allow a focus on the generative audio model itself; the lack of explicit ethical discussion does not preclude inclusion at Stage 1.",
+    "paper_id": "2307.05527",
+    "candidate_key": "dhariwal2020jukebox",
+    "candidate_title": "Jukebox: A Generative Model for Music",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "dhariwal2020jukebox",
+      "record_title": "Jukebox: A Generative Model for Music",
+      "source": "arxiv",
+      "source_id": "2005.00341v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/dhariwal2020jukebox.md",
+      "fulltext_available": true
+    }
+  }
+]

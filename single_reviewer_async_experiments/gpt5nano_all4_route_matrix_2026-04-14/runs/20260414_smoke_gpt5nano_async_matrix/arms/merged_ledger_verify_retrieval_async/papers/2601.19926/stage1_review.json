@@ -1,0 +1,263 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_TRANSFORMER_LM_FIT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Model family not explicit as Transformer; evidence inconclusive."
+      },
+      {
+        "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit syntax analysis stated in title/abstract."
+      },
+      {
+        "criterion_id": "I3_DEFER_PLAUSIBLE_SYNTAX",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No clear signal to defer; evidence insufficient to judge plausibility."
+      },
+      {
+        "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit non-transformer or MT encoder-decoder claim in title/abstract."
+      },
+      {
+        "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract does not state lack of syntax analysis."
+      },
+      {
+        "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit empirical component noted in title/abstract; unable to determine type."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "No exclusion criteria are clearly triggered and there is no explicit evidence in the title/abstract that the work covers Transformer-based language models with empirical syntax analysis. Therefore, Stage 1 screening result is 'maybe'.",
+    "manual_review_needed": false,
+    "routing_note": "No decisive Stage 1 signal from title/abstract. Route to Stage 2 if full text confirms Transformer LM focus and empirical syntax analysis.",
+    "short_summary": "Title/abstract provide insufficient evidence for Transformer-LM + empirical syntax analysis; assessment is uncertain.",
+    "paper_id": "2601.19926",
+    "candidate_key": "brinkmann_large_2025",
+    "candidate_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_retrieval_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2601.19926.stage1.json",
+    "criteria_path": "criteria_stage1/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "brinkmann_large_2025",
+      "record_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+      "source": "crossref",
+      "source_id": "10.18653/v1/2025.naacl-long.312",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/brinkmann_large_2025.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_TRANSFORMER_LM_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "\"Transformer-based models have pushed state of the art in many areas of NLP\""
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The abstract explicitly references Transformer-based models (BERT)."
+      },
+      {
+        "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"what kind of information it learns and how it is represented\""
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract mentions learning/representation but does not explicitly state empirical syntax analysis."
+      },
+      {
+        "criterion_id": "I3_DEFER_PLAUSIBLE_SYNTAX",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"This paper is the first survey of over 150 studies of the popular BERT model\""
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract presents a broad survey; explicit syntax analysis plausibility is not stated."
+      },
+      {
+        "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+        "status": "NO",
+        "supporting_quotes": [
+          "\"Transformer-based models have pushed state of the art in many areas of NLP\""
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "There is explicit Transformer/BERT content; no direct hint of non-transformer/MT encoder–decoder focus."
+      },
+      {
+        "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"we review the current state of knowledge about how BERT works, what kind of information it learns and how it is represented\""
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract does not clearly state whether syntax analysis is performed; ambiguous with respect to this exclusion."
+      },
+      {
+        "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+        "status": "YES",
+        "supporting_quotes": [
+          "\"This paper is the first survey of over 150 studies of the popular BERT model\""
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Explicitly identified as a survey; lacks an empirical component."
+      }
+    ],
+    "stage_score": 1,
+    "decision_rationale": "E3 triggers a clear Stage 1 exclusion (no empirical component; survey). Per policy, exclude when an exclusion criterion is clearly triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Exclude at Stage 1 due to explicit survey status (E3).",
+    "short_summary": "Stage 1 exclusion: survey paper with no empirical component.",
+    "paper_id": "2601.19926",
+    "candidate_key": "rogers_primer_2020",
+    "candidate_title": "A Primer in BERTology: What We Know About How BERT Works",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_retrieval_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2601.19926.stage1.json",
+    "criteria_path": "criteria_stage1/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "rogers_primer_2020",
+      "record_title": "A Primer in BERTology: What We Know About How BERT Works",
+      "source": "crossref",
+      "source_id": "10.1162/tacl_a_00349",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/rogers_primer_2020.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_TRANSFORMER_LM_FIT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"Large Language Models (LLMs)\""
+        ],
+        "counter_quotes": [
+          "The abstract does not explicitly mention Transformer."
+        ],
+        "missingness_reason": null,
+        "notes": "The abstract references LLMs but not Transformer; explicit Transformer focus is not stated."
+      },
+      {
+        "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"probe the internal linguistic representations\"",
+          "\"linguistic similarity\""
+        ],
+        "counter_quotes": [
+          "No explicit syntax-analysis claim in abstract."
+        ],
+        "missingness_reason": null,
+        "notes": "Empirical study of linguistic representations; syntax analysis not explicitly claimed."
+      },
+      {
+        "criterion_id": "I3_DEFER_PLAUSIBLE_SYNTAX",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"linguistic minimal pairs\""
+        ],
+        "counter_quotes": [
+          "No explicit syntax analysis stated."
+        ],
+        "missingness_reason": null,
+        "notes": "Minimal-pairs approach suggests potential syntax focus but not explicit in abstract."
+      },
+      {
+        "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"Large Language Models (LLMs)\""
+        ],
+        "counter_quotes": [
+          "The abstract does not specify non-transformer architectures."
+        ],
+        "missingness_reason": null,
+        "notes": "No explicit architectural class stated."
+      },
+      {
+        "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "\"internal linguistic representations\"",
+          "\"linguistic similarity\""
+        ],
+        "counter_quotes": [
+          "No explicit claim about syntax analysis."
+        ],
+        "missingness_reason": null,
+        "notes": "Not explicit syntax analysis; focus is on representations and linguistic similarity."
+      },
+      {
+        "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+        "status": "NO",
+        "supporting_quotes": [
+          "\"Our large-scale experiments, spanning 100+ LLMs and 150k minimal pairs\""
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Explicit empirical content; does not indicate a secondary/review type."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "Stage 1 inclusion requires clear Transformer-LM focus and explicit empirical syntax analysis with no exclusions. The abstract references LLMs and linguistic representations but does not explicitly state Transformer-based models or syntax analysis. There is clear empirical work, but syntax-specific findings are not explicitly stated, placing this in a 'maybe' category.",
+    "manual_review_needed": false,
+    "routing_note": "Consider Stage 2 for canonical full-text confirmation of syntax-analysis signals and Transformer focus.",
+    "short_summary": "Empirical study of linguistic representations in LLMs; explicit syntax/Transformer focus not stated.",
+    "paper_id": "2601.19926",
+    "candidate_key": "zhou_linguistic_2025",
+    "candidate_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_retrieval_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2601.19926.stage1.json",
+    "criteria_path": "criteria_stage1/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "zhou_linguistic_2025",
+      "record_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+      "source": "manual",
+      "source_id": "https://aclanthology.org/2025.coling-main.459/",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/zhou_linguistic_2025.md",
+      "fulltext_available": true
+    }
+  }
+]

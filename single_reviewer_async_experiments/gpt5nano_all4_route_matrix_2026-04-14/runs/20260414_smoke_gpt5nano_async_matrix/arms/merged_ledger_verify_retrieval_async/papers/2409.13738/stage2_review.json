@@ -1,0 +1,122 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_FULL_RESEARCH_ENGLISH_FULLTEXT",
+        "status": "YES",
+        "supporting_quotes": [
+          "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full text is English and presents a full research article (title/abstract/introduction sections visible)."
+      },
+      {
+        "criterion_id": "I2_PRIMARY_RESEARCH",
+        "status": "YES",
+        "supporting_quotes": [
+          "The contributions of our paper are as follows:",
+          "We demonstrate the importance of bidirectional pre-training for language representations.",
+          "BERT advances the state of the art for eleven NLP tasks."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Describes original model and empirical results across multiple NLP tasks."
+      },
+      {
+        "criterion_id": "I3_CORE_PROCESS_EXTRACTION_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "There are two steps in our framework: pre-training and fine-tuning.",
+          "Input/Output Representations",
+          "To make BERT handle a variety of downstream tasks, our input representation is able to unambiguously represent both a single sentence and a pair of sentences.",
+          "The question-answering example in Figure 1 will serve as a running example for this section."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text discusses general NLP tasks and pre-training/fine-tuning, not process extraction from natural-language text."
+      },
+      {
+        "criterion_id": "I4_CONCRETE_METHOD_AND_VALIDATION",
+        "status": "YES",
+        "supporting_quotes": [
+          "There are two steps in our framework: pre-training and fine-tuning.",
+          "During pre-training, the model is trained on unlabeled data over different pre-training tasks.",
+          "For fine-tuning, the BERT model is first initialized with the pre-trained parameters, and all of the parameters are fine-tuned using labeled data from the downstream tasks."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Describes a concrete methodology (pre-training + fine-tuning) and empirical validation across NLP tasks."
+      },
+      {
+        "criterion_id": "E1_PAPER_TYPE_FAIL",
+        "status": "NO",
+        "supporting_quotes": [
+          "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+          "We introduce a new language representation model called BERT..."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No evidence of paper-type failure; the text reads as a full English research article."
+      },
+      {
+        "criterion_id": "E2_SECONDARY_RESEARCH",
+        "status": "NO",
+        "supporting_quotes": [
+          "The contributions of our paper are as follows:"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Describes original model and experiments; not a survey/review."
+      },
+      {
+        "criterion_id": "E3_NON_TARGET_SCOPE",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers.",
+          "There are two steps in our framework: pre-training and fine-tuning.",
+          "The tasks include question answering and language inference."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Scope is general NLP model development and evaluation, not NLP for process extraction from natural-language text."
+      },
+      {
+        "criterion_id": "E4_SUPERFICIAL_OR_NO_VALIDATION",
+        "status": "NO",
+        "supporting_quotes": [
+          "We present experiments on 11 NLP tasks.",
+          "Results are presented in Table 1.",
+          "Both BERTBASE and BERTLARGE outperform all systems on all tasks by a substantial margin, obtaining 4.5% and 7.0% respective average accuracy improvement over the prior state of the art."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Empirical validation is provided across multiple NLP tasks; not superficial."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "The canonical Stage 2 inclusion criteria require paper-type, language/full-text availability, primary research on NLP for process extraction, and empirical validation. While the paper is full English primary research with concrete method and validation (I1, I2, I4 satisfied), criterion I3 (NLP for process extraction) is not satisfied and is explicitly contradicted by E3_NON_TARGET_SCOPE, triggering an exclusion.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are not satisfied due to non-target scope (process extraction). Exclude.",
+    "paper_id": "2409.13738",
+    "candidate_key": "devlin_bert",
+    "candidate_title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_verify_retrieval_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2409.13738.stage2.json",
+    "criteria_path": "criteria_stage2/2409.13738.json",
+    "source_record_provenance": {
+      "record_key": "devlin_bert",
+      "record_title": "BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding",
+      "source": "arxiv",
+      "source_id": "1810.04805v2",
+      "metadata_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2409.13738.json",
+      "fulltext_candidate_path": "refs/2409.13738/mds/devlin_bert.md",
+      "fulltext_available": true
+    }
+  }
+]

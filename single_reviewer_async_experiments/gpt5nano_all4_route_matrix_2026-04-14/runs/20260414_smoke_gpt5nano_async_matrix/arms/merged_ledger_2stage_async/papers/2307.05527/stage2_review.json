@@ -1,0 +1,206 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_FULL_RESEARCH_PAPER",
+        "status": "YES",
+        "supporting_quotes": [
+          "Abstract We introduce MusicLM, a model for generating high-fidelity music from text descriptions such as “a calming violin melody backed by a distorted guitar riff.”",
+          "The key contributions of this work are the following: 1. We introduce MusicLM, a generative model that produces high-quality music at 24 kHz which is consistent over several minutes while being faithful to a text conditioning signal.",
+          "We release MusicCaps, a dataset composed of 5.5k music-text pairs, with rich text descriptions provided by human experts."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text is a standard long-form conference/journal paper (abstract, sections, conclusions) with explicit contributions and dataset release."
+      },
+      {
+        "criterion_id": "I2_GENERATIVE_AUDIO_PRIMARY_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "Abstract We introduce MusicLM, a model for generating high-fidelity music from text descriptions such as “a calming violin melody backed by a distorted guitar riff.”",
+          "The key contributions of this work are the following: 1. We introduce MusicLM, a generative model that produces high-quality music at 24 kHz which is consistent over several minutes while being faithful to a text conditioning signal."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Generative audio model with music as the central output; explicit discussion of conditional music generation from text and other conditioning signals."
+      },
+      {
+        "criterion_id": "I3_AUDIO_ONLY_PRIMARY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "When trained on a large dataset of unlabeled music, MusicLM learns to generate long and coherent music at 24 kHz, for text descriptions of significant complexity, such as “enchanting jazz song with a memorable saxophone solo and a solo singer”",
+          "MusicLM ... produces high-quality music at 24 kHz, consistent over several minutes, while being faithful to the text conditioning signal."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The primary outputs are audio (music) at 24 kHz; the paper repeatedly emphasizes audio generation as the output domain."
+      },
+      {
+        "criterion_id": "E1_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [
+          "Abstract We introduce MusicLM, a model for generating high-fidelity music from text descriptions."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No ASR/transcription final-output task is described; the work is about audio generation from text conditioning."
+      },
+      {
+        "criterion_id": "E2_NON_AUDIO_OR_MULTI_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "MusicLM, a model for generating high-fidelity music from text descriptions.",
+          "We extend MusicLM to accept an additional melody in the form of audio ... as conditioning to generate a music clip that follows the desired melody, rendered in the style described by the text prompt."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Primary outputs remain audio; even when conditioning on melody audio, there is no non-audio primary output reported."
+      },
+      {
+        "criterion_id": "E3_NON_GENERATIVE_OR_NO_USE_CASE",
+        "status": "NO",
+        "supporting_quotes": [
+          "MusicLM builds on top of AudioLM with three important additional contributions: (1) we condition the generation process on a descriptive text, (2) we show that the conditioning can be extended to other signals such as melody, and (3) we model a large variety of long music sequences beyond piano music."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Clear emphasis on a generative model for music with substantive audio outputs and use cases; not a non-generative or purely metric-paper."
+      },
+      {
+        "criterion_id": "E4_SECONDARY_OR_EXTERNAL_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "7. Conclusions We introduce MusicLM, a text-conditioned generative model that produces high-quality music at 24 kHz, consistent over several minutes, while being faithful to the text conditioning signal."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper is presented as a full manuscript (sections 1–8) rather than an external supplement or extended abstract."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports a canonical generative-audio primary-focus paper with audio-only outputs and no exclusion criteria triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2307.05527",
+    "candidate_key": "agostinelli2023musiclm",
+    "candidate_title": "MusicLM: Generating Music From Text",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_2stage_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage2.json",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "agostinelli2023musiclm",
+      "record_title": "MusicLM: Generating Music From Text",
+      "source": "arxiv",
+      "source_id": "2301.11325v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/agostinelli2023musiclm.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_FULL_RESEARCH_PAPER",
+        "status": "YES",
+        "supporting_quotes": [
+          "Abstract We introduce Jukebox, a model that generates music with singing in the raw audio domain.",
+          "Jukebox: A Generative Model for Music",
+          "8. Conclusion We have introduced Jukebox, a model that generates raw audio music imitating many different styles and artists."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text shows a complete, multi-section research paper structure with abstract, introduction, methods, experiments, and conclusions."
+      },
+      {
+        "criterion_id": "I2_GENERATIVE_AUDIO_PRIMARY_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce Jukebox, a model that generates music with singing in the raw audio domain.",
+          "In this work, we show that we can use state-of-the-art deep generative models to produce a single system capable of generating diverse high-ﬁdelity music in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper centers on a generative audio model that produces raw audio with singing; audio generation is the primary focus."
+      },
+      {
+        "criterion_id": "I3_AUDIO_ONLY_PRIMARY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "we can use state-of-the-art deep generative models to produce a single system capable of generating diverse high-ﬁdelity music in the raw audio domain",
+          "the model that generates music with singing in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Output domain is clearly audio (raw audio domain) with singing; no non-audio primary outputs are described as the main result."
+      },
+      {
+        "criterion_id": "E1_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No evidence of ASR, transcription, or final text-output tasks; the work is rooted in audio generation."
+      },
+      {
+        "criterion_id": "E2_NON_AUDIO_OR_MULTI_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "generate music with singing in the raw audio domain",
+          "generate high-fidelity music in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Primary outputs are audio songs produced in the raw audio domain; no non-audio or multiple primary outputs are described as the main result."
+      },
+      {
+        "criterion_id": "E3_NON_GENERATIVE_OR_NO_USE_CASE",
+        "status": "NO",
+        "supporting_quotes": [
+          "a model that generates music with singing in the raw audio domain",
+          "generate songs from highly diverse genres of music"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is explicitly generative (music generation) with demonstrated use in various genres and singing."
+      },
+      {
+        "criterion_id": "E4_SECONDARY_OR_EXTERNAL_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "We are releasing thousands of non cherry-picked samples, along with model weights and code at https://github.com/openai/jukebox",
+          "We release our model weights and training and sampling code at https://github.com/openai/jukebox"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper is self-contained with internal model/code releases; no dependence on external supplements-only forms."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports a canonical, stage-2 eligible item set: the work is a full-length research paper focused on generative audio with audio-only outputs, and no exclusion criteria are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2307.05527",
+    "candidate_key": "dhariwal2020jukebox",
+    "candidate_title": "Jukebox: A Generative Model for Music",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_2stage_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage2.json",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "dhariwal2020jukebox",
+      "record_title": "Jukebox: A Generative Model for Music",
+      "source": "arxiv",
+      "source_id": "2005.00341v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/dhariwal2020jukebox.md",
+      "fulltext_available": true
+    }
+  }
+]

@@ -1,0 +1,100 @@
+[
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not reveal any evidence of preference-based learning in audio within the scope of the Stage 1 criteria."
+    ],
+    "evidence_highlights": [
+      "No explicit references to audio-domain preference learning, ranking, A/B comparisons, or RL loops are present in the provided title/abstract."
+    ],
+    "decision_rationale": "Stage 1 evidence cannot confirm fit from the given title/abstract. The core inclusion criteria require explicit indicators of preference-based learning in audio, which are not present. Therefore, the evidence is insufficient to decide inclusion or exclusion at Stage 1; a 'maybe' is appropriate pending more explicit abstract or Stage 2 review.",
+    "paper_id": "2511.13936",
+    "candidate_key": "google_scholar_hindex",
+    "candidate_title": "Top Publications - Computer Science",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "google_scholar_hindex",
+      "record_title": "Top Publications - Computer Science",
+      "source": "manual",
+      "source_id": "https://scholar.google.com/citations?view_op=top_venues&hl=en",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/google_scholar_hindex.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain (PRISMA guideline for systematic reviews)."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract focuses on PRISMA 2020 guideline for reporting systematic reviews; no audio domain or preference-learning mentioned."
+    ],
+    "decision_rationale": "Stage 1 evidence shows the paper is not about preference-based learning in audio and does not reside in the audio domain, thus it fails all Stage 1 inclusion criteria. ",
+    "paper_id": "2511.13936",
+    "candidate_key": "page2021prisma",
+    "candidate_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "page2021prisma",
+      "record_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+      "source": "pubmed",
+      "source_id": "34446261",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/page2021prisma.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Ranking-based objective function for emotion recognition in music (relative emotion to other songs).",
+      "Abstract describes an RBF-ListNet algorithm to optimize the ranking-based objective.",
+      "Emotion represented as valence and arousal dimensions with coordinates determined by relative emotion to other songs.",
+      "Applied within the audio domain (music organization and retrieval).",
+      "Not a survey/review article; presents a learning method for ranking-based emotion recognition."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "ranking-based objective function",
+      "relative emotion of the song with respect to other songs",
+      "RBF-ListNet algorithm",
+      "valence and arousal as the dimensions",
+      "music organization and retrieval"
+    ],
+    "decision_rationale": "Stage 1 evidence from the title/abstract strongly supports Stage 2 inclusion: the work demonstrates a ranking-based, preference-learning approach in the audio domain (music emotion recognition) with a concrete learning method (RBF-ListNet). There are no stated exclusion criteria in the abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2010ranking",
+    "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2010ranking",
+      "record_title": "Ranking-based emotion recognition for music organization and retrieval",
+      "source": "openalex",
+      "source_id": "10.1109/tasl.2010.2064164",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
+      "fulltext_available": true
+    }
+  }
+]

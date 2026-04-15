@@ -1,0 +1,65 @@
+{
+  "paper_id": "2511.13936",
+  "stage": "stage1",
+  "topic": "Preference-Based Learning in Audio Applications",
+  "topic_definition": "Stage 1 only uses title and abstract. Keep source-faithful boundaries: preference-learning signals in audio, numeric ratings only when converted to rankings/comparisons, RL loops for audio models as alternative eligibility, audio-domain applicability, and exclusion of preference-only-for-evaluation or review articles.",
+  "decision_policy": "Recommend exclude when an exclusion criterion is clearly triggered or when the title/abstract directly contradicts the audio preference-learning fit. Recommend maybe when audio preference-learning fit is plausible but some decisive detail remains unresolved from title/abstract alone. Recommend include only when the title/abstract directly supports an in-scope preference-learning path in the audio domain and no exclusion criterion is triggered.",
+  "criteria": [
+    {
+      "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+      "criterion_type": "inclusion",
+      "criterion_text": "Title/abstract indicates preference-learning evidence in audio, such as ranking or A/B comparison of two or more audio clips.",
+      "criterion_question": "Does the title/abstract explicitly indicate a preference-learning signal in audio, such as ranking, pairwise comparison, or A/B comparison over audio clips?",
+      "assessment_policy": "Use YES only for direct preference or comparison signals tied to audio."
+    },
+    {
+      "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+      "criterion_type": "inclusion",
+      "criterion_text": "Numeric ratings count as preference evidence only when title/abstract indicates conversion to rankings or comparative preference signals.",
+      "criterion_question": "If numeric ratings are mentioned, does the title/abstract indicate that they are converted into rankings or comparative preference signals?",
+      "assessment_policy": "If ratings are mentioned without conversion to preference or ranking, prefer NO or UNCLEAR rather than assuming preference learning."
+    },
+    {
+      "criterion_id": "I3_RL_AUDIO_LOOP",
+      "criterion_type": "inclusion",
+      "criterion_text": "Papers without explicit comparisons remain eligible when title/abstract indicates an RL training loop for an audio model.",
+      "criterion_question": "If explicit comparisons are absent, does the title/abstract indicate an RL training loop for an audio model that could satisfy the alternative eligibility path?",
+      "assessment_policy": "Use YES only for RL training loops tied to an audio model."
+    },
+    {
+      "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper is applied within the audio domain. Multimodal works including audio are treated as within the audio domain.",
+      "criterion_question": "Does the title/abstract support that the paper is applied within the audio domain, including multimodal work that clearly includes audio?",
+      "assessment_policy": "Use UNCLEAR rather than NO when modality is plausible but not explicit."
+    },
+    {
+      "criterion_id": "I5_NOT_SURVEY_REVIEW",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper is not a survey or review article.",
+      "criterion_question": "Does the title/abstract support that this paper is not a survey or review article?",
+      "assessment_policy": "Use YES only when the paper appears to be a candidate primary study rather than secondary research."
+    },
+    {
+      "criterion_id": "E1_EVALUATION_ONLY",
+      "criterion_type": "exclusion",
+      "criterion_text": "Studies that use preferences solely for evaluation, with no learning component, are excluded.",
+      "criterion_question": "Does the title/abstract directly indicate that preferences are used only for evaluation and not as part of a learning component?",
+      "assessment_policy": "Use YES only for direct evaluation-only evidence."
+    },
+    {
+      "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+      "criterion_type": "exclusion",
+      "criterion_text": "Title/abstract clearly indicates the study is not applied within the audio domain.",
+      "criterion_question": "Does the title/abstract clearly indicate that the study is not in the audio domain?",
+      "assessment_policy": "Use YES only for direct non-audio evidence."
+    },
+    {
+      "criterion_id": "E3_SURVEY_REVIEW",
+      "criterion_type": "exclusion",
+      "criterion_text": "Survey or review articles are excluded.",
+      "criterion_question": "Does the title/abstract clearly indicate that this is a survey or review article?",
+      "assessment_policy": "Use YES only for explicit review/survey signals."
+    }
+  ]
+}

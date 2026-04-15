@@ -1,0 +1,305 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_FULL_RESEARCH_PAPER",
+        "status": "YES",
+        "supporting_quotes": [
+          "In this work, we introduce MusicLM, a model for generating high-fidelity music from text descriptions.",
+          "The key contributions of this work are the following: 1. We introduce MusicLM, a generative model that produces high-quality music at 24 kHz which is consistent over several minutes while being faithful to a text conditioning signal."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text explicitly presents a full research paper introducing MusicLM and enumerates its contributions."
+      },
+      {
+        "criterion_id": "I2_GENERATIVE_AUDIO_PRIMARY_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "MusicLM, a model for generating high-fidelity music from text descriptions.",
+          "The key contributions of this work are the following: 1. We introduce MusicLM, a generative model that produces high-quality music at 24 kHz..."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Central focus is generative audio (music) conditioned on text, with explicit demonstrations of audio generation quality and coherence."
+      },
+      {
+        "criterion_id": "I3_AUDIO_ONLY_PRIMARY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We use a SoundStream model for 24 kHz monophonic audio with a striding factor of 480, resulting in 50 Hz embeddings.",
+          "MusicLM learns to generate long and coherent music at 24 kHz, for text descriptions of significant complexity, such as “enchanting jazz song with a memorable saxophone solo…”.",
+          "During inference, we use as conditioning the MuLan text embedding extracted from the text prompt, and quantize it with the same RVQ as the one used for the audio embeddings, to obtain 12 tokens MT."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper describes audio-oriented representations, 24 kHz music generation, and audio-conditioned outputs; primary output domain is audio."
+      },
+      {
+        "criterion_id": "E1_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "MusicLM: Generating Music From Text"
+        ],
+        "missingness_reason": null,
+        "notes": "There is no indication of ASR or final text-output tasks; the work targets audio generation."
+      },
+      {
+        "criterion_id": "E2_NON_AUDIO_OR_MULTI_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "MusicLM, a model for generating high-fidelity music from text descriptions."
+        ],
+        "missingness_reason": null,
+        "notes": "Primary output is audio (music). The model supports conditioning signals but remains audio-centric rather than non-audio/multi-output."
+      },
+      {
+        "criterion_id": "E3_NON_GENERATIVE_OR_NO_USE_CASE",
+        "status": "NO",
+        "supporting_quotes": [
+          "MusicLM, a generative model that produces high-quality music at 24 kHz"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is explicitly described as a generative model for music generation; not non-generative."
+      },
+      {
+        "criterion_id": "E4_SECONDARY_OR_EXTERNAL_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "We provide samples from this study in the accompanying material."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper references accompanying materials; however, it is a full paper with main text and appendices. This does not render it as an extended abstract or external-only eligibility."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports in-scope Stage 2 inclusion criteria: it is a full paper, centrally focused on generative audio (music) with audio-only primary outputs; no exclusion criteria are clearly triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "MusicLM satisfies Stage 2 inclusion criteria: full research paper, audio-focused generative model with audio outputs; no exclusion criteria triggered.",
+    "paper_id": "2307.05527",
+    "candidate_key": "agostinelli2023musiclm",
+    "candidate_title": "MusicLM: Generating Music From Text",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage2.json",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "agostinelli2023musiclm",
+      "record_title": "MusicLM: Generating Music From Text",
+      "source": "arxiv",
+      "source_id": "2301.11325v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/agostinelli2023musiclm.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_FULL_RESEARCH_PAPER",
+        "status": "YES",
+        "supporting_quotes": [
+          "Abstract—Deep generative models are a class of techniques that train deep neural networks to model the distribution of training samples.",
+          "This survey provides a comprehensive overview of generative modelling trends, introducing new readers to the field, comparing and contrasting so as to explain the modelling decisions behind each respective technique."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Full journal-length paper with abstract and introduction; indicates long-form research article."
+      },
+      {
+        "criterion_id": "I2_GENERATIVE_AUDIO_PRIMARY_FOCUS",
+        "status": "NO",
+        "supporting_quotes": [
+          "Beyond this, generative modelling has numerous direct applications including image synthesis: super-resolution, text-to-image and image-to-image conversion, inpainting, attribute manipulation, pose estimation; video: synthesis and retargeting; audio: speech and music synthesis; text: summarisation and translation;",
+          "the compendium covers energy-based models, variational autoencoders, generative adversarial networks, autoregressive models, normalizing flows, in addition to numerous hybrid approaches."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper is a broad survey of generative modelling across modalities; audio is one of several applications, not the central focus."
+      },
+      {
+        "criterion_id": "I3_AUDIO_ONLY_PRIMARY_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "Beyond this, generative modelling has numerous direct applications including image synthesis: super-resolution, text-to-image and image-to-image conversion, inpainting, attribute manipulation, pose estimation; video: synthesis and retargeting; audio: speech and music synthesis; text: summarisation and translation;",
+          "video synthesis is more challenging due its exceptionally high dimensionality, typically approaches combine a latent-based implicit generative model to generate individual frames, with an autoregressive network used to predict future latents"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work discusses many modalities (image, video, audio, text) and is not audio-only; therefore not entirely audio-dominant."
+      },
+      {
+        "criterion_id": "E1_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [
+          "Beyond this, generative modelling has numerous direct applications including image synthesis: super-resolution, text-to-image and image-to-image conversion, inpainting, attribute manipulation, pose estimation; video: synthesis and retargeting; audio: speech and music synthesis; text: summarisation and translation;"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "ASR/transcription tasks are not evidenced; text appears as a modality among others (not the focus)."
+      },
+      {
+        "criterion_id": "E2_NON_AUDIO_OR_MULTI_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "Beyond this, generative modelling has numerous direct applications including image synthesis: super-resolution, text-to-image and image-to-image conversion, inpainting, attribute manipulation, pose estimation; video: synthesis and retargeting; audio: speech and music synthesis; text: summarisation and translation;",
+          "video synthesis is more challenging due its exceptionally high dimensionality, typically approaches combine a latent-based implicit generative model to generate individual frames, with an autoregressive network used to predict future latents"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper discusses multiple modalities (image, video, audio, text); not an audio-only or single-output work."
+      },
+      {
+        "criterion_id": "E3_NON_GENERATIVE_OR_NO_USE_CASE",
+        "status": "NO",
+        "supporting_quotes": [
+          "Abstract—Deep generative models are a class of techniques that train deep neural networks to model the distribution of training samples.",
+          "This survey provides a comprehensive overview of generative modelling trends, introducing new readers to the field, comparing and contrasting so as to explain the modelling decisions behind each respective technique."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work explicitly surveys generative modelling techniques; not a non-generative or purely metric-focused paper."
+      },
+      {
+        "criterion_id": "E4_SECONDARY_OR_EXTERNAL_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "IEEE TRANSACTIONS ON PATTERN ANALYSIS AND MACHINE INTELLIGENCE",
+          "Abstract—Deep generative models are a class of techniques that train deep neural networks to model the distribution of training samples."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper is a primary journal article, not an external supplement or extended abstract."
+      }
+    ],
+    "stage_score": 1,
+    "decision_rationale": "Stage 2 excludes because the full text is a broad, modality-agnostic survey of generative models rather than an audio-centric, audio-only, canonical source for generative-audio primary focus. Exclusion criteria are triggered (not audio-only primary outputs, not exclusively audio-focused, and multi-modal scope).",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are not satisfied; the work is a broad survey across modalities rather than an audio-centric paper.",
+    "paper_id": "2307.05527",
+    "candidate_key": "bond2021deep",
+    "candidate_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage2.json",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "bond2021deep",
+      "record_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+      "source": "arxiv",
+      "source_id": "2103.04922v4",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/bond2021deep.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_FULL_RESEARCH_PAPER",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce Jukebox, a model that generates music with singing in the raw audio domain."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text contains a complete paper structure (Abstract, Introduction, Methods, Experiments, Conclusion), indicating a full-length research paper."
+      },
+      {
+        "criterion_id": "I2_GENERATIVE_AUDIO_PRIMARY_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce Jukebox, a model that generates music with singing in the raw audio domain.",
+          "In this work, we show that we can use state-of-the-art deep generative models to produce a single system capable of generating diverse high-fidelity music in the raw audio domain."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper centers on a generative audio model for music in the raw audio domain."
+      },
+      {
+        "criterion_id": "I3_AUDIO_ONLY_PRIMARY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce Jukebox, a model that generates music with singing in the raw audio domain.",
+          "The model can generate high-fidelity and diverse songs with coherence up to multiple minutes."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Output is presented in raw audio domain with singing; primary outputs are audio samples."
+      },
+      {
+        "criterion_id": "E1_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "Lyrics-to-singing (LTS) task: The conditioning signal only includes the text of the lyrics, without timing or vocalisation information."
+        ],
+        "missingness_reason": null,
+        "notes": "There is use of text as input conditioning, but the final output remains audio; no ASR or final-text transcription is described."
+      },
+      {
+        "criterion_id": "E2_NON_AUDIO_OR_MULTI_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "The abstract describes generating music with singing in the raw audio domain, i.e., audio is the primary modality."
+        ],
+        "missingness_reason": null,
+        "notes": "Primary outputs are audio; no non-audio or multi-modal primary outputs are reported as the final output."
+      },
+      {
+        "criterion_id": "E3_NON_GENERATIVE_OR_NO_USE_CASE",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "We introduce Jukebox, a model that generates music with singing in the raw audio domain."
+        ],
+        "missingness_reason": null,
+        "notes": "The work is explicitly generative and discusses use cases (conditioning, lyrics), not a non-generative or purely metric-only study."
+      },
+      {
+        "criterion_id": "E4_SECONDARY_OR_EXTERNAL_ONLY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "A detailed description of the architecture is provided in Appendix B.1."
+        ],
+        "missingness_reason": null,
+        "notes": "The paper includes main body content plus appendices; it is not an external-supplement-only submission."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text supports a canonical Stage 2 include: it is a full-length paper centrally about a generative audio model with audio-only outputs, and no exclusion criteria are triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Jukebox satisfies Stage 2 inclusion criteria: full paper, generative-audio focus, and audio-only primary outputs; no exclusion criteria are met.",
+    "paper_id": "2307.05527",
+    "candidate_key": "dhariwal2020jukebox",
+    "candidate_title": "Jukebox: A Generative Model for Music",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage2.json",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "dhariwal2020jukebox",
+      "record_title": "Jukebox: A Generative Model for Music",
+      "source": "arxiv",
+      "source_id": "2005.00341v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/dhariwal2020jukebox.md",
+      "fulltext_available": true
+    }
+  }
+]

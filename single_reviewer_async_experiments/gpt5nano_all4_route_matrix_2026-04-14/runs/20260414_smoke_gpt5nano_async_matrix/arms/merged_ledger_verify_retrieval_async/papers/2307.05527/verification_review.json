@@ -1,0 +1,343 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_GENERATIVE_AUDIO_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "Topic is generative audio models, with a generative audio model or application as the primary focus."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The title/abstract (as represented in the asset) indicates a generative-audio focus, aligning with stage-1 requirements."
+      },
+      {
+        "criterion_id": "I2_AUDIO_ONLY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Output domain is entirely audio."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The asset implies an audio-focused output domain; no explicit non-audio primary outputs are indicated."
+      },
+      {
+        "criterion_id": "I3_FULL_PAPER_PLAUSIBLE",
+        "status": "YES",
+        "supporting_quotes": [
+          "Full research paper status is plausible from title/abstract or venue context, otherwise defer rather than hard-excluding at Stage 1."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work is described as a systematic literature review, which constitutes a full-paper form suitable for Stage 1."
+      },
+      {
+        "criterion_id": "E1_NOT_AUDIO_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "Not actually about audio as the central topic or output."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The title/abstract centers on generative audio models and their ethical implications, not non-audio topics."
+      },
+      {
+        "criterion_id": "E2_TEXT_OUTPUT_ASR",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "Speech-to-text or ASR or transcription work where the final output is text."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit ASR/transcription evidence is available in the provided abstract-level assets; assessment remains inconclusive."
+      },
+      {
+        "criterion_id": "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "Generates video or another non-audio primary output, or generates something in addition to audio as a primary output."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit indication of non-audio primary outputs in the provided assets; remains uncertain."
+      },
+      {
+        "criterion_id": "E4_NON_GENERATIVE_OR_SECONDARY",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "Non-generative work such as classification/prediction, or obvious survey/review/non-full-paper forms."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The asset describes a generative-audio topic; however, whether the work is purely non-generative or secondary is not explicit in the title/abstract."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The title/abstract directly supports a generative-audio focus with audio-only primary outputs and no clearly triggered exclusion criteria; several criteria remain ambiguous but do not negate inclusion at Stage 1.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Stage 1 criteria indicate sufficent evidence for inclusion with audio-focused generation and no explicit exclusions.",
+    "paper_id": "2307.05527",
+    "candidate_key": "agostinelli2023musiclm",
+    "candidate_title": "MusicLM: Generating Music From Text",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_retrieval_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage1.json",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "agostinelli2023musiclm",
+      "record_title": "MusicLM: Generating Music From Text",
+      "source": "arxiv",
+      "source_id": "2301.11325v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/agostinelli2023musiclm.md",
+      "fulltext_available": true
+    },
+    "verification_source_phase": "stage1_review",
+    "verification_input_kind": "title_abstract",
+    "routing_decision": {
+      "paper_id": "2307.05527",
+      "stage": "stage1",
+      "should_route": true,
+      "reasons": [
+        "criterion_unclear"
+      ],
+      "trap_hits": [],
+      "unclear_criterion_ids": [
+        "E2_TEXT_OUTPUT_ASR",
+        "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "E4_NON_GENERATIVE_OR_SECONDARY"
+      ]
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_GENERATIVE_AUDIO_FOCUS",
+        "status": "NO",
+        "supporting_quotes": [
+          "This compendium covers energy-based models, variational autoencoders, generative adversarial networks, autoregressive models, normalizing flows, in addition to numerous hybrid approaches."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The title/abstract discuss generic generative modelling without an explicit audio focus."
+      },
+      {
+        "criterion_id": "I2_AUDIO_ONLY_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "Deep generative models are a class of techniques that train deep neural networks to model the distribution of training samples."
+        ],
+        "counter_quotes": [
+          "The abstract does not specify an audio-only output domain or constraint."
+        ],
+        "missingness_reason": null,
+        "notes": "No indication that outputs are restricted to audio-only."
+      },
+      {
+        "criterion_id": "I3_FULL_PAPER_PLAUSIBLE",
+        "status": "YES",
+        "supporting_quotes": [
+          "This compendium covers energy-based models, variational autoencoders, generative adversarial networks, autoregressive models, normalizing flows, in addition to numerous hybrid approaches.",
+          "These techniques are compared and contrasted, explaining the premises behind each and how they are interrelated, while reviewing current state-of-the-art advances and implementations."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Appears to be a broad, long-form survey, plausible for a full paper."
+      },
+      {
+        "criterion_id": "E1_NOT_AUDIO_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "This compendium covers energy-based models, variational autoencoders, generative adversarial networks, autoregressive models, normalizing flows."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No audio-centric focus; non-audio central topic is indicated."
+      },
+      {
+        "criterion_id": "E2_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "There is no mention of speech-to-text, ASR, or transcription in the abstract."
+        ],
+        "missingness_reason": null,
+        "notes": "No direct evidence of text-output ASR in the abstract."
+      },
+      {
+        "criterion_id": "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "The abstract discusses deep generative models in general, with no explicit emphasis on audio as the sole or primary output."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No indication that a non-audio primary output (e.g., video, gestures) is the stated primary product."
+      },
+      {
+        "criterion_id": "E4_NON_GENERATIVE_OR_SECONDARY",
+        "status": "NO",
+        "supporting_quotes": [
+          "The text discusses generative modeling approaches (VAE, GANs, etc.)."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Content is centered on generative modelling; not a non-generative or secondary form."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "The routed paper is a general survey of deep generative modelling with no audio-centric focus. Exclusion criteria E1 (Not audio output) and E3 (Non-audio or multi-primary outputs) are clearly triggered. I1_GENERATIVE_AUDIO_FOCUS is not satisfied, and there is no explicit audio-only output. A semantic trap is present in the routing metadata (topic mentions audio ethics), but the title/abstract do not support an audio-centered focus. Therefore, Stage 1 should exclude.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 1 verdict: exclude due to non-audio focus; address the audio-oriented trap if needed in Stage 2.",
+    "short_summary": "Non-audio primary outputs; not audio-focused; exclude at Stage 1.",
+    "paper_id": "2307.05527",
+    "candidate_key": "bond2021deep",
+    "candidate_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_retrieval_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage1.json",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "bond2021deep",
+      "record_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+      "source": "arxiv",
+      "source_id": "2103.04922v4",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/bond2021deep.md",
+      "fulltext_available": true
+    },
+    "verification_source_phase": "stage1_review",
+    "verification_input_kind": "title_abstract",
+    "routing_decision": {
+      "paper_id": "2307.05527",
+      "stage": "stage1",
+      "should_route": true,
+      "reasons": [
+        "criterion_unclear"
+      ],
+      "trap_hits": [],
+      "unclear_criterion_ids": [
+        "I1_GENERATIVE_AUDIO_FOCUS",
+        "I2_AUDIO_ONLY_OUTPUT",
+        "E1_NOT_AUDIO_OUTPUT",
+        "E2_TEXT_OUTPUT_ASR",
+        "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "E4_NON_GENERATIVE_OR_SECONDARY"
+      ]
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_GENERATIVE_AUDIO_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "Jukebox: A Generative Model for Music",
+          "a model that generates music with singing in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract directly indicates generative music in the raw audio domain."
+      },
+      {
+        "criterion_id": "I2_AUDIO_ONLY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "generates music with singing in the raw audio domain",
+          "raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Output domain is audio-only as described in the abstract."
+      },
+      {
+        "criterion_id": "I3_FULL_PAPER_PLAUSIBLE",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce Jukebox, a model that generates music",
+          "generate high-fidelity and diverse songs with coherence up to multiple minutes"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Plausible as a full research paper based on model description and experiments."
+      },
+      {
+        "criterion_id": "E1_NOT_AUDIO_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract centers on audio generation; no evidence of non-audio mismatch."
+      },
+      {
+        "criterion_id": "E2_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No ASR or transcription final-output evidence in title/abstract."
+      },
+      {
+        "criterion_id": "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No indication of non-audio or multi-primary outputs in the title/abstract."
+      },
+      {
+        "criterion_id": "E4_NON_GENERATIVE_OR_SECONDARY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract describes a generative model; not a non-generative/secondary work."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The title/abstract strongly indicate a generative-audio focus with audio-only primary outputs; no exclusion criteria are triggered, yielding a strong include verdict.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Generative-audio focus strongly supported; audio-only primary outputs; no exclusions.",
+    "paper_id": "2307.05527",
+    "candidate_key": "dhariwal2020jukebox",
+    "candidate_title": "Jukebox: A Generative Model for Music",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_retrieval_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage1.json",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "dhariwal2020jukebox",
+      "record_title": "Jukebox: A Generative Model for Music",
+      "source": "arxiv",
+      "source_id": "2005.00341v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/dhariwal2020jukebox.md",
+      "fulltext_available": true
+    },
+    "verification_source_phase": "stage1_review",
+    "verification_input_kind": "title_abstract",
+    "routing_decision": {
+      "paper_id": "2307.05527",
+      "stage": "stage1",
+      "should_route": true,
+      "reasons": [
+        "criterion_unclear"
+      ],
+      "trap_hits": [],
+      "unclear_criterion_ids": [
+        "E1_NOT_AUDIO_OUTPUT",
+        "E2_TEXT_OUTPUT_ASR",
+        "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "E4_NON_GENERATIVE_OR_SECONDARY"
+      ]
+    }
+  }
+]

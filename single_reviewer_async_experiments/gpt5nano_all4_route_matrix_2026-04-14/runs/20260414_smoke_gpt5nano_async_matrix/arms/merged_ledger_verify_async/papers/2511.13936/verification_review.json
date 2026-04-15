@@ -1,0 +1,351 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract/title do not provide explicit evidence of a preference-learning signal (ranking or pairwise/A-B) in audio."
+      },
+      {
+        "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No mention of numeric ratings or conversion to rankings in title/abstract."
+      },
+      {
+        "criterion_id": "I3_RL_AUDIO_LOOP",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit RL loop described in title/abstract."
+      },
+      {
+        "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+        "status": "NO",
+        "supporting_quotes": [
+          "Not evidently within the audio domain based on title/abstract."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Evidence does not support audio-domain applicability in the title/abstract; modality plausibility is not explicit."
+      },
+      {
+        "criterion_id": "I5_NOT_SURVEY_REVIEW",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No clear signal that paper is not a survey; insufficient abstract/title content to decide."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit statement that preferences are used only for evaluation; lacking abstract content."
+      },
+      {
+        "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+        "status": "YES",
+        "supporting_quotes": [
+          "Title/abstract indicates non-audio domain."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Category explicitly not audio-focused; triggers exclusion at stage 1."
+      },
+      {
+        "criterion_id": "E3_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit survey/review signals in title/abstract."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "Stage 1 exclude due to E2_NOT_AUDIO_DOMAIN; the title/abstract do not indicate applicability to the audio domain, so no in-scope assignment can be made from the current inputs.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 1 verdict: exclude based on non-audio-domain indication.",
+    "short_summary": "Stage 1 projection indicates non-audio-domain content; exclusion triggered by E2.",
+    "paper_id": "2511.13936",
+    "candidate_key": "google_scholar_hindex",
+    "candidate_title": "Top Publications - Computer Science",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2511.13936.stage1.json",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "google_scholar_hindex",
+      "record_title": "Top Publications - Computer Science",
+      "source": "manual",
+      "source_id": "https://scholar.google.com/citations?view_op=top_venues&hl=en",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/google_scholar_hindex.md",
+      "fulltext_available": true
+    },
+    "verification_source_phase": "stage1_review",
+    "verification_input_kind": "title_abstract",
+    "routing_decision": {
+      "paper_id": "2511.13936",
+      "stage": "stage1",
+      "should_route": true,
+      "reasons": [
+        "criterion_unclear",
+        "evidence_conflict",
+        "stage1_exclude_not_all_core_no"
+      ],
+      "trap_hits": [],
+      "unclear_criterion_ids": [
+        "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "I2_RATINGS_TO_PREFERENCE",
+        "I3_RL_AUDIO_LOOP",
+        "E1_EVALUATION_ONLY"
+      ]
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit audio preference-learning signal in title/abstract."
+      },
+      {
+        "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No mention of numeric ratings or conversion to rankings in title/abstract."
+      },
+      {
+        "criterion_id": "I3_RL_AUDIO_LOOP",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No RL loop for an audio model mentioned."
+      },
+      {
+        "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract does not indicate application within the audio domain."
+      },
+      {
+        "criterion_id": "I5_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "The title/abstract describe a guideline for reporting systematic reviews, not a survey or primary study."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review article; GUIDELINE for systematic reviews."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No indication of evaluation-only usage of preferences."
+      },
+      {
+        "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+        "status": "YES",
+        "supporting_quotes": [
+          "The study title/abstract clearly indicates non-audio domain."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Exclusion due to non-audio domain."
+      },
+      {
+        "criterion_id": "E3_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not explicitly a survey or review article."
+      }
+    ],
+    "stage_score": 2,
+    "decision_rationale": "The title/abstract clearly indicate non-audio domain (E2), triggering an exclusion at Stage 1. No explicit audio preference-learning signals are present in the abstract. Therefore, the appropriate outcome is exclude at Stage 1. Stage 2 is not necessary unless/until audio-domain evidence emerges.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 1 exclude due to non-audio domain (E2).",
+    "short_summary": "PRISMA guideline is outside audio scope; exclude at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "page2021prisma",
+    "candidate_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2511.13936.stage1.json",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "page2021prisma",
+      "record_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+      "source": "pubmed",
+      "source_id": "34446261",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/page2021prisma.md",
+      "fulltext_available": true
+    },
+    "verification_source_phase": "stage1_review",
+    "verification_input_kind": "title_abstract",
+    "routing_decision": {
+      "paper_id": "2511.13936",
+      "stage": "stage1",
+      "should_route": true,
+      "reasons": [
+        "criterion_unclear"
+      ],
+      "trap_hits": [],
+      "unclear_criterion_ids": [
+        "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "I2_RATINGS_TO_PREFERENCE",
+        "I3_RL_AUDIO_LOOP",
+        "I4_AUDIO_DOMAIN_FIT",
+        "E1_EVALUATION_ONLY",
+        "E2_NOT_AUDIO_DOMAIN",
+        "E3_SURVEY_REVIEW"
+      ]
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_EXPLICIT_PREFERENCE_SIGNAL",
+        "status": "YES",
+        "supporting_quotes": [
+          "ranking-based objective function",
+          "we also develop an RBF-ListNet algorithm to optimize the ranking-based objective function of our approach",
+          "determine the coordinates of a song by the relative emotion of the song with respect to other songs"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Direct evidence of ranking-based signal in audio."
+      },
+      {
+        "criterion_id": "I2_RATINGS_TO_PREFERENCE",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit rating-to-ranking conversion mentioned in the title/abstract."
+      },
+      {
+        "criterion_id": "I3_RL_AUDIO_LOOP",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No RL training loop for an audio model is described; the work centers on ranking objectives."
+      },
+      {
+        "criterion_id": "I4_AUDIO_DOMAIN_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "Ranking-based emotion recognition for music organization and retrieval"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Music/emotion recognition implies audio-domain applicability."
+      },
+      {
+        "criterion_id": "I5_NOT_SURVEY_REVIEW",
+        "status": "YES",
+        "supporting_quotes": [
+          "Ranking-based emotion recognition for music organization and retrieval"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; describes experiments."
+      },
+      {
+        "criterion_id": "E1_EVALUATION_ONLY",
+        "status": "NO",
+        "supporting_quotes": [
+          "optimize the ranking-based objective function"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Indicates learning objective; not evaluation-only."
+      },
+      {
+        "criterion_id": "E2_NOT_AUDIO_DOMAIN",
+        "status": "NO",
+        "supporting_quotes": [
+          "Ranking-based emotion recognition for music organization and retrieval"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Audio-domain; not non-audio."
+      },
+      {
+        "criterion_id": "E3_SURVEY_REVIEW",
+        "status": "NO",
+        "supporting_quotes": [
+          "Experimental results show that this ranking-based approach"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Not a survey or review; includes experiments."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "The title/abstract directly supports an in-scope audio preference-learning path via ranking-based methods, with a clear learning component (ranking objective optimization). However, two criteria are unclear from the abstract (I2: ratings-to-preference conversion; I3: RL loop), which justifies routing to Stage 2 to resolve these ambiguities. No explicit exclusion triggers are evident from the abstract alone.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 required to resolve I2 and I3 ambiguities.",
+    "short_summary": "Ranking-based learning for audio is supported; some criteria (ratings conversion, RL loop) remain unresolved from title/abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2010ranking",
+    "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2511.13936.stage1.json",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2010ranking",
+      "record_title": "Ranking-based emotion recognition for music organization and retrieval",
+      "source": "openalex",
+      "source_id": "10.1109/tasl.2010.2064164",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
+      "fulltext_available": true
+    },
+    "verification_source_phase": "stage1_review",
+    "verification_input_kind": "title_abstract",
+    "routing_decision": {
+      "paper_id": "2511.13936",
+      "stage": "stage1",
+      "should_route": true,
+      "reasons": [
+        "criterion_unclear"
+      ],
+      "trap_hits": [],
+      "unclear_criterion_ids": [
+        "I2_RATINGS_TO_PREFERENCE",
+        "I3_RL_AUDIO_LOOP"
+      ]
+    }
+  }
+]

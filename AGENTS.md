@@ -466,3 +466,33 @@ These defaults apply unless the user explicitly requests otherwise.
 - Do not output prompts or similar working materials as files by default.
 - When the user asks for a prompt, output it directly in the chat so the user can copy it.
 - Only create a file for a prompt or similar text artifact if the user explicitly asks for file output.
+
+## 15. Experiment execution defaults
+
+These defaults apply to all experiment work in this repository unless the user explicitly requests otherwise.
+
+### Completion standard
+
+- Experiment work is not complete when a job has merely been submitted, queued, or handed off to a background system.
+- Experiment work is complete only when the agent has obtained the relevant outputs, checked the resulting artifacts, and completed the validation steps needed to support the claimed result.
+- Partial improvement, a promising intermediate result, or a successful submission step does not by itself count as completion.
+
+### Validation obligation
+
+- Any change that can affect experimental outputs, experimental routing, criteria behavior, prompting behavior, reviewer behavior, batch execution, evaluation, summaries, manifests, or reports must be followed by the relevant verification steps before the task may be considered done.
+- The agent must not stop in a state where produced outputs and the repository's claimed state are known to be inconsistent but not yet reconciled.
+- If validation fails, the default behavior is to continue debugging, correcting, rerunning, recollecting, or reevaluating as needed rather than stopping at analysis alone.
+
+### Async and batch execution
+
+- Batch, async, and other background API calls may be used when they are the practical way to execute the experiment.
+- However, submitting such work does not count as finishing the task.
+- If such work is started, the agent must continue tracking it within the same task: poll or collect until a terminal status is reached, obtain the outputs, inspect failure states when present, and complete the downstream validation needed for the claimed result.
+- The agent must not end the task merely because a remote job may take a long time to finish.
+- The agent must not describe a submitted or in-flight async job as a completed experiment, completed rerun, or verified result.
+
+### Allowed stopping condition
+
+- The agent may stop only after the required validation has been completed successfully, or when a real blocker prevents further progress.
+- A blocker must be stated concretely, with the missing dependency, failed system, unavailable input, or other external constraint made explicit.
+- Vague statements such as "this may take too long," "it is probably fine," or "the run was started so the task is effectively done" are not acceptable stopping reasons.

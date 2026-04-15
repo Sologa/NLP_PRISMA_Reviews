@@ -1,0 +1,65 @@
+{
+  "paper_id": "2409.13738",
+  "stage": "stage2",
+  "topic": "NLP4PBM: process extraction from natural-language text",
+  "topic_definition": "Stage 2 confirms the canonical source-faithful eligibility on full text. The paper must be a full English research article with full text, be primary research, specifically cover NLP for process extraction from natural-language text, and provide a concrete method with empirical validation.",
+  "decision_policy": "Recommend include only when the canonical inclusion criteria are satisfied and no exclusion criterion is triggered. Recommend exclude when any exclusion criterion is triggered or when the full text fails a required inclusion criterion. Recommend maybe only for genuinely unresolved full-text cases, not for generic uncertainty.",
+  "criteria": [
+    {
+      "criterion_id": "I1_FULL_RESEARCH_ENGLISH_FULLTEXT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper is a full research article, a full text is available, and the paper is written in English.",
+      "criterion_question": "Does the full text support that this is a full English research article with usable full text?",
+      "assessment_policy": "Use NO when the full text shows the paper does not satisfy this canonical paper-type criterion."
+    },
+    {
+      "criterion_id": "I2_PRIMARY_RESEARCH",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper is a primary research article presenting an original research contribution.",
+      "criterion_question": "Does the full text support that this paper is primary original research rather than secondary research or commentary?",
+      "assessment_policy": "Use NO if the full text instead supports review, survey, or non-original content."
+    },
+    {
+      "criterion_id": "I3_CORE_PROCESS_EXTRACTION_FIT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper specifically covers the use of NLP for process extraction from natural language text.",
+      "criterion_question": "Does the full text confirm that the paper specifically uses NLP for extracting process models or process representations from natural-language text?",
+      "assessment_policy": "Entity extraction alone is insufficient unless the paper clearly ties it to process-model or decision-model extraction."
+    },
+    {
+      "criterion_id": "I4_CONCRETE_METHOD_AND_VALIDATION",
+      "criterion_type": "inclusion",
+      "criterion_text": "Paper explicates a concrete method and describes experiments to empirically validate the method.",
+      "criterion_question": "Does the full text describe a concrete method and empirical validation of that method?",
+      "assessment_policy": "Use NO when the method is only superficial or empirical validation is absent."
+    },
+    {
+      "criterion_id": "E1_PAPER_TYPE_FAIL",
+      "criterion_type": "exclusion",
+      "criterion_text": "Papers that are not full research papers, have no full text available, or are not written in English are excluded.",
+      "criterion_question": "Does the full text show that the paper fails the full-paper / English / full-text requirement?",
+      "assessment_policy": "Use YES only when the failure is supported by the full text or metadata in the prompt."
+    },
+    {
+      "criterion_id": "E2_SECONDARY_RESEARCH",
+      "criterion_type": "exclusion",
+      "criterion_text": "Secondary research articles are excluded.",
+      "criterion_question": "Does the full text show that this is secondary research rather than a primary research article?",
+      "assessment_policy": "Use YES only for review/survey/secondary-research evidence."
+    },
+    {
+      "criterion_id": "E3_NON_TARGET_SCOPE",
+      "criterion_type": "exclusion",
+      "criterion_text": "Papers not specifically covering the use of NLP for process extraction are excluded. This includes studies on NLP for process redesign, matching, or process prediction, sentiment analysis, works that target individual labels instead of natural text, or studies on generating natural text from processes.",
+      "criterion_question": "Does the full text show a non-target scope, such as process redesign/matching/prediction, sentiment analysis, individual-label prediction, or text generation from processes instead of process extraction?",
+      "assessment_policy": "Use YES only when the non-target scope is what the paper actually does."
+    },
+    {
+      "criterion_id": "E4_SUPERFICIAL_OR_NO_VALIDATION",
+      "criterion_type": "exclusion",
+      "criterion_text": "Papers that only superficially discuss an applied method, or do not describe experiments to validate the method, are excluded.",
+      "criterion_question": "Does the full text show that the paper only superficially discusses a method or lacks experiments validating the method?",
+      "assessment_policy": "Use YES only when the lack of concrete method or empirical validation is supported by the full text."
+    }
+  ]
+}

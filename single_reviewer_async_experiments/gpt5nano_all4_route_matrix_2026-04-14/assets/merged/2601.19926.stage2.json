@@ -1,0 +1,44 @@
+{
+  "paper_id": "2601.19926",
+  "stage": "stage2",
+  "topic": "Interpretability research on syntactic knowledge in Transformer language models",
+  "topic_definition": "Stage 2 confirms the canonical source-faithful eligibility on full text. The paper must be about Transformer-based language models and empirically assess or analyze syntactic knowledge or syntactic structure in those models.",
+  "decision_policy": "Recommend include only when the full text supports Transformer language model focus and empirical syntax analysis with no exclusion triggered. Recommend exclude when the work is non-transformer, encoder-decoder/MT-oriented, not actually about syntax analysis, or is secondary research. Recommend maybe only for genuinely unresolved full-text edge cases.",
+  "criteria": [
+    {
+      "criterion_id": "I1_TRANSFORMER_LM_FIT",
+      "criterion_type": "inclusion",
+      "criterion_text": "The study is about Transformer-based language models (TLMs).",
+      "criterion_question": "Does the full text support that the study concerns Transformer-based language models?",
+      "assessment_policy": "Use NO when the actual model family is non-transformer or primarily encoder-decoder/MT."
+    },
+    {
+      "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+      "criterion_type": "inclusion",
+      "criterion_text": "The study empirically assesses or analyzes syntactic structure or syntactic knowledge in TLMs.",
+      "criterion_question": "Does the full text support empirical analysis of syntactic structure or syntactic knowledge in Transformer language models?",
+      "assessment_policy": "Use NO when the paper studies Transformers but not syntax."
+    },
+    {
+      "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+      "criterion_type": "exclusion",
+      "criterion_text": "Focuses primarily on non-transformer architectures such as RNNs/LSTMs, or focuses on encoder-decoder architectures, especially MT-oriented ones.",
+      "criterion_question": "Does the full text show non-transformer or MT-oriented encoder-decoder focus instead of Transformer language models?",
+      "assessment_policy": "Use YES only for clear architectural mismatch."
+    },
+    {
+      "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+      "criterion_type": "exclusion",
+      "criterion_text": "Analyzes Transformer language models but does not empirically assess or analyze syntax.",
+      "criterion_question": "Does the full text show that the work studies Transformer language models without empirical syntax analysis?",
+      "assessment_policy": "Use YES only for direct non-syntax evidence."
+    },
+    {
+      "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+      "criterion_type": "exclusion",
+      "criterion_text": "No clear empirical component, for example a position paper, survey, or review.",
+      "criterion_question": "Does the full text show survey/review/position-paper form or lack of empirical analysis?",
+      "assessment_policy": "Use YES only for clear exclusion evidence."
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "provider": "openai",
+  "model": "gpt-5-nano",
+  "reasoning_effort": "medium",
+  "concurrency": 8,
+  "max_attempts_per_request": 5,
+  "positive_mode": "include_or_maybe",
+  "fulltext_inline_head_chars": 24000,
+  "fulltext_inline_tail_chars": 12000,
+  "retrieval_snippet_max_chars": 24000,
+  "papers": [
+    "2307.05527",
+    "2409.13738",
+    "2511.13936",
+    "2601.19926"
+  ],
+  "arms": [
+    {
+      "id": "direct_2stage_async",
+      "kind": "direct",
+      "uses_merged_ledger": false,
+      "uses_verification": false,
+      "uses_targeted_retrieval": false
+    },
+    {
+      "id": "merged_ledger_2stage_async",
+      "kind": "merged",
+      "uses_merged_ledger": true,
+      "uses_verification": false,
+      "uses_targeted_retrieval": false
+    },
+    {
+      "id": "merged_ledger_verify_async",
+      "kind": "merged",
+      "uses_merged_ledger": true,
+      "uses_verification": true,
+      "uses_targeted_retrieval": false
+    },
+    {
+      "id": "merged_ledger_verify_retrieval_async",
+      "kind": "merged",
+      "uses_merged_ledger": true,
+      "uses_verification": true,
+      "uses_targeted_retrieval": true
+    }
+  ],
+  "current_results_manifest": "screening/results/results_manifest.json",
+  "single_reviewer_summary_csv": "docs/single_reviewer_baseline/single_reviewer_runs_summary.csv"
+}

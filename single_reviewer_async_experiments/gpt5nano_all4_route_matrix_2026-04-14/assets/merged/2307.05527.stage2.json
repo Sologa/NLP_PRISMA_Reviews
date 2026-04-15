@@ -1,0 +1,58 @@
+{
+  "paper_id": "2307.05527",
+  "stage": "stage2",
+  "topic": "Ethical implications of generative audio models",
+  "topic_definition": "Stage 2 confirms the canonical source-faithful eligibility on full text. The paper must be a full research paper, centrally about generative audio models or applications, and have audio as the entire primary output domain.",
+  "decision_policy": "Recommend include only when the full text supports generative-audio primary focus, audio-only primary outputs, and full-paper eligibility with no exclusion triggered. Recommend exclude when the work is text-output ASR/transcription, non-generative, non-audio, or multi-primary-output. Recommend maybe only for genuinely unresolved full-text edge cases.",
+  "criteria": [
+    {
+      "criterion_id": "I1_FULL_RESEARCH_PAPER",
+      "criterion_type": "inclusion",
+      "criterion_text": "Full research paper (long-form); not an extended abstract, book chapter, or other non-full-paper form.",
+      "criterion_question": "Does the full text support that this is a full long-form research paper rather than an extended abstract, chapter, or other non-full-paper form?",
+      "assessment_policy": "Use NO when paper form clearly fails."
+    },
+    {
+      "criterion_id": "I2_GENERATIVE_AUDIO_PRIMARY_FOCUS",
+      "criterion_type": "inclusion",
+      "criterion_text": "Topic is generative audio models, with a generative audio model or application as the primary focus.",
+      "criterion_question": "Does the full text support that generative audio is the paper's primary focus rather than a side component?",
+      "assessment_policy": "Use NO when audio generation is not the central topic."
+    },
+    {
+      "criterion_id": "I3_AUDIO_ONLY_PRIMARY_OUTPUT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Output domain is entirely audio.",
+      "criterion_question": "Does the full text support that the primary output domain is entirely audio?",
+      "assessment_policy": "Use NO when primary outputs include text, video, images, gestures, or other non-audio content."
+    },
+    {
+      "criterion_id": "E1_TEXT_OUTPUT_ASR",
+      "criterion_type": "exclusion",
+      "criterion_text": "Speech-to-text or ASR or transcription work where the final output is text.",
+      "criterion_question": "Does the full text show ASR/transcription or any text-output task instead of audio generation?",
+      "assessment_policy": "Use YES only for clear text-output evidence."
+    },
+    {
+      "criterion_id": "E2_NON_AUDIO_OR_MULTI_OUTPUT",
+      "criterion_type": "exclusion",
+      "criterion_text": "Generative models whose final output is video or another non-audio modality, or works with other primary outputs in addition to audio.",
+      "criterion_question": "Does the full text show non-audio primary outputs or mixed primary outputs rather than audio-only primary outputs?",
+      "assessment_policy": "Use YES only for direct full-text support."
+    },
+    {
+      "criterion_id": "E3_NON_GENERATIVE_OR_NO_USE_CASE",
+      "criterion_type": "exclusion",
+      "criterion_text": "Non-generative output, or only a metric/incremental improvement without actually discussing audio outputs or use cases.",
+      "criterion_question": "Does the full text show non-generative prediction/classification, or a metric-only paper without substantive audio outputs/use cases?",
+      "assessment_policy": "Use YES only when the paper fails the substantive generative-audio fit."
+    },
+    {
+      "criterion_id": "E4_SECONDARY_OR_EXTERNAL_ONLY",
+      "criterion_type": "exclusion",
+      "criterion_text": "Extended abstract, book chapter, or eligibility depending on external supplements outside the main body or appendix.",
+      "criterion_question": "Does the full text show excluded paper form or dependence on external supplement-only evidence?",
+      "assessment_policy": "Use YES only for clear exclusion evidence."
+    }
+  ]
+}

@@ -1,0 +1,2534 @@
+[
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Paper is a survey/review article (title: 'Speech Emotion Recognition: A Comprehensive Survey')."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Title explicitly indicates a comprehensive survey.",
+      "Abstract states the article reviews work on speech emotion recognition."
+    ],
+    "decision_rationale": "Stage 1 criteria exclude surveys/reviews; the title/abstract clearly identify this paper as a survey, so it is not eligible for Stage 1 inclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "al2023speech",
+    "candidate_title": "Speech Emotion Recognition: A Comprehensive Survey",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "al2023speech",
+      "record_title": "Speech Emotion Recognition: A Comprehensive Survey",
+      "source": "crossref",
+      "source_id": "10.1007/s11277-023-10244-3",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/al2023speech.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [
+      "Papers without explicit comparisons remain eligible when title/abstract indicates an RL training loop for an audio model.",
+      "Paper is applied within the audio domain. Multimodal works including audio are treated as within the audio domain.",
+      "Paper is not a survey or review article."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not clearly indicate any explicit preference-learning signal (e.g., ranking or A/B comparisons) as required by the Stage 1 criterion."
+    ],
+    "evidence_highlights": [
+      "reinforcement learning approach to enhance model robustness, speaker similarity, and controllability",
+      "Seed-TTS offers superior controllability over various speech attributes such as emotion"
+    ],
+    "decision_rationale": "Stage 1 evidence shows relevance to an audio-domain RL training framework, which aligns with one inclusion criterion. However, the abstract lacks explicit preference-learning signals (ranking/A-B comparisons) required by the primary inclusion criterion, preventing a firm 'include' verdict. Hence a 'maybe' with mixed signals.",
+    "paper_id": "2511.13936",
+    "candidate_key": "anastassiou2024seed",
+    "candidate_title": "Seed-tts: A family of high-quality versatile speech generation models",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "anastassiou2024seed",
+      "record_title": "Seed-tts: A family of high-quality versatile speech generation models",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2406.02430",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/anastassiou2024seed.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not mention preference-learning evidence (e.g., rankings, A/B tests) or an RL loop for audio models.",
+      "The paper focuses on a multimodal emotion perception corpus and classifiers rather than learning from preference signals."
+    ],
+    "evidence_highlights": [
+      "multimodal emotional database",
+      "emotion perception",
+      "inter-evaluator agreement and naturalness perception"
+    ],
+    "decision_rationale": "Stage 1 indicates no explicit preference-learning content in the title/abstract; core inclusion criteria are not satisfied. Without evidence of ranking/A-B style preferences or RL loops in audio, the fit is uncertain. Therefore, a 'maybe' with uncertainty.",
+    "paper_id": "2511.13936",
+    "candidate_key": "busso2016msp",
+    "candidate_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "busso2016msp",
+      "record_title": "MSP-IMPROV: An acted corpus of dyadic interactions to study emotion perception",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2016.2515617",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/busso2016msp.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract states it 'introduces a novel emotion recognition approach which integrates ranking models', indicating ranking-based learning in an audio task.",
+      "Abstract mentions 'combining conventional classification and predictions based on ranking', showing learning with ranking signals.",
+      "Abstract notes 'All combinations improve overall prediction accuracy', suggesting learning effectiveness with ranking/classification integration.",
+      "Paper is applied to spontaneous speech in the audio domain (FAU AIBO database)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract uses the term ranking, but does not explicitly use the phrase 'preference-learning'; however, ranking implies preference signals."
+    ],
+    "evidence_highlights": [
+      "\"We introduce a novel emotion recognition approach which integrates ranking models.\"",
+      "\"Furthermore we test several possibilities for combining conventional classification and predictions based on ranking.\"",
+      "\"All combinations improve overall prediction accuracy.\"",
+      "\"All experiments are performed on the FAU AIBO database which contains realistic spontaneous emotional speech.\""
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports inclusion: ranking-based learning in an audio emotion-recognition task is explicit, not a survey, and domain-relevant. Therefore, Stage 1 warrants inclusion (score 5).",
+    "paper_id": "2511.13936",
+    "candidate_key": "cao2012combining",
+    "candidate_title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "cao2012combining",
+      "record_title": "Combining ranking and classification to improve emotion recognition in spontaneous speech",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2012-116",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/cao2012combining.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates a ranking-based learning approach for emotion recognition in audio (speech).",
+      "The abstract explicitly describes training ranking SVMs for individual emotions and combining rankers for multi-class prediction.",
+      "Applied to acted and spontaneous speech datasets (Berlin, LDC, FAU Aibo), i.e., audio-domain data.",
+      "Not a survey or purely evaluative study; presents a learning method (ranking-based classifiers)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "\"We introduce a ranking approach for emotion recognition\"",
+      "\"We train ranking SVMs for individual emotions\"",
+      "\"On acted data, ranking approaches exhibit significantly better performance compared to SVM classification\"",
+      "\"we obtain marked improvement when we combine the two classifiers by late-stage fusion\""
+    ],
+    "decision_rationale": "Stage 1 evidence supports an in-scope fit: ranking-based learning in audio domain; not a survey; not purely evaluative; thus include.",
+    "paper_id": "2511.13936",
+    "candidate_key": "cao2015speaker",
+    "candidate_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "cao2015speaker",
+      "record_title": "Speaker-sensitive emotion recognition via ranking: Studies on acted and spontaneous speech ☆ .",
+      "source": "pubmed",
+      "source_id": "25422534",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/cao2015speaker.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses RLHF limitations without any mention of audio-domain preference-learning, ranking, or A/B comparisons."
+    ],
+    "decision_rationale": "Stage 1 requires evidence of audio-domain, preference-based learning signals in the title/abstract. The provided paper focuses on RLHF in general and does not indicate audio-domain applicability, thus it should be excluded at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "casper2023open",
+    "candidate_title": "Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "casper2023open",
+      "record_title": "Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback",
+      "source": "arxiv",
+      "source_id": "2307.15217",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/casper2023open.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Not audio-domain content: abstract discusses creativity assessment of written stories and TTCW, with LLMs, not preference-learning signals in audio.",
+      "Stage 1 criteria require audio-domain preference-based learning signals (ranking/A-B comparisons or RL loops); absent in title/abstract."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract mentions LLM-generated stories and TTCW evaluation; no audio content."
+    ],
+    "decision_rationale": "Stage 1 indicates exclusion because the abstract does not indicate any audio-domain preference-based learning or related signals; core eligibility criteria are not met by this title/abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "chakrabarty2024art",
+    "candidate_title": "Art or Artifice? Large Language Models and the False Promise of Creativity",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "chakrabarty2024art",
+      "record_title": "Art or Artifice? Large Language Models and the False Promise of Creativity",
+      "source": "semantic_scholar",
+      "source_id": "7b1a6db0909856a345f055a9607f43711b3df375",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/chakrabarty2024art.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract indicates the study is about RLHF and LLMs, not audio domain (non-audio domain).",
+      "Stage 1 inclusion criteria require audio-domain preference-learning evidence; the abstract lacks any audio-related content."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract focuses on RLHF for LLMs and reward model limitations; no audio-domain content."
+    ],
+    "decision_rationale": "Stage 1 criteria are not met due to lack of audio-domain focus and absence of any audio-specific preference-learning evidence in title/abstract; thus paper should be excluded at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "chaudhari2025rlhf",
+    "candidate_title": "RLHF Deciphered: A Critical Analysis of Reinforcement Learning from Human Feedback for LLMs",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "chaudhari2025rlhf",
+      "record_title": "RLHF Deciphered: A Critical Analysis of Reinforcement Learning from Human Feedback for LLMs",
+      "source": "crossref",
+      "source_id": "10.1145/3743127",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/chaudhari2025rlhf.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract indicates the study is not applied within the audio domain (abstract describes RL on Atari games and simulated robot locomotion).",
+      "Topic is not audio-domain preference-learning; the abstract discusses general RL from human preferences rather than audio-specific tasks."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract mentions 'including Atari games and simulated robot locomotion', indicating non-audio domains.",
+      "Abstract describes 'goals of human preferences between several trajectory segments' in RL contexts outside audio."
+    ],
+    "decision_rationale": "Stage 1 requires audio-domain preference-learning evidence or an RL loop for an audio model. The abstract's non-audio RL applications do not meet the audio-domain criterion, thus strong exclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "christiano2017deep",
+    "candidate_title": "Reinforcement-Learning-Deep-Reinforcement-Learning-from-Human-Preferences",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "christiano2017deep",
+      "record_title": "Reinforcement-Learning-Deep-Reinforcement-Learning-from-Human-Preferences",
+      "source": "github",
+      "source_id": "BenJ-cell/Reinforcement-Learning-Deep-Reinforcement-Learning-from-Human-Preferences",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/christiano2017deep.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "No explicit mention of ranking or A/B comparisons in the abstract to demonstrate preference-learning signals.",
+      "Abstract references DPO but does not clearly state a preference-learning setup (e.g., human preferences or generated rankings) as required by Stage 1 criteria."
+    ],
+    "evidence_highlights": [
+      "audio-language model called Qwen2-Audio",
+      "two distinct audio interaction modes for voice chat and audio analysis",
+      "DPO has optimized the model's performance",
+      "instruction-following capability"
+    ],
+    "decision_rationale": "Stage 1 shows the work is in the audio domain and mentions preference-related optimization (DPO) and instruction-following, but it does not explicitly present ranking/A-B preference evidence or a clear RL training loop in the abstract. Thus the fit is plausible but not clearly supported by Stage 1 criteria; result is maybe.",
+    "paper_id": "2511.13936",
+    "candidate_key": "chu2024qwen2",
+    "candidate_title": "Qwen2-Audio Technical Report",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "chu2024qwen2",
+      "record_title": "Qwen2-Audio Technical Report",
+      "source": "semantic_scholar",
+      "source_id": "8ca1fdca69d780881f905ef9a4612e62f49a1014",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/chu2024qwen2.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Abstract/title does not indicate an audio-domain application; paper discusses general comparison-based search with experiments on movie actors, not audio data."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses pairwise comparisons to identify a target object; no explicit audio-domain context.",
+      "Experiment mentions movie actors rather than audio data; no audio-specific evaluation."
+    ],
+    "decision_rationale": "Stage 1 criteria require audio-domain applicability or explicit audio-related ranking/preference signals in the abstract. The paper addresses general comparison-based search with non-audio domains (movie actors) and does not indicate audio-domain application, thus it fails the essential audio-domain inclusion criterion and should be excluded.",
+    "paper_id": "2511.13936",
+    "candidate_key": "chumbalov2020scalable",
+    "candidate_title": "Scalable and efficient comparison-based search without features",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "chumbalov2020scalable",
+      "record_title": "Scalable and efficient comparison-based search without features",
+      "source": "openalex",
+      "source_id": null,
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/chumbalov2020scalable.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract indicates preference-learning evidence in audio via pairwise preferences and RLHF in an audio/musical domain.",
+      "Paper describes finetuning a music generation model (MusicLM) using human feedback with a dataset of 300,000 pairwise preferences.",
+      "Applied within the audio domain (music), not a survey or purely evaluative study."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "MusicRL is the first music generation system finetuned from human feedback.",
+      "A substantial dataset comprising 300,000 pairwise preferences is collected.",
+      "Reinforcement Learning from Human Feedback (RLHF) used to train MusicRL-U."
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports a Stage-1 include: the abstract demonstrates preference-based learning signals (pairwise preferences) and RLHF in an audio/musical domain, with explicit reference to finetuning for music generation. No exclusionary criteria are evident from title/abstract alone.",
+    "paper_id": "2511.13936",
+    "candidate_key": "cideron2024musicrl",
+    "candidate_title": "Musicrl: Aligning music generation to human preferences",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "cideron2024musicrl",
+      "record_title": "Musicrl: Aligning music generation to human preferences",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2402.04229",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/cideron2024musicrl.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Stage 1 core criteria unmet: title/abstract does not indicate preference-learning evidence (ranking/A-B comparisons) or RL loop for an audio model; paper focuses on melody transcription via generative pre-training and dataset creation, not preference-based learning."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract centers on melody transcription and generative pre-training; no mention of ranking, A/B comparisons, or RL-based learning in the audio domain."
+    ],
+    "decision_rationale": "Stage 1 evidence does not support a preference-learning in audio fit; core inclusion criteria are not addressed in the title/abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "donahue2022melody",
+    "candidate_title": "Melody transcription via generative pre-training",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "donahue2022melody",
+      "record_title": "Melody transcription via generative pre-training",
+      "source": "openalex",
+      "source_id": "10.5281/zenodo.7316706",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/donahue2022melody.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "Abstract does not clearly indicate explicit preference-learning evidence (e.g., ranking or A/B comparisons) as required by Stage 1 criteria.",
+      "While the abstract describes predicting crowdsourced human quality ratings in audio, there is no explicit mention of a ranking/ comparative preference signal or an RL loop in the abstract."
+    ],
+    "evidence_highlights": [
+      "The paper collects data via crowdsourced listening studies on real-world speech signals.",
+      "It predicts human quality ratings using a pyramid bidirectional LSTM (pBLSTM) network with an attention mechanism."
+    ],
+    "decision_rationale": "Stage 1 provenance shows the work is audio-domain and involves learning to predict subjective quality ratings, but it does not unambiguously demonstrate explicit preference-learning signals (e.g., rankings or A/B comparisons) or an RL loop in the abstract. Therefore the fit is plausible but not confirmed from title/abstract alone.",
+    "paper_id": "2511.13936",
+    "candidate_key": "dong2020pyramid",
+    "candidate_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "dong2020pyramid",
+      "record_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2020-2809",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/dong2020pyramid.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract do not indicate audio-domain preference-based learning or audio-specific RL loop; the paper focuses on general RLHF reward-model optimization, not audio.",
+      "No evidence of audio-domain application, ranking/AB comparisons, or audio-model learning signals in abstract."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses reinforcement learning from human feedback and reward-model optimization; no explicit audio-domain context."
+    ],
+    "decision_rationale": "Stage 1 criteria require audio-domain preference-based learning signals (e.g., ranking, AB tests, or RL loops for audio models) in the title/abstract. The abstract describes general RLHF/reward-model analysis without audio context, thus not in-scope.",
+    "paper_id": "2511.13936",
+    "candidate_key": "gao2023scaling",
+    "candidate_title": "Scaling laws for reward model overoptimization",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "gao2023scaling",
+      "record_title": "Scaling laws for reward model overoptimization",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2210.10760",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/gao2023scaling.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates preference-learning evidence in audio via direct preference optimization (optimizing towards preferred emotions).",
+      "Applied within the audio domain (emotional speech synthesis).",
+      "Not a survey; proposes a learning framework for emotion-controlled TTS using preference optimization."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "Explicit ranking or A/B comparison signals are not explicitly described in the abstract; the presence of direct preference optimization may imply it but is not stated."
+    ],
+    "evidence_highlights": [
+      "Direct preference optimization to differentiate subtle emotional nuances",
+      "optimizing towards preferred emotions over less preferred emotional ones",
+      "emotion-aware LLM-TTS neural architecture"
+    ],
+    "decision_rationale": "Stage 1 evidence supports a plausible in-scope fit: an audio-domain learning method using preferences, with a concrete optimization objective. Some details about explicit comparative signals (ranking/A-B tests) are not explicit in the abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "gao2025emo",
+    "candidate_title": "Emo-dpo: Controllable emotional speech synthesis through direct preference optimization",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "gao2025emo",
+      "record_title": "Emo-dpo: Controllable emotional speech synthesis through direct preference optimization",
+      "source": "openalex",
+      "source_id": "10.1109/icassp49660.2025.10888737",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/gao2025emo.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates a study outside the audio domain and does not discuss preference-learning in audio or an RL loop for an audio model."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses arXiv's information sharing and 30 years of information sharing; no mention of audio-domain preference-learning or RL in the abstract."
+    ],
+    "decision_rationale": "Stage 1 requires evidence of preference-learning in audio from the title/abstract. The provided abstract focuses on information sharing (arXiv) rather than audio-domain learning or RL for audio, thus it does not meet the inclusion criteria and should be excluded.",
+    "paper_id": "2511.13936",
+    "candidate_key": "ginsparg2021lessons",
+    "candidate_title": "Lessons from arXiv’s 30 years of information sharing",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "ginsparg2021lessons",
+      "record_title": "Lessons from arXiv’s 30 years of information sharing",
+      "source": "openalex",
+      "source_id": "10.1038/s42254-021-00360-z",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/ginsparg2021lessons.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain.",
+      "Title 'Top Publications - Computer Science' is not a paper about preference-learning in audio."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Title indicates a generic top publications list, not a document on preference-based learning in audio.",
+      "Abstract 'Accessed: 2025-03-19' contains no methodological content supporting learning or audio-domain experiments."
+    ],
+    "decision_rationale": "Stage 1 evidence clearly contradicts eligibility: the item is not an audio-domain study nor a paper about preference-based learning; therefore exclude.",
+    "paper_id": "2511.13936",
+    "candidate_key": "google_scholar_hindex",
+    "candidate_title": "Top Publications - Computer Science",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "google_scholar_hindex",
+      "record_title": "Top Publications - Computer Science",
+      "source": "manual",
+      "source_id": "https://scholar.google.com/citations?view_op=top_venues&hl=en",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/google_scholar_hindex.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates preference-learning evidence in audio, via ordinal learning for emotion recognition in customer service calls.",
+      "Abstract describes transforming ordinal SER tasks into binary sub-tasks (whether an utterance's emotion is larger than a rank), i.e., ranking/ordinal learning.",
+      "Paper is in the audio domain (speech emotion recognition).",
+      "Not a survey or evaluation-only; introduces a learning framework (CORAL) for ordinal SER and reports end-to-end learning (VGGish-CORAL)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "ordinal SER tasks",
+      "CORAL-based deep learning framework",
+      "binary sub-tasks predicting whether an utterance's emotion is larger than a rank",
+      "VGGish-CORAL network"
+    ],
+    "decision_rationale": "Stage 1 evidence supports in-scope fit: the title/abstract reflect an audio-domain preference-learning/ordinal ranking approach with a learning framework; no conflicting exclusion signals are present.",
+    "paper_id": "2511.13936",
+    "candidate_key": "han2020ordinal",
+    "candidate_title": "Ordinal learning for emotion recognition in customer service calls",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "han2020ordinal",
+      "record_title": "Ordinal learning for emotion recognition in customer service calls",
+      "source": "openalex",
+      "source_id": "10.1109/icassp40776.2020.9053648",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/han2020ordinal.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not explicitly mention preference-learning signals (e.g., ranking, A/B comparisons) or an RL training loop for audio models.",
+      "Cross-modal retrieval and joint audio-text embedding are described, but they are not framed as preference-based learning in the abstract."
+    ],
+    "evidence_highlights": [
+      "MuLan: a joint audio-text embedding model",
+      "designed for cross-modal retrieval applications",
+      "zero-shot functionalities"
+    ],
+    "decision_rationale": "Stage 1 evidence does not explicitly support preference-based learning in audio from the title/abstract. The work is clearly about audio-text embeddings and cross-modal retrieval, which is relevant to audio but lacks explicit indication of preference signals or RL loops. Therefore, the fit is uncertain and not clearly includable at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2022mulan",
+    "candidate_title": "MuLan: A Joint Embedding of Music Audio and Natural Language",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "huang2022mulan",
+      "record_title": "MuLan: A Joint Embedding of Music Audio and Natural Language",
+      "source": "zenodo",
+      "source_id": "7316724",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/huang2022mulan.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not mention ranking, A/B comparisons, or RL loops for audio models, making it unclear if it fits preference-learning criteria."
+    ],
+    "evidence_highlights": [
+      "Abstract describes Step-Audio as a unified speech-text multimodal model with generation/understanding and instruction-driven control; no explicit preference-learning signals mentioned."
+    ],
+    "decision_rationale": "Stage 1 cannot confirm inclusion because the title/abstract lacks explicit preference-learning evidence. There is surface plausibility due to the audio/multimodal focus, but no explicit cues (ranking/A-B tests/RL loops) are stated in the abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "huang2025step",
+      "record_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+      "source": "semantic_scholar",
+      "source_id": "2b0669aa0c839d5e398999704666b3e483e28692",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/huang2025step.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract do not mention preference-based learning in audio (e.g., ranking, A/B comparisons, or RL loops for an audio model); there is no explicit indication of preference-learning signals in the abstract.",
+      "Thus Stage 1 eligibility cannot be established from the abstract alone."
+    ],
+    "evidence_highlights": [
+      "Abstract describes GPT-4o system card with focus on speech-to-speech while also evaluating text and image capabilities, and mentions preparedness framework evaluations and safety assessments."
+    ],
+    "decision_rationale": "Stage 1 evidence does not support the core inclusion criteria (preference-based learning in audio and related signals) from the title/abstract. Information is insufficient to determine eligibility; thus the result is 'maybe'.",
+    "paper_id": "2511.13936",
+    "candidate_key": "hurst2024gpt",
+    "candidate_title": "Gpt-4o system card",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "hurst2024gpt",
+      "record_title": "Gpt-4o system card",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2410.21276",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/hurst2024gpt.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not clearly indicate any preference-learning evidence (e.g., ranking or A/B comparisons) in the audio domain.",
+      "While the abstract discusses ordinal regression and affective computing datasets, it does not explicitly tie these to audio-domain preference-learning or RL-style training loops."
+    ],
+    "evidence_highlights": [
+      "Proposes a neural network-based framework which can transition between different modelling methods with a novel multi-term loss function.",
+      "Application of the proposed framework to six real datasets widely used in affective computing and related fields.",
+      "Suggests that more focus should be placed on ordinal regression instead of classification or predicting."
+    ],
+    "decision_rationale": "Stage 1 evidence hints at an in-scope area (ordinal/learning-based methods in datasets related to affective computing), but there is no explicit, title/abstract-based support for audio-domain preference-learning signals (e.g., ranking/A-B comparisons) or a clearly defined RL loop in the audio context. Therefore, the fit is plausible but not clearly supported, warranting a 'maybe'.",
+    "paper_id": "2511.13936",
+    "candidate_key": "jayawardena2020ordinal",
+    "candidate_title": "How Ordinal Are Your Data?",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "jayawardena2020ordinal",
+      "record_title": "How Ordinal Are Your Data?",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2020-2030",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Abstract describes the paper as an overview/survey of RLHF (this is a survey article).",
+      "Stage 1 criteria specify the paper must not be a survey/article."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract states: 'This article provides an overview of the fundamentals of RLHF'.",
+      "Title/abstract frame the work as a survey across multiple domains."
+    ],
+    "decision_rationale": "Stage 1 eligibility requires a non-survey, non-audio-domain RLHF/learning content; the abstract explicitly marks the work as an overview/survey, which triggers exclusion at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "kaufmann2024survey",
+    "candidate_title": "A survey of reinforcement learning from human feedback",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "kaufmann2024survey",
+      "record_title": "A survey of reinforcement learning from human feedback",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2312.14925",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/kaufmann2024survey.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not mention preference-learning signals (e.g., ranking, A/B comparisons, RL loop) in audio, which are required by Stage 1 criteria.",
+      "The paper focuses on a metric to evaluate music enhancement rather than learning or ranking in an audio model."
+    ],
+    "evidence_highlights": [
+      "Fréchet Audio Distance proposed as a metric for evaluating music enhancement algorithms (audio-domain)."
+    ],
+    "decision_rationale": "Stage 1 evidence does not demonstrate the necessary preference-learning signals; no explicit exclusion, but the abstract lacks the required criteria, leading to insufficient evidence for inclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "kilgour2018fr",
+    "candidate_title": "Fréchet Audio Distance: A Metric for Evaluating Music Enhancement Algorithms",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "kilgour2018fr",
+      "record_title": "Fréchet Audio Distance: A Metric for Evaluating Music Enhancement Algorithms",
+      "source": "arxiv",
+      "source_id": "https://arxiv.org/abs/1812.08466",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/kilgour2018fr.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract describes a reinforcement learning from human feedback (RLHF) framework to fine-tune a speech enhancement approach (audio domain).",
+      "MOS-based reward model used for optimization in an audio model (speech enhancement).",
+      "Applied within the audio domain (speech enhancement) and evaluates on established audio benchmarks (Voicebank+DEMAND).",
+      "Not a survey/review; presents results and ablations from a learning-based approach."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "RLHF framework to fine-tune speech enhancement",
+      "MOS-based reward model",
+      "Audio-domain application (speech enhancement)",
+      "Ablation studies (policy gradient loss and supervised MSE loss)"
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports an in-scope fit: learning-from-human-feedback in an audio-domain model (speech enhancement) with an RL loop and MOS-based reward. The work is not a survey and provides learning-based results, satisfying the Stage 1 inclusion criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "kumar2025using",
+    "candidate_title": "Using RLHF to Align Speech Enhancement Approaches to Mean-Opinion Quality Scores",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "kumar2025using",
+      "record_title": "Using RLHF to Align Speech Enhancement Approaches to Mean-Opinion Quality Scores",
+      "source": "crossref",
+      "source_id": "10.32388/ehck66",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/kumar2025using.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Paper is a survey/review article (as stated in abstract: 'we conduct a comprehensive survey' and title indicates a survey)."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract explicitly states the paper conducts a comprehensive survey on DRL in the audio domain.",
+      "Title indicates a survey: 'A survey on deep reinforcement learning for audio-based applications'."
+    ],
+    "decision_rationale": "Stage 1 criteria require non-survey work; the input paper is clearly a survey article, thus excluded.",
+    "paper_id": "2511.13936",
+    "candidate_key": "latif2101survey",
+    "candidate_title": "A survey on deep reinforcement learning for audio-based applications",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "latif2101survey",
+      "record_title": "A survey on deep reinforcement learning for audio-based applications",
+      "source": "crossref",
+      "source_id": "10.1007/s10462-022-10224-2",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/latif2101survey.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract explicitly mentions 'preference learning' in an audio-domain application (audio-visual emotion recognition).",
+      "Abstract describes ranking-based models (SVM, DNN, GBDT, LambdaMART) and pair-wise ranking rules for preference learning.",
+      "Paper is multimodal (audio-visual) but applied to audio domain; fits the 'audio applications' criterion.",
+      "Not a survey/review; reports empirical learning-based methods and improvements over baselines."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Novel preference learning framework considering intended and perceived labels across modalities",
+      "Three ranking models; LambdaMART performs best",
+      "Best accuracy 85.06% on CREMA-D; cross-corpus evaluation with SAVEE"
+    ],
+    "decision_rationale": "Stage 1 provides clear, source-faithful evidence that the paper is about preference-learning in audio/multimodal emotion recognition, using ranking models; thus strong inclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lei2023audio",
+    "candidate_title": "Audio-visual emotion recognition with preference learning based on intended and multi-modal perceived labels",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lei2023audio",
+      "record_title": "Audio-visual emotion recognition with preference learning based on intended and multi-modal perceived labels",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2023.3234777",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lei2023audio.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not clearly indicate preference-learning evidence in audio (ranking/A-B comparisons) or an RL loop for an audio model, which are required by Stage 1 criteria.",
+      "Abstract focuses on tri-modal benchmarking and instruction tuning rather than explicit preference-based learning signals in the audio domain."
+    ],
+    "evidence_highlights": [
+      "Abstract describes tri-modal processing across visual, acoustic, and textual inputs.",
+      "Mentions OmniInstruct training data for tri-modal context adaptation.",
+      "Introduces OmniBench as a benchmark for tri-modal models."
+    ],
+    "decision_rationale": "Stage 1 requires explicit signals of preference-based learning in the audio domain; the abstract mentions tri-modal reasoning and instruction tuning but not preference-learning signals or ranking in audio, thus eligibility cannot be confirmed from title/abstract alone. The paper may touch on audio through the acoustic modality, but it does not provide explicit Stage 1 evidence.",
+    "paper_id": "2511.13936",
+    "candidate_key": "li2024omnibench",
+    "candidate_title": "Omnibench: Towards the future of universal omni-language models",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "li2024omnibench",
+      "record_title": "Omnibench: Towards the future of universal omni-language models",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2409.15272",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/li2024omnibench.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Title/abstract focuses on evaluation of language models (HELM) with no audio-domain preference-learning or ranking signals."
+    ],
+    "decision_rationale": "Stage 1 criteria require audio-domain preference-learning evidence in the title/abstract; the paper concentrates on general LM evaluation, not audio, hence a strong exclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "liang2022holistic",
+    "candidate_title": "Holistic evaluation of language models",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "liang2022holistic",
+      "record_title": "Holistic evaluation of language models",
+      "source": "openalex",
+      "source_id": "10.1111/nyas.15007",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/liang2022holistic.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract states BATON uses human preference feedback to align text-to-audio generation.",
+      "Abstract describes a reward model that mimics human preference.",
+      "Abstract indicates the reward model is used to fine-tune an off-the-shelf text-to-audio model.",
+      "Abstract lists three key stages: dataset annotated by human feedback, reward model, and RL-style fine-tuning; demonstrates learning from preferences in audio.",
+      "Paper targets the audio/text-to-audio domain and claims improved generation quality (audio integrity, temporal relationship, alignment with human preference)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "Explicit ranking/A-B comparison signals (e.g., pairwise audio rankings) are not explicitly stated in the abstract.",
+      "Details on how human preference data is collected (binary vs scalar, scale) are not specified.",
+      "Stage 1 evidence relies on RL-like training with rewards; exact nature of the learning loop is not fully described in abstract."
+    ],
+    "evidence_highlights": [
+      "human preference feedback",
+      "reward model",
+      "fine-tune an off-the-shelf text-to-audio model",
+      "dataset ... annotated based on human feedback",
+      "significantly improve the generation quality ... alignment with human preference"
+    ],
+    "decision_rationale": "Stage 1 evidence indicates plausible fit to an audio-domain preference-learning project; presence of human-preference-based reward modeling and RL-style fine-tuning supports inclusion. However explicit ranking/A-B style comparisons are not clearly described in the abstract, so some key eligibility specifics remain unresolved at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "liao2024baton",
+    "candidate_title": "Baton: Aligning text-to-audio model with human preference feedback",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "liao2024baton",
+      "record_title": "Baton: Aligning text-to-audio model with human preference feedback",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2402.00744",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/liao2024baton.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract indicates an RL training loop for an audio model (ETTS).",
+      "Abstract describes an interactive training paradigm (i-ETTS) and reinforcement learning to improve emotion discriminability.",
+      "Application is in the audio domain (emotional TTS)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract mentions reinforcement learning and interactive training in ETTS.",
+      "Abstract notes improved emotion discriminability through RL-driven optimization."
+    ],
+    "decision_rationale": "Stage 1 evidence demonstrates a reinforcement-learning based training loop for an audio model (ETTS), which matches the Stage 1 criterion for RL-based audio applications; thus, the paper should be included in Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "liu2021reinforcement",
+    "candidate_title": "Reinforcement learning for emotional text-to-speech synthesis with improved emotion discriminability",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "liu2021reinforcement",
+      "record_title": "Reinforcement learning for emotional text-to-speech synthesis with improved emotion discriminability",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2021-1236",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/liu2021reinforcement.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses listwise ranking in LM alignment; no audio-domain context mentioned."
+    ],
+    "decision_rationale": "Stage 1 evidence indicates non-audio domain focus; the abstract does not support audio-applicable preference-learning criteria, thus strong exclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "liu2024lipo",
+    "candidate_title": "LiPO: Listwise Preference Optimization through Learning-to-Rank",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "liu2024lipo",
+      "record_title": "LiPO: Listwise Preference Optimization through Learning-to-Rank",
+      "source": "arxiv",
+      "source_id": "2402.01878v3",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/liu2024lipo.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not indicate any explicit preference-learning evidence (no rankings, A/B comparisons, or RL loops) in audio.",
+      "It is unclear whether the work involves learning-to-rank or other preference-based optimization signals within the audio domain."
+    ],
+    "evidence_highlights": [
+      "Title indicates application in audio via sonification of game levels.",
+      "Abstract mentions initial approaches and methodologies for achieving this core aim in the audio domain."
+    ],
+    "decision_rationale": "Stage 1 evidence does not show explicit preference-learning signals in the title/abstract. Although the work is clearly in the audio domain, key eligibility signals for inclusion are not demonstrated, leading to a 'maybe' assessment.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lopes2015sonancia",
+    "candidate_title": "Sonancia : sonification of procedurally generated game levels",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lopes2015sonancia",
+      "record_title": "Sonancia : sonification of procedurally generated game levels",
+      "source": "openalex",
+      "source_id": null,
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lopes2015sonancia.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates ranking short audio pieces based on crowdsourced annotations (preference learning).",
+      "Affect models are trained via preference learning on over a thousand annotations with the use of support vector machines.",
+      "The inputs are low-level features extracted from the audio assets of a comprehensive sound library, applying within the audio domain.",
+      "The paper is not a survey or review article."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Ranking short audio pieces based on crowdsourced annotations of tension, arousal and valence.",
+      "Affect models are trained via preference learning (SVM).",
+      "Inputs are low-level features extracted from the audio assets of a comprehensive sound library."
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports a plausible in-scope fit: explicit preference-learning in the audio domain with a learning model; no conflicting exclusion cues present in the abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lopes2017modelling",
+    "candidate_title": "Modelling affect for horror soundscapes",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lopes2017modelling",
+      "record_title": "Modelling affect for horror soundscapes",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2017.2695460",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lopes2017modelling.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract explicitly frames preference learning as a framework to rank speech samples by continuous attributes (arousal and valence).",
+      "Mentions training ranking classifiers with pairwise samples where one is preferred over the other.",
+      "Proposes deriving relative rankings from absolute emotional labels and constructing pairs with margins.",
+      "Applied within the audio domain (speech emotion), with experiments on spontaneous emotional database.",
+      "Compared preference learning with binary classifier and regression models (not a survey)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Ranking speech samples by arousal/valence.",
+      "Pairwise preferred samples for ranking.",
+      "Deriving relative rankings from absolute labels via margins.",
+      "Audio-domain application with experimental evaluation."
+    ],
+    "decision_rationale": "Stage 1 evidence strongly supports inclusion: abstract clearly describes preference learning for ranking emotional speech in audio, with pairwise comparisons and an RL-style training approach, and it is not a survey.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lotfian2016practical",
+    "candidate_title": "Practical considerations on the use of preference learning for ranking emotional speech",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lotfian2016practical",
+      "record_title": "Practical considerations on the use of preference learning for ranking emotional speech",
+      "source": "openalex",
+      "source_id": "10.1109/icassp.2016.7472670",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016practical.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates preference-learning evidence via pairwise comparisons to rank-order data by an emotional dimension.",
+      "Abstract mentions building happy, angry and sad rank-classifiers using this metric.",
+      "Abstract notes using a probabilistic framework to create relative labels from existing categorical annotations and cross-corpus evaluation."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not explicitly state that the domain is audio (needed for Stage 1 audio-domain inclusion)."
+    ],
+    "evidence_highlights": [
+      "Preference learning is used via pairwise comparisons to rank-order data by an emotional dimension.",
+      "A probabilistic framework creates relative labels from existing categorical annotations and builds emotion rank-classifiers.",
+      "Cross-corpus evaluation shows improved performance over binary classifiers and rank-based classifiers trained with consensus labels."
+    ],
+    "decision_rationale": "Stage 1 evidence suggests a plausible fit for a preference-learning approach in emotion recognition, including ranking and cross-dataset evaluation. However, the abstract does not explicitly confirm audio-domain applicability, which is required for Stage 1 inclusion; thus the judgment remains 'maybe'.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lotfian2016retrieving",
+    "candidate_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lotfian2016retrieving",
+      "record_title": "Retrieving Categorical Emotions Using a Probabilistic Framework to Define Preference Learning Samples",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2016-1052",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2016retrieving.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not mention preference-learning signals (ranking, A/B comparisons, or RL loop) in audio; it discusses dataset collection and ML-based retrieval for emotional speech, which does not map clearly to the Stage 1 criteria."
+    ],
+    "evidence_highlights": [
+      "Abstract describes building a large emotional speech database from podcast recordings using ML retrieval and crowdsourced annotation."
+    ],
+    "decision_rationale": "Stage 1 requires explicit evidence of preference-learning in audio (e.g., ranking, A/B testing, or an RL loop). The abstract focuses on dataset construction and retrieval for emotional speech and does not mention preference-based learning signals. Therefore, the fit is uncertain and not clearly supported by the abstract alone.",
+    "paper_id": "2511.13936",
+    "candidate_key": "lotfian2017building",
+    "candidate_title": "Building naturalistic emotionally balanced speech corpus by retrieving emotional speech from existing podcast recordings",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "lotfian2017building",
+      "record_title": "Building naturalistic emotionally balanced speech corpus by retrieving emotional speech from existing podcast recordings",
+      "source": "openalex",
+      "source_id": "10.1109/taffc.2017.2736999",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/lotfian2017building.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 4,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract mentions 'preference learning' for real-time emotional speech synthesis (audio).",
+      "Abstract describes a two-stage omnimodal learning method and includes a speech component, placing it in the audio domain."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not explicitly state ranking or A/B comparisons between audio samples; explicit preference signals in training are not detailed.",
+      "No concrete ranking/evaluation mechanism is described in the title/abstract."
+    ],
+    "evidence_highlights": [
+      "Preference learning for real-time emotional speech synthesis.",
+      "Two-stage omnimodal learning method using language as a pivot to align vision, text and speech."
+    ],
+    "decision_rationale": "Stage 1 evidence points to a plausible fit in the audio/preference-learning space (occurring in an audio-related, multimodal pipeline). However, explicit ranking or A/B comparison signals are not clearly stated in the title/abstract, so the fit is present but not strongly conclusive.",
+    "paper_id": "2511.13936",
+    "candidate_key": "luo2025openomni",
+    "candidate_title": "Openomni: Large language models pivot zero-shot omnimodal alignment across language with real-time self-aware emotional speech synthesis",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "luo2025openomni",
+      "record_title": "Openomni: Large language models pivot zero-shot omnimodal alignment across language with real-time self-aware emotional speech synthesis",
+      "source": "manual",
+      "source_id": "local:luo2025openomni",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/luo2025openomni.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates learning a perceptual audio metric from human judgments (preferences) via a deep neural network.",
+      "Abstract states subjects are asked to answer whether two recordings are identical or not, i.e., pairwise A/B style comparisons.",
+      "Abstract notes the metric is differentiable and can be used as a loss function for other audio tasks.",
+      "Abstract mentions application of the metric to an audio-domain task (denoising network) with subjective pairwise comparison."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Metric learned by fitting a deep neural network to crowdsourced human judgments.",
+      "Judgments ask: are two recordings identical or not?",
+      "Differentiable metric that can serve as a loss function for other tasks.",
+      "Applied to denoising network with subjective pairwise comparison."
+    ],
+    "decision_rationale": "The abstract directly describes learning a differentiable perceptual audio metric from human pairwise judgments in the audio domain, with explicit use as a loss function and demonstrated application, which aligns strongly with Stage 1 inclusion criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "manocha2020differentiable",
+      "record_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2020-1191",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/manocha2020differentiable.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Stage 1 exclusion: Title clearly indicates non-audio domain—'Fine-Tuning LLMs with Reinforcement Learning from Human Feedback (RLHF) - Part 3' targets LLMs, not audio; no abstract available to show audio-domain preference-learning evidence."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Title mentions LLMs and RLHF; no audio-domain signal in the title."
+    ],
+    "decision_rationale": "Stage 1 exclusion because the paper's topic is not within the audio-domain scope defined by Stage 1 criteria; the title indicates a non-audio focus (LLMs) and there is no abstract to provide counter-evidence.",
+    "paper_id": "2511.13936",
+    "candidate_key": "mantisnlp2023rlhf",
+    "candidate_title": "Fine-Tuning LLMs with Reinforcement Learning from Human Feedback (RLHF) - Part 3",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "mantisnlp2023rlhf",
+      "record_title": "Fine-Tuning LLMs with Reinforcement Learning from Human Feedback (RLHF) - Part 3",
+      "source": "manual",
+      "source_id": "local:mantisnlp2023rlhf",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/mantisnlp2023rlhf.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract describes a multimodal dialogue database for SAL agents but does not mention preference-learning signals (e.g., ranking, A/B comparisons) or an RL training loop in the audio domain."
+    ],
+    "evidence_highlights": [
+      "Abstract mentions a large audiovisual database for emotionally colored conversations and extensive annotation, without explicit reference to preference-based learning or ranking signals."
+    ],
+    "decision_rationale": "Stage 1 evidence does not explicitly support the core inclusion criteria (preference-learning evidence in audio, ranking, or RL loop). The topic is within the audio/multimodal domain but lack of explicit preference-learning content makes the fit uncertain based solely on title/abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "mckeown2011semaine",
+    "candidate_title": "The semaine database: Annotated multimodal records of emotionally colored conversations between a person and a limited agent",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "mckeown2011semaine",
+      "record_title": "The semaine database: Annotated multimodal records of emotionally colored conversations between a person and a limited agent",
+      "source": "openalex",
+      "source_id": "10.1109/t-affc.2011.20",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/mckeown2011semaine.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not clearly indicate any preference-learning evidence (e.g., ranking, AB tests) or an RL loop in an audio model.",
+      "The abstract focuses on annotation and processing of continuous emotional attributes rather than explicit preference-based learning or ranking mechanisms."
+    ],
+    "evidence_highlights": [
+      "Abstract discusses annotation and processing of continuous emotional attributes.",
+      "Mentions use of a large multimodal database and discussion of annotation challenges and open questions for future research."
+    ],
+    "decision_rationale": "Stage 1 evidence does not provide explicit support for preference-learning in audio or RL-based training loops from the title/abstract. The fit is plausibly within the audio-domain (multimodal emotion annotation) but key eligibility criteria regarding preference-based signals are not demonstrated, leading to an uncertain inclusion verdict.",
+    "paper_id": "2511.13936",
+    "candidate_key": "metallinou2013annotation",
+    "candidate_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "metallinou2013annotation",
+      "record_title": "Annotation and processing of continuous emotional attributes: Challenges and opportunities",
+      "source": "openalex",
+      "source_id": "10.1109/fg.2013.6553804",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/metallinou2013annotation.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not mention preference-learning, ranking, or RL loop; unclear whether the work involves learning from user preferences in audio."
+    ],
+    "evidence_highlights": [
+      "Abstract describes NISQA as a speech quality prediction model with multi-dimensional outputs.",
+      "The work is clearly located in the audio domain (speech quality).",
+      "Self-Attention and end-to-end training are mentioned, but no explicit preference-based learning signals."
+    ],
+    "decision_rationale": "Stage 1 indicates an audio-domain quality-prediction model, but there is no explicit evidence of preference-based learning, ranking, or RL loops in the title/abstract. Consequently, the fit is uncertain and warrants Stage 2 for confirmation.",
+    "paper_id": "2511.13936",
+    "candidate_key": "mittag2021nisqa",
+    "candidate_title": "NISQA: A Deep CNN-Self-Attention Model for Multidimensional Speech Quality Prediction with Crowdsourced Datasets",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "mittag2021nisqa",
+      "record_title": "NISQA: A Deep CNN-Self-Attention Model for Multidimensional Speech Quality Prediction with Crowdsourced Datasets",
+      "source": "semantic_scholar",
+      "source_id": "ac4106969f1188a2d0bcb09d2f5b237b53719a00",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/mittag2021nisqa.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract mentions RLHF: reinforcement learning on human preference, indicating a preference-based learning loop in audio.",
+      "Paper discusses tuning an LLM with reinforcement learning on human preferences to adapt to disordered speech (audio-domain application).",
+      "Abstract describes an RL training loop for an audio model (speech recognition)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "Whether RLHF alone constitutes 'preference-learning evidence' as defined by the Stage 1 criterion requiring ranking/A-B comparisons; explicit ranking is not stated in title/abstract.",
+      "No explicit mention of ranking or A/B evaluation in the abstract, though RLHF implies preferences.",
+      "Details about whether the 'preference' evidence is numeric or conversion to ranking are not specified in the abstract."
+    ],
+    "evidence_highlights": [
+      "\"reinforcement learning on human preference (RLHF)\"",
+      "\"adapting to disordered speech\" using RLHF",
+      "tuning with reinforcement learning on speech with transcripts and using rewards based on syntactic/semantic accuracy"
+    ],
+    "decision_rationale": "Stage 1 evidence strongly suggests in-scope fit due to explicit RLHF in an audio-domain paper employing a reinforcement-learning loop to adapt an LLM to disordered speech. However, the absence of explicit mention of ranking/A-B comparisons in the abstract creates some uncertainty about meeting the exact 'preference-learning evidence' criterion; criterion 3 allows RL training loops for audio models, supporting inclusion. Overall, the work plausibly aligns with the Stage 1 scope and merits inclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "nagpal2025speech",
+    "candidate_title": "Speech recognition with LLMs adapted to disordered speech using reinforcement learning",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "nagpal2025speech",
+      "record_title": "Speech recognition with LLMs adapted to disordered speech using reinforcement learning",
+      "source": "openalex",
+      "source_id": "10.1109/icassp49660.2025.10888006",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/nagpal2025speech.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates ranking of speech samples using a preference-learning framework (audio domain).",
+      "Abstract explicitly mentions obtaining an emotional rank for speech samples via a preference learning framework.",
+      "Abstract notes use of anchor-based ordinal labels for preference learning in audio."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "Explicit pairwise A/B comparisons across samples are not explicitly described in the abstract."
+    ],
+    "evidence_highlights": [
+      "Rank speech samples according to expressive content.",
+      "Preference learning framework for obtaining emotional rank.",
+      "Anchor-based ordinal labels used for preference learning in audio."
+    ],
+    "decision_rationale": "The abstract provides strong Stage 1 evidence for a learning-based, audio-domain preference-learning approach using ranking and ordinal labels, with no indication of being a survey or purely evaluative; thus, Stage 1 inclusion is justified.",
+    "paper_id": "2511.13936",
+    "candidate_key": "naini2023preference",
+    "candidate_title": "Preference Learning Labels by Anchoring on Consecutive Annotations",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "naini2023preference",
+      "record_title": "Preference Learning Labels by Anchoring on Consecutive Annotations",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2023-1108",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/naini2023preference.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract explicitly describes a preference-learning framework that ranks speech samples according to emotional attributes.",
+      "Abstract mentions RankNet framework and a preference between pairs of speech sentences.",
+      "The study applies to speech emotion recognition in the audio domain (cross-corpus MSP-Podcast and MSP-IMPROV).",
+      "Paper presents a learning-based approach (not a survey) within the audio domain that uses ranking/preferences."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "\"preference learning framework that ranks speech samples according to emotional attribute values\"",
+      "\"RankNet framework, which uses a function to obtain the preference between pairs of speech sentences\"",
+      "\"The experimental results in cross-corpus evaluations using the MSP-Podcast and MSP-IMPROV datasets\""
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports an in-scope fit: the abstract describes a learning-based, ranking-based approach to preference learning in the audio domain (speech emotion recognition) using pairwise comparisons (RankNet) and cross-corpus evaluation. It is not a survey.",
+    "paper_id": "2511.13936",
+    "candidate_key": "naini2023unsupervised",
+    "candidate_title": "Unsupervised Domain Adaptation for Preference Learning Based Speech Emotion Recognition",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "naini2023unsupervised",
+      "record_title": "Unsupervised Domain Adaptation for Preference Learning Based Speech Emotion Recognition",
+      "source": "semantic_scholar",
+      "source_id": "02b78ca6de66023924cffe33bae338de144f47fa",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/naini2023unsupervised.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "Abstract discusses RLHF and rankings in NLP, not audio domain; Stage 1 criteria require audio applicability."
+    ],
+    "evidence_highlights": [
+      "Abstract mentions a dataset of rankings of model outputs used to fine-tune with reinforcement learning from human feedback.",
+      "Paper focuses on aligning language models with user intent via supervised learning and RLHF."
+    ],
+    "decision_rationale": "Stage 1 finds a plausible preference-learning signal (rankings) but lacks explicit audio-domain indication in the title/abstract, which is required by the Stage 1 criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "ouyang2022training",
+    "candidate_title": "Training language models to follow instructions with human feedback",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "ouyang2022training",
+      "record_title": "Training language models to follow instructions with human feedback",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2203.02155",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/ouyang2022training.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates non-audio-domain content (systematic-review guideline) and does not address preference-learning in audio."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [],
+    "decision_rationale": "Stage 1 eligibility is not met: the title/abstract do not indicate any preference-learning in audio, ranking, or RL elements; content is an audio-agnostic methodological guideline for reporting systematic reviews, thus not within scope.",
+    "paper_id": "2511.13936",
+    "candidate_key": "page2021prisma",
+    "candidate_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "page2021prisma",
+      "record_title": "The PRISMA 2020 statement: an updated guideline for reporting systematic reviews.",
+      "source": "pubmed",
+      "source_id": "34446261",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/page2021prisma.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses reward misspecification in reinforcement learning environments; no audio-domain application mentioned."
+    ],
+    "decision_rationale": "Stage 1 evidence does not show audio-domain preference-based learning or an audio-specific RL loop as required by criteria. The study focuses on generic RL reward misspecification and anomaly detection, outside the audio scope per abstract; therefore exclude at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "pan2022effects",
+    "candidate_title": "The effects of reward misspecification: Mapping and mitigating misaligned models",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "pan2022effects",
+      "record_title": "The effects of reward misspecification: Mapping and mitigating misaligned models",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2201.03544",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/pan2022effects.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates ranking-based emotion classifiers (rankers) and use of relative labels for learning",
+      "Abstract states relative labels are used to train rank-based classifiers (rankers)",
+      "Abstract demonstrates emotion recognition in realistic domains using the SEMAINE database (audio/affective signals)",
+      "Paper is not a survey and describes learning with relative/preference-like signals in an audio-domain task"
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "\"rank-based classifiers (rankers)\"",
+      "\"relative labels\" to train rank-based classifiers",
+      "\"SEMAINE database\" demonstrates the audio-emotion recognition application",
+      "\"train machine learning algorithms that can rank expressive behaviors\""
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports a plausible in-scope fit: the paper discusses ranking/emotion classification using relative labels (preference-like signals) in an audio-relevant domain (SEMAINE). There is explicit mention of ranking-based learning rather than purely evaluative use, aligning with Stage 1 inclusion criteria. No evidence indicates a non-audio domain, survey nature, or exclusion-worthy focus.",
+    "paper_id": "2511.13936",
+    "candidate_key": "parthasarathy2016using",
+    "candidate_title": "Using agreement on direction of change to build rank-based emotion classifiers",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "parthasarathy2016using",
+      "record_title": "Using agreement on direction of change to build rank-based emotion classifiers",
+      "source": "openalex",
+      "source_id": "10.1109/taslp.2016.2593944",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2016using.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates preference-learning evidence in audio (ranking emotional attributes).",
+      "Abstract states the method uses a deep learning ranker (RankNet) to evaluate preference between emotional sentences, i.e., ranking in audio.",
+      "Paper is applied within the audio domain (speech emotion retrieval).",
+      "Not a survey/review article."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "ranking emotional attributes through preference learning methods",
+      "we use a deep learning ranker implemented with the RankNet algorithm to evaluate preference between emotional sentences",
+      "to identify speech conveying target emotional behaviors"
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports a fit to preference-based learning in audio: explicit ranking/preference learning approach for audio emotion attributes with RankNet; not a survey; not purely evaluative; within the audio domain.",
+    "paper_id": "2511.13936",
+    "candidate_key": "parthasarathy2017ranking",
+    "candidate_title": "Ranking emotional attributes with deep neural networks",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "parthasarathy2017ranking",
+      "record_title": "Ranking emotional attributes with deep neural networks",
+      "source": "openalex",
+      "source_id": "10.1109/icassp.2017.7953107",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2017ranking.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract mentions 'preference-learning methods to rank-order emotional attributes' (ranking evidence for emotional attributes).",
+      "Abstract references 'relative labels between pairs of sentences' to capture consistent trends across evaluators (pairwise/preference signals).",
+      "Abstract states use of 'QA-based labels' for preference-learning (qualitative agreement-based labeling).",
+      "Abstract notes 'sentence-level annotations' as the target for the labeling/ranking approach."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not explicitly state the domain as 'audio' within the text, leaving domain alignment with the Stage 1 audio requirement slightly ambiguous."
+    ],
+    "evidence_highlights": [
+      "\"The proposed relative labels between pairs of sentences capture consistent trends across evaluators.\"",
+      "\"preference-learning methods to rank-order emotional attributes trained with the proposed QA-based labels\"",
+      "\"Most emotional databases are annotated with attributes at the sentence-level\""
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports a plausible in-scope fit: explicit mention of preference-learning with ranking, pairwise labels, and QA-based labeling applied to sentence-level emotional annotations. The abstract does not explicitly spell out 'audio' domain, introducing some ambiguity about domain alignment, but the core signals (ranking/pairwise preference in emotion annotation) align with the Stage 1 criteria. Overall, strong inclusion with a minor domain-annotation uncertainty.",
+    "paper_id": "2511.13936",
+    "candidate_key": "parthasarathy2018preference",
+    "candidate_title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "parthasarathy2018preference",
+      "record_title": "Preference-Learning with Qualitative Agreement for Sentence Level Emotional Annotations",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2018-2478",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/parthasarathy2018preference.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain (focus on language models and RLHF).",
+      "Abstract discusses RLHF and Direct Preference Optimization for language models; no audio-domain content."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses language models, RLHF, reward models and optimization; no audio-domain application mentioned."
+    ],
+    "decision_rationale": "Stage 1 criteria require audio-domain applicability; the paper targets NLP/LN language models rather than audio, thus does not meet the stage1 audio-domain eligibility.",
+    "paper_id": "2511.13936",
+    "candidate_key": "rafailov2023direct",
+    "candidate_title": "Direct preference optimization: Your language model is secretly a reward model",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "rafailov2023direct",
+      "record_title": "Direct preference optimization: Your language model is secretly a reward model",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2305.18290",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/rafailov2023direct.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "The title/abstract indicates a survey/review article (BLEU validity) and not about audio or preference-learning in audio."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses BLEU validity as an NLP evaluation metric, not audio-domain preference-learning."
+    ],
+    "decision_rationale": "Stage 1 evidence shows the paper is a structured review of BLEU validity in NLP, not an audio-domain preference-learning study; according to Stage 1 criteria, it is excluded (survey/review) and not in-scope.",
+    "paper_id": "2511.13936",
+    "candidate_key": "reiter2018structured",
+    "candidate_title": "A Structured Review of the Validity of BLEU",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "reiter2018structured",
+      "record_title": "A Structured Review of the Validity of BLEU",
+      "source": "crossref",
+      "source_id": "10.1162/coli_a_00322",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/reiter2018structured.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is about evaluation metrics for summarisation (ROUGE) rather than preference-learning in audio.",
+      "No indication of audio domain, ranking/A-B comparisons, or RL loops in the title/abstract.",
+      "Paper is not about preference-based learning in audio according to the abstract."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses caveats of ROUGE metric for evaluation of summarisation.",
+      "The task is NP-hard; not about audio.",
+      "No explicit reference to audio domain or preference learning in the abstract."
+    ],
+    "decision_rationale": "Stage 1 evidence clearly does not support eligibility for preference-learning in audio; therefore exclude.",
+    "paper_id": "2511.13936",
+    "candidate_key": "schluter2017limits",
+    "candidate_title": "The limits of automatic summarisation according to rouge",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "schluter2017limits",
+      "record_title": "The limits of automatic summarisation according to rouge",
+      "source": "openalex",
+      "source_id": "10.18653/v1/e17-2007",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/schluter2017limits.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the study is not applied within the audio domain (PPO paper with reinforcement learning tasks such as Atari; no audio content)."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses reinforcement learning with a surrogate objective (PPO) and Atari tasks; no audio-domain content."
+    ],
+    "decision_rationale": "Stage 1 evidence indicates a non-audio RL methodology paper; thus it should be excluded from the audio-domain Stage 1 criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "schulman2017proximal",
+    "candidate_title": "Proximal Policy Optimization Algorithms",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "schulman2017proximal",
+      "record_title": "Proximal Policy Optimization Algorithms",
+      "source": "arxiv",
+      "source_id": "1707.06347",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/schulman2017proximal.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates non-audio domain (focus on mathematical reasoning in open language models) and does not mention audio preference-learning."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses DeepSeekMath in open language models; no audio-domain content is present."
+    ],
+    "decision_rationale": "Stage 1 requires audio-domain preference-learning evidence. The title/abstract of the candidate paper centers on language-model-based mathematical reasoning and does not address audio, ranking, or A/B comparisons. Therefore it is not in-scope for the Stage 1 criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "shao2024deepseekmath",
+    "candidate_title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "shao2024deepseekmath",
+      "record_title": "DeepSeekMath: Pushing the Limits of Mathematical Reasoning in Open Language Models",
+      "source": "arxiv",
+      "source_id": "2402.03300",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/shao2024deepseekmath.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Abstract discusses RLHF in dialogue and web question answering, with no explicit audio-domain focus."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract mentions dialogue and web QA tasks; no audio-domain evidence is present."
+    ],
+    "decision_rationale": "Stage 1 indicates the work is not applied in the audio domain based on the title/abstract; there is no audio-domain evidence to support inclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "singhal2023long",
+    "candidate_title": "A long way to go: Investigating length correlations in rlhf",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "singhal2023long",
+      "record_title": "A long way to go: Investigating length correlations in rlhf",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2310.03716",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/singhal2023long.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Abstract and title focus on NLP text summarization, not audio-domain preference-based learning.",
+      "Stage 1 inclusion criteria require audio-domain evidence (preference learning or RL for audio); not present in abstract."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses learning to optimize summaries via human preferences and reinforcement learning in NLP; no audio content."
+    ],
+    "decision_rationale": "Stage 1 requires evidence of preference-based learning in the audio domain (or an RL loop for an audio model). The provided abstract concerns text summarization, not audio, thus it does not meet the stage-1 criteria and should be excluded.",
+    "paper_id": "2511.13936",
+    "candidate_key": "stiennon2020learning",
+    "candidate_title": "Learning to summarize from human feedback",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "stiennon2020learning",
+      "record_title": "Learning to summarize from human feedback",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2009.01325",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/stiennon2020learning.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract does not indicate preference-learning evidence in audio (no ranking/A-B comparisons or RL loop in audio).",
+      "Paper is about arXiv usage in Computer Science, not an audio-domain learning or preference-based method as required by Stage 1 criteria."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Title: 'Popularity of arXiv.org within Computer Science' (no audio domain).",
+      "Abstract discusses posting on arXiv and aggregation; no preference-learning or ranking content related to audio."
+    ],
+    "decision_rationale": "Stage 1 requires explicit evidence of preference-based learning in the audio domain in the title/abstract. The paper's title/abstract do not address audio, ranking, or RL loops, so it does not meet the Stage 1 inclusion criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "sutton2017popularity",
+    "candidate_title": "Popularity of arXiv.org within Computer Science",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "sutton2017popularity",
+      "record_title": "Popularity of arXiv.org within Computer Science",
+      "source": "arxiv",
+      "source_id": "https://arxiv.org/abs/1710.05225",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/sutton2017popularity.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not clearly mention preference-learning evidence (ranking, A/B comparisons, or an RL loop) in audio; Stage 1 cannot confirm eligibility.",
+      "While the work is multimodal and involves audio-related capabilities, there is no explicit link to preference-based learning within the abstract."
+    ],
+    "evidence_highlights": [
+      "Multimodal models capable of recalling and reasoning over long context across modalities including audio",
+      "Long-document QA, long-video QA and long-context ASR",
+      "Hours of video and audio mentioned in abstract"
+    ],
+    "decision_rationale": "Stage 1 evidence is insufficient to confirm a preference-learning in audio fit. The abstract demonstrates multimodal long-context capabilities but does not mention ranking, preference signals, or RL-based learning in audio; thus a maybe stance is appropriate.",
+    "paper_id": "2511.13936",
+    "candidate_key": "team2024gemini",
+    "candidate_title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "team2024gemini",
+      "record_title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2403.05530",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/team2024gemini.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Abstract discusses listener counts in subjective evaluation of AI speech; no explicit learning component or preference-based training is present; aligns with exclusion for studies that use preferences solely for evaluation with no learning component."
+    ],
+    "uncertain_points": [
+      "No explicit mention of preference-based learning, ranking, or RL loop in audio within title/abstract."
+    ],
+    "evidence_highlights": [
+      "Abstract analyzes the number of listeners in Interspeech 2014 TTS evaluations and proposes guidelines for subjective evaluations."
+    ],
+    "decision_rationale": "Stage 1 evidence indicates no learning component or explicit preference-learning signaling in audio; the paper serves as evaluation methodology critique, thus does not meet the core inclusion criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "wester2015we",
+    "candidate_title": "Are we using enough listeners? no! — an empirically-supported critique of interspeech 2014 TTS evaluations",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "wester2015we",
+      "record_title": "Are we using enough listeners? no! — an empirically-supported critique of interspeech 2014 TTS evaluations",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2015-689",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/wester2015we.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract focuses on mapping time-continuous interval labels to time-continuous ordinal labels, with no explicit mention of preference-based learning, ranking, or A/B comparisons.",
+      "No reinforcement learning loop is described in the abstract, and it is unclear whether the work falls under preference-based learning criteria.",
+      "It's ambiguous whether the output conversion task qualifies as 'preference-based learning in audio' under Stage 1 criteria."
+    ],
+    "evidence_highlights": [
+      "The abstract describes mapping time-continuous interval labels to time-continuous ordinal labels.",
+      "It mentions inter-rater ambiguity about where AOLs sit on the interval label scale and consistency among raters in terms of ROLs.",
+      "Validation includes comparing converted ordinal labels to original interval labels and to categorical labels for MSP-Podcast and MSP-Conversation corpora."
+    ],
+    "decision_rationale": "Stage 1 evidence does not clearly indicate preference-learning evidence (e.g., ranking or A/B comparisons) or an RL-driven audio model; while the paper is in the audio/paralinguistics domain, the explicit feasibility for Stage 1's 'preference-based learning' criteria is not established from title/abstract alone.",
+    "paper_id": "2511.13936",
+    "candidate_key": "wu2023interval",
+    "candidate_title": "From Interval to Ordinal: A HMM based Approach for Emotion Label Conversion",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "wu2023interval",
+      "record_title": "From Interval to Ordinal: A HMM based Approach for Emotion Label Conversion",
+      "source": "crossref",
+      "source_id": "10.21437/interspeech.2023-2213",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/wu2023interval.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates an RL training loop for an audio model (online chord accompaniment).",
+      "Abstract describes ReaLchords as an online generative model for improvising chord accompaniment to user melody.",
+      "Abstract mentions reinforcement learning to finetune the model for online use, with a reward model for harmonic and temporal coherence.",
+      "Paper is applied within the audio/music domain."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Online generative model for improvising chord accompaniment to user melody.",
+      "Reinforcement learning used to finetune the model for online use.",
+      "Reward model provides feedback on harmonic and temporal coherency."
+    ],
+    "decision_rationale": "Stage 1 evidence shows a clear RL-based learning loop for an audio model in the music domain, aligning with Stage 1 criteria; no explicit exclusions found in abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "wu2025adaptive",
+    "candidate_title": "Adaptive accompaniment with ReaLchords",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "wu2025adaptive",
+      "record_title": "Adaptive accompaniment with ReaLchords",
+      "source": "openalex",
+      "source_id": "10.48550/arxiv.2506.14723",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/wu2025adaptive.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract does not clearly indicate preference-learning evidence (e.g., ranking, A/B comparisons) or an RL loop for an audio model.",
+      "While the work is multimodal and includes audio, it is not explicitly framed around preference-based learning in the abstract."
+    ],
+    "evidence_highlights": [
+      "In this report, we present Qwen2.5-Omni, an end-to-end multimodal model designed to perceive diverse modalities, including text, images, audio, and video, while simultaneously generating text and natural speech responses in a streaming manner.",
+      "To enable the streaming of multimodal information inputs, both audio and visual encoders utilize a block-wise processing approach."
+    ],
+    "decision_rationale": "Stage 1 does not conclusively show preference-learning signals in audio; evidence is insufficient to include, but not excluded; thus a 'maybe' with uncertain points.",
+    "paper_id": "2511.13936",
+    "candidate_key": "xu2025qwen2",
+    "candidate_title": "Qwen2.5-Omni Technical Report",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "xu2025qwen2",
+      "record_title": "Qwen2.5-Omni Technical Report",
+      "source": "arxiv",
+      "source_id": "https://arxiv.org/abs/2503.20215",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/xu2025qwen2.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract describes ranking-based emotion recognition using a relative emotion with respect to other songs.",
+      "Mentions an RBF-ListNet algorithm to optimize a ranking-based objective function.",
+      "Paper is applied in the audio domain (music organization and retrieval)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "ranking-based objective function",
+      "relative emotion of the song with respect to other songs",
+      "RBF-ListNet algorithm"
+    ],
+    "decision_rationale": "Stage 1 evidence shows the paper employs ranking-based learning in the audio domain, with explicit mention of a ranking-based objective and an RL-like approach. This aligns with the Stage 1 criteria; no conflicting signals are present in the title/abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2010ranking",
+    "candidate_title": "Ranking-based emotion recognition for music organization and retrieval",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2010ranking",
+      "record_title": "Ranking-based emotion recognition for music organization and retrieval",
+      "source": "openalex",
+      "source_id": "10.1109/tasl.2010.2064164",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2010ranking.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract does not explicitly mention preference-learning, ranking, A/B comparisons, or an RL loop in an audio context.",
+      "The abstract focuses on a speech processing benchmark (SUPERB) and SSL representations rather than a preference-based learning setup."
+    ],
+    "evidence_highlights": [
+      "Abstract describes SUPERB as a leaderboard to benchmark performance across speech processing tasks with a frozen shared model and task-specific heads."
+    ],
+    "decision_rationale": "Stage 1 evidence does not confirm a preference-learning in audio fit from title/abstract; core criterion is not clearly supported, thus a Maybe classification.",
+    "paper_id": "2511.13936",
+    "candidate_key": "yang2021superb",
+    "candidate_title": "Superb: Speech processing universal performance benchmark",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "yang2021superb",
+      "record_title": "Superb: Speech processing universal performance benchmark",
+      "source": "openalex",
+      "source_id": "10.21437/interspeech.2021-1775",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/yang2021superb.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract indicates the paper is about BERTScore, an automatic evaluation metric for text generation, which is not in the audio domain",
+      "No explicit mention of preference-based learning, ranking, A/B comparisons, or RL loops in audio within the abstract"
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract: 'We propose BERTScore, an automatic evaluation metric for text generation.'",
+      "Abstract: 'We evaluate using the outputs of 363 machine translation and image captioning systems.'"
+    ],
+    "decision_rationale": "Stage 1 requires evidence of preference-based learning in the audio domain or related RL/ranking signals in audio. The target paper discusses a text-generation evaluation metric with no audio applicability or learning component, thus it should be excluded at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhang2019bertscore",
+    "candidate_title": "BERTScore: Evaluating Text Generation with BERT",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhang2019bertscore",
+      "record_title": "BERTScore: Evaluating Text Generation with BERT",
+      "source": "arxiv",
+      "source_id": "1904.09675v3",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhang2019bertscore.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Stage 1 exclusion: Title/abstract clearly indicate the study is not applied within the audio domain."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Title: 'Sample Efficient Reinforcement Learning with REINFORCE'",
+      "Abstract discusses policy gradient methods and REINFORCE in reinforcement learning; no audio-domain or preference-learning in audio signals is mentioned."
+    ],
+    "decision_rationale": "Stage 1 requires evidence of preference-based learning in the audio domain within the title/abstract. The paper presents generic RL methods (REINFORCE) without audio-context or audio-preference signals, thus not in-scope per the Stage 1 criteria.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhang2021sample",
+    "candidate_title": "Sample Efficient Reinforcement Learning with REINFORCE",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhang2021sample",
+      "record_title": "Sample Efficient Reinforcement Learning with REINFORCE",
+      "source": "crossref",
+      "source_id": "10.1609/aaai.v35i12.17300",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhang2021sample.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Title/abstract indicates preference-learning in audio by aligning speech generation to human preferences.",
+      "Abstract mentions a 'preference dataset' and 'preference optimization' to improve a codec language model for speech.",
+      "Abstract describes an iterative self-improvement strategy that aligns speech language models to human preferences.",
+      "The work is clearly applied within the audio domain (speech generation)."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The abstract uses 'preference' terminology but does not explicitly state ranking or A/B testing signals; exact nature of preference signals is not fully specified in the abstract."
+    ],
+    "evidence_highlights": [
+      "Iterative self-improvement strategy to align speech language models to human preferences.",
+      "Construction of a preference dataset contrasting tokens to improve the codec language model.",
+      "Preference optimization to improve the codec language model.",
+      "Claims robustness/generalization to smaller models, indicating practical audio-domain applicability."
+    ],
+    "decision_rationale": "Stage 1 evidence strongly supports inclusion: it targets audio-domain preference-based learning, describes a preference dataset and optimization loop, and is not a survey. Some specifics about the exact form of preference signals (e.g., explicit ranking/A-B tests) are not explicit in the abstract, introducing minor uncertainty.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhang2024speechalign",
+    "candidate_title": "SpeechAlign: Aligning Speech Generation to Human Preferences",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhang2024speechalign",
+      "record_title": "SpeechAlign: Aligning Speech Generation to Human Preferences",
+      "source": "semantic_scholar",
+      "source_id": "a85a882fb7d9af9a2734440f4eae19c8393f0301",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhang2024speechalign.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Abstract focuses on evaluating LLM-based chat assistants and using MT-Bench and Chatbot Arena; no audio domain or audio preference-learning evidence mentioned.",
+      "No indication of ranking, A/B comparisons of audio clips, or RL training loops in an audio context."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses evaluating LLM-based chat assistants and using MT-Bench and Chatbot Arena; no audio content.",
+      "Focus is on human-preference alignment for LLM judges in chat benchmarks, not audio applications."
+    ],
+    "decision_rationale": "Stage 1 evidence clearly indicates non-audio scope; the abstract does not mention audio-domain preference-learning, rankings, or audio-specific evaluation. Therefore the core inclusion criteria are not satisfied, warranting exclusion.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zheng2023judging",
+    "candidate_title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zheng2023judging",
+      "record_title": "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena",
+      "source": "arxiv",
+      "source_id": "2306.05685v4",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zheng2023judging.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract does not indicate preference-learning evidence in audio (no ranking, A/B comparisons, or RL loop).",
+      "Abstract describes standard ML classification/regression for predicting the geographical origin of music, not learning-from-preferences.",
+      "The work is not a survey/review."
+    ],
+    "uncertain_points": [
+      "The abstract contains no explicit mention of ranking or preference-based learning signals."
+    ],
+    "evidence_highlights": [
+      "\"predict the geographical origin of pieces of music\"",
+      "\"Two applicable methods are K-Nearest Neighbors and Random forest regression\"",
+      "\"bagging\"",
+      "\"mean great circle distance error\""
+    ],
+    "decision_rationale": "Stage 1 requires explicit evidence of preference-based learning in the audio domain. The title/abstract describe learning to predict geographical origin via classification/regression methods without any ranking, A/B comparisons, or reinforcement-learning loops. Therefore, it does not meet the Stage 1 inclusion criteria and should be excluded at Stage 1.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhou2014predicting",
+    "candidate_title": "Predicting the geographical origin of music",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhou2014predicting",
+      "record_title": "Predicting the geographical origin of music",
+      "source": "openalex",
+      "source_id": "10.1109/icdm.2014.73",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhou2014predicting.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "Abstract describes interactive, user-in-the-loop optimization with preferential feedback on generated samples in the audio domain (melody composition).",
+      "The domain is audio, applying learning-based optimization (Bayesian optimization) with a preference-driven loop.",
+      "The approach involves adjusting sampling behavior (exploration vs exploitation) based on user preferences, indicating a learning signal rather than a pure evaluation."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract mentions preferential feedback from users on candidate solutions in melody generation.",
+      "Mentions a learning loop combining a deep generative model with Bayesian optimization.",
+      "Notes exploration-exploitation balancing driven by user preferences."
+    ],
+    "decision_rationale": "Stage 1 evidence clearly supports a plausible in-scope fit for preference-based learning in audio with an interactive learning loop; the abstract indicates user preference signals and learning-guided optimization in melody generation, aligning with Stage 1 criteria. No explicit negative indications in the abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhou2021interactive",
+    "candidate_title": "Interactive Exploration-Exploitation Balancing for Generative Melody Composition",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhou2021interactive",
+      "record_title": "Interactive Exploration-Exploitation Balancing for Generative Melody Composition",
+      "source": "semantic_scholar",
+      "source_id": "150f89deca428b39ebaf6782bb2dce0ca8e8093b",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhou2021interactive.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 3,
+    "decision_recommendation": "maybe",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [
+      "The title/abstract discuss preference optimization for language models with RLHF, but do not mention the audio domain or audio preference learning.",
+      "No explicit evidence of audio-specific ranking, A/B comparisons, or other audio-domain preference signals in the abstract.",
+      "Stage 1 requires audio-domain preference-learning evidence; eligibility remains uncertain based on the abstract alone."
+    ],
+    "evidence_highlights": [
+      "Abstract mentions multi-objective RLHF for language models, with customization and multi-dimensional feedback, but no audio domain reference."
+    ],
+    "decision_rationale": "Stage 1 evidence does not clearly support an audio-domain preference-learning fit; lack of explicit audio-related content or comparisons in the title/abstract leads to an uncertain classification (maybe).",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhou2023beyond",
+    "candidate_title": "Beyond One-Preference-Fits-All Alignment: Multi-Objective Direct Preference Optimization",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhou2023beyond",
+      "record_title": "Beyond One-Preference-Fits-All Alignment: Multi-Objective Direct Preference Optimization",
+      "source": "arxiv",
+      "source_id": "https://arxiv.org/abs/2310.03708",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhou2023beyond.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Title/abstract clearly indicates the paper is a survey/review article; excluded per Stage 1 criteria (not an eligible in-scope paper)."
+    ],
+    "uncertain_points": [
+      "The abstract centers on a survey of audio-visual learning; no explicit preference-learning or ranking evidence is described in title/abstract."
+    ],
+    "evidence_highlights": [
+      "Title: Deep Audio-visual Learning: A Survey",
+      "Abstract: describes a comprehensive survey of audio-visual learning development"
+    ],
+    "decision_rationale": "Stage 1 evidence shows the paper is a survey article, which is excluded under the Stage 1 criteria. No explicit in-scope preference-learning content is evident from title/abstract.",
+    "paper_id": "2511.13936",
+    "candidate_key": "zhu2021deep",
+    "candidate_title": "Deep Audio-visual Learning: A Survey",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "zhu2021deep",
+      "record_title": "Deep Audio-visual Learning: A Survey",
+      "source": "crossref",
+      "source_id": "10.1007/s11633-021-1293-0",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/zhu2021deep.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 1,
+    "decision_recommendation": "exclude",
+    "satisfied_inclusion_points": [],
+    "triggered_exclusion_points": [
+      "Stage 1 core inclusion criterion not met: title/abstract indicates preference-learning evidence in audio or an RL loop for an audio model; the paper targets NLP tasks (language models) rather than audio domain."
+    ],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "Abstract discusses reward learning from human preferences for language tasks; no mention of audio-domain preference learning or audio A/B/ranking signals."
+    ],
+    "decision_rationale": "Stage 1 evidence shows NLP-focused work on reward learning with human preferences, not audio-domain applications. Therefore it does not meet the stage-1 audio-domain inclusion criteria and should be excluded.",
+    "paper_id": "2511.13936",
+    "candidate_key": "ziegler2019fine",
+    "candidate_title": "Fine-Tuning Language Models from Human Preferences",
+    "stage": "stage1",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "source_record_provenance": {
+      "record_key": "ziegler2019fine",
+      "record_title": "Fine-Tuning Language Models from Human Preferences",
+      "source": "arxiv",
+      "source_id": "1909.08593",
+      "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2511.13936.json",
+      "fulltext_candidate_path": "refs/2511.13936/mds/ziegler2019fine.md",
+      "fulltext_available": true
+    }
+  }
+]

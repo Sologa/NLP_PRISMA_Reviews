@@ -1,0 +1,285 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_GENERATIVE_AUDIO_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "MusicLM, a model generating high-fidelity music from text descriptions"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The title/abstract directly supports the core extraction fit."
+      },
+      {
+        "criterion_id": "I2_AUDIO_ONLY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "it generates music at 24 kHz"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract states MusicLM generates music, i.e., audio domain."
+      },
+      {
+        "criterion_id": "I3_FULL_PAPER_PLAUSIBLE",
+        "status": "YES",
+        "supporting_quotes": [
+          "Our experiments show that MusicLM outperforms previous systems both in audio quality and adherence to the text description."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The abstract describes experiments; plausible full paper."
+      },
+      {
+        "criterion_id": "E1_NOT_AUDIO_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "MusicLM: Generating Music From Text"
+        ],
+        "missingness_reason": null,
+        "notes": "The title/abstract clearly centers on audio generation; exclusion not triggered."
+      },
+      {
+        "criterion_id": "E2_TEXT_OUTPUT_ASR",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "MusicLM, a model generating high-fidelity music from text descriptions"
+        ],
+        "missingness_reason": null,
+        "notes": "Abstract does not indicate final text-output; output is audio."
+      },
+      {
+        "criterion_id": "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "MusicLM, a model generating high-fidelity music from text descriptions"
+        ],
+        "missingness_reason": null,
+        "notes": "Output is audio; no non-audio primary outputs asserted."
+      },
+      {
+        "criterion_id": "E4_NON_GENERATIVE_OR_SECONDARY",
+        "status": "NO",
+        "supporting_quotes": [],
+        "counter_quotes": [
+          "MusicLM, a model generating high-fidelity music from text descriptions"
+        ],
+        "missingness_reason": null,
+        "notes": "Abstract describes a generative music model; not non-generative."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The title/abstract directly supports an in-scope Stage 1 fit and no exclusion criterion is triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Advance to Stage 2 for canonical full-text confirmation.",
+    "short_summary": "MusicLM is a text-conditioned audio-generation model for music; audio-only primary outputs; full paper status plausible.",
+    "paper_id": "2307.05527",
+    "candidate_key": "agostinelli2023musiclm",
+    "candidate_title": "MusicLM: Generating Music From Text",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage1.json",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "agostinelli2023musiclm",
+      "record_title": "MusicLM: Generating Music From Text",
+      "source": "arxiv",
+      "source_id": "2301.11325v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/agostinelli2023musiclm.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_GENERATIVE_AUDIO_FOCUS",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract discusses generative modelling in general; audio focus not explicit."
+      },
+      {
+        "criterion_id": "I2_AUDIO_ONLY_OUTPUT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit claim about audio-only output."
+      },
+      {
+        "criterion_id": "I3_FULL_PAPER_PLAUSIBLE",
+        "status": "YES",
+        "supporting_quotes": [
+          "Comparative Review"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Title indicates a comparative review; plausible as a full paper."
+      },
+      {
+        "criterion_id": "E1_NOT_AUDIO_OUTPUT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit non-audio mismatch stated in title/abstract."
+      },
+      {
+        "criterion_id": "E2_TEXT_OUTPUT_ASR",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No ASR or text-output evidence in title/abstract."
+      },
+      {
+        "criterion_id": "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No indication of non-audio outputs as primary."
+      },
+      {
+        "criterion_id": "E4_NON_GENERATIVE_OR_SECONDARY",
+        "status": "YES",
+        "supporting_quotes": [
+          "Comparative Review"
+        ],
+        "counter_quotes": [
+          "the paper evaluates and surveys many generative models; not a primary generative study."
+        ],
+        "missingness_reason": null,
+        "notes": "Abstract describes a survey/review; thus exclusion."
+      }
+    ],
+    "stage_score": 1,
+    "decision_rationale": "Exclusion due to E4: the paper is a survey/review of generative models, not a generative-audio primary study; Stage 1 should exclude.",
+    "manual_review_needed": false,
+    "routing_note": "Exclude at Stage 1 due to E4; no audio-primary focus evidenced in title/abstract.",
+    "short_summary": "Stage 1: Exclusion triggered by non-generative/survey form; audio focus not established.",
+    "paper_id": "2307.05527",
+    "candidate_key": "bond2021deep",
+    "candidate_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage1.json",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "bond2021deep",
+      "record_title": "Deep Generative Modelling: A Comparative Review of VAEs, GANs, Normalizing Flows, Energy-Based and Autoregressive Models",
+      "source": "arxiv",
+      "source_id": "2103.04922v4",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/bond2021deep.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_GENERATIVE_AUDIO_FOCUS",
+        "status": "YES",
+        "supporting_quotes": [
+          "generates music with singing in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The abstract directly supports a generative-audio primary focus."
+      },
+      {
+        "criterion_id": "I2_AUDIO_ONLY_OUTPUT",
+        "status": "YES",
+        "supporting_quotes": [
+          "generates music with singing in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Output is described in raw audio; audio-only."
+      },
+      {
+        "criterion_id": "I3_FULL_PAPER_PLAUSIBLE",
+        "status": "YES",
+        "supporting_quotes": [
+          "We introduce Jukebox, a model that generates music with singing in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Plausible that this is a full-length paper; abstract describes a substantial model."
+      },
+      {
+        "criterion_id": "E1_NOT_AUDIO_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "generates music with singing in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Abstract centers on audio generation; not non-audio."
+      },
+      {
+        "criterion_id": "E2_TEXT_OUTPUT_ASR",
+        "status": "UNCLEAR",
+        "supporting_quotes": [],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit evidence of ASR or text-final output in title/abstract."
+      },
+      {
+        "criterion_id": "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+        "status": "NO",
+        "supporting_quotes": [
+          "generates music with singing in the raw audio domain"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "Primary output is audio; no non-audio primary outputs described."
+      },
+      {
+        "criterion_id": "E4_NON_GENERATIVE_OR_SECONDARY",
+        "status": "NO",
+        "supporting_quotes": [
+          "a model that generates music"
+        ],
+        "counter_quotes": [
+          "We introduce Jukebox, a model that generates music with singing in the raw audio domain"
+        ],
+        "missingness_reason": null,
+        "notes": "Abstract describes a generative model; not non-generative."
+      }
+    ],
+    "stage_score": 4,
+    "decision_rationale": "The title/abstract directly supports an in-scope Stage 1 fit and no exclusion criterion is clearly triggered.",
+    "manual_review_needed": false,
+    "routing_note": "Advance to Stage 2 for canonical full-text confirmation.",
+    "short_summary": "Generative-audio model for music in the raw audio domain; audio-output focus.",
+    "paper_id": "2307.05527",
+    "candidate_key": "dhariwal2020jukebox",
+    "candidate_title": "Jukebox: A Generative Model for Music",
+    "stage": "stage1",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2307.05527.stage1.json",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "source_record_provenance": {
+      "record_key": "dhariwal2020jukebox",
+      "record_title": "Jukebox: A Generative Model for Music",
+      "source": "arxiv",
+      "source_id": "2005.00341v1",
+      "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage1/2307.05527.json",
+      "fulltext_candidate_path": "refs/2307.05527/mds/dhariwal2020jukebox.md",
+      "fulltext_available": true
+    }
+  }
+]

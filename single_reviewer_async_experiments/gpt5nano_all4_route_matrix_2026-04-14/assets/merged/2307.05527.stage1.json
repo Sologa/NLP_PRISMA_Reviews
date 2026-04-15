@@ -1,0 +1,58 @@
+{
+  "paper_id": "2307.05527",
+  "stage": "stage1",
+  "topic": "Ethical implications of generative audio models",
+  "topic_definition": "Stage 1 only uses title and abstract. Judge whether the paper is centrally about generative audio models or their applications, with audio as the entire primary output domain. Do not convert missing title/abstract detail into new hard exclusions.",
+  "decision_policy": "Recommend exclude when an exclusion criterion is clearly triggered or when the title/abstract directly contradicts a generative-audio primary focus. Recommend maybe when audio-generative fit is plausible but output modality or paper form remains unresolved. Recommend include only when title/abstract directly supports generative-audio focus with audio-only primary outputs and no exclusion criterion is triggered.",
+  "criteria": [
+    {
+      "criterion_id": "I1_GENERATIVE_AUDIO_FOCUS",
+      "criterion_type": "inclusion",
+      "criterion_text": "Topic is generative audio models, with a generative audio model or application as the primary focus.",
+      "criterion_question": "Does the title/abstract directly support that a generative audio model or audio-generation application is the paper's primary focus?",
+      "assessment_policy": "Prefer UNCLEAR rather than NO when audio generation seems plausible but the primary focus is not explicit."
+    },
+    {
+      "criterion_id": "I2_AUDIO_ONLY_OUTPUT",
+      "criterion_type": "inclusion",
+      "criterion_text": "Output domain is entirely audio.",
+      "criterion_question": "Does the title/abstract support that the model's primary output is entirely audio rather than text, image, video, or mixed media?",
+      "assessment_policy": "Use YES only when audio is clearly the output domain."
+    },
+    {
+      "criterion_id": "I3_FULL_PAPER_PLAUSIBLE",
+      "criterion_type": "inclusion",
+      "criterion_text": "Full research paper status is plausible from title/abstract or venue context, otherwise defer rather than hard-excluding at Stage 1.",
+      "criterion_question": "If the study otherwise looks in scope, is there a plausible path to defer paper-form confirmation to Stage 2 rather than exclude now?",
+      "assessment_policy": "Use YES only for plausible candidate primary studies."
+    },
+    {
+      "criterion_id": "E1_NOT_AUDIO_OUTPUT",
+      "criterion_type": "exclusion",
+      "criterion_text": "Not actually about audio as the central topic or output.",
+      "criterion_question": "Does the title/abstract directly indicate that audio is not the central topic or output?",
+      "assessment_policy": "Use YES only for direct non-audio mismatch."
+    },
+    {
+      "criterion_id": "E2_TEXT_OUTPUT_ASR",
+      "criterion_type": "exclusion",
+      "criterion_text": "Speech-to-text or ASR or transcription work where the final output is text.",
+      "criterion_question": "Does the title/abstract show ASR, transcription, or speech-to-text with text as the final output?",
+      "assessment_policy": "Use YES only for direct text-output evidence."
+    },
+    {
+      "criterion_id": "E3_NON_AUDIO_OR_MULTI_PRIMARY_OUTPUT",
+      "criterion_type": "exclusion",
+      "criterion_text": "Generates video or another non-audio primary output, or generates something in addition to audio as a primary output.",
+      "criterion_question": "Does the title/abstract directly indicate video, gestures, images, or other non-audio outputs as primary outputs alongside or instead of audio?",
+      "assessment_policy": "Use YES only when non-audio primary output is directly supported."
+    },
+    {
+      "criterion_id": "E4_NON_GENERATIVE_OR_SECONDARY",
+      "criterion_type": "exclusion",
+      "criterion_text": "Non-generative work such as classification/prediction, or obvious survey/review/non-full-paper forms.",
+      "criterion_question": "Does the title/abstract directly indicate non-generative prediction/classification or secondary/non-full-paper publication form?",
+      "assessment_policy": "Use YES only for direct exclusion evidence."
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+[
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_TRANSFORMER_LM_FIT",
+        "status": "YES",
+        "supporting_quotes": [
+          "We train sparse autoencoders on the intermediate activations of Llama-3-8B (Dubey et al., 2024) and Aya-23-8B (Aryabumi et al., 2024) and locate (massively) multilingual features for various morphosyntactic concepts."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text explicitly focuses on large multilingual language models (Llama-3-8B and Aya-23-8B), i.e., transformer-based LMs, as the subjects of analysis."
+      },
+      {
+        "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+        "status": "YES",
+        "supporting_quotes": [
+          "we train a probing classifier for each combination of morphosyntactic concept (e.g., gender) and language (e.g., English)",
+          "We observe significant overlap of up to 50% in the features identified for the same grammatical concepts across typologically diverse languages"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper conducts explicit empirical analyses of morphosyntactic concepts across languages using probing classifiers and causal interventions."
+      },
+      {
+        "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+        "status": "NO",
+        "supporting_quotes": [
+          "We train sparse autoencoders on the intermediate activations of Llama-3-8B (Dubey et al., 2024) and Aya-23-8B (Aryabumi et al., 2024)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No evidence of a primary focus on non-transformer architectures or MT-encoder/decoder orientation; the work centers on transformer LMs."
+      },
+      {
+        "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+        "status": "NO",
+        "supporting_quotes": [
+          "we locate (massively) multilingual features for various morphosyntactic concepts",
+          "we train a probing classifier for each combination of morphosyntactic concept"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The study explicitly analyzes syntactic/morphosyntactic representations, not merely general LM behavior without syntax analysis."
+      },
+      {
+        "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+        "status": "NO",
+        "supporting_quotes": [
+          "In this section, we investigate the extent to which morphosyntactic concepts are shared (or redundantly encoded) across languages.",
+          "We design experiments to quantify the degree to which these concepts are shared across languages, and later evaluate the selectivity of targeted morphosyntactic concept interventions."
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper contains explicit empirical methodology and results (probing, ablations, MT experiments, etc.), not a survey or position paper."
+      }
+    ],
+    "stage_score": 5,
+    "decision_rationale": "The full text clearly satisfies Transformer LM focus and empirical syntax analysis with no exclusion criteria triggered; therefore Stage 2 supports including the paper.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Canonical full-text criteria are satisfied.",
+    "paper_id": "2601.19926",
+    "candidate_key": "brinkmann_large_2025",
+    "candidate_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2601.19926.stage2.json",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "brinkmann_large_2025",
+      "record_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+      "source": "crossref",
+      "source_id": "10.18653/v1/2025.naacl-long.312",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/brinkmann_large_2025.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "criterion_assessments": [
+      {
+        "criterion_id": "I1_TRANSFORMER_LM_FIT",
+        "status": "UNCLEAR",
+        "supporting_quotes": [
+          "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+          "our large-scale experiments, spanning 100+ LLMs",
+          "LLMs"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The full text discusses large language models (LLMs) but does not explicitly state Transformer-based language models."
+      },
+      {
+        "criterion_id": "I2_EMPIRICAL_SYNTAX_ANALYSIS",
+        "status": "YES",
+        "supporting_quotes": [
+          "linguistic minimal pairs to probe the internal linguistic representations of Large Language Models (LLMs)",
+          "we extract activations",
+          "We compute the difference between the hidden activations",
+          "Our experiments ... 100+ LLMs and 150k linguistic minimal pairs across 3 languages",
+          "Subject-Verb Agreement",
+          "Binding (syntax-semantics)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The paper conducts empirical analysis of linguistic phenomena (syntax-related phenomena) across many LLMs."
+      },
+      {
+        "criterion_id": "E1_NON_TRANSFORMER_OR_MT_ENCODER_DECODER",
+        "status": "NO",
+        "supporting_quotes": [
+          "A comprehensive range of 104 LLMs from Huggingface was employed",
+          "LLMs"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "No explicit non-transformer or MT-encoder-decoder orientation is evident; the work uses LLMs from Huggingface, which predominantly include transformer-based models."
+      },
+      {
+        "criterion_id": "E2_NOT_SYNTAX_ANALYSIS",
+        "status": "NO",
+        "supporting_quotes": [
+          "linguistic minimal pairs to probe the internal linguistic representations",
+          "syntax-semantics",
+          "Subject-Verb Agreement (morphology)",
+          "Binding (syntax-semantics)"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The work explicitly analyzes syntactic phenomena in LLM activations, i.e., empirical syntax analysis."
+      },
+      {
+        "criterion_id": "E3_SECONDARY_OR_NO_EMPIRICAL",
+        "status": "NO",
+        "supporting_quotes": [
+          "our large-scale experiments, spanning 100+ LLMs and 150k minimal pairs",
+          "We report our observations",
+          "Takeaway: LLMs’ linguistic similarity shows a weak correlation with semantic similarity"
+        ],
+        "counter_quotes": [],
+        "missingness_reason": null,
+        "notes": "The text presents extensive empirical analysis across many models and minimal pairs, not a secondary/position paper."
+      }
+    ],
+    "stage_score": 3,
+    "decision_rationale": "The full text provides clear empirical analysis of syntax within Large Language Models, and demonstrates a broad evaluative scope across many models and languages. There is no explicit, unequivocal claim that the study focuses on Transformer-based LM (I1) and no exclusions are triggered (E1, E2, E3 are all answered NO). Given the ambiguity around the explicit Transformer focus, the result is a 'maybe' rather than a firm include or exclude.",
+    "manual_review_needed": false,
+    "routing_note": "Stage 2 final verdict.",
+    "short_summary": "Empirical syntax analysis in LLMs is demonstrated; Transformer-based focus is not explicitly stated; no exclusion criteria are triggered, yielding a 'maybe' outcome.",
+    "paper_id": "2601.19926",
+    "candidate_key": "zhou_linguistic_2025",
+    "candidate_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+    "stage": "stage2",
+    "workflow_arm": "merged_ledger_verify_async",
+    "qa_asset_path": "single_reviewer_async_experiments/gpt5nano_all4_route_matrix_2026-04-14/assets/merged/2601.19926.stage2.json",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "zhou_linguistic_2025",
+      "record_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+      "source": "manual",
+      "source_id": "https://aclanthology.org/2025.coling-main.459/",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/zhou_linguistic_2025.md",
+      "fulltext_available": true
+    }
+  }
+]

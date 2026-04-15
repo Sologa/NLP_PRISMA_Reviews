@@ -1,0 +1,77 @@
+[
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The study analyzes morphosyntactic concepts in Transformer-based language models (Llama-3-8B and Aya-23-8B).",
+      "It empirically assesses syntactic structure or knowledge by training probing classifiers on residual-stream activations from the model's middle layer to predict morphosyntactic concepts across languages.",
+      "It trains sparse autoencoders (Gated SAEs) to identify multilingual features encoding morphosyntactic concepts from the same transformer models.",
+      "It evaluates cross-lingual sharing and causal influence via attribution patching and feature ablations, reporting multilingual feature overlap (up to ~50%) and the reliance of probes on massively multilingual features.",
+      "It demonstrates functional selectivity through feature steering interventions in a machine translation setting, showing targeted concept manipulation with generally high selectivity and demonstrated cross-language applicability."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "The models considered are Llama-3-8B and Aya-23-8B (Transformer language models).",
+      "Probing classifiers are trained for each morphosyntactic concept and language on residual-stream activations from the model's middle layer.",
+      "Gated SAEs are trained to discover multilingual feature directions for morphosyntactic concepts.",
+      "Attribution patching and ablations show that multilingual features drive probe performance and that a subset of features is shared across languages.",
+      "Machine translation experiments with feature steering demonstrate functional selectivity of the identified features."
+    ],
+    "decision_rationale": "全文直接證實 Stage 2 納入條件：使用 Transformer-based 語言模型進行語法概念的實證分析，透過探測分類器、SAEs、因果干預與跨語言實驗，評估語法知識的跨語言表徵及其可控性，且未出現排除條件所述的情境。故評為強納入。",
+    "paper_id": "2601.19926",
+    "candidate_key": "brinkmann_large_2025",
+    "candidate_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+    "stage": "stage2",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "brinkmann_large_2025",
+      "record_title": "Large Language Models Share Representations of Latent Grammatical Concepts Across Typologically Diverse Languages",
+      "source": "crossref",
+      "source_id": "10.18653/v1/2025.naacl-long.312",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/brinkmann_large_2025.md",
+      "fulltext_available": true
+    }
+  },
+  {
+    "stage_score": 5,
+    "decision_recommendation": "include",
+    "satisfied_inclusion_points": [
+      "The full text empirically analyzes syntactic knowledge in LLMs by using linguistic minimal pairs to probe internal representations.",
+      "The study measures activation differences across minimal pairs to quantify linguistic similarity, focusing on syntactic phenomena (e.g., Subject–Verb Agreement, Binding, NPI licensing).",
+      "The evaluation uses syntactic benchmarks (BLiMP, SLING, RuBLiMP) and reports an extensive, multi-language, large-scale analysis (100+ LLMs across three languages and 150k minimal pairs).",
+      "The work includes empirical analysis of how linguistic similarity aligns with theoretical categorizations and with semantic similarity, addressing core syntax-related interpretability questions.",
+      "The paper demonstrates cross-language analysis and language clustering patterns, evidencing empirical assessment of syntactic knowledge in LLMs across languages."
+    ],
+    "triggered_exclusion_points": [],
+    "uncertain_points": [],
+    "evidence_highlights": [
+      "\"linguistic minimal pairs to probe the internal linguistic representations of Large Language Models (LLMs).\"",
+      "\"By measuring the similarity between LLM activation differences across minimal pairs, we quantify the linguistic similarity\"",
+      "\"Our large-scale experiments, spanning 100+ LLMs and 150k minimal pairs in three languages\"",
+      "\"the activations in LLMs in response to linguistic minimal pairs\""
+    ],
+    "decision_rationale": "The full text directly describes an empirical study of syntactic representations in large language models using linguistic minimal pairs and standard syntactic phenomena, spanning numerous models and languages and leveraging syntactic benchmarks. This aligns with Stage 2 inclusion criteria (empirical analysis of syntactic knowledge in LLMs) and does not trigger any exclusion criteria based on the provided text.",
+    "paper_id": "2601.19926",
+    "candidate_key": "zhou_linguistic_2025",
+    "candidate_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+    "stage": "stage2",
+    "workflow_arm": "direct_2stage_async",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "source_record_provenance": {
+      "record_key": "zhou_linguistic_2025",
+      "record_title": "Linguistic Minimal Pairs Elicit Linguistic Similarity in Large Language Models",
+      "source": "manual",
+      "source_id": "https://aclanthology.org/2025.coling-main.459/",
+      "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+      "runtime_prompts_path": "scripts/screening/runtime_prompts/runtime_prompts.json",
+      "criteria_path": "criteria_stage2/2601.19926.json",
+      "fulltext_candidate_path": "refs/2601.19926/mds/zhou_linguistic_2025.md",
+      "fulltext_available": true
+    }
+  }
+]
