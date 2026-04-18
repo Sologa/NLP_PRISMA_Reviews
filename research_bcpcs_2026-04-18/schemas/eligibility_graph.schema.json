@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.nlp-prisma-reviews/bcpcs/eligibility_graph.schema.json",
+  "title": "BCPCS Eligibility Graph",
+  "description": "Typed, source-faithful eligibility claims compiled from an existing stage-specific criteria file. This schema describes a graph artifact, not a rewritten criteria source.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "review_id",
+    "stage",
+    "criterion_source_path",
+    "claims",
+    "decision_graph"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "stage1",
+        "stage2"
+      ]
+    },
+    "criterion_source_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "topic": {
+      "type": "string"
+    },
+    "topic_definition": {
+      "type": "string"
+    },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "claim_id",
+          "claim_text",
+          "claim_type",
+          "required_status",
+          "decision_operator",
+          "source_criterion_ids",
+          "stage_observability"
+        ],
+        "properties": {
+          "claim_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim_type": {
+            "type": "string",
+            "enum": [
+              "inclusion",
+              "exclusion",
+              "metadata",
+              "stage_gate",
+              "quality",
+              "other"
+            ]
+          },
+          "required_status": {
+            "type": "string",
+            "enum": [
+              "support",
+              "refute_absent",
+              "not_applicable"
+            ]
+          },
+          "decision_operator": {
+            "type": "string",
+            "enum": [
+              "all",
+              "any",
+              "none",
+              "route_if_unknown",
+              "exclude_if_refute",
+              "include_if_support"
+            ]
+          },
+          "source_criterion_ids": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "stage_observability": {
+            "type": "string",
+            "enum": [
+              "observable_stage1",
+              "deferred_to_stage2",
+              "observable_stage2",
+              "metadata_only",
+              "not_observable"
+            ]
+          },
+          "source": {
+            "type": "string"
+          },
+          "topic_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "decision_graph": {
+      "type": "object",
+      "required": [
+        "include_rule",
+        "exclude_rule",
+        "route_rule"
+      ],
+      "properties": {
+        "include_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "exclude_rule": {
+          "type": "string",
+          "minLength": 1
+        },
+        "route_rule": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

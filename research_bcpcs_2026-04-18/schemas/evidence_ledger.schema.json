@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.nlp-prisma-reviews/bcpcs/evidence_ledger.schema.json",
+  "title": "BCPCS Evidence Ledger Record",
+  "description": "One claim-level evidence record for one candidate paper and one screening stage. JSONL ledgers should contain one object per line matching this schema.",
+  "type": "object",
+  "required": [
+    "candidate_key",
+    "stage",
+    "claim_id",
+    "evidence_status",
+    "support_spans",
+    "refute_spans",
+    "missingness_reason",
+    "confidence",
+    "verifier_model",
+    "quote",
+    "location",
+    "source_path",
+    "span_validated"
+  ],
+  "properties": {
+    "candidate_key": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "type": "string",
+      "enum": [
+        "stage1",
+        "stage2"
+      ]
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "evidence_status": {
+      "type": "string",
+      "enum": [
+        "support",
+        "refute",
+        "unknown",
+        "not_applicable"
+      ]
+    },
+    "support_spans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "quote",
+          "location",
+          "source_path",
+          "source_field"
+        ],
+        "properties": {
+          "quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_field": {
+            "type": "string",
+            "enum": [
+              "title",
+              "abstract",
+              "metadata",
+              "full_text",
+              "criteria",
+              "other"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "refute_spans": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "quote",
+          "location",
+          "source_path",
+          "source_field"
+        ],
+        "properties": {
+          "quote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_field": {
+            "type": "string",
+            "enum": [
+              "title",
+              "abstract",
+              "metadata",
+              "full_text",
+              "criteria",
+              "other"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "missingness_reason": {
+      "type": "string",
+      "enum": [
+        "none",
+        "not_observed_stage1",
+        "deferred_to_stage2",
+        "semantic_non_fit",
+        "retrieval_failure",
+        "metadata_ambiguity",
+        "source_gold_tension",
+        "evidence_incomplete",
+        "not_applicable"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "verifier_model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "quote": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "source_path": {
+      "type": "string",
+      "minLength": 1
+    },
+    "span_validated": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

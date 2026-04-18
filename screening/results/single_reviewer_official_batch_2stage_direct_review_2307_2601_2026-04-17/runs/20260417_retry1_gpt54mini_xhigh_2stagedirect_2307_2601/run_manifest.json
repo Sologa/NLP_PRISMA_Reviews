@@ -1,0 +1,160 @@
+{
+  "run_id": "20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601",
+  "bundle_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17",
+  "manifest_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/manifest.json",
+  "workflow_spec_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/workflow/workflow_spec.json",
+  "run_manifest_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/run_manifest.json",
+  "results_root": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17",
+  "run_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601",
+  "model": "gpt-5.4-mini",
+  "endpoint": "/v1/chat/completions",
+  "workflow_arm": "single-reviewer-official-batch-2stage-direct-review",
+  "stage_model": "two_stage_direct_review",
+  "papers": [
+    "2307.05527",
+    "2601.19926"
+  ],
+  "max_records": null,
+  "candidate_keys_file": null,
+  "reasoning_effort": "xhigh",
+  "phase_jobs": {
+    "stage1_review": {
+      "phase": "stage1_review",
+      "batch_artifact_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/batch_jobs/stage1_review/gpt-5.4-mini",
+      "batch_id": "batch_69e21e494ca48190ae2fcbd97a9622b2",
+      "batch_status": "completed",
+      "request_count": 569,
+      "paper_preparation": {
+        "2307.05527": {
+          "candidate_total": 222,
+          "cutoff_pass_count": 214,
+          "cutoff_excluded_count": 8,
+          "artifact_excluded_count": 4,
+          "request_count": 210
+        },
+        "2601.19926": {
+          "candidate_total": 360,
+          "cutoff_pass_count": 360,
+          "cutoff_excluded_count": 0,
+          "artifact_excluded_count": 1,
+          "request_count": 359
+        }
+      },
+      "upload_file_id": "file-7T7gvJcV7g2hWmwKuJB2Yd",
+      "batch_completed_at": 1776426877,
+      "batch_output_file_id": "file-QFj4uS2Pxou9RmKqT26BEq",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 569,
+        "failure_count": 0,
+        "missing_count": 0
+      }
+    },
+    "stage2_review": {
+      "phase": "stage2_review",
+      "batch_artifact_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/batch_jobs/stage2_review/gpt-5.4-mini",
+      "batch_id": "batch_69e21f9719988190919d28a07b3e7ab8",
+      "batch_status": "completed",
+      "request_count": 431,
+      "paper_preparation": {
+        "2307.05527": {
+          "candidate_total": 222,
+          "cutoff_pass_count": 214,
+          "artifact_excluded_count": 4,
+          "fulltext_gate_failed_count": 5,
+          "selected_for_stage2_count": 148,
+          "request_count": 148
+        },
+        "2601.19926": {
+          "candidate_total": 360,
+          "cutoff_pass_count": 360,
+          "artifact_excluded_count": 1,
+          "fulltext_gate_failed_count": 0,
+          "selected_for_stage2_count": 283,
+          "request_count": 283
+        }
+      },
+      "upload_file_id": "file-HAvGNDUyiDQbpsuVwEQaNf",
+      "batch_completed_at": 1776427245,
+      "batch_output_file_id": "file-YQVBBqQgpbE4nWhboSqyKU",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 431,
+        "failure_count": 0,
+        "missing_count": 0
+      }
+    }
+  },
+  "model_preflight_id": "gpt-5.4-mini",
+  "mode": "collect",
+  "baseline": {
+    "2307.05527": {
+      "stage1": {
+        "path": "screening/results/2307.05527_full/review_after_stage1_senior_no_marker_report.json",
+        "f1": 0.9620991253644315
+      },
+      "combined": {
+        "path": "screening/results/2307.05527_full/combined_after_fulltext_senior_no_marker_report.json",
+        "f1": 0.9620991253644315
+      }
+    },
+    "2601.19926": {
+      "stage1": {
+        "path": "screening/results/2601.19926_full/review_after_stage1_senior_no_marker_report.json",
+        "f1": 0.9792284866468842
+      },
+      "combined": {
+        "path": "screening/results/2601.19926_full/combined_after_fulltext_senior_no_marker_report.json",
+        "f1": 0.9731343283582089
+      }
+    }
+  },
+  "summaries": [
+    {
+      "paper_id": "2307.05527",
+      "candidate_total": 222,
+      "cutoff_pass_count": 214,
+      "cutoff_excluded_count": 8,
+      "artifact_excluded_count": 4,
+      "stage2_selected_count": 148,
+      "reviewed_count": 210,
+      "missing_count": 0,
+      "fulltext_gate_failed_count": 0,
+      "stage1_results_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2307.05527/stage1_results.json",
+      "stage1_metrics_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2307.05527/stage1_f1.json",
+      "stage1_precision": 0.972972972972973,
+      "stage1_recall": 0.8421052631578947,
+      "stage1_f1": 0.90282131661442,
+      "delta_vs_current_stage1": -0.05927780875001154,
+      "results_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2307.05527/single_reviewer_batch_results.json",
+      "metrics_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2307.05527/single_reviewer_batch_f1.json",
+      "precision": 0.9710144927536232,
+      "recall": 0.783625730994152,
+      "f1": 0.8673139158576051,
+      "delta_vs_current_combined": -0.09478520950682645
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_total": 360,
+      "cutoff_pass_count": 360,
+      "cutoff_excluded_count": 0,
+      "artifact_excluded_count": 1,
+      "stage2_selected_count": 283,
+      "reviewed_count": 359,
+      "missing_count": 0,
+      "fulltext_gate_failed_count": 0,
+      "stage1_results_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2601.19926/stage1_results.json",
+      "stage1_metrics_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2601.19926/stage1_f1.json",
+      "stage1_precision": 0.9752650176678446,
+      "stage1_recall": 0.8214285714285714,
+      "stage1_f1": 0.8917609046849758,
+      "delta_vs_current_stage1": -0.0874675819619084,
+      "results_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2601.19926/single_reviewer_batch_results.json",
+      "metrics_path": "screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601/papers/2601.19926/single_reviewer_batch_f1.json",
+      "precision": 0.9850746268656716,
+      "recall": 0.7857142857142857,
+      "f1": 0.8741721854304635,
+      "delta_vs_current_combined": -0.09896214292774541
+    }
+  ]
+}

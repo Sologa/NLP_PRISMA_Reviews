@@ -29,6 +29,7 @@ from experiment_workflows import (  # noqa: E402
     SingleReviewerMergedFinalRow,
     SourceRecordProvenance,
     StageDirectReviewRecord,
+    build_artifact_review_row,
     build_cutoff_review_row,
     build_direct_stage_prompt_context,
     build_direct_stage_response_model,
@@ -41,6 +42,7 @@ from experiment_workflows import (  # noqa: E402
     decision_from_score,
     fulltext_payload_from_resolution,
     load_candidates,
+    load_artifact_gate_result,
     load_cutoff_result,
     load_direct_workflow_spec,
     metadata_payload,
@@ -178,6 +180,10 @@ def _paper_dir(run_id: str, paper_id: str) -> Path:
 
 def _paper_cutoff_audit_path(run_id: str, paper_id: str) -> Path:
     return _paper_dir(run_id, paper_id) / "cutoff_audit.json"
+
+
+def _paper_artifact_gate_audit_path(run_id: str, paper_id: str) -> Path:
+    return _paper_dir(run_id, paper_id) / "artifact_gate_audit.json"
 
 
 def _paper_fulltext_resolution_audit_path(run_id: str, paper_id: str) -> Path:
@@ -335,13 +341,23 @@ def _prepare_stage1_review_specs(
         )
         if write_audits:
             write_json(_paper_fulltext_resolution_audit_path(run_id, paper_id), resolution_audit)
+        artifact_result = load_artifact_gate_result(records=records)
+        artifact_audit = dict(artifact_result["audit_payload"])
+        artifact_audit["paper_id"] = paper_id
+        if write_audits:
+            write_json(_paper_artifact_gate_audit_path(run_id, paper_id), artifact_audit)
         cutoff_result = load_cutoff_result(records=records, cutoff_path=_paper_cutoff_path(paper_id))
         if write_audits:
             write_json(_paper_cutoff_audit_path(run_id, paper_id), cutoff_result["audit_payload"])
+        stage1_records = [
+            record
+            for record in cutoff_result["kept_records"]
+            if artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+        ]
 
         criteria_path = _paper_stage1_criteria_path(paper_id)
         criteria_payload = criteria_text_for_stage(criteria_path)
-        for record in cutoff_result["kept_records"]:
+        for record in stage1_records:
             key = _safe_text(record.get("key"))
             title = _safe_text(record.get("title") or record.get("query_title"))
             resolution = resolution_by_key[key]
@@ -399,7 +415,8 @@ def _prepare_stage1_review_specs(
             "candidate_total": len(records),
             "cutoff_pass_count": len(cutoff_result["kept_records"]),
             "cutoff_excluded_count": len(cutoff_result["excluded_records"]),
-            "request_count": len(cutoff_result["kept_records"]),
+            "artifact_excluded_count": len(cutoff_result["kept_records"]) - len(stage1_records),
+            "request_count": len(stage1_records),
         }
     return {"specs": specs, "paper_summaries": paper_summaries}
 
@@ -425,6 +442,12 @@ def _prepare_stage2_review_specs(
     for paper_id in selected_papers:
         key_allowlist = key_map.get(paper_id) if key_map is not None else None
         records = load_candidates(_paper_metadata_path(paper_id), max_records=max_records, key_allowlist=key_allowlist)
+        artifact_result = load_artifact_gate_result(records=records)
+        artifact_audit = dict(artifact_result["audit_payload"])
+        artifact_audit["paper_id"] = paper_id
+        if write_audits:
+            write_json(_paper_artifact_gate_audit_path(run_id, paper_id), artifact_audit)
+        cutoff_result = load_cutoff_result(records=records, cutoff_path=_paper_cutoff_path(paper_id))
         resolution_by_key, resolution_audit = build_fulltext_resolution_audit(
             paper_id=paper_id,
             records=records,
@@ -444,12 +467,18 @@ def _prepare_stage2_review_specs(
 
         for record in records:
             key = _safe_text(record.get("key"))
+            if not cutoff_result["decisions_by_key"][key]["cutoff_pass"]:
+                continue
+            if not artifact_result["decisions_by_key"][key]["gate_pass"]:
+                continue
             stage1_record = stage1_by_key.get(key)
             if stage1_record is None:
                 continue
             if stage1_record.decision_recommendation not in gate_policy.advance_decisions:
                 continue
             resolution = resolution_by_key[key]
+            if not bool(resolution.get("fulltext_gate_pass", True)):
+                continue
             if resolution["resolution_status"] not in {"exact", "normalized"}:
                 continue
             selected_keys.append(key)
@@ -518,6 +547,14 @@ def _prepare_stage2_review_specs(
         selection_path.parent.mkdir(parents=True, exist_ok=True)
         selection_path.write_text("\n".join(selected_keys) + ("\n" if selected_keys else ""), encoding="utf-8")
         paper_summaries[paper_id] = {
+            "candidate_total": len(records),
+            "cutoff_pass_count": len(cutoff_result["kept_records"]),
+            "artifact_excluded_count": sum(
+                1
+                for record in cutoff_result["kept_records"]
+                if not artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+            ),
+            "fulltext_gate_failed_count": int(resolution_audit.get("fulltext_gate_failed_count") or 0),
             "selected_for_stage2_count": len(selected_keys),
             "request_count": len(selected_keys),
         }
@@ -799,6 +836,7 @@ def _write_stage1_results(
     run_id: str,
     paper_id: str,
     records: list[dict[str, Any]],
+    artifact_result: dict[str, Any],
     cutoff_result: dict[str, Any],
     stage1_by_key: dict[str, StageDirectReviewRecord],
     stage1_issue_by_key: dict[str, dict[str, Any]],
@@ -809,16 +847,6 @@ def _write_stage1_results(
         key = _safe_text(record.get("key"))
         title = _safe_text(record.get("title") or record.get("query_title"))
         decision = cutoff_result["decisions_by_key"][key]
-        resolution = resolution_by_key[key]
-        provenance = build_source_record_provenance(
-            record=record,
-            paper_id=paper_id,
-            resolution=resolution,
-            metadata_path=_paper_metadata_path(paper_id),
-            runtime_prompts_path=_runtime_prompts_path(),
-            criteria_path=_paper_stage1_criteria_path(paper_id),
-            repo_root=REPO_ROOT,
-        )
         if not decision["cutoff_pass"]:
             rows.append(
                 build_cutoff_review_row(
@@ -830,6 +858,28 @@ def _write_stage1_results(
                 ).model_dump(mode="json")
             )
             continue
+        artifact_decision = artifact_result["decisions_by_key"][key]
+        if not artifact_decision["gate_pass"]:
+            rows.append(
+                build_artifact_review_row(
+                    paper_id=paper_id,
+                    workflow_arm=_workflow_arm(),
+                    stage_model=_stage_model(),
+                    record=record,
+                    decision=artifact_decision,
+                ).model_dump(mode="json")
+            )
+            continue
+        resolution = resolution_by_key[key]
+        provenance = build_source_record_provenance(
+            record=record,
+            paper_id=paper_id,
+            resolution=resolution,
+            metadata_path=_paper_metadata_path(paper_id),
+            runtime_prompts_path=_runtime_prompts_path(),
+            criteria_path=_paper_stage1_criteria_path(paper_id),
+            repo_root=REPO_ROOT,
+        )
         stage1_issue = stage1_issue_by_key.get(key)
         if stage1_issue is not None or key not in stage1_by_key:
             rows.append(
@@ -917,6 +967,10 @@ def _assemble_results_and_metrics(
     for paper_id in selected_papers:
         key_allowlist = key_map.get(paper_id) if key_map is not None else None
         records = load_candidates(_paper_metadata_path(paper_id), max_records=max_records, key_allowlist=key_allowlist)
+        artifact_result = load_artifact_gate_result(records=records)
+        artifact_audit = dict(artifact_result["audit_payload"])
+        artifact_audit["paper_id"] = paper_id
+        write_json(_paper_artifact_gate_audit_path(run_id, paper_id), artifact_audit)
         cutoff_result = load_cutoff_result(records=records, cutoff_path=_paper_cutoff_path(paper_id))
         write_json(_paper_cutoff_audit_path(run_id, paper_id), cutoff_result["audit_payload"])
         resolution_by_key, resolution_audit = build_fulltext_resolution_audit(
@@ -936,6 +990,7 @@ def _assemble_results_and_metrics(
             run_id=run_id,
             paper_id=paper_id,
             records=records,
+            artifact_result=artifact_result,
             cutoff_result=cutoff_result,
             stage1_by_key=stage1_by_key,
             stage1_issue_by_key=stage1_issue_by_key,
@@ -952,20 +1007,11 @@ def _assemble_results_and_metrics(
         final_rows: list[dict[str, Any]] = []
         reviewed_count = 0
         missing_count = 0
+        fulltext_gate_failed_count = 0
         for record in records:
             key = _safe_text(record.get("key"))
             title = _safe_text(record.get("title") or record.get("query_title"))
             decision = cutoff_result["decisions_by_key"][key]
-            resolution = resolution_by_key[key]
-            provenance = build_source_record_provenance(
-                record=record,
-                paper_id=paper_id,
-                resolution=resolution,
-                metadata_path=_paper_metadata_path(paper_id),
-                runtime_prompts_path=_runtime_prompts_path(),
-                criteria_path=_paper_stage1_criteria_path(paper_id),
-                repo_root=REPO_ROOT,
-            )
 
             if not decision["cutoff_pass"]:
                 final_rows.append(
@@ -978,6 +1024,28 @@ def _assemble_results_and_metrics(
                     ).model_dump(mode="json")
                 )
                 continue
+            artifact_decision = artifact_result["decisions_by_key"][key]
+            if not artifact_decision["gate_pass"]:
+                final_rows.append(
+                    build_artifact_review_row(
+                        paper_id=paper_id,
+                        workflow_arm=_workflow_arm(),
+                        stage_model=_stage_model(),
+                        record=record,
+                        decision=artifact_decision,
+                    ).model_dump(mode="json")
+                )
+                continue
+            resolution = resolution_by_key[key]
+            provenance = build_source_record_provenance(
+                record=record,
+                paper_id=paper_id,
+                resolution=resolution,
+                metadata_path=_paper_metadata_path(paper_id),
+                runtime_prompts_path=_runtime_prompts_path(),
+                criteria_path=_paper_stage1_criteria_path(paper_id),
+                repo_root=REPO_ROOT,
+            )
 
             stage1_issue = stage1_issue_by_key.get(key)
             if stage1_issue is not None or key not in stage1_by_key:
@@ -1013,6 +1081,39 @@ def _assemble_results_and_metrics(
                         stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
                         source_record_provenance=stage1_record.source_record_provenance,
                         review_output={"stage1_review": stage1_record.model_dump(mode="json")},
+                        fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
+                        fulltext_resolution_status=resolution["resolution_status"],
+                    ).model_dump(mode="json")
+                )
+                continue
+
+            if not bool(resolution.get("fulltext_gate_pass", True)):
+                fulltext_gate_failed_count += 1
+                gate_reason = str(resolution.get("fulltext_gate_reason") or "metadata_flag_false")
+                final_rows.append(
+                    SingleReviewerMergedFinalRow(
+                        key=key,
+                        title=title,
+                        paper_id=paper_id,
+                        workflow_arm=_workflow_arm(),
+                        stage_model=_stage_model(),
+                        review_state="fulltext_gate_failed",
+                        review_skipped=True,
+                        discard_reason=f"fulltext_gate:{gate_reason}",
+                        final_verdict=stage_verdict("stage1", stage1_record.stage_score),
+                        stage1_stage_score=stage1_record.stage_score,
+                        stage1_decision_recommendation=stage1_record.decision_recommendation,
+                        stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
+                        source_record_provenance=stage1_record.source_record_provenance,
+                        review_output={
+                            "fulltext_gate": {
+                                "gate_pass": False,
+                                "gate_reason": gate_reason,
+                                "gate_status": resolution.get("fulltext_gate_status"),
+                            },
+                            "resolution": resolution,
+                            "stage1_review": stage1_record.model_dump(mode="json"),
+                        },
                         fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
                         fulltext_resolution_status=resolution["resolution_status"],
                     ).model_dump(mode="json")
@@ -1112,9 +1213,15 @@ def _assemble_results_and_metrics(
                 "candidate_total": len(records),
                 "cutoff_pass_count": cutoff_result["audit_payload"]["candidate_total_after_cutoff"],
                 "cutoff_excluded_count": cutoff_result["audit_payload"]["cutoff_excluded_count"],
+                "artifact_excluded_count": sum(
+                    1
+                    for record in cutoff_result["kept_records"]
+                    if not artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+                ),
                 "stage2_selected_count": selected_count,
                 "reviewed_count": reviewed_count,
                 "missing_count": missing_count,
+                "fulltext_gate_failed_count": fulltext_gate_failed_count,
                 "stage1_results_path": relative_path(_paper_stage1_results_path(run_id, paper_id), REPO_ROOT),
                 "stage1_metrics_path": relative_path(_paper_stage1_metrics_path(run_id, paper_id), REPO_ROOT),
                 "stage1_precision": float(stage1_metrics["metrics"]["precision"]),

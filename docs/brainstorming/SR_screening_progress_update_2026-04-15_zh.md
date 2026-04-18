@@ -18,6 +18,36 @@
 
 ---
 
+## 1.1 補充決議：`#2` 一律採 `paper-faithful A`
+
+這是本文件後續閱讀的前提。
+
+經重新查核 **Akinseloyin 2026 原 paper** 與其公開 **GitHub code** 後，對 `#2 criterion ledger` 的方法邊界做出以下決議：
+
+- `#2` 若要稱為 `paper-faithful`，就只能走 `A`
+- 這裡的 `A` 指的是：
+  - 先把 review criteria 轉成對齊的 QA questions
+  - 由多個 primary QA models 回答同一組問題
+  - 再做 voting / debate / adjudication
+
+以下做法從現在起一律視為 **絕對不行**：
+
+1. 把 `Akinseloyin 2026` 說成 `2 juniors + 1 SeniorLead`
+2. 用 human 或 Codex 來手工指定 `core / non-core criterion`
+3. 用 `core / non-core criterion` 做 senior route gate，卻宣稱那是原 paper
+4. 把 abstract-screening paper 直接改寫成 repo 的 stage1/full-text stage2，而不明說這是 extension
+
+相關撤案文件：
+
+- [SR_screening_criterion_ledger_only_experiment_spec_2409_2511_zh.md](/Users/xjp/Desktop/NLP_PRISMA_Reviews/docs/brainstorming/SR_screening_criterion_ledger_only_experiment_spec_2409_2511_zh.md)
+- [SR_screening_criterion_ledger_multilane_flow_zh.md](/Users/xjp/Desktop/NLP_PRISMA_Reviews/docs/brainstorming/SR_screening_criterion_ledger_multilane_flow_zh.md)
+
+paper-faithful 重寫請看：
+
+- [Akinseloyin_2026_paper_faithful_rewrite_zh.md](/Users/xjp/Desktop/NLP_PRISMA_Reviews/docs/brainstorming/Akinseloyin_2026_paper_faithful_rewrite_zh.md)
+
+---
+
 ## 2. 目前已經完成的實驗
 
 本輪已完成一個新的隔離式實驗樹：
@@ -313,7 +343,7 @@ workflow 只能在這兩層 criteria 上做 support，不能偷偷再加第三�
 1. `manual_review_needed = true`
 2. 任一 criterion 是 `UNCLEAR`
 3. inclusion / exclusion evidence 彼此衝突
-4. Stage 1 先判 `exclude`，但核心 inclusion criteria 並沒有全部明確 `NO`
+4. Stage 1 先判 `exclude`，但仍有未解的 inclusion QA 衝突或明顯證據不足
 5. 命中該 paper 的 `semantic_traps`
 
 白話：
@@ -397,7 +427,7 @@ workflow 只能在這兩層 criteria 上做 support，不能偷偷再加第三�
 - 看起來 topic 很像，但核心 task boundary 不清
 - output modality 看起來可能不符，但不能只憑關鍵字判死
 - paper 提到 preference、ranking、syntax、process 等字，但關係不清楚
-- stage1 想排除，但核心 inclusion 沒有被明確否定
+- stage1 想排除，但仍有未解的 inclusion QA 衝突或明顯證據不足
 - reviewer 之間分歧明顯
 
 ### `SeniorLead` 在完整版 `#1` 裡到底做什麼

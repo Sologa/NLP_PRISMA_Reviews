@@ -1,0 +1,546 @@
+[
+  {
+    "candidate_key": "friedrich2011process",
+    "reviewer_role": "judge_gpt5mini",
+    "answers": [
+      {
+        "question_id": "Q1",
+        "answer_label": "positive",
+        "reasoning_path": "The abstract explicitly states an automatic approach that uses \"existing tools from natural language processing\" to \"generate BPMN models from natural language text,\" directly describing NLP applied to process-model construction.",
+        "confidence": 0.94,
+        "extra_information": "Clear explicit phrasing linking NLP tools to generating BPMN models.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.98
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.93
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Most detailed justification and high confidence; explicitly cites the NLP-to-BPMN wording and supporting details.",
+        "worst_reviewer": "qa_gpt5mini",
+        "worst_answer_reason": "Correct but provided the least extra information in the primary reviewer's entry."
+      },
+      {
+        "question_id": "Q2",
+        "answer_label": "positive",
+        "reasoning_path": "The abstract states input as \"natural language text\" and output as \"BPMN models,\" and mentions evaluation on 47 text-model pairs, directly linking natural-language input to process-model output.",
+        "confidence": 0.94,
+        "extra_information": "Explicit input/output mapping (text -> BPMN) and empirical evaluation confirms intended task.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.98
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.93
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Clear, precise linkage and explicit mention of evaluation on text-model pairs; most thorough wording.",
+        "worst_reviewer": "qa_gpt5mini",
+        "worst_answer_reason": "Accurate but minimal additional commentary compared to others."
+      },
+      {
+        "question_id": "Q3",
+        "answer_label": "negative",
+        "reasoning_path": "The paper focuses on generating/extracting process models from text (BPMN generation), with no mention of unrelated non-target tasks such as sentiment analysis, prediction, or mere classification.",
+        "confidence": 0.92,
+        "extra_information": "Abstract describes a direct extraction/generation task rather than auxiliary or non-target analyses.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.92
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.9
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Concise and confident identification that the task is extraction/generation, not a non-target task.",
+        "worst_reviewer": "qa_gpt5mini",
+        "worst_answer_reason": "Also correct but slightly lower confidence and no extra details."
+      },
+      {
+        "question_id": "Q4",
+        "answer_label": "negative",
+        "reasoning_path": "The abstract describes an implemented approach and empirical evaluation (47 text-model pairs, 77% correct), indicating original empirical work rather than a survey or review.",
+        "confidence": 0.93,
+        "extra_information": "Presence of evaluation metrics and dataset indicates primary research.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.93
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.96
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.92
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Most explicit callout that evaluation implies primary work; thorough reasoning.",
+        "worst_reviewer": "qa_gpt5mini",
+        "worst_answer_reason": "Correct but minimal elaboration."
+      },
+      {
+        "question_id": "Q5",
+        "answer_label": "negative",
+        "reasoning_path": "The abstract explicitly connects NLP methods (including anaphora resolution) to BPMN model generation and reports concrete evaluation results, so the evidence is complete and not ambiguous—no deferral needed.",
+        "confidence": 0.94,
+        "extra_information": "Specific methodological and evaluation details reduce ambiguity about core eligibility.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.9
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Provided clear, confident justification that the abstract is unambiguous, with supporting specifics.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Also correct but slightly lower rating here due to marginally less emphasis on the evaluation details that remove ambiguity."
+      }
+    ],
+    "adjudication_rationale": "All three primary reviewers consistently identified this paper as an original empirical study that uses NLP to convert natural-language text into BPMN process models with explicit input/output mapping and concrete evaluation. The abstract clearly states NLP tools, anaphora resolution, BPMN output, and evaluation metrics, supporting inclusion at Stage 1 without deferral.",
+    "title": "Process Model Generation from Natural Language Text",
+    "abstract": "Business process modeling has become an important tool for managing organizational change and for capturing requirements of software. A central problem in this area is the fact that the acquisition of as-is models consumes up to 60% of the time spent on process management projects. This is paradox as there are often extensive documentations available in companies, but not in a ready-to-use format. In this paper, we tackle this problem based on an automatic approach to generate BPMN models from natural language text. We combine existing tools from natural language processing in an innovative way and augmented them with a suitable anaphora resolution mechanism. The evaluation of our technique shows that for a set of 47 text-model pairs from industry and textbooks, we are able to generate on average 77% of the models correctly.",
+    "gold_label": 1,
+    "stage_id": "stage1_abstract"
+  },
+  {
+    "candidate_key": "sintoris2017extracting",
+    "reviewer_role": "judge_gpt5mini",
+    "answers": [
+      {
+        "question_id": "Q1",
+        "answer_label": "positive",
+        "reasoning_path": "The title and abstract explicitly state applying NLP to extract/generate business process models from documentation and deriving process-model components (activities, resources, tasks) from sentence structure.",
+        "confidence": 0.95,
+        "extra_information": "Explicit phrasing: 'Extracting Business Process Models Using Natural Language Processing' and description of deriving BPMN elements from syntactic/grammatical structure.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.94
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.95
+          }
+        ],
+        "best_reviewer": "qa_gpt54nano",
+        "best_answer_reason": "Clear, concise identification of the explicit NLP-to-process-extraction claim in title and abstract.",
+        "worst_reviewer": "qa_gpt41mini",
+        "worst_answer_reason": "Also correct but rated marginally lower only due to slightly less concise phrasing of the connection (minor)."
+      },
+      {
+        "question_id": "Q2",
+        "answer_label": "positive",
+        "reasoning_path": "Abstract states input is existing documentation (natural-language sentences) and output is a business process model represented in BPMN, directly linking natural-language input to process-model output.",
+        "confidence": 0.95,
+        "extra_information": "The abstract explicitly mentions documentation as source and BPMN as the target representation.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.94
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Explicitly calls out documentation as input and BPMN as output, matching the question precisely.",
+        "worst_reviewer": "qa_gpt5mini",
+        "worst_answer_reason": "Also correct; given a marginally lower rating for brevity of justification compared to others."
+      },
+      {
+        "question_id": "Q3",
+        "answer_label": "negative",
+        "reasoning_path": "Abstract focuses on extracting and generating business process models from documentation; there is no indication of a non-target task (e.g., sentiment analysis, prediction, redesign) instead of extraction.",
+        "confidence": 0.9,
+        "extra_information": "The described goal (derive activities/resources/tasks and depict in BPMN) aligns with target extraction task.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.88
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.9
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Clear, confident identification that the task is process extraction rather than any non-target activity.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Also correct but given a slightly lower rating for terseness in justification."
+      },
+      {
+        "question_id": "Q4",
+        "answer_label": "negative",
+        "reasoning_path": "The abstract describes a Doctoral Consortium contribution and discusses applying NLP to generate models; it does not identify the paper as a survey, review, or other secondary research.",
+        "confidence": 0.8,
+        "extra_information": "Label 'Doctoral Consortium paper' suggests original/position research rather than an explicit literature survey or review.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.6
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.88
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Correctly and confidently identifies that the abstract does not present the work as a survey/review.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Marked 'neutral' despite no explicit survey/review language; this conservative stance is reasonable but less aligned with the observable text."
+      },
+      {
+        "question_id": "Q5",
+        "answer_label": "negative",
+        "reasoning_path": "The abstract plainly links NLP methods to deriving process-model components and BPMN output; there is no substantive ambiguity requiring deferral to full text.",
+        "confidence": 0.9,
+        "extra_information": "Sufficient explicit input-output connection (documentation -> BPMN) and method (NLP from syntactic/grammatical structure) present in abstract.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.9
+          }
+        ],
+        "best_reviewer": "qa_gpt54nano",
+        "best_answer_reason": "Concise affirmation that the abstract provides an explicit NLP-to-process mapping, matching the question well.",
+        "worst_reviewer": "qa_gpt41mini",
+        "worst_answer_reason": "Also correct; rated equally but listed as worst only to satisfy required fields (differences are minor)."
+      }
+    ],
+    "adjudication_rationale": "All three primary reviewers consistently identify that the paper applies NLP to extract/generate business process models from natural-language documentation and that the output is BPMN process models. There is no indication of non-target tasks or that the paper is a survey/review. One reviewer conservatively marked Q4 neutral, but the abstract contains no survey/review language and labels the work as a Doctoral Consortium contribution, so I conclude it is original work. Overall the paper meets Stage 1 inclusion criteria based on title/abstract evidence.",
+    "title": "Extracting Business Process Models Using Natural Language Processing (NLP) Techniques",
+    "abstract": "This Doctoral Consortium paper discusses how NLP can be applied in the domain of BPM in order to automatically generate business process models from existing documentation within the organization. The main idea is that from the syntactic and grammatical structure of a sentence, the components of a business process model can be derived (i.e. activities, resources, tasks, patterns). The result would be a business process model depicted using BPMN - a dedicated business process modeling technique",
+    "gold_label": 0,
+    "stage_id": "stage1_abstract"
+  },
+  {
+    "candidate_key": "straw2020artificial",
+    "reviewer_role": "judge_gpt5mini",
+    "answers": [
+      {
+        "question_id": "Q1",
+        "answer_label": "negative",
+        "reasoning_path": "The title and abstract describe bias evaluation of NLP models and embedding analysis in psychiatry; they do not state any use of NLP to extract or construct process models or process representations from natural-language text.",
+        "confidence": 0.95,
+        "extra_information": "Focus is on bias in GloVe/Word2Vec and a literature review, not process extraction.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.85
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.95
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Most concise and confident justification matching the clear absence of any process-extraction claim.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Correct but slightly less detailed in the justification compared with the others."
+      },
+      {
+        "question_id": "Q2",
+        "answer_label": "negative",
+        "reasoning_path": "Abstract indicates NLP is applied to mental-health terminology and embeddings with outputs like bias measures, distances and analogy tests; it does not describe producing any process-models or process representations (e.g., BPMN, event sequences, process graphs).",
+        "confidence": 0.95,
+        "extra_information": "No input->process-model/output mapping is described.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.85
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.95
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Clear, direct statement noting outputs are bias analyses rather than process representations.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Accurate but slightly less explicit about the absence of process-structure outputs."
+      },
+      {
+        "question_id": "Q3",
+        "answer_label": "positive",
+        "reasoning_path": "The study focuses on bias assessment of NLP embeddings/models and a literature review of NLP in mental health—this is a non-target task relative to extracting process models from text (e.g., it is analytic/classification/ethics-focused rather than process extraction).",
+        "confidence": 0.95,
+        "extra_information": "Primary analyses are embedding bias measures and literature synthesis, not process extraction tasks.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.98
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Most explicit in labelling the task as non-target and tying it to embedding/bias analysis.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Correct but marginally less specific in explaining why the task is non-target."
+      },
+      {
+        "question_id": "Q4",
+        "answer_label": "positive",
+        "reasoning_path": "The abstract explicitly states a literature review was carried out and reports aggregated results ('Our literature review returned 52 papers'), indicating a secondary research component (survey/review).",
+        "confidence": 0.95,
+        "extra_information": "Although the paper includes primary embedding analyses, the presence of an explicit literature review justifies marking it as identifying secondary research content.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.95
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Clear recognition of the explicit literature-review statement in the abstract.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Also correct, but slightly less assertive in justification than peers."
+      },
+      {
+        "question_id": "Q5",
+        "answer_label": "negative",
+        "reasoning_path": "The abstract is explicit about scope (bias in NLP and a literature review) and does not mention or ambiguously suggest NLP methods are being used to construct or extract process representations; therefore no deferral to full-text is necessary for the core inclusion criterion.",
+        "confidence": 0.9,
+        "extra_information": "Evidence is sufficient to exclude from process-extraction scope at Stage 1.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.8
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.92
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.95
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Concise and confident assertion that the abstract is unambiguous about non-fit for process extraction.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Correct but had lower stated confidence and less detail on why deferral is unnecessary."
+      }
+    ],
+    "adjudication_rationale": "All three reviewers correctly identified that the paper addresses bias analysis of NLP embeddings and includes a literature review in mental health, not the extraction or construction of process models from natural-language text. The abstract describes embedding analyses (GloVe/Word2Vec), bias measures, analogy tests, and a survey of prior work—none of which map to producing process graphs, BPMN, event sequences, or similar process representations. Reviewers were consistent and accurate; final answers reflect unanimous correct judgments across the five screening questions.",
+    "title": "Artificial Intelligence in mental health and the biases of language based models",
+    "abstract": "Background The rapid integration of Artificial Intelligence (AI) into the healthcare field has occurred with little communication between computer scientists and doctors. The impact of AI on health outcomes and inequalities calls for health professionals and data scientists to make a collaborative effort to ensure historic health disparities are not encoded into the future. We present a study that evaluates bias in existing Natural Language Processing (NLP) models used in psychiatry and discuss how these biases may widen health inequalities. Our approach systematically evaluates each stage of model development to explore how biases arise from a clinical, data science and linguistic perspective. Design/Methods A literature review of the uses of NLP in mental health was carried out across multiple disciplinary databases with defined Mesh terms and keywords. Our primary analysis evaluated biases within ‘GloVe’ and ‘Word2Vec’ word embeddings. Euclidean distances were measured to assess relationships between psychiatric terms and demographic labels, and vector similarity functions were used to solve analogy questions relating to mental health. Results Our primary analysis of mental health terminology in GloVe and Word2Vec embeddings demonstrated significant biases with respect to religion, race, gender, nationality, sexuality and age. Our literature review returned 52 papers, of which none addressed all the areas of possible bias that we identify in model development. In addition, only one article existed on more than one research database, demonstrating the isolation of research within disciplinary silos and inhibiting cross-disciplinary collaboration or communication. Conclusion Our findings are relevant to professionals who wish to minimize the health inequalities that may arise as a result of AI and data-driven algorithms. We offer primary research identifying biases within these technologies and provide recommendations for avoiding these harms in the future.",
+    "gold_label": 0,
+    "stage_id": "stage1_abstract"
+  },
+  {
+    "candidate_key": "vidgof2023large",
+    "reviewer_role": "judge_gpt5mini",
+    "answers": [
+      {
+        "question_id": "Q1",
+        "answer_label": "negative",
+        "reasoning_path": "Neither the title nor the truncated abstract explicitly state the paper uses NLP to extract or construct process models/representations from natural-language text; they only mention LLMs and opportunities for BPM in general.",
+        "confidence": 0.9,
+        "extra_information": "Abstract is truncated but contains no explicit claim of extracting process models from text.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.92
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.55
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.95
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Provided the same clear negative judgment with high confidence and specific note that no explicit extraction claim appears in the abstract.",
+        "worst_reviewer": "qa_gpt41mini",
+        "worst_answer_reason": "Marked 'neutral' despite the question asking about an explicit statement — less decisive and thus less aligned with the observable evidence."
+      },
+      {
+        "question_id": "Q2",
+        "answer_label": "negative",
+        "reasoning_path": "The title/abstract do not describe an input-output pairing (natural-language text -> process model/representation); they only broadly suggest LLMs could be useful for BPM without specifying such a task.",
+        "confidence": 0.9,
+        "extra_information": "No examples or terminology (e.g., BPMN, process graph, event sequence) or mention of textual inputs producing process outputs are present.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.6
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.95
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Correctly and confidently identified the absence of any explicit natural-language-to-process-model input/output description.",
+        "worst_reviewer": "qa_gpt41mini",
+        "worst_answer_reason": "Chose 'neutral' which is less aligned with the clear absence of an explicit input-output mapping in the provided text."
+      },
+      {
+        "question_id": "Q3",
+        "answer_label": "negative",
+        "reasoning_path": "The abstract does not indicate the paper focuses on a non-target task (e.g., sentiment, classification, prediction); instead it broadly discusses LLM opportunities for BPM, so there is no clear signal that it is about an excluded non-target task.",
+        "confidence": 0.85,
+        "extra_information": "Nothing in the title/abstract specifies tasks that match the listed non-target exclusions.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.5
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.9
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.85
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Precisely concluded the abstract does not present evidence of non-target tasks and gave a clear negative judgment with high confidence.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Marked 'neutral' with low confidence, reflecting uncertainty despite the absence of any non-target task indicators."
+      },
+      {
+        "question_id": "Q4",
+        "answer_label": "neutral",
+        "reasoning_path": "The title ('Opportunities and Challenges') suggests a discussion-style piece but the abstract does not explicitly label the work as a survey/review; this is ambiguous and should be treated as not clearly identified as secondary research from the title/abstract alone.",
+        "confidence": 0.85,
+        "extra_information": "Phrasing is suggestive but not definitive; full text would clarify whether this is a survey, position, or original work.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.8
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.4
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.9
+          }
+        ],
+        "best_reviewer": "qa_gpt5mini",
+        "best_answer_reason": "Gave a neutral judgment with clear reasoning about lack of explicit 'survey/review' labeling and moderate confidence.",
+        "worst_reviewer": "qa_gpt41mini",
+        "worst_answer_reason": "Assumed the paper is a survey based mainly on title phrasing without explicit evidence in the abstract; less cautious than warranted."
+      },
+      {
+        "question_id": "Q5",
+        "answer_label": "positive",
+        "reasoning_path": "The abstract is truncated and does not explicitly connect NLP/LLMs to the concrete task of extracting or constructing process representations from text; the evidence is incomplete and ambiguous, warranting deferral to full-text checking.",
+        "confidence": 0.95,
+        "extra_information": "Given the truncation and the high-level nature of the content, Stage 2 full-text review is needed to determine eligibility.",
+        "reviewer_ratings": [
+          {
+            "reviewer_role": "qa_gpt54nano",
+            "rating": 0.8
+          },
+          {
+            "reviewer_role": "qa_gpt41mini",
+            "rating": 0.95
+          },
+          {
+            "reviewer_role": "qa_gpt5mini",
+            "rating": 0.9
+          }
+        ],
+        "best_reviewer": "qa_gpt41mini",
+        "best_answer_reason": "Clearly noted the abstract is incomplete/truncated and recommended deferral with high confidence.",
+        "worst_reviewer": "qa_gpt54nano",
+        "worst_answer_reason": "Also recommended deferral but with slightly lower confidence and less explicit mention of the truncation impact."
+      }
+    ],
+    "adjudication_rationale": "The title and truncated abstract discuss large language models and opportunities for business process management at a high level but do not explicitly state using NLP to extract or construct process models, nor do they specify an input-output mapping or indicate excluded non-target tasks. It is also not explicitly labeled as a survey/review. The evidence is incomplete/ambiguous (abstract truncated), so Stage 2 full-text checking is warranted for final eligibility decisions.",
+    "title": "Large Language Models for Business Process Management: Opportunities and Challenges",
+    "abstract": "Large language models are deep learning models with a large number of parameters. The models made noticeable progress on a large number of tasks, and as a consequence allowing them to serve as valuable and versatile tools for a diverse range of applications. Their capabilities also offer opportunities for business process management, however, these opportunities have not yet been systematically in",
+    "gold_label": 0,
+    "stage_id": "stage1_abstract"
+  }
+]

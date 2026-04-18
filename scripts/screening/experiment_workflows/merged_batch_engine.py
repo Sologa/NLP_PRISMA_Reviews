@@ -9,8 +9,10 @@ from pydantic import BaseModel, Field, create_model
 
 try:
     from .. import cutoff_time_filter
+    from ..metadata_gate import apply_artifact_gate, evaluate_fulltext_gate
 except ImportError:  # pragma: no cover - script-style execution fallback
     import cutoff_time_filter  # type: ignore[no-redef]
+    from metadata_gate import apply_artifact_gate, evaluate_fulltext_gate  # type: ignore[no-redef]
 
 from .common import (
     custom_id,
@@ -241,12 +243,23 @@ def build_fulltext_resolution_audit(
     index = FulltextIndex(fulltext_root)
     by_key: dict[str, dict[str, Any]] = {}
     counter: Counter[str] = Counter()
+    gate_counter: Counter[str] = Counter()
     rows: list[dict[str, Any]] = []
     for record in records:
         key = safe_text(record.get("key"))
         resolution = index.resolve(key, repo_root=repo_root)
+        fulltext_gate = evaluate_fulltext_gate(record, resolution, repo_root=repo_root)
+        resolution = {
+            **resolution,
+            "fulltext_gate_pass": fulltext_gate["gate_pass"],
+            "fulltext_gate_status": fulltext_gate["gate_status"],
+            "fulltext_gate_reason": fulltext_gate["gate_reason"],
+            "resolved_file_size_bytes": fulltext_gate["resolved_file_size_bytes"],
+        }
         by_key[key] = resolution
         counter[resolution["resolution_status"]] += 1
+        if not fulltext_gate["gate_pass"]:
+            gate_counter["failed"] += 1
         rows.append(
             {
                 "key": key,
@@ -261,6 +274,7 @@ def build_fulltext_resolution_audit(
         "normalized_match_count": counter["normalized"],
         "retrieval_failed_count": counter["retrieval_failed"],
         "retrieval_ambiguous_count": counter["retrieval_ambiguous"],
+        "fulltext_gate_failed_count": gate_counter["failed"],
         "normalized_collision_count": index.normalized_collision_count,
         "appledouble_ignored_count": index.ignored_appledouble_count,
         "resolutions": rows,
@@ -275,7 +289,7 @@ def fulltext_payload_from_resolution(
     tail_chars: int,
 ) -> tuple[str, dict[str, Any]]:
     status = resolution["resolution_status"]
-    if status not in {"exact", "normalized"}:
+    if status not in {"exact", "normalized"} or not bool(resolution.get("fulltext_gate_pass", True)):
         return "", {
             "fulltext_source_path": resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
             "fulltext_chars_total": 0,
@@ -284,6 +298,7 @@ def fulltext_payload_from_resolution(
             "reference_cut_method": "none",
             "reference_cut_marker": None,
             "reference_cut_line_no": None,
+            "fulltext_gate_reason": resolution.get("fulltext_gate_reason"),
         }
     path = repo_root / str(resolution["resolved_path"])
     raw_text = path.read_text(encoding="utf-8", errors="ignore")
@@ -311,7 +326,10 @@ def build_source_record_provenance(
         runtime_prompts_path=str(runtime_prompts_path.relative_to(repo_root)),
         criteria_path=str(criteria_path.relative_to(repo_root)),
         fulltext_candidate_path=str(resolution.get("exact_candidate_path") or ""),
-        fulltext_available=resolution["resolution_status"] in {"exact", "normalized"},
+        fulltext_available=(
+            resolution["resolution_status"] in {"exact", "normalized"}
+            and bool(resolution.get("fulltext_gate_pass", True))
+        ),
     )
 
 
@@ -326,6 +344,10 @@ def metadata_payload(record: dict[str, Any]) -> dict[str, Any]:
         "match_status": safe_text(record.get("match_status")),
         "missing_reason": safe_text(record.get("missing_reason")),
         "published_date": safe_text(record.get("published_date")),
+        "artifact_gate_pass": record.get("artifact_gate_pass"),
+        "artifact_gate_reason": safe_text(record.get("artifact_gate_reason")),
+        "fulltext_gate_pass": record.get("fulltext_gate_pass"),
+        "fulltext_gate_reason": safe_text(record.get("fulltext_gate_reason")),
     }
 
 
@@ -338,6 +360,13 @@ def load_cutoff_result(
     payload = dict(payload)
     payload["_cutoff_json_path"] = str(cutoff_path)
     return cutoff_time_filter.apply_cutoff(records, payload=payload, policy=policy)
+
+
+def load_artifact_gate_result(
+    *,
+    records: list[dict[str, Any]],
+) -> dict[str, Any]:
+    return apply_artifact_gate(records)
 
 
 def criteria_text_for_stage(criteria_path: Path) -> str:
@@ -448,4 +477,28 @@ def build_cutoff_review_row(
         discard_reason=str(base["discard_reason"]),
         final_verdict=str(base["final_verdict"]),
         review_output={"cutoff_filter": base["cutoff_filter"]},
+    )
+
+
+def build_artifact_review_row(
+    *,
+    paper_id: str,
+    workflow_arm: str,
+    stage_model: str,
+    record: dict[str, Any],
+    decision: dict[str, Any],
+) -> SingleReviewerMergedFinalRow:
+    title = safe_text(record.get("title") or record.get("query_title"))
+    reason = safe_text(decision.get("gate_reason")) or "metadata_flag_false"
+    return SingleReviewerMergedFinalRow(
+        key=safe_text(record.get("key")),
+        title=title,
+        paper_id=paper_id,
+        workflow_arm=workflow_arm,
+        stage_model=stage_model,
+        review_state="artifact_filtered",
+        review_skipped=True,
+        discard_reason=f"artifact_gate:{reason}",
+        final_verdict="exclude (artifact_gate)",
+        review_output={"artifact_gate": decision},
     )

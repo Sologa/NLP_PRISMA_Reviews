@@ -1,0 +1,109 @@
+project: bcpcs
+created_date: 2026-04-18
+isolation_root: research_bcpcs_2026-04-18
+
+repo_inputs:
+  runtime_prompts: scripts/screening/runtime_prompts/runtime_prompts.json
+  criteria_stage1: criteria_stage1/{paper_id}.json
+  criteria_stage2: criteria_stage2/{paper_id}.json
+  cutoff: cutoff_jsons/{paper_id}.json
+  metadata: refs/{paper_id}/metadata/title_abstracts_metadata.jsonl
+  gold: refs/{paper_id}/metadata/title_abstracts_metadata-annotated.jsonl
+  manifest: screening/results/results_manifest.json
+
+internal_diagnostic_reviews:
+  - paper_id: "2307.05527"
+    role: stability_check
+    target: avoid destabilizing high-performing generative-audio screening
+  - paper_id: "2409.13738"
+    role: fp_boundary_battleground
+    target: reduce hard false positives while preserving recall
+  - paper_id: "2511.13936"
+    role: preference_learning_boundary
+    target: reduce evaluation-only false positives without losing the known boundary false negative
+  - paper_id: "2601.19926"
+    role: retrieval_vs_semantics_separation
+    target: separate semantic errors from retrieval/full-text failure
+
+split_policy:
+  preferred: leave_one_review_out
+  fallback: frozen_development_split_with_held_out_evaluation
+  leakage_guardrails:
+    - freeze protocol/leakage_control.md before benchmark runs
+    - do not build boundary atlas from held-out FP/FN cases
+    - do not silently tune against final gold labels
+    - report gold-disputed cases separately
+
+baselines:
+  - current_production_authority
+  - best_current_two_stage_direct_review
+  - historical_qa_first
+  - merged_qa_plus_criteria
+  - direct_single_reviewer_prompt
+  - multi_agent_vote_debate
+  - support_only_rag
+  - active_learning_or_ranking
+
+ablations:
+  - no_typed_eligibility_graph
+  - no_refute_retrieval
+  - no_boundary_atlas
+  - no_selective_abstention
+  - no_stage_aware_missingness
+  - no_seniorlead_evidence_handoff
+  - free_form_llm_verdict
+
+metrics:
+  verdict:
+    - precision
+    - recall
+    - f1
+    - tp
+    - fp
+    - tn
+    - fn
+  selective:
+    - auto_only_f1
+    - selective_final_f1
+    - senior_or_human_assisted_f1
+    - coverage
+    - abstention_rate
+    - senior_route_rate
+    - routed_case_count
+    - estimated_cost_usd
+  evidence:
+    - support_span_precision
+    - support_span_recall
+    - refute_span_precision
+    - unsupported_verdict_rate
+    - hallucinated_citation_rate
+    - irrelevant_quote_rate
+  error_taxonomy:
+    - semantic_gap
+    - stage_observability_failure
+    - retrieval_failure
+    - criteria_gold_tension
+    - evidence_incomplete
+    - model_overgeneralization
+
+external_generalization_candidates:
+  - name: CLEF TAR / TAR2019-style collections
+    status: feasibility_required
+  - name: LGAR-style criterion-aware SLR data
+    status: feasibility_required
+  - name: public systematic-review screening datasets with criteria
+    status: feasibility_required
+
+execution_modes:
+  smoke:
+    model_use: none
+    purpose: structural validation only
+    output_dir: research_bcpcs_2026-04-18/runs/smoke
+  internal_diagnostic:
+    model_use: required
+    purpose: frozen benchmark evaluation
+    output_dir: research_bcpcs_2026-04-18/runs/internal_diagnostic
+  external_generalization:
+    model_use: required
+    purpose: conference-readiness evidence
+    output_dir: research_bcpcs_2026-04-18/runs/external_generalization

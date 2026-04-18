@@ -1,0 +1,61 @@
+field_categories:
+  - category: Basic Info
+    fields:
+      - name: paper_id
+        description: Canonical paper identifier used in the repository.
+        detail_level: brief
+        required: true
+      - name: paper_short_name
+        description: Short human-readable name for the review paper.
+        detail_level: brief
+        required: true
+      - name: analysis_scope
+        description: What this deep-research pass is measuring, what paper-specific allowed run pool it uses, and what it intentionally excludes.
+        detail_level: moderate
+        required: true
+      - name: best_run_metadata
+        description: Selected run metadata, including the allowed-pool selection rule and whether a fallback was required.
+        detail_level: moderate
+        required: true
+      - name: current_context_note
+        description: How the selected run relates to the repo's current authority, current single-reviewer baseline, and any fallback or excluded higher-scoring run families.
+        detail_level: detailed
+        required: true
+  - category: Performance Metrics
+    fields:
+      - name: best_run_metrics
+        description: Precision/recall-style confusion counts for the selected best single-reviewer run.
+        detail_level: moderate
+        required: true
+      - name: misclassification_overview
+        description: Final FP/FN inventory for the selected best run.
+        detail_level: detailed
+        required: true
+      - name: primary_label_counts
+        description: Counts of primary labels across final misclassified cases.
+        detail_level: moderate
+        required: true
+  - category: Technical Features
+    fields:
+      - name: llm_only_problem
+        description: Plain statement of what still genuinely requires semantic LLM judgment for this paper.
+        detail_level: detailed
+        required: true
+      - name: historical_category4_note
+        description: Historical note on pipeline or metadata failures and how they are handled in this fork.
+        detail_level: detailed
+        required: true
+      - name: recommended_llm_tasks
+        description: Semantic judgment tasks that should remain in the LLM lane.
+        detail_level: detailed
+        required: true
+  - category: Milestone Significance
+    fields:
+      - name: case_inventory
+        description: Final best-run misclassified cases with primary label, secondary tags, and rationale.
+        detail_level: detailed
+        required: true
+      - name: practical_takeaway
+        description: Short engineering bottom line for this paper.
+        detail_level: detailed
+        required: true

@@ -266,23 +266,34 @@ Important scope note:
 - Current summary document: `docs/single_reviewer_baseline/REPORT_zh.md`
 - Current summary CSV: `docs/single_reviewer_baseline/single_reviewer_runs_summary.csv`
 
-### Current bundle and scope
+### Current bundles and scope
 
-- Current bundle manifest: `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/manifest.json`
+The current two-stage direct-review baseline now spans two completed experiment bundles:
+
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/manifest.json`
+  - scope: `2409.13738`, `2511.13936`
+- `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/manifest.json`
+  - scope: `2307.05527`, `2601.19926`
+
+Shared bundle status / workflow facts:
+
 - Bundle status: `experiment_only`
-- Current bundle scope: `2409.13738`, `2511.13936`
-- Current bundle workflow id: `single-reviewer-official-batch-2stage-direct-review`
-- Current stage model label: `two_stage_direct_review`
+- Workflow id: `single-reviewer-official-batch-2stage-direct-review`
+- Stage model label: `two_stage_direct_review`
 
-As of the current baseline report:
+As of the current baseline artifacts:
 
-- `2409.13738` and `2511.13936` have completed current two-stage baseline runs.
-- `2307.05527` and `2601.19926` do not yet have corresponding current two-stage baseline reruns.
+- `2409.13738`, `2511.13936`, `2307.05527`, and `2601.19926` all have completed current-style two-stage direct-review runs.
+- Later reruns may exist beyond the summary CSV/report cutoff; when selecting a specific best-allowed run, treat the CSV as an index and confirm against actual per-run artifacts (`run_manifest.json`, `single_reviewer_batch_f1.json`, `single_reviewer_batch_results.json`).
 
 ### Current entrypoint and helper files
 
-- Main runner: `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/tools/run_experiment.py`
-- Workflow spec: `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/workflow/workflow_spec.json`
+- Main runner:
+  - `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/tools/run_experiment.py`
+  - `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/tools/run_experiment.py`
+- Workflow spec:
+  - `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/workflow/workflow_spec.json`
+  - `single_reviewer_batch_experiments/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/workflow/workflow_spec.json`
 - Batch helper: `scripts/screening/openai_batch_runner.py`
 - Metrics evaluator: `scripts/screening/evaluate_review_f1.py`
 - Baseline summarizer: `scripts/screening/summarize_single_reviewer_baselines.py`
@@ -337,6 +348,7 @@ Important:
 Current two-stage runs write to:
 
 - `screening/results/single_reviewer_official_batch_2stage_direct_review_2409_2511_2026-04-06/runs/<run_id>/`
+- `screening/results/single_reviewer_official_batch_2stage_direct_review_2307_2601_2026-04-17/runs/<run_id>/`
 
 Within each current run:
 
@@ -496,3 +508,18 @@ These defaults apply to all experiment work in this repository unless the user e
 - The agent may stop only after the required validation has been completed successfully, or when a real blocker prevents further progress.
 - A blocker must be stated concretely, with the missing dependency, failed system, unavailable input, or other external constraint made explicit.
 - Vague statements such as "this may take too long," "it is probably fine," or "the run was started so the task is effectively done" are not acceptable stopping reasons.
+
+## 16. High-context orchestration habit
+
+These defaults apply to multi-paper, long-document, deep-research, forensic-error-analysis, and other tasks that can easily exceed a single context window.
+
+- By default, treat the main agent as an orchestrator for high-context analysis tasks rather than forcing all reading and reasoning into one uninterrupted session.
+- If the task can be decomposed into independent subproblems, proactively consider using `codex exec` to dispatch those subproblems instead of keeping everything inside one context.
+- Do not require a rigid one-paper-one-agent template. Dispatch granularity should follow the work itself: per-paper analysis, criteria-vs-gold tension analysis, full-text evidence extraction, cross-paper synthesis checks, or any other cleanly testable unit are all acceptable.
+- Default preference for deep subtask delegation is `gpt-5.4` with `reasoning_effort=xhigh`, unless the user explicitly asks for a different model or a narrower or faster pass is more appropriate.
+- Keep the subtask contract explicit: state the exact inputs to inspect, the decision boundary, the expected output shape, and whether the subtask is read-only or allowed to edit.
+- For forensic reading of SRs, candidate papers, criteria, or review artifacts, default to a `misclassified-cases-only` scope. Do not dispatch broad corpus reading when the task can be reduced to the final FP/FN inventory first.
+- When using `codex exec` or any equivalent bounded delegation for high-context reading, batch conservatively and stay rate-limit aware. Prefer small batches and low parallelism unless the user explicitly asks for a broader sweep.
+- The orchestrator remains responsible for final integration, de-duplication, cross-checking, and the final answer. Subagent outputs are evidence and drafts, not final truth.
+- If subtasks share the same write surface or are tightly coupled, do not parallelize them just for the sake of using more agents.
+- If `codex exec` is unstable or unsuitable for a given subtask, fall back pragmatically to another bounded delegation method, but keep the same orchestration mindset.

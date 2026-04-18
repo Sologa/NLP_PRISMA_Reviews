@@ -44,6 +44,10 @@ from scripts.screening.cutoff_time_filter import (
     evaluate_record as repo_evaluate_cutoff_record,
     load_time_policy as repo_load_time_policy,
 )
+from scripts.screening.metadata_gate import (
+    evaluate_artifact_gate as repo_evaluate_artifact_gate,
+    evaluate_fulltext_gate as repo_evaluate_fulltext_gate,
+)
 
 from src.pipelines.runtime_prompt_loader import (
     load_stage1_junior_prompt,
@@ -5072,13 +5076,29 @@ def run_latte_review(
             discard_reason = "title_matches_exclude_title"
         elif not bool(cutoff_decision.get("cutoff_pass")):
             discard_reason = f"cutoff_time_window:{cutoff_decision.get('cutoff_status')}"
+        else:
+            artifact_decision = repo_evaluate_artifact_gate(cutoff_record)
+            if not artifact_decision.get("gate_pass"):
+                discard_reason = f"artifact_gate:{artifact_decision.get('gate_reason')}"
         if discard_reason:
+            final_verdict = None
+            review_state = None
+            review_output = None
+            if discard_reason.startswith("artifact_gate:"):
+                final_verdict = "exclude (artifact_gate)"
+                review_state = "artifact_filtered"
+                review_output = {
+                    "artifact_gate": repo_evaluate_artifact_gate(cutoff_record),
+                }
             discarded.append(
                 {
                     "title": cleaned_title,
                     "abstract": cleaned_abstract,
                     "key": record_key,
                     "discard_reason": discard_reason,
+                    "final_verdict": final_verdict,
+                    "review_state": review_state,
+                    "review_output": review_output,
                 }
             )
             continue
@@ -5221,9 +5241,13 @@ def run_latte_review(
             record["abstract"] = item.get("abstract")
             record["key"] = item.get("key")
             discard_reason = str(item.get("discard_reason") or "discard_rule")
-            record["final_verdict"] = f"discard ({discard_reason})"
+            record["final_verdict"] = item.get("final_verdict") or f"discard ({discard_reason})"
             record["review_skipped"] = True
             record["discard_reason"] = discard_reason
+            if item.get("review_state") is not None:
+                record["review_state"] = item.get("review_state")
+            if item.get("review_output") is not None:
+                record["review_output"] = item.get("review_output")
             output_records.append(record)
 
     cutoff_rewrite = repo_apply_cutoff_to_results(
@@ -5410,6 +5434,42 @@ def run_latte_fulltext_review(
                     "review_skipped": True,
                     "discard_reason": "missing_fulltext",
                     "final_verdict": f"{base_verdict_label} (review_state:retrieval_failed)",
+                }
+            )
+            continue
+
+        fulltext_gate = repo_evaluate_fulltext_gate(
+            metadata_entry or {},
+            {
+                "resolution_status": "exact",
+                "resolved_path": str(fulltext_path.relative_to(REPO_ROOT)),
+                "exact_candidate_path": str(fulltext_path.relative_to(REPO_ROOT)),
+            },
+            repo_root=REPO_ROOT,
+        )
+        if not fulltext_gate.get("gate_pass"):
+            base_verdict_label = _extract_verdict_label(base_final_verdict)
+            if base_verdict_label not in {"include", "maybe"}:
+                base_verdict_label = "maybe"
+            skipped_records.append(
+                {
+                    "key": key,
+                    "title": title,
+                    "base_final_verdict": base_final_verdict,
+                    "fulltext_review_mode": review_mode,
+                    "fulltext_source_path": str(fulltext_path),
+                    "fulltext_chars_total": int(fulltext_gate.get("resolved_file_size_bytes") or 0),
+                    "fulltext_chars_used": 0,
+                    "reference_cut_applied": False,
+                    "reference_cut_method": "none",
+                    "reference_cut_marker": None,
+                    "reference_cut_line_no": None,
+                    "fulltext_missing_or_unmatched": True,
+                    "review_state": "fulltext_gate_failed",
+                    "review_skipped": True,
+                    "discard_reason": f"fulltext_gate:{fulltext_gate.get('gate_reason')}",
+                    "final_verdict": f"{base_verdict_label} (review_state:fulltext_gate_failed)",
+                    "review_output": {"fulltext_gate": fulltext_gate},
                 }
             )
             continue

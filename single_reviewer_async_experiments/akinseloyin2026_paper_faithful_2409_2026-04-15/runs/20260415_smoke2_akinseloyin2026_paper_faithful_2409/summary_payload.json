@@ -1,0 +1,388 @@
+{
+  "run_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_async_experiments/akinseloyin2026_paper_faithful_2409_2026-04-15/runs/20260415_smoke2_akinseloyin2026_paper_faithful_2409",
+  "paper_id": "2409.13738",
+  "current_authority_stage1": {
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "tp": 21,
+    "fp": 14,
+    "tn": 45,
+    "fn": 0
+  },
+  "single_reviewer_stage1_baseline": {
+    "precision": 0.5833333333333334,
+    "recall": 1.0,
+    "f1": 0.7368421052631579,
+    "f2": 0.875,
+    "f3": 0.9333333333333335,
+    "tp": 21,
+    "fp": 15,
+    "tn": 48,
+    "fn": 0,
+    "matched": 84,
+    "gold_size": 84,
+    "results_size": 84
+  },
+  "current_authority_k": 35,
+  "single_reviewer_k": 36,
+  "strategies": [
+    {
+      "family_id": "adjudication",
+      "strategy_id": "adj_judge",
+      "ranking_metrics": {
+        "map": 1.0,
+        "wss95": 0.7,
+        "last_relevant_rank": 1,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.0,
+          "R@30%": 1.0,
+          "R@40%": 1.0,
+          "R@50%": 1.0,
+          "R@60%": 1.0
+        },
+        "candidate_total": 4,
+        "positive_total": 1
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "single_reviewer_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "oracle_best_f1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "f2": 1.0,
+          "f3": 1.0,
+          "tp": 1,
+          "fp": 0,
+          "tn": 3,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4,
+          "k": 1
+        }
+      },
+      "delta_vs_current_authority_f1": -0.34999999999999987,
+      "delta_vs_single_reviewer_f1": -0.33684210526315783
+    },
+    {
+      "family_id": "adjudication",
+      "strategy_id": "adj_rank",
+      "ranking_metrics": {
+        "map": 0.3333333333333333,
+        "wss95": 0.2,
+        "last_relevant_rank": 3,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.0,
+          "R@30%": 0.0,
+          "R@40%": 0.0,
+          "R@50%": 0.0,
+          "R@60%": 0.0
+        },
+        "candidate_total": 4,
+        "positive_total": 1
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "single_reviewer_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "oracle_best_f1": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "f2": 0.7142857142857143,
+          "f3": 0.8333333333333333,
+          "tp": 1,
+          "fp": 2,
+          "tn": 1,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4,
+          "k": 3
+        }
+      },
+      "delta_vs_current_authority_f1": -0.34999999999999987,
+      "delta_vs_single_reviewer_f1": -0.33684210526315783
+    },
+    {
+      "family_id": "mad",
+      "strategy_id": "mad_raw",
+      "ranking_metrics": {
+        "map": 1.0,
+        "wss95": 0.7,
+        "last_relevant_rank": 1,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.0,
+          "R@30%": 1.0,
+          "R@40%": 1.0,
+          "R@50%": 1.0,
+          "R@60%": 1.0
+        },
+        "candidate_total": 4,
+        "positive_total": 1
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "single_reviewer_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "oracle_best_f1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "f2": 1.0,
+          "f3": 1.0,
+          "tp": 1,
+          "fp": 0,
+          "tn": 3,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4,
+          "k": 1
+        }
+      },
+      "delta_vs_current_authority_f1": -0.34999999999999987,
+      "delta_vs_single_reviewer_f1": -0.33684210526315783
+    },
+    {
+      "family_id": "mad",
+      "strategy_id": "mad_soft_vote",
+      "ranking_metrics": {
+        "map": 1.0,
+        "wss95": 0.7,
+        "last_relevant_rank": 1,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.0,
+          "R@30%": 1.0,
+          "R@40%": 1.0,
+          "R@50%": 1.0,
+          "R@60%": 1.0
+        },
+        "candidate_total": 4,
+        "positive_total": 1
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "single_reviewer_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "oracle_best_f1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "f2": 1.0,
+          "f3": 1.0,
+          "tp": 1,
+          "fp": 0,
+          "tn": 3,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4,
+          "k": 1
+        }
+      },
+      "delta_vs_current_authority_f1": -0.34999999999999987,
+      "delta_vs_single_reviewer_f1": -0.33684210526315783
+    },
+    {
+      "family_id": "soft_vote",
+      "strategy_id": "soft_vote",
+      "ranking_metrics": {
+        "map": 1.0,
+        "wss95": 0.7,
+        "last_relevant_rank": 1,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.0,
+          "R@30%": 1.0,
+          "R@40%": 1.0,
+          "R@50%": 1.0,
+          "R@60%": 1.0
+        },
+        "candidate_total": 4,
+        "positive_total": 1
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "single_reviewer_k": {
+          "precision": 0.25,
+          "recall": 1.0,
+          "f1": 0.4,
+          "f2": 0.625,
+          "f3": 0.7692307692307693,
+          "tp": 1,
+          "fp": 3,
+          "tn": 0,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4
+        },
+        "oracle_best_f1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "f2": 1.0,
+          "f3": 1.0,
+          "tp": 1,
+          "fp": 0,
+          "tn": 3,
+          "fn": 0,
+          "matched": 4,
+          "results_size": 4,
+          "gold_size": 4,
+          "k": 1
+        }
+      },
+      "delta_vs_current_authority_f1": -0.34999999999999987,
+      "delta_vs_single_reviewer_f1": -0.33684210526315783
+    }
+  ],
+  "usage_by_model": {
+    "gpt-5.4-nano": {
+      "input_tokens": 18276.0,
+      "output_tokens": 5284.0,
+      "cost": 0.010260000000000002,
+      "calls": 8.0
+    },
+    "gpt-4.1-mini": {
+      "input_tokens": 18292.0,
+      "output_tokens": 3705.0,
+      "cost": 0.013243999999999999,
+      "calls": 8.0
+    },
+    "gpt-5-mini": {
+      "input_tokens": 32550.0,
+      "output_tokens": 17696.0,
+      "cost": 0.043530000000000006,
+      "calls": 12.0
+    }
+  },
+  "total_cost": 0.06703400000000001,
+  "decision_note": "目前最穩的是 `adj_judge`，但它還沒有明確贏過 single-reviewer stage1 baseline。 先不要擴到 stage2，除非你要追的是排序品質而不是 stage1 F1。"
+}

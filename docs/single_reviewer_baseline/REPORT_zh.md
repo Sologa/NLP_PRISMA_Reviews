@@ -1,36 +1,57 @@
 # Single Reviewer Baseline 總報告
 
-- 產生時間：`2026-04-06T13:11:06`
+- 產生時間：`2026-04-17T20:01:21`
 - CSV：`docs/single_reviewer_baseline/single_reviewer_runs_summary.csv`
 - 說明：current single reviewer baseline 已改為 `two-stage direct-review`；舊 `one-stage fulltext direct-review` 結果保留為 historical comparison。
 
 ## Current Two-Stage Direct-Review Baseline
 
-- 已完成 paper-level 結果列數：`6`
-- 尚未補跑 two-stage baseline 的 papers：`2307.05527, 2601.19926`
+- 已完成 paper-level 結果列數：`17`
 - 已忽略 partial/smoke rows：`3`
 
 ### Stage 1
 
 | Paper | 模型 | effort | Stage 1 F1 | Precision | Recall | 與 current stage1 差值 | run_id |
 | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
+| `2307.05527` | `gpt-5.4-mini` | `xhigh` | `0.9028` | `0.9730` | `0.8421` | `-0.0593` | `20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601` |
+| `2307.05527` | `gpt-5.4-mini` | `xhigh` | `0.8627` | `0.9778` | `0.7719` | `-0.0994` | `20260417_full_gpt54mini_xhigh_2stagedirect_2307_2601` |
 | `2409.13738` | `gpt-5` | `low` | `0.8571` | `0.7500` | `1.0000` | `0.1071` | `20260406_full_gpt5_low_2stagedirect_rerun_2409_2511` |
 | `2409.13738` | `gpt-5-mini` | `low` | `0.7925` | `0.6562` | `1.0000` | `0.0425` | `20260406_full_gpt5mini_low_2stagedirect_2409_2511` |
 | `2409.13738` | `gpt-5` | `low` | `0.8333` | `0.7407` | `0.9524` | `0.0833` | `20260406_full_gpt5_low_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4-mini` | `low` | `0.7727` | `0.7391` | `0.8095` | `0.0227` | `20260408_full_gpt54mini_low_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4-mini` | `xhigh` | `0.7727` | `0.7391` | `0.8095` | `0.0227` | `20260408_full_gpt54mini_xhigh_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4` | `low` | `0.7727` | `0.7391` | `0.8095` | `0.0227` | `20260408_full_gpt54_low_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4` | `xhigh` | `0.7451` | `0.6333` | `0.9048` | `-0.0049` | `20260409_probe_2409_gpt54_xhigh_stage1` |
+| `2511.13936` | `gpt-5.4-mini` | `xhigh` | `0.9123` | `0.9630` | `0.8667` | `0.0335` | `20260408_full_gpt54mini_xhigh_2stagedirect_2409_2511` |
 | `2511.13936` | `gpt-5` | `low` | `0.8929` | `0.9615` | `0.8333` | `0.0141` | `20260406_full_gpt5_low_2stagedirect_2409_2511` |
 | `2511.13936` | `gpt-5` | `low` | `0.8929` | `0.9615` | `0.8333` | `0.0141` | `20260406_full_gpt5_low_2stagedirect_rerun_2409_2511` |
 | `2511.13936` | `gpt-5-mini` | `low` | `0.8475` | `0.8621` | `0.8333` | `-0.0313` | `20260406_full_gpt5mini_low_2stagedirect_2409_2511` |
+| `2511.13936` | `gpt-5.4` | `low` | `0.8438` | `0.7941` | `0.9000` | `-0.0350` | `20260408_full_gpt54_low_2stagedirect_2409_2511` |
+| `2511.13936` | `gpt-5.4-mini` | `low` | `0.8077` | `0.9545` | `0.7000` | `-0.0711` | `20260408_full_gpt54mini_low_2stagedirect_2409_2511` |
+| `2601.19926` | `gpt-5.4-mini` | `xhigh` | `0.8918` | `0.9753` | `0.8214` | `-0.0875` | `20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601` |
+| `2601.19926` | `gpt-5.4-mini` | `xhigh` | `0.8856` | `0.9819` | `0.8065` | `-0.0936` | `20260417_full_gpt54mini_xhigh_2stagedirect_2307_2601` |
 
 ### Combined
 
 | Paper | 模型 | effort | Combined F1 | Precision | Recall | 與 current combined 差值 | run_id |
 | --- | --- | --- | ---: | ---: | ---: | ---: | --- |
+| `2307.05527` | `gpt-5.4-mini` | `xhigh` | `0.8673` | `0.9710` | `0.7836` | `-0.0948` | `20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601` |
+| `2307.05527` | `gpt-5.4-mini` | `xhigh` | `0.8283` | `0.9762` | `0.7193` | `-0.1338` | `20260417_full_gpt54mini_xhigh_2stagedirect_2307_2601` |
 | `2409.13738` | `gpt-5` | `low` | `0.8889` | `0.8333` | `0.9524` | `0.1389` | `20260406_full_gpt5_low_2stagedirect_rerun_2409_2511` |
 | `2409.13738` | `gpt-5-mini` | `low` | `0.8750` | `0.7778` | `1.0000` | `0.1250` | `20260406_full_gpt5mini_low_2stagedirect_2409_2511` |
 | `2409.13738` | `gpt-5` | `low` | `0.8444` | `0.7917` | `0.9048` | `0.0944` | `20260406_full_gpt5_low_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4-mini` | `low` | `0.8095` | `0.8095` | `0.8095` | `0.0595` | `20260408_full_gpt54mini_low_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4-mini` | `xhigh` | `0.8095` | `0.8095` | `0.8095` | `0.0595` | `20260408_full_gpt54mini_xhigh_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4` | `low` | `0.7692` | `0.8333` | `0.7143` | `0.0192` | `20260408_full_gpt54_low_2stagedirect_2409_2511` |
+| `2409.13738` | `gpt-5.4` | `xhigh` | `0.7451` | `0.6333` | `0.9048` | `-0.0049` | `20260409_probe_2409_gpt54_xhigh_stage1` |
+| `2511.13936` | `gpt-5.4-mini` | `xhigh` | `0.9123` | `0.9630` | `0.8667` | `0.0060` | `20260408_full_gpt54mini_xhigh_2stagedirect_2409_2511` |
 | `2511.13936` | `gpt-5` | `low` | `0.8727` | `0.9600` | `0.8000` | `-0.0335` | `20260406_full_gpt5_low_2stagedirect_2409_2511` |
 | `2511.13936` | `gpt-5` | `low` | `0.8727` | `0.9600` | `0.8000` | `-0.0335` | `20260406_full_gpt5_low_2stagedirect_rerun_2409_2511` |
 | `2511.13936` | `gpt-5-mini` | `low` | `0.8621` | `0.8929` | `0.8333` | `-0.0442` | `20260406_full_gpt5mini_low_2stagedirect_2409_2511` |
+| `2511.13936` | `gpt-5.4` | `low` | `0.8333` | `0.8333` | `0.8333` | `-0.0729` | `20260408_full_gpt54_low_2stagedirect_2409_2511` |
+| `2511.13936` | `gpt-5.4-mini` | `low` | `0.8077` | `0.9545` | `0.7000` | `-0.0986` | `20260408_full_gpt54mini_low_2stagedirect_2409_2511` |
+| `2601.19926` | `gpt-5.4-mini` | `xhigh` | `0.8742` | `0.9851` | `0.7857` | `-0.0990` | `20260417_retry1_gpt54mini_xhigh_2stagedirect_2307_2601` |
+| `2601.19926` | `gpt-5.4-mini` | `xhigh` | `0.8610` | `0.9847` | `0.7649` | `-0.1122` | `20260417_full_gpt54mini_xhigh_2stagedirect_2307_2601` |
 
 ## Historical One-Stage Direct-Review
 

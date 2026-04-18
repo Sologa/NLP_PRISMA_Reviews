@@ -1,0 +1,120 @@
+{
+  "schema_version": "0.1.0",
+  "review_id": "2409.13738",
+  "stage": "stage1",
+  "criterion_source_path": "criteria_stage1/2409.13738.json",
+  "topic": "NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods",
+  "topic_definition": "Stage 1 observable projection of the original paper's eligibility. Use title+abstract evidence to judge whether the study specifically covers NLP for process extraction from natural-language text. Full-text-only checks (paper type, language/fulltext availability, primary-research status, method concreteness, empirical validation) are deferred to Stage 2.",
+  "claims": [
+    {
+      "claim_id": "S1-IC1",
+      "claim_text": "Title/abstract explicitly indicates that the paper specifically covers the use of NLP for process extraction from natural language text.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC1"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-IC2",
+      "claim_text": "Observable task signal links natural-language text to process-model or process-representation extraction/construction objectives.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC2"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-IC3",
+      "claim_text": "When the core fit is plausible but title/abstract evidence is incomplete, keep maybe and defer final confirmation to Stage 2 instead of adding new hard exclusions.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC3"
+      ],
+      "stage_observability": "deferred_to_stage2",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC1",
+      "claim_text": "Title/abstract clearly indicates the study is not specifically covering NLP for process extraction from natural language text.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC1"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC2",
+      "claim_text": "Observable non-target examples from EC.3: NLP for process redesign, matching, or process prediction.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC2"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC3",
+      "claim_text": "Observable non-target examples from EC.3: sentiment analysis, works targeting individual labels instead of natural text, or studies on generating natural text from processes.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC3"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC4",
+      "claim_text": "Survey/review papers are excluded when title/abstract clearly indicates secondary research.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC4"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "decision_graph": {
+    "include_rule": "All required inclusion claims are supported and no exclusion claim is refuted by disqualifying evidence.",
+    "exclude_rule": "Any exclusion claim with validated refute evidence can force exclude when stage-observable.",
+    "route_rule": "Unknown or stage-incomplete critical claims route to SeniorLead/human adjudication instead of silent include/exclude."
+  }
+}

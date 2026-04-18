@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.nlp-prisma-reviews/bcpcs/boundary_atlas.schema.json",
+  "title": "BCPCS Boundary Atlas",
+  "description": "Leakage-controlled boundary archetypes for calibration. This artifact must not be built from held-out evaluation errors.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "review_id",
+    "split_scope",
+    "archetypes"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "split_scope": {
+      "type": "string",
+      "enum": [
+        "train_only",
+        "development_only",
+        "leave_one_review_out_train",
+        "pre_gold_protocol_only"
+      ]
+    },
+    "archetypes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "archetype_id",
+          "archetype_type",
+          "allowed_use",
+          "source_provenance",
+          "contrast_claim_ids",
+          "forbidden_eval_keys"
+        ],
+        "properties": {
+          "archetype_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "archetype_type": {
+            "type": "string",
+            "enum": [
+              "positive_archetype",
+              "hard_negative_archetype",
+              "contrast_pair",
+              "gold_disputed_case"
+            ]
+          },
+          "allowed_use": {
+            "type": "string",
+            "enum": [
+              "prompt_context",
+              "calibration_only",
+              "training_only",
+              "analysis_only"
+            ]
+          },
+          "source_provenance": {
+            "type": "object",
+            "required": [
+              "source_type",
+              "source_path_or_url",
+              "built_before_eval"
+            ],
+            "properties": {
+              "source_type": {
+                "type": "string",
+                "enum": [
+                  "source_review",
+                  "training_split",
+                  "development_split",
+                  "synthetic_from_criteria",
+                  "external_benchmark",
+                  "expert_authored"
+                ]
+              },
+              "source_path_or_url": {
+                "type": "string",
+                "minLength": 1
+              },
+              "built_before_eval": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          },
+          "contrast_claim_ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "forbidden_eval_keys": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

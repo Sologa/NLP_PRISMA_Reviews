@@ -1,0 +1,388 @@
+{
+  "run_dir": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/single_reviewer_async_experiments/akinseloyin2026_paper_faithful_2409_2026-04-15/runs/20260415_full_akinseloyin2026_paper_faithful_2409",
+  "paper_id": "2409.13738",
+  "current_authority_stage1": {
+    "precision": 0.6,
+    "recall": 1.0,
+    "f1": 0.7499999999999999,
+    "tp": 21,
+    "fp": 14,
+    "tn": 45,
+    "fn": 0
+  },
+  "single_reviewer_stage1_baseline": {
+    "precision": 0.5833333333333334,
+    "recall": 1.0,
+    "f1": 0.7368421052631579,
+    "f2": 0.875,
+    "f3": 0.9333333333333335,
+    "tp": 21,
+    "fp": 15,
+    "tn": 48,
+    "fn": 0,
+    "matched": 84,
+    "gold_size": 84,
+    "results_size": 84
+  },
+  "current_authority_k": 35,
+  "single_reviewer_k": 36,
+  "strategies": [
+    {
+      "family_id": "adjudication",
+      "strategy_id": "adj_judge",
+      "ranking_metrics": {
+        "map": 0.4191464882248279,
+        "wss95": 0.45724637681159425,
+        "last_relevant_rank": 36,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.047619047619047616,
+          "R@30%": 0.3333333333333333,
+          "R@40%": 0.6666666666666666,
+          "R@50%": 0.9523809523809523,
+          "R@60%": 1.0
+        },
+        "candidate_total": 69,
+        "positive_total": 21
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.5714285714285714,
+          "recall": 0.9523809523809523,
+          "f1": 0.7142857142857142,
+          "f2": 0.8403361344537813,
+          "f3": 0.8928571428571427,
+          "tp": 20,
+          "fp": 15,
+          "tn": 48,
+          "fn": 1,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "single_reviewer_k": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "oracle_best_f1": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84,
+          "k": 36
+        }
+      },
+      "delta_vs_current_authority_f1": -0.0357142857142857,
+      "delta_vs_single_reviewer_f1": 0.0
+    },
+    {
+      "family_id": "adjudication",
+      "strategy_id": "adj_rank",
+      "ranking_metrics": {
+        "map": 0.4178519733032972,
+        "wss95": 0.44275362318840583,
+        "last_relevant_rank": 36,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.19047619047619047,
+          "R@30%": 0.2857142857142857,
+          "R@40%": 0.6190476190476191,
+          "R@50%": 0.9047619047619048,
+          "R@60%": 1.0
+        },
+        "candidate_total": 69,
+        "positive_total": 21
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.5714285714285714,
+          "recall": 0.9523809523809523,
+          "f1": 0.7142857142857142,
+          "f2": 0.8403361344537813,
+          "f3": 0.8928571428571427,
+          "tp": 20,
+          "fp": 15,
+          "tn": 48,
+          "fn": 1,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "single_reviewer_k": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "oracle_best_f1": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84,
+          "k": 36
+        }
+      },
+      "delta_vs_current_authority_f1": -0.0357142857142857,
+      "delta_vs_single_reviewer_f1": 0.0
+    },
+    {
+      "family_id": "mad",
+      "strategy_id": "mad_raw",
+      "ranking_metrics": {
+        "map": 0.44579786040281766,
+        "wss95": 0.4717391304347826,
+        "last_relevant_rank": 35,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.14285714285714285,
+          "R@30%": 0.38095238095238093,
+          "R@40%": 0.7142857142857143,
+          "R@50%": 0.9523809523809523,
+          "R@60%": 1.0
+        },
+        "candidate_total": 69,
+        "positive_total": 21
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999,
+          "f2": 0.8823529411764706,
+          "f3": 0.9375000000000001,
+          "tp": 21,
+          "fp": 14,
+          "tn": 49,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "single_reviewer_k": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "oracle_best_f1": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999,
+          "f2": 0.8823529411764706,
+          "f3": 0.9375000000000001,
+          "tp": 21,
+          "fp": 14,
+          "tn": 49,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84,
+          "k": 35
+        }
+      },
+      "delta_vs_current_authority_f1": 0.0,
+      "delta_vs_single_reviewer_f1": 0.0
+    },
+    {
+      "family_id": "mad",
+      "strategy_id": "mad_soft_vote",
+      "ranking_metrics": {
+        "map": 0.42145185481590874,
+        "wss95": 0.45724637681159425,
+        "last_relevant_rank": 35,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.047619047619047616,
+          "R@30%": 0.3333333333333333,
+          "R@40%": 0.6666666666666666,
+          "R@50%": 0.9523809523809523,
+          "R@60%": 1.0
+        },
+        "candidate_total": 69,
+        "positive_total": 21
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999,
+          "f2": 0.8823529411764706,
+          "f3": 0.9375000000000001,
+          "tp": 21,
+          "fp": 14,
+          "tn": 49,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "single_reviewer_k": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "oracle_best_f1": {
+          "precision": 0.6,
+          "recall": 1.0,
+          "f1": 0.7499999999999999,
+          "f2": 0.8823529411764706,
+          "f3": 0.9375000000000001,
+          "tp": 21,
+          "fp": 14,
+          "tn": 49,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84,
+          "k": 35
+        }
+      },
+      "delta_vs_current_authority_f1": 0.0,
+      "delta_vs_single_reviewer_f1": 0.0
+    },
+    {
+      "family_id": "soft_vote",
+      "strategy_id": "soft_vote",
+      "ranking_metrics": {
+        "map": 0.43443176804763617,
+        "wss95": 0.45724637681159425,
+        "last_relevant_rank": 36,
+        "recall_at_percent": {
+          "R@5%": 0.0,
+          "R@10%": 0.0,
+          "R@20%": 0.09523809523809523,
+          "R@30%": 0.38095238095238093,
+          "R@40%": 0.7142857142857143,
+          "R@50%": 0.9523809523809523,
+          "R@60%": 1.0
+        },
+        "candidate_total": 69,
+        "positive_total": 21
+      },
+      "threshold_metrics": {
+        "current_authority_k": {
+          "precision": 0.5714285714285714,
+          "recall": 0.9523809523809523,
+          "f1": 0.7142857142857142,
+          "f2": 0.8403361344537813,
+          "f3": 0.8928571428571427,
+          "tp": 20,
+          "fp": 15,
+          "tn": 48,
+          "fn": 1,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "single_reviewer_k": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84
+        },
+        "oracle_best_f1": {
+          "precision": 0.5833333333333334,
+          "recall": 1.0,
+          "f1": 0.7368421052631579,
+          "f2": 0.875,
+          "f3": 0.9333333333333335,
+          "tp": 21,
+          "fp": 15,
+          "tn": 48,
+          "fn": 0,
+          "matched": 84,
+          "results_size": 84,
+          "gold_size": 84,
+          "k": 36
+        }
+      },
+      "delta_vs_current_authority_f1": -0.0357142857142857,
+      "delta_vs_single_reviewer_f1": 0.0
+    }
+  ],
+  "usage_by_model": {
+    "gpt-4.1-mini": {
+      "input_tokens": 325492.0,
+      "output_tokens": 64441.0,
+      "cost": 0.233302,
+      "calls": 138.0
+    },
+    "gpt-5.4-nano": {
+      "input_tokens": 325216.0,
+      "output_tokens": 94102.0,
+      "cost": 0.18267099999999992,
+      "calls": 138.0
+    },
+    "gpt-5-mini": {
+      "input_tokens": 602183.0,
+      "output_tokens": 322323.0,
+      "cost": 0.795217,
+      "calls": 207.0
+    }
+  },
+  "total_cost": 1.2111899999999998,
+  "decision_note": "目前最穩的是 `mad_raw`，但它還沒有明確贏過 single-reviewer stage1 baseline。 先不要擴到 stage2，除非你要追的是排序品質而不是 stage1 F1。"
+}

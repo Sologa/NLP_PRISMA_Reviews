@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "review_id": "2601.19926",
+  "stage": "stage1",
+  "criterion_source_path": "criteria_stage1/2601.19926.json",
+  "topic": "The Grammar of Transformers: A Systematic Review of Interpretability Research on Syntactic Knowledge in Language Models",
+  "topic_definition": "Syntactic knowledge in language models is the extent to which language models encode, represent, and use grammatical structure and dependencies, while interpretability research investigates how and where that knowledge is manifested inside the model.",
+  "claims": [
+    {
+      "claim_id": "S1-IC1",
+      "claim_text": "The study is about Transformer-based language models (TLMs).",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC1"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "criteria_corrected_3papers/2601.19926.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-IC2",
+      "claim_text": "The study empirically assesses or analyzes syntactic structure or syntactic knowledge in TLMs.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC2"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "criteria_corrected_3papers/2601.19926.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC1",
+      "claim_text": "Focuses primarily on non-transformer architectures such as RNNs/LSTMs, or focuses on encoder-decoder architectures, especially MT-oriented ones.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC1"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "criteria_corrected_3papers/2601.19926.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC2",
+      "claim_text": "Analyzes Transformer language models but does not empirically assess or analyze syntax.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC2"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "criteria_corrected_3papers/2601.19926.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC3",
+      "claim_text": "No clear empirical component, for example a position paper, survey, or review.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC3"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "criteria_corrected_3papers/2601.19926.md",
+      "topic_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "decision_graph": {
+    "include_rule": "All required inclusion claims are supported and no exclusion claim is refuted by disqualifying evidence.",
+    "exclude_rule": "Any exclusion claim with validated refute evidence can force exclude when stage-observable.",
+    "route_rule": "Unknown or stage-incomplete critical claims route to SeniorLead/human adjudication instead of silent include/exclude."
+  }
+}

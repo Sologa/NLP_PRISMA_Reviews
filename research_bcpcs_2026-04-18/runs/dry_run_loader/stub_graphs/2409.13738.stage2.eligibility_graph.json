@@ -1,0 +1,135 @@
+{
+  "schema_version": "0.1.0",
+  "review_id": "2409.13738",
+  "stage": "stage2",
+  "criterion_source_path": "criteria_stage2/2409.13738.json",
+  "topic": "NLP4PBM: A Systematic Review on Process Extraction using Natural Language Processing with Rule-based, Machine and Deep Learning Methods",
+  "topic_definition": "Stage 2 canonical eligibility, source-faithful to the original paper. This review concerns NLP-enabled process extraction, i.e., extracting process models from natural-language text. Covered targets include control-flow models (imperative or declarative) and decisional models. Final full-text eligibility must confirm paper type, language/fulltext availability, originality, concrete method, and empirical validation.",
+  "claims": [
+    {
+      "claim_id": "S2-IC1",
+      "claim_text": "Paper is a full research article, a full text is available, and the paper is written in English.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC1"
+      ],
+      "stage_observability": "metadata_only",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-IC2",
+      "claim_text": "Paper is a primary research article presenting an original research contribution.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC2"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-IC3",
+      "claim_text": "Paper specifically covers the use of NLP for process extraction from natural language text.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC3"
+      ],
+      "stage_observability": "metadata_only",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-IC4",
+      "claim_text": "Paper explicates a concrete method and describes experiments to empirically validate the method.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC4"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-EC1",
+      "claim_text": "Papers that are not full research papers, have no full text available, or are not written in English are excluded.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC1"
+      ],
+      "stage_observability": "metadata_only",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-EC2",
+      "claim_text": "Secondary research articles are excluded.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC2"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-EC3",
+      "claim_text": "Papers not specifically covering the use of NLP for process extraction are excluded. This includes studies on NLP for process redesign, matching, or process prediction, sentiment analysis, works that target individual labels instead of natural text, or studies on generating natural text from processes.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC3"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-EC4",
+      "claim_text": "Papers that only superficially discuss an applied method, or do not describe experiments to validate the method, are excluded.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC4"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2409.13738v1",
+      "topic_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "decision_graph": {
+    "include_rule": "All required inclusion claims are supported and no exclusion claim is refuted by disqualifying evidence.",
+    "exclude_rule": "Any exclusion claim with validated refute evidence can force exclude when stage-observable.",
+    "route_rule": "Unknown or stage-incomplete critical claims route to SeniorLead/human adjudication instead of silent include/exclude."
+  }
+}

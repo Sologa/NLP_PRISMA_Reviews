@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1.0",
+  "review_id": "2511.13936",
+  "stage": "stage2",
+  "criterion_source_path": "criteria_stage2/2511.13936.json",
+  "topic": "Preference-Based Learning in Audio Applications: A Systematic Analysis",
+  "topic_definition": "Stage 2 canonical eligibility, source-faithful to the original paper's final-selection protocol. A paper is eligible if it pertains to preference learning, is applied within the audio domain, and is not a survey or review article. Preference learning includes ranking or A/B comparison of two or more audio clips; numeric ratings count only when converted to rankings; preferences may be human or synthetic; papers without explicit comparisons are still eligible when they contain an RL training loop for an audio model. Studies using preferences solely for evaluation, with no learning component, are excluded. Multimodal works including audio are treated as within the audio domain.",
+  "claims": [
+    {
+      "claim_id": "S2-IC1",
+      "claim_text": "Paper pertains to preference learning, defined as ranking or A/B comparison of two or more audio clips; numeric ratings count only when converted to rankings; preferences may be human or synthetic; papers without explicit comparisons are still eligible when they contain an RL training loop for an audio model.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC1"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-IC2",
+      "claim_text": "Paper is applied within the audio domain. Multimodal works including audio are treated as within the audio domain.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC2"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-IC3",
+      "claim_text": "Paper is not a survey or review article.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC3"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-EC1",
+      "claim_text": "Studies that use preferences solely for evaluation, with no learning component, are excluded.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC1"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S2-EC2",
+      "claim_text": "Survey or review articles are excluded.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC2"
+      ],
+      "stage_observability": "observable_stage2",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "decision_graph": {
+    "include_rule": "All required inclusion claims are supported and no exclusion claim is refuted by disqualifying evidence.",
+    "exclude_rule": "Any exclusion claim with validated refute evidence can force exclude when stage-observable.",
+    "route_rule": "Unknown or stage-incomplete critical claims route to SeniorLead/human adjudication instead of silent include/exclude."
+  }
+}

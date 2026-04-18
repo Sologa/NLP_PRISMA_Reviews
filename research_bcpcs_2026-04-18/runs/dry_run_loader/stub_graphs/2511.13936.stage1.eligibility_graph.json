@@ -1,0 +1,135 @@
+{
+  "schema_version": "0.1.0",
+  "review_id": "2511.13936",
+  "stage": "stage1",
+  "criterion_source_path": "criteria_stage1/2511.13936.json",
+  "topic": "Preference-Based Learning in Audio Applications: A Systematic Analysis",
+  "topic_definition": "Stage 1 observable projection of the original paper's eligibility. Use title+abstract evidence for preference-learning-in-audio fit. Keep source-faithful boundaries only: ranking/A-B style preference signals (or RL loop for an audio model), audio-domain applicability (including multimodal works including audio), and exclusion of preference-only-for-evaluation studies. Avoid adding extra hard gates not stated in the original paper.",
+  "claims": [
+    {
+      "claim_id": "S1-IC1",
+      "claim_text": "Title/abstract indicates preference-learning evidence in audio, such as ranking or A/B comparison of two or more audio clips.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC1"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-IC2",
+      "claim_text": "Numeric ratings count as preference evidence only when title/abstract indicates conversion to rankings or comparative preference signals.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC2"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-IC3",
+      "claim_text": "Papers without explicit comparisons remain eligible when title/abstract indicates an RL training loop for an audio model.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC3"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-IC4",
+      "claim_text": "Paper is applied within the audio domain. Multimodal works including audio are treated as within the audio domain.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC4"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-IC5",
+      "claim_text": "Paper is not a survey or review article.",
+      "claim_type": "inclusion",
+      "required_status": "support",
+      "decision_operator": "all",
+      "source_criterion_ids": [
+        "IC5"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC1",
+      "claim_text": "Studies that use preferences solely for evaluation, with no learning component, are excluded.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC1"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC2",
+      "claim_text": "Title/abstract clearly indicates the study is not applied within the audio domain.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC2"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim_id": "S1-EC3",
+      "claim_text": "Survey or review articles are excluded.",
+      "claim_type": "exclusion",
+      "required_status": "refute_absent",
+      "decision_operator": "exclude_if_refute",
+      "source_criterion_ids": [
+        "EC3"
+      ],
+      "stage_observability": "observable_stage1",
+      "source": "https://arxiv.org/html/2511.13936v1",
+      "topic_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "decision_graph": {
+    "include_rule": "All required inclusion claims are supported and no exclusion claim is refuted by disqualifying evidence.",
+    "exclude_rule": "Any exclusion claim with validated refute evidence can force exclude when stage-observable.",
+    "route_rule": "Unknown or stage-incomplete critical claims route to SeniorLead/human adjudication instead of silent include/exclude."
+  }
+}
