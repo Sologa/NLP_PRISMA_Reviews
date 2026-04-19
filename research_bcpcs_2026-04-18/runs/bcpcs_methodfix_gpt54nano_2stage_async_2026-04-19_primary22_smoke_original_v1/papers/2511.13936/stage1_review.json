@@ -1,0 +1,314 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "chumbalov2020scalable",
+    "candidate_title": "Scalable and efficient comparison-based search without features",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "chumbalov2020scalable",
+      "stage": "stage1",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The title/abstract describe pairwise comparison-based search for objects (e.g., movie actors) and do not indicate an audio-domain application. This fails the stage-1 requirement that the study be applied in audio (including multimodal including audio).",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "chumbalov2020scalable",
+          "stage": "stage1",
+          "claim_id": "S1-excl-audio-domain-mismatch",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "conducting an experiment with users searching for movie actors",
+              "location": "abstract",
+              "source_path": "prompt/candidate_visible_record",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs-stage1-screen",
+          "quote": "conducting an experiment with users searching for movie actors",
+          "location": "abstract",
+          "source_path": "prompt/candidate_visible_record",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract indicate an audio/speech-focused system (supporting audio-domain applicability). However, the provided text does not explicitly describe preference-learning signals such as ranking/A-B comparisons, or an RL/preference-optimization training loop for audio models. This preference-learning evidence is not observable from the supplied Stage 1 fields, so it should be checked in Stage 2.",
+      "route_reason": "Audio-domain fit is suggested, but preference-learning (ranking/A-B/RL loop) is not explicitly evidenced in the provided title/abstract/metadata; route to Stage 2 to verify the training/learning mechanism.",
+      "unknown_reason": "",
+      "missingness_reason": "not_observed_stage1",
+      "confidence": 0.55,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage1",
+          "claim_id": "S1-inclusion-audio-domain-applicability",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Real-time speech interaction",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "speech-text multi-modal model",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Step-Audio-TTS-3B",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "stage1-screening-reviewer",
+          "quote": "Real-time speech interaction",
+          "location": "abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage1",
+          "claim_id": "S1-inclusion-preference-learning-evidence",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "human evaluations",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.55,
+          "verifier_model": "stage1-screening-reviewer",
+          "quote": "human evaluations",
+          "location": "abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "jayawardena2020ordinal",
+    "candidate_title": "How Ordinal Are Your Data?",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "jayawardena2020ordinal",
+      "stage": "stage1",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Based on the provided title/abstract/metadata, the paper discusses ordinal regression/classification/regression modeling for affective computing datasets. It does not indicate preference-learning evidence in audio (e.g., A/B ranking of audio clips, pairwise preference comparisons, or an RL preference-learning loop). Therefore it does not satisfy the Stage 1 inclusion criterion requiring preference-based learning evidence in audio.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "not_observed_stage1",
+      "confidence": 0.78,
+      "evidence_ledger": [
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage1",
+          "claim_id": "inclusion_S1_required_preference_learning_audio_evidence",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Many affective computing datasets are annotated using ordinal scales",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "However, there is currently essentially no guidance on selecting a suitable machine learning and evaluation method.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "the proposed framework is empirically well-behaved and able to correctly identify classification-like, ordinal regression-like and regression-like properties",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "transition between different modelling methods",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.8,
+          "verifier_model": "bcpcs-stage-review",
+          "quote": "Many affective computing datasets are annotated using ordinal scales",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage1",
+          "claim_id": "inclusion_S1_audio_domain_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "the speech processing community",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.62,
+          "verifier_model": "bcpcs-stage-review",
+          "quote": "the speech processing community",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage1",
+          "claim_id": "inclusion_S1_not_a_survey_or_review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "this paper proposes a neural network-based framework",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Experiments on synthetic datasets show",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.7,
+          "verifier_model": "bcpcs-stage-review",
+          "quote": "this paper proposes a neural network-based framework",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage1/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage1",
+      "final_stage_decision": "include",
+      "decision_rationale": "The title/abstract indicate learning from human judgments about pairs of audio recordings (A/B-style comparison: “two recordings identical or not”), and the work is applied to audio/perceptual audio metrics and uses the learned metric as a differentiable loss for an audio task (denoising). It is not described as a survey/review.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.66,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "S1_inclusion_1_preference_or_AB_style_comparison_in_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+              "location": "Abstract",
+              "source_path": "candidate_record.abstract (provided in prompt)",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Since it is a deep network, the metric is differentiable, making it suitable as a loss function for other tasks.",
+              "location": "Abstract",
+              "source_path": "candidate_record.abstract (provided in prompt)",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.64,
+          "verifier_model": "stage1_screening_reviewer",
+          "quote": "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+          "location": "Abstract",
+          "source_path": "candidate_record.abstract (provided in prompt)",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "S1_inclusion_4_applied_within_audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "A differentiable perceptual audio metric",
+              "location": "Title",
+              "source_path": "candidate_record.title (provided in prompt)",
+              "source_field": "title"
+            },
+            {
+              "quote": "Many audio processing tasks require perceptual assessment.",
+              "location": "Abstract",
+              "source_path": "candidate_record.abstract (provided in prompt)",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "stage1_screening_reviewer",
+          "quote": "A differentiable perceptual audio metric learned from just noticeable differences",
+          "location": "Title",
+          "source_path": "candidate_record.title (provided in prompt)",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

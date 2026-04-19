@@ -1,0 +1,428 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "chumbalov2020scalable",
+    "candidate_title": "Scalable and efficient comparison-based search without features",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "chumbalov2020scalable",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Stage 2 eligibility criteria require preference-based learning in the audio domain. The candidate paper focuses on comparison-based search (pairwise/triplet comparisons) in a non-audio domain (faces/movie actors) and is not audio-domain-oriented; thus semantic_non_fit.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.7,
+      "evidence_ledger": [
+        {
+          "candidate_key": "chumbalov2020scalable",
+          "stage": "stage2",
+          "claim_id": "S2_not_audio_domain_exclusion",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "movie actors",
+              "location": "Abstract",
+              "source_path": "https://arxiv.org/html/2511.13936v1",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.72,
+          "verifier_model": "BCPCS-Stage2-Screener",
+          "quote": "movie actors",
+          "location": "Abstract",
+          "source_path": "https://arxiv.org/html/2511.13936v1",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "dong2020pyramid",
+    "candidate_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "dong2020pyramid",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Stage 2 criteria require explicit preference-learning signals (ranking or A/B comparisons or an RL training loop) within the audio domain. The candidate paper focuses on predicting mean opinion scores (MOS) for real-world speech signals and uses MOS-based subjective ratings (e.g., MUSHRA-like procedures) rather than explicit ranking, A/B comparisons, or a learning loop driven by user preferences. Therefore it does not meet the Stage 2 inclusion criteria for preference-learning in audio. Supporting evidence: the text describes MOS prediction and encoder/decoder architecture for predicting MOS, not ranking-based preference learning.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.65,
+      "evidence_ledger": [
+        {
+          "candidate_key": "dong2020pyramid",
+          "stage": "stage2",
+          "claim_id": "S2-PreferenceLearning",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "The proposed model predicts mean opinion scores of real-world signals using a novel deep-learning framework.",
+              "location": "section 2.4",
+              "source_path": "full_text",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The encoder utilizes a stacked pyramid bidirectional long short term memory (pBLSTM) network, which has been successfully used in similar speech tasks (ASR [31] and voice conversion [39]), but not for speech assessment.",
+              "location": "section 2.4",
+              "source_path": "full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.65,
+          "verifier_model": "Stage2-SingleReviewer",
+          "quote": "The proposed model predicts mean opinion scores of real-world signals using a novel deep-learning framework.",
+          "location": "section 2.4",
+          "source_path": "full_text",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 analysis finds explicit preference-learning signals in the Step-Audio paper (RLHF-based training for AQTA, explicit preference data construction, and a learning loop using Bradley-Terry/PPO). The work is audio-domain (real-time speech interaction) and is not a survey/review. Therefore it meets Stage 2 inclusion criteria and should be routed to formal Stage-2 consideration as include.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.0,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "Stage2_Inclusion_PreferenceLearning",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task, leading to the creation of the Step-Audio-Chat model, as depicted in Figure 6.",
+              "location": "full_text",
+              "source_path": "https://arxiv.org/html/2502.11946v2",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "AQTA Preference Data Construction",
+              "location": "full_text",
+              "source_path": "https://arxiv.org/html/2502.11946v2",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "For the fine-tuning dataset, we first collected real audio prompts from users and sampled four responses using the SFT model.",
+              "location": "full_text",
+              "source_path": "https://arxiv.org/html/2502.11946v2",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The reward model training initializes from a SFT model and proceeds through the two-stage training using the Bradley-Terry loss.",
+              "location": "full_text",
+              "source_path": "https://arxiv.org/html/2502.11946v2",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "we employ the PPO (Schulman, Wolski, Dhariwal, Radford, Klimov, 2017) algorithm to train speech large language model.",
+              "location": "full_text",
+              "source_path": "https://arxiv.org/html/2502.11946v2",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "Stage2 BCPCS Reviewer",
+          "quote": "RLHF-based preference learning signals in Step-Audio's training",
+          "location": "full_text (Section 5.2 RLHF)",
+          "source_path": "https://arxiv.org/html/2502.11946v2",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "Stage2_Inclusion_AudioDomain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Real-time speech interaction, serving as a fundamental interface for human-machine collaboration, holds immense potential.",
+              "location": "abstract",
+              "source_path": "https://arxiv.org/html/2502.11946v2",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "Stage2 BCPCS Reviewer",
+          "quote": "Real-time speech interaction, serving as a fundamental interface for human-machine collaboration, holds immense potential.",
+          "location": "abstract",
+          "source_path": "https://arxiv.org/html/2502.11946v2",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "Stage2_Inclusion_NotSurvey",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this paper, we present Step-Audio, an innovative framework for real-time voice interaction.",
+              "location": "full_text",
+              "source_path": "https://arxiv.org/html/2502.11946v2",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "Stage2 BCPCS Reviewer",
+          "quote": "In this paper, we present Step-Audio, an innovative framework for real-time voice interaction.",
+          "location": "full_text",
+          "source_path": "https://arxiv.org/html/2502.11946v2",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "jayawardena2020ordinal",
+    "candidate_title": "How Ordinal Are Your Data?",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "jayawardena2020ordinal",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper explicitly discusses a preference-learning approach (PrefNet) with a pairwise preference loss and applies to audio-domain datasets, and is not a survey, satisfying Stage 2 inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.8,
+      "evidence_ledger": [
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage2",
+          "claim_id": "pref_learning_audio_stage2_include",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "An exception is a preference neural network herein referred to as PrefNet [22], which can overcome the aforementioned problem with online loss calculation.",
+              "location": "Section 3",
+              "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "stage2_screening",
+          "quote": "An exception is a preference neural network herein referred to as PrefNet [22], which can overcome the aforementioned problem with online loss calculation.",
+          "location": "Section 3",
+          "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage2",
+          "claim_id": "audio_domain_application_stage2_include",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Application of the proposed framework to six real datasets widely used in affective computing and related fields suggests that more focus should be placed on ordinal regression instead of classifying or predicting, which are the common practices to date.",
+              "location": "Section 5. Ordinality of Real Speech Data",
+              "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "stage2_screening",
+          "quote": "Application of the proposed framework to six real datasets widely used in affective computing and related fields suggests that more focus should be placed on ordinal regression instead of classifying or predicting, which are the common practices to date.",
+          "location": "Section 5. Ordinality of Real Speech Data",
+          "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage2",
+          "claim_id": "not_survey_stage2_include",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "This paper has presented a novel framework built on neural networks in which a single hyper-parameter 𝛾 trades off between classification, regression, and ordinal regression loss functions.",
+              "location": "Section 6. Conclusion",
+              "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.75,
+          "verifier_model": "stage2_screening",
+          "quote": "This paper has presented a novel framework built on neural networks in which a single hyper-parameter 𝛾 trades off between classification, regression, and ordinal regression loss functions.",
+          "location": "Section 6. Conclusion",
+          "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 canonical criteria are met: (1) the paper concerns preference learning via AB-style pairwise consideration of audio (two recordings are compared), (2) it is applied within the audio domain, and (3) it is not a survey. The work collects AB-type judgments between two audio signals and learns a differentiable perceptual metric from human judgments, demonstrating a learning component rather than evaluation-only. These attributes align with the Stage 2 inclusion criteria and are not contradicted by the provided evidence.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.75,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_criterion1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Paper pertains to preference learning, defined as ranking or A/B comparison of two or more audio clips; numeric ratings count only when converted to rankings; preferences may be human or synthetic; papers without explicit comparisons are still eligible when they contain an RL training loop for an audio model.",
+              "location": "Stage 2 Criteria JSON - Inclusion Criterion 1",
+              "source_path": "criteria_stage2/2511.13936.json",
+              "source_field": "criteria"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "SingleReviewer_Stage2",
+          "quote": "Paper pertains to preference learning, defined as ranking or A/B comparison of two or more audio clips; numeric ratings count only when converted to rankings; preferences may be human or synthetic; papers without explicit comparisons are still eligible when they contain an RL training loop for an audio model.",
+          "location": "Stage 2 Criteria JSON - Inclusion Criterion 1",
+          "source_path": "criteria_stage2/2511.13936.json",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_criterion2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Paper is applied within the audio domain. Multimodal works including audio are treated as within the audio domain.",
+              "location": "Stage 2 Criteria JSON - Inclusion Criterion 2",
+              "source_path": "criteria_stage2/2511.13936.json",
+              "source_field": "criteria"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "SingleReviewer_Stage2",
+          "quote": "Paper is applied within the audio domain. Multimodal works including audio are treated as within the audio domain.",
+          "location": "Stage 2 Criteria JSON - Inclusion Criterion 2",
+          "source_path": "criteria_stage2/2511.13936.json",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_criterion3",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Paper is not a survey or review article.",
+              "location": "Stage 2 Criteria JSON - Inclusion Criterion 3",
+              "source_path": "criteria_stage2/2511.13936.json",
+              "source_field": "criteria"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.7,
+          "verifier_model": "SingleReviewer_Stage2",
+          "quote": "Paper is not a survey or review article.",
+          "location": "Stage 2 Criteria JSON - Inclusion Criterion 3",
+          "source_path": "criteria_stage2/2511.13936.json",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S2_abstract_two_recordings_identical",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "are two recordings identical or not?",
+              "location": "Abstract",
+              "source_path": "manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "SingleReviewer_Stage2",
+          "quote": "are two recordings identical or not?",
+          "location": "Abstract",
+          "source_path": "manocha2020differentiable.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S2_training_objective",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Training objective. Our network F has a small classiﬁcation network G at the end, which maps this distance D(xref, xper) to a predicted human judgment ˆh. We minimize the binary cross-entropy (BCE) between this predicted value and ground truth human judgment h: L(G, D) = BCE(G(D(xref, xper)), h)",
+              "location": "2.2. Training a perceptual metric",
+              "source_path": "manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "SingleReviewer_Stage2",
+          "quote": "Training objective. Our network F has a small classiﬁcation network G at the end, which maps this distance D(xref, xper) to a predicted human judgment ˆh. We minimize the binary cross-entropy (BCE) between this predicted value and ground truth human judgment h: L(G, D) = BCE(G(D(xref, xper)), h)",
+          "location": "2.2. Training a perceptual metric",
+          "source_path": "manocha2020differentiable.md",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

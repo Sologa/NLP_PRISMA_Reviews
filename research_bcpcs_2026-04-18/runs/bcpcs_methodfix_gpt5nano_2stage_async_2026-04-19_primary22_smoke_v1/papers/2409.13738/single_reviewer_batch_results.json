@@ -1,0 +1,118 @@
+[
+  {
+    "paper_id": "2409.13738",
+    "candidate_key": "lopez_assisted_declarative_process",
+    "candidate_title": "Assisted Declarative Process Creation from Natural Language Descriptions",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage2",
+    "final_stage_decision": "exclude",
+    "final_verdict": "exclude (stage2)",
+    "stage1_output": {
+      "candidate_key": "lopez_assisted_declarative_process",
+      "stage": "stage1",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 1 evidence from the title/abstract indicates NLP-based mapping from natural language descriptions to declarative process creation (NL-to-process). The abstract explicitly states declarative process generation from natural language descriptions and mentions NLP techniques to identify roles, activities and constraints, as well as text-to-process construction, aligning with the Stage 1 requirement to connect NL text to process extraction/construction.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "lopez_assisted_declarative_process",
+          "stage": "stage1",
+          "claim_id": "S1-CLAIM-01",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "declarative process generation from natural language descriptions.",
+              "location": "abstract",
+              "source_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "the (manual) creation of Dynamic Response Condition (DCR) graphs directly from text documents",
+              "location": "abstract",
+              "source_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "Stage1_RuleBased",
+          "quote": "Title/abstract indicate NLP-based process creation from natural language descriptions.",
+          "location": "abstract",
+          "source_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "lopez_assisted_declarative_process",
+          "stage": "stage1",
+          "claim_id": "S1-CLAIM-02",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "the (manual) creation of Dynamic Response Condition (DCR) graphs directly from text documents",
+              "location": "abstract",
+              "source_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "Stage1_RuleBased",
+          "quote": "directly from text documents",
+          "location": "abstract",
+          "source_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": {
+      "candidate_key": "lopez_assisted_declarative_process",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Stage 2 canonical topic requires NLP4PBM: A Systematic Review on Process Extraction; the provided paper is about Assisted Declarative Process Creation from Natural Language Descriptions and is a Stage 1-like primary study rather than a Systematic Review focused on NLP-enabled process extraction. This constitutes semantic_non_fit (topic misalignment) with the Stage 2 criteria.",
+      "route_reason": "topic_mismatch",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.75,
+      "evidence_ledger": [
+        {
+          "candidate_key": "lopez_assisted_declarative_process",
+          "stage": "stage2",
+          "claim_id": "S2-CLAIM-01",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Assisted Declarative Process Creation from Natural Language Descriptions",
+              "location": "title",
+              "source_path": "refs/2409.13738/mds/lopez_assisted_declarative_process.md",
+              "source_field": "title"
+            },
+            {
+              "quote": "In this paper, we report recent advances on user support for declarative process generation from natural language descriptions.",
+              "location": "abstract",
+              "source_path": "refs/2409.13738/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.92,
+          "verifier_model": "Stage2_RuleBased",
+          "quote": "Stage 2 canonical topic mismatch: not the NLP4PBM Systematic Review",
+          "location": "summary",
+          "source_path": "refs/2409.13738/mds/lopez_assisted_declarative_process.md",
+          "span_validated": true
+        }
+      ]
+    },
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2409.13738/mds/lopez_assisted_declarative_process.md"
+  }
+]

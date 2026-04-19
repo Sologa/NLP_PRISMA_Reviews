@@ -1,0 +1,161 @@
+{
+  "run_id": "bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1",
+  "experiment_name": "bcpcs_failure_slice_gpt54mini_full127_split",
+  "created_at": "2026-04-18T16:23:51+00:00",
+  "updated_at": "2026-04-18T17:25:42+00:00",
+  "scope": "first60_full127",
+  "model": "gpt-5.4-mini",
+  "endpoint": "/v1/chat/completions",
+  "reviewer": "single_reviewer",
+  "workflow": "two_stage_async_batch",
+  "reasoning_effort_requested": "xhigh",
+  "reasoning_effort_effective": "xhigh",
+  "reasoning_effort_fallback": null,
+  "cost_cap_usd": 10.0,
+  "status": "reported",
+  "run_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1",
+  "failure_slice_keys_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/failure_slice_keys.json",
+  "evaluation_inventory_private_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/evaluation_inventory_private.json",
+  "pricing_snapshot_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/cost/pricing_snapshot.json",
+  "split_definition_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/split_definition.json",
+  "source_counts": {
+    "total_count": 127,
+    "primary_count": 22,
+    "secondary_count": 105,
+    "primary_label_counts": {
+      "criteria_or_gold_tension": 105,
+      "paper_evidence_incomplete": 9,
+      "reviewer_semantic_gap": 13
+    },
+    "per_paper_counts": {
+      "2307.05527": 41,
+      "2409.13738": 5,
+      "2511.13936": 5,
+      "2601.19926": 76
+    },
+    "per_paper_primary_counts": {
+      "2307.05527": 11,
+      "2409.13738": 1,
+      "2511.13936": 4,
+      "2601.19926": 6
+    },
+    "per_paper_secondary_counts": {
+      "2307.05527": 30,
+      "2409.13738": 4,
+      "2511.13936": 1,
+      "2601.19926": 70
+    },
+    "selected_count": 60,
+    "selected_primary_count": 10,
+    "selected_secondary_count": 50
+  },
+  "phase_jobs": {
+    "stage1_review": {
+      "phase": "stage1_review",
+      "batch_artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/batch_jobs/stage1_review/gpt-5.4-mini",
+      "batch_id": "batch_69e3b0314e448190b0f34e13da0eb807",
+      "batch_status": "completed",
+      "request_count": 60,
+      "pre_submit_estimate": {
+        "phase": "stage1_review",
+        "created_at": "2026-04-18T16:24:12+00:00",
+        "request_count": 60,
+        "estimated_input_tokens": 155964,
+        "estimated_output_tokens": 1966080,
+        "estimated_cost_usd": 4.4821665,
+        "prior_actual_or_estimated_cost_usd": 0.0,
+        "projected_total_cost_usd": 4.4821665,
+        "cost_cap_usd": 10.0,
+        "would_exceed_cost_cap": false,
+        "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request"
+      },
+      "upload_file_id": "file-25Bz1pkUqcBULX4ZbduPxx",
+      "batch_completed_at": 1776531198,
+      "batch_output_file_id": "file-X17aqtAj86P4Zi2QJDzWpc",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 60,
+        "failure_count": 0,
+        "missing_count": 0
+      },
+      "cost_summary": {
+        "input_tokens": 107802,
+        "output_tokens": 792746,
+        "total_cost_usd": 1.8241042500000002,
+        "actual_usage_rows": 60,
+        "estimated_rows": 0
+      }
+    },
+    "stage2_review": {
+      "phase": "stage2_review",
+      "batch_artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/batch_jobs/stage2_review/gpt-5.4-mini",
+      "batch_id": "batch_69e3b725cda481909b05ff49682dea45",
+      "batch_status": "completed",
+      "request_count": 40,
+      "pre_submit_estimate": {
+        "phase": "stage2_review",
+        "created_at": "2026-04-18T16:53:52+00:00",
+        "request_count": 40,
+        "estimated_input_tokens": 562977,
+        "estimated_output_tokens": 1310720,
+        "estimated_cost_usd": 3.160236375,
+        "prior_actual_or_estimated_cost_usd": 1.8241042500000002,
+        "projected_total_cost_usd": 4.984340625000001,
+        "cost_cap_usd": 10.0,
+        "would_exceed_cost_cap": false,
+        "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request"
+      },
+      "upload_file_id": "file-8TuxwtbeXGWKSZcgpk57kb",
+      "batch_completed_at": 1776532870,
+      "batch_output_file_id": "file-D9wVwRrvhRwLMS9qM9coPW",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 39,
+        "failure_count": 1,
+        "missing_count": 0
+      },
+      "cost_summary": {
+        "input_tokens": 462113,
+        "output_tokens": 766702,
+        "total_cost_usd": 1.898371875,
+        "actual_usage_rows": 40,
+        "estimated_rows": 0
+      }
+    },
+    "stage2_review_retry1": {
+      "phase": "stage2_review_retry1",
+      "batch_artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/batch_jobs/stage2_review_retry1/gpt-5.4-mini",
+      "batch_id": "batch_69e3bdee6d2481908f81d612a79c6ddc",
+      "batch_status": "completed",
+      "request_count": 1,
+      "retry_of_phase": "stage2_review",
+      "retry_custom_id": "stage2_review__2409.13738__bellan_gpt3_2022",
+      "parsed_summary": {
+        "success_count": 1,
+        "failure_count": 0,
+        "missing_count": 0
+      },
+      "cost_summary": {
+        "input_tokens": 15049,
+        "output_tokens": 20717,
+        "total_cost_usd": 0.052256624999999994,
+        "actual_usage_rows": 1,
+        "estimated_rows": 0
+      },
+      "upload_file_id": "file-SZRVrCMvcu27tTH9ZxrhCw",
+      "batch_output_file_id": "file-PVBxpZif5mXeAcwkgcFgmv",
+      "batch_error_file_id": null
+    }
+  },
+  "is_failure_slice_diagnostic": true,
+  "not_full_benchmark_evidence": true,
+  "write_scope": "research_bcpcs_2026-04-18 only",
+  "selected_count": 60,
+  "selected_primary_count": 10,
+  "selected_secondary_count": 50,
+  "model_preflight_id": "gpt-5.4-mini",
+  "evaluation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/evaluation_summary.json",
+  "validation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/validation_summary.json",
+  "cost_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/cost/cost_summary.json",
+  "run_local_report_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54mini_xhigh_2stage_async_2026-04-19_first60_full127_v1/REPORT_first60_gpt54mini_xhigh_zh.md"
+}

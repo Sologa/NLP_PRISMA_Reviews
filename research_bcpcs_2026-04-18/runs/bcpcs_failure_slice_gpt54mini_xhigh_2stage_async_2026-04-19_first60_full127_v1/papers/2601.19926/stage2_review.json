@@ -1,0 +1,2016 @@
+[
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "Peters:etal:2018",
+    "candidate_title": "Deep Contextualized Word Representations",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "Peters:etal:2018",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The full text shows an empirical syntax-analysis paper, but it is built around a biLM/biLSTM architecture rather than Transformer-based language models, so it does not meet the required Transformer criterion. This is a semantic non-fit, not a retrieval or metadata problem.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.99,
+      "evidence_ledger": [
+        {
+          "candidate_key": "Peters:etal:2018",
+          "stage": "stage2",
+          "claim_id": "S1_required_transformer_based_language_models",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "biLSTM",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Peters:etal:2018.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "biLSTM",
+          "location": "full text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Peters:etal:2018.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Peters:etal:2018",
+          "stage": "stage2",
+          "claim_id": "S1_required_empirical_syntax_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "To examine whether the biLM captures basic syntax",
+              "location": "full text, Section 5.3",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Peters:etal:2018.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "gpt-4.1",
+          "quote": "To examine whether the biLM captures basic syntax",
+          "location": "full text, Section 5.3",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Peters:etal:2018.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "aljaafari_interpreting_2025",
+    "candidate_title": "Interpreting token compositionality in LLMs: A robustness analysis",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "aljaafari_interpreting_2025",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text identifies the work as transformer/LLM-based and provides explicit empirical analysis of syntax via a syntactic parser and hierarchical syntactic structures, satisfying both required Stage 2 criteria; no exclusion applies.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.97,
+      "evidence_ledger": [
+        {
+          "candidate_key": "aljaafari_interpreting_2025",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Interpreting token compositionality in LLMs: A robustness analysis",
+              "location": "title",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "current transformer architectures",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "current transformer architectures",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "aljaafari_interpreting_2025",
+          "stage": "stage2",
+          "claim_id": "required_syntax_or_syntactic_knowledge",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "syntactic parser",
+              "location": "3 Assessing compositional aggregation robustness",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aljaafari_interpreting_2025.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "hierarchical syntactic structures",
+              "location": "4.2 Results and discussion",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aljaafari_interpreting_2025.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "gpt-4.1",
+          "quote": "hierarchical syntactic structures",
+          "location": "4.2 Results and discussion",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aljaafari_interpreting_2025.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "aljaafari_interpreting_2025",
+          "stage": "stage2",
+          "claim_id": "exclude_no_clear_empirical_component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Our empirical findings",
+              "location": "4.2 Results and discussion",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aljaafari_interpreting_2025.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "three WordNet-derived datasets",
+              "location": "4.1 Experimental setup & datasets",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aljaafari_interpreting_2025.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "Our empirical findings",
+          "location": "4.2 Results and discussion",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aljaafari_interpreting_2025.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "aoyama_language_2025",
+    "candidate_title": "Language Models Grow Less Humanlike beyond Phase Transition",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "aoyama_language_2025",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text explicitly studies transformer-based LMs and empirically analyzes syntactic attention structure / syntactic dependency edges with UAS and BLiMP, so both required inclusion criteria are met and the paper is clearly empirical rather than a review.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.98,
+      "evidence_ledger": [
+        {
+          "candidate_key": "aoyama_language_2025",
+          "stage": "stage2",
+          "claim_id": "S1_req_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "transformer-based LMs",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "transformer-based LMs",
+          "location": "Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "aoyama_language_2025",
+          "stage": "stage2",
+          "claim_id": "S1_req_syntax_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We operationalize the phase transition using two well-studied phenomena, the presence of induction heads (Elhage et al., 2021) and syntactic attention structure (SAS; Chen et al., 2024a).",
+              "location": "Section 2.3 Phase Transition",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "LMs demonstrate a sudden emergence of attention patterns that mirror syntactic dependency edges, which they call SAS.",
+              "location": "Section 2.3 Phase Transition",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "SAS suppression leads to a lower UAS and consequently a lower BLiMP score",
+              "location": "Section 6.2.1 Validation of Suppression",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "gpt-4.1",
+          "quote": "LMs demonstrate a sudden emergence of attention patterns that mirror syntactic dependency edges, which they call SAS.",
+          "location": "Section 2.3 Phase Transition",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "aoyama_language_2025",
+          "stage": "stage2",
+          "claim_id": "S1_excl_no_clear_empirical_component",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "We conduct a series of correlational and causal experiments",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "We conduct a series of correlational and causal experiments",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/aoyama_language_2025.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "clouatre_local_2022",
+    "candidate_title": "Local Structure Matters Most in Most Languages",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "clouatre_local_2022",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The study uses Transformer-based models and is empirical, but its analysis targets local/global text structure and perturbation robustness rather than syntactic structure or syntactic knowledge, so it does not satisfy the syntax criterion.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "clouatre_local_2022",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "All experiments are conducted on three pre-trained cross-lingual models.",
+              "location": "full text, section 3.2 Experimental Details",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "XLM-RoBERTa-Base",
+              "location": "full text, section 3.2 Experimental Details",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "BERT-Base-Multilingual-Cased",
+              "location": "full text, section 3.2 Experimental Details",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "All experiments are conducted on three pre-trained cross-lingual models.",
+          "location": "full text, section 3.2 Experimental Details",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "clouatre_local_2022",
+          "stage": "stage2",
+          "claim_id": "required_empirical_syntax_analysis",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "We replicate a study on the importance of local structure, and the relative unimportance of global structure, in a multilingual setting.",
+              "location": "abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "We perform perturbations by altering the order of subwords and characters present in the text.",
+              "location": "full text, section 3.1 Metric and Perturbations",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.83,
+          "verifier_model": "gpt-4.1",
+          "quote": "We replicate a study on the importance of local structure, and the relative unimportance of global structure, in a multilingual setting.",
+          "location": "abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "clouatre_local_2022-1",
+    "candidate_title": "Local Structure Matters Most: Perturbation Study in NLU",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "clouatre_local_2022-1",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper is an empirical perturbation study that explicitly evaluates Transformer models and directly probes word-order/syntax sensitivity, so it satisfies both Stage-2 inclusion criteria.",
+      "route_reason": "not applicable",
+      "unknown_reason": "not applicable",
+      "missingness_reason": "none",
+      "confidence": 0.88,
+      "evidence_ledger": [
+        {
+          "candidate_key": "clouatre_local_2022-1",
+          "stage": "stage2",
+          "claim_id": "req_transformer_lm",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We experiment with three flavor of PT Transformers",
+              "location": "5.3 Models",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022-1.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We experiment with BiLSTMs, Transformers, and ConvNets",
+              "location": "5.3 Models",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022-1.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "single-screening-reviewer",
+          "quote": "We experiment with three flavor of PT Transformers",
+          "location": "5.3 Models",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022-1.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "clouatre_local_2022-1",
+          "stage": "stage2",
+          "claim_id": "req_syntax_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "the lack of sensitivity of neural models to perturbation of syntax motivates further probing.",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022-1.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We empirically show that neural models, invariant of their inductive biases, pretraining scheme, or the choice of tokenization, mostly rely on the local structure of text to build understanding and make limited use of the global structure.",
+              "location": "6.1 Metrics and GLUE Performance",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022-1.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "single-screening-reviewer",
+          "quote": "the lack of sensitivity of neural models to perturbation of syntax motivates further probing.",
+          "location": "Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/clouatre_local_2022-1.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "conia_probing_2022",
+    "candidate_title": "Probing for Predicate Argument Structures in Pretrained Language Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "conia_probing_2022",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Exclude: the study uses Transformer-based PLMs, but its empirical analysis is on Semantic Role Labeling and predicate-argument structures rather than syntactic structure or syntactic knowledge.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.97,
+      "evidence_ledger": [
+        {
+          "candidate_key": "conia_probing_2022",
+          "stage": "stage2",
+          "claim_id": "criterion_transformer_based_lms",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Transformer-based architecture",
+              "location": "Section 4.1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/conia_probing_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "gpt-4.1",
+          "quote": "Transformer-based architecture",
+          "location": "Section 4.1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/conia_probing_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "conia_probing_2022",
+          "stage": "stage2",
+          "claim_id": "criterion_syntax_analysis",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Probing for Predicate Argument Structures in Pretrained Language Models",
+              "location": "Title",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/conia_probing_2022.md",
+              "source_field": "title"
+            },
+            {
+              "quote": "Semantic Role Labeling (SRL)",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/conia_probing_2022.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "predicate argument structures in PLMs.",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/conia_probing_2022.md",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "Semantic Role Labeling (SRL)",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/conia_probing_2022.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "dalvi_analyzing_2020",
+    "candidate_title": "Analyzing Redundancy in Pretrained Transformer Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "dalvi_analyzing_2020",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper is explicitly about pretrained transformer language models and includes empirical analysis of syntactic tasks, including CCG supertagging, so it satisfies both stage-2 inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.94,
+      "evidence_ledger": [
+        {
+          "candidate_key": "dalvi_analyzing_2020",
+          "stage": "stage2",
+          "claim_id": "transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Analyzing Redundancy in Pretrained Transformer Models",
+              "location": "title",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "We conduct our study on two pretrained language models, BERT (Devlin et al., 2019) and XLNet (Yang et al., 2019).",
+              "location": "page 4910, Section 3.2 Models",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/dalvi_analyzing_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "We conduct our study on two pretrained language models, BERT (Devlin et al., 2019) and XLNet (Yang et al., 2019).",
+          "location": "page 4910, Section 3.2 Models",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/dalvi_analyzing_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "dalvi_analyzing_2020",
+          "stage": "stage2",
+          "claim_id": "syntax_analysis_present",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "CCG super tagging using CCGBank (Hockenmaier, 2006)",
+              "location": "page 4910, Section 3.1 Datasets and Tasks",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/dalvi_analyzing_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.89,
+          "verifier_model": "gpt-4.1",
+          "quote": "CCG super tagging using CCGBank (Hockenmaier, 2006)",
+          "location": "page 4910, Section 3.1 Datasets and Tasks",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/dalvi_analyzing_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "dalvi_analyzing_2020",
+          "stage": "stage2",
+          "claim_id": "no_clear_empirical_component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "We compute pairwise similarity between all L layers in the pretrained model and show the corresponding heatmaps in Figure 1.",
+              "location": "page 4911, Section 5.1 Layer-level Redundancy",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/dalvi_analyzing_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "gpt-4.1",
+          "quote": "We compute pairwise similarity between all L layers in the pretrained model and show the corresponding heatmaps in Figure 1.",
+          "location": "page 4911, Section 5.1 Layer-level Redundancy",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/dalvi_analyzing_2020.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "elgaar_ling-cl_2023",
+    "candidate_title": "Ling-CL: Understanding NLP Models through Linguistic Curricula",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "elgaar_ling-cl_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper is an empirical study that uses a transformer model (RoBERTa) and explicitly analyzes grammar/syntactic indices and dependency relations, so it satisfies both stage-2 inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.95,
+      "evidence_ledger": [
+        {
+          "candidate_key": "elgaar_ling-cl_2023",
+          "stage": "stage2",
+          "claim_id": "The study is about Transformer-based language models (TLMs).",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We use the transformer model roberta-base",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "We use the transformer model roberta-base",
+          "location": "full text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "elgaar_ling-cl_2023",
+          "stage": "stage2",
+          "claim_id": "The study empirically assesses or analyzes syntactic structure or syntactic knowledge in TLMs.",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We consider the grammar tasks for analysis.",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "These words are crucial in establishing the syntactic structure of a sentence.",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "provide information about the dependency relations between sub-constituents",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "gpt-4.1",
+          "quote": "These words are crucial in establishing the syntactic structure of a sentence.",
+          "location": "full text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "elgaar_ling-cl_2023",
+          "stage": "stage2",
+          "claim_id": "No clear empirical component, for example a position paper, survey, or review.",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Through the evaluation of several benchmark NLP datasets",
+              "location": "abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Experimental results show that our approach can uncover latent linguistic knowledge",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "Through the evaluation of several benchmark NLP datasets",
+          "location": "abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/elgaar_ling-cl_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "ettinger_what_2020",
+    "candidate_title": "What BERT Is Not: Lessons from a New Suite of Psycholinguistic Diagnostics for Language Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "ettinger_what_2020",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper is an empirical study of BERT, and the full text identifies BERT as a transformer network. However, the paper explicitly says its diagnostics extend beyond the primarily syntactic focus of existing LM diagnostics and instead target commonsense/pragmatic inference, semantic roles and event knowledge, category membership, and negation. That is a semantic non-fit for a syntactic-knowledge review.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.98,
+      "evidence_ledger": [
+        {
+          "candidate_key": "ettinger_what_2020",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "popular BERT model",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "transformer network",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ettinger_what_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "openai-gpt-4.1",
+          "quote": "transformer network",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ettinger_what_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ettinger_what_2020",
+          "stage": "stage2",
+          "claim_id": "exclusion_no_syntax_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this paper we introduce a suite of diagnostics drawn from human language experiments",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "extend beyond the primarily syntactic focus seen in existing LM diagnostics",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ettinger_what_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "openai-gpt-4.1",
+          "quote": "extend beyond the primarily syntactic focus seen in existing LM diagnostics",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ettinger_what_2020.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "gupta_bert_2021",
+    "candidate_title": "BERT & Family Eat Word Salad: Experiments with Text Understanding",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "gupta_bert_2021",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper is an empirical study of BERT-family/transformer models, and it explicitly probes word-order perturbations and token-order sensitivity, satisfying both required inclusion criteria; it is not a survey or review.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.96,
+      "evidence_ledger": [
+        {
+          "candidate_key": "gupta_bert_2021",
+          "stage": "stage2",
+          "claim_id": "inclusion_transformer_based_lm",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "large models from the BERT family",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "large transformer models can make sense of meaningless examples, whereas humans are near-random.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/gupta_bert_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "large transformer models can make sense of meaningless examples, whereas humans are near-random.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/gupta_bert_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "gupta_bert_2021",
+          "stage": "stage2",
+          "claim_id": "inclusion_syntactic_structure_or_knowledge",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "models trained on sentences with randomly permuted word order perform close to state-of-the-art models.",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.91,
+          "verifier_model": "gpt-4.1",
+          "quote": "models trained on sentences with randomly permuted word order perform close to state-of-the-art models.",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "gupta_bert_2021",
+          "stage": "stage2",
+          "claim_id": "exclusion_no_clear_empirical_component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Our experiments show that state-of-the-art models consistently fail to recognize them as ill-formed",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "Our experiments show that state-of-the-art models consistently fail to recognize them as ill-formed",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "hlavnova_empowering_2023",
+    "candidate_title": "Empowering Cross-lingual Behavioral Testing of NLP Models with Typological Features",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "hlavnova_empowering_2023",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper is an empirical behavioral-testing study of language models focused on typological/language-feature differences. It does not present an empirical analysis of syntactic structure or syntactic knowledge, so it is outside the syntactic-knowledge interpretability topic.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.94,
+      "evidence_ledger": [
+        {
+          "candidate_key": "hlavnova_empowering_2023",
+          "stage": "stage2",
+          "claim_id": "required_syntactic_structure_or_syntactic_knowledge",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "We use M2C to generate tests that probe models’ behavior in light of specific linguistic features in 12 typologically diverse languages.",
+              "location": "abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hlavnova_empowering_2023.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Using this framework, we design tests that probe model’s behavior in light of specific capabilities and typological features in 12 typologically diverse languages.",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hlavnova_empowering_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "gpt-4.1",
+          "quote": "We use M2C to generate tests that probe models’ behavior in light of specific linguistic features in 12 typologically diverse languages.",
+          "location": "abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hlavnova_empowering_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "kasthuriarachchy_general_2021",
+    "candidate_title": "From General Language Understanding to Noisy Text Comprehension",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "kasthuriarachchy_general_2021",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Full text explicitly identifies BERT as a multi-layer bidirectional Transformer and reports empirical probing results on syntactic tasks (BShift and TreeDepth), satisfying both required inclusion criteria.",
+      "route_reason": "not applicable",
+      "unknown_reason": "not applicable",
+      "missingness_reason": "none",
+      "confidence": 0.98,
+      "evidence_ledger": [
+        {
+          "candidate_key": "kasthuriarachchy_general_2021",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "The BERT architecture includes a multi-layer bidirectional Transformer",
+              "location": "full text, Section 2.1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/kasthuriarachchy_general_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "The BERT architecture includes a multi-layer bidirectional Transformer",
+          "location": "full text, Section 2.1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/kasthuriarachchy_general_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kasthuriarachchy_general_2021",
+          "stage": "stage2",
+          "claim_id": "required_syntactic_structure_or_knowledge_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "On the other hand, higher accuracies are obtained for the syntactic information tasks—BShift and TreeDepth—with the sentence vectors generated using the hidden layers from the second region (R2).",
+              "location": "full text, Section 5",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/kasthuriarachchy_general_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "On the other hand, higher accuracies are obtained for the syntactic information tasks—BShift and TreeDepth—with the sentence vectors generated using the hidden layers from the second region (R2).",
+          "location": "full text, Section 5",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/kasthuriarachchy_general_2021.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "li_probing_2022",
+    "candidate_title": "Probing via Prompting",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "li_probing_2022",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Include: the full text explicitly identifies GPT-2 as a Transformer-based language model and as a Transformer model, and it empirically analyzes syntactic knowledge through POS and constituent labeling, with an explicit statement that syntactic information is captured in higher layers. It is an empirical study, not a survey or review.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.98,
+      "evidence_ledger": [
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Transformer-based language model",
+              "location": "Section 2.1 Language Models",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "a Transformer model with 12 layers and 117M parameters",
+              "location": "Section 3.3 Experimental Setup",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "Transformer-based language model",
+          "location": "Section 2.1 Language Models",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "required_syntactic_structure_or_syntactic_knowledge",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "part-of-speech tagging (POS)",
+              "location": "Section 3.1 Tasks",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "constituent labeling (const.)",
+              "location": "Section 3.1 Tasks",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "syntactic information (POS and Const.) is captured in higher layers on average",
+              "location": "Section 4.1 Subnetwork Analysis",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "syntactic information (POS and Const.) is captured in higher layers on average",
+          "location": "Section 4.1 Subnetwork Analysis",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "exclude_no_clear_empirical_component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own.",
+              "location": "Abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "gpt-4.1",
+          "quote": "We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own.",
+          "location": "Abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "marecek_balustrades_2019",
+    "candidate_title": "From Balustrades to Pierre Vinken: Looking for Syntax in Transformer Self-Attentions",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "marecek_balustrades_2019",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper studies Transformer NMT encoders and explicitly analyzes syntactic structure in self-attentions by extracting constituency trees and evaluating them against syntactic trees. It is an empirical analysis, not a survey or review.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.97,
+      "evidence_ledger": [
+        {
+          "candidate_key": "marecek_balustrades_2019",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Transformer Self-Attentions",
+              "location": "title",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "Transformer NMT encoders",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/marecek_balustrades_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We focus on the encoder part of the Transformer",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/marecek_balustrades_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "We focus on the encoder part of the Transformer",
+          "location": "Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/marecek_balustrades_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "marecek_balustrades_2019",
+          "stage": "stage2",
+          "claim_id": "required_syntax_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Looking for Syntax in Transformer Self-Attentions",
+              "location": "title",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "a syntactic interpretation.",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/marecek_balustrades_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We automatically evaluate the results",
+              "location": "Section 5",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/marecek_balustrades_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "Looking for Syntax in Transformer Self-Attentions",
+          "location": "title",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "mueller_cross-linguistic_2020",
+    "candidate_title": "Cross-Linguistic Syntactic Evaluation of Word Prediction Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "mueller_cross-linguistic_2020",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text explicitly includes BERT/mBERT and describes a bidirectional Transformer-based encoder, and it uses CLAMS syntactic challenge sets to evaluate the models; both stage-2 inclusion criteria are satisfied.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.97,
+      "evidence_ledger": [
+        {
+          "candidate_key": "mueller_cross-linguistic_2020",
+          "stage": "stage2",
+          "claim_id": "transformer_based_language_model",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "bidirectional Transformer-\nbased encoder",
+              "location": "Section 2.1 Word Prediction Models",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mueller_cross-linguistic_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "we focus our evaluation on the pre-trained English BERT and multilingual BERT.",
+              "location": "Section 2.1 Word Prediction Models",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mueller_cross-linguistic_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "unknown",
+          "quote": "we focus our evaluation on the pre-trained English BERT and multilingual BERT.",
+          "location": "Section 2.1 Word Prediction Models",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mueller_cross-linguistic_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "mueller_cross-linguistic_2020",
+          "stage": "stage2",
+          "claim_id": "empirical_syntax_assessment",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Cross-Linguistic Syntactic Evaluation of Word Prediction Models",
+              "location": "Title",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mueller_cross-linguistic_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "CLAMS includes subject-verb agreement challenge sets for English, French, German, Hebrew and Russian",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mueller_cross-linguistic_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "unknown",
+          "quote": "CLAMS includes subject-verb agreement challenge sets for English, French, German, Hebrew and Russian",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mueller_cross-linguistic_2020.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "ravishankar_effects_2022",
+    "candidate_title": "The Effects of Corpus Choice and Morphosyntax on Multilingual Space Induction",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "ravishankar_effects_2022",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text explicitly describes transformer-based masked language models and an empirical study of how grammar/morphosyntax affects multilingual space induction, so it satisfies the stage-2 inclusion criteria and does not match the exclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.94,
+      "evidence_ledger": [
+        {
+          "candidate_key": "ravishankar_effects_2022",
+          "stage": "stage2",
+          "claim_id": "S1_transformer_based_lm_requirement",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "transformer-based masked language models",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ravishankar_effects_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "openai-gpt-4.1",
+          "quote": "transformer-based masked language models",
+          "location": "Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ravishankar_effects_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ravishankar_effects_2022",
+          "stage": "stage2",
+          "claim_id": "S1_syntax_analysis_requirement",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Morphosyntax",
+              "location": "title",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ravishankar_effects_2022.md",
+              "source_field": "title"
+            },
+            {
+              "quote": "the grammar of the language being modelled affects the model’s ability to build a multilingual space",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ravishankar_effects_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "openai-gpt-4.1",
+          "quote": "the grammar of the language being modelled affects the model’s ability to build a multilingual space",
+          "location": "Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ravishankar_effects_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ravishankar_effects_2022",
+          "stage": "stage2",
+          "claim_id": "S1_no_clear_empirical_component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "We sample corpora from 2 sources in 15 languages and train language models on pseudo-bilingual variants of each corpus",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ravishankar_effects_2022.md",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "openai-gpt-4.1",
+          "quote": "We sample corpora from 2 sources in 15 languages and train language models on pseudo-bilingual variants of each corpus",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/ravishankar_effects_2022.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "sieker_when_2023",
+    "candidate_title": "When Your Language Model Cannot Even Do Determiners Right: Probing for Anti-Presuppositions and the Maximize Presupposition! Principle",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "sieker_when_2023",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper is an empirical investigation using BERT variants, but its substantive focus is anti-presuppositions and the Maximize Presupposition! principle in semantics/pragmatics. It does not empirically assess syntactic structure or syntactic knowledge, so it is a semantic_non_fit for this syntax-focused review topic.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.95,
+      "evidence_ledger": [
+        {
+          "candidate_key": "sieker_when_2023",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "four open-source BERT model variants",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "bert-base-german-cased",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/sieker_when_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "xlm-roberta-base",
+              "location": "full text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/sieker_when_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "gpt-4.1",
+          "quote": "four open-source BERT model variants",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sieker_when_2023",
+          "stage": "stage2",
+          "claim_id": "required_syntactic_structure_or_syntactic_knowledge",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Anti-Presuppositions and the Maximize Presupposition! Principle",
+              "location": "title",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "semantics and pragmatics",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "pragmatic principles underlying the phenomenon of presuppositions",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "semantics and pragmatics",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sieker_when_2023",
+          "stage": "stage2",
+          "claim_id": "exclude_no_clear_empirical_component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Through an experimental investigation",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "Through an experimental investigation",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "sundararaman_syntax-infused_2019",
+    "candidate_title": "Syntax-Infused Transformer and BERT models for Machine Translation and Natural Language Understanding",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "sundararaman_syntax-infused_2019",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper is Transformer/BERT-based and reports empirical syntax-focused experiments, including syntax-infused Transformer evaluation, GLUE/BERT+POS testing, and attention-based interpretation, so it meets both stage-2 inclusion criteria and does not match the exclusion set.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.95,
+      "evidence_ledger": [
+        {
+          "candidate_key": "sundararaman_syntax-infused_2019",
+          "stage": "stage2",
+          "claim_id": "The study is about Transformer-based language models (TLMs).",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Syntax-Infused Transformer and BERT models for Machine Translation and Natural Language Understanding",
+              "location": "title",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "single-screening-reviewer",
+          "quote": "Syntax-Infused Transformer and BERT models for Machine Translation and Natural Language Understanding",
+          "location": "title",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sundararaman_syntax-infused_2019",
+          "stage": "stage2",
+          "claim_id": "The study empirically assesses or analyzes syntactic structure or syntactic knowledge in TLMs.",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Leveraging syntactic information like part of speech (POS) may be particularly beneficial in limited training data settings for complex models such as the Transformer.",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Fittingly, CoLA is a task which assesses the linguistic structure of a sentence, which is explictly informed by POS embeddings.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/sundararaman_syntax-infused_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "single-screening-reviewer",
+          "quote": "Leveraging syntactic information like part of speech (POS) may be particularly beneficial in limited training data settings for complex models such as the Transformer.",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "vig_analyzing_2019",
+    "candidate_title": "Analyzing the Structure of Attention in a Transformer Language Model",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "vig_analyzing_2019",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text explicitly identifies a Transformer language model (GPT-2) and reports empirical analysis of attention, syntax, dependency relations, and part-of-speech tags, so it satisfies both required inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.99,
+      "evidence_ledger": [
+        {
+          "candidate_key": "vig_analyzing_2019",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_lm",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Analyzing the Structure of Attention in a Transformer Language Model",
+              "location": "title",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/vig_analyzing_2019.md",
+              "source_field": "title"
+            },
+            {
+              "quote": "GPT-2 is a stacked decoder Transformer",
+              "location": "Section 3 Transformer Architecture",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/vig_analyzing_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "assistant",
+          "quote": "Analyzing the Structure of Attention in a Transformer Language Model",
+          "location": "title",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/vig_analyzing_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "vig_analyzing_2019",
+          "stage": "stage2",
+          "claim_id": "required_syntax_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We analyze how attention aligns with depen-\ndency relations in GPT-2 by computing the pro-\nportion of attention that connects tokens that are\nalso in a dependency relation with one another.",
+              "location": "Section 5.1.2 Dependency Relations",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/vig_analyzing_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We find that attention aligns with de-\npendency relations most strongly in the mid-\ndle layers.",
+              "location": "abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/vig_analyzing_2019.md",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "assistant",
+          "quote": "We analyze how attention aligns with depen-\ndency relations in GPT-2 by computing the pro-\nportion of attention that connects tokens that are\nalso in a dependency relation with one another.",
+          "location": "Section 5.1.2 Dependency Relations",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/vig_analyzing_2019.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "wang_interpretability_2022",
+    "candidate_title": "Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 Small",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "wang_interpretability_2022",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The full text explicitly identifies GPT-2 small as a decoder-only transformer, so the transformer criterion is met. However, the paper is a mechanistic-interpretability case study of indirect object identification (IOI) and circuit discovery, not an empirical analysis of syntactic structure or syntactic knowledge. This is a semantic non-fit for the syntactic-knowledge review, so it is excluded.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.95,
+      "evidence_ledger": [
+        {
+          "candidate_key": "wang_interpretability_2022",
+          "stage": "stage2",
+          "claim_id": "transformer_based_lm",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Transformer-based language models",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wang_interpretability_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "GPT-2 small is a decoder-only transformer",
+              "location": "Background, Transformer architecture",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wang_interpretability_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "GPT-2 small is a decoder-only transformer",
+          "location": "Background, Transformer architecture",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wang_interpretability_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wang_interpretability_2022",
+          "stage": "stage2",
+          "claim_id": "syntax_empirical_analysis",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "a natural language task that requires logical reasoning: indirect object identification (IOI).",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wang_interpretability_2022.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "We focus on understanding a non-trivial, algorithmic natural language task that we call Indirect Object Identification (IOI).",
+              "location": "Section 3",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wang_interpretability_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.89,
+          "verifier_model": "gpt-4.1",
+          "quote": "a natural language task that requires logical reasoning: indirect object identification (IOI).",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wang_interpretability_2022.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "wettig_should_2023",
+    "candidate_title": "Should You Mask 15% in Masked Language Modeling?",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "wettig_should_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Although the paper’s main contribution is masking-rate optimization, it explicitly works with BERT/Transformer MLMs and includes a BLiMP-based linguistic probing analysis of syntactic phenomena such as filler gap dependencies and island effects, so it satisfies both stage-2 inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.93,
+      "evidence_ledger": [
+        {
+          "candidate_key": "wettig_should_2023",
+          "stage": "stage2",
+          "claim_id": "inclusion_transformer_based_lm",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "our Transformer models have access to positional information",
+              "location": "full text, section 4",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wettig_should_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "BERT-large architecture",
+              "location": "full text, Table 1 caption",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wettig_should_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "gpt-4.1",
+          "quote": "our Transformer models have access to positional information",
+          "location": "full text, section 4",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wettig_should_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wettig_should_2023",
+          "stage": "stage2",
+          "claim_id": "inclusion_syntax_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Analysis of linguistic probing.",
+              "location": "full text, section 4",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wettig_should_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "filler gap dependencies and island effects",
+              "location": "full text, section 4",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wettig_should_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "gpt-4.1",
+          "quote": "Analysis of linguistic probing.",
+          "location": "full text, section 4",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wettig_should_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "wu_beto_2019",
+    "candidate_title": "Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "wu_beto_2019",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper is about mBERT/BERT, which the full text describes as transformer-based, and it empirically evaluates dependency parsing with UAS/LAS, satisfying both required inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.96,
+      "evidence_ledger": [
+        {
+          "candidate_key": "wu_beto_2019",
+          "stage": "stage2",
+          "claim_id": "S1-C1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT",
+              "location": "title",
+              "source_path": "candidate_visible_record.title",
+              "source_field": "title"
+            },
+            {
+              "quote": "a series of transformers",
+              "location": "full text, section 3 Multilingual BERT",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wu_beto_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "OpenAI GPT-4.1",
+          "quote": "a series of transformers",
+          "location": "full text, section 3 Multilingual BERT",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wu_beto_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wu_beto_2019",
+          "stage": "stage2",
+          "claim_id": "S1-C2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Dependency parsing",
+              "location": "full text, section 4.5 Dependency parsing",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wu_beto_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Dependency parsing is evaluated by",
+              "location": "full text, section 4.5 Dependency parsing",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wu_beto_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "OpenAI GPT-4.1",
+          "quote": "Dependency parsing is evaluated by",
+          "location": "full text, section 4.5 Dependency parsing",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wu_beto_2019.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "xiang:etal:2021",
+    "candidate_title": "CLiMP: A Benchmark for Chinese Language Model Evaluation",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "xiang:etal:2021",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text shows an empirical benchmark that evaluates Chinese BERT, explicitly described as a transformer-based neural model, and analyzes syntactic contrasts/minimal pairs in Mandarin, so it satisfies both required stage-2 criteria.",
+      "route_reason": "not applicable",
+      "unknown_reason": "not applicable",
+      "missingness_reason": "none",
+      "confidence": 0.93,
+      "evidence_ledger": [
+        {
+          "candidate_key": "xiang:etal:2021",
+          "stage": "stage2",
+          "claim_id": "required_transformer_based_tlm",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We use CLiMP to study Chinese BERT",
+              "location": "Section 4 (Models and Methods)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/xiang:etal:2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Chinese BERT is a transformer-based neural model (Vaswani et al., 2017).",
+              "location": "Section 4 (Chinese BERT)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/xiang:etal:2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "gpt-4.1",
+          "quote": "Chinese BERT is a transformer-based neural model (Vaswani et al., 2017).",
+          "location": "Section 4 (Chinese BERT)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/xiang:etal:2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "xiang:etal:2021",
+          "stage": "stage2",
+          "claim_id": "required_syntactic_structure_in_tlm",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We evaluate 11 different LMs on CLiMP",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/xiang:etal:2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "CLiMP consists of sets of 1,000\nminimal pairs (MPs) for 16 syntactic con-\ntrasts in Mandarin, covering 9 major Mandarin\nlinguistic phenomena.",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/xiang:etal:2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "gpt-4.1",
+          "quote": "CLiMP consists of sets of 1,000\nminimal pairs (MPs) for 16 syntactic con-\ntrasts in Mandarin, covering 9 major Mandarin\nlinguistic phenomena.",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/xiang:etal:2021.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "yanaka-etal-2020-neural",
+    "candidate_title": "Do Neural Models Learn Systematicity of Monotonicity Inference in Natural Language?",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "yanaka-etal-2020-neural",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The supplied full text explicitly says it is an explanatory article about the ACL paper rather than the primary study, creating source-gold tension. Its substantive focus is monotonicity inference and semantic/logical properties, not syntactic knowledge in transformer-based language models, so it does not meet the stage-2 topic.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "source_gold_tension",
+      "confidence": 0.94,
+      "evidence_ledger": [
+        {
+          "candidate_key": "yanaka-etal-2020-neural",
+          "stage": "stage2",
+          "claim_id": "review_article_not_primary_study",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "本稿では，ACL2020 に採択された論文“Do Neural Models Learn Systematicity of Monotonicity Inference in Natural Language?” (Yanaka, Mineshima, Bekki, and Inui 2020) について解説する．",
+              "location": "full text, opening paragraph",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka-etal-2020-neural.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "gpt-4.1",
+          "quote": "本稿では，ACL2020 に採択された論文“Do Neural Models Learn Systematicity of Monotonicity Inference in Natural Language?” (Yanaka, Mineshima, Bekki, and Inui 2020) について解説する．",
+          "location": "full text, opening paragraph",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka-etal-2020-neural.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "yanaka-etal-2020-neural",
+          "stage": "stage2",
+          "claim_id": "topic_is_semantics_not_syntax",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "monotonicity の推論",
+              "location": "full text, section 2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka-etal-2020-neural.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "意味的な性質の組み合わせ",
+              "location": "full text, section 2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka-etal-2020-neural.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "gpt-4.1",
+          "quote": "monotonicity の推論",
+          "location": "full text, section 2",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka-etal-2020-neural.md",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

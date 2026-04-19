@@ -1,0 +1,1086 @@
+{
+  "scope": "first60_full127",
+  "source": {
+    "results_dir": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results",
+    "appendix_22": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/APPENDIX_22_API_SIM_CASES_zh.md",
+    "source_of_truth": "case_inventory in per-paper JSON files"
+  },
+  "sample_strategy": {
+    "kind": "deterministic_full127_shuffle_split",
+    "seed": 20260418,
+    "order": "shuffle(sorted(full127_cases))",
+    "start_index": 0,
+    "end_index_exclusive": 60
+  },
+  "cases": [
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "du_joint_2020",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "A Joint Framework of Denoising Autoencoder and Generative Vocoder for Monaural Speech Enhancement",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "generative_vocoder_role"
+      ],
+      "why_primary": "stacked enhancement 加上 generative vocoder 其實仍是 generative-audio application，這裡是 reviewer 把 generative role 看得太窄。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "genchel_explicitly_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Explicitly Conditioned Melody Generation: A Case Study with Interdependent RNNs",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "symbolic_output"
+      ],
+      "why_primary": "這篇是 symbolic melody-generation framing，不是 audio-only generation。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "gillick_learning_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Learning to Groove with Inverse Sequence Transformations",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "symbolic_output",
+        "fulltext_resolved"
+      ],
+      "why_primary": "full text 把 output 說成 MIDI performance，不是 audio-only generation。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "greshler_catch--waveform_2021",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Catch-A-Waveform: Learning to Generate Audio from a Single Short Example",
+      "error_type": "FP",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "gold_negative_but_active_criteria_positive"
+      ],
+      "why_primary": "單一短音訊樣本生成新音訊，照 active criteria 幾乎就是直覺 include，所以這裡主要是 gold/criteria 打架。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "hadjeres_piano_2021",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "The Piano Inpainting Application",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "symbolic_output",
+        "fulltext_resolved"
+      ],
+      "why_primary": "full text 很清楚是 MIDI piano-performance inpainting，不是 waveform audio generation。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "han_symbolic_nodate",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Symbolic Music Loop Generation with Neural Discrete Representations",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "symbolic_output"
+      ],
+      "why_primary": "MIDI / symbolic loop generation 直接撞到 active audio-only rule。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "kaur_time_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Time out of Mind: Generating Rate of Speech conditioned on emotion and speaker",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "intermediate_control_output"
+      ],
+      "why_primary": "這篇輸出是 timing / SSML control，不是音訊本身，所以 active criteria 會把它視為中間表示而不是 audio output。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "lemercier_analysing_nodate",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Analysing Diffusion-based Generative Approaches versus Discriminative Approaches for Speech Restoration",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "speech restoration with generative models 本來很像 active criteria 可收的 generative-audio paper，reviewer 卻額外把倫理/社會性門檻拉進來。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "louie_expressive_2021",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Expressive Communication: A Common Framework for Evaluating Developments in Generative Models and Steering Interfaces",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter",
+        "interface_or_analysis_paper"
+      ],
+      "why_primary": "它其實是在分析 generative music models / interfaces，本來不該單純因為沒有倫理或 systematic-review 語氣就被排掉。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "ming_feature_2019",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Feature reinforcement with word embedding and parsing information in neural TTS",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "neural TTS 明明很符合 active audio-model criteria，卻被 reviewer 因為缺少 ethics framing 砍掉。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "pati_learning_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Learning to Traverse Latent Spaces for Musical Score Inpainting",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "symbolic_output"
+      ],
+      "why_primary": "musical-score inpainting 就是 symbolic-output paper。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "shankar_non-parallel_2020",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Non-parallel Emotion Conversion using a Deep-Generative Hybrid Network and an Adversarial Pair Discriminator",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "技術上就是 voice conversion generative-audio paper，但 reviewer 又把它當成缺少 ethics framing 就不能收。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "zhang_incorporating_2021",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Incorporating Multi-Target in Multi-Stage Speech Enhancement Model for Better Generalization",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "generative_role_underdetermined"
+      ],
+      "why_primary": "從 stage-1 可觀察證據來看，這篇到底是 generative model 還是 denoising prior 為主其實不夠穩。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為歧義本來就寫在 paper 的可觀察證據裡；也不是 criteria_or_gold_tension，因為一旦把缺的證據補清楚，paper 仍有機會和 active criteria 對齊。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "zhao_review_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "A Review of Intelligent Music Generation Systems",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "survey_broader_than_audio_only"
+      ],
+      "why_primary": "這篇 survey 橫跨 symbolic 和 audio music generation，對 active audio-only criteria 來說還是太寬。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的判斷方向基本上跟 active audio-only / primary-focus 規則一致；也不是 paper_evidence_incomplete，因為 title/abstract 或 markdown 已經提供了足夠的邊界證據。"
+    },
+    {
+      "paper_id": "2409.13738",
+      "candidate_key": "bellan2022process",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2409.13738.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Process extraction from natural language text: the PET dataset and annotation guidelines",
+      "error_type": "FP",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "title_variant",
+        "dataset_paper",
+        "baseline_methods"
+      ],
+      "why_primary": "This is the PET paper in a title variant. It still fits the current criteria because it targets process extraction from text and includes baseline evaluation, while gold remains negative.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the include is consistent with both text and criteria, and it is not paper_evidence_incomplete because the paper is explicit about both contribution and experiments."
+    },
+    {
+      "paper_id": "2409.13738",
+      "candidate_key": "bellan_gpt3_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2409.13738.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Extracting Business Process Entities and Relations from Text Using Pre-trained Language Models and In-Context Learning",
+      "error_type": "FP",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "duplicate_variant",
+        "intermediate_representation",
+        "gpt3_method"
+      ],
+      "why_primary": "Under the current criteria, the include is coherent: the paper explicitly frames itself as process extraction from text, presents a concrete GPT-3 method, and reports an empirical assessment. The mismatch therefore comes from gold or boundary definition, not from the reviewer.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the reviewer interpretation matches both the paper and the stored criteria, and it is not paper_evidence_incomplete because the method and evaluation are explicit."
+    },
+    {
+      "paper_id": "2409.13738",
+      "candidate_key": "bellan_pet_23",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2409.13738.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "PET: An Annotated Dataset for Process Extraction from Natural Language Text Tasks",
+      "error_type": "FP",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "dataset_paper",
+        "baseline_methods",
+        "duplicate_variant"
+      ],
+      "why_primary": "This is a dataset/resource paper, but it still presents process extraction from natural-language text and includes evaluated extraction baselines. Current criteria admit it more easily than the gold labels do.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the include is directly supported by the paper scope and experiments, and it is not paper_evidence_incomplete because the contribution and evaluation are clearly reported."
+    },
+    {
+      "paper_id": "2409.13738",
+      "candidate_key": "lopez_assisted_declarative_process",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2409.13738.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Assisted Declarative Process Creation from Natural Language Descriptions",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "validation_ambiguity",
+        "semi_automatic_support",
+        "declarative_models"
+      ],
+      "why_primary": "The paper is clearly in scope neighborhood-wise, but its empirical validation story is reported in a mixed and incomplete way. That makes the stage-2 exclusion understandable even though gold keeps the record positive.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the reviewer followed real cautionary language in the paper, and it is not criteria_or_gold_tension because the current criteria and gold can still be reconciled if the validation evidence were stated more concretely."
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_key": "dong2020pyramid",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2511.13936.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Pyramid BLSTM for Real-time and Non-intrusive Prediction of Crowdsourced Speech-Quality Ratings",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "mos_only",
+        "ratings_not_rankings",
+        "mushra"
+      ],
+      "why_primary": "Both abstract and full text stay centered on collecting subjective ratings and predicting MOS from those ratings. They do not show rankings, pairwise preferences, or an RL loop, so the negative decision matches the current criteria better than the positive gold label does.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the reviewer objection matches the criteria closely, and it is not paper_evidence_incomplete because the full paper still does not reveal the missing qualifying preference-learning mechanism."
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_key": "huang2025step",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2511.13936.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "rlhf_hidden_in_fulltext",
+        "preference_data",
+        "reward_model"
+      ],
+      "why_primary": "The abstract mentions only benchmarked human evaluation, but the full text later makes the preference-learning pipeline explicit: RLHF, chosen/rejected pairs, reward-model training, and PPO. The decisive learning signal is hidden outside the title/abstract surface.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the reviewer only had evaluation-looking abstract language to work with, and it is not criteria_or_gold_tension because the full paper clearly supports gold positivity under the active criteria."
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_key": "manocha2020differentiable",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2511.13936.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "A differentiable perceptual audio metric learned from just noticeable differences",
+      "error_type": "FP",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "same_vs_different",
+        "evaluation_only_ab",
+        "stage2_false_positive"
+      ],
+      "why_primary": "The reviewer treated same-versus-different JND judgments and downstream A/B tests as if they established preference learning. On a strict reading of the criteria, that is an over-expansion from perceptual discrimination into preference learning.",
+      "why_not_other_two": "It is not paper_evidence_incomplete because the paper states its supervision and evaluation setup clearly, and it is not criteria_or_gold_tension because the gold negative is reasonably aligned with the current criteria once same/different is separated from ranking or preference."
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "Peters:etal:2018",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Deep Contextualized Word Representations",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "architecture_or_setting_mismatch"
+      ],
+      "why_primary": "paper 的主體是非目標 architecture、MT / encoder-decoder setting、resource paper，或 mixed family rather than transformer-LM syntax analysis，所以 current criteria 會把它排掉。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "aljaafari_interpreting_2025",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Interpreting token compositionality in LLMs: A robustness analysis",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "aoyama_language_2025",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Language Models Grow Less Humanlike beyond Phase Transition",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "chang_bergen_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Word Acquisition in Neural Language Models",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "clark_cross-linguistic_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "A Cross-Linguistic Pressure for Uniform Information Density in Word Order",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "architecture_or_setting_mismatch"
+      ],
+      "why_primary": "paper 的主體是非目標 architecture、MT / encoder-decoder setting、resource paper，或 mixed family rather than transformer-LM syntax analysis，所以 current criteria 會把它排掉。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "clouatre_local_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Local Structure Matters Most in Most Languages",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "clouatre_local_2022-1",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Local Structure Matters Most: Perturbation Study in NLU",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "conia_probing_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Probing for Predicate Argument Structures in Pretrained Language Models",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_not_primary_target"
+      ],
+      "why_primary": "paper 的主要 empirical target 是 semantics、pragmatics、reasoning 或 broader interpretability，而不是 syntax 本身。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "dalvi_analyzing_2020",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Analyzing Redundancy in Pretrained Transformer Models",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "duan_unnatural_2025",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Unnatural Languages Are Not Bugs but Features for LLMs",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "dufter-schutze-2020-identifying",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Identifying Elements Essential for BERT’s Multilinguality",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "elgaar_ling-cl_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Ling-CL: Understanding NLP Models through Linguistic Curricula",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "ettinger_what_2020",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "What BERT Is Not: Lessons from a New Suite of Psycholinguistic Diagnostics for Language Models",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_not_primary_target"
+      ],
+      "why_primary": "paper 的主要 empirical target 是 semantics、pragmatics、reasoning 或 broader interpretability，而不是 syntax 本身。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "georges_gabriel_charpentier_not_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Not all layers are equally as important: Every Layer Counts BERT",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "gupta_bert_2021",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "BERT & Family Eat Word Salad: Experiments with Text Understanding",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "gurnee_finding_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Finding Neurons in a Haystack: Case Studies with Sparse Probing",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "hlavnova_empowering_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Empowering Cross-lingual Behavioral Testing of NLP Models with Typological Features",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "huang_rigorously_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Rigorously Assessing Natural Language Explanations of Neurons",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "kasthuriarachchy_general_2021",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "From General Language Understanding to Noisy Text Comprehension",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "kim_testing_2021",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "theories of grammatical category",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "architecture_or_setting_mismatch"
+      ],
+      "why_primary": "paper 的主體是非目標 architecture、MT / encoder-decoder setting、resource paper，或 mixed family rather than transformer-LM syntax analysis，所以 current criteria 會把它排掉。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "li_probing_2022",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Probing via Prompting",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "stage1_strict_literalism"
+      ],
+      "why_primary": "看到 probing、prompting、linguistic information 這組訊號，其實就已經足夠支撐 maybe；selected run 在 Stage 1 直接硬砍，屬於 reviewer 過度保守。",
+      "why_not_other_two": "它不是 paper_evidence_incomplete，因為 title/abstract 已經給出 enough-to-hold 的線索；也不是 criteria_or_gold_tension，因為留下來之後和 active criteria 是能接上的。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "marecek_balustrades_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "From Balustrades to Pierre Vinken: Looking for Syntax in Transformer Self-Attentions",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "architecture_or_setting_mismatch"
+      ],
+      "why_primary": "paper 的主體是非目標 architecture、MT / encoder-decoder setting、resource paper，或 mixed family rather than transformer-LM syntax analysis，所以 current criteria 會把它排掉。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "mueller_cross-linguistic_2020",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Cross-Linguistic Syntactic Evaluation of Word Prediction Models",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "architecture_or_setting_mismatch"
+      ],
+      "why_primary": "paper 的主體是非目標 architecture、MT / encoder-decoder setting、resource paper，或 mixed family rather than transformer-LM syntax analysis，所以 current criteria 會把它排掉。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "petersen_lexical_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Lexical Semantics with Large Language Models: A Case Study of English “break”",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_not_primary_target"
+      ],
+      "why_primary": "paper 的主要 empirical target 是 semantics、pragmatics、reasoning 或 broader interpretability，而不是 syntax 本身。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "ravishankar_effects_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "The Effects of Corpus Choice and Morphosyntax on Multilingual Space Induction",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "salvatore_logical-based_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "A logical-based corpus for cross-lingual evaluation",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "architecture_or_setting_mismatch"
+      ],
+      "why_primary": "paper 的主體是非目標 architecture、MT / encoder-decoder setting、resource paper，或 mixed family rather than transformer-LM syntax analysis，所以 current criteria 會把它排掉。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "sevastjanova_lmfingerprints_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "LMFingerprints: Visual Explanations of Language Model Embedding Spaces through Layerwise Contextualization Scores",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "sieker_when_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "When Your Language Model Cannot Even Do Determiners Right: Probing for Anti-Presuppositions and the Maximize Presupposition! Principle",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_not_primary_target"
+      ],
+      "why_primary": "paper 的主要 empirical target 是 semantics、pragmatics、reasoning 或 broader interpretability，而不是 syntax 本身。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "sinha_curious_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "The Curious Case of Absolute Position Embeddings",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "sundararaman_syntax-infused_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Syntax-Infused Transformer and BERT models for Machine Translation and Natural Language Understanding",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "architecture_or_setting_mismatch"
+      ],
+      "why_primary": "paper 的主體是非目標 architecture、MT / encoder-decoder setting、resource paper，或 mixed family rather than transformer-LM syntax analysis，所以 current criteria 會把它排掉。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "vig_analyzing_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Analyzing the Structure of Attention in a Transformer Language Model",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "wang_interpretability_2022",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Interpretability in the Wild: a Circuit for Indirect Object Identification in GPT-2 Small",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_not_primary_target"
+      ],
+      "why_primary": "paper 的主要 empirical target 是 semantics、pragmatics、reasoning 或 broader interpretability，而不是 syntax 本身。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "wang_superglue_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "SuperGLUE: A Stickier Benchmark for General-Purpose Language Understanding Systems",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "wettig_should_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Should You Mask 15% in Masked Language Modeling?",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "wu_beto_2019",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Beto, Bentz, Becas: The Surprising Cross-Lingual Effectiveness of BERT",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "xiang:etal:2021",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "CLiMP: A Benchmark for Chinese Language Model Evaluation",
+      "error_type": "FP",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "gold_negative_but_current_criteria_positive"
+      ],
+      "why_primary": "這篇在 active criteria 下幾乎就是 direct syntax/TLM match，殘差主要來自 gold boundary 比 current criteria 更窄。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "yamakoshi_causal_2023",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Causal interventions expose implicit situation models for commonsense language understanding",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_not_primary_target"
+      ],
+      "why_primary": "paper 的主要 empirical target 是 semantics、pragmatics、reasoning 或 broader interpretability，而不是 syntax 本身。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "yanaka-etal-2020-neural",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Do Neural Models Learn Systematicity of Monotonicity Inference in Natural Language?",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_not_primary_target"
+      ],
+      "why_primary": "paper 的主要 empirical target 是 semantics、pragmatics、reasoning 或 broader interpretability，而不是 syntax 本身。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "zimmerman_tokens_2025",
+      "slice_type": "criteria_gold_tension_secondary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": false,
+      "debug_exposure": "none",
+      "leakage_notes": "Criteria/gold tension case retained for inventory/reporting only; not primary unbiased improvement evidence.",
+      "title": "Tokens, the oft-overlooked appetizer: Large language models, the distributional hypothesis, and meaning",
+      "error_type": "FN",
+      "primary_label": "criteria_or_gold_tension",
+      "secondary_labels": [
+        "syntax_incidental_or_absent"
+      ],
+      "why_primary": "這篇屬於 benchmark、robustness、broad interpretability、architecture、multilinguality 或 general LM behavior work，syntax 不是 primary empirical object。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為這裡的決策方向大致符合 current criteria；也不是 paper_evidence_incomplete，因為 scoped text 已經把主要 out-of-scope cue 或 gold-vs-criteria 衝突說得夠清楚。"
+    }
+  ],
+  "summary": {
+    "total_count": 127,
+    "primary_count": 22,
+    "secondary_count": 105,
+    "primary_label_counts": {
+      "criteria_or_gold_tension": 105,
+      "paper_evidence_incomplete": 9,
+      "reviewer_semantic_gap": 13
+    },
+    "per_paper_counts": {
+      "2307.05527": 41,
+      "2409.13738": 5,
+      "2511.13936": 5,
+      "2601.19926": 76
+    },
+    "per_paper_primary_counts": {
+      "2307.05527": 11,
+      "2409.13738": 1,
+      "2511.13936": 4,
+      "2601.19926": 6
+    },
+    "per_paper_secondary_counts": {
+      "2307.05527": 30,
+      "2409.13738": 4,
+      "2511.13936": 1,
+      "2601.19926": 70
+    },
+    "selected_count": 60,
+    "selected_primary_count": 10,
+    "selected_secondary_count": 50
+  },
+  "allowed_use": "final evaluation and taxonomy reporting only; never reviewer prompt construction"
+}

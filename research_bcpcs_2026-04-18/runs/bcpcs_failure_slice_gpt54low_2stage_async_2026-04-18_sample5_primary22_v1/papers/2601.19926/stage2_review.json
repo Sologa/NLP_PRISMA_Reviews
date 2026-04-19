@@ -1,0 +1,98 @@
+[
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "Lovering2021PredictingIB",
+    "candidate_title": "Predicting Inductive Biases of Pre-Trained Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "Lovering2021PredictingIB",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text explicitly studies Transformer-based pre-trained language models including BERT, RoBERTa, T5, and GPT-2, and it empirically evaluates syntactic phenomena such as subject-verb agreement, negative polarity items, and filler-gap dependencies. Although the paper also includes synthetic and GloVe/LSTM comparisons, the study clearly includes and analyzes Transformer language models with empirical syntax-focused experiments, satisfying both required inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.95,
+      "evidence_ledger": [
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "required_1_transformer_based_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We evaluate T5, BERT, RoBERTa, GPT-2 and an LSTM with GloVe embeddings",
+              "location": "full text, Section 4.2 SETUP",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Our motivation comes from McCoy et al. (2019), which demonstrated that, when ﬁne-tuned on a natural language inference task (Williams et al., 2018, MNLI), a model based on a state-of-the-art pre-trained LM (Devlin et al., 2019, BERT)",
+              "location": "full text, Section 2.1 FORMULATION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "gpt-5",
+          "quote": "We evaluate T5, BERT, RoBERTa, GPT-2 and an LSTM with GloVe embeddings",
+          "location": "full text, Section 4.2 SETUP",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "required_2_empirical_syntax_analysis_in_tlms",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We focus on three syntactic phenomena",
+              "location": "full text, Section 4.1 DATA",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The Subject-Verb Agreement (SVA) construction requires detecting whether the verb agrees in number with its subject",
+              "location": "full text, Section 4.1 DATA",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The Negative Polarity Items (NPI) construction requires detecting whether a negative polarity item (e.g., “any”, “ever”) is grammatical in a given context",
+              "location": "full text, Section 4.1 DATA",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The Filler-Gap Dependencies (GAP) construction requires detecting whether a sentence containing a gap is grammatical",
+              "location": "full text, Section 4.1 DATA",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "For each (s, t) feature pair, we plot the use of the spurious feature (s-only error) as a function of the evidence against the spurious feature seen in training (s-only example rate).",
+              "location": "full text, Section 4.3 RESULTS",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "gpt-5",
+          "quote": "We focus on three syntactic phenomena",
+          "location": "full text, Section 4.1 DATA",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

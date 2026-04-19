@@ -1,0 +1,133 @@
+{
+  "run_id": "bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1",
+  "experiment_name": "bcpcs_failure_slice_gpt54low_sample5_primary22",
+  "created_at": "2026-04-18T12:15:33+00:00",
+  "updated_at": "2026-04-18T12:20:27+00:00",
+  "scope": "sample5_primary22",
+  "model": "gpt-5.4",
+  "endpoint": "/v1/chat/completions",
+  "reviewer": "single_reviewer",
+  "workflow": "two_stage_async_batch",
+  "reasoning_effort_requested": "low",
+  "reasoning_effort_effective": "low",
+  "reasoning_effort_fallback": null,
+  "cost_cap_usd": 10.0,
+  "status": "reported_sample5",
+  "run_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1",
+  "failure_slice_keys_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/failure_slice_keys.json",
+  "evaluation_inventory_private_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/evaluation_inventory_private.json",
+  "pricing_snapshot_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/cost/pricing_snapshot.json",
+  "sample_definition_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/sample_definition.json",
+  "source_counts": {
+    "total_count": 127,
+    "primary_count": 22,
+    "secondary_count": 105,
+    "primary_label_counts": {
+      "criteria_or_gold_tension": 105,
+      "paper_evidence_incomplete": 9,
+      "reviewer_semantic_gap": 13
+    },
+    "per_paper_counts": {
+      "2307.05527": 41,
+      "2409.13738": 5,
+      "2511.13936": 5,
+      "2601.19926": 76
+    },
+    "per_paper_primary_counts": {
+      "2307.05527": 11,
+      "2409.13738": 1,
+      "2511.13936": 4,
+      "2601.19926": 6
+    },
+    "per_paper_secondary_counts": {
+      "2307.05527": 30,
+      "2409.13738": 4,
+      "2511.13936": 1,
+      "2601.19926": 70
+    },
+    "selected_count": 5,
+    "selected_primary_count": 5,
+    "selected_secondary_count": 0
+  },
+  "phase_jobs": {
+    "stage1_review": {
+      "phase": "stage1_review",
+      "batch_artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/batch_jobs/stage1_review/gpt-5.4",
+      "batch_id": "batch_69e375e8f55c819085578e2c4b221c82",
+      "batch_status": "completed",
+      "request_count": 5,
+      "pre_submit_estimate": {
+        "phase": "stage1_review",
+        "created_at": "2026-04-18T12:15:33+00:00",
+        "request_count": 5,
+        "estimated_input_tokens": 14491,
+        "estimated_output_tokens": 163840,
+        "estimated_cost_usd": 1.24691375,
+        "prior_actual_or_estimated_cost_usd": 0.0,
+        "projected_total_cost_usd": 1.24691375,
+        "cost_cap_usd": 10.0,
+        "would_exceed_cost_cap": false,
+        "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request"
+      },
+      "upload_file_id": "file-EPkGe9rPFopRsxUSw9EQiV",
+      "batch_completed_at": 1776514618,
+      "batch_output_file_id": "file-VJPv2j2fGKbovuDEeYvXKW",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 5,
+        "failure_count": 0,
+        "missing_count": 0
+      },
+      "cost_summary": {
+        "input_tokens": 10067,
+        "output_tokens": 5301,
+        "total_cost_usd": 0.05234124999999999,
+        "actual_usage_rows": 5,
+        "estimated_rows": 0
+      }
+    },
+    "stage2_review": {
+      "phase": "stage2_review",
+      "batch_artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/batch_jobs/stage2_review/gpt-5.4",
+      "batch_id": "batch_69e37659c48881909288f025f49ea7e8",
+      "batch_status": "completed",
+      "request_count": 4,
+      "pre_submit_estimate": {
+        "phase": "stage2_review",
+        "created_at": "2026-04-18T12:17:27+00:00",
+        "request_count": 4,
+        "estimated_input_tokens": 56423,
+        "estimated_output_tokens": 131072,
+        "estimated_cost_usd": 1.05356875,
+        "prior_actual_or_estimated_cost_usd": 0.05234124999999999,
+        "projected_total_cost_usd": 1.10591,
+        "cost_cap_usd": 10.0,
+        "would_exceed_cost_cap": false,
+        "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request"
+      },
+      "upload_file_id": "file-CgDUMPEjE8ha3fNqmY1iR9",
+      "batch_completed_at": 1776514799,
+      "batch_output_file_id": "file-MFv2TLHi94Hz4AZzCPv5kZ",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 4,
+        "failure_count": 0,
+        "missing_count": 0
+      },
+      "cost_summary": {
+        "input_tokens": 45516,
+        "output_tokens": 6730,
+        "total_cost_usd": 0.10737,
+        "actual_usage_rows": 4,
+        "estimated_rows": 0
+      }
+    }
+  },
+  "is_failure_slice_diagnostic": true,
+  "not_full_benchmark_evidence": true,
+  "write_scope": "research_bcpcs_2026-04-18 only",
+  "model_preflight_id": "gpt-5.4",
+  "evaluation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/evaluation_summary.json",
+  "validation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/validation_summary.json",
+  "cost_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt54low_2stage_async_2026-04-18_sample5_primary22_v1/cost/cost_summary.json"
+}

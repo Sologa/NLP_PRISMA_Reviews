@@ -1,0 +1,196 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper performs preference-based audio learning: it constructs chosen/rejected response pairs from user audio, trains a reward model, then applies RLHF/PPO to optimize Step-Audio-Chat. It is clearly an audio speech interaction system (AQTA) and not a survey/review.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S1_preference_learning_in_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "For the fine-tuning dataset, we first collected real audio prompts... constructed chosen/rejected pairs... human annotators rate...",
+              "location": "5.2.3 AQTA Preference Data Construction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task... Finally, we use PPO algorithm to train the final Step-Audio-Chat model.",
+              "location": "5.2 AQTA + Figure 6",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "stage2_verifier",
+          "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task... Finally, we use PPO algorithm to train the final Step-Audio-Chat model.",
+          "location": "5.2 AQTA + Figure 6",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S1_audio_domain_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task... audio inputs paired with textual outputs.",
+              "location": "5.2 + 5.2.1 Data Types (AQTA)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Step-Audio-Chat model... audio prompt... Response1... Response2... Response3... Response4... Reward Model... PPO",
+              "location": "Figure 6 (AQTA RLHF pipeline)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_verifier",
+          "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task... audio inputs paired with textual outputs.",
+          "location": "5.2 + 5.2.1 Data Types (AQTA)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S1_not_a_survey_or_review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "This report presents Step-Audio, the first production-ready open-source framework for intelligent speech interaction...",
+              "location": "1 Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "In this paper... we conducted task-specific SFT... combined with RLHF for AQTA tasks to enhance response quality.",
+              "location": "7 Conclusion",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "stage2_verifier",
+          "quote": "This report presents Step-Audio, the first production-ready open-source framework for intelligent speech interaction...",
+          "location": "1 Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper learns from pairwise audio judgments (“same or different”), trains a neural model from these comparison labels, and then uses the learned metric as a loss to improve speech denoising. It is clearly audio-focused and presents original learning/training experiments, not a survey.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "inclusion_pref_signal_ranking_ab",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We present a listener with two recordings, a reference xref and perturbed signal xper, and ask if these two recordings are exactly same or different",
+              "location": "Section 2.1 (Data collection via active learning)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.83,
+          "verifier_model": "stage2-verifier",
+          "quote": "We present a listener with two recordings, a reference xref and perturbed signal xper, and ask if these two recordings are exactly same or different",
+          "location": "Section 2.1 (Data collection via active learning)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "inclusion_audio_domain_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Thus, simply replacing an existing loss ... yields significant improvement in a denoising network",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2-verifier",
+          "quote": "Thus, simply replacing an existing loss ... yields significant improvement in a denoising network",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "inclusion_not_survey_review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "stage2-verifier",
+          "quote": "we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

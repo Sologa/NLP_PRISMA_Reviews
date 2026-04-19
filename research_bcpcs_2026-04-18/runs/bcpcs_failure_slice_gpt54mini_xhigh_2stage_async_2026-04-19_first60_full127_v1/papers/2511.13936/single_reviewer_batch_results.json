@@ -1,0 +1,518 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "dong2020pyramid",
+    "candidate_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+    "slice_type": "criteria_gold_tension_secondary",
+    "allowed_for_unbiased_eval": false,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage1",
+    "final_stage_decision": "exclude",
+    "final_verdict": "exclude (stage1)",
+    "stage1_output": {
+      "candidate_key": "dong2020pyramid",
+      "stage": "stage1",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper is clearly in speech/audio and uses crowdsourced listener quality ratings, but the title and abstract do not indicate ranking or A/B preference comparisons, conversion of ratings to rankings, or an RL training loop. It is a quality-rating prediction study rather than stage-1 preference-learning evidence.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.96,
+      "evidence_ledger": [
+        {
+          "candidate_key": "dong2020pyramid",
+          "stage": "stage1",
+          "claim_id": "S1.preference_learning_signal_present",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "predicting crowdsourced speech-quality ratings of real-world signals",
+              "location": "title",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "predicts human quality ratings",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.97,
+          "verifier_model": "gpt-4.1",
+          "quote": "predicting crowdsourced speech-quality ratings of real-world signals",
+          "location": "title",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": null,
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/dong2020pyramid.md"
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage2",
+    "final_stage_decision": "include",
+    "final_verdict": "include (stage2)",
+    "stage1_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The paper is clearly within the speech/audio domain and presents a multimodal model, but the title/abstract only mention model development and human evaluations. They do not state any ranking, A/B comparison, converted preference signal, or RL-based preference-learning loop, so stage1 cannot confirm eligibility from the supplied text alone.",
+      "route_reason": "No explicit preference-learning signal is observable in the title/abstract; route for fuller text check.",
+      "unknown_reason": "Preference-learning evidence is not stated in the title/abstract.",
+      "missingness_reason": "deferred_to_stage2",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage1",
+          "claim_id": "audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+              "location": "title",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "a 130B-parameter unified speech-text multi-modal model",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "a 130B-parameter unified speech-text multi-modal model",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage1",
+          "claim_id": "preference_learning_signal",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "deferred_to_stage2",
+          "confidence": 0.74,
+          "verifier_model": "gpt-4.1",
+          "quote": "human evaluations",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 1 was deferred because the abstract did not expose preference learning, but the full text explicitly shows an audio-domain model paper with RLHF: human preference data, chosen/rejected pairs, and PPO training for Step-Audio-Chat. The paper is presented as an original system with model/training/evaluation sections, not a survey or review, and the preferences are used for learning rather than evaluation only.",
+      "route_reason": "not applicable",
+      "unknown_reason": "not applicable",
+      "missingness_reason": "none",
+      "confidence": 0.97,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Real-time speech interaction",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "we first collected real audio prompts from users",
+              "location": "5.2.3",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "Real-time speech interaction",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "preference_learning_present",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task",
+              "location": "5.2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "we collected human preference data generated by the TQTA model",
+              "location": "5.2.3",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We then constructed chosen/rejected pairs by having human annotators rate these four responses on a scale of 1 to 5, based on the criteria of instruction following, conversational naturalness and safety.",
+              "location": "5.2.3",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Finally, we use PPO algorithm to train the final Step-Audio-Chat model.",
+              "location": "5.2.6",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task",
+          "location": "5.2",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "preferences_used_only_for_evaluation",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task",
+              "location": "5.2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Finally, we use PPO algorithm to train the final Step-Audio-Chat model.",
+              "location": "5.2.6",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "Finally, we use PPO algorithm to train the final Step-Audio-Chat model.",
+          "location": "5.2.6",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "survey_or_review_article",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "this paper introduces Step-Audio, the first production-ready open-source solution.",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Key contributions include:",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task",
+              "location": "5.2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "gpt-4.1",
+          "quote": "this paper introduces Step-Audio, the first production-ready open-source solution.",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        }
+      ]
+    },
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/huang2025step.md"
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage2",
+    "final_stage_decision": "include",
+    "final_verdict": "include (stage2)",
+    "stage1_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage1",
+      "final_stage_decision": "include",
+      "decision_rationale": "Title and abstract identify an audio-domain primary research paper that learns a differentiable metric from crowdsourced human judgments, including explicit pairwise comparison of two recordings, and the abstract describes model training/use rather than an evaluation-only or survey/review article.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.84,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "A differentiable perceptual audio metric learned from just noticeable differences",
+              "location": "title",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "A differentiable perceptual audio metric learned from just noticeable differences",
+          "location": "title",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "comparative_human_judgments",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "subjective pairwise comparison",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.91,
+          "verifier_model": "gpt-4.1",
+          "quote": "subjective pairwise comparison",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "learning_component_not_eval_only",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Thus, simply replacing an existing loss (e.g., deep feature loss) with our metric yields significant improvement in a denoising network, as measured by subjective pairwise comparison.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "not_survey_or_review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We show that the resulting learned metric is well-calibrated with human judgments, outperforming baseline methods.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "gpt-4.1",
+          "quote": "We show that the resulting learned metric is well-calibrated with human judgments, outperforming baseline methods.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Include: this is an original audio-domain research paper that learns a differentiable metric from pairwise human judgments over two recordings and uses the learned metric as a loss function; it is not a survey/review and it is not evaluation-only.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.94,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "pairwise_human_judgments",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "In this work, we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "gpt-4.1",
+          "quote": "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "A differentiable perceptual audio metric learned from just noticeable differences",
+              "location": "title",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.99,
+          "verifier_model": "gpt-4.1",
+          "quote": "A differentiable perceptual audio metric learned from just noticeable differences",
+          "location": "title",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "not_survey_or_review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this work, we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "We show that the resulting learned metric is well-calibrated with human judgments, outperforming baseline methods.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.89,
+          "verifier_model": "gpt-4.1",
+          "quote": "In this work, we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "evaluation_only_exclusion",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Since it is a deep network, the metric is differentiable, making it suitable as a loss function for other tasks.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Thus, simply replacing an existing loss (e.g., deep feature loss) with our metric yields significant improvement in a denoising network, as measured by subjective pairwise comparison.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "gpt-4.1",
+          "quote": "Since it is a deep network, the metric is differentiable, making it suitable as a loss function for other tasks.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/manocha2020differentiable.md"
+  }
+]

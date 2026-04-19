@@ -1,0 +1,284 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper performs preference-based learning in the audio domain using explicit chosen/rejected preference pairs from human ratings of multiple responses to audio prompts, then trains a reward model and optimizes the Step-Audio-Chat model with PPO (RLHF). It is not a survey/review article, and it includes a learning component rather than using preferences solely for evaluation.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2-inclusion-preference-learning-evidence",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "collected real audio prompts from users and sampled four responses",
+              "location": "full_text section 5.2.3 (AQTA Preference Data Construction)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "constructed chosen/rejected pairs",
+              "location": "full_text section 5.2.3 (AQTA Preference Data Construction)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "rate these four responses on a scale of 1 to 5",
+              "location": "full_text section 5.2.3 (AQTA Preference Data Construction)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "we use PPO algorithm to train the final Step-Audio-Chat model",
+              "location": "full_text section 5.2 (Figure 6 caption text)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "we implement a two-stage approach for reward model training",
+              "location": "full_text section 5.2.4 (Reward Model Training Details)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2-screening-reviewer",
+          "quote": "constructed chosen/rejected pairs",
+          "location": "full_text section 5.2.3 (AQTA Preference Data Construction)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2-inclusion-audio-domain-applicability",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "real-time voice interaction",
+              "location": "full_text introduction (first paragraph area near the start)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "real audio prompts",
+              "location": "full_text section 5.2.3 (AQTA Preference Data Construction)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "step-Audio-Chat model",
+              "location": "full_text section 5.2 (Figure 6 caption text)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2-screening-reviewer",
+          "quote": "real-time voice interaction",
+          "location": "full_text introduction (first paragraph area near the start)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2-inclusion-not-survey-or-review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "This report presents Step-Audio",
+              "location": "full_text introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "3 Architecture",
+              "location": "full_text section heading",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "5.2 we applied Reinforcement Learning from Human Feedback (RLHF)",
+              "location": "full_text section 5.2 (top line of RLHF application)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "stage2-screening-reviewer",
+          "quote": "This report presents Step-Audio",
+          "location": "full_text introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "E2-exclusion-preferences-solely-for-evaluation-no-learning-component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "we use PPO algorithm to train the final Step-Audio-Chat model",
+              "location": "full_text section 5.2 (Figure 6 caption text)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Train\nPPO\nChosen\nRejected",
+              "location": "full_text Figure 6 (training pipeline text)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "we implement a two-stage approach for reward model training",
+              "location": "full_text section 5.2.4 (Reward Model Training Details)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2-screening-reviewer",
+          "quote": "Train\nPPO\nChosen\nRejected",
+          "location": "full_text Figure 6 (training pipeline text)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper learns a model from pairwise human judgments comparing two audio recordings (“identical or not”), and it trains a neural network using those comparisons (BCE against ground-truth judgments). It is explicitly about perceptual audio (audio recordings and a distance metric / loss for audio tasks) and presents original experiments/training (not a survey/review).",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.82,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_preference_or_AB_comparison_and_learning_component",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We present a listener with two recordings, a reference xref and perturbed signal xper, and ask if these two recordings are exactly same or different, and record the binary response",
+              "location": "2.1. Data collection via active learning",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We minimize the binary cross-entropy (BCE) between this predicted value and ground truth human judgment h:",
+              "location": "2.2. Training a perceptual metric",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "stage2_screening_reviewer",
+          "quote": "Subjects are prompted to answer a straightforward, objective question: are two recordings identical or not?",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "A differentiable perceptual audio metric learned from just noticeable differences",
+              "location": "Title",
+              "source_path": "candidate_record.title (provided in prompt)",
+              "source_field": "title"
+            },
+            {
+              "quote": "use the learned representation to construct a distance metric that measures the difference between two audio signals.",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_screening_reviewer",
+          "quote": "use the learned representation to construct a distance metric that measures the difference between two audio signals.",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_not_survey_or_review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Finally we show that using the new metric as a loss function improves the performance of a state of the art denoising network.",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "stage2_screening_reviewer",
+          "quote": "we construct a metric by fitting a deep neural network to a new large dataset of crowdsourced human judgments.",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

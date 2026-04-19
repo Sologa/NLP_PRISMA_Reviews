@@ -1,0 +1,483 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "chumbalov2020scalable",
+    "candidate_title": "Scalable and efficient comparison-based search without features",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage2",
+    "final_stage_decision": "exclude",
+    "final_verdict": "exclude (stage2)",
+    "stage1_output": {
+      "candidate_key": "chumbalov2020scalable",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "Stage 1 audio-domain criterion not satisfied: the candidate focuses on general pairwise comparison search and does not indicate application to audio or audio-based preference learning. Escalating to Stage 2 for potential cross-domain evaluation with audio relevance.",
+      "route_reason": "Not audio-domain; does not meet the Stage 1 topic S1 criteria (preference-based learning in audio).",
+      "unknown_reason": "not_applicable",
+      "missingness_reason": "none",
+      "confidence": 0.75,
+      "evidence_ledger": [
+        {
+          "candidate_key": "chumbalov2020scalable",
+          "stage": "stage1",
+          "claim_id": "C1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "movie actors",
+              "location": "abstract",
+              "source_path": "candidate/chumbalov2020scalable/abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "Stage1-Screener",
+          "quote": "movie actors",
+          "location": "abstract",
+          "source_path": "candidate/chumbalov2020scalable/abstract",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": {
+      "candidate_key": "chumbalov2020scalable",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Stage 2 eligibility requires the paper to pertain to preference learning in the audio domain (including multimodal works with audio) and not be a survey. The candidate paper focuses on general comparison-based search with a movie-actors (non-audio) dataset and demonstrates on a non-audio domain, with no explicit audio-domain preference-learning component, hence semantic_non_fit.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "chumbalov2020scalable",
+          "stage": "stage2",
+          "claim_id": "C1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "movie actors",
+              "location": "abstract",
+              "source_path": "candidate/chumbalov2020scalable/abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "Stage2-Screener",
+          "quote": "movie actors",
+          "location": "abstract",
+          "source_path": "candidate/chumbalov2020scalable/abstract",
+          "span_validated": true
+        }
+      ]
+    },
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/chumbalov2020scalable.md"
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage2",
+    "final_stage_decision": "include",
+    "final_verdict": "include (stage2)",
+    "stage1_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "Stage 1 evidence review did not identify explicit preference-learning signals (e.g., ranking, A/B comparisons, or RL loop) in the title/abstract. The abstract focuses on Step-Audio's architecture and evaluation benchmarks, with no clear indication of preference-based learning within the audio domain. Therefore, evidence is inconclusive for Stage 1 and should be escalated to Stage 2 for deeper assessment.",
+      "route_reason": "No explicit preference-learning signals in title/abstract; requires Stage 2 review of full text to confirm potential learning signals not evident in abstract.",
+      "unknown_reason": "",
+      "missingness_reason": "not_observed_stage1",
+      "confidence": 0.0,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage1",
+          "claim_id": "S1_unknown",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.0,
+          "verifier_model": "BCPCS",
+          "quote": "",
+          "location": "",
+          "source_path": "criteria_stage1/2511.13936.json",
+          "span_validated": false
+        }
+      ]
+    },
+    "stage2_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 evaluation finds explicit evidence of preference-learning components in the Step-Audio paper: (i) RLHF usage with a Reward Model and PPO training, including preference data construction (TQTA/AQTA) and a Bradley-Terry loss, which fulfills the defined preference-learning criteria; (ii) application within the audio domain (Step-Audio focuses on real-time speech interaction and audio-enabled capabilities) and (iii) the work is an original research article with concrete contributions (architecture, data engine, instruction-driven control, tool use) rather than a survey. These points satisfy all Stage 2 inclusion criteria and exclude the listed exclusions (no survey, explicit learning components present, not solely evaluative).",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S1_pref_learning",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task, leading to the creation of the Step-Audio-Chat model, as depicted in Figure 6.",
+              "location": "5.2 RLHF (AQTA task)",
+              "source_path": "fulltext/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "BCPCS",
+          "quote": "We applied Reinforcement Learning from Human Feedback (RLHF) for the AQTA task, leading to the creation of the Step-Audio-Chat model, as depicted in Figure 6.",
+          "location": "5.2 RLHF (AQTA task)",
+          "source_path": "fulltext/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2_audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Real-time speech interaction, serving as a fundamental interface for human-machine collaboration",
+              "location": "Abstract",
+              "source_path": "fulltext/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "BCPCS",
+          "quote": "Real-time speech interaction, serving as a fundamental interface for human-machine collaboration",
+          "location": "Abstract",
+          "source_path": "fulltext/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S3_not_survey",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this paper, we present Step-Audio, an innovative framework for real-time voice interaction.",
+              "location": "Conclusion",
+              "source_path": "fulltext/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "BCPCS",
+          "quote": "In this paper, we present Step-Audio, an innovative framework for real-time voice interaction.",
+          "location": "Conclusion",
+          "source_path": "fulltext/huang2025step.md",
+          "span_validated": true
+        }
+      ]
+    },
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/huang2025step.md"
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "jayawardena2020ordinal",
+    "candidate_title": "How Ordinal Are Your Data?",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage2",
+    "final_stage_decision": "include",
+    "final_verdict": "include (stage2)",
+    "stage1_output": {
+      "candidate_key": "jayawardena2020ordinal",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "Stage 1 analysis yields inconclusive alignment with explicit Stage 1 criteria; the abstract mentions ordinal data and ordinal regression but does not clearly show explicit preference-learning signals in audio (e.g., ranking/A-B comparisons) or an RL loop within the audio domain.",
+      "route_reason": "Evidence in the title/abstract discusses ordinal data concepts but does not decisively demonstrate audio-domain preference-learning signals (ranking/A-B) or an RL training loop as required by Stage 1 criteria; insufficient to decide include/exclude. Route to Stage 2 for further evidence verification.",
+      "unknown_reason": "ambiguous_audio_domain_preference_evidence",
+      "missingness_reason": "none",
+      "confidence": 0.5,
+      "evidence_ledger": [
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage1",
+          "claim_id": "S1-criterion1",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "ordinal scales",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.5,
+          "verifier_model": "human",
+          "quote": "ordinal scales",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": {
+      "candidate_key": "jayawardena2020ordinal",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 criteria alignment: (1) the paper discusses a preference-learning approach via ranking, using a preference neural network (PrefNet) and a pairwise preference loss; (2) it applies to the audio domain via six real affective computing datasets; (3) it is not a survey or review but a framework and study on ordinality with experimental evaluation. The Stage 1 handoff recommended Stage 2; The evidence is robust with quotes and exact matches found in the full text. Therefore final decision is to include.",
+      "route_reason": "Stage 2 evidence confirms presence of explicit preference-learning elements in the audio domain; Not a route to stage 3; Stage 2 is conclusive.",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.8,
+      "evidence_ledger": [
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage2",
+          "claim_id": "S2-criterion1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "An exception is a preference neural network herein referred to as PrefNet [22], which can overcome the aforementioned problem with online loss calculation.",
+              "location": "4. An Investigation of Ordinal Data",
+              "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "human",
+          "quote": "An exception is a preference neural network herein referred to as PrefNet [22], which can overcome the aforementioned problem with online loss calculation.",
+          "location": "4. An Investigation of Ordinal Data",
+          "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage2",
+          "claim_id": "S2-criterion2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "six real affective computing datasets.",
+              "location": "4. An Investigation of Ordinal Data",
+              "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "human",
+          "quote": "six real affective computing datasets.",
+          "location": "4. An Investigation of Ordinal Data",
+          "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage2",
+          "claim_id": "S2-criterion3",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "This exploratory study aims to provide guidance on how to select the learning approach.",
+              "location": "Abstract",
+              "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "human",
+          "quote": "This exploratory study aims to provide guidance on how to select the learning approach.",
+          "location": "Abstract",
+          "source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md",
+          "span_validated": true
+        }
+      ]
+    },
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md"
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage2",
+    "final_stage_decision": "include",
+    "final_verdict": "include (stage2)",
+    "stage1_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage1",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 1 assessment finds: (1) the abstract describes a pairwise audio comparison (are two recordings identical or not?), which aligns with the Stage 1 inclusion criterion for preference-based evidence in audio (A/B style comparison); (2) the work is applied in the audio domain (perceptual audio metric, with just-noticeable-difference framing); (3) it is not a survey/review. Therefore the candidate is included for Stage 1. No missingness observed.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.85,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "C1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "are two recordings identical or not?",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "Stage1-BCPCS",
+          "quote": "are two recordings identical or not?",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage1",
+          "claim_id": "C4",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Many audio processing tasks require perceptual assessment.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.75,
+          "verifier_model": "Stage1-BCPCS",
+          "quote": "Many audio processing tasks require perceptual assessment.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 canonical eligibility satisfied: the paper reports a learning framework for audio preference via pairwise judgments (are two recordings identical or not) to train a differentiable perceptual audio metric. It uses AB-style comparisons between two audio signals (reference xref and perturbed xper) and is applied within the audio domain; it is original research (not a survey). The full text provides explicit descriptions of AB-style judgments and data collection via crowdsourcing, aligning with the Stage 2 criteria. No retrieval or metadata ambiguities that would imply semantic_non_fit; no evidence of source_gold_tension.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.88,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "C1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "are two recordings identical or not?",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "Stage2-BCPCS",
+          "quote": "are two recordings identical or not?",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "C2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Many audio processing tasks require perceptual assessment.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "A differentiable perceptual audio metric learned from just noticeable differences",
+              "location": "title",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "Stage2-BCPCS",
+          "quote": "Many audio processing tasks require perceptual assessment.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "C3",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We present a listener with two recordings, a reference xref and perturbed signal xper, and ask if these two recordings are exactly same or different.",
+              "location": "full_text",
+              "source_path": "refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "Stage2-BCPCS",
+          "quote": "We present a listener with two recordings, a reference xref and perturbed signal xper, and ask if these two recordings are exactly same or different.",
+          "location": "full_text",
+          "source_path": "refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        }
+      ]
+    },
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/manocha2020differentiable.md"
+  }
+]

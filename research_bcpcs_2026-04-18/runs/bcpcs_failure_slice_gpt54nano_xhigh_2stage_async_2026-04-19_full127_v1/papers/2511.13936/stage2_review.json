@@ -1,0 +1,420 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "dong2020pyramid",
+    "candidate_title": "A pyramid recurrent network for predicting crowdsourced speech-quality ratings of real-world signals",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "dong2020pyramid",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper collects crowdsourced *continuous* quality ratings (slider scores) for speech stimuli and trains a model to predict MOS via supervised regression (mean-squared error). It does not provide ranking/A-B preference comparisons or evidence that numeric ratings are converted into ranking targets (and no RL preference-training loop is described). Therefore it does not meet the Stage 2 preference-learning eligibility definition, so it is excluded.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "dong2020pyramid",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_preference_based_learning_definition",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "continuous scale from 0 to 100 using a set of sliders.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "results in an estimate of the perceptual quality (i.e., MOS).",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "mean-squared error loss",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.87,
+          "verifier_model": "single_reviewer_stage2",
+          "quote": "predicts human quality ratings",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "dong2020pyramid",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "speech-quality ratings of real-world signals",
+              "location": "title",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "real-world speech signals",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "single_reviewer_stage2",
+          "quote": "speech-quality ratings of real-world signals",
+          "location": "title",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "dong2020pyramid",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_not_a_survey_or_review",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "2. Methods",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "3. Experiments and analysis",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "single_reviewer_stage2",
+          "quote": "3. Experiments and analysis",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "dong2020pyramid",
+          "stage": "stage2",
+          "claim_id": "S1_exclusion_preferences_solely_for_evaluation_no_learning_component",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "It is trained for 100 epochs.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "single_reviewer_stage2",
+          "quote": "It is trained for 100 epochs.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/dong2020pyramid.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "huang2025step",
+    "candidate_title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2025step",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Include. The full text describes preference-based learning via RLHF on the AQTA audio task, including construction of chosen/rejected preference pairs and subsequent reward-model training and PPO-based learning for the Step-Audio-Chat model. AQTA is explicitly defined as audio inputs paired with textual outputs, placing the learning in the audio domain. The paper presents an original system/framework (not a survey/review) and uses preferences for model training rather than only evaluation.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_preference_learning_defined_preference_pairs_and_RL_loop_for_audio_model",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Reinforcement Learning from Human Feedback (RLHF)",
+              "location": "full_text:5.2 AQTA",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "constructed chosen/rejected pairs",
+              "location": "full_text:5.2.3 AQTA Preference Data Construction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "After obtaining the reward model, we employ the PPO",
+              "location": "full_text:5.2.6 PPO Training Details",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "constructed chosen/rejected pairs",
+          "location": "full_text:5.2.3 AQTA Preference Data Construction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_applied_within_audio_domain_AQTA_audio_inputs",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "AQTA: This type consists of audio inputs paired with textual outputs.",
+              "location": "full_text:5.2.1 SFT dataset -> Data Types",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "collected real audio prompts from users",
+              "location": "full_text:5.2.3 AQTA Preference Data Construction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "AQTA: This type consists of audio inputs paired with textual outputs.",
+          "location": "full_text:5.2.1 SFT dataset -> Data Types",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_not_a_survey_or_review_article",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "this paper introduces Step-Audio, the first production-ready open-source solution.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Key contributions include:",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "this paper introduces Step-Audio, the first production-ready open-source solution.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2_exclusion_preferences_solely_for_evaluation_no_learning_component",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "high-quality pairs are selected to train the reward model.",
+              "location": "full_text:Figure 6 caption",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "After obtaining the reward model, we employ the PPO",
+              "location": "full_text:5.2.6 PPO Training Details",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "high-quality pairs are selected to train the reward model.",
+          "location": "full_text:Figure 6 caption",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2025step",
+          "stage": "stage2",
+          "claim_id": "S2_exclusion_survey_or_review_articles_are_excluded",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "In this paper, we present Step-Audio, an innovative framework for real-time voice interaction.",
+              "location": "full_text:7 Conclusion",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "In this paper, we present Step-Audio, an innovative framework for real-time voice interaction.",
+          "location": "full_text:7 Conclusion",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/huang2025step.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "manocha2020differentiable",
+    "candidate_title": "A differentiable perceptual audio metric learned from just noticeable differences",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2511.13936.json",
+    "metadata_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "manocha2020differentiable",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper performs preference-based learning from pairwise comparisons of two audio recordings (e.g., asking whether two recordings are “identical or not?”) and uses those human judgments to fit/train a deep neural network that constructs a perceptual audio metric. It is applied to audio (perceptual audio metric, audio recordings, and speech enhancement denoising). It is not a survey/review because it proposes a concrete framework, training procedure, and experiments. Preferences are not used only for evaluation: the work explicitly fits a deep network on crowdsourced human judgments and uses the learned metric as a loss function.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_preference_learning_A_B_comparison",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "are two recordings identical or not?",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "are two recordings identical or not?",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_applied_within_audio_domain",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "perceptual audio metric",
+              "location": "title",
+              "source_path": "candidate_record.title",
+              "source_field": "title"
+            },
+            {
+              "quote": "audio processing tasks require perceptual assessment",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "perceptual audio metric",
+          "location": "title",
+          "source_path": "candidate_record.title",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_not_a_survey_or_review_article",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We propose a new perceptual audio metric",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Next, we train a neural network with this data",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "We propose a new perceptual audio metric",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2511.13936/mds/manocha2020differentiable.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "manocha2020differentiable",
+          "stage": "stage2",
+          "claim_id": "S1_exclusion_preferences_only_for_evaluation_no_learning_component",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "fitting a deep neural network to a new large dataset of crowdsourced human judgments",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "fitting a deep neural network to a new large dataset of crowdsourced human judgments",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

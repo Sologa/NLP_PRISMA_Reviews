@@ -1,0 +1,362 @@
+[
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "Lovering2021PredictingIB",
+    "candidate_title": "Predicting Inductive Biases of Pre-Trained Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "Lovering2021PredictingIB",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper evaluates transformer language models (T5, BERT, RoBERTa, GPT-2) and empirically tests their performance on grammar/acceptability tasks covering syntactic phenomena (SVA, NPI licensing, filler-gap dependencies), using fine-tuning and analysis methods.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_Transformer_based_TLMs",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We evaluate T5, BERT, RoBERTa, GPT-2 and an LSTM with GloVe embeddings",
+              "location": "Section 4.2 (Setup)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2-review",
+          "quote": "We evaluate T5, BERT, RoBERTa, GPT-2 and an LSTM with GloVe embeddings",
+          "location": "Section 4.2 (Setup)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_syntactic_structure_or_syntactic_knowledge",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we fine-tune models for the linguistic acceptability task... differentiate grammatical sentences from ungrammatical ones",
+              "location": "Section 4 (Experiments with Naturalistic Data)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We focus on three syntactic phenomena... Subject-Verb Agreement... Negative Polarity Items... Filler-Gap Dependencies",
+              "location": "Section 4.1 (Data)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "stage2-review",
+          "quote": "We focus on three syntactic phenomena... Subject-Verb Agreement... Negative Polarity Items... Filler-Gap Dependencies",
+          "location": "Section 4.1 (Data)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "hu_prompting_2023",
+    "candidate_title": "Prompting is not a substitute for probability measurements in large language models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "hu_prompting_2023",
+      "stage": "stage2",
+      "final_stage_decision": "unknown",
+      "decision_rationale": "The paper clearly includes empirical syntactic evaluation via minimal pairs differing in syntactic features (Experiments 3a/3b). However, the excerpt does not explicitly establish that the tested models are transformer-based. Transformer-based model evidence is therefore not verifiable from the provided text.",
+      "route_reason": "",
+      "unknown_reason": "Inclusion requires transformer-based language models; the excerpt only identifies model names/architectures (e.g., encoder-decoder) without explicitly tying them to transformers.",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.44,
+      "evidence_ledger": [
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S1-required-2-empirical-syntax-assessment",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we compare the model’s judgment ... minimal pair, only differing in a critical syntactic feature that manipulates grammaticality",
+              "location": "Section 4.3 (Experiment 3a: Sentence judgment)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "single_screening_reviewer",
+          "quote": "we compare the model’s judgment ... minimal pair, only differing in a critical syntactic feature that manipulates grammaticality",
+          "location": "Section 4.3 (Experiment 3a: Sentence judgment)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S1-required-1-transformer-based-models",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "We test six models across all of our experiments: three Flan-T5 models (small, large, XL) ... and three GPT-3/3.5 models",
+              "location": "Section 3.3 (Models)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.28,
+          "verifier_model": "single_screening_reviewer",
+          "quote": "We test six models across all of our experiments: three Flan-T5 models (small, large, XL) ... and three GPT-3/3.5 models",
+          "location": "Section 3.3 (Models)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "li_probing_2022",
+    "candidate_title": "Probing via Prompting",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "li_probing_2022",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper studies a Transformer LM (GPT-2) and empirically probes syntactic knowledge using POS tagging and constituent labeling, including analysis of how “syntactic information” is distributed across layers. The full text provides direct evidence matching both inclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_transformer_based_LMs",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we focus on the case when p is a Transformer-based language model ... specifically, we take p to be an instance of GPT-2",
+              "location": "Section 2.1 Language Models",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "stage2_self_review",
+          "quote": "we focus on the case when p is a Transformer-based language model ... specifically, we take p to be an instance of GPT-2",
+          "location": "Section 2.1 Language Models",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "S1_inclusion_empirical_syntax_structure_or_knowledge",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We experiment on five tasks ... part-of-speech tagging (POS), constituent labeling (const.)",
+              "location": "Section 3.1 Tasks",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "syntactic information is stored in earlier layers than semantic information",
+              "location": "Section 4.1 Subnetwork Analysis",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_self_review",
+          "quote": "We experiment on five tasks ... part-of-speech tagging (POS), constituent labeling (const.)",
+          "location": "Section 3.1 Tasks",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "mysiak_is_2023",
+    "candidate_title": "Is German secretly a Slavic language? What BERT probing can tell us about language groups",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "mysiak_is_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Include: the paper uses transformer-based mBERT/BERT and applies structural probing with dependency trees, empirically predicting unseen dependency-tree structures in BERT embedding space and evaluating UUAS/DSpr (“syntax recall”). This directly assesses syntactic structure/knowledge.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "S1_required_transformer_based_TLMs",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We investigate ... structural probe ... by relating them to ... linguistic ... We ... structural probe of Hewitt and Manning (2019).",
+              "location": "Abstract / Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Each word in a sentence is represented by a node... The authors’ idea is to find the structure of dependency trees in BERT’s embedding space.",
+              "location": "Section 2 Methodology",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs_stage2_verifier",
+          "quote": "The authors’ idea is to find the structure of dependency trees in BERT’s embedding space.",
+          "location": "Section 2 Methodology",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "S1_required_syntactic_structure_or_knowledge_empirical_analysis",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this method, the most important data form is the dependency tree... representing a sentence’s syntax.",
+              "location": "Section 2 Methodology",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We assess the probes based on their ability to predict the structures of unseen dependency trees.",
+              "location": "Section 2 Evaluation",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_verifier",
+          "quote": "We assess the probes based on their ability to predict the structures of unseen dependency trees.",
+          "location": "Section 2 Evaluation",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "wijnholds_assessing_2023",
+    "candidate_title": "Assessing Monotonicity Reasoning in Dutch through Natural Language Inference",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "wijnholds_assessing_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The paper evaluates Dutch Transformer LMs (BERTje/RobBERT/mBERT) on an NLI benchmark and explicitly frames monotonicity reasoning as requiring syntactic knowledge (via substitution of syntactic constituents). It provides empirical results and linguistic-feature breakdowns on this syntactically targeted task.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.68,
+      "evidence_ledger": [
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S1_required_transformer_language_models",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL",
+              "location": "Abstract",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wijnholds_assessing_2023.md",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "stage2_self",
+          "quote": "After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL",
+          "location": "Abstract",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wijnholds_assessing_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S1_required_syntactic_structure_or_syntactic_knowledge_in_TLMs",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Monotonicity reasoning ... requires lexical knowledge, as well as syntactic knowledge",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wijnholds_assessing_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "substituting specific syntactic constituents by either more general or more specific (downward)",
+              "location": "Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wijnholds_assessing_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.63,
+          "verifier_model": "stage2_self",
+          "quote": "Monotonicity reasoning ... requires lexical knowledge, as well as syntactic knowledge",
+          "location": "Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/wijnholds_assessing_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

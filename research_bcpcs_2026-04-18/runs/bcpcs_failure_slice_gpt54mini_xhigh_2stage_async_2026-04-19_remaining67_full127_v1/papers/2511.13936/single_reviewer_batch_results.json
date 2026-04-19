@@ -1,0 +1,112 @@
+[
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "chumbalov2020scalable",
+    "candidate_title": "Scalable and efficient comparison-based search without features",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage1",
+    "final_stage_decision": "exclude",
+    "final_verdict": "exclude (stage1)",
+    "stage1_output": {
+      "candidate_key": "chumbalov2020scalable",
+      "stage": "stage1",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The title/abstract describe a generic comparison-based search framework and an experiment with users searching for movie actors; no audio application is indicated, so it is outside the stage-1 audio-domain scope.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.98,
+      "evidence_ledger": [
+        {
+          "candidate_key": "chumbalov2020scalable",
+          "stage": "stage1",
+          "claim_id": "audio_domain_applicability",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "by conducting an experiment with users searching for movie actors.",
+              "location": "abstract",
+              "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.98,
+          "verifier_model": "openai-gpt-4.1",
+          "quote": "by conducting an experiment with users searching for movie actors.",
+          "location": "abstract",
+          "source_path": "refs/2511.13936/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": null,
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/chumbalov2020scalable.md"
+  },
+  {
+    "paper_id": "2511.13936",
+    "candidate_key": "jayawardena2020ordinal",
+    "candidate_title": "How Ordinal Are Your Data?",
+    "slice_type": "non_tension_primary",
+    "allowed_for_unbiased_eval": true,
+    "review_state": "reviewed",
+    "discard_reason": null,
+    "final_stage": "stage1",
+    "final_stage_decision": "exclude",
+    "final_verdict": "exclude (stage1)",
+    "stage1_output": {
+      "candidate_key": "jayawardena2020ordinal",
+      "stage": "stage1",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The title/abstract describe ordinal regression/classification for affective computing and speech-processing datasets, not preference-learning evidence such as ranking, A/B comparisons, comparative preference signals, or an audio RL training loop. This is therefore not a Stage 1 fit for preference-based learning in audio.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.96,
+      "evidence_ledger": [
+        {
+          "candidate_key": "jayawardena2020ordinal",
+          "stage": "stage1",
+          "claim_id": "S1_pref_learning_audio",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "How Ordinal Are Your Data?",
+              "location": "title",
+              "source_path": "candidate_visible_record.title",
+              "source_field": "title"
+            },
+            {
+              "quote": "Many affective computing datasets are annotated using ordinal scales",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "classification problems in some cases, and regression in others, while ordinal regression may also arguably be the correct approach for some",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "single-stage1-reviewer",
+          "quote": "How Ordinal Are Your Data?",
+          "location": "title",
+          "source_path": "candidate_visible_record.title",
+          "span_validated": true
+        }
+      ]
+    },
+    "stage2_output": null,
+    "fulltext_resolution_status": "exact",
+    "fulltext_source_path": "refs/2511.13936/mds/jayawardena2020ordinal.md"
+  }
+]

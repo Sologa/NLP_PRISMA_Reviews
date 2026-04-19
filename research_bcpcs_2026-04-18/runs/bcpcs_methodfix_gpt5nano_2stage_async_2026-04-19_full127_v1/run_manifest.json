@@ -1,0 +1,142 @@
+{
+  "run_id": "bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1",
+  "experiment_name": "bcpcs_failure_slice_methodfix",
+  "created_at": "2026-04-19T14:01:56+00:00",
+  "updated_at": "2026-04-19T14:47:09+00:00",
+  "scope": "full127",
+  "model": "gpt-5-nano",
+  "endpoint": "/v1/chat/completions",
+  "reviewer": "single_reviewer",
+  "workflow": "two_stage_async_batch",
+  "reasoning_effort_requested": "high",
+  "reasoning_effort_effective": "high",
+  "reasoning_effort_fallback": null,
+  "cost_cap_usd": 10.0,
+  "status": "completed_clean",
+  "run_dir": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1",
+  "failure_slice_keys_path": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1/failure_slice_keys.json",
+  "evaluation_inventory_private_path": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1/evaluation_inventory_private.json",
+  "pricing_snapshot_path": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1/cost/pricing_snapshot.json",
+  "source_counts": {
+    "total_count": 127,
+    "primary_count": 22,
+    "secondary_count": 105,
+    "primary_label_counts": {
+      "criteria_or_gold_tension": 105,
+      "paper_evidence_incomplete": 9,
+      "reviewer_semantic_gap": 13
+    },
+    "per_paper_counts": {
+      "2307.05527": 41,
+      "2409.13738": 5,
+      "2511.13936": 5,
+      "2601.19926": 76
+    },
+    "per_paper_primary_counts": {
+      "2307.05527": 11,
+      "2409.13738": 1,
+      "2511.13936": 4,
+      "2601.19926": 6
+    },
+    "per_paper_secondary_counts": {
+      "2307.05527": 30,
+      "2409.13738": 4,
+      "2511.13936": 1,
+      "2601.19926": 70
+    },
+    "selected_count": 127,
+    "selected_primary_count": 22,
+    "selected_secondary_count": 105
+  },
+  "phase_jobs": {
+    "stage1_review": {
+      "phase": "stage1_review",
+      "batch_artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1/batch_jobs/stage1_review/gpt-5-nano",
+      "batch_id": "batch_69e4e05f210081908110471f6c25ed5e",
+      "batch_status": "completed",
+      "request_count": 127,
+      "pre_submit_estimate": {
+        "phase": "stage1_review",
+        "created_at": "2026-04-19T14:02:01+00:00",
+        "request_count": 127,
+        "estimated_input_tokens": 339383,
+        "estimated_output_tokens": 4161536,
+        "estimated_cost_usd": 0.840791775,
+        "prior_actual_or_estimated_cost_usd": 0.0,
+        "projected_total_cost_usd": 0.840791775,
+        "cost_cap_usd": 10.0,
+        "would_exceed_cost_cap": false,
+        "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request"
+      },
+      "upload_file_id": "file-TG9FA3gZbfdyWT8RJhkUCF",
+      "batch_completed_at": 1776608376,
+      "batch_output_file_id": "file-8uuJH8EiymjPK44oXovzn1",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 127,
+        "failure_count": 0,
+        "missing_count": 0
+      },
+      "cost_summary": {
+        "input_tokens": 235613,
+        "output_tokens": 1513992,
+        "total_cost_usd": 0.308688725,
+        "actual_usage_rows": 127,
+        "estimated_rows": 0
+      }
+    },
+    "stage2_review": {
+      "phase": "stage2_review",
+      "batch_artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1/batch_jobs/stage2_review/gpt-5-nano",
+      "batch_id": "batch_69e4e48ac14c81908b0ca7afc8355c20",
+      "batch_status": "completed",
+      "request_count": 104,
+      "pre_submit_estimate": {
+        "phase": "stage2_review",
+        "created_at": "2026-04-19T14:19:49+00:00",
+        "request_count": 104,
+        "estimated_input_tokens": 1502805,
+        "estimated_output_tokens": 3407872,
+        "estimated_cost_usd": 0.719144525,
+        "prior_actual_or_estimated_cost_usd": 0.308688725,
+        "projected_total_cost_usd": 1.02783325,
+        "cost_cap_usd": 10.0,
+        "would_exceed_cost_cap": false,
+        "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request"
+      },
+      "upload_file_id": "file-JjmyZoi76PrF1bC7ZG6FDw",
+      "batch_completed_at": 1776610023,
+      "batch_output_file_id": "file-GB5k3T62ap3obF9sW9q8xt",
+      "batch_error_file_id": null,
+      "parsed_summary": {
+        "success_count": 104,
+        "failure_count": 0,
+        "missing_count": 0
+      },
+      "cost_summary": {
+        "input_tokens": 1249609,
+        "output_tokens": 1755802,
+        "total_cost_usd": 0.38240062499999994,
+        "actual_usage_rows": 104,
+        "estimated_rows": 0
+      }
+    }
+  },
+  "is_failure_slice_diagnostic": true,
+  "not_full_benchmark_evidence": true,
+  "write_scope": "research_bcpcs_2026-04-18 only",
+  "stage_efforts": {
+    "stage1_review": "high",
+    "stage2_review": "high"
+  },
+  "methodfix_profile": {
+    "max_completion_tokens": 32768,
+    "fulltext_head_chars": 90000,
+    "fulltext_tail_chars": 30000,
+    "stage2_prompt": "original_high_effort",
+    "eval": "v2_auto_decidable_plus_coverage"
+  },
+  "model_preflight_id": "gpt-5-nano",
+  "evaluation_summary_v2_path": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1/evaluation_summary_v2.json",
+  "validation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1/validation_summary.json"
+}

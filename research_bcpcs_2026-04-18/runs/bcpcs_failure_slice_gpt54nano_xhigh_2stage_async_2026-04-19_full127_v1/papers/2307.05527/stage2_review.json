@@ -1,0 +1,3456 @@
+[
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "bazin_nonoto_2019",
+    "candidate_title": "NONOTO: A Model-agnostic Web Interface for Interactive Music Composition by Inpainting",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "bazin_nonoto_2019",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper’s generative output domain is not entirely audio: it provides “real-time MIDI output” and describes routing the generated material via MIDI, while also using “MusicXML standard” (symbolic score communication). This fails the inclusion criterion that the output domain is entirely audio.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.93,
+      "evidence_ledger": [
+        {
+          "candidate_key": "bazin_nonoto_2019",
+          "stage": "stage2",
+          "claim_id": "S1_required_output_domain_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "audio playback",
+              "location": "abstract",
+              "source_path": "candidate_record/abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [
+            {
+              "quote": "real-time MIDI output",
+              "location": "abstract",
+              "source_path": "candidate_record/abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "routing it via MIDI to any virtual MIDI",
+              "location": "DAW integration",
+              "source_path": "candidate_record/fulltext",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "MusicXML standard",
+              "location": "Generation back-end and communication",
+              "source_path": "candidate_record/fulltext",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.9,
+          "verifier_model": "stage2_reviewer",
+          "quote": "real-time MIDI output",
+          "location": "abstract",
+          "source_path": "candidate_record/abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "boulianne2020study",
+    "candidate_title": "A Study of Inductive Biases for Unsupervised Speech Representation Learning",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "boulianne2020study",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "This is a full long-form IEEE/ACM journal paper (with manuscript receipt/acceptance details and complete sections through V. CONCLUSION). The topic centers on a generative variational autoencoder model for speech representations. The method operates on audio data (training uses audio features only) and includes reconstruction of a spectrogram, so the output domain is audio. Although the paper uses phoneme/speaker classification for evaluation, it is not a purely non-generative classification/prediction model.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.87,
+      "evidence_ledger": [
+        {
+          "candidate_key": "boulianne2020study",
+          "stage": "stage2",
+          "claim_id": "S2-REQ1-full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "IEEE/ACM TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING, VOL. 28, 2020",
+              "location": "full_text",
+              "source_path": "candidate_visible_record.full_text",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Manuscript received January 11, 2020; revised June 1, 2020 and August 7, 2020; accepted September 13, 2020.",
+              "location": "full_text",
+              "source_path": "candidate_visible_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-screener",
+          "quote": "IEEE/ACM TRANSACTIONS ON AUDIO, SPEECH, AND LANGUAGE PROCESSING, VOL. 28, 2020",
+          "location": "full_text",
+          "source_path": "candidate_visible_record.full_text",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "boulianne2020study",
+          "stage": "stage2",
+          "claim_id": "S2-REQ2-generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Here, we propose a generative model with deep encoders and decoders that can learn interpretable speech representations without supervision.",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "bcpcs-stage2-screener",
+          "quote": "Here, we propose a generative model with deep encoders and decoders that can learn interpretable speech representations without supervision.",
+          "location": "abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "boulianne2020study",
+          "stage": "stage2",
+          "claim_id": "S2-ANYOF-generative_audio_model_focus-introduces",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Our inductive biases operate as prior distributions in a variational autoencoder model",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs-stage2-screener",
+          "quote": "Our inductive biases operate as prior distributions in a variational autoencoder model",
+          "location": "abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "boulianne2020study",
+          "stage": "stage2",
+          "claim_id": "S2-REQ3-output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "The training uses audio features only; labels are used only for evaluation.",
+              "location": "full_text",
+              "source_path": "candidate_visible_record.full_text",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The bottom left is a spectrogram reconstructed by sampling from the model posterior distribution p(x|z).",
+              "location": "full_text",
+              "source_path": "candidate_visible_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs-stage2-screener",
+          "quote": "The training uses audio features only; labels are used only for evaluation.",
+          "location": "full_text",
+          "source_path": "candidate_visible_record.full_text",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "boulianne2020study",
+          "stage": "stage2",
+          "claim_id": "S2-REQ4-evidence_scope_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "V. CONCLUSION",
+              "location": "full_text",
+              "source_path": "candidate_visible_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.73,
+          "verifier_model": "bcpcs-stage2-screener",
+          "quote": "V. CONCLUSION",
+          "location": "full_text",
+          "source_path": "candidate_visible_record.full_text",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "boulianne2020study",
+          "stage": "stage2",
+          "claim_id": "S2-EXCL-non_generative_output_classification_prediction_models",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Our probabilistic generative model is motivated by speech production considerations.",
+              "location": "full_text",
+              "source_path": "candidate_visible_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.81,
+          "verifier_model": "bcpcs-stage2-screener",
+          "quote": "Our probabilistic generative model is motivated by speech production considerations.",
+          "location": "full_text",
+          "source_path": "candidate_visible_record.full_text",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "brunner_symbolic_2018",
+    "candidate_title": "Symbolic Music Genre Transfer with CycleGAN",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "brunner_symbolic_2018",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper’s generative output domain is symbolic MIDI/piano-roll rather than entirely audio. It states it trains on “music in the MIDI format” and describes MIDI as “a symbolic music representation that resembles sheet music,” requiring “a MIDI synthesizer” to “actually play” it. This fails the inclusion requirement that the output domain is entirely audio.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "brunner_symbolic_2018",
+          "stage": "stage2",
+          "claim_id": "S1_R3_output_domain_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "We train our models on music in the MIDI format",
+              "location": "full_text: IV. DATASET AND PREPROCESSING",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/brunner_symbolic_2018.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "a symbolic music representation that resembles sheet music.",
+              "location": "full_text: IV. DATASET AND PREPROCESSING",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/brunner_symbolic_2018.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "a MIDI synthesizer is required",
+              "location": "full_text: IV. DATASET AND PREPROCESSING",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/brunner_symbolic_2018.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "to actually play them.",
+              "location": "full_text: IV. DATASET AND PREPROCESSING",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/brunner_symbolic_2018.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "a symbolic music representation that resembles sheet music.",
+          "location": "full_text: IV. DATASET AND PREPROCESSING",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/brunner_symbolic_2018.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "douwes2021energy",
+    "candidate_title": "Energy Consumption of Deep Generative Audio Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "douwes2021energy",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Included. The supplied full text is a long-form paper (it contains numbered sections and a references section). It focuses on deep generative audio models for raw waveform/audio generation, and the evaluated/generated outputs are audio-only (e.g., waveform synthesis for speech/music and experiments generating audio clips at 22.05kHz). Although it proposes an energy/quality evaluation metric, it also runs experiments involving generative audio outputs and evaluates them with listening-quality scoring (MOS), so the “only metric without audio outputs/use cases” exclusion does not apply.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.87,
+      "evidence_ledger": [
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage2",
+          "claim_id": "inclusion_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "1. INTRODUCTION",
+              "location": "section 1. INTRODUCTION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "7. REFERENCES",
+              "location": "section 7. REFERENCES",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "stage2-reviewer",
+          "quote": "7. REFERENCES",
+          "location": "section 7. REFERENCES",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage2",
+          "claim_id": "inclusion_topic_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Energy Consumption of Deep Generative Audio Models",
+              "location": "title",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "current state-of-the-art in generative audio models",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "task of raw waveform generation",
+              "location": "section 1. INTRODUCTION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.87,
+          "verifier_model": "stage2-reviewer",
+          "quote": "task of raw waveform generation",
+          "location": "section 1. INTRODUCTION",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage2",
+          "claim_id": "inclusion_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "waveform synthesis (in both speech and music)",
+              "location": "section 1. INTRODUCTION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "10 audio clips of 10 seconds at 22.05kHz",
+              "location": "section 5.1. Methodology",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "stage2-reviewer",
+          "quote": "waveform synthesis (in both speech and music)",
+          "location": "section 1. INTRODUCTION",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage2",
+          "claim_id": "inclusion_evidence_scope_main_text_and_appendices_included",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "6. CONCLUSIONS",
+              "location": "section 6. CONCLUSIONS",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "7. REFERENCES",
+              "location": "section 7. REFERENCES",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.73,
+          "verifier_model": "stage2-reviewer",
+          "quote": "6. CONCLUSIONS",
+          "location": "section 6. CONCLUSIONS",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage2",
+          "claim_id": "any_of_generative_audio_model_focus_analyzes_discusses_main_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "By applying our measure on the current state-of-the-art in generative audio models",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "WaveFlow [13]",
+              "location": "section 1. INTRODUCTION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2-reviewer",
+          "quote": "By applying our measure on the current state-of-the-art in generative audio models",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage2",
+          "claim_id": "exclusion_only_metric_without_audio_outputs_or_use_cases",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "10 audio clips of 10 seconds at 22.05kHz",
+              "location": "section 5.1. Methodology",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Mean Opinion Score (MOS)",
+              "location": "section 5.1. Methodology",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.83,
+          "verifier_model": "stage2-reviewer",
+          "quote": "10 audio clips of 10 seconds at 22.05kHz",
+          "location": "section 5.1. Methodology",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/douwes2021energy.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "du_joint_2020",
+    "candidate_title": "A Joint Framework of Denoising Autoencoder and Generative Vocoder for Monaural Speech Enhancement",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "du_joint_2020",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Included: The provided document is a full-length research article with numbered sections through a concluding section. It centers on generative audio modeling (a deep generative vocoder/Flowavenet) stacked with a denoising autoencoder. The system reconstructs/synthesizes speech waveforms (audio output). The provided full text appears to include the main-body evidence (with trimming at the REFERENCES heading). The speech-to-text/ASR exclusion does not apply because the proposed system generates speech waveforms rather than text.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage2",
+          "claim_id": "criterion_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "I. INTRODUCTION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "VI. CONCLUSION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "VI. CONCLUSION",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage2",
+          "claim_id": "criterion_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "a Mel-domain denoising autoencoder and a deep generative vocoder are stacked",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Flowavenet is a generative vocoder",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "a Mel-domain denoising autoencoder and a deep generative vocoder are stacked",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage2",
+          "claim_id": "criterion_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "the clean speech waveform is reconstructed",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "to synthesize the speech waveform",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "the clean speech waveform is reconstructed",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage2",
+          "claim_id": "criterion_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "\"reference_cut_marker\": \"REFERENCES\"",
+              "location": "fulltext_meta.reference_cut_marker",
+              "source_path": "fulltext_meta",
+              "source_field": "metadata"
+            },
+            {
+              "quote": "ACKNOWLEDGMENT",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "\"reference_cut_marker\": \"REFERENCES\"",
+          "location": "fulltext_meta.reference_cut_marker",
+          "source_path": "fulltext_meta",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage2",
+          "claim_id": "any_of_generative_audio_model_focus_introduces_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Generative vocoders model the speech waveforms",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "Generative vocoders model the speech waveforms",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage2",
+          "claim_id": "exclusion_speech_to_text_asr_text_output",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "to synthesize the speech waveform",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "C. Evaluation of Speech Distortion and Artifact",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "automatic speech recognition (ASR) system",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/du_joint_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "to synthesize the speech waveform",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "fenaux_bumblebee_2021",
+    "candidate_title": "BumbleBee: A Transformer for Music",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "fenaux_bumblebee_2021",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text is a long-form research preprint (it contains full sections plus an algorithm and experimental tables). It introduces a generative transformer model for music that generates MIDI music data and discusses generated sound, with experiments on piano/MIDI datasets. The paper references internal appendices (e.g., figures and contributions), supporting that coding/evidence can cover main text and appendices inside the paper.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "fenaux_bumblebee_2021",
+          "stage": "stage2",
+          "claim_id": "S2_required_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Preprint. Under review.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Algorithm 1: LongMultiheadAttention Implementation",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Table 1: Validation NLL",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "stage2_reviewer",
+          "quote": "Algorithm 1: LongMultiheadAttention Implementation",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "fenaux_bumblebee_2021",
+          "stage": "stage2",
+          "claim_id": "S2_required_topic_is_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "transformer model that will generate MIDI music data",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "generate music",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_reviewer",
+          "quote": "transformer model that will generate MIDI music data",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "fenaux_bumblebee_2021",
+          "stage": "stage2",
+          "claim_id": "S2_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "piano MIDI files",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "sound generated by the Music Transformer",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Piano-e-Competition dataset",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "stage2_reviewer",
+          "quote": "sound generated by the Music Transformer",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "fenaux_bumblebee_2021",
+          "stage": "stage2",
+          "claim_id": "S2_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Appendix: Figure 1",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Appendix Figure 3",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Appendix: List of Contributions",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.77,
+          "verifier_model": "stage2_reviewer",
+          "quote": "Appendix: Figure 1",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/fenaux_bumblebee_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "fenaux_bumblebee_2021",
+          "stage": "stage2",
+          "claim_id": "S2_any_of_generative_audio_model_focus_introduces_or_analyzes",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "BumbleBee: A Transformer for Music",
+              "location": "title",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "transformer model that will generate MIDI music data",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2_reviewer",
+          "quote": "BumbleBee: A Transformer for Music",
+          "location": "title",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "ghose2020autofoley",
+    "candidate_title": "AutoFoley: Artificial Synthesis of Synchronized Sound Tracks for Silent Videos with Deep Learning",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "ghose2020autofoley",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The provided full text is a long-form research paper (with full sections including methodology, experiments, and conclusion). The paper introduces AutoFoley, a deep-learning system whose primary purpose is to synthesize an audio track/soundtrack for videos, and it explicitly defines an audio-only output (“Generated audio tracks”). Therefore it satisfies the stage-2 inclusion criteria for a full, generative audio paper with audio-only output.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.94,
+      "evidence_ledger": [
+        {
+          "candidate_key": "ghose2020autofoley",
+          "stage": "stage2",
+          "claim_id": "inc_required_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "IV. EXPERIMENTAL RESULT",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "V. CONCLUSION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "IV. EXPERIMENTAL RESULT",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ghose2020autofoley",
+          "stage": "stage2",
+          "claim_id": "inc_required_topic_is_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this paper, we present AutoFoley, a fully-automated deep learning tool that can be used to synthesize a representative audio track for videos.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "In this paper, we present AutoFoley, a fully-automated deep learning tool that can be used to synthesize a representative audio track for videos.",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ghose2020autofoley",
+          "stage": "stage2",
+          "claim_id": "inc_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Output: Generated audio tracks (Audgenerated).",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "Output: Generated audio tracks (Audgenerated).",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ghose2020autofoley",
+          "stage": "stage2",
+          "claim_id": "any_of_generative_audio_model_focus_introduces_a_generative_audio_model_or_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "provide a synthesized, reinforced soundtrack.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "provide a synthesized, reinforced soundtrack.",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ghose2020autofoley",
+          "stage": "stage2",
+          "claim_id": "inc_required_evidence_scope_for_coding_includes_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "III. METHODOLOGY",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "F. Human Evaluation",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "III. METHODOLOGY",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ghose2020autofoley.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "gillick_learning_2019",
+    "candidate_title": "Learning to Groove with Inverse Sequence Transformations",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "gillick_learning_2019",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper’s generative modeling objectives and outputs are in MIDI/symbolic form (e.g., generating “a MIDI performance”), indicating the output domain is not entirely audio. Therefore it fails the required criterion that the output domain be entirely audio.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "gillick_learning_2019",
+          "stage": "stage2",
+          "claim_id": "S1_required_output_domain_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "synthesized audio outputs.",
+              "location": "1. Introduction (Contributions bullet list)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/gillick_learning_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [
+            {
+              "quote": "a MIDI performance of that score",
+              "location": "4. Modeling Objectives > Humanization",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/gillick_learning_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "drum performances recorded in MIDI format",
+              "location": "3. Data > 3.1. Groove MIDI Dataset",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/gillick_learning_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "a MIDI performance of that score",
+          "location": "4. Modeling Objectives > Humanization",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/gillick_learning_2019.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "greshler_catch--waveform_2021",
+    "candidate_title": "Catch-A-Waveform: Learning to Generate Audio from a Single Short Example",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "greshler_catch--waveform_2021",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text is a long-form research paper (NeurIPS 2021 + includes detailed tables/results), and it centers on a GAN-based generative audio model. The described outputs are raw audio waveforms/samples used for audio generation and audio restoration tasks, with no indication of non-audio primary output.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.95,
+      "evidence_ledger": [
+        {
+          "candidate_key": "greshler_catch--waveform_2021",
+          "stage": "stage2",
+          "claim_id": "S1_required_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "35th Conference on Neural Information Processing Systems (NeurIPS 2021).",
+              "location": "full_text (paper header)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Table 1: Bandwidth extension quantitative evaluation.",
+              "location": "full_text (Table 1)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Table 2: Inpainting AMT study.",
+              "location": "full_text (Table 2)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "stage2_single_screening_reviewer",
+          "quote": "Table 1: Bandwidth extension quantitative evaluation.",
+          "location": "full_text (Table 1)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "greshler_catch--waveform_2021",
+          "stage": "stage2",
+          "claim_id": "S1_required_topic_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "GAN-based generative model",
+              "location": "full_text (Abstract)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "generative adversarial network (GAN) based model",
+              "location": "full_text (Introduction)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "GAN-based model for audio generation",
+              "location": "full_text (Conclusion)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "stage2_single_screening_reviewer",
+          "quote": "GAN-based model for audio generation",
+          "location": "full_text (Conclusion)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "greshler_catch--waveform_2021",
+          "stage": "stage2",
+          "claim_id": "S1_required_output_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Our model works on raw waveforms",
+              "location": "full_text (Conclusion)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "samples of arbitrary duration",
+              "location": "full_text (Abstract)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "stage2_single_screening_reviewer",
+          "quote": "Our model works on raw waveforms",
+          "location": "full_text (Conclusion)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "greshler_catch--waveform_2021",
+          "stage": "stage2",
+          "claim_id": "S1_required_evidence_scope_main_text_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We test our catch-a-waveform (CAW) method in several applications",
+              "location": "full_text (Section 4)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Conclusion and limitations",
+              "location": "full_text (Section 5 heading)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Acknowledgements",
+              "location": "full_text (Acknowledgements heading)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "stage2_single_screening_reviewer",
+          "quote": "We test our catch-a-waveform (CAW) method in several applications",
+          "location": "full_text (Section 4)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "greshler_catch--waveform_2021",
+          "stage": "stage2",
+          "claim_id": "S1_any_of_generative_audio_model_focus_introduces_generative_audio_model_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "generative adversarial network (GAN) based model",
+              "location": "full_text (Introduction)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "GAN-based generative model",
+              "location": "full_text (Abstract)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "stage2_single_screening_reviewer",
+          "quote": "generative adversarial network (GAN) based model",
+          "location": "full_text (Introduction)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/greshler_catch--waveform_2021.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "guo_hierarchical_2021",
+    "candidate_title": "Hierarchical Recurrent Neural Networks for Conditional Melody Generation with Long-term Structure",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "guo_hierarchical_2021",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper focuses on symbolic music generation (music represented as musical event sequences) rather than an output domain that is entirely audio/raw audio, so it fails the inclusion criterion requiring an audio-only output domain.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "guo_hierarchical_2021",
+          "stage": "stage2",
+          "claim_id": "required_output_domain_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "generate symbolic music and those that generate raw audio.",
+              "location": "I. INTRODUCTION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/guo_hierarchical_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "music is represented as a series of musical events in sequence.",
+              "location": "I. INTRODUCTION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/guo_hierarchical_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "focus on the symbolic",
+              "location": "I. INTRODUCTION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/guo_hierarchical_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "music is represented as a series of musical events in sequence.",
+          "location": "I. INTRODUCTION",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/guo_hierarchical_2021.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "hadjeres_piano_2021",
+    "candidate_title": "The Piano Inpainting Application",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "hadjeres_piano_2021",
+      "stage": "stage2",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The full text appears to be a long-form research paper with detailed experimental/dataset and implementation sections, and it centers on a generative model application for piano performance inpainting (PIA). The system’s outputs are MIDI piano performances/notes (music generation within a DAW plugin). However, the provided full text only references Appendix A and appendix B; the appendix contents themselves are not included in the supplied text, so the criterion requiring evidence scope to include main text plus appendices cannot be confirmed.",
+      "route_reason": "Appendix A and appendix B are referenced in the provided full text, but their contents are not included. Need the appendix sections to verify the evidence-scope criterion for coding/analysis.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.72,
+      "evidence_ledger": [
+        {
+          "candidate_key": "hadjeres_piano_2021",
+          "stage": "stage2",
+          "claim_id": "required_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this section, we present the dataset we used in Sect. 3.1 and precise implementation and training details in Sect. 3.2.",
+              "location": "full_text - Section 3 (Experiments overview)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We use the GiantMIDI-Piano dataset [17], which includes 10,854 piano performances written by 2,786 composer",
+              "location": "full_text - Section 3.1 (Dataset)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "In this section, we present the dataset we used in Sect. 3.1 and precise implementation and training details in Sect. 3.2.",
+          "location": "full_text - Section 3 (Experiments overview)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hadjeres_piano_2021",
+          "stage": "stage2",
+          "claim_id": "required_topic_is_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this paper, we propose the Piano Inpainting Application (PIA), a complete system for inpainting a piano performance.",
+              "location": "full_text - Introduction",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "In this paper, we propose the Piano Inpainting Application (PIA), a complete system for inpainting a piano performance.",
+          "location": "full_text - Introduction",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hadjeres_piano_2021",
+          "stage": "stage2",
+          "claim_id": "required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Figure 1: The piano inpainting task consists in restoring an incomplete MIDI performance.",
+              "location": "full_text - Figure 1 caption",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The selected fragment is populated by notes as soon as they are generated.",
+              "location": "full_text - Section 4 (PIA plugin)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "Figure 1: The piano inpainting task consists in restoring an incomplete MIDI performance.",
+          "location": "full_text - Figure 1 caption",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hadjeres_piano_2021",
+          "stage": "stage2",
+          "claim_id": "required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "Details are provided in Appendix. A.",
+              "location": "full_text - Section 2.3.2 (Factorized positional embeddings)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Exact values are provided in appendix B.",
+              "location": "full_text - Section 3.1.2 (Adaptive quantization)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.6,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "Details are provided in Appendix. A.",
+          "location": "full_text - Section 2.3.2 (Factorized positional embeddings)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hadjeres_piano_2021.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "huang2018music",
+    "candidate_title": "Music Transformer",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2018music",
+      "stage": "stage2",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The paper is a full-length research article that introduces and evaluates a Transformer autoregressive generative model for music, with evaluation via listening tests, supporting the generative-audio/music focus and audio-only output. However, the supplied full-text excerpt references multiple appendices (e.g., A.1/A.2 and Appendix B/C) without including their contents here, so the required evidence scope covering main text plus appendices cannot be verified.",
+      "route_reason": "Appendix material referenced in the paper (A.1/A.2, Appendix B/C) is not present in the provided full-text excerpt; need the appendix text to confirm criterion coverage.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.73,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2018music",
+          "stage": "stage2",
+          "claim_id": "S1_required_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "RELATED WORK",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "EXPERIMENTS",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "CONCLUSION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.83,
+          "verifier_model": "stage2_screening_verifier",
+          "quote": "EXPERIMENTS",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2018music",
+          "stage": "stage2",
+          "claim_id": "S1_required_topic_is_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "autoregressive generative model",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "generative modeling of symbolic music",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.91,
+          "verifier_model": "stage2_screening_verifier",
+          "quote": "autoregressive generative model",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2018music",
+          "stage": "stage2",
+          "claim_id": "S1_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "generate accompaniments conditioned on",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "carried out a listening test",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Samples are available for listening at",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "stage2_screening_verifier",
+          "quote": "carried out a listening test",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2018music",
+          "stage": "stage2",
+          "claim_id": "S1_any_of_generative_audio_model_focus_introduces_generative_audio_model_or_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "can generate minute-long compositions",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2_screening_verifier",
+          "quote": "can generate minute-long compositions",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2018music",
+          "stage": "stage2",
+          "claim_id": "S1_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "see A.1 for more details",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "see Appendix B for the analysis",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.42,
+          "verifier_model": "stage2_screening_verifier",
+          "quote": "see Appendix B for the analysis",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/huang2018music.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "huang2020ai",
+    "candidate_title": "AI Song Contest: Human-AI Co-Creation in Songwriting",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2020ai",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Although the paper discusses deep generative models used in music/audio creation, it does not meet the required criterion that the output domain is entirely audio: it states that teams used AI to generate lyrics (text) and describes songwriting as involving multiple mediums including text (lyrics) in addition to audio.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.8,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2020ai",
+          "stage": "stage2",
+          "claim_id": "S2_required_output_domain_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "WaveNet, SampleRNN",
+              "location": "Table 1 (Vocal synthesis models)",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [
+            {
+              "quote": "All teams used AI to generate lyrics and melodies",
+              "location": "4.1 Leveraging modular musical building blocks",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "including text (lyrics)",
+              "location": "1. INTRODUCTION",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.82,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "All teams used AI to generate lyrics and melodies",
+          "location": "4.1 Leveraging modular musical building blocks",
+          "source_path": "candidate_record.full_text",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "hung_improving_2019",
+    "candidate_title": "Improving Automatic Jazz Melody Generation by Transfer Learning Techniques",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "hung_improving_2019",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper is a long-form research article and presents a recurrent VAE for Jazz melody generation, but the generated output is a four-bar pianoroll/MIDI-based representation (e.g., it states it will output an “four-bar pianoroll” and references “MIDI format”). Therefore, it fails the criterion that the output domain is entirely audio.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.87,
+      "evidence_ledger": [
+        {
+          "candidate_key": "hung_improving_2019",
+          "stage": "stage2",
+          "claim_id": "S1_IC1_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "I. INTRODUCTION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hung_improving_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "VII. CONCLUSIONS",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hung_improving_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "bcpcs_stage2_verifier",
+          "quote": "VII. CONCLUSIONS",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hung_improving_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hung_improving_2019",
+          "stage": "stage2",
+          "claim_id": "S1_A1_generative_audio_model_focus_introduces_model",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we use a recurrent variational autoencoder as the generative model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs_stage2_verifier",
+          "quote": "we use a recurrent variational autoencoder as the generative model",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hung_improving_2019",
+          "stage": "stage2",
+          "claim_id": "S1_IC3_output_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "an four-bar pianoroll",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hung_improving_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "pianoroll representation [25]",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hung_improving_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "MIDI format",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage2_verifier",
+          "quote": "an four-bar pianoroll",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/hung_improving_2019.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "kaur_time_2023",
+    "candidate_title": "Time out of Mind: Generating Rate of Speech conditioned on emotion and speaker",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "kaur_time_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Included: the provided document is a long-form preprint with multiple sections, figures, and tables; it proposes conditional generative modeling (GAN/Wasserstein GAN and IMLE) for generating speech-related temporal word-length parameters conditioned on emotion and speaker; it evaluates results by generating and comparing audio samples using a TTS system and waveform-based alignment metrics; and it references internal appendices (e.g., Appendix D and Appendix B), indicating that coding/analysis can cover main text plus appendices.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.86,
+      "evidence_ledger": [
+        {
+          "candidate_key": "kaur_time_2023",
+          "stage": "stage2",
+          "claim_id": "required_full_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Figure 1: GAN model pipeline",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Table 1: Objective results comparison between generated TTs and baseline TTS",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs-stage2-verifier",
+          "quote": "Figure 1: GAN model pipeline",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kaur_time_2023",
+          "stage": "stage2",
+          "claim_id": "required_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We propose a generative model to take text as an input, and when conditioned on an emotion, will produce a set of word lengths for this phrase.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Given a text sequence, we want to generate word length relative to a neutral speech, for each word in a phrase.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-verifier",
+          "quote": "We propose a generative model to take text as an input, and when conditioned on an emotion, will produce a set of word lengths for this phrase.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kaur_time_2023",
+          "stage": "stage2",
+          "claim_id": "required_entirely_audio_output",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "generated ground truth audio samples by directly feeding word lengths to Azure’s TTS system7",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "DTW allows us to assess how well-aligned the amplitudes are for two waveforms.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage2-verifier",
+          "quote": "generated ground truth audio samples by directly feeding word lengths to Azure’s TTS system7",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kaur_time_2023",
+          "stage": "stage2",
+          "claim_id": "required_appendices_in_scope",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "A table of emotional vocal modifications for the basic emotions can be seen in Appendix D Fig.2.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "The resulting DTW for the baseline as well as one of our generated phrases can be seen in Appendix B.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.72,
+          "verifier_model": "bcpcs-stage2-verifier",
+          "quote": "A table of emotional vocal modifications for the basic emotions can be seen in Appendix D Fig.2.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kaur_time_2023",
+          "stage": "stage2",
+          "claim_id": "any_generative_audio_model_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Inspired by [8], the generator network is made up of multiple sub-networks: text, emotion and noise encoders and a word length decoder.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs-stage2-verifier",
+          "quote": "Inspired by [8], the generator network is made up of multiple sub-networks: text, emotion and noise encoders and a word length decoder.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kaur_time_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "kwon_effective_2019",
+    "candidate_title": "Effective parameter estimation methods for an ExcitNet model in generative text-to-speech systems",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "kwon_effective_2019",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The provided full text is a long-form research paper with multiple numbered sections (e.g., 1. Introduction through 7. References). It centers on a generative text-to-speech (TTS) system using an ExcitNet vocoder and a seq2seq/Tacotron 2 acoustic model. The described outputs are natural speech/speech signals (audio), not text or video, so the speech-to-text exclusion does not apply. Therefore the paper satisfies the stage-2 inclusion criteria and none of the provided exclusions are triggered based on the supplied text.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.96,
+      "evidence_ledger": [
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage2",
+          "claim_id": "IN1_full_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "1. Introduction",
+              "location": "full text: section heading",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kwon_effective_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "7. References",
+              "location": "full text: section heading",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kwon_effective_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "7. References",
+          "location": "full text: section heading",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kwon_effective_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage2",
+          "claim_id": "IN2_generative_audio_model_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "high-quality generative text-to-speech (TTS) system",
+              "location": "abstract: first sentence",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "sequence-to-sequence (seq2seq) acoustic model",
+              "location": "abstract: proposes seq2seq acoustic model",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "ExcitNet vocoder",
+              "location": "abstract: condition parameters of the ExcitNet vocoder",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "high-quality generative text-to-speech (TTS) system",
+          "location": "abstract: first sentence",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage2",
+          "claim_id": "IN3_output_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "synthesize natural speech signals",
+              "location": "abstract: combining models can synthesize natural speech signals",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "time-domain excitation signals",
+              "location": "abstract: ExcitNet model effectively generates the corresponding time-domain excitation signals",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "synthesize natural speech signals",
+          "location": "abstract: combining models can synthesize natural speech signals",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage2",
+          "claim_id": "IN4_evidence_scope_main_text_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "6. Conclusion",
+              "location": "full text: section heading",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kwon_effective_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "7. References",
+              "location": "full text: section heading",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kwon_effective_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "not_applicable",
+          "confidence": 0.8,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "6. Conclusion",
+          "location": "full text: section heading",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/kwon_effective_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage2",
+          "claim_id": "EX_speech_to_text_output_text",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "generative text-to-speech (TTS) system",
+              "location": "abstract: first sentence",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "speech synthesis system",
+              "location": "abstract: describes building a high-quality speech synthesis system",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "speech synthesis system",
+          "location": "abstract: challenge remains to build a high-quality speech synthesis system",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "lemercier_analysing_nodate",
+    "candidate_title": "Analysing Diffusion-based Generative Approaches versus Discriminative Approaches for Speech Restoration",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "lemercier_analysing_nodate",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "This is a full technical research paper on diffusion-based generative models for speech restoration (speech enhancement/dereverberation/bandwidth extension) with experimental setup, evaluation metrics, and results. However, it is not an ethics-focused systematic literature review (it does not present ethical implications such as consent, copyright, bias, deception/misuse; instead it reports model/task performance). Therefore it is semantically non-fit with the ethical-implications systematic review topic.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage2",
+          "claim_id": "S1_required_1_full_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "5. EXPERIMENTAL RESULTS AND DISCUSSION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/lemercier_analysing_nodate.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "7. REFERENCES",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/lemercier_analysing_nodate.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2_reviewer",
+          "quote": "7. REFERENCES",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/lemercier_analysing_nodate.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage2",
+          "claim_id": "S1_required_2_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Diffusion-based Generative Approaches",
+              "location": "title",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "Diffusion-based generative models have had a high impact on the computer vision and speech processing communities these past years.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "we systematically compare the performance of generative diffusion models and discriminative approaches on different speech restoration tasks.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "stage2_reviewer",
+          "quote": "Diffusion-based generative models have had a high impact on the computer vision and speech processing communities these past years.",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage2",
+          "claim_id": "S1_required_3_output_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "speech enhancement and dereverberation",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "speech denoising, dereverberation and bandwidth extension",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_reviewer",
+          "quote": "speech denoising, dereverberation and bandwidth extension",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage2",
+          "claim_id": "topic_semantic_non_fit_ethical_implications_systematic_literature_review",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "4. EXPERIMENTAL SETUP",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/lemercier_analysing_nodate.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "5. EXPERIMENTAL RESULTS AND DISCUSSION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/lemercier_analysing_nodate.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "we systematically compare the performance of generative diffusion models and discriminative approaches on different speech restoration tasks.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.9,
+          "verifier_model": "stage2_reviewer",
+          "quote": "5. EXPERIMENTAL RESULTS AND DISCUSSION",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/lemercier_analysing_nodate.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "ming_feature_2019",
+    "candidate_title": "Feature reinforcement with word embedding and parsing information in neural TTS",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "ming_feature_2019",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Included. The submission is a full long-form paper (sections through “6. REFERENCES”), focuses on a generative audio model/application via a sequence-to-sequence neural text-to-speech (TTS) synthesis framework, and targets synthesized speech (audio output) rather than speech-to-text transcription.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage2",
+          "claim_id": "S1_required_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "4. EXPERIMENTS",
+              "location": "full_text: 4. EXPERIMENTS",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ming_feature_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "6. REFERENCES",
+              "location": "full_text: 6. REFERENCES",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ming_feature_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_reviewer",
+          "quote": "6. REFERENCES",
+          "location": "full_text: 6. REFERENCES",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ming_feature_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage2",
+          "claim_id": "S1_required_topic_is_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "stage2_reviewer",
+          "quote": "sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage2",
+          "claim_id": "S1_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "improves the synthesized speech to near recording quality",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2_reviewer",
+          "quote": "improves the synthesized speech to near recording quality",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage2",
+          "claim_id": "S1_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "5. CONCLUSION",
+              "location": "full_text: 5. CONCLUSION",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ming_feature_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "6. REFERENCES",
+              "location": "full_text: 6. REFERENCES",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ming_feature_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "stage2_reviewer",
+          "quote": "5. CONCLUSION",
+          "location": "full_text: 5. CONCLUSION",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/ming_feature_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage2",
+          "claim_id": "S1_any_of_generative_audio_model_focus_introduces_generative_audio_model_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "a feature reinforcement method under the sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_reviewer",
+          "quote": "a feature reinforcement method under the sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage2",
+          "claim_id": "S1_exclusion_speech_to_text_ASR_transcription_final_output_text",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "improves the synthesized speech to near recording quality",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "stage2_reviewer",
+          "quote": "sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "neves_generating_2022",
+    "candidate_title": "Generating music with sentiment using Transformer-GANs",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "neves_generating_2022",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The paper’s core output is explicitly framed as generating symbolic music using token/event representations (e.g., NOTE_ON, NOTE_DURATION), and it positions “work directly on audio” as future work. This fails the criterion that the output domain is entirely audio, so the paper is excluded.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "neves_generating_2022",
+          "stage": "stage2",
+          "claim_id": "S1_req_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "4. EXPERIMENTS",
+              "location": "4. EXPERIMENTS",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "5. REFERENCES",
+              "location": "5. REFERENCES",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.76,
+          "verifier_model": "single_screening_reviewer",
+          "quote": "4. EXPERIMENTS",
+          "location": "4. EXPERIMENTS",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "neves_generating_2022",
+          "stage": "stage2",
+          "claim_id": "S1_req_output_domain_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "In this paper, we propose a generative model of symbolic music conditioned by data retrieved from human sentiment.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "NOTE_ON, NOTE_DURATION",
+              "location": "3.3 Training",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "work directly on audio",
+              "location": "4.1 Conclusion and future work",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.88,
+          "verifier_model": "single_screening_reviewer",
+          "quote": "work directly on audio",
+          "location": "4.1 Conclusion and future work",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "neves_generating_2022",
+          "stage": "stage2",
+          "claim_id": "S1_excl_not_actually_about_audio_central_topic_or_output",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "produce symbolic music conditioned by sentiment",
+              "location": "1. INTRODUCTION (Contributions)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "work directly on audio",
+              "location": "4.1 Conclusion and future work",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.83,
+          "verifier_model": "single_screening_reviewer",
+          "quote": "produce symbolic music conditioned by sentiment",
+          "location": "1. INTRODUCTION (Contributions)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/neves_generating_2022.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "sawata_versatile_nodate",
+    "candidate_title": "Diffiner: A Versatile Diffusion-based Generative Refiner for Speech Enhancement",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "sawata_versatile_nodate",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Included: The provided full text is a long-form research paper (numbered sections including experiments and references). It introduces and trains a diffusion-based generative refiner for speech enhancement, and the described output is refined speech (audio-only). The supplied text includes the complete main body content for coding (method, experiments, conclusion) without relying on missing appendices/external materials.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.91,
+      "evidence_ledger": [
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage2",
+          "claim_id": "S2_REQ1_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "1. Introduction",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sawata_versatile_nodate.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "4. Experiments",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sawata_versatile_nodate.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "1. Introduction",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sawata_versatile_nodate.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage2",
+          "claim_id": "S2_REQ2_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Diffusion-based Generative Refiner",
+              "location": "title",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            },
+            {
+              "quote": "we introduce a DNN-based generative refiner, Diffiner",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "We train a diffusion-based generative model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.96,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "We train a diffusion-based generative model",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage2",
+          "claim_id": "S2_REQ3_output_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "dataset consisting of clean speech only",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "resulting in refined speech",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "resulting in refined speech",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage2",
+          "claim_id": "S2_REQ4_evidence_scope_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "5. Conclusion",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sawata_versatile_nodate.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "6. References",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sawata_versatile_nodate.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "6. References",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sawata_versatile_nodate.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage2",
+          "claim_id": "S2_ANY1_generative_audio_model_focus_introduces",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we introduce a DNN-based generative refiner, Diffiner",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "we introduce a DNN-based generative refiner, Diffiner",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "sekiguchi_semi-supervised_2019",
+    "candidate_title": "Semi-Supervised Multichannel Speech Enhancement With a Deep Speech Prior",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "sekiguchi_semi-supervised_2019",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The provided full text is a complete long-form journal article (multiple numbered sections and algorithms). Its main focus is a generative deep speech model used within a probabilistic framework for semi-supervised multichannel speech enhancement, and the task/output is entirely audio (speech spectra/speech images), not text or video. Therefore it satisfies the inclusion criteria and does not match the key speech-to-text/text-output exclusion.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage2",
+          "claim_id": "REQ1_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Algorithm 1: Speech Enhancement Based on MNMF-DP.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "VI. CONCLUSION",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "bcpcs_stage2_screening_verifier",
+          "quote": "Algorithm 1: Speech Enhancement Based on MNMF-DP.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage2",
+          "claim_id": "REQ2_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "replace a low-rank speech model with a deep generative speech model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "integrating a deep speech model, a low-rank noise model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_screening_verifier",
+          "quote": "replace a low-rank speech model with a deep generative speech model",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage2",
+          "claim_id": "REQ3_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "semi-supervised multichannel speech enhancement method",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Given multichannel noisy speech spectra",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage2_screening_verifier",
+          "quote": "Given multichannel noisy speech spectra",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage2",
+          "claim_id": "REQ4_appendices_in_evidence_scope",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Finally, Section VI concludes this paper.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "bcpcs_stage2_screening_verifier",
+          "quote": "Finally, Section VI concludes this paper.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage2",
+          "claim_id": "ANY1_introduces_generative_audio_model_or_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "deep generative speech model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "formulate a probabilistic model of noisy speech",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.87,
+          "verifier_model": "bcpcs_stage2_screening_verifier",
+          "quote": "deep generative speech model",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage2",
+          "claim_id": "EXCL_speech_to_text_or_asr_text_output",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "estimate the speech image xft0.",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "enhanced speech spectra",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs_stage2_screening_verifier",
+          "quote": "estimate the speech image xft0.",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/sekiguchi_semi-supervised_2019.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "serra_universal_2022",
+    "candidate_title": "Universal Speech Enhancement with Score-based Diffusion",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "serra_universal_2022",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The candidate is a full conference research paper (with detailed methodology/results, tables, and sections). Its primary topic is a generative audio model for speech enhancement, explicitly describing a generative model using score-based diffusion and a generator network synthesizing clean speech. The output/domain is entirely audio (speech audio; enhanced speech/clean speech generation). The paper also references appendices (e.g., Appendix A and Appendix D), satisfying the requirement that evidence scope includes the main text and appendices within the paper.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "serra_universal_2022",
+          "stage": "stage2",
+          "claim_id": "S1_required_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Under review as a conference paper at ICLR 2023",
+              "location": "full_text (header)",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Table 1: Test set objective scores for the steps in developing UNIVERSE.",
+              "location": "full_text (Table 1)",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "Under review as a conference paper at ICLR 2023",
+          "location": "full_text (header)",
+          "source_path": "candidate_record.full_text",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "serra_universal_2022",
+          "stage": "stage2",
+          "claim_id": "S1_required_topic_is_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Our approach consists of a generative model that employs score-based diffusion",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "a generator network synthesizes clean speech",
+              "location": "full_text (overview of approach)",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.94,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "Our approach consists of a generative model that employs score-based diffusion",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "serra_universal_2022",
+          "stage": "stage2",
+          "claim_id": "S1_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Removing background noise from speech audio",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "a generator network synthesizes clean speech",
+              "location": "full_text (overview of approach)",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "a generator network synthesizes clean speech",
+          "location": "full_text (overview of approach)",
+          "source_path": "candidate_record.full_text",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "serra_universal_2022",
+          "stage": "stage2",
+          "claim_id": "S1_required_evidence_scope_main_text_plus_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "An introduction to diffusion models is given in Appendix A",
+              "location": "full_text (Related Work)",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Further details of our evaluation methodology are provided in Appendix D.",
+              "location": "full_text (Evaluation)",
+              "source_path": "candidate_record.full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "An introduction to diffusion models is given in Appendix A",
+          "location": "full_text (Related Work)",
+          "source_path": "candidate_record.full_text",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "serra_universal_2022",
+          "stage": "stage2",
+          "claim_id": "S1_any_of_generative_audio_model_focus_introduces_model",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Our approach consists of a generative model that employs score-based diffusion",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "Our approach consists of a generative model that employs score-based diffusion",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "shankar_non-parallel_2020",
+    "candidate_title": "Non-parallel Emotion Conversion using a Deep-Generative Hybrid Network and an Adversarial Pair Discriminator",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "shankar_non-parallel_2020",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The full text shows a complete long-form research paper (multiple numbered sections and references). It presents a generative model/application (variational cycle-GAN) for emotion conversion in speech, and the evaluated outputs are synthesized/converted speech audio (including speech produced/modified using Wavenet). The provided evidence covers the paper’s main content (methods, experiments, conclusions) consistent with coding over the in-paper material.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage2",
+          "claim_id": "S2_req1_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "1. Introduction",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "2. Method",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "3. Experiments and Results",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "5. References",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "5. References",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage2",
+          "claim_id": "S2_req2_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We introduce a novel method for emotion conversion in speech that does not require parallel training data.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Our approach loosely relies on a cycle-GAN schema to minimize the reconstruction error from converting back and forth between emotion pairs.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "this setup, which we refer to as a variational cycle-GAN (VC-GAN)",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "Our approach loosely relies on a cycle-GAN schema to minimize the reconstruction error from converting back and forth between emotion pairs.",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage2",
+          "claim_id": "S2_req3_output_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We use crowd sourcing to evaluate both the emotional saliency and the quality of synthesized speech.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Finally, we show that our model generalizes to new speakers by modifying speech produced by Wavenet.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "We use crowd sourcing to evaluate both the emotional saliency and the quality of synthesized speech.",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage2",
+          "claim_id": "S2_req4_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "2. Method",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "3. Experiments and Results",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "4. Conclusions",
+              "location": "full_text",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "2. Method",
+          "location": "full_text",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/shankar_non-parallel_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage2",
+          "claim_id": "S2_anyof_generative_audio_model_focus_introduces",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We introduce a novel method for emotion conversion in speech that does not require parallel training data.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Our approach loosely relies on a cycle-GAN schema",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs_stage2_reviewer",
+          "quote": "We introduce a novel method for emotion conversion in speech that does not require parallel training data.",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "thio_minimal_2019",
+    "candidate_title": "A Minimal Template for Interactive Web-based Demonstrations of Musical Machine Learning",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "thio_minimal_2019",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Exclude: the paper is designed to demonstrate symbolic musical machine learning models (non-audio symbolic focus) and its outputs/interactive modules include symbolic representations such as editable pianoroll and chord visualizations. Even though it provides real-time browser audio rendering, the output domain is not entirely audio, so it matches the exclusion that audio is not the central topic/output.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.9,
+      "evidence_ledger": [
+        {
+          "candidate_key": "thio_minimal_2019",
+          "stage": "stage2",
+          "claim_id": "S1_exclusion_not_about_audio_as_central_topic_or_output",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "specifically designed to demonstrate symbolic musical machine learning models on the web",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "editable pianoroll (drum)",
+              "location": "full_text/Table 1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "chord visualization (text)",
+              "location": "full_text/Table 1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "specifically designed to demonstrate symbolic musical machine learning models on the web",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "thio_minimal_2019",
+          "stage": "stage2",
+          "claim_id": "S1_required_output_domain_entirely_audio",
+          "evidence_status": "refute",
+          "support_spans": [
+            {
+              "quote": "real-time audio rendering of the browser",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "rendering MIDI files into audio",
+              "location": "full_text/RELATED WORKS/Audio Rendering in Python",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [
+            {
+              "quote": "editable pianoroll (drum)",
+              "location": "full_text/Table 1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "pianoroll format [8]",
+              "location": "full_text/DEMONSTRATIONS DESIGN/Latent Inspector with DrumVAE",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "chord visualization (text)",
+              "location": "full_text/Table 1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "chord labels [16]",
+              "location": "full_text/DEMONSTRATIONS DESIGN/Song Mixer with LeadSheetVAE",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs-stage2-reviewer",
+          "quote": "pianoroll format [8]",
+          "location": "full_text/DEMONSTRATIONS DESIGN/Latent Inspector with DrumVAE",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/thio_minimal_2019.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "wu_jazz_2020",
+    "candidate_title": "The Jazz Transformer on the Front Line: Exploring the Shortcomings of AI-composed Music through Quantitative Measures",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5.4-nano",
+    "criteria_path": "criteria_stage2/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "wu_jazz_2020",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "This appears to be a full-length research paper that introduces a generative model for Jazz music composition (Jazz Transformer) and provides/uses audio outputs (audio samples and MIDIs rendered to audios). The paper’s evaluation methods/results are presented within the main body (multiple numbered sections and tables), so it satisfies the required long-form and evidence-scope criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.84,
+      "evidence_ledger": [
+        {
+          "candidate_key": "wu_jazz_2020",
+          "stage": "stage2",
+          "claim_id": "C_required_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "1. INTRODUCTION",
+              "location": "full text section 1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "9. REFERENCES",
+              "location": "full text section 9",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2_reviewer",
+          "quote": "9. REFERENCES",
+          "location": "full text section 9",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wu_jazz_2020",
+          "stage": "stage2",
+          "claim_id": "C_required_topic_is_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "This paper presents the Jazz Transformer, a generative model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "stage2_reviewer",
+          "quote": "This paper presents the Jazz Transformer, a generative model",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wu_jazz_2020",
+          "stage": "stage2",
+          "claim_id": "C_any_of_generative_audio_model_focus_introduces_model",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "This paper presents the Jazz Transformer, a generative model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage2_reviewer",
+          "quote": "This paper presents the Jazz Transformer, a generative model",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wu_jazz_2020",
+          "stage": "stage2",
+          "claim_id": "C_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Audio samples can be found in a Google Drive",
+              "location": "full text (introduction)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "rendering the MIDIs to audios",
+              "location": "full text (acknowledgements)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "stage2_reviewer",
+          "quote": "Audio samples can be found in a Google Drive",
+          "location": "full text (introduction)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wu_jazz_2020",
+          "stage": "stage2",
+          "claim_id": "C_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "5. OBJECTIVE EVALUATION METRICS",
+              "location": "full text section 5",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Table 2. Results of objective evaluations.",
+              "location": "full text (Table 2 caption)",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.78,
+          "verifier_model": "stage2_reviewer",
+          "quote": "Table 2. Results of objective evaluations.",
+          "location": "full text (Table 2 caption)",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2307.05527/mds/wu_jazz_2020.md",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]

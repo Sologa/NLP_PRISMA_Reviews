@@ -1,0 +1,394 @@
+[
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "Lovering2021PredictingIB",
+    "candidate_title": "Predicting Inductive Biases of Pre-Trained Models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "Lovering2021PredictingIB",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 criteria require Transformer-based language models (TLMs) and empirical analysis of syntactic structure/knowledge. The paper evaluates Transformer-based models (BERT, RoBERTa, GPT-2, T5) and an LSTM, and investigates syntactic phenomena (SVA, NPI, GAP) through controlled grammar data and MDL-based analyses, providing empirical evidence of syntactic knowledge in Transformer LMs. Therefore it satisfies the Stage 2 criteria and should be included.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.75,
+      "evidence_ledger": [
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S2-C1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We evaluate T5, BERT, RoBERTa, GPT-2 and an LSTM with GloVe embeddings (Raffel et al., 2020; Devlin et al., 2019; Liu et al., 2019b; Radford et al., 2019; Pennington et al., 2014).",
+              "location": "4.2 SETUP",
+              "source_path": "refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "BCPCS_STG2",
+          "quote": "We evaluate T5, BERT, RoBERTa, GPT-2 and an LSTM with GloVe embeddings (Raffel et al., 2020; Devlin et al., 2019; Liu et al., 2019b; Radford et al., 2019; Pennington et al., 2014).",
+          "location": "4.2 SETUP",
+          "source_path": "refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S2-C2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We design a series of simple natural language grammars that generate a variety of feature pairs (s, t), which we expect will exhibit different levels of relative extractability (MDL(s)/MDL(t)).",
+              "location": "4.1 DATA",
+              "source_path": "refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "BCPCS_STG2",
+          "quote": "We design a series of simple natural language grammars that generate a variety of feature pairs (s, t), which we expect will exhibit different levels of relative extractability (MDL(s)/MDL(t)).",
+          "location": "4.1 DATA",
+          "source_path": "refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "hu_prompting_2023",
+    "candidate_title": "Prompting is not a substitute for probability measurements in large language models",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "hu_prompting_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 evaluation confirms that the study empirically analyzes syntax in Transformer-based language models (TLMs). The paper tests syntax-related capabilities (Experiment 3a/3b) and uses transformer architectures (Flan-T5 and GPT-3/3.5), providing empirical evidence on syntactic knowledge in LLMs and aligning with the Stage 2 criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.8,
+      "evidence_ledger": [
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_TLMs",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "The Flan-T5 models have an encoder-decoder architecture",
+              "location": "full_text",
+              "source_path": "refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "Stage2_Single_Reviewer",
+          "quote": "The Flan-T5 models have an encoder-decoder architecture",
+          "location": "full_text",
+          "source_path": "refs/2601.19926/mds/hu_prompting_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S2_syntax_experiments",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Experiment 3a: Sentence judgment",
+              "location": "full_text",
+              "source_path": "refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "Since SyntaxGym was not designed for full-sentence probability comparisons, we first converted the SyntaxGym materials into sentence-level minimal pairs.",
+              "location": "full_text",
+              "source_path": "refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "Stage2_Single_Reviewer",
+          "quote": "Experiment 3a: Sentence Judgment",
+          "location": "full_text",
+          "source_path": "refs/2601.19926/mds/hu_prompting_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "li_probing_2022",
+    "candidate_title": "Probing via Prompting",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "li_probing_2022",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 evaluation finds that the paper 'Probing via Prompting' explicitly targets Transformer-based language models (GPT-2) and empirically analyzes syntactic properties via POS and Constituent tasks among others, aligning with the Stage 2 inclusion criteria for S1 (Transformer-based LMs and empirical analysis of syntactic structure). The quotes pulled from the full text corroborate both the Transformer-based LM focus and the empirical syntax-related tasks. No retrieval or metadata ambiguity is indicated in the provided prompt, and no semantic_non_fit condition is asserted.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "li_probing_2022_stage2_claim1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this work, we focus on the case when p is a Transformer-based language model (Vaswani et al., 2017)—specifically, we take p to be an instance of GPT-2 (Radford et al., 2019).",
+              "location": "Section 2.1 Language Models",
+              "source_path": "li_probing_2022.md",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We experiment on five linguistic tasks derived from OntoNotes 5.0 (Weischedel et al., 2013): part-of-speech tagging (POS), constituent labeling (const.), named entity labeling (entity), semantic role labeling (SRL), and coreference (Coref.). They are simplified versions of the original tasks in OntoNotes that are made compatible with the edge probing framework.",
+              "location": "Section 3.3 Experiments",
+              "source_path": "li_probing_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "manual_review",
+          "quote": "In this work, we focus on the case when p is a Transformer-based language model (Vaswani et al., 2017)—specifically, we take p to be an instance of GPT-2 (Radford et al., 2019).",
+          "location": "Section 2.1 Language Models",
+          "source_path": "li_probing_2022.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "mysiak_is_2023",
+    "candidate_title": "Is German secretly a Slavic language? What BERT probing can tell us about language groups",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "mysiak_is_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "The candidate's paper is about Transformer-based language models (BERT) and empirically analyzes syntactic knowledge via a structural probe, meeting Stage 2 inclusion criteria S1. Stage 2 decisive evidence: (1) the title references BERT probing (a Transformer-based LM), and (2) the abstract references the structural probe introduced by Hewitt and Manning (2019), both indicating empirical syntactic analysis within a Transformer LM. No retrieval/metadata issues were identified. Therefore, the final decision is include.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.93,
+      "evidence_ledger": [
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "criterion_1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "What BERT probing can tell us about language groups",
+              "location": "title",
+              "source_path": "criteria_corrected_3papers/2601.19926.md",
+              "source_field": "title"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "stage2_single_screening",
+          "quote": "What BERT probing can tell us about language groups",
+          "location": "title",
+          "source_path": "criteria_corrected_3papers/2601.19926.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "criterion_2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "the structural probe introduced by Hewitt and Manning (2019).",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage2_single_screening",
+          "quote": "the structural probe introduced by Hewitt and Manning (2019).",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "wijnholds_assessing_2023",
+    "candidate_title": "Assessing Monotonicity Reasoning in Dutch through Natural Language Inference",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "wijnholds_assessing_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 criteria met: (1) The study is about Transformer-based language models (Dutch BERTje and RobBERT) and (2) It empirically analyzes or evaluates syntactic knowledge through monotonicity reasoning, specifically downward-entailing contexts, with linguistic annotations. The article provides an empirical evaluation of Transformer-based models on a Dutch NLI dataset and analyzes syntactic phenomena, satisfying Stage 2 inclusion criteria. No Stage 2 exclusion criteria are triggered, and there is no metadata ambiguity or retrieval failure.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S2-criterion-1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Transformer-based language models",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/mds/wijnholds_assessing_2023.md",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "BCPCS_Stage2_Reviewer",
+          "quote": "Transformer-based language models",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/mds/wijnholds_assessing_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S2-criterion-2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "downward entailing contexts",
+              "location": "abstract",
+              "source_path": "refs/2601.19926/mds/wijnholds_assessing_2023.md",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "BCPCS_Stage2_Reviewer",
+          "quote": "downward entailing contexts",
+          "location": "abstract",
+          "source_path": "refs/2601.19926/mds/wijnholds_assessing_2023.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "yanaka_assessing_2021",
+    "candidate_title": "Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference",
+    "phase": "stage2_review",
+    "stage": "stage2",
+    "model": "gpt-5-nano",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "yanaka_assessing_2021",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Stage 2 evaluation identifies explicit alignment with the Stage 2 criteria: (1) the study centers on Transformer-based language models (BERT) as evidenced by explicit use of BERT and references to Transformer tooling; (2) it empirically analyzes or investigates syntactic structure/knowledge via JaNLI and a structured analysis of Japanese linguistic phenomena. Stage 1 flagged insufficient alignment, but Stage 2 findings provide decisive evidence of transformer-based modeling and syntactic analysis, supporting inclusion.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.92,
+      "evidence_ledger": [
+        {
+          "candidate_key": "yanaka_assessing_2021",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_criterion_1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "We conducted experiments with BERT (Devlin et al., 2019), a standard pre-trained language model that is widely used for both multilingual and Japanese texts.",
+              "location": "4.1 Experimental setting",
+              "source_path": "full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "manual_screening",
+          "quote": "We conducted experiments with BERT (Devlin et al., 2019), a standard pre-trained language model that is widely used for both multilingual and Japanese texts.",
+          "location": "4.1 Experimental setting",
+          "source_path": "full_text",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "yanaka_assessing_2021",
+          "stage": "stage2",
+          "claim_id": "S2_inclusion_criterion_2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "This dataset is designed to cover a variety of linguistic phenomena specific to Japanese.",
+              "location": "3.3 Dataset overview",
+              "source_path": "full_text",
+              "source_field": "full_text"
+            },
+            {
+              "quote": "We analyze 11 categories of Japanese linguistic phenomena and constructions: garden-path sentences with noun-modifying clauses, scrambling (including particle-swapping), passive, causative, factive adverbs, factive verbs, modal, negation, NP-coordination, sentence-subordination (those corresponding to because-clauses and if-clauses), and sentence-coordination (sentence conjunction and disjunction).",
+              "location": "3.2 Linguistic phenomena",
+              "source_path": "full_text",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "manual_screening",
+          "quote": "This dataset is designed to cover a variety of linguistic phenomena specific to Japanese.",
+          "location": "3.3 Dataset overview",
+          "source_path": "full_text",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]
