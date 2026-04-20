@@ -47,8 +47,8 @@ from scripts.screening.experiment_workflows import fulltext_payload_from_resolut
 from scripts.screening.openai_batch_runner import BatchRequestSpec, OpenAIBatchRunner, build_json_schema_response_format
 
 
-LOCKED_FULL_AUTO_F1 = 0.6378
-LOCKED_PRIMARY_AUTO_F1 = 0.8000
+LOCKED_BASELINE_FULL_AUTO_F1 = 0.6378
+PROMOTION_AUTO_F1_STRICT_MIN = 0.8000
 MIN_COVERAGE = 0.98
 BASELINE_RUN_ID = "bcpcs_failure_slice_gpt5nano_2stage_async_2026-04-18_full127_v1"
 PHASES = ("stage1_review", "stage2_review_evidence_packet", "stage2_review_decision")
@@ -228,10 +228,15 @@ def init_run(*, run_id: str, scope: Literal["primary22", "full127"], profile: Gu
             "not_unbiased_evaluation": True,
             "locked_baseline": {
                 "baseline_run_id": BASELINE_RUN_ID,
-                "full127_all_auto_f1_min": LOCKED_FULL_AUTO_F1,
-                "primary22_auto_f1_min": LOCKED_PRIMARY_AUTO_F1,
+                "previous_full127_all_auto_f1": LOCKED_BASELINE_FULL_AUTO_F1,
+            },
+            "promotion_requirements_v2": {
+                "pure_model_full127_auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
+                "pure_models_required": ["gpt-5-nano", "gpt-5.4-nano"],
+                "primary22_auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
                 "coverage_min": MIN_COVERAGE,
                 "runtime_failure_max": 0,
+                "hybrid_or_reused_baseline_runs_promotable": False,
             },
             "guarded_profile": {
                 "stage1_effort": profile.stage1_effort,
@@ -1016,18 +1021,26 @@ def evaluate_validate_analyze(*, run_id: str, baseline_run_id: str | None = BASE
 
 def guardrail_status(*, run_id: str, scope: str) -> dict[str, Any]:
     summary = read_json(run_dir(run_id) / "evaluation_summary_v2.json")
+    manifest_path = run_dir(run_id) / "run_manifest.json"
+    manifest = read_json(manifest_path) if manifest_path.exists() else {}
+    model = safe_text(manifest.get("model"))
+    is_hybrid_or_mixed = (
+        model.startswith("hybrid:")
+        or bool(manifest.get("not_fully_automated_new_reviewer"))
+        or "hybrid" in safe_text(manifest.get("workflow")).lower()
+    )
     primary = summary["primary22"]
     all_rows = summary["all127"]
     if scope == "primary22":
         f1 = float(primary["auto_decidable_f1"]["f1"])
         coverage = float(primary["coverage"]["definite_decision_rate"])
         runtime = int(primary["coverage"]["runtime_failure_count"])
-        passed = f1 >= LOCKED_PRIMARY_AUTO_F1 and coverage >= MIN_COVERAGE and runtime == 0
+        passed = f1 > PROMOTION_AUTO_F1_STRICT_MIN and coverage >= MIN_COVERAGE and runtime == 0 and not is_hybrid_or_mixed
     else:
         f1 = float(all_rows["auto_decidable_f1"]["f1"])
         coverage = float(all_rows["coverage"]["definite_decision_rate"])
         runtime = int(all_rows["coverage"]["runtime_failure_count"])
-        passed = f1 >= LOCKED_FULL_AUTO_F1 and coverage >= MIN_COVERAGE and runtime == 0
+        passed = f1 > PROMOTION_AUTO_F1_STRICT_MIN and coverage >= MIN_COVERAGE and runtime == 0 and not is_hybrid_or_mixed
     payload = {
         "created_at": utc_now_iso(),
         "scope": scope,
@@ -1035,11 +1048,14 @@ def guardrail_status(*, run_id: str, scope: str) -> dict[str, Any]:
         "observed_auto_f1": f1,
         "observed_coverage": coverage,
         "observed_runtime_failure_count": runtime,
+        "model": model,
+        "is_hybrid_or_mixed": is_hybrid_or_mixed,
+        "promotion_reject_reason": "hybrid_or_mixed_model" if is_hybrid_or_mixed else None,
         "thresholds": {
-            "primary22_auto_f1_min": LOCKED_PRIMARY_AUTO_F1,
-            "full127_all_auto_f1_min": LOCKED_FULL_AUTO_F1,
+            "auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
             "coverage_min": MIN_COVERAGE,
             "runtime_failure_max": 0,
+            "hybrid_or_reused_baseline_runs_promotable": False,
         },
     }
     write_json(run_dir(run_id) / "guardrail_status.json", payload)
@@ -1079,12 +1095,13 @@ def write_guarded_report(*, run_ids: list[str], queue_status: dict[str, Any]) ->
         "",
         "這是 failure-slice dev diagnostic，不是 full benchmark，也不是 unbiased improvement claim。",
         "",
-        "## Locked Guardrails",
+        "## Promotion Requirements V2",
         "",
-        f"- primary22 auto F1 must be >= `{LOCKED_PRIMARY_AUTO_F1:.4f}`",
-        f"- full127 all auto F1 must be >= `{LOCKED_FULL_AUTO_F1:.4f}`",
+        f"- pure-model full127 auto F1 must be > `{PROMOTION_AUTO_F1_STRICT_MIN:.4f}` for both `gpt-5-nano` and `gpt-5.4-nano`",
+        f"- primary22 auto F1 must be > `{PROMOTION_AUTO_F1_STRICT_MIN:.4f}`, but primary22 is smoke-only",
         f"- coverage must be >= `{MIN_COVERAGE:.2%}`",
         "- runtime failures must be `0`",
+        "- hybrid / reused-baseline / mixed-model runs cannot be promoted.",
         "",
         "## Run Results",
         "",

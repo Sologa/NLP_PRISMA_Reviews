@@ -2,12 +2,15 @@
 
 這是 failure-slice dev diagnostic，不是 full benchmark，也不是 unbiased improvement claim。
 
-## Locked Guardrails
+**Correction 2026-04-20**：本報告中的 old locked guardrail 只保留為 failed-variant 歷史脈絡。正式 promotion rule 已改為兩個純模型 `gpt-5-nano` 與 `gpt-5.4-nano` 都必須在 full127 達到 `auto_decidable_f1 > 0.8`；hybrid / reused-baseline / mixed-model result 不可 promoted。
 
-- primary22 auto F1 must be >= `0.8000`
-- full127 all auto F1 must be >= `0.6378`
+## Promotion Requirements V2
+
+- pure-model full127 auto F1 must be > `0.8000` for both `gpt-5-nano` and `gpt-5.4-nano`
+- primary22 auto F1 must be > `0.8000`, but primary22 is smoke-only
 - coverage must be >= `98.00%`
 - runtime failures must be `0`
+- hybrid / reused-baseline / mixed-model runs cannot be promoted
 
 ## Run Results
 
@@ -65,10 +68,10 @@ This means the evidence-packet pass still exhausted the entire completion budget
         "observed_coverage": 0.0,
         "observed_runtime_failure_count": 22,
         "thresholds": {
-          "primary22_auto_f1_min": 0.8,
-          "full127_all_auto_f1_min": 0.6378,
+          "auto_f1_must_be_greater_than": 0.8,
           "coverage_min": 0.98,
-          "runtime_failure_max": 0
+          "runtime_failure_max": 0,
+          "hybrid_or_reused_baseline_runs_promotable": false
         }
       }
     },
@@ -83,10 +86,10 @@ This means the evidence-packet pass still exhausted the entire completion budget
         "observed_coverage": 0.0,
         "observed_runtime_failure_count": 22,
         "thresholds": {
-          "primary22_auto_f1_min": 0.8,
-          "full127_all_auto_f1_min": 0.6378,
+          "auto_f1_must_be_greater_than": 0.8,
           "coverage_min": 0.98,
-          "runtime_failure_max": 0
+          "runtime_failure_max": 0,
+          "hybrid_or_reused_baseline_runs_promotable": false
         }
       }
     }
@@ -97,7 +100,7 @@ This means the evidence-packet pass still exhausted the entire completion budget
 
 ## Interpretation
 
-- 任何低於 locked guardrail 的 variant 都只能保留為 failed diagnostic，不得 promote。
+- 任何低於 V2 promotion requirement 的 variant 都只能保留為 failed diagnostic，不得 promote。
 - dev analyzer 可使用 gold 做錯誤分類，但 gold/error taxonomy 沒有進入 reviewer prompts。
 - 如果 primary smoke 失敗，full127 不會提交。
 - 這次 primary smoke 已失敗，因此沒有修好；不能宣稱分數提升。

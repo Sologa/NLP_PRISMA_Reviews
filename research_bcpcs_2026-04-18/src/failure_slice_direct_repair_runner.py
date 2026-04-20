@@ -46,8 +46,9 @@ from scripts.screening.experiment_workflows import fulltext_payload_from_resolut
 from scripts.screening.openai_batch_runner import build_json_schema_response_format
 
 
-LOCKED_FULL_AUTO_F1 = 0.6378
-LOCKED_PRIMARY_AUTO_F1 = 0.8000
+LOCKED_BASELINE_FULL_AUTO_F1 = 0.6378
+PROMOTION_AUTO_F1_STRICT_MIN = 0.8000
+REQUIRED_PROMOTION_MODELS = ("gpt-5-nano", "gpt-5.4-nano")
 MIN_COVERAGE = 0.98
 BASELINE_RUN_ID = "bcpcs_failure_slice_gpt5nano_2stage_async_2026-04-18_full127_v1"
 TODAY = "2026-04-20"
@@ -259,10 +260,15 @@ def init_direct_run(
         "source_counts": source_counts,
         "locked_baseline": {
             "baseline_run_id": BASELINE_RUN_ID,
-            "full127_all_auto_f1_min": LOCKED_FULL_AUTO_F1,
-            "primary22_auto_f1_min": LOCKED_PRIMARY_AUTO_F1,
+            "previous_full127_all_auto_f1": LOCKED_BASELINE_FULL_AUTO_F1,
+        },
+        "promotion_requirements_v2": {
+            "pure_model_full127_auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
+            "pure_models_required": list(REQUIRED_PROMOTION_MODELS),
+            "primary22_auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
             "coverage_min": MIN_COVERAGE,
             "runtime_failure_max": 0,
+            "hybrid_or_reused_baseline_runs_promotable": False,
         },
         "direct_policy": {
             "batch_api_used": False,
@@ -1147,6 +1153,14 @@ def direct_output_path_audit(run_id: str) -> dict[str, Any]:
 
 def guardrail_status(*, run_id: str, scope: str, canary: bool = False) -> dict[str, Any]:
     summary = read_json(run_dir(run_id) / "evaluation_summary_v2.json")
+    manifest_path = run_dir(run_id) / "run_manifest.json"
+    manifest = read_json(manifest_path) if manifest_path.exists() else {}
+    model = safe_text(manifest.get("model"))
+    is_hybrid_or_mixed = (
+        model.startswith("hybrid:")
+        or bool(manifest.get("not_fully_automated_new_reviewer"))
+        or "hybrid" in safe_text(manifest.get("workflow")).lower()
+    )
     if canary:
         bucket = summary["primary22"]
         passed = bucket["coverage"]["runtime_failure_count"] == 0 and bucket["coverage"]["definite_decision_rate"] >= MIN_COVERAGE
@@ -1154,19 +1168,21 @@ def guardrail_status(*, run_id: str, scope: str, canary: bool = False) -> dict[s
     elif scope == "primary22":
         bucket = summary["primary22"]
         passed = (
-            float(bucket["auto_decidable_f1"]["f1"]) >= LOCKED_PRIMARY_AUTO_F1
+            float(bucket["auto_decidable_f1"]["f1"]) > PROMOTION_AUTO_F1_STRICT_MIN
             and float(bucket["coverage"]["definite_decision_rate"]) >= MIN_COVERAGE
             and int(bucket["coverage"]["runtime_failure_count"]) == 0
+            and not is_hybrid_or_mixed
         )
-        threshold_name = "primary22_score_guardrail"
+        threshold_name = "primary22_smoke_score_guardrail_v2"
     else:
         bucket = summary["all127"]
         passed = (
-            float(bucket["auto_decidable_f1"]["f1"]) >= LOCKED_FULL_AUTO_F1
+            float(bucket["auto_decidable_f1"]["f1"]) > PROMOTION_AUTO_F1_STRICT_MIN
             and float(bucket["coverage"]["definite_decision_rate"]) >= MIN_COVERAGE
             and int(bucket["coverage"]["runtime_failure_count"]) == 0
+            and not is_hybrid_or_mixed
         )
-        threshold_name = "full127_score_guardrail"
+        threshold_name = "pure_model_full127_score_guardrail_v2"
     payload = {
         "created_at": utc_now_iso(),
         "scope": scope,
@@ -1177,11 +1193,14 @@ def guardrail_status(*, run_id: str, scope: str, canary: bool = False) -> dict[s
         "observed_conservative_f1": float(bucket["conservative_f1"]["f1"]),
         "observed_coverage": float(bucket["coverage"]["definite_decision_rate"]),
         "observed_runtime_failure_count": int(bucket["coverage"]["runtime_failure_count"]),
+        "model": model,
+        "is_hybrid_or_mixed": is_hybrid_or_mixed,
+        "promotion_reject_reason": "hybrid_or_mixed_model" if is_hybrid_or_mixed else None,
         "thresholds": {
-            "primary22_auto_f1_min": LOCKED_PRIMARY_AUTO_F1,
-            "full127_all_auto_f1_min": LOCKED_FULL_AUTO_F1,
+            "auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
             "coverage_min": MIN_COVERAGE,
             "runtime_failure_max": 0,
+            "hybrid_or_reused_baseline_runs_promotable": False,
         },
     }
     write_json(run_dir(run_id) / "guardrail_status.json", payload)
@@ -1255,17 +1274,19 @@ def run_one(
 
 
 def write_direct_report(*, run_ids: list[str], queue_status: dict[str, Any]) -> None:
+    required_models_text = "` and `".join(REQUIRED_PROMOTION_MODELS)
     lines = [
         "# BCPCS Direct Repair Report",
         "",
         "這是 failure-slice dev diagnostic，不是 full benchmark，也不是 unbiased improvement claim。",
         "",
-        "## Locked Guardrails",
+        "## Promotion Requirements V2",
         "",
-        f"- primary22 auto F1 must be >= `{LOCKED_PRIMARY_AUTO_F1:.4f}`",
-        f"- full127 all auto F1 must be >= `{LOCKED_FULL_AUTO_F1:.4f}`",
+        f"- pure-model full127 auto F1 must be > `{PROMOTION_AUTO_F1_STRICT_MIN:.4f}` for both `{required_models_text}`",
+        f"- primary22 auto F1 must be > `{PROMOTION_AUTO_F1_STRICT_MIN:.4f}`, but primary22 is smoke-only",
         f"- coverage must be >= `{MIN_COVERAGE:.2%}`",
         "- runtime failures must be `0`",
+        "- hybrid / reused-baseline / mixed-model runs cannot be promoted.",
         "- Batch API was not used in this direct repair track.",
         "",
         "## Run Results",
@@ -1274,7 +1295,6 @@ def write_direct_report(*, run_ids: list[str], queue_status: dict[str, Any]) -> 
         "| --- | --- | --- | --- | ---: | ---: | ---: | ---: | --- | ---: |",
     ]
     total_cost = 0.0
-    promoted: list[str] = []
     for run_id in run_ids:
         rd = run_dir(run_id)
         if not (rd / "evaluation_summary_v2.json").exists():
@@ -1289,8 +1309,6 @@ def write_direct_report(*, run_ids: list[str], queue_status: dict[str, Any]) -> 
             total_cost += cost
         scope = evaluation.get("scope")
         bucket = evaluation["primary22"] if scope == "primary22" else evaluation["all127"]
-        if scope == "full127" and guard.get("passed"):
-            promoted.append(run_id)
         lines.append(
             "| "
             + " | ".join(
@@ -1321,16 +1339,19 @@ def write_direct_report(*, run_ids: list[str], queue_status: dict[str, Any]) -> 
             "## Interpretation",
             "",
             f"- Direct repair actual API cost from non-reused runs: `${total_cost:.6f}`.",
-            "- Hybrid row shows attributed source-run cost but made no additional API calls.",
-            "- 低於 guardrail 的 run 只保留為 failed diagnostic，不覆蓋 locked baseline。",
+            "- Hybrid row shows attributed source-run cost but made no additional API calls; under V2 it is diagnostic-only and not promotable.",
+            "- 低於 V2 promotion requirement 的 run 只保留為 failed diagnostic，不覆蓋 locked baseline。",
             "- direct prompt 使用 deterministic evidence packet；gold/prior verdict/error taxonomy 沒有進入 reviewer prompt。",
             "- global output path audit may remain false if pre-existing dirty files outside research are present; direct run uses pre/post path audit for new writes.",
         ]
     )
-    if promoted:
-        lines.append(f"- Promoted candidate run(s): {', '.join(f'`{item}`' for item in promoted)}.")
+    if queue_status.get("overall_passed"):
+        promoted = [
+            item for item in (queue_status.get("promoted_run_ids_by_model") or {}).values() if item
+        ]
+        lines.append(f"- Promoted pure-model full127 run(s): {', '.join(f'`{item}`' for item in promoted)}.")
     else:
-        lines.append("- No direct repair run was promoted.")
+        lines.append("- No direct repair run was promoted under V2; both required pure models must pass full127 >0.8.")
     write_json(REPORTS_ROOT / "failure_slice_direct_repair_queue_status.json", queue_status)
     (REPORTS_ROOT / "failure_slice_direct_repair_zh.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
@@ -1443,10 +1464,15 @@ def build_primary_direct_secondary_baseline_hybrid(
         ),
         "locked_baseline": {
             "baseline_run_id": baseline_run_id,
-            "full127_all_auto_f1_min": LOCKED_FULL_AUTO_F1,
-            "primary22_auto_f1_min": LOCKED_PRIMARY_AUTO_F1,
+            "previous_full127_all_auto_f1": LOCKED_BASELINE_FULL_AUTO_F1,
+        },
+        "promotion_requirements_v2": {
+            "pure_model_full127_auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
+            "pure_models_required": list(REQUIRED_PROMOTION_MODELS),
+            "primary22_auto_f1_must_be_greater_than": PROMOTION_AUTO_F1_STRICT_MIN,
             "coverage_min": MIN_COVERAGE,
             "runtime_failure_max": 0,
+            "hybrid_or_reused_baseline_runs_promotable": False,
         },
     }
     write_json(rd / "run_manifest.json", manifest)
@@ -1481,7 +1507,14 @@ def build_primary_direct_secondary_baseline_hybrid(
 
 
 def run_queue(*, cost_cap_usd: float, concurrency: int, retry_attempts: int) -> dict[str, Any]:
-    queue_status: dict[str, Any] = {"created_at": utc_now_iso(), "statuses": [], "promoted_run_id": None}
+    queue_status: dict[str, Any] = {
+        "created_at": utc_now_iso(),
+        "statuses": [],
+        "promoted_run_id": None,
+        "promoted_run_ids_by_model": {},
+        "overall_passed": False,
+        "policy_version": "pure_model_full127_gt_0p8_v2",
+    }
     run_ids: list[str] = []
     profiles = [
         PROFILES["direct_gpt54nano_xhigh_localpacket_compactdecision_v1"],
@@ -1489,6 +1522,8 @@ def run_queue(*, cost_cap_usd: float, concurrency: int, retry_attempts: int) -> 
         PROFILES["direct_gpt5nano_high_localpacket_compactdecision_v1"],
     ]
     for profile in profiles:
+        if profile.model in queue_status["promoted_run_ids_by_model"]:
+            continue
         canary_id = f"bcpcs_direct_canary5_{profile.profile_id}_{TODAY}_v1"
         canary = run_one(
             run_id=canary_id,
@@ -1531,14 +1566,16 @@ def run_queue(*, cost_cap_usd: float, concurrency: int, retry_attempts: int) -> 
         run_ids.append(full_id)
         queue_status["statuses"].append({"run_id": full_id, "profile_id": profile.profile_id, "kind": "full127", "status": full["status"], "guardrail": full.get("guardrail")})
         if full["status"] == "guardrail_passed":
-            queue_status["promoted_run_id"] = full_id
-            break
+            queue_status["promoted_run_ids_by_model"][profile.model] = full_id
+            if all(model in queue_status["promoted_run_ids_by_model"] for model in REQUIRED_PROMOTION_MODELS):
+                queue_status["overall_passed"] = True
+                break
     queue_status["completed_at"] = utc_now_iso()
     queue_status["run_ids"] = run_ids
-    if queue_status["promoted_run_id"] is None:
-        queue_status["stop_reason"] = "profile_queue_exhausted_without_promoted_run"
+    if queue_status["overall_passed"]:
+        queue_status["stop_reason"] = "all_required_pure_models_passed_v2"
     else:
-        queue_status["stop_reason"] = "promoted_run_found"
+        queue_status["stop_reason"] = "pure_model_full127_gt_0p8_requirement_not_met"
     write_direct_report(run_ids=run_ids, queue_status=queue_status)
     return queue_status
 
