@@ -1,0 +1,129 @@
+{
+  "scope": "primary22",
+  "source": {
+    "results_dir": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results",
+    "appendix_22": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/APPENDIX_22_API_SIM_CASES_zh.md",
+    "source_of_truth": "case_inventory in per-paper JSON files"
+  },
+  "cases": [
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "douwes2021energy",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Energy Consumption of Deep Generative Audio Models",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "metric_or_meta_boundary"
+      ],
+      "why_primary": "它很像在分析 generative audio model 的評估指標，但 title/abstract 又有點像 meta / metric paper，observable evidence 真的不夠穩。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為歧義本來就寫在 paper 的可觀察證據裡；也不是 criteria_or_gold_tension，因為一旦把缺的證據補清楚，paper 仍有機會和 active criteria 對齊。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "du_joint_2020",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "A Joint Framework of Denoising Autoencoder and Generative Vocoder for Monaural Speech Enhancement",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "generative_vocoder_role"
+      ],
+      "why_primary": "stacked enhancement 加上 generative vocoder 其實仍是 generative-audio application，這裡是 reviewer 把 generative role 看得太窄。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "huang2020ai",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "AI Song Contest: Human-AI Co-Creation in Songwriting",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "mixed_output_boundary",
+        "co_creation_framing"
+      ],
+      "why_primary": "這篇把歌詞、音樂、聲音和 co-creation 混在一起講，primary output 到底是不是 current criteria 要的純 audio 並不夠乾淨。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為歧義本來就寫在 paper 的可觀察證據裡；也不是 criteria_or_gold_tension，因為一旦把缺的證據補清楚，paper 仍有機會和 active criteria 對齊。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "kwon_effective_2019",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Effective parameter estimation methods for an ExcitNet model in generative text-to-speech systems",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "這其實是很直的 neural TTS generative-audio paper，但 reviewer 額外引入 ethics / societal framing 造成誤殺。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "lemercier_analysing_nodate",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Analysing Diffusion-based Generative Approaches versus Discriminative Approaches for Speech Restoration",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "speech restoration with generative models 本來很像 active criteria 可收的 generative-audio paper，reviewer 卻額外把倫理/社會性門檻拉進來。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    }
+  ],
+  "summary": {
+    "total_count": 127,
+    "primary_count": 22,
+    "secondary_count": 105,
+    "primary_label_counts": {
+      "criteria_or_gold_tension": 105,
+      "paper_evidence_incomplete": 9,
+      "reviewer_semantic_gap": 13
+    },
+    "per_paper_counts": {
+      "2307.05527": 41,
+      "2409.13738": 5,
+      "2511.13936": 5,
+      "2601.19926": 76
+    },
+    "per_paper_primary_counts": {
+      "2307.05527": 11,
+      "2409.13738": 1,
+      "2511.13936": 4,
+      "2601.19926": 6
+    },
+    "per_paper_secondary_counts": {
+      "2307.05527": 30,
+      "2409.13738": 4,
+      "2511.13936": 1,
+      "2601.19926": 70
+    },
+    "selected_count": 5,
+    "selected_primary_count": 5,
+    "selected_secondary_count": 0,
+    "sample_limit": 5
+  },
+  "allowed_use": "final evaluation and taxonomy reporting only; never reviewer prompt construction"
+}

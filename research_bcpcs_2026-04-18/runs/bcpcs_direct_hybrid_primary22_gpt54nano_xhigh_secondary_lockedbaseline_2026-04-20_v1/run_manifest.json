@@ -1,0 +1,57 @@
+{
+  "run_id": "bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1",
+  "experiment_name": "bcpcs_failure_slice_direct_repair_hybrid",
+  "created_at": "2026-04-20T05:59:03+00:00",
+  "updated_at": "2026-04-20T05:59:03+00:00",
+  "scope": "full127",
+  "model": "hybrid:gpt-5.4-nano-direct-primary+gpt-5-nano-locked-baseline-secondary",
+  "workflow": "primary_non_tension_direct_repair_secondary_tension_locked_baseline",
+  "cost_cap_usd": 10.0,
+  "status": "guardrail_passed",
+  "run_dir": "research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1",
+  "direct_primary_source_run_id": "bcpcs_direct_full127_direct_gpt54nano_xhigh_localpacket_compactdecision_v1_2026-04-20_v1",
+  "secondary_locked_baseline_run_id": "bcpcs_failure_slice_gpt5nano_2stage_async_2026-04-18_full127_v1",
+  "is_failure_slice_dev_diagnostic": true,
+  "not_unbiased_evaluation": true,
+  "not_full_benchmark_evidence": true,
+  "not_fully_automated_new_reviewer": true,
+  "hybrid_policy": {
+    "primary_non_tension_rows": "use direct local-packet compact-decision profile",
+    "secondary_criteria_gold_tension_rows": "preserve locked baseline outputs; do not tune or repair as ordinary model errors"
+  },
+  "pre_run_git_status_short": [
+    " M bib/per_SR_cleaned/2310.07264/reference_oracle.jsonl",
+    " M bib/per_SR_cleaned/2312.05172/reference_oracle.jsonl",
+    " M bib/per_SR_cleaned/2507.07741/reference_oracle.jsonl",
+    " M research_bcpcs_2026-04-18/reports/failure_slice_execution_charter_zh.md",
+    " M research_bcpcs_2026-04-18/reports/failure_slice_leakage_audit_zh.md",
+    "?? research_bcpcs_2026-04-18/reports/failure_slice_guarded_repair_zh.md",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_direct_canary5_direct_gpt54nano_xhigh_localpacket_compactdecision_v1_2026-04-20_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_direct_dryrun_direct_gpt54nano_xhigh_localpacket_compactdecision_2026-04-20_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_direct_full127_direct_gpt54nano_xhigh_localpacket_compactdecision_v1_2026-04-20_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_direct_primary22_direct_gpt54nano_xhigh_localpacket_compactdecision_v1_2026-04-20_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_guarded_primary22_smoke_gpt54nano_xhigh_allroute_evidencepacket_2026-04-20_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_guarded_primary22_smoke_gpt5nano_high_allroute_evidencepacket_2026-04-20_v1/",
+    "?? research_bcpcs_2026-04-18/src/failure_slice_direct_repair_runner.py",
+    "?? research_bcpcs_2026-04-18/src/failure_slice_error_analyzer.py",
+    "?? research_bcpcs_2026-04-18/src/failure_slice_guarded_repair_runner.py"
+  ],
+  "pre_run_outside_research_changes": [
+    "bib/per_SR_cleaned/2310.07264/reference_oracle.jsonl",
+    "bib/per_SR_cleaned/2312.05172/reference_oracle.jsonl",
+    "bib/per_SR_cleaned/2507.07741/reference_oracle.jsonl"
+  ],
+  "locked_baseline": {
+    "baseline_run_id": "bcpcs_failure_slice_gpt5nano_2stage_async_2026-04-18_full127_v1",
+    "full127_all_auto_f1_min": 0.6378,
+    "primary22_auto_f1_min": 0.8,
+    "coverage_min": 0.98,
+    "runtime_failure_max": 0
+  },
+  "evaluation_summary_v2_path": "research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1/evaluation_summary_v2.json",
+  "validation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1/validation_summary.json",
+  "direct_validation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1/direct_validation_summary.json",
+  "error_analysis_path": "research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1/error_analysis.json",
+  "guardrail_status_path": "research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1/guardrail_status.json"
+}

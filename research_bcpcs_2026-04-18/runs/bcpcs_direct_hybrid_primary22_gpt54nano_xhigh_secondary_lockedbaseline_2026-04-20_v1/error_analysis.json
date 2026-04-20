@@ -1,0 +1,152 @@
+{
+  "created_at": "2026-04-20T05:59:03+00:00",
+  "candidate_run_dir": "research_bcpcs_2026-04-18/runs/bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1",
+  "baseline_run_dir": "research_bcpcs_2026-04-18/runs/bcpcs_failure_slice_gpt5nano_2stage_async_2026-04-18_full127_v1",
+  "is_failure_slice_dev_diagnostic": true,
+  "not_unbiased_evaluation": true,
+  "recovery": {
+    "primary22": {
+      "row_count": 22,
+      "prior_fn_count": 21,
+      "prior_fp_count": 1,
+      "prior_fn_recovered": 17,
+      "prior_fp_recovered": 0,
+      "recovered_total": 17,
+      "unknown_or_runtime_count": 0,
+      "still_wrong_count": 5
+    },
+    "secondary105": {
+      "row_count": 105,
+      "prior_fn_count": 93,
+      "prior_fp_count": 12,
+      "prior_fn_recovered": 48,
+      "prior_fp_recovered": 1,
+      "recovered_total": 49,
+      "unknown_or_runtime_count": 0,
+      "still_wrong_count": 56
+    },
+    "all": {
+      "row_count": 127,
+      "prior_fn_count": 114,
+      "prior_fp_count": 13,
+      "prior_fn_recovered": 65,
+      "prior_fp_recovered": 1,
+      "recovered_total": 66,
+      "unknown_or_runtime_count": 0,
+      "still_wrong_count": 61
+    }
+  },
+  "comparison_to_baseline": {
+    "baseline_available": true,
+    "transitions": {
+      "recovered->recovered": 59,
+      "recovered->wrong": 1,
+      "wrong->recovered": 7,
+      "wrong->wrong": 60
+    },
+    "mcnemar_style": {
+      "baseline_correct_candidate_wrong": 1,
+      "baseline_wrong_candidate_correct": 7,
+      "net_recovered_change": 6,
+      "interpretation": "Diagnostic paired transition counts only; this failure-slice dev run is not full-corpus inference."
+    },
+    "changed_rows": [
+      {
+        "paper_id": "2307.05527",
+        "candidate_key": "douwes2021energy",
+        "baseline_prediction": 0,
+        "candidate_prediction": 1,
+        "baseline_decision": "exclude",
+        "candidate_decision": "include",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "wrong->recovered"
+      },
+      {
+        "paper_id": "2307.05527",
+        "candidate_key": "du_joint_2020",
+        "baseline_prediction": 0,
+        "candidate_prediction": 1,
+        "baseline_decision": "exclude",
+        "candidate_decision": "include",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "wrong->recovered"
+      },
+      {
+        "paper_id": "2307.05527",
+        "candidate_key": "lemercier_analysing_nodate",
+        "baseline_prediction": 0,
+        "candidate_prediction": 1,
+        "baseline_decision": "exclude",
+        "candidate_decision": "include",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "wrong->recovered"
+      },
+      {
+        "paper_id": "2307.05527",
+        "candidate_key": "louie_expressive_2021",
+        "baseline_prediction": 0,
+        "candidate_prediction": 1,
+        "baseline_decision": "exclude",
+        "candidate_decision": "include",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "wrong->recovered"
+      },
+      {
+        "paper_id": "2307.05527",
+        "candidate_key": "ming_feature_2019",
+        "baseline_prediction": 0,
+        "candidate_prediction": 1,
+        "baseline_decision": "exclude",
+        "candidate_decision": "include",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "wrong->recovered"
+      },
+      {
+        "paper_id": "2307.05527",
+        "candidate_key": "sawata_versatile_nodate",
+        "baseline_prediction": 0,
+        "candidate_prediction": 1,
+        "baseline_decision": "exclude",
+        "candidate_decision": "include",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "wrong->recovered"
+      },
+      {
+        "paper_id": "2307.05527",
+        "candidate_key": "sekiguchi_semi-supervised_2019",
+        "baseline_prediction": 0,
+        "candidate_prediction": 1,
+        "baseline_decision": "exclude",
+        "candidate_decision": "include",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "wrong->recovered"
+      },
+      {
+        "paper_id": "2601.19926",
+        "candidate_key": "wijnholds_assessing_2023",
+        "baseline_prediction": 1,
+        "candidate_prediction": 0,
+        "baseline_decision": "include",
+        "candidate_decision": "exclude",
+        "gold_label": true,
+        "prior_error_type": "FN",
+        "slice_type": "non_tension_primary",
+        "transition": "recovered->wrong"
+      }
+    ]
+  }
+}

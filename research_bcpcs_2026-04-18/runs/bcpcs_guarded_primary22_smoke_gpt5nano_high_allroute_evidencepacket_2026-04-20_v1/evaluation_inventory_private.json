@@ -1,0 +1,428 @@
+{
+  "scope": "primary22",
+  "source": {
+    "results_dir": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results",
+    "appendix_22": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/APPENDIX_22_API_SIM_CASES_zh.md",
+    "source_of_truth": "case_inventory in per-paper JSON files"
+  },
+  "cases": [
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "douwes2021energy",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Energy Consumption of Deep Generative Audio Models",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "metric_or_meta_boundary"
+      ],
+      "why_primary": "它很像在分析 generative audio model 的評估指標，但 title/abstract 又有點像 meta / metric paper，observable evidence 真的不夠穩。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為歧義本來就寫在 paper 的可觀察證據裡；也不是 criteria_or_gold_tension，因為一旦把缺的證據補清楚，paper 仍有機會和 active criteria 對齊。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "du_joint_2020",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "A Joint Framework of Denoising Autoencoder and Generative Vocoder for Monaural Speech Enhancement",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "generative_vocoder_role"
+      ],
+      "why_primary": "stacked enhancement 加上 generative vocoder 其實仍是 generative-audio application，這裡是 reviewer 把 generative role 看得太窄。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "huang2020ai",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "AI Song Contest: Human-AI Co-Creation in Songwriting",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "mixed_output_boundary",
+        "co_creation_framing"
+      ],
+      "why_primary": "這篇把歌詞、音樂、聲音和 co-creation 混在一起講，primary output 到底是不是 current criteria 要的純 audio 並不夠乾淨。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為歧義本來就寫在 paper 的可觀察證據裡；也不是 criteria_or_gold_tension，因為一旦把缺的證據補清楚，paper 仍有機會和 active criteria 對齊。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "kwon_effective_2019",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Effective parameter estimation methods for an ExcitNet model in generative text-to-speech systems",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "這其實是很直的 neural TTS generative-audio paper，但 reviewer 額外引入 ethics / societal framing 造成誤殺。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "lemercier_analysing_nodate",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Analysing Diffusion-based Generative Approaches versus Discriminative Approaches for Speech Restoration",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "speech restoration with generative models 本來很像 active criteria 可收的 generative-audio paper，reviewer 卻額外把倫理/社會性門檻拉進來。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "louie_expressive_2021",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Expressive Communication: A Common Framework for Evaluating Developments in Generative Models and Steering Interfaces",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter",
+        "interface_or_analysis_paper"
+      ],
+      "why_primary": "它其實是在分析 generative music models / interfaces，本來不該單純因為沒有倫理或 systematic-review 語氣就被排掉。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "ming_feature_2019",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Feature reinforcement with word embedding and parsing information in neural TTS",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "neural TTS 明明很符合 active audio-model criteria，卻被 reviewer 因為缺少 ethics framing 砍掉。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "sawata_versatile_nodate",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Diffiner: A Versatile Diffusion-based Generative Refiner for Speech Enhancement",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "diffusion speech refiner 就是 direct generative-audio application，這裡比較像 reviewer 又偷偷加了額外倫理門檻。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "sekiguchi_semi-supervised_2019",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Semi-Supervised Multichannel Speech Enhancement With a Deep Speech Prior",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "generative_prior_in_enhancement"
+      ],
+      "why_primary": "它明明把 deep generative speech prior 放在 enhancement 裡當核心技術，active criteria 其實可以收，但 reviewer 還是把它排掉了。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "shankar_non-parallel_2020",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Non-parallel Emotion Conversion using a Deep-Generative Hybrid Network and an Adversarial Pair Discriminator",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "imported_ethics_filter"
+      ],
+      "why_primary": "技術上就是 voice conversion generative-audio paper，但 reviewer 又把它當成缺少 ethics framing 就不能收。",
+      "why_not_other_two": "它不是 criteria_or_gold_tension，因為 paper 本身其實仍然能落在 active criteria 內；也不是 paper_evidence_incomplete，因為 paper 已經把 generative component 或 output role 說得夠清楚。"
+    },
+    {
+      "paper_id": "2307.05527",
+      "candidate_key": "zhang_incorporating_2021",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2307.05527.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Incorporating Multi-Target in Multi-Stage Speech Enhancement Model for Better Generalization",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "generative_role_underdetermined"
+      ],
+      "why_primary": "從 stage-1 可觀察證據來看，這篇到底是 generative model 還是 denoising prior 為主其實不夠穩。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為歧義本來就寫在 paper 的可觀察證據裡；也不是 criteria_or_gold_tension，因為一旦把缺的證據補清楚，paper 仍有機會和 active criteria 對齊。"
+    },
+    {
+      "paper_id": "2409.13738",
+      "candidate_key": "lopez_assisted_declarative_process",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2409.13738.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Assisted Declarative Process Creation from Natural Language Descriptions",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "validation_ambiguity",
+        "semi_automatic_support",
+        "declarative_models"
+      ],
+      "why_primary": "The paper is clearly in scope neighborhood-wise, but its empirical validation story is reported in a mixed and incomplete way. That makes the stage-2 exclusion understandable even though gold keeps the record positive.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the reviewer followed real cautionary language in the paper, and it is not criteria_or_gold_tension because the current criteria and gold can still be reconciled if the validation evidence were stated more concretely."
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_key": "chumbalov2020scalable",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2511.13936.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Scalable and efficient comparison-based search without features",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "stage1_gate",
+        "audio_buried_in_fulltext",
+        "triplet_comparisons"
+      ],
+      "why_primary": "The abstract looks non-audio and ends with a movie-actor search experiment, while the audio-adjacent evidence only appears later in the full text. Gold positivity is therefore defensible, but the qualifying audio application is not observable enough at Stage 1.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the Stage 1 reviewer did not miss explicit abstract evidence, and it is not criteria_or_gold_tension because the full paper still contains a plausible audio-domain application under the current criteria."
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_key": "huang2025step",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2511.13936.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Step-Audio: Unified Understanding and Generation in Intelligent Speech Interaction",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "rlhf_hidden_in_fulltext",
+        "preference_data",
+        "reward_model"
+      ],
+      "why_primary": "The abstract mentions only benchmarked human evaluation, but the full text later makes the preference-learning pipeline explicit: RLHF, chosen/rejected pairs, reward-model training, and PPO. The decisive learning signal is hidden outside the title/abstract surface.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the reviewer only had evaluation-looking abstract language to work with, and it is not criteria_or_gold_tension because the full paper clearly supports gold positivity under the active criteria."
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_key": "jayawardena2020ordinal",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2511.13936.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "How Ordinal Are Your Data?",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "ordinal_to_pairwise",
+        "abstract_underspecification",
+        "speech_affective_data"
+      ],
+      "why_primary": "The abstract advertises ordinal regression on speech and affective datasets but does not surface the decisive pairwise-preference-loss construction. The qualifying comparative signal appears only in the full text.",
+      "why_not_other_two": "It is not reviewer_semantic_gap because the abstract really omits the key pairwise-preference detail, and it is not criteria_or_gold_tension because the full paper can be reconciled with the current criteria once the loss construction is visible."
+    },
+    {
+      "paper_id": "2511.13936",
+      "candidate_key": "manocha2020differentiable",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2511.13936.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "A differentiable perceptual audio metric learned from just noticeable differences",
+      "error_type": "FP",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "same_vs_different",
+        "evaluation_only_ab",
+        "stage2_false_positive"
+      ],
+      "why_primary": "The reviewer treated same-versus-different JND judgments and downstream A/B tests as if they established preference learning. On a strict reading of the criteria, that is an over-expansion from perceptual discrimination into preference learning.",
+      "why_not_other_two": "It is not paper_evidence_incomplete because the paper states its supervision and evaluation setup clearly, and it is not criteria_or_gold_tension because the gold negative is reasonably aligned with the current criteria once same/different is separated from ranking or preference."
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "Lovering2021PredictingIB",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Predicting Inductive Biases of Pre-Trained Models",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "stage1_strict_literalism"
+      ],
+      "why_primary": "title/abstract 已經把 probing 與 linguistic structure 擺上來了，照 current criteria 至少足以留下 maybe，不該因為沒有把 syntax 講得很字面就直接排除。",
+      "why_not_other_two": "它不是 paper_evidence_incomplete，因為 API-sim replay 只看 Stage-1 可觀察輸入就能做出 maybe；也不是 criteria_or_gold_tension，因為這裡不是 gold 和 active criteria 打架，而是 reviewer 把 wording threshold 設太高。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "hu_prompting_2023",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Prompting is not a substitute for probability measurements in large language models",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "stage1_strict_literalism"
+      ],
+      "why_primary": "abstract 雖然沒有一直重複 syntax，但 linguistic knowledge measurement 搭配 LM probability setup，已經夠形成 syntax-target 的弱訊號，至少該停在 maybe。",
+      "why_not_other_two": "它不是 paper_evidence_incomplete，因為 API-sim replay 只看 Stage-1 輸入也能給 maybe；也不是 criteria_or_gold_tension，因為問題不在 criteria 太窄，而在 reviewer 對字面 wording 的要求過高。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "li_probing_2022",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Probing via Prompting",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "stage1_strict_literalism"
+      ],
+      "why_primary": "看到 probing、prompting、linguistic information 這組訊號，其實就已經足夠支撐 maybe；selected run 在 Stage 1 直接硬砍，屬於 reviewer 過度保守。",
+      "why_not_other_two": "它不是 paper_evidence_incomplete，因為 title/abstract 已經給出 enough-to-hold 的線索；也不是 criteria_or_gold_tension，因為留下來之後和 active criteria 是能接上的。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "mysiak_is_2023",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Is German secretly a Slavic language? What BERT probing can tell us about language groups",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "stage1_observability_gap"
+      ],
+      "why_primary": "abstract 正面寫的是 language-group classification，dependency-tree / syntax probing 的角色埋得更深；只靠 Stage 1 可見面確實不容易穩定看出 syntax target。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為 API-sim replay 只看可觀察輸入時也很難穩定做出正向判斷；也不是 criteria_or_gold_tension，因為補到 full paper 之後仍可和 active criteria 對齊。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "wijnholds_assessing_2023",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Assessing Monotonicity Reasoning in Dutch through Natural Language Inference",
+      "error_type": "FN",
+      "primary_label": "reviewer_semantic_gap",
+      "secondary_labels": [
+        "stage1_strict_literalism"
+      ],
+      "why_primary": "TLM 加上 negation / conjunction / disjunction 這類 linguistic phenomena，其實已經是 syntax-evaluation 的邊界正訊號，照 current criteria 更合理的動作是先留在 maybe。",
+      "why_not_other_two": "它不是 paper_evidence_incomplete，因為 API-sim pass 已能從現有摘要讀出 enough-to-hold 的訊號；也不是 criteria_or_gold_tension，因為這裡不是 gold 和 criteria 打架，而是 reviewer 在 Stage 1 太早下死刑。"
+    },
+    {
+      "paper_id": "2601.19926",
+      "candidate_key": "yanaka_assessing_2021",
+      "slice_type": "non_tension_primary",
+      "source_artifact": "docs/deep_research/llm_native_failure_modes_all4_2026-04-15/results/2601.19926.json",
+      "allowed_for_unbiased_eval": true,
+      "debug_exposure": "none",
+      "leakage_notes": "Key selected from deep_research case_inventory only; gold/error taxonomy fields withheld from prompts.",
+      "title": "Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference",
+      "error_type": "FN",
+      "primary_label": "paper_evidence_incomplete",
+      "secondary_labels": [
+        "stage1_observability_gap"
+      ],
+      "why_primary": "Stage 1 可見面幾乎把重點都放在 adversarial NLI，真正的 garden-path / syntax target 很不顯眼，所以這案比較像資訊沒露出來，而不是 reviewer 單純讀歪。",
+      "why_not_other_two": "它不是 reviewer_semantic_gap，因為 API-sim replay 只靠現有輸入也很難給出穩定正向判斷；也不是 criteria_or_gold_tension，因為補足全文後仍然能跟 active criteria 接起來。"
+    }
+  ],
+  "summary": {
+    "total_count": 127,
+    "primary_count": 22,
+    "secondary_count": 105,
+    "primary_label_counts": {
+      "criteria_or_gold_tension": 105,
+      "paper_evidence_incomplete": 9,
+      "reviewer_semantic_gap": 13
+    },
+    "per_paper_counts": {
+      "2307.05527": 41,
+      "2409.13738": 5,
+      "2511.13936": 5,
+      "2601.19926": 76
+    },
+    "per_paper_primary_counts": {
+      "2307.05527": 11,
+      "2409.13738": 1,
+      "2511.13936": 4,
+      "2601.19926": 6
+    },
+    "per_paper_secondary_counts": {
+      "2307.05527": 30,
+      "2409.13738": 4,
+      "2511.13936": 1,
+      "2601.19926": 70
+    },
+    "selected_count": 22,
+    "selected_primary_count": 22,
+    "selected_secondary_count": 0
+  },
+  "allowed_use": "final evaluation and taxonomy reporting only; never reviewer prompt construction"
+}

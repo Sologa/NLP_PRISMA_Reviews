@@ -1,8 +1,8 @@
 # BCPCS Failure-Slice Execution Charter
 
 - 實驗名稱：`bcpcs_failure_slice_gpt5nano_2stage_async`
-- current run_id：`bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1`
-- scope：`full127`
+- current run_id：`bcpcs_guarded_primary22_smoke_gpt5nano_high_allroute_evidencepacket_2026-04-20_v1`
+- scope：`primary22`
 - 模型：`gpt-5-nano`
 - reviewer：`single_reviewer`
 - workflow：`two_stage_async_batch`
@@ -75,6 +75,5 @@
 
 ## Output Root
 
-- run workspace：`research_bcpcs_2026-04-18/runs/bcpcs_methodfix_gpt5nano_2stage_async_2026-04-19_full127_v1`
+- run workspace：`research_bcpcs_2026-04-18/runs/bcpcs_guarded_primary22_smoke_gpt5nano_high_allroute_evidencepacket_2026-04-20_v1`
 - 所有新 code/config/run/report 都只寫入 `research_bcpcs_2026-04-18/`。
-。

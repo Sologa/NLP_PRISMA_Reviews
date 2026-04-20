@@ -1,0 +1,1360 @@
+[
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "douwes2021energy",
+    "candidate_title": "Energy Consumption of Deep Generative Audio Models",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "douwes2021energy",
+      "stage": "stage1",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Although the title/abstract focus on deep generative audio models, the abstract primarily proposes and advocates an evaluation metric (multi-objective measure/Pareto optimality) for assessing model energy consumption, with no discussion of audio output generation or downstream audio use cases; this matches the Stage-1 exclusion about proposing only a metric/incremental methodological improvement.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "not_applicable",
+      "confidence": 0.78,
+      "evidence_ledger": [
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage1",
+          "claim_id": "include_topic_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Energy Consumption of Deep Generative Audio Models",
+              "location": "title",
+              "source_path": "prompt.candidate_record.title",
+              "source_field": "title"
+            },
+            {
+              "quote": "By applying our measure on the current state-of-the-art in generative audio models",
+              "location": "abstract",
+              "source_path": "prompt.candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "BCPCSStage1Verifier",
+          "quote": "Energy Consumption of Deep Generative Audio Models",
+          "location": "title",
+          "source_path": "prompt.candidate_record.title",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "douwes2021energy",
+          "stage": "stage1",
+          "claim_id": "exclude_metric_only_without_audio_outputs_or_use_cases",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "At the heart of this problem are the measures that we use as a scientific community to evaluate our work.",
+              "location": "abstract",
+              "source_path": "prompt.candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "In this paper, we suggest relying on a multi-objective measure based on Pareto optimality",
+              "location": "abstract",
+              "source_path": "prompt.candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "We believe that this type of metric can be widely used by the community to evaluate their work",
+              "location": "abstract",
+              "source_path": "prompt.candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.72,
+          "verifier_model": "BCPCSStage1Verifier",
+          "quote": "In this paper, we suggest relying on a multi-objective measure based on Pareto optimality",
+          "location": "abstract",
+          "source_path": "prompt.candidate_record.abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "du_joint_2020",
+    "candidate_title": "A Joint Framework of Denoising Autoencoder and Generative Vocoder for Monaural Speech Enhancement",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "du_joint_2020",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract clearly describe a deep generative vocoder and the reconstruction/synthesis of a speech waveform (audio-only output). However, the provided metadata does not confirm that this is a full long-form research paper and provides no evidence about inclusion/availability of appendices, so these required criteria cannot be verified at Stage 1.",
+      "route_reason": "Route for full-paper verification: confirm the work is a long-form research paper (not an extended abstract) and that coding can cover the main text and appendices.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.63,
+      "evidence_ledger": [
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage1",
+          "claim_id": "S1_required_full_research_paper_long_form",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "metadata_ambiguity",
+          "confidence": 0.25,
+          "verifier_model": "bcpcs-stage1-screener",
+          "quote": "\"published_date\": \"2020\"",
+          "location": "metadata.published_date",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage1",
+          "claim_id": "S1_required_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "a Mel-domain denoising autoencoder and a deep generative vocoder are stacked to form a joint framework for monaural speech enhancement",
+              "location": "Abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs-stage1-screener",
+          "quote": "a Mel-domain denoising autoencoder and a deep generative vocoder are stacked to form a joint framework for monaural speech enhancement",
+          "location": "Abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage1",
+          "claim_id": "S1_required_output_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "the clean speech waveform is reconstructed without using the phase",
+              "location": "Abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "bcpcs-stage1-screener",
+          "quote": "the clean speech waveform is reconstructed without using the phase",
+          "location": "Abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage1",
+          "claim_id": "S1_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.2,
+          "verifier_model": "bcpcs-stage1-screener",
+          "quote": "\"source_id\": \"https://openalex.org/W3023846453\"",
+          "location": "metadata.source_id",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "du_joint_2020",
+          "stage": "stage1",
+          "claim_id": "S1_anyof_generative_audio_model_focus_introduces",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "a deep generative vocoder to synthesize the speech waveform",
+              "location": "Abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs-stage1-screener",
+          "quote": "a deep generative vocoder to synthesize the speech waveform",
+          "location": "Abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "huang2020ai",
+    "candidate_title": "AI Song Contest: Human-AI Co-Creation in Songwriting",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "huang2020ai",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract indicate the work centers on deep generative music models for co-creating a song (audio/music context) and describes generating/ranking many samples from these models. However, the provided title/abstract/metadata do not confirm whether the work is a full long-form paper (vs an extended abstract) and do not provide evidence about whether appendices are included in the analyzable evidence scope. Therefore, route to stage2 for verification.",
+      "route_reason": "Stage 1 cannot verify the required “full research paper (long-form)” criterion and the appendix-inclusive evidence-scope criterion from the provided title/abstract/metadata; full-text/format checking is needed in stage2.",
+      "unknown_reason": "",
+      "missingness_reason": "deferred_to_stage2",
+      "confidence": 0.63,
+      "evidence_ledger": [
+        {
+          "candidate_key": "huang2020ai",
+          "stage": "stage1",
+          "claim_id": "S1_required_topic_generative_audio_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "research in deep generative models has dramatically improved the capability and fluency of music models",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "co-creating a song with AI",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs-stage1-reviewer",
+          "quote": "research in deep generative models has dramatically improved the capability and fluency of music models",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2020ai",
+          "stage": "stage1",
+          "claim_id": "S1_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Machine learning is challenging the way we make music.",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "co-creating a song with AI",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.72,
+          "verifier_model": "bcpcs-stage1-reviewer",
+          "quote": "Machine learning is challenging the way we make music.",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2020ai",
+          "stage": "stage1",
+          "claim_id": "S1_required_full_research_paper_long_form",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "deferred_to_stage2",
+          "confidence": 0.45,
+          "verifier_model": "bcpcs-stage1-reviewer",
+          "quote": "In this paper, we present findings",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "huang2020ai",
+          "stage": "stage1",
+          "claim_id": "S1_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "deferred_to_stage2",
+          "confidence": 0.2,
+          "verifier_model": "bcpcs-stage1-reviewer",
+          "quote": "",
+          "location": "not stated in provided title/abstract/metadata",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": false
+        },
+        {
+          "candidate_key": "huang2020ai",
+          "stage": "stage1",
+          "claim_id": "S1_anyof_generative_audio_model_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "teams also generated massive numbers of samples and curated them post-hoc",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "algorithmically ranked the samples",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "bcpcs-stage1-reviewer",
+          "quote": "teams also generated massive numbers of samples and curated them post-hoc",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "kwon_effective_2019",
+    "candidate_title": "Effective parameter estimation methods for an ExcitNet model in generative text-to-speech systems",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "kwon_effective_2019",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract describe a generative text-to-speech (audio) system focused on producing natural speech signals, matching the generative audio topic and audio-only output criteria. However, the provided metadata/title/abstract do not confirm the paper is explicitly a full long-form research paper (vs. non-full publication) or that coding scope includes the main text and appendices, so full-text verification is needed.",
+      "route_reason": "Missing/unclear confirmation for (1) long-form/full-paper status and (2) that coding/analysis scope includes appendices, based only on the supplied title/abstract/metadata.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.72,
+      "evidence_ledger": [
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage1",
+          "claim_id": "IC1_full_research_paper_long_form",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.35,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "arxiv",
+          "location": "metadata.source",
+          "source_path": "candidate_record.metadata.source",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage1",
+          "claim_id": "IC4_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.25,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "",
+          "location": "not_provided_in_supplied_fields",
+          "source_path": "candidate_record",
+          "span_validated": false
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage1",
+          "claim_id": "IC2_topic_is_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "generative text-to-speech (TTS) system",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "generative text-to-speech (TTS) system",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage1",
+          "claim_id": "IC3_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "natural speech signals",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "time-domain excitation signals",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "natural speech signals",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage1",
+          "claim_id": "ANY1_generative_audio_model_focus_introduces_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we propose a high-quality generative text-to-speech (TTS) system",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "we propose a high-quality generative text-to-speech (TTS) system",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage1",
+          "claim_id": "EX_speech_to_text_or_ASR_or_transcription_output_is_text",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "generative text-to-speech (TTS) system",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "speech signals",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.82,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "generative text-to-speech (TTS) system",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "kwon_effective_2019",
+          "stage": "stage1",
+          "claim_id": "EX_generates_non-audio_primary_outputs_in_addition_to_audio",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "expressive speech segments",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.75,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "expressive speech segments",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "lemercier_analysing_nodate",
+    "candidate_title": "Analysing Diffusion-based Generative Approaches versus Discriminative Approaches for Speech Restoration",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "lemercier_analysing_nodate",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract indicate diffusion-based generative models applied to speech restoration tasks, suggesting an audio-only domain with generative audio modeling as a core focus. However, the provided record does not confirm whether this is a full long-form research paper (vs. an extended/non-full-paper form) and does not provide evidence about the presence/availability of main-text appendices needed for coding/analysis.",
+      "route_reason": "Required stage-1 checks about (1) full long-form paper status and (2) availability of main text/appendices cannot be verified from the supplied title/abstract/metadata alone; full-text verification is needed.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.66,
+      "evidence_ledger": [
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "arxiv",
+              "location": "metadata.source",
+              "source_path": "candidate_visible_record.metadata.source",
+              "source_field": "metadata"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "metadata_ambiguity",
+          "confidence": 0.35,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "arxiv",
+          "location": "metadata.source",
+          "source_path": "candidate_visible_record.metadata.source",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Analysing Diffusion-based Generative Approaches versus Discriminative Approaches for Speech Restoration",
+              "location": "title",
+              "source_path": "candidate_visible_record.title",
+              "source_field": "title"
+            },
+            {
+              "quote": "Diffusion-based generative models",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "Analysing Diffusion-based Generative Approaches versus Discriminative Approaches for Speech Restoration",
+          "location": "title",
+          "source_path": "candidate_visible_record.title",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "speech denoising, dereverberation and bandwidth extension.",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "Code and audio examples can be found online at https://uhh.de/inf-sp-sgmsemultitask",
+              "location": "abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.85,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "speech denoising, dereverberation and bandwidth extension.",
+          "location": "abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "lemercier_analysing_nodate",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.25,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "Evidence scope for coding and analysis includes the main text and appendices inside the paper.",
+          "location": "criteria.inclusion_criteria.required",
+          "source_path": "criteria_corrected_3papers/2307.05527.md",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "louie_expressive_2021",
+    "candidate_title": "Expressive Communication: A Common Framework for Evaluating Developments in Generative Models and Steering Interfaces",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "louie_expressive_2021",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract describe a study about generative music models and steering interfaces (audio generative focus), with outcomes discussed as music (audio). However, the stage-1 evidence provided does not confirm that coding/analysis can include the paper’s main text and appendices, which is a required inclusion criterion. Therefore this candidate needs full-text/appendix verification.",
+      "route_reason": "Required inclusion criterion about including the paper’s main text and appendices for coding/analysis is not verifiable from the provided title/abstract/metadata alone.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.67,
+      "evidence_ledger": [
+        {
+          "candidate_key": "louie_expressive_2021",
+          "stage": "stage1",
+          "claim_id": "inc_required_full_research_paper_long_form",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In an evaluation study with 26 composers creating 100+ pieces of music",
+              "location": "abstract",
+              "source_path": "candidate_record/abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.65,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "In an evaluation study with 26 composers creating 100+ pieces of music",
+          "location": "abstract",
+          "source_path": "candidate_record/abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "louie_expressive_2021",
+          "stage": "stage1",
+          "claim_id": "inc_required_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "training models capable of generating pieces with increasing long-range structure and musical coherence",
+              "location": "abstract",
+              "source_path": "candidate_record/abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "we investigate through a common framework how developments in both models and user interfaces are important for empowering co-creation",
+              "location": "abstract",
+              "source_path": "candidate_record/abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.8,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "training models capable of generating pieces with increasing long-range structure and musical coherence",
+          "location": "abstract",
+          "source_path": "candidate_record/abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "louie_expressive_2021",
+          "stage": "stage1",
+          "claim_id": "inc_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "create music that communicates particular imagery or ideas",
+              "location": "abstract",
+              "source_path": "candidate_record/abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.75,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "create music that communicates particular imagery or ideas",
+          "location": "abstract",
+          "source_path": "candidate_record/abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "louie_expressive_2021",
+          "stage": "stage1",
+          "claim_id": "inc_required_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.2,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "Evidence scope for coding and analysis includes the main text and appendices inside the paper.",
+          "location": "criteria inclusion_criteria.required[4]",
+          "source_path": "criteria_corrected_3papers/2307.05527.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "louie_expressive_2021",
+          "stage": "stage1",
+          "claim_id": "anyof_generative_audio_model_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we find that more expressive models and more steerable interfaces are important and complementary ways to make a difference",
+              "location": "abstract",
+              "source_path": "candidate_record/abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.7,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "we find that more expressive models and more steerable interfaces are important and complementary ways to make a difference",
+          "location": "abstract",
+          "source_path": "candidate_record/abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "ming_feature_2019",
+    "candidate_title": "Feature reinforcement with word embedding and parsing information in neural TTS",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "ming_feature_2019",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract describe a sequence-to-sequence neural text-to-speech (TTS) system that synthesizes speech, matching a generative audio model focus and an audio output domain. However, the provided evidence does not confirm the publication is a long-form full research paper (vs. an extended abstract) and does not establish that the coding scope includes main text and appendices; therefore, it should be reviewed in stage2.",
+      "route_reason": "Stage 1 supports neural TTS (generative audio) alignment, but full-paper/appendix scope required for coding cannot be verified from the provided title/abstract/metadata.",
+      "unknown_reason": "",
+      "missingness_reason": "deferred_to_stage2",
+      "confidence": 0.62,
+      "evidence_ledger": [
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage1",
+          "claim_id": "INCL_TOPIC_GENERATIVE_AUDIO_MODEL_PRIMARY_FOCUS",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "bcpcs_stage1_verifier",
+          "quote": "sequence-to-sequence neural text-to-speech (TTS) synthesis framework",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage1",
+          "claim_id": "INCL_OUTPUT_DOMAIN_ENTIRELY_AUDIO",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "synthesized speech",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage1_verifier",
+          "quote": "synthesized speech",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage1",
+          "claim_id": "ANYOF_GENERATIVE_AUDIO_MODEL_FOCUS",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "neural TTS system",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs_stage1_verifier",
+          "quote": "neural TTS system",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage1",
+          "claim_id": "INCL_FULL_RESEARCH_PAPER_LONG_FORM",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "In this paper, we propose",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "deferred_to_stage2",
+          "confidence": 0.45,
+          "verifier_model": "bcpcs_stage1_verifier",
+          "quote": "In this paper, we propose",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "ming_feature_2019",
+          "stage": "stage1",
+          "claim_id": "INCL_EVIDENCE_SCOPE_MAIN_TEXT_AND_APPENDICES",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "deferred_to_stage2",
+          "confidence": 0.3,
+          "verifier_model": "bcpcs_stage1_verifier",
+          "quote": "",
+          "location": "",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": false
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "sawata_versatile_nodate",
+    "candidate_title": "Diffiner: A Versatile Diffusion-based Generative Refiner for Speech Enhancement",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "sawata_versatile_nodate",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract describe a diffusion-based generative model applied to speech enhancement and producing refined speech, supporting the generative-audio-focus and audio-only output criteria. However, the provided stage-1 record does not confirm (a) that this is a long-form full research paper (vs. an extended abstract) and (b) that the paper’s analyzed/codable scope includes main text plus appendices, so eligibility is unresolved.",
+      "route_reason": "Stage 1 supports generative-audio and audio-only output, but it cannot verify long-form full-paper status or appendix-inclusive scope from the supplied title/abstract/metadata alone. Full-text review is needed.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.72,
+      "evidence_ledger": [
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage1",
+          "claim_id": "CR1_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.35,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "arxiv",
+          "location": "metadata.source",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage1",
+          "claim_id": "CR2_topic_is_generative_audio_model_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we introduce a DNN-based generative refiner, Diffiner",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "We train a diffusion-based generative model",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.92,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "we introduce a DNN-based generative refiner, Diffiner",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage1",
+          "claim_id": "CR3_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "dataset consisting of clean speech only",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "resulting in refined speech",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "resulting in refined speech",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage1",
+          "claim_id": "CR4_evidence_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.3,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "Experimental results show",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sawata_versatile_nodate",
+          "stage": "stage1",
+          "claim_id": "ANY1_generative_audio_model_focus_introduces_generative_audio_model_or_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "we introduce a DNN-based generative refiner, Diffiner",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "we introduce a DNN-based generative refiner, Diffiner",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "sekiguchi_semi-supervised_2019",
+    "candidate_title": "Semi-Supervised Multichannel Speech Enhancement With a Deep Speech Prior",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "sekiguchi_semi-supervised_2019",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract indicate the paper’s primary focus is a deep generative speech model applied to multichannel speech enhancement (audio domain). However, the provided record does not confirm (1) whether this is a long-form full research paper versus a non-full-paper format, nor (2) whether the coding/analysis scope includes main text and appendices. Therefore, it should be routed to stage 2 for confirmation.",
+      "route_reason": "Stage 1 evidence is sufficient to suspect match on generative audio model + audio-only output, but it is insufficient to verify full-paper (long-form) status and appendix/main-text inclusion scope; route to stage 2.",
+      "unknown_reason": "",
+      "missingness_reason": "deferred_to_stage2",
+      "confidence": 0.63,
+      "evidence_ledger": [
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_topic_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "replace a low-rank speech model with a deep generative speech model",
+              "location": "Abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.9,
+          "verifier_model": "stage1-reviewer",
+          "quote": "replace a low-rank speech model with a deep generative speech model",
+          "location": "Abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage1",
+          "claim_id": "any_of_generative_audio_model_focus_introduces_generative_audio_model",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "deep generative speech model",
+              "location": "Abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "stage1-reviewer",
+          "quote": "deep generative speech model",
+          "location": "Abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "semi-supervised multichannel speech enhancement method",
+              "location": "Abstract",
+              "source_path": "candidate_visible_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "stage1-reviewer",
+          "quote": "semi-supervised multichannel speech enhancement method",
+          "location": "Abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_full_research_paper_long_form",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "metadata_ambiguity",
+          "confidence": 0.28,
+          "verifier_model": "stage1-reviewer",
+          "quote": "\"source\": \"openalex\"",
+          "location": "Metadata",
+          "source_path": "candidate_visible_record.metadata",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "sekiguchi_semi-supervised_2019",
+          "stage": "stage1",
+          "claim_id": "inclusion_required_evidence_scope_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.25,
+          "verifier_model": "stage1-reviewer",
+          "quote": "Experimental results showed",
+          "location": "Abstract",
+          "source_path": "candidate_visible_record.abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "shankar_non-parallel_2020",
+    "candidate_title": "Non-parallel Emotion Conversion using a Deep-Generative Hybrid Network and an Adversarial Pair Discriminator",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "shankar_non-parallel_2020",
+      "stage": "stage1",
+      "final_stage_decision": "route_to_stage2",
+      "decision_rationale": "The title/abstract describe a GAN-based generative approach for emotion conversion in speech and evaluate the quality of synthesized speech, indicating an audio-only generative-model application. However, the provided metadata/title/abstract do not allow verification that the submission is a full long-form research paper (vs. a non-full form) and do not confirm that the coding scope includes main text and appendices, so the case is routed to stage 2 for verification.",
+      "route_reason": "Stage 1 cannot verify inclusion required criteria on full long-form paper status and appendix-inclusive coding scope from the supplied evidence alone.",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.66,
+      "evidence_ledger": [
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage1",
+          "claim_id": "IC2_topic_is_generative_audio_models_primary_focus",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "emotion conversion in speech",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "cycle-GAN schema",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "fixed generative block",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.88,
+          "verifier_model": "bcpcs_stage1_screening_reviewer",
+          "quote": "variational cycle-GAN (VC-GAN)",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage1",
+          "claim_id": "IC3_output_domain_entirely_audio",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "quality of synthesized speech",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "speech produced by Wavenet",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.84,
+          "verifier_model": "bcpcs_stage1_screening_reviewer",
+          "quote": "quality of synthesized speech",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage1",
+          "claim_id": "IC1_full_research_paper_long_form_not_extended_abstract",
+          "evidence_status": "unknown",
+          "support_spans": [
+            {
+              "quote": "arxiv",
+              "location": "metadata",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "metadata"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "metadata_ambiguity",
+          "confidence": 0.45,
+          "verifier_model": "bcpcs_stage1_screening_reviewer",
+          "quote": "arxiv",
+          "location": "metadata",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage1",
+          "claim_id": "IC4_coding_scope_includes_main_text_and_appendices",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "not_observed_stage1",
+          "confidence": 0.35,
+          "verifier_model": "bcpcs_stage1_screening_reviewer",
+          "quote": "main text and appendices inside the paper",
+          "location": "criteria",
+          "source_path": "criteria_stage1/2307.05527.json",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "shankar_non-parallel_2020",
+          "stage": "stage1",
+          "claim_id": "A1_generative_audio_model_focus_introduces_generative_audio_model_or_application",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "cycle-GAN schema",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "variational cycle-GAN (VC-GAN)",
+              "location": "abstract",
+              "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs_stage1_screening_reviewer",
+          "quote": "cycle-GAN schema",
+          "location": "abstract",
+          "source_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    }
+  },
+  {
+    "paper_id": "2307.05527",
+    "candidate_key": "zhang_incorporating_2021",
+    "candidate_title": "Incorporating Multi-Target in Multi-Stage Speech Enhancement Model for Better Generalization",
+    "phase": "stage1_review",
+    "stage": "stage1",
+    "model": "",
+    "criteria_path": "criteria_stage1/2307.05527.json",
+    "metadata_path": "refs/2307.05527/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "zhang_incorporating_2021",
+      "stage": "stage1",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "The title/abstract describe a multi-stage speech enhancement/denoising model (e.g., “Speech Enhancement Model”, “speech denoising task”) rather than introducing or analyzing generative audio models as the primary focus, so the paper does not meet the generative audio model focus inclusion requirement.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "semantic_non_fit",
+      "confidence": 0.84,
+      "evidence_ledger": [
+        {
+          "candidate_key": "zhang_incorporating_2021",
+          "stage": "stage1",
+          "claim_id": "IC_topic_is_generative_audio_models_primary_focus",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Speech Enhancement Model",
+              "location": "title",
+              "source_path": "candidate_record.title",
+              "source_field": "title"
+            },
+            {
+              "quote": "speech denoising task",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.86,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "Speech Enhancement Model",
+          "location": "title",
+          "source_path": "candidate_record.title",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "zhang_incorporating_2021",
+          "stage": "stage1",
+          "claim_id": "AO_generative_audio_model_focus_any_of",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "speech denoising task",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            },
+            {
+              "quote": "masking target, the mapping target",
+              "location": "abstract",
+              "source_path": "candidate_record.abstract",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "semantic_non_fit",
+          "confidence": 0.83,
+          "verifier_model": "bcpcs_stage1_reviewer",
+          "quote": "masking target, the mapping target",
+          "location": "abstract",
+          "source_path": "candidate_record.abstract",
+          "span_validated": true
+        }
+      ]
+    }
+  }
+]
