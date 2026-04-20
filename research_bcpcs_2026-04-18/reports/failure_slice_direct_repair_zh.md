@@ -4,6 +4,8 @@
 
 **Correction 2026-04-20**：先前版本把 hybrid row 標成 promoted；這在 V2 promotion rule 下是錯的。Hybrid / reused-baseline / mixed-model result 只能作 diagnostic，不能代表 `gpt-5-nano` 或 `gpt-5.4-nano` 任一純模型達標。
 
+**Superseded by V3 recall repair**：後續 `recall_boundary_maybe_v1` pure-model full127 runs 已另行記錄於 `failure_slice_recall_repair_zh.md` 和 `failure_slice_promotion_status_v3.json`。本報告只描述 direct local-packet profile 的 failed diagnostic。
+
 ## Promotion Requirements V2
 
 - `gpt-5-nano` full127 pure-model auto F1 must be > `0.8000`

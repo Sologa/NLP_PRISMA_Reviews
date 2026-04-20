@@ -9,7 +9,7 @@ from typing import Any
 from failure_slice_common import REPORTS_ROOT, RUNS_ROOT, read_json, repo_rel, utc_now_iso, write_json
 
 
-POLICY_VERSION = "pure_model_full127_gt_0p8_v2"
+POLICY_VERSION = "pure_model_full127_gt_0p8_v3_recall_repair_aware"
 REQUIRED_MODELS = ("gpt-5-nano", "gpt-5.4-nano")
 AUTO_F1_STRICT_THRESHOLD = 0.8
 MIN_COVERAGE = 0.98
@@ -187,15 +187,26 @@ def write_markdown(status: dict[str, Any]) -> None:
             )
             + " |"
         )
+    lines.extend(["", "## Corrected Interpretation", ""])
+    if status["overall_passed"]:
+        lines.extend(
+            [
+                "- 目前兩個 required pure-model full127 runs 都達到 `auto_decidable_f1 > 0.8`。",
+                "- 達標 run 來自 V3 recall repair profile；它是 recall-biased failure-slice diagnostic，不是 full benchmark 或 production replacement。",
+                "- `maybe` 在 repo default `include_or_maybe` metric 下計為 positive，因此必須和 maybe counts / regression risk 一起解讀。",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                "- 目前沒有任何 required pure-model full127 run 達到 `>0.8`。",
+                "- 下一步應先做 FN/FP taxonomy 與 criteria/evidence-window coverage 分析，不應把失敗 profile 直接擴大或宣稱成功。",
+            ]
+        )
     lines.extend(
         [
-            "",
-            "## Corrected Interpretation",
-            "",
-            "- 目前沒有任何純模型 full127 run 達到 `>0.8`。",
-            "- `bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1` 是 `diagnostic_only_not_promoted`，因為它混用了 direct primary rows 與 locked-baseline secondary rows。",
-            "- `gpt-5.4-nano` direct profile 的 primary22 表現可作 smoke success，但 secondary105 regression 使 full127 不達標。",
-            "- 下一步應先做 FN/FP taxonomy 與 criteria/evidence-window coverage 分析，不應把目前 local-packet profile 直接擴大或宣稱成功。",
+            "- `bcpcs_direct_hybrid_primary22_gpt54nano_xhigh_secondary_lockedbaseline_2026-04-20_v1` 仍是 `diagnostic_only_not_promoted`，因為它混用了 direct primary rows 與 locked-baseline secondary rows。",
+            "- primary22 表現只能作 smoke success，不能替代 full127 promotion。",
         ]
     )
     (REPORTS_ROOT / "failure_slice_requirement_correction_zh.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
@@ -206,9 +217,11 @@ def write_queue_status_v2(status: dict[str, Any]) -> None:
         "created_at": status["generated_at"],
         "policy_version": status["policy_version"],
         "promoted_run_id": None,
-        "promoted_run_ids": [],
+        "promoted_run_ids": status["promoted_run_ids"],
         "overall_passed": status["overall_passed"],
-        "stop_reason": "pure_model_full127_gt_0p8_requirement_not_met",
+        "stop_reason": "pure_model_full127_gt_0p8_requirement_met"
+        if status["overall_passed"]
+        else "pure_model_full127_gt_0p8_requirement_not_met",
         "diagnostic_only_not_promoted_run_ids": status["rejected_hybrid_or_reused_run_ids"],
         "note": "Previous hybrid promotion language is superseded. Hybrid/reused-baseline rows cannot satisfy the pure-model full127 >0.8 requirement.",
     }
@@ -223,6 +236,7 @@ def main() -> None:
     status = build_status()
     if args.write_reports:
         write_json(REPORTS_ROOT / "failure_slice_promotion_status_v2.json", status)
+        write_json(REPORTS_ROOT / "failure_slice_promotion_status_v3.json", status)
         write_markdown(status)
         write_queue_status_v2(status)
     print(json.dumps({
