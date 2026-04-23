@@ -1,6 +1,6 @@
 # BCPCS Failure-Slice Leakage Audit
 
-- run_id：`bcpcs_recall_v3_full127_gpt-54-nano_recall_boundary_maybe_v1_2026-04-20_v1`
+- run_id：`bcpcs_recall_v3_full127_gpt-54-mini_recall_boundary_maybe_v1_2026-04-22_v1`
 - failure-slice keys 只用於選 key；gold/error taxonomy 只允許最終 evaluation/reporting 使用。
 - reviewer prompt 禁止包含 gold label、previous prediction、correctness、error taxonomy、forensic rationale 或 appendix fix direction。
 - criteria/gold tension cases 不作為 primary unbiased improvement evidence。
@@ -15,8 +15,8 @@
 - schema_failure_count：`0`
 - schema_checked_stage_outputs：`254`
 - output_path_audit_ok：`False`
-- outside_research_change_count：`3`
+- outside_research_change_count：`7`
 - cost_ledger_ok：`True`
 - direct_forbidden_prompt_hit_count：`0`
 
-Run workspace：`research_bcpcs_2026-04-18/runs/bcpcs_recall_v3_full127_gpt-54-nano_recall_boundary_maybe_v1_2026-04-20_v1`
+Run workspace：`research_bcpcs_2026-04-18/runs/bcpcs_recall_v3_full127_gpt-54-mini_recall_boundary_maybe_v1_2026-04-22_v1`

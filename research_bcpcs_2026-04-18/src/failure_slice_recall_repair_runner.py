@@ -45,7 +45,7 @@ from scripts.screening.experiment_workflows import fulltext_payload_from_resolut
 from scripts.screening.openai_batch_runner import build_json_schema_response_format
 
 
-TODAY = "2026-04-20"
+TODAY = time.strftime("%Y-%m-%d")
 BASELINE_RUN_ID = "bcpcs_failure_slice_gpt5nano_2stage_async_2026-04-18_full127_v1"
 PROMOTION_AUTO_F1_STRICT_MIN = 0.8
 MIN_COVERAGE = 0.98
@@ -118,6 +118,16 @@ PROFILES: dict[str, RecallProfile] = {
         max_quotes=12,
         promotable=True,
         rates=CostRates(input_per_million=0.20, cached_input_per_million=0.02, output_per_million=1.25, batch_discount=0.0),
+    ),
+    "recall_boundary_maybe_v1_gpt54mini": RecallProfile(
+        profile_id="recall_boundary_maybe_v1",
+        model="gpt-5.4-mini",
+        reasoning_effort="low",
+        max_completion_tokens=4096,
+        evidence_packet_chars=9000,
+        max_quotes=12,
+        promotable=False,
+        rates=CostRates(input_per_million=0.75, cached_input_per_million=0.075, output_per_million=4.50, batch_discount=0.0),
     ),
 }
 

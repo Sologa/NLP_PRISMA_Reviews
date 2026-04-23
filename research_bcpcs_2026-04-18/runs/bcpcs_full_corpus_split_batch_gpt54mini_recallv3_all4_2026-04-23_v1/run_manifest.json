@@ -1,0 +1,227 @@
+{
+  "run_id": "bcpcs_full_corpus_split_batch_gpt54mini_recallv3_all4_2026-04-23_v1",
+  "created_at": "2026-04-23T04:05:40+00:00",
+  "updated_at": "2026-04-23T04:19:25+00:00",
+  "status": "completed",
+  "model": "gpt-5.4-mini",
+  "workflow": "bcpcs_v3_recall_repair_split_batch_full_corpus",
+  "paper_ids": [
+    "2307.05527",
+    "2409.13738",
+    "2511.13936",
+    "2601.19926"
+  ],
+  "notes": [
+    "This top-level run uses four smaller Batch jobs after a single all4 Batch stayed in_progress with zero completed requests."
+  ],
+  "child_runs": {
+    "2307.05527": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2307.05527_2026-04-23_v1",
+      "submit_result": {
+        "status": "submitted",
+        "estimate": {
+          "created_at": "2026-04-23T04:05:47+00:00",
+          "phase": "stage2_recall_repair_batch",
+          "request_count": 208,
+          "estimated_input_tokens": 1325805,
+          "estimated_output_tokens": 851968,
+          "estimated_cost_usd": 2.414104875,
+          "cost_cap_usd": 10.0,
+          "would_exceed_cost_cap": false,
+          "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request with Batch discount"
+        },
+        "batch": {
+          "id": "batch_69e99a9e0cd88190ac44d4b0cb7e6b0a",
+          "completion_window": "24h",
+          "created_at": 1776917150,
+          "endpoint": "/v1/chat/completions",
+          "input_file_id": "file-Vgxz3RBRnxPJQp8XBXDgzV",
+          "object": "batch",
+          "status": "validating",
+          "cancelled_at": null,
+          "cancelling_at": null,
+          "completed_at": null,
+          "error_file_id": null,
+          "errors": null,
+          "expired_at": null,
+          "expires_at": 1777003550,
+          "failed_at": null,
+          "finalizing_at": null,
+          "in_progress_at": null,
+          "metadata": {
+            "experiment": "bcpcs_full_corpus_batch",
+            "run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2307.05527_2026-04-23_v1",
+            "phase": "stage2_recall_repair_batch",
+            "model": "gpt-5.4-mini"
+          },
+          "model": null,
+          "output_file_id": null,
+          "request_counts": {
+            "completed": 0,
+            "failed": 0,
+            "total": 0
+          },
+          "usage": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 0,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 0
+          }
+        }
+      },
+      "status": "completed"
+    },
+    "2409.13738": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2409.13738_2026-04-23_v1",
+      "submit_result": {
+        "status": "submitted",
+        "estimate": {
+          "created_at": "2026-04-23T04:05:53+00:00",
+          "phase": "stage2_recall_repair_batch",
+          "request_count": 65,
+          "estimated_input_tokens": 396487,
+          "estimated_output_tokens": 266240,
+          "estimated_cost_usd": 0.7477226249999999,
+          "cost_cap_usd": 10.0,
+          "would_exceed_cost_cap": false,
+          "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request with Batch discount"
+        },
+        "batch": {
+          "id": "batch_69e99aa2c53c81908f65c087eed7b976",
+          "completion_window": "24h",
+          "created_at": 1776917154,
+          "endpoint": "/v1/chat/completions",
+          "input_file_id": "file-WPN8j1zeXun183QNmrJrh3",
+          "object": "batch",
+          "status": "validating",
+          "cancelled_at": null,
+          "cancelling_at": null,
+          "completed_at": null,
+          "error_file_id": null,
+          "errors": null,
+          "expired_at": null,
+          "expires_at": 1777003554,
+          "failed_at": null,
+          "finalizing_at": null,
+          "in_progress_at": null,
+          "metadata": {
+            "experiment": "bcpcs_full_corpus_batch",
+            "run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2409.13738_2026-04-23_v1",
+            "phase": "stage2_recall_repair_batch",
+            "model": "gpt-5.4-mini"
+          },
+          "model": null,
+          "output_file_id": null,
+          "request_counts": {
+            "completed": 0,
+            "failed": 0,
+            "total": 0
+          },
+          "usage": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 0,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 0
+          }
+        }
+      },
+      "status": "completed"
+    },
+    "2511.13936": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2511.13936_2026-04-23_v1",
+      "submit_result": {
+        "status": "submitted",
+        "estimate": {
+          "created_at": "2026-04-23T04:16:47+00:00",
+          "phase": "stage2_recall_repair_batch",
+          "request_count": 75,
+          "estimated_input_tokens": 430342,
+          "estimated_output_tokens": 307200,
+          "estimated_cost_usd": 0.8525782499999999,
+          "cost_cap_usd": 10.0,
+          "would_exceed_cost_cap": false,
+          "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request with Batch discount"
+        },
+        "batch": {
+          "id": "batch_69e99d3278fc8190be89b86c680afb3c",
+          "status": "validating"
+        }
+      },
+      "resubmitted_after_zero_progress_cancel": true,
+      "status": "completed"
+    },
+    "2601.19926": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2601.19926_2026-04-23_v1",
+      "submit_result": {
+        "status": "submitted",
+        "estimate": {
+          "created_at": "2026-04-23T04:06:13+00:00",
+          "phase": "stage2_recall_repair_batch",
+          "request_count": 359,
+          "estimated_input_tokens": 2046813,
+          "estimated_output_tokens": 1470464,
+          "estimated_cost_usd": 4.076098875,
+          "cost_cap_usd": 10.0,
+          "would_exceed_cost_cap": false,
+          "estimate_policy": "input tokenizer_or_char_overestimate; output max_completion_tokens per request with Batch discount"
+        },
+        "batch": {
+          "id": "batch_69e99ab830bc8190a570be46838da5dc",
+          "completion_window": "24h",
+          "created_at": 1776917176,
+          "endpoint": "/v1/chat/completions",
+          "input_file_id": "file-KxKVeUDczdbnsPHEYz38UF",
+          "object": "batch",
+          "status": "validating",
+          "cancelled_at": null,
+          "cancelling_at": null,
+          "completed_at": null,
+          "error_file_id": null,
+          "errors": null,
+          "expired_at": null,
+          "expires_at": 1777003576,
+          "failed_at": null,
+          "finalizing_at": null,
+          "in_progress_at": null,
+          "metadata": {
+            "experiment": "bcpcs_full_corpus_batch",
+            "run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2601.19926_2026-04-23_v1",
+            "phase": "stage2_recall_repair_batch",
+            "model": "gpt-5.4-mini"
+          },
+          "model": null,
+          "output_file_id": null,
+          "request_counts": {
+            "completed": 0,
+            "failed": 0,
+            "total": 0
+          },
+          "usage": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "cached_tokens": 0
+            },
+            "output_tokens": 0,
+            "output_tokens_details": {
+              "reasoning_tokens": 0
+            },
+            "total_tokens": 0
+          }
+        }
+      },
+      "status": "completed"
+    }
+  },
+  "summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_full_corpus_split_batch_gpt54mini_recallv3_all4_2026-04-23_v1/evaluation_summary_full_corpus_split.json",
+  "report_path": "research_bcpcs_2026-04-18/reports/bcpcs_full_corpus_split_batch_gpt54mini_recallv3_all4_2026-04-23_v1.REPORT_zh.md"
+}

@@ -1,0 +1,287 @@
+{
+  "run_id": "bcpcs_full_corpus_split_batch_gpt54mini_recallv3_all4_2026-04-23_v1",
+  "model": "gpt-5.4-mini",
+  "workflow": "bcpcs_v3_recall_repair_split_batch_full_corpus",
+  "paper_ids": [
+    "2307.05527",
+    "2409.13738",
+    "2511.13936",
+    "2601.19926"
+  ],
+  "child_run_ids": [
+    "bcpcs_full_corpus_batch_gpt54mini_recallv3_2307.05527_2026-04-23_v1",
+    "bcpcs_full_corpus_batch_gpt54mini_recallv3_2409.13738_2026-04-23_v1",
+    "bcpcs_full_corpus_batch_gpt54mini_recallv3_2511.13936_2026-04-23_v1",
+    "bcpcs_full_corpus_batch_gpt54mini_recallv3_2601.19926_2026-04-23_v1"
+  ],
+  "row_count": 754,
+  "overall": {
+    "repo_compatible_f1": {
+      "precision": 0.7892503536067893,
+      "recall": 1.0,
+      "f1": 0.882213438735178,
+      "tp": 558,
+      "fp": 149,
+      "tn": 47,
+      "fn": 0,
+      "evaluated_count": 754,
+      "skipped_unknown_or_runtime_count": 0
+    },
+    "auto_decidable_f1": {
+      "precision": 0.7892503536067893,
+      "recall": 1.0,
+      "f1": 0.882213438735178,
+      "tp": 558,
+      "fp": 149,
+      "tn": 45,
+      "fn": 0,
+      "evaluated_count": 752,
+      "skipped_unknown_or_runtime_count": 2
+    },
+    "coverage": {
+      "row_count": 754,
+      "definite_decision_count": 752,
+      "definite_decision_rate": 0.9973474801061007,
+      "unknown_or_routed_count": 2,
+      "runtime_failure_count": 0,
+      "review_state_counts": {
+        "reviewed": 707,
+        "artifact_filtered": 11,
+        "cutoff_filtered": 34,
+        "stage2_not_available": 2
+      },
+      "decision_counts": {
+        "maybe": 419,
+        "include": 288,
+        "exclude": 45,
+        "unknown": 2
+      }
+    },
+    "evidence_validity": {
+      "stage_outputs": 1416,
+      "stage_outputs_with_ledger": 1416,
+      "ledger_rows": 2983,
+      "span_validated_rows": 2983,
+      "span_complete_rows": 2983,
+      "stage_output_ledger_coverage": 1.0,
+      "span_validated_rate": 1.0,
+      "span_completeness_rate": 1.0
+    }
+  },
+  "per_paper": {
+    "2307.05527": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2307.05527_2026-04-23_v1",
+      "repo_compatible_f1": {
+        "precision": 0.8221153846153846,
+        "recall": 1.0,
+        "f1": 0.9023746701846965,
+        "tp": 171,
+        "fp": 37,
+        "tn": 14,
+        "fn": 0,
+        "evaluated_count": 222,
+        "skipped_unknown_or_runtime_count": 0
+      },
+      "auto_decidable_f1": {
+        "precision": 0.8221153846153846,
+        "recall": 1.0,
+        "f1": 0.9023746701846965,
+        "tp": 171,
+        "fp": 37,
+        "tn": 12,
+        "fn": 0,
+        "evaluated_count": 220,
+        "skipped_unknown_or_runtime_count": 2
+      },
+      "coverage": {
+        "row_count": 222,
+        "definite_decision_count": 220,
+        "definite_decision_rate": 0.990990990990991,
+        "unknown_or_routed_count": 2,
+        "runtime_failure_count": 0,
+        "review_state_counts": {
+          "reviewed": 208,
+          "artifact_filtered": 4,
+          "cutoff_filtered": 8,
+          "stage2_not_available": 2
+        },
+        "decision_counts": {
+          "maybe": 190,
+          "include": 18,
+          "exclude": 12,
+          "unknown": 2
+        }
+      },
+      "evidence_validity": {
+        "stage_outputs": 418,
+        "stage_outputs_with_ledger": 418,
+        "ledger_rows": 860,
+        "span_validated_rows": 860,
+        "span_complete_rows": 860,
+        "stage_output_ledger_coverage": 1.0,
+        "span_validated_rate": 1.0,
+        "span_completeness_rate": 1.0
+      },
+      "cost_usd": 0.5307262500000004
+    },
+    "2409.13738": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2409.13738_2026-04-23_v1",
+      "repo_compatible_f1": {
+        "precision": 0.3230769230769231,
+        "recall": 1.0,
+        "f1": 0.48837209302325585,
+        "tp": 21,
+        "fp": 44,
+        "tn": 19,
+        "fn": 0,
+        "evaluated_count": 84,
+        "skipped_unknown_or_runtime_count": 0
+      },
+      "auto_decidable_f1": {
+        "precision": 0.3230769230769231,
+        "recall": 1.0,
+        "f1": 0.48837209302325585,
+        "tp": 21,
+        "fp": 44,
+        "tn": 19,
+        "fn": 0,
+        "evaluated_count": 84,
+        "skipped_unknown_or_runtime_count": 0
+      },
+      "coverage": {
+        "row_count": 84,
+        "definite_decision_count": 84,
+        "definite_decision_rate": 1.0,
+        "unknown_or_routed_count": 0,
+        "runtime_failure_count": 0,
+        "review_state_counts": {
+          "artifact_filtered": 4,
+          "reviewed": 65,
+          "cutoff_filtered": 15
+        },
+        "decision_counts": {
+          "exclude": 19,
+          "maybe": 46,
+          "include": 19
+        }
+      },
+      "evidence_validity": {
+        "stage_outputs": 130,
+        "stage_outputs_with_ledger": 130,
+        "ledger_rows": 271,
+        "span_validated_rows": 271,
+        "span_complete_rows": 271,
+        "stage_output_ledger_coverage": 1.0,
+        "span_validated_rate": 1.0,
+        "span_completeness_rate": 1.0
+      },
+      "cost_usd": 0.14799862500000002
+    },
+    "2511.13936": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2511.13936_2026-04-23_v1",
+      "repo_compatible_f1": {
+        "precision": 0.4,
+        "recall": 1.0,
+        "f1": 0.5714285714285715,
+        "tp": 30,
+        "fp": 45,
+        "tn": 13,
+        "fn": 0,
+        "evaluated_count": 88,
+        "skipped_unknown_or_runtime_count": 0
+      },
+      "auto_decidable_f1": {
+        "precision": 0.4,
+        "recall": 1.0,
+        "f1": 0.5714285714285715,
+        "tp": 30,
+        "fp": 45,
+        "tn": 13,
+        "fn": 0,
+        "evaluated_count": 88,
+        "skipped_unknown_or_runtime_count": 0
+      },
+      "coverage": {
+        "row_count": 88,
+        "definite_decision_count": 88,
+        "definite_decision_rate": 1.0,
+        "unknown_or_routed_count": 0,
+        "runtime_failure_count": 0,
+        "review_state_counts": {
+          "reviewed": 75,
+          "cutoff_filtered": 11,
+          "artifact_filtered": 2
+        },
+        "decision_counts": {
+          "maybe": 56,
+          "include": 19,
+          "exclude": 13
+        }
+      },
+      "evidence_validity": {
+        "stage_outputs": 150,
+        "stage_outputs_with_ledger": 150,
+        "ledger_rows": 323,
+        "span_validated_rows": 323,
+        "span_complete_rows": 323,
+        "stage_output_ledger_coverage": 1.0,
+        "span_validated_rate": 1.0,
+        "span_completeness_rate": 1.0
+      },
+      "cost_usd": 0.165298875
+    },
+    "2601.19926": {
+      "child_run_id": "bcpcs_full_corpus_batch_gpt54mini_recallv3_2601.19926_2026-04-23_v1",
+      "repo_compatible_f1": {
+        "precision": 0.935933147632312,
+        "recall": 1.0,
+        "f1": 0.9669064748201438,
+        "tp": 336,
+        "fp": 23,
+        "tn": 1,
+        "fn": 0,
+        "evaluated_count": 360,
+        "skipped_unknown_or_runtime_count": 0
+      },
+      "auto_decidable_f1": {
+        "precision": 0.935933147632312,
+        "recall": 1.0,
+        "f1": 0.9669064748201438,
+        "tp": 336,
+        "fp": 23,
+        "tn": 1,
+        "fn": 0,
+        "evaluated_count": 360,
+        "skipped_unknown_or_runtime_count": 0
+      },
+      "coverage": {
+        "row_count": 360,
+        "definite_decision_count": 360,
+        "definite_decision_rate": 1.0,
+        "unknown_or_routed_count": 0,
+        "runtime_failure_count": 0,
+        "review_state_counts": {
+          "reviewed": 359,
+          "artifact_filtered": 1
+        },
+        "decision_counts": {
+          "maybe": 127,
+          "include": 232,
+          "exclude": 1
+        }
+      },
+      "evidence_validity": {
+        "stage_outputs": 718,
+        "stage_outputs_with_ledger": 718,
+        "ledger_rows": 1529,
+        "span_validated_rows": 1529,
+        "span_complete_rows": 1529,
+        "stage_output_ledger_coverage": 1.0,
+        "span_validated_rate": 1.0,
+        "span_completeness_rate": 1.0
+      },
+      "cost_usd": 0.8308638749999998
+    }
+  },
+  "total_cost_usd": 1.6748876250000002
+}
