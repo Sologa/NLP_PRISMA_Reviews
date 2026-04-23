@@ -1,0 +1,165 @@
+{
+  "run_id": "bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1",
+  "experiment_name": "bcpcs_failure_slice_recall_repair_v3",
+  "created_at": "2026-04-23T05:22:02+00:00",
+  "updated_at": "2026-04-23T05:22:12+00:00",
+  "scope": "full127",
+  "sample_limit": null,
+  "model": "gpt-5.4-mini",
+  "profile_id": "recall_boundary_maybe_v1",
+  "endpoint": "/v1/chat/completions",
+  "reviewer": "single_reviewer",
+  "workflow": "direct_sync_allroute_recall_boundary_maybe",
+  "reasoning_effort": "low",
+  "max_completion_tokens": 4096,
+  "cost_cap_usd": 10.0,
+  "status": "guardrail_passed",
+  "run_dir": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1",
+  "is_failure_slice_dev_diagnostic": true,
+  "not_unbiased_evaluation": true,
+  "not_full_benchmark_evidence": true,
+  "write_scope": "research_bcpcs_2026-04-18 only",
+  "source_counts": {
+    "total_count": 127,
+    "primary_count": 22,
+    "secondary_count": 105,
+    "primary_label_counts": {
+      "criteria_or_gold_tension": 105,
+      "paper_evidence_incomplete": 9,
+      "reviewer_semantic_gap": 13
+    },
+    "per_paper_counts": {
+      "2307.05527": 41,
+      "2409.13738": 5,
+      "2511.13936": 5,
+      "2601.19926": 76
+    },
+    "per_paper_primary_counts": {
+      "2307.05527": 11,
+      "2409.13738": 1,
+      "2511.13936": 4,
+      "2601.19926": 6
+    },
+    "per_paper_secondary_counts": {
+      "2307.05527": 30,
+      "2409.13738": 4,
+      "2511.13936": 1,
+      "2601.19926": 70
+    },
+    "selected_count": 127,
+    "selected_primary_count": 22,
+    "selected_secondary_count": 105
+  },
+  "promotion_requirements_v2": {
+    "pure_model_full127_auto_f1_must_be_greater_than": 0.8,
+    "pure_models_required": [
+      "gpt-5-nano",
+      "gpt-5.4-nano"
+    ],
+    "coverage_min": 0.98,
+    "runtime_failure_max": 0,
+    "hybrid_or_reused_baseline_runs_promotable": false
+  },
+  "recall_repair_policy": {
+    "stage1_policy": "synthetic diagnostic all-route handoff",
+    "decision_threshold": "exclude only when model asserts a clear hard exclusion; otherwise include/maybe/unknown are compiled recall-first",
+    "maybe_policy": "boundary, partial match, adjacent evidence, and evidence-incomplete cases compile to maybe rather than semantic exclude",
+    "maybe_counts_reported": true
+  },
+  "pre_run_git_status_short": [
+    " M .gitignore",
+    " M AGENTS.md",
+    " M bib/per_SR_cleaned/2310.07264/reference_oracle.jsonl",
+    " M bib/per_SR_cleaned/2312.05172/reference_oracle.jsonl",
+    " M bib/per_SR_cleaned/2507.07741/reference_oracle.jsonl",
+    " M research_bcpcs_2026-04-18/reports/failure_slice_leakage_audit_zh.md",
+    " M research_bcpcs_2026-04-18/src/bcpcs_full_corpus_batch_runner.py",
+    " M research_bcpcs_2026-04-18/src/failure_slice_direct_repair_runner.py",
+    " M research_bcpcs_2026-04-18/src/failure_slice_recall_repair_runner.py",
+    "?? .omx/",
+    "?? docs/deep_research/pdf_double_column_extraction_2026-04-23/",
+    "?? docs/pdf_download_automation_blockers_2026-04-20_zh.md",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_full_corpus_batch_gpt54mini_globalchecklist_dryrun_all4_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4_canary5_gpt54mini_full127_globalcheck_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4_dryrun_gpt54mini_full127_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4_full127_gpt54mini_globalcheck_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4b_primary22_gpt54mini_globalcheck_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4c_primary22_gpt54mini_globalcheck_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4d_primary22_gpt54mini_globalcheck_claimpackets_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4e_full127_gpt54mini_globalcheck_claimpackets_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4e_primary22_gpt54mini_globalcheck_claimpackets_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4f_full127_gpt54mini_globalcheck_claimpackets_compilerrelax_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4f_primary22_gpt54mini_globalcheck_claimpackets_compilerrelax_2026-04-23_v1/",
+    "?? research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1/",
+    "?? scripts/fulltext/pdf_extraction_utils.py",
+    "?? worker_r2_pdf_checks/"
+  ],
+  "pre_run_outside_research_changes": [
+    ".gitignore",
+    ".omx/",
+    "AGENTS.md",
+    "bib/per_SR_cleaned/2310.07264/reference_oracle.jsonl",
+    "bib/per_SR_cleaned/2312.05172/reference_oracle.jsonl",
+    "bib/per_SR_cleaned/2507.07741/reference_oracle.jsonl",
+    "docs/deep_research/pdf_double_column_extraction_2026-04-23/",
+    "docs/pdf_download_automation_blockers_2026-04-20_zh.md",
+    "scripts/fulltext/pdf_extraction_utils.py",
+    "worker_r2_pdf_checks/"
+  ],
+  "reused_direct_outputs_from_run_id": "bcpcs_recall_v4e_full127_gpt54mini_globalcheck_claimpackets_2026-04-23_v1",
+  "direct_phase": {
+    "artifact_dir": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1/direct_calls/stage2_recall_repair_decision/recall_boundary_maybe_v1",
+    "request_count": 127,
+    "success_count": 127,
+    "failure_count": 0,
+    "attempt_count": 127,
+    "pre_submit_estimate": {
+      "phase": "stage2_recall_repair_decision",
+      "created_at": "2026-04-23T05:11:08+00:00",
+      "request_count": 127,
+      "estimated_input_tokens": 895501,
+      "estimated_output_tokens": 520192,
+      "estimated_cost_usd": 3.01248975,
+      "prior_actual_or_estimated_cost_usd": 0.0,
+      "projected_total_cost_usd": 3.01248975,
+      "cost_cap_usd": 10.0,
+      "would_exceed_cost_cap": false,
+      "estimate_policy": "input tokenizer_or_char_overestimate; output profile max_completion_tokens per direct request"
+    },
+    "cost_summary": {
+      "created_at": "2026-04-23T05:22:12+00:00",
+      "cost_source": "reused_direct_outputs",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "total_cost_usd": 0.0,
+      "incremental_total_cost_usd": 0.0,
+      "reused_direct_outputs_from_run_id": "bcpcs_recall_v4e_full127_gpt54mini_globalcheck_claimpackets_2026-04-23_v1",
+      "source_cost_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4e_full127_gpt54mini_globalcheck_claimpackets_2026-04-23_v1/cost/cost_summary.json",
+      "phases": {}
+    },
+    "reused_direct_outputs_from_run_id": "bcpcs_recall_v4e_full127_gpt54mini_globalcheck_claimpackets_2026-04-23_v1"
+  },
+  "evaluation_summary_v2_path": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1/evaluation_summary_v2.json",
+  "validation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1/validation_summary.json",
+  "direct_validation_summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1/direct_validation_summary.json",
+  "error_analysis_path": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1/error_analysis.json",
+  "guardrail_status_path": "research_bcpcs_2026-04-18/runs/bcpcs_recall_v4g_full127_gpt54mini_globalcheck_claimpackets_compilerrelaxcov_2026-04-23_v1/guardrail_status.json",
+  "decision_counts": {
+    "all": {
+      "maybe": 78,
+      "include": 32,
+      "exclude": 16,
+      "unknown": 1
+    },
+    "primary22": {
+      "maybe": 18,
+      "include": 4
+    },
+    "secondary105": {
+      "maybe": 60,
+      "include": 28,
+      "exclude": 16,
+      "unknown": 1
+    }
+  }
+}

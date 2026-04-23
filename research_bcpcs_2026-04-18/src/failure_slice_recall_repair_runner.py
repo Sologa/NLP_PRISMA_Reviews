@@ -4,6 +4,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
+import shutil
 import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -13,6 +15,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from bcpcs_utils import compile_stub_graph
 import failure_slice_direct_repair_runner as direct
 import failure_slice_runner as base
 from failure_slice_common import (
@@ -58,31 +61,29 @@ class StrictModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
 
-class RecallRepairDecisionOutput(StrictModel):
-    candidate_key: str = Field(min_length=1)
-    stage: Literal["stage2_recall_repair"]
-    apparent_decision: Literal["include", "exclude", "maybe", "unknown"]
-    hard_exclusion: bool
-    hard_exclusion_reason: Literal[
-        "none",
-        "not_research_paper",
-        "clear_wrong_domain",
-        "clear_wrong_task",
-        "clear_wrong_population_or_modality",
-        "cutoff_or_artifact_failure",
-    ]
-    confidence: float = Field(ge=0, le=1)
+class CriterionAssessment(StrictModel):
+    claim_id: str = Field(min_length=1)
+    claim_type: Literal["inclusion", "exclusion"]
+    judgment: Literal["supported", "ambiguous", "not_supported"]
     support_quote_ids: list[str] = Field(default_factory=list)
     refute_quote_ids: list[str] = Field(default_factory=list)
+    short_rationale: str = Field(min_length=1, max_length=200)
+
+
+class RecallRepairDecisionOutput(StrictModel):
+    candidate_key: str = Field(min_length=1)
+    stage: Literal["stage2_global_checklist"]
+    proposed_decision: Literal["include", "exclude", "maybe", "unknown"]
+    confidence: float = Field(ge=0, le=1)
     missingness_reason: MissingnessReason
+    criterion_assessments: list[CriterionAssessment] = Field(min_length=1)
     decision_rationale: str = Field(min_length=1, max_length=600)
 
     @model_validator(mode="after")
-    def _hard_exclusion_has_reason(self) -> "RecallRepairDecisionOutput":
-        if self.hard_exclusion and self.hard_exclusion_reason == "none":
-            raise ValueError("hard_exclusion requires a reason")
-        if not self.hard_exclusion and self.hard_exclusion_reason != "none":
-            raise ValueError("hard_exclusion_reason must be none unless hard_exclusion is true")
+    def _criterion_ids_unique(self) -> "RecallRepairDecisionOutput":
+        claim_ids = [row.claim_id for row in self.criterion_assessments]
+        if len(claim_ids) != len(set(claim_ids)):
+            raise ValueError("criterion_assessments claim_id values must be unique")
         return self
 
 
@@ -211,7 +212,45 @@ def init_recall_run(*, run_id: str, scope: Literal["primary22", "full127"], prof
     return manifest
 
 
+def _claim_terms(text: str) -> list[str]:
+    raw = [token.replace("_", "-") for token in re.findall(r"[a-z][a-z0-9_-]{3,}", safe_text(text).lower())]
+    return [token for token in raw if token not in direct.STOPWORDS]
+
+
+def _claim_packets(*, paper_id: str, criteria: dict[str, Any], evidence_packet: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+    graph = compile_stub_graph(paper_id, "stage2")
+    quotes = evidence_packet.get("quotes", [])
+    packets: list[dict[str, Any]] = []
+    for claim in graph.get("claims", []):
+        claim_terms = _claim_terms(safe_text(claim.get("claim_text")))
+        ranked: list[tuple[int, str]] = []
+        for quote in quotes:
+            qid = safe_text(quote.get("quote_id"))
+            qtext = safe_text(quote.get("text")).lower()
+            if not qid or not qtext:
+                continue
+            score = 0
+            for term in claim_terms:
+                if " " in term:
+                    score += 4 if term in qtext else 0
+                else:
+                    score += min(qtext.count(term), 2)
+            if score:
+                ranked.append((score, qid))
+        ranked.sort(key=lambda item: (-item[0], item[1]))
+        packets.append(
+            {
+                "claim_id": claim["claim_id"],
+                "claim_type": claim["claim_type"],
+                "claim_text": claim["claim_text"],
+                "candidate_quote_ids": [qid for _score, qid in ranked[:3]],
+            }
+        )
+    return graph, packets
+
+
 def build_recall_prompt(*, paper_id: str, candidate_key: str, criteria: dict[str, Any], metadata: dict[str, Any], stage1_output: dict[str, Any] | None, evidence_packet: dict[str, Any], criteria_path: str, metadata_path: str) -> str:
+    _graph, claim_packets = _claim_packets(paper_id=paper_id, criteria=criteria, evidence_packet=evidence_packet)
     visible_record = {
         "paper_id": paper_id,
         "candidate_key": candidate_key,
@@ -228,17 +267,23 @@ def build_recall_prompt(*, paper_id: str, candidate_key: str, criteria: dict[str
         "stage1_bcpcs_handoff_compact": direct._compact_stage1(stage1_output),
     }
     rules = {
-        "task": "Make a recall-calibrated Stage 2 screening judgment for a failure-slice diagnostic.",
+        "task": "Assess every stage-2 criterion separately, then provide a compact proposed verdict. A deterministic compiler will recompute the final decision from your checklist.",
         "decision_values": ["include", "exclude", "maybe", "unknown"],
-        "positive_eval_policy": "include and maybe are positive under the repo default include_or_maybe metric.",
-        "recall_priority": [
-            "Use maybe for boundary cases, partial matches, adjacent evidence, or evidence that suggests possible eligibility.",
-            "Use maybe when title/abstract/metadata support the target topic but full-text quotes are incomplete.",
-            "Do not convert uncertainty or missingness into semantic exclude.",
+        "criterion_judgment_values": ["supported", "ambiguous", "not_supported"],
+        "criterion_semantics": [
+            "For inclusion claims: supported means the supplied quotes positively support the requirement; not_supported means the supplied quotes positively contradict it; ambiguous means the supplied evidence is insufficient or mixed.",
+            "For exclusion claims: supported means the supplied quotes positively support the exclusion; not_supported means the supplied quotes positively indicate the exclusion does not apply; ambiguous means the supplied evidence is insufficient or mixed.",
+            "Do not mark a claim as supported or not_supported without quote-backed evidence. If the quote support is weak or absent, use ambiguous.",
+            "Do not treat adjacency, partial topical overlap, lack of explicit wording, or boundary cases as quote-backed contradiction. Those remain ambiguous unless the quote explicitly says the claim is absent or the exclusion applies.",
+            "If most criteria are positive but one criterion is borderline or only indirectly suggested, keep that criterion ambiguous instead of forcing a negative judgment.",
         ],
-        "exclude_policy": [
-            "Use hard_exclusion=true only for clear hard contradiction: not a research paper, clear wrong domain, clear wrong task, clear wrong population/modality, or cutoff/artifact failure.",
-            "Do not set hard_exclusion=true merely because the case is symbolic, detector-like, adjacent, or only partially aligned unless the supplied criteria make that contradiction explicit and unambiguous.",
+        "decision_policy": [
+            "Do not use maybe as a default safety bucket.",
+            "Use include only when the required criteria appear satisfied and no exclusion criterion appears to apply.",
+            "Use exclude when supplied evidence clearly supports an exclusion criterion or clearly contradicts a required criterion.",
+            "Use maybe only when there is meaningful positive support for in-scope eligibility but at least one critical criterion remains unresolved.",
+            "Use unknown when the supplied evidence does not support either include or exclude strongly enough.",
+            "If your checklist is mostly positive but one criterion remains borderline, proposed_decision should usually be maybe rather than exclude.",
         ],
         "quote_policy": "Return quote_id values only; do not copy quote text into output.",
         "anti_leakage": "Use no answer-key fields, previous-run outputs, error taxonomies, forensic notes, or external knowledge.",
@@ -253,6 +298,8 @@ def build_recall_prompt(*, paper_id: str, candidate_key: str, criteria: dict[str
             _json_block(rules),
             "Stage 2 criteria JSON:",
             _json_block(criteria),
+            "Criterion checklist to assess:",
+            _json_block(claim_packets),
             "Candidate visible record:",
             _json_block(visible_record),
             "Deterministic evidence packet:",
@@ -308,6 +355,7 @@ def prepare_recall_requests(*, run_id: str, profile: RecallProfile) -> list[dict
                 max_chars=profile.evidence_packet_chars,
                 max_quotes=profile.max_quotes,
             )
+            criteria_graph, claim_packets = _claim_packets(paper_id=paper_id, criteria=criteria, evidence_packet=evidence_packet)
             stage1 = stage1_by_key.get((paper_id, key))
             prompt = build_recall_prompt(
                 paper_id=paper_id,
@@ -332,6 +380,8 @@ def prepare_recall_requests(*, run_id: str, profile: RecallProfile) -> list[dict
                     "metadata_path": repo_rel(metadata_path),
                     "fulltext_resolution": resolution,
                     "evidence_packet": evidence_packet,
+                    "criteria_graph": criteria_graph,
+                    "claim_packets": claim_packets,
                     "body": _build_body(profile=profile, prompt=prompt),
                 }
             )
@@ -462,18 +512,74 @@ def _quote_by_id(evidence_packet: dict[str, Any]) -> dict[str, dict[str, Any]]:
     return {safe_text(row.get("quote_id")): row for row in evidence_packet.get("quotes", []) if safe_text(row.get("quote_id"))}
 
 
-def _compile_final_decision(compact: dict[str, Any]) -> str:
-    apparent = safe_text(compact.get("apparent_decision"))
-    hard = bool(compact.get("hard_exclusion"))
-    refutes = compact.get("refute_quote_ids") if isinstance(compact.get("refute_quote_ids"), list) else []
-    supports = compact.get("support_quote_ids") if isinstance(compact.get("support_quote_ids"), list) else []
-    if apparent == "include":
-        return "include"
-    if hard and apparent == "exclude" and refutes and not supports:
-        return "exclude"
-    if apparent == "unknown" and compact.get("missingness_reason") in {"retrieval_failure", "metadata_ambiguity"}:
-        return "unknown"
-    return "maybe"
+def _valid_quote_ids(values: Any, quotes: dict[str, dict[str, Any]]) -> list[str]:
+    if not isinstance(values, list):
+        return []
+    return [safe_text(value) for value in values if safe_text(value) in quotes]
+
+
+def _normalized_assessment(row: dict[str, Any], *, quotes: dict[str, dict[str, Any]]) -> dict[str, Any]:
+    support_ids = _valid_quote_ids(row.get("support_quote_ids"), quotes)
+    refute_ids = _valid_quote_ids(row.get("refute_quote_ids"), quotes)
+    judgment = safe_text(row.get("judgment"))
+    if judgment == "supported" and support_ids and not refute_ids:
+        normalized = "supported"
+    elif judgment == "not_supported" and refute_ids and not support_ids:
+        normalized = "not_supported"
+    else:
+        normalized = "ambiguous"
+    return {
+        "claim_id": safe_text(row.get("claim_id")),
+        "claim_type": safe_text(row.get("claim_type")),
+        "judgment": normalized,
+        "support_quote_ids": support_ids,
+        "refute_quote_ids": refute_ids,
+        "short_rationale": safe_text(row.get("short_rationale")) or "no rationale supplied",
+    }
+
+
+def _compiled_assessments(compact: dict[str, Any], *, criteria_graph: dict[str, Any], quotes: dict[str, dict[str, Any]]) -> list[dict[str, Any]]:
+    source_rows = compact.get("criterion_assessments") if isinstance(compact.get("criterion_assessments"), list) else []
+    source_by_id = {safe_text(row.get("claim_id")): row for row in source_rows if isinstance(row, dict) and safe_text(row.get("claim_id"))}
+    compiled: list[dict[str, Any]] = []
+    for claim in criteria_graph.get("claims", []):
+        row = source_by_id.get(safe_text(claim.get("claim_id")))
+        if row:
+            compiled.append(_normalized_assessment(row, quotes=quotes))
+        else:
+            compiled.append(
+                {
+                    "claim_id": safe_text(claim.get("claim_id")),
+                    "claim_type": safe_text(claim.get("claim_type")),
+                    "judgment": "ambiguous",
+                    "support_quote_ids": [],
+                    "refute_quote_ids": [],
+                    "short_rationale": "criterion omitted by model; compiled as ambiguous",
+                }
+            )
+    return compiled
+
+
+def _compile_final_decision(compact: dict[str, Any], *, criteria_graph: dict[str, Any], quotes: dict[str, dict[str, Any]]) -> tuple[str, list[dict[str, Any]]]:
+    compiled = _compiled_assessments(compact, criteria_graph=criteria_graph, quotes=quotes)
+    required = [row for row in compiled if row["claim_type"] == "inclusion"]
+    exclusions = [row for row in compiled if row["claim_type"] == "exclusion"]
+    required_supported = sum(1 for row in required if row["judgment"] == "supported")
+    required_not_supported = sum(1 for row in required if row["judgment"] == "not_supported")
+    exclusion_supported = sum(1 for row in exclusions if row["judgment"] == "supported")
+    exclusion_not_supported = sum(1 for row in exclusions if row["judgment"] == "not_supported")
+    proposed = safe_text(compact.get("proposed_decision"))
+    if required and required_supported == len(required) and exclusion_supported == 0:
+        return "include", compiled
+    if required_supported == 0 and (required_not_supported > 0 or exclusion_supported > 0):
+        if proposed == "unknown" and exclusion_supported == 0 and exclusion_not_supported > 0:
+            return "maybe", compiled
+        return "exclude", compiled
+    if required_supported > 0:
+        return "maybe", compiled
+    if proposed == "unknown" and exclusion_supported == 0 and exclusion_not_supported > 0:
+        return "maybe", compiled
+    return "unknown", compiled
 
 
 def _span_from_quote(quote: dict[str, Any]) -> EvidenceSpan:
@@ -522,21 +628,27 @@ def _ledger_row(*, candidate_key: str, status: Literal["support", "refute", "unk
 
 def recall_output_to_stage_output(*, request: dict[str, Any], compact: dict[str, Any], profile: RecallProfile) -> dict[str, Any]:
     quotes = _quote_by_id(request["evidence_packet"])
-    support_ids = [qid for qid in compact.get("support_quote_ids", []) if qid in quotes]
-    refute_ids = [qid for qid in compact.get("refute_quote_ids", []) if qid in quotes]
-    final_decision = _compile_final_decision(compact)
+    final_decision, compiled = _compile_final_decision(compact, criteria_graph=request["criteria_graph"], quotes=quotes)
     missingness: MissingnessReason = compact.get("missingness_reason") or ("evidence_incomplete" if final_decision == "unknown" else "none")
+    if final_decision != "unknown" and missingness == "none":
+        missingness = "none"
     confidence = float(compact.get("confidence") or 0.0)
     ledger: list[dict[str, Any]] = []
-    for index, qid in enumerate(support_ids[:3], start=1):
-        ledger.append(_ledger_row(candidate_key=request["candidate_key"], status="support", quote=quotes[qid], claim_id=f"support_{index}", missingness_reason=missingness, confidence=confidence, verifier_model=profile.model))
-    for index, qid in enumerate(refute_ids[:2], start=1):
-        ledger.append(_ledger_row(candidate_key=request["candidate_key"], status="refute", quote=quotes[qid], claim_id=f"refute_{index}", missingness_reason=missingness, confidence=confidence, verifier_model=profile.model))
+    for row in compiled:
+        support_ids = row["support_quote_ids"]
+        refute_ids = row["refute_quote_ids"]
+        if row["judgment"] == "supported" and support_ids:
+            ledger.append(_ledger_row(candidate_key=request["candidate_key"], status="support", quote=quotes[support_ids[0]], claim_id=row["claim_id"], missingness_reason=missingness, confidence=confidence, verifier_model=profile.model))
+        elif row["judgment"] == "not_supported" and refute_ids:
+            ledger.append(_ledger_row(candidate_key=request["candidate_key"], status="refute", quote=quotes[refute_ids[0]], claim_id=row["claim_id"], missingness_reason=missingness, confidence=confidence, verifier_model=profile.model))
+        else:
+            fallback = next((quotes[qid] for qid in support_ids + refute_ids if qid in quotes), None)
+            ledger.append(_ledger_row(candidate_key=request["candidate_key"], status="unknown", quote=fallback, claim_id=row["claim_id"], missingness_reason=missingness, confidence=confidence, verifier_model=profile.model))
     if not ledger:
         fallback = next(iter(quotes.values()), None)
         ledger.append(_ledger_row(candidate_key=request["candidate_key"], status="unknown", quote=fallback, claim_id="decision_basis_boundary_or_incomplete", missingness_reason=missingness, confidence=confidence, verifier_model=profile.model))
     rationale = safe_text(compact.get("decision_rationale"))
-    compiler_note = f"Recall compiler final={final_decision}; model apparent={compact.get('apparent_decision')}; hard_exclusion={compact.get('hard_exclusion')}."
+    compiler_note = f"Global checklist compiler final={final_decision}; proposed={compact.get('proposed_decision')}; supported_claims={sum(1 for row in compiled if row['judgment'] == 'supported')}; contradicted_required={sum(1 for row in compiled if row['claim_type'] == 'inclusion' and row['judgment'] == 'not_supported')}."
     return StageReviewOutput(
         candidate_key=request["candidate_key"],
         stage="stage2",
@@ -662,6 +774,120 @@ def run_direct_phase(*, run_id: str, profile: RecallProfile, cost_cap_usd: float
         "attempt_count": len(all_attempt_rows),
         "pre_submit_estimate": estimate,
         "cost_summary": cost_summary,
+    }
+    write_json(rd / "run_manifest.json", manifest)
+    return parsed
+
+
+def rebuild_direct_phase_from_source(*, run_id: str, source_run_id: str, profile: RecallProfile) -> dict[str, Any]:
+    rd = run_dir(run_id)
+    artifact_dir = ensure_dir(rd / "direct_calls" / PHASE / profile.profile_id)
+    source_artifact_dir = run_dir(source_run_id) / "direct_calls" / PHASE / profile.profile_id
+    source_parsed_path = source_artifact_dir / "parsed_results.json"
+    if not source_parsed_path.exists():
+        raise FileNotFoundError(f"source parsed results not found: {source_parsed_path}")
+
+    requests = prepare_recall_requests(run_id=run_id, profile=profile)
+    input_rows = [{"custom_id": row["custom_id"], "body": row["body"], "context": {key: row[key] for key in ("paper_id", "candidate_key", "candidate_title")}} for row in requests]
+    write_jsonl(artifact_dir / "input.jsonl", input_rows)
+    hits = _prompt_hits(requests)
+    write_json(artifact_dir / "forbidden_prompt_scan.json", {"hit_count": len(hits), "hits": hits})
+    if hits:
+        payload = {"status": "stopped_forbidden_prompt_terms", "hits": hits}
+        write_json(artifact_dir / "leakage_stop.json", payload)
+        raise RuntimeError(f"Forbidden prompt fields detected during rebuild: {hits[:3]}")
+
+    estimate_path = source_artifact_dir.parent.parent.parent / "cost" / f"pre_submit_estimate.{PHASE}.json"
+    if estimate_path.exists():
+        shutil.copy2(estimate_path, cost_dir(run_id) / estimate_path.name)
+
+    source_parsed = read_json(source_parsed_path)
+    source_success_by_id = {row["custom_id"]: row for row in source_parsed.get("successes", [])}
+    request_by_id = {request["custom_id"]: request for request in requests}
+
+    successes: list[dict[str, Any]] = []
+    failures: list[dict[str, Any]] = []
+    for custom_id in sorted(request_by_id):
+        request = request_by_id[custom_id]
+        source_row = source_success_by_id.get(custom_id)
+        if not source_row:
+            failures.append(
+                {
+                    "custom_id": custom_id,
+                    "status": "missing_source_success",
+                    "context": {key: request[key] for key in ("paper_id", "candidate_key", "candidate_title", "phase", "stage", "criteria_path", "metadata_path")},
+                }
+            )
+            continue
+        stage_output = recall_output_to_stage_output(request=request, compact=source_row["recall_parsed"], profile=profile)
+        successes.append(
+            {
+                "custom_id": custom_id,
+                "status": "ok",
+                "context": source_row["context"],
+                "attempt": source_row.get("attempt", 0),
+                "assistant_text": source_row.get("assistant_text", ""),
+                "recall_parsed": source_row["recall_parsed"],
+                "parsed": stage_output,
+            }
+        )
+
+    parsed = {
+        "phase": PHASE,
+        "direct_api": False,
+        "reused_direct_outputs_from_run_id": source_run_id,
+        "successes": successes,
+        "failures": failures,
+        "missing": [],
+        "attempt_count": len(successes),
+        "request_count": len(requests),
+        "retry_attempts": 0,
+        "status": "recompiled_from_source" if not failures else "recompiled_from_source_with_failures",
+    }
+    write_json(artifact_dir / "parsed_results.json", parsed)
+    write_jsonl(artifact_dir / "output.jsonl", [row for row in source_parsed.get("successes", [])])
+    write_jsonl(artifact_dir / "error.jsonl", [row for row in source_parsed.get("failures", [])])
+    _write_stage2_outputs(run_id=run_id, parsed=parsed, profile=profile)
+
+    cost_summary = {
+        "created_at": utc_now_iso(),
+        "cost_source": "reused_direct_outputs",
+        "input_tokens": 0,
+        "output_tokens": 0,
+        "total_cost_usd": 0.0,
+        "incremental_total_cost_usd": 0.0,
+        "reused_direct_outputs_from_run_id": source_run_id,
+        "source_cost_summary_path": repo_rel(run_dir(source_run_id) / "cost" / "cost_summary.json"),
+        "phases": {},
+    }
+    write_json(cost_dir(run_id) / "cost_summary.json", cost_summary)
+    write_json(
+        cost_dir(run_id) / "cost_audit.json",
+        {
+            "created_at": utc_now_iso(),
+            "run_dir": str(rd),
+            "ledger_exists": False,
+            "row_count": 0,
+            "deduped_row_count": 0,
+            "duplicate_row_count": 0,
+            "duplicates": [],
+            "deduped_summary": cost_summary,
+        },
+    )
+
+    manifest = read_json(rd / "run_manifest.json")
+    manifest["status"] = f"recall_phase_{parsed['status']}"
+    manifest["updated_at"] = utc_now_iso()
+    manifest["reused_direct_outputs_from_run_id"] = source_run_id
+    manifest["direct_phase"] = {
+        "artifact_dir": repo_rel(artifact_dir),
+        "request_count": len(requests),
+        "success_count": len(successes),
+        "failure_count": len(failures),
+        "attempt_count": len(successes),
+        "pre_submit_estimate": read_json(cost_dir(run_id) / estimate_path.name) if estimate_path.exists() else None,
+        "cost_summary": cost_summary,
+        "reused_direct_outputs_from_run_id": source_run_id,
     }
     write_json(rd / "run_manifest.json", manifest)
     return parsed
@@ -832,6 +1058,22 @@ def run_one(*, run_id: str, scope: Literal["primary22", "full127"], profile: Rec
     return {"run_id": run_id, "status": manifest["status"], "guardrail": guard, "parsed": parsed, **result}
 
 
+def rebuild_one(*, run_id: str, source_run_id: str, scope: Literal["primary22", "full127"], profile: RecallProfile, cost_cap_usd: float) -> dict[str, Any]:
+    init_recall_run(run_id=run_id, scope=scope, profile=profile, cost_cap_usd=cost_cap_usd)
+    direct.write_synthetic_stage1(run_id=run_id)
+    parsed = rebuild_direct_phase_from_source(run_id=run_id, source_run_id=source_run_id, profile=profile)
+    result = evaluate_validate_analyze(run_id=run_id)
+    guard = guardrail_status(run_id=run_id, scope=scope, canary=False)
+    manifest = read_json(run_dir(run_id) / "run_manifest.json")
+    manifest["guardrail_status_path"] = repo_rel(run_dir(run_id) / "guardrail_status.json")
+    manifest["status"] = "guardrail_passed" if guard["passed"] else "guardrail_failed"
+    manifest["decision_counts"] = decision_counts(run_id)
+    manifest["reused_direct_outputs_from_run_id"] = source_run_id
+    manifest["updated_at"] = utc_now_iso()
+    write_json(run_dir(run_id) / "run_manifest.json", manifest)
+    return {"run_id": run_id, "status": manifest["status"], "guardrail": guard, "parsed": parsed, **result}
+
+
 def write_recall_report(*, queue_status: dict[str, Any], run_ids: list[str]) -> None:
     lines = [
         "# BCPCS Recall Repair V3 Report",
@@ -949,8 +1191,9 @@ def run_queue(*, cost_cap_usd: float, concurrency: int, retry_attempts: int) -> 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run BCPCS failure-slice recall repair V3.")
-    parser.add_argument("--command", choices=["queue", "run-one"], default="queue")
+    parser.add_argument("--command", choices=["queue", "run-one", "rebuild-one"], default="queue")
     parser.add_argument("--run-id")
+    parser.add_argument("--source-run-id")
     parser.add_argument("--profile-key", choices=sorted(PROFILES), default="recall_boundary_maybe_v1_gpt5nano")
     parser.add_argument("--scope", choices=["primary22", "full127"], default="primary22")
     parser.add_argument("--cost-cap-usd", type=float, default=DEFAULT_COST_CAP_USD)
@@ -961,7 +1204,7 @@ def main() -> None:
 
     if args.command == "queue":
         payload = run_queue(cost_cap_usd=args.cost_cap_usd, concurrency=args.concurrency, retry_attempts=args.retry_attempts)
-    else:
+    elif args.command == "run-one":
         if not args.run_id:
             raise SystemExit("--run-id is required for run-one")
         payload = run_one(
@@ -972,6 +1215,16 @@ def main() -> None:
             concurrency=args.concurrency,
             retry_attempts=args.retry_attempts,
             dry_run=args.dry_run,
+        )
+    else:
+        if not args.run_id or not args.source_run_id:
+            raise SystemExit("--run-id and --source-run-id are required for rebuild-one")
+        payload = rebuild_one(
+            run_id=args.run_id,
+            source_run_id=args.source_run_id,
+            scope=args.scope,
+            profile=PROFILES[args.profile_key],
+            cost_cap_usd=args.cost_cap_usd,
         )
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 

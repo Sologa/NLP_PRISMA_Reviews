@@ -273,6 +273,7 @@ def prepare_specs(*, run_id: str, profile: BatchProfile) -> tuple[list[BatchRequ
                 max_chars=profile.evidence_packet_chars,
                 max_quotes=profile.max_quotes,
             )
+            criteria_graph, claim_packets = recall._claim_packets(paper_id=paper_id, criteria=criteria, evidence_packet=evidence_packet)
             stage1 = stage1_by_key.get((paper_id, key))
             prompt = recall.build_recall_prompt(
                 paper_id=paper_id,
@@ -296,6 +297,8 @@ def prepare_specs(*, run_id: str, profile: BatchProfile) -> tuple[list[BatchRequ
                 "metadata_path": repo_rel(metadata_path),
                 "fulltext_resolution": resolution,
                 "evidence_packet": evidence_packet,
+                "criteria_graph": criteria_graph,
+                "claim_packets": claim_packets,
                 "body": _body(prompt, profile),
             }
             request_by_id[custom_id] = request

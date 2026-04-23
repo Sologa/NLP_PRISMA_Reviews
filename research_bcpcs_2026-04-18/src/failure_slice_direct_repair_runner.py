@@ -15,6 +15,7 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
+from bcpcs_utils import compile_stub_graph
 import failure_slice_runner as base
 from failure_slice_common import (
     CostRates,
@@ -300,6 +301,34 @@ def _metadata_terms(metadata: dict[str, Any]) -> list[str]:
     return [term for term, _ in counts.most_common(24)]
 
 
+def _claim_terms(text: str) -> list[str]:
+    raw = re.findall(r"[a-z][a-z0-9_-]{3,}", safe_text(text).lower())
+    return [token.replace("_", "-") for token in raw if token not in STOPWORDS]
+
+
+def _claim_priority_indices(*, paper_id: str, paragraphs: list[str]) -> list[int]:
+    graph = compile_stub_graph(paper_id, "stage2")
+    indices: list[int] = []
+    for claim in graph.get("claims", []):
+        terms = _claim_terms(safe_text(claim.get("claim_text")))
+        best_score = 0
+        best_index: int | None = None
+        for index, para in enumerate(paragraphs):
+            lower = para.lower()
+            score = 0
+            for term in terms:
+                if " " in term:
+                    score += 4 if term in lower else 0
+                else:
+                    score += min(lower.count(term), 2)
+            if score > best_score:
+                best_score = score
+                best_index = index
+        if best_index is not None and best_score > 0 and best_index not in indices:
+            indices.append(best_index)
+    return indices
+
+
 def _shorten(text: str, *, max_chars: int) -> str:
     normalized = re.sub(r"\s+", " ", safe_text(text))
     if len(normalized) <= max_chars:
@@ -348,6 +377,7 @@ def build_local_evidence_packet(
     terms = list(dict.fromkeys(PAPER_KEYWORDS.get(paper_id, []) + _metadata_terms(metadata) + _criteria_terms(criteria)))
     normalized = fulltext_text.replace("\r\n", "\n")
     paragraphs = [part.strip() for part in re.split(r"\n\s*\n", normalized) if part.strip()]
+    claim_priority_indices = _claim_priority_indices(paper_id=paper_id, paragraphs=paragraphs)
     scored: list[tuple[int, int, str]] = []
     lower_terms = [term.lower() for term in terms if term]
     for index, para in enumerate(paragraphs):
@@ -365,6 +395,26 @@ def build_local_evidence_packet(
 
     used = sum(len(row["text"]) for row in quotes)
     selected_indices: set[int] = set()
+    for index in claim_priority_indices:
+        if index < 0 or index >= len(paragraphs) or index in selected_indices:
+            continue
+        para = paragraphs[index]
+        chunk = _shorten(para, max_chars=900)
+        if used + len(chunk) > max_chars or len(quotes) >= max_quotes:
+            continue
+        selected_indices.add(index)
+        quotes.append(
+            _quote_row(
+                quote_id=f"q_ft_{index}",
+                text=chunk,
+                location=f"full_text:paragraph_{index}",
+                source_path=source_path,
+                source_field="full_text",
+            )
+        )
+        used += len(chunk)
+        if used >= max_chars or len(quotes) >= max_quotes:
+            break
     for _score, index, _para in sorted(scored, key=lambda item: (-item[0], item[1])):
         for neighbor in (index - 1, index, index + 1):
             if neighbor < 0 or neighbor >= len(paragraphs) or neighbor in selected_indices:

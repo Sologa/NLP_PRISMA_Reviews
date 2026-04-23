@@ -1,0 +1,1173 @@
+[
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "Lovering2021PredictingIB",
+    "candidate_title": "Predicting Inductive Biases of Pre-Trained Models",
+    "phase": "stage2_recall_repair_decision",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "profile_id": "recall_boundary_maybe_v1",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "Lovering2021PredictingIB",
+      "stage": "stage2",
+      "final_stage_decision": "maybe",
+      "decision_rationale": "Global checklist compiler final=maybe; proposed=maybe; supported_claims=1; contradicted_required=0. Transformer-based and clearly empirical, but the packet does not cleanly show a direct empirical syntax analysis. That keeps one critical inclusion criterion unresolved, so the verdict is maybe.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.79,
+      "evidence_ledger": [
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S2-IC1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Published as a conference paper at ICLR 2021 hypothesis that the extent to which a ﬁne-tuned model uses a given feature can be explained as a function of two metrics: The extractability of the feature after pre-training (as measured by probing classiﬁers) and the evidence available during ﬁne-tuning (deﬁned as the rate of co-occurrence with the label). We ﬁrst show results on a synthetic task, and second using state-of-the-art pre-trained LMs on language data. Our results suggest that probing classiﬁers can be viewed as a measure of the pre-trained representation’s inductive biases: The more extractable a feature is after pre-training, the less statistical evidence is required in order for the model to adopt the feature during ﬁne-tuning. Contribution. This work establishes a relationship between two widely-used techniques for ana- lyzing LMs. Currently, the question of how models’ in...",
+              "location": "full_text:paragraph_1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Published as a conference paper at ICLR 2021 hypothesis that the extent to which a ﬁne-tuned model uses a given feature can be explained as a function of two metrics: The extractability of the feature after pre-training (as measured by probing classiﬁers) and the evidence available during ﬁne-tuning (deﬁned as the rate of co-occurrence with the label). We ﬁrst show results on a synthetic task, and second using state-of-the-art pre-trained LMs on language data. Our results suggest that probing classiﬁers can be viewed as a measure of the pre-trained representation’s inductive biases: The more extractable a feature is after pre-training, the less statistical evidence is required in order for the model to adopt the feature during ﬁne-tuning. Contribution. This work establishes a relationship between two widely-used techniques for ana- lyzing LMs. Currently, the question of how models’ in...",
+          "location": "full_text:paragraph_1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S2-IC2",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Most current NLP systems are based on a pre-train-then-fine-tune paradigm, in which a large neural network is first trained in a self-supervised way designed to encourage the network to extract broadly-useful linguistic features, and then fine-tuned for a specific task of interest. Recent work attempts to understand why this recipe works and explain when it fails. Currently, such analyses have produced two sets of apparently-contradictory results. Work that analyzes the representations that result from pre-training (via classifiers) finds that rich features of linguistic structure can be decoded with high accuracy, but work that analyzes model behavior after fine-tuning (via challenge sets) indicates that decisions are often not based on such structure but rather on spurious heuristics specific to the training set. In this work, we test the hypothesis that the extent to which a featur...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S2-EC1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Published as a conference paper at ICLR 2021 hypothesis that the extent to which a ﬁne-tuned model uses a given feature can be explained as a function of two metrics: The extractability of the feature after pre-training (as measured by probing classiﬁers) and the evidence available during ﬁne-tuning (deﬁned as the rate of co-occurrence with the label). We ﬁrst show results on a synthetic task, and second using state-of-the-art pre-trained LMs on language data. Our results suggest that probing classiﬁers can be viewed as a measure of the pre-trained representation’s inductive biases: The more extractable a feature is after pre-training, the less statistical evidence is required in order for the model to adopt the feature during ﬁne-tuning. Contribution. This work establishes a relationship between two widely-used techniques for ana- lyzing LMs. Currently, the question of how models’ in...",
+              "location": "full_text:paragraph_1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Published as a conference paper at ICLR 2021 hypothesis that the extent to which a ﬁne-tuned model uses a given feature can be explained as a function of two metrics: The extractability of the feature after pre-training (as measured by probing classiﬁers) and the evidence available during ﬁne-tuning (deﬁned as the rate of co-occurrence with the label). We ﬁrst show results on a synthetic task, and second using state-of-the-art pre-trained LMs on language data. Our results suggest that probing classiﬁers can be viewed as a measure of the pre-trained representation’s inductive biases: The more extractable a feature is after pre-training, the less statistical evidence is required in order for the model to adopt the feature during ﬁne-tuning. Contribution. This work establishes a relationship between two widely-used techniques for ana- lyzing LMs. Currently, the question of how models’ in...",
+          "location": "full_text:paragraph_1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S2-EC2",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Most current NLP systems are based on a pre-train-then-fine-tune paradigm, in which a large neural network is first trained in a self-supervised way designed to encourage the network to extract broadly-useful linguistic features, and then fine-tuned for a specific task of interest. Recent work attempts to understand why this recipe works and explain when it fails. Currently, such analyses have produced two sets of apparently-contradictory results. Work that analyzes the representations that result from pre-training (via classifiers) finds that rich features of linguistic structure can be decoded with high accuracy, but work that analyzes model behavior after fine-tuning (via challenge sets) indicates that decisions are often not based on such structure but rather on spurious heuristics specific to the training set. In this work, we test the hypothesis that the extent to which a featur...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "Lovering2021PredictingIB",
+          "stage": "stage2",
+          "claim_id": "S2-EC3",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Published as a conference paper at ICLR 2021 0 0.001 0.01 0.05 0.1 0.2 0.5 Evidence from Spurious-only Examples (s-only example rate) 0.00 0.25 0.50 0.75 1.00 Spurious (s-only) Error 0 0.001 0.01 0.05 0.1 0.2 0.5 Evidence from Spurious-only Examples (s-only example rate) Target (t-only) Error Rel. Extractibility 0.001 first-last 0.001 adj-dupl 0.002 prefix-dupl 1.295 contains-1 0 0.001 0.01 0.05 0.1 0.2 0.5 Evidence from Spurious-only Examples (s-only example rate) Neither Error 0 0.001 0.01 0.05 0.1 0.2 0.5 Evidence from Spurious-only Examples (s-only example rate) Both Error Figure 2: Results on Synthetic Data. Error on each partition of the test set, as a function of s-only rate. A model that has learned to use the target feature alone to predict the label will achieve zero error across all partitions. s-only and t-only error reach 0 quickly when t is as easy to extract as s (i.e.,...",
+          "location": "full_text:paragraph_4",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/Lovering2021PredictingIB.md",
+          "span_validated": true
+        }
+      ]
+    },
+    "recall_repair_decision": {
+      "candidate_key": "Lovering2021PredictingIB",
+      "stage": "stage2_global_checklist",
+      "proposed_decision": "maybe",
+      "confidence": 0.79,
+      "missingness_reason": "none",
+      "criterion_assessments": [
+        {
+          "claim_id": "S2-IC1",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_ft_1",
+            "q_ft_intro"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The paper explicitly studies pre-trained LMs/large neural networks and uses BERT, RoBERTa, T5, and GPT-2, which are transformer-based language models."
+        },
+        {
+          "claim_id": "S2-IC2",
+          "claim_type": "inclusion",
+          "judgment": "ambiguous",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_8"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "It empirically analyzes pre-trained LM representations and mentions syntactic features, but the main experiments concern inductive bias/feature use rather than a direct empirical analysis of syntax."
+        },
+        {
+          "claim_id": "S2-EC1",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_1",
+            "q_ft_4"
+          ],
+          "short_rationale": "The evidence centers on pre-trained transformers and does not indicate primary focus on RNN/LSTM or encoder-decoder MT architectures."
+        },
+        {
+          "claim_id": "S2-EC2",
+          "claim_type": "exclusion",
+          "judgment": "ambiguous",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_8"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The paper analyzes transformer LMs, but the packet does not clearly show whether syntax is directly assessed; mentions of syntactic features are indirect and partly in related work."
+        },
+        {
+          "claim_id": "S2-EC3",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [
+            "q_ft_4",
+            "q_ft_7",
+            "q_ft_1"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The record shows clear empirical experiments and results, so it is not merely a position paper, survey, or review."
+        }
+      ],
+      "decision_rationale": "Transformer-based and clearly empirical, but the packet does not cleanly show a direct empirical syntax analysis. That keeps one critical inclusion criterion unresolved, so the verdict is maybe."
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "hu_prompting_2023",
+    "candidate_title": "Prompting is not a substitute for probability measurements in large language models",
+    "phase": "stage2_recall_repair_decision",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "profile_id": "recall_boundary_maybe_v1",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "hu_prompting_2023",
+      "stage": "stage2",
+      "final_stage_decision": "maybe",
+      "decision_rationale": "Global checklist compiler final=maybe; proposed=maybe; supported_claims=1; contradicted_required=0. Syntax is clearly studied and the paper is empirical, but the record does not explicitly confirm transformer-based models. That leaves one required criterion unresolved, so maybe is the best boundary decision.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.79,
+      "evidence_ledger": [
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S2-IC1",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Prompting is now a dominant method for evaluating the linguistic knowledge of large language models (LLMs). While other methods directly read out models' probability distributions over strings, prompting requires models to access this internal information by processing linguistic input, thereby implicitly testing a new type of emergent ability: metalinguistic judgment. In this study, we compare metalinguistic prompting and direct probability measurements as ways of measuring models' linguistic knowledge. Broadly, we find that LLMs' metalinguistic judgments are inferior to quantities directly derived from representations. Furthermore, consistency gets worse as the prompt query diverges from direct measurements of next-word probabilities. Our findings suggest that negative results relying on metalinguistic prompts cannot be taken as conclusive evidence that an LLM lacks a particular lin...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S2-IC2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Experiment Targeted ability Task Dataset(s) 1 (Section 4.1) Word prediction Predict final word in a sentence Pereira et al. (2018); news arti- cles from March 2023 2 (Section 4.2) Semantic plausibility Determine which word (of two options) is most likely, given preceding context Vassallo et al. (2018) 3a (Section 4.3) Syntax Determine which sentence (of two op- tions) is “better”, in isolation SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) 3b (Section 4.4) Syntax Determine which sentence (of two op- tions) is “better”, given both options SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) Table 1: Overview of experiments in our study. 2 Related work Our study is related to model calibration, or the problem of estimating predictive uncertainty (e.g., Guo et al., 2017; Minderer et al., 2021; Kadavath et al., 2022; Mielke et al., 2022). Most relevant to our work, Kadav...",
+              "location": "full_text:paragraph_2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Experiment Targeted ability Task Dataset(s) 1 (Section 4.1) Word prediction Predict final word in a sentence Pereira et al. (2018); news arti- cles from March 2023 2 (Section 4.2) Semantic plausibility Determine which word (of two options) is most likely, given preceding context Vassallo et al. (2018) 3a (Section 4.3) Syntax Determine which sentence (of two op- tions) is “better”, in isolation SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) 3b (Section 4.4) Syntax Determine which sentence (of two op- tions) is “better”, given both options SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) Table 1: Overview of experiments in our study. 2 Related work Our study is related to model calibration, or the problem of estimating predictive uncertainty (e.g., Guo et al., 2017; Minderer et al., 2021; Kadavath et al., 2022; Mielke et al., 2022). Most relevant to our work, Kadav...",
+          "location": "full_text:paragraph_2",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Experiment Targeted ability Task Dataset(s) 1 (Section 4.1) Word prediction Predict final word in a sentence Pereira et al. (2018); news arti- cles from March 2023 2 (Section 4.2) Semantic plausibility Determine which word (of two options) is most likely, given preceding context Vassallo et al. (2018) 3a (Section 4.3) Syntax Determine which sentence (of two op- tions) is “better”, in isolation SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) 3b (Section 4.4) Syntax Determine which sentence (of two op- tions) is “better”, given both options SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) Table 1: Overview of experiments in our study. 2 Related work Our study is related to model calibration, or the problem of estimating predictive uncertainty (e.g., Guo et al., 2017; Minderer et al., 2021; Kadavath et al., 2022; Mielke et al., 2022). Most relevant to our work, Kadav...",
+              "location": "full_text:paragraph_2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Experiment Targeted ability Task Dataset(s) 1 (Section 4.1) Word prediction Predict final word in a sentence Pereira et al. (2018); news arti- cles from March 2023 2 (Section 4.2) Semantic plausibility Determine which word (of two options) is most likely, given preceding context Vassallo et al. (2018) 3a (Section 4.3) Syntax Determine which sentence (of two op- tions) is “better”, in isolation SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) 3b (Section 4.4) Syntax Determine which sentence (of two op- tions) is “better”, given both options SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) Table 1: Overview of experiments in our study. 2 Related work Our study is related to model calibration, or the problem of estimating predictive uncertainty (e.g., Guo et al., 2017; Minderer et al., 2021; Kadavath et al., 2022; Mielke et al., 2022). Most relevant to our work, Kadav...",
+          "location": "full_text:paragraph_2",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC2",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Experiment Targeted ability Task Dataset(s) 1 (Section 4.1) Word prediction Predict final word in a sentence Pereira et al. (2018); news arti- cles from March 2023 2 (Section 4.2) Semantic plausibility Determine which word (of two options) is most likely, given preceding context Vassallo et al. (2018) 3a (Section 4.3) Syntax Determine which sentence (of two op- tions) is “better”, in isolation SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) 3b (Section 4.4) Syntax Determine which sentence (of two op- tions) is “better”, given both options SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) Table 1: Overview of experiments in our study. 2 Related work Our study is related to model calibration, or the problem of estimating predictive uncertainty (e.g., Guo et al., 2017; Minderer et al., 2021; Kadavath et al., 2022; Mielke et al., 2022). Most relevant to our work, Kadav...",
+              "location": "full_text:paragraph_2",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Experiment Targeted ability Task Dataset(s) 1 (Section 4.1) Word prediction Predict final word in a sentence Pereira et al. (2018); news arti- cles from March 2023 2 (Section 4.2) Semantic plausibility Determine which word (of two options) is most likely, given preceding context Vassallo et al. (2018) 3a (Section 4.3) Syntax Determine which sentence (of two op- tions) is “better”, in isolation SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) 3b (Section 4.4) Syntax Determine which sentence (of two op- tions) is “better”, given both options SyntaxGym (Hu et al., 2020); BLiMP (Warstadt et al., 2020) Table 1: Overview of experiments in our study. 2 Related work Our study is related to model calibration, or the problem of estimating predictive uncertainty (e.g., Guo et al., 2017; Minderer et al., 2021; Kadavath et al., 2022; Mielke et al., 2022). Most relevant to our work, Kadav...",
+          "location": "full_text:paragraph_2",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/hu_prompting_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "hu_prompting_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC3",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Prompting is now a dominant method for evaluating the linguistic knowledge of large language models (LLMs). While other methods directly read out models' probability distributions over strings, prompting requires models to access this internal information by processing linguistic input, thereby implicitly testing a new type of emergent ability: metalinguistic judgment. In this study, we compare metalinguistic prompting and direct probability measurements as ways of measuring models' linguistic knowledge. Broadly, we find that LLMs' metalinguistic judgments are inferior to quantities directly derived from representations. Furthermore, consistency gets worse as the prompt query diverges from direct measurements of next-word probabilities. Our findings suggest that negative results relying on metalinguistic prompts cannot be taken as conclusive evidence that an LLM lacks a particular lin...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.79,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Prompting is now a dominant method for evaluating the linguistic knowledge of large language models (LLMs). While other methods directly read out models' probability distributions over strings, prompting requires models to access this internal information by processing linguistic input, thereby implicitly testing a new type of emergent ability: metalinguistic judgment. In this study, we compare metalinguistic prompting and direct probability measurements as ways of measuring models' linguistic knowledge. Broadly, we find that LLMs' metalinguistic judgments are inferior to quantities directly derived from representations. Furthermore, consistency gets worse as the prompt query diverges from direct measurements of next-word probabilities. Our findings suggest that negative results relying on metalinguistic prompts cannot be taken as conclusive evidence that an LLM lacks a particular lin...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "recall_repair_decision": {
+      "candidate_key": "hu_prompting_2023",
+      "stage": "stage2_global_checklist",
+      "proposed_decision": "maybe",
+      "confidence": 0.79,
+      "missingness_reason": "evidence_incomplete",
+      "criterion_assessments": [
+        {
+          "claim_id": "S2-IC1",
+          "claim_type": "inclusion",
+          "judgment": "ambiguous",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_0",
+            "q_ft_intro",
+            "q_ft_7"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The record clearly concerns large language models, but it does not explicitly state they are transformer-based. The cited models/tasks suggest transformer use, yet this is indirect."
+        },
+        {
+          "claim_id": "S2-IC2",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_ft_2",
+            "q_ft_7",
+            "q_ft_1"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The study explicitly includes syntax experiments and sentence judgment/comparison tasks, which directly assess syntactic knowledge."
+        },
+        {
+          "claim_id": "S2-EC1",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_2",
+            "q_ft_7"
+          ],
+          "short_rationale": "The evidence points to syntax-focused experiments on LLMs rather than a primary focus on RNNs/LSTMs or encoder-decoder MT architectures."
+        },
+        {
+          "claim_id": "S2-EC2",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_2",
+            "q_ft_7"
+          ],
+          "short_rationale": "The paper does empirically assess syntax, so this exclusion does not apply."
+        },
+        {
+          "claim_id": "S2-EC3",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_abstract",
+            "q_ft_2",
+            "q_ft_7"
+          ],
+          "short_rationale": "This is an empirical paper with experiments and results, not a position paper, survey, or review."
+        }
+      ],
+      "decision_rationale": "Syntax is clearly studied and the paper is empirical, but the record does not explicitly confirm transformer-based models. That leaves one required criterion unresolved, so maybe is the best boundary decision."
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "li_probing_2022",
+    "candidate_title": "Probing via Prompting",
+    "phase": "stage2_recall_repair_decision",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "profile_id": "recall_boundary_maybe_v1",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "li_probing_2022",
+      "stage": "stage2",
+      "final_stage_decision": "maybe",
+      "decision_rationale": "Global checklist compiler final=maybe; proposed=maybe; supported_claims=1; contradicted_required=0. Transformer-based empirical probing is clear, but the supplied quotes do not explicitly confirm a syntactic-knowledge focus. That leaves a critical inclusion criterion unresolved.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "evidence_incomplete",
+      "confidence": 0.84,
+      "evidence_ledger": [
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "S2-IC1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Probing is a popular approach to understand what linguistic information is contained in the representations of pre-trained language models. However, the mechanism of selecting the probe model has recently been subject to intense debate, as it is not clear if the probes are merely extracting information or modelling the linguistic property themselves. To address this challenge, this paper introduces a novel model-free approach to probing via prompting, which formulates probing as a prompting task. We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own. We further combine the probing via prompting approach with pruning to analyze where the model stores the linguistic information in its architecture. Finally, we apply the probing via prompting approach to examine the useful...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.84,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Probing is a popular approach to understand what linguistic information is contained in the representations of pre-trained language models. However, the mechanism of selecting the probe model has recently been subject to intense debate, as it is not clear if the probes are merely extracting information or modelling the linguistic property themselves. To address this challenge, this paper introduces a novel model-free approach to probing via prompting, which formulates probing as a prompting task. We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own. We further combine the probing via prompting approach with pruning to analyze where the model stores the linguistic information in its architecture. Finally, we apply the probing via prompting approach to examine the useful...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "S2-IC2",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.84,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "(const.), named entity labeling (entity), semantic role labeling (SRL), and coreference (Coref.). They are simpliﬁed versions of the original tasks in OntoNotes that are made compatible with the edge probing framework. An example for each task is shown in Tab. 1. 3.2 Diagnostic Probing We compare PP with diagnostic probing (DP), and consider two types of diagnostic probes: a logistic regression probe (LR) and a multilayer perceptron probe (MLP). The idea behind diagnostic probing is illustrated in Fig. 1a. In this paper, we train a DP to predict a label y ∈Y for the given span(s) s1 (and optionally s2) of a sentence x, taking the contextual representations of the span(s) produced by the pre-trained model as inputs. 3.2.1 Contextual Representations. DP takes a single vector as input, which represents the span(s) of interest under the context of the sen- tence. In this section, we intro...",
+          "location": "full_text:paragraph_3",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "S2-EC1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "3.3 Experimental Setup We investigate GPT2SMALL (which we refer to as simply GPT-2 in this paper), a Transformer model with 12 layers and 117M parameters pre-trained on a dataset of 8 million web pages (Radford et al., 2019). We also examine the probes on a random model with the same architecture as pre- trained GPT-2, but the parameters are randomly re- set. Since the goal of probing is to inspect the infor- mation acquired during pre-training, an ideal probe should have low accuracy on the random model. For PP, we set the preﬁx length to 200 virtual tokens for tasks with unary edges (POS, Const., and entity) and 20 for those with binary edges (SRL, Coref.). For DP (MLP), we use a two-layer MLP with 512 hidden units. Following Tenney et al. (2019b), we linearly project the per-token representations ai into 256 dimensions before self-attentional pooling to improve performance. All mod...",
+              "location": "full_text:paragraph_4",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.84,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "3.3 Experimental Setup We investigate GPT2SMALL (which we refer to as simply GPT-2 in this paper), a Transformer model with 12 layers and 117M parameters pre-trained on a dataset of 8 million web pages (Radford et al., 2019). We also examine the probes on a random model with the same architecture as pre- trained GPT-2, but the parameters are randomly re- set. Since the goal of probing is to inspect the infor- mation acquired during pre-training, an ideal probe should have low accuracy on the random model. For PP, we set the preﬁx length to 200 virtual tokens for tasks with unary edges (POS, Const., and entity) and 20 for those with binary edges (SRL, Coref.). For DP (MLP), we use a two-layer MLP with 512 hidden units. Following Tenney et al. (2019b), we linearly project the per-token representations ai into 256 dimensions before self-attentional pooling to improve performance. All mod...",
+          "location": "full_text:paragraph_4",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/li_probing_2022.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "S2-EC2",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Probing is a popular approach to understand what linguistic information is contained in the representations of pre-trained language models. However, the mechanism of selecting the probe model has recently been subject to intense debate, as it is not clear if the probes are merely extracting information or modelling the linguistic property themselves. To address this challenge, this paper introduces a novel model-free approach to probing via prompting, which formulates probing as a prompting task. We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own. We further combine the probing via prompting approach with pruning to analyze where the model stores the linguistic information in its architecture. Finally, we apply the probing via prompting approach to examine the useful...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.84,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Probing is a popular approach to understand what linguistic information is contained in the representations of pre-trained language models. However, the mechanism of selecting the probe model has recently been subject to intense debate, as it is not clear if the probes are merely extracting information or modelling the linguistic property themselves. To address this challenge, this paper introduces a novel model-free approach to probing via prompting, which formulates probing as a prompting task. We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own. We further combine the probing via prompting approach with pruning to analyze where the model stores the linguistic information in its architecture. Finally, we apply the probing via prompting approach to examine the useful...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "li_probing_2022",
+          "stage": "stage2",
+          "claim_id": "S2-EC3",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Probing is a popular approach to understand what linguistic information is contained in the representations of pre-trained language models. However, the mechanism of selecting the probe model has recently been subject to intense debate, as it is not clear if the probes are merely extracting information or modelling the linguistic property themselves. To address this challenge, this paper introduces a novel model-free approach to probing via prompting, which formulates probing as a prompting task. We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own. We further combine the probing via prompting approach with pruning to analyze where the model stores the linguistic information in its architecture. Finally, we apply the probing via prompting approach to examine the useful...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "evidence_incomplete",
+          "confidence": 0.84,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Probing is a popular approach to understand what linguistic information is contained in the representations of pre-trained language models. However, the mechanism of selecting the probe model has recently been subject to intense debate, as it is not clear if the probes are merely extracting information or modelling the linguistic property themselves. To address this challenge, this paper introduces a novel model-free approach to probing via prompting, which formulates probing as a prompting task. We conduct experiments on five probing tasks and show that PP is comparable or better at extracting information than diagnostic probes while learning much less on its own. We further combine the probing via prompting approach with pruning to analyze where the model stores the linguistic information in its architecture. Finally, we apply the probing via prompting approach to examine the useful...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "recall_repair_decision": {
+      "candidate_key": "li_probing_2022",
+      "stage": "stage2_global_checklist",
+      "proposed_decision": "maybe",
+      "confidence": 0.84,
+      "missingness_reason": "evidence_incomplete",
+      "criterion_assessments": [
+        {
+          "claim_id": "S2-IC1",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_0",
+            "q_ft_4"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The paper explicitly studies pre-trained language models and a Transformer model (GPT-2)."
+        },
+        {
+          "claim_id": "S2-IC2",
+          "claim_type": "inclusion",
+          "judgment": "ambiguous",
+          "support_quote_ids": [
+            "q_ft_3",
+            "q_ft_4"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "It analyzes probing tasks including POS and constituency, which relate to syntax, but the supplied quotes do not explicitly state a syntactic analysis focus."
+        },
+        {
+          "claim_id": "S2-EC1",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_4"
+          ],
+          "short_rationale": "The evidence points to GPT-2, a Transformer model, not primarily to non-Transformer or encoder-decoder architectures."
+        },
+        {
+          "claim_id": "S2-EC2",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_abstract",
+            "q_ft_0",
+            "q_ft_3"
+          ],
+          "short_rationale": "The paper empirically conducts experiments on probing tasks and analyzes model information, so it is not syntax-free Transformer analysis."
+        },
+        {
+          "claim_id": "S2-EC3",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_abstract",
+            "q_ft_0",
+            "q_ft_4"
+          ],
+          "short_rationale": "The paper reports experiments on five probing tasks and an experimental setup, so it is not a purely survey or position paper."
+        }
+      ],
+      "decision_rationale": "Transformer-based empirical probing is clear, but the supplied quotes do not explicitly confirm a syntactic-knowledge focus. That leaves a critical inclusion criterion unresolved."
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "mysiak_is_2023",
+    "candidate_title": "Is German secretly a Slavic language? What BERT probing can tell us about language groups",
+    "phase": "stage2_recall_repair_decision",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "profile_id": "recall_boundary_maybe_v1",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "mysiak_is_2023",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Global checklist compiler final=include; proposed=include; supported_claims=2; contradicted_required=0. The study is an empirical probing paper on multilingual BERT and explicitly analyzes syntax encoding and dependency structure, with no applicable exclusion criteria.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.93,
+      "evidence_ledger": [
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "S2-IC1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In the light of recent developments in NLP, the problem of understanding and interpreting large language models has gained a lot of urgency. Methods developed to study this area are subject to considerable scrutiny. In this work, we take a closer look at one such method, the structural probe introduced by Hewitt and Manning (2019). We run a series of experiments involving multiple languages, focusing principally on the group of Slavic languages. We show that probing results can be seen as a reflection of linguistic classification, and conclude that multilingual BERT learns facts about languages and their groups.",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In the light of recent developments in NLP, the problem of understanding and interpreting large language models has gained a lot of urgency. Methods developed to study this area are subject to considerable scrutiny. In this work, we take a closer look at one such method, the structural probe introduced by Hewitt and Manning (2019). We run a series of experiments involving multiple languages, focusing principally on the group of Slavic languages. We show that probing results can be seen as a reflection of linguistic classification, and conclude that multilingual BERT learns facts about languages and their groups.",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "S2-IC2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "1.1 Main Contributions Inspired by Chi et al. (2020), we investigate prob- ing in a multilingual context, focusing our attention on relations between syntax encoding for a group of Slavic languages. We show that probing results can be related to pre-existing linguistic knowledge, which suggests that, in spite of interpretability prob- lems, this methodology can be used to discover quantitative relations between languages. To highlight the role of mBERT pre-training in recovering grammatical relations differentiating be- tween language families, we contrast our findings with the results of a randomised baseline. In Table 2, we show that an identical architecture with ran- dom parameters does not uncover similar patterns. This suggests that the pre-training task of masked language modeling constructs the embedding space in a way that allows meaningful investigation of relations between...",
+              "location": "full_text:paragraph_1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "1.1 Main Contributions Inspired by Chi et al. (2020), we investigate prob- ing in a multilingual context, focusing our attention on relations between syntax encoding for a group of Slavic languages. We show that probing results can be related to pre-existing linguistic knowledge, which suggests that, in spite of interpretability prob- lems, this methodology can be used to discover quantitative relations between languages. To highlight the role of mBERT pre-training in recovering grammatical relations differentiating be- tween language families, we contrast our findings with the results of a randomised baseline. In Table 2, we show that an identical architecture with ran- dom parameters does not uncover similar patterns. This suggests that the pre-training task of masked language modeling constructs the embedding space in a way that allows meaningful investigation of relations between...",
+          "location": "full_text:paragraph_1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "In the light of recent developments in NLP, the problem of understanding and interpreting large language models has gained a lot of urgency. Methods developed to study this area are subject to considerable scrutiny. In this work, we take a closer look at one such method, the structural probe introduced by Hewitt and Manning (2019). We run a series of experiments involving multiple languages, focusing principally on the group of Slavic languages. We show that probing results can be seen as a reflection of linguistic classification, and conclude that multilingual BERT learns facts about languages and their groups.",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In the light of recent developments in NLP, the problem of understanding and interpreting large language models has gained a lot of urgency. Methods developed to study this area are subject to considerable scrutiny. In this work, we take a closer look at one such method, the structural probe introduced by Hewitt and Manning (2019). We run a series of experiments involving multiple languages, focusing principally on the group of Slavic languages. We show that probing results can be seen as a reflection of linguistic classification, and conclude that multilingual BERT learns facts about languages and their groups.",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC2",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "1.1 Main Contributions Inspired by Chi et al. (2020), we investigate prob- ing in a multilingual context, focusing our attention on relations between syntax encoding for a group of Slavic languages. We show that probing results can be related to pre-existing linguistic knowledge, which suggests that, in spite of interpretability prob- lems, this methodology can be used to discover quantitative relations between languages. To highlight the role of mBERT pre-training in recovering grammatical relations differentiating be- tween language families, we contrast our findings with the results of a randomised baseline. In Table 2, we show that an identical architecture with ran- dom parameters does not uncover similar patterns. This suggests that the pre-training task of masked language modeling constructs the embedding space in a way that allows meaningful investigation of relations between...",
+              "location": "full_text:paragraph_1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "1.1 Main Contributions Inspired by Chi et al. (2020), we investigate prob- ing in a multilingual context, focusing our attention on relations between syntax encoding for a group of Slavic languages. We show that probing results can be related to pre-existing linguistic knowledge, which suggests that, in spite of interpretability prob- lems, this methodology can be used to discover quantitative relations between languages. To highlight the role of mBERT pre-training in recovering grammatical relations differentiating be- tween language families, we contrast our findings with the results of a randomised baseline. In Table 2, we show that an identical architecture with ran- dom parameters does not uncover similar patterns. This suggests that the pre-training task of masked language modeling constructs the embedding space in a way that allows meaningful investigation of relations between...",
+          "location": "full_text:paragraph_1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/mysiak_is_2023.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "mysiak_is_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC3",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "In the light of recent developments in NLP, the problem of understanding and interpreting large language models has gained a lot of urgency. Methods developed to study this area are subject to considerable scrutiny. In this work, we take a closer look at one such method, the structural probe introduced by Hewitt and Manning (2019). We run a series of experiments involving multiple languages, focusing principally on the group of Slavic languages. We show that probing results can be seen as a reflection of linguistic classification, and conclude that multilingual BERT learns facts about languages and their groups.",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In the light of recent developments in NLP, the problem of understanding and interpreting large language models has gained a lot of urgency. Methods developed to study this area are subject to considerable scrutiny. In this work, we take a closer look at one such method, the structural probe introduced by Hewitt and Manning (2019). We run a series of experiments involving multiple languages, focusing principally on the group of Slavic languages. We show that probing results can be seen as a reflection of linguistic classification, and conclude that multilingual BERT learns facts about languages and their groups.",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "recall_repair_decision": {
+      "candidate_key": "mysiak_is_2023",
+      "stage": "stage2_global_checklist",
+      "proposed_decision": "include",
+      "confidence": 0.93,
+      "missingness_reason": "none",
+      "criterion_assessments": [
+        {
+          "claim_id": "S2-IC1",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_0",
+            "q_ft_1"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The record explicitly centers on BERT/mBERT probing and a multilingual BERT model, which is Transformer-based."
+        },
+        {
+          "claim_id": "S2-IC2",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_ft_1",
+            "q_ft_7",
+            "q_ft_9"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The study investigates syntax encoding and evaluates probes on predicted dependency-tree structures, directly analyzing syntactic knowledge."
+        },
+        {
+          "claim_id": "S2-EC1",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_abstract",
+            "q_ft_1"
+          ],
+          "short_rationale": "Evidence points to BERT/mBERT and syntax probing, not a primarily non-transformer or MT encoder-decoder focus."
+        },
+        {
+          "claim_id": "S2-EC2",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_1",
+            "q_ft_7",
+            "q_ft_9"
+          ],
+          "short_rationale": "The paper does empirically assess syntax via probing and dependency-tree evaluation, so this exclusion does not apply."
+        },
+        {
+          "claim_id": "S2-EC3",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_abstract",
+            "q_ft_7"
+          ],
+          "short_rationale": "The paper reports experiments and quantitative evaluation, so it is not a non-empirical survey or position paper."
+        }
+      ],
+      "decision_rationale": "The study is an empirical probing paper on multilingual BERT and explicitly analyzes syntax encoding and dependency structure, with no applicable exclusion criteria."
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "wijnholds_assessing_2023",
+    "candidate_title": "Assessing Monotonicity Reasoning in Dutch through Natural Language Inference",
+    "phase": "stage2_recall_repair_decision",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "profile_id": "recall_boundary_maybe_v1",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "wijnholds_assessing_2023",
+      "stage": "stage2",
+      "final_stage_decision": "exclude",
+      "decision_rationale": "Global checklist compiler final=exclude; proposed=exclude; supported_claims=2; contradicted_required=1. The study is transformer-based and empirical, but the evidence does not show syntactic analysis; it instead centers monotonicity reasoning and negation. This fits the syntax-missing exclusion.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.95,
+      "evidence_ledger": [
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S2-IC1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S2-IC2",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+              "location": "metadata:abstract",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "abstract"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "wijnholds_assessing_2023",
+          "stage": "stage2",
+          "claim_id": "S2-EC3",
+          "evidence_status": "unknown",
+          "support_spans": [],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.95,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "In this paper we investigate monotonicity reasoning in Dutch, through a novel Natural Language Inference dataset. Monotonicity reasoning shows to be highly challenging for Transformer-based language models in English and here, we corroborate those findings using a parallel Dutch dataset, obtained by translating the Monotonicity Entailment Dataset of Yanaka et al. (2019). After fine-tuning two Dutch language models BERTje and RobBERT on the Dutch NLI dataset SICK-NL, we find that performance severely drops on the monotonicity reasoning dataset, indicating poor generalization capacity of the models. We provide a detailed analysis of the test results by means of the linguistic annotations in the dataset. We find that models struggle with downward entailing contexts, and argue that this is due to a poor understanding of negation. Additionally, we find that the choice of monotonicity conte...",
+          "location": "metadata:abstract",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        }
+      ]
+    },
+    "recall_repair_decision": {
+      "candidate_key": "wijnholds_assessing_2023",
+      "stage": "stage2_global_checklist",
+      "proposed_decision": "exclude",
+      "confidence": 0.95,
+      "missingness_reason": "none",
+      "criterion_assessments": [
+        {
+          "claim_id": "S2-IC1",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_1",
+            "q_ft_intro"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The paper explicitly studies transformer-based language models, including BERTje, RobBERT, and references two transformer-based Dutch models."
+        },
+        {
+          "claim_id": "S2-IC2",
+          "claim_type": "inclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_abstract",
+            "q_ft_1",
+            "q_ft_0"
+          ],
+          "short_rationale": "The evidence discusses monotonicity reasoning, NLI, and negation, but does not show an empirical analysis of syntactic structure or syntactic knowledge."
+        },
+        {
+          "claim_id": "S2-EC1",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_abstract",
+            "q_ft_1"
+          ],
+          "short_rationale": "The paper is not about non-transformer or encoder-decoder architectures; it explicitly centers transformer-based models."
+        },
+        {
+          "claim_id": "S2-EC2",
+          "claim_type": "exclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_1",
+            "q_ft_intro"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "It analyzes transformer language models, but the visible evidence does not establish empirical syntax assessment, matching the exclusion."
+        },
+        {
+          "claim_id": "S2-EC3",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [
+            "q_abstract",
+            "q_ft_2",
+            "q_ft_3"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The paper has a clear empirical component: a dataset, fine-tuning, and quantitative results/analysis."
+        }
+      ],
+      "decision_rationale": "The study is transformer-based and empirical, but the evidence does not show syntactic analysis; it instead centers monotonicity reasoning and negation. This fits the syntax-missing exclusion."
+    }
+  },
+  {
+    "paper_id": "2601.19926",
+    "candidate_key": "yanaka_assessing_2021",
+    "candidate_title": "Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference",
+    "phase": "stage2_recall_repair_decision",
+    "stage": "stage2",
+    "model": "gpt-5.4-mini",
+    "profile_id": "recall_boundary_maybe_v1",
+    "criteria_path": "criteria_stage2/2601.19926.json",
+    "metadata_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+    "review_output": {
+      "candidate_key": "yanaka_assessing_2021",
+      "stage": "stage2",
+      "final_stage_decision": "include",
+      "decision_rationale": "Global checklist compiler final=include; proposed=include; supported_claims=2; contradicted_required=0. The paper studies pre-trained/BERT language models and empirically tests linguistic phenomena and structural patterns in Japanese NLI. No exclusion criterion is supported by the evidence.",
+      "route_reason": "",
+      "unknown_reason": "",
+      "missingness_reason": "none",
+      "confidence": 0.93,
+      "evidence_ledger": [
+        {
+          "candidate_key": "yanaka_assessing_2021",
+          "stage": "stage2",
+          "claim_id": "S2-IC1",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference",
+              "location": "metadata:title",
+              "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+              "source_field": "title"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference",
+          "location": "metadata:title",
+          "source_path": "refs/2601.19926/metadata/title_abstracts_metadata.jsonl",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "yanaka_assessing_2021",
+          "stage": "stage2",
+          "claim_id": "S2-IC2",
+          "evidence_status": "support",
+          "support_spans": [
+            {
+              "quote": "338 structure in Japanese. We present a series of experiments with the JaNLI dataset to evaluate the generalization per- formance of Japanese and multilingual BERT mod- els. In addition, we compare human performance with model performance. Our experiments shed light on several shortcomings of the models and highlight the following challenges for cross-lingual generalization in NLI: • Japanese and multilingual NLI models trained on Japanese NLI datasets other than JaNLI behave differently across different classes of sentences. In particular, cross-dataset gen- eralization on non-entailing pairs is weaker on non-entailing pairs than on entailing pairs (Section 4.2). • Data augmentation with a small subset of the JaNLI dataset can help improve model perfor- mance, but the accuracy is not increased for some linguistic phenomena (Section 4.3). • Whereas humans can achieve near-perfect per-...",
+              "location": "full_text:paragraph_1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "refute_spans": [],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "338 structure in Japanese. We present a series of experiments with the JaNLI dataset to evaluate the generalization per- formance of Japanese and multilingual BERT mod- els. In addition, we compare human performance with model performance. Our experiments shed light on several shortcomings of the models and highlight the following challenges for cross-lingual generalization in NLI: • Japanese and multilingual NLI models trained on Japanese NLI datasets other than JaNLI behave differently across different classes of sentences. In particular, cross-dataset gen- eralization on non-entailing pairs is weaker on non-entailing pairs than on entailing pairs (Section 4.2). • Data augmentation with a small subset of the JaNLI dataset can help improve model perfor- mance, but the accuracy is not increased for some linguistic phenomena (Section 4.3). • Whereas humans can achieve near-perfect per-...",
+          "location": "full_text:paragraph_1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "yanaka_assessing_2021",
+          "stage": "stage2",
+          "claim_id": "S2-EC1",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Proceedings of the Fourth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP, pages 337–349 Online, November 11, 2021. ©2021 Association for Computational Linguistics 337 Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference Hitomi Yanaka1 and Koji Mineshima2 1The University of Tokyo, 2Keio University hyanaka@is.s.u-tokyo.ac.jp, minesima@abelard.flet.keio.ac.jp Abstract Despite the success of multilingual pre-trained language models, it remains unclear to what extent these models have human-like gen- eralization capacity across languages. The aim of this study is to investigate the out-of- distribution generalization of pre-trained lan- guage models through Natural Language Infer- ence (NLI) in Japanese, the typological prop- erties of which are different from those of English. We introduce...",
+              "location": "full_text:paragraph_0",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Proceedings of the Fourth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP, pages 337–349 Online, November 11, 2021. ©2021 Association for Computational Linguistics 337 Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference Hitomi Yanaka1 and Koji Mineshima2 1The University of Tokyo, 2Keio University hyanaka@is.s.u-tokyo.ac.jp, minesima@abelard.flet.keio.ac.jp Abstract Despite the success of multilingual pre-trained language models, it remains unclear to what extent these models have human-like gen- eralization capacity across languages. The aim of this study is to investigate the out-of- distribution generalization of pre-trained lan- guage models through Natural Language Infer- ence (NLI) in Japanese, the typological prop- erties of which are different from those of English. We introduce...",
+          "location": "full_text:paragraph_0",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "yanaka_assessing_2021",
+          "stage": "stage2",
+          "claim_id": "S2-EC2",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "338 structure in Japanese. We present a series of experiments with the JaNLI dataset to evaluate the generalization per- formance of Japanese and multilingual BERT mod- els. In addition, we compare human performance with model performance. Our experiments shed light on several shortcomings of the models and highlight the following challenges for cross-lingual generalization in NLI: • Japanese and multilingual NLI models trained on Japanese NLI datasets other than JaNLI behave differently across different classes of sentences. In particular, cross-dataset gen- eralization on non-entailing pairs is weaker on non-entailing pairs than on entailing pairs (Section 4.2). • Data augmentation with a small subset of the JaNLI dataset can help improve model perfor- mance, but the accuracy is not increased for some linguistic phenomena (Section 4.3). • Whereas humans can achieve near-perfect per-...",
+              "location": "full_text:paragraph_1",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "338 structure in Japanese. We present a series of experiments with the JaNLI dataset to evaluate the generalization per- formance of Japanese and multilingual BERT mod- els. In addition, we compare human performance with model performance. Our experiments shed light on several shortcomings of the models and highlight the following challenges for cross-lingual generalization in NLI: • Japanese and multilingual NLI models trained on Japanese NLI datasets other than JaNLI behave differently across different classes of sentences. In particular, cross-dataset gen- eralization on non-entailing pairs is weaker on non-entailing pairs than on entailing pairs (Section 4.2). • Data augmentation with a small subset of the JaNLI dataset can help improve model perfor- mance, but the accuracy is not increased for some linguistic phenomena (Section 4.3). • Whereas humans can achieve near-perfect per-...",
+          "location": "full_text:paragraph_1",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+          "span_validated": true
+        },
+        {
+          "candidate_key": "yanaka_assessing_2021",
+          "stage": "stage2",
+          "claim_id": "S2-EC3",
+          "evidence_status": "refute",
+          "support_spans": [],
+          "refute_spans": [
+            {
+              "quote": "Proceedings of the Fourth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP, pages 337–349 Online, November 11, 2021. ©2021 Association for Computational Linguistics 337 Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference Hitomi Yanaka1 and Koji Mineshima2 1The University of Tokyo, 2Keio University hyanaka@is.s.u-tokyo.ac.jp, minesima@abelard.flet.keio.ac.jp Abstract Despite the success of multilingual pre-trained language models, it remains unclear to what extent these models have human-like gen- eralization capacity across languages. The aim of this study is to investigate the out-of- distribution generalization of pre-trained lan- guage models through Natural Language Infer- ence (NLI) in Japanese, the typological prop- erties of which are different from those of English. We introduce...",
+              "location": "full_text:paragraph_0",
+              "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+              "source_field": "full_text"
+            }
+          ],
+          "missingness_reason": "none",
+          "confidence": 0.93,
+          "verifier_model": "gpt-5.4-mini",
+          "quote": "Proceedings of the Fourth BlackboxNLP Workshop on Analyzing and Interpreting Neural Networks for NLP, pages 337–349 Online, November 11, 2021. ©2021 Association for Computational Linguistics 337 Assessing the Generalization Capacity of Pre-trained Language Models through Japanese Adversarial Natural Language Inference Hitomi Yanaka1 and Koji Mineshima2 1The University of Tokyo, 2Keio University hyanaka@is.s.u-tokyo.ac.jp, minesima@abelard.flet.keio.ac.jp Abstract Despite the success of multilingual pre-trained language models, it remains unclear to what extent these models have human-like gen- eralization capacity across languages. The aim of this study is to investigate the out-of- distribution generalization of pre-trained lan- guage models through Natural Language Infer- ence (NLI) in Japanese, the typological prop- erties of which are different from those of English. We introduce...",
+          "location": "full_text:paragraph_0",
+          "source_path": "/Users/xjp/Desktop/NLP_PRISMA_Reviews/refs/2601.19926/mds/yanaka_assessing_2021.md",
+          "span_validated": true
+        }
+      ]
+    },
+    "recall_repair_decision": {
+      "candidate_key": "yanaka_assessing_2021",
+      "stage": "stage2_global_checklist",
+      "proposed_decision": "include",
+      "confidence": 0.93,
+      "missingness_reason": "none",
+      "criterion_assessments": [
+        {
+          "claim_id": "S2-IC1",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_title",
+            "q_ft_0",
+            "q_ft_intro"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The record explicitly concerns pre-trained language models and evaluates BERT models, which are Transformer-based language models."
+        },
+        {
+          "claim_id": "S2-IC2",
+          "claim_type": "inclusion",
+          "judgment": "supported",
+          "support_quote_ids": [
+            "q_ft_1",
+            "q_ft_3",
+            "q_ft_4",
+            "q_ft_5",
+            "q_ft_6",
+            "q_ft_7",
+            "q_ft_8"
+          ],
+          "refute_quote_ids": [],
+          "short_rationale": "The study uses Japanese NLI experiments and linguistic-phenomena templates involving structural patterns and garden-path/scrambling phenomena, showing empirical analysis of syntax-related knowledge."
+        },
+        {
+          "claim_id": "S2-EC1",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_0",
+            "q_ft_1"
+          ],
+          "short_rationale": "The evidence points to pre-trained language models and BERT, not non-transformer or MT-oriented encoder-decoder architectures."
+        },
+        {
+          "claim_id": "S2-EC2",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_1",
+            "q_ft_3",
+            "q_ft_4",
+            "q_ft_5"
+          ],
+          "short_rationale": "The paper explicitly analyzes linguistic phenomena and sentence structures, so the syntax-exclusion does not apply."
+        },
+        {
+          "claim_id": "S2-EC3",
+          "claim_type": "exclusion",
+          "judgment": "not_supported",
+          "support_quote_ids": [],
+          "refute_quote_ids": [
+            "q_ft_0",
+            "q_ft_1",
+            "q_ft_3",
+            "q_ft_5",
+            "q_ft_7"
+          ],
+          "short_rationale": "This is an empirical study with experiments, datasets, and performance tables, not a survey or position paper."
+        }
+      ],
+      "decision_rationale": "The paper studies pre-trained/BERT language models and empirically tests linguistic phenomena and structural patterns in Japanese NLI. No exclusion criterion is supported by the evidence."
+    }
+  }
+]
