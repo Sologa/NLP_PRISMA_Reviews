@@ -29,3 +29,9 @@ Operational rules:
 
 - The main architecture/method graph for this workspace intentionally excludes `runs/` and `graphify-out/` via `.graphifyignore`.
 - If the task is specifically run-forensics on generated artifacts, inspect `runs/` directly or build a separate run-scoped graph instead of folding run outputs back into the main workspace graph.
+
+## 4. Git artifact boundary
+
+- Treat `reports/`, `src/`, protocol/schema/config files, run-level `run_manifest.json`, aggregate evaluation/validation summaries, and aggregate `assembled_results.json` as the durable review surface for BCPCS experiment results.
+- Treat batch payloads, uploaded/downloaded batch files, cost ledgers, logs, direct-call transcripts, private inventories, and per-paper duplicate/raw review JSON under `runs/**/papers/` as generated execution internals.
+- The execution internals above should remain ignored by repo-level `.gitignore` unless a future task explicitly promotes a specific artifact into a documented report or aggregate result.
