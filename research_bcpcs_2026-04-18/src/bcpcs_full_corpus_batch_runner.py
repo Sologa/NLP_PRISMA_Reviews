@@ -82,6 +82,21 @@ PROFILE = BatchProfile(
 )
 
 
+def make_profile(
+    *,
+    reasoning_effort: str = DEFAULT_REASONING_EFFORT,
+    max_completion_tokens: int | None = None,
+) -> BatchProfile:
+    return BatchProfile(
+        model=PROFILE.model,
+        reasoning_effort=reasoning_effort,
+        max_completion_tokens=max_completion_tokens if max_completion_tokens is not None else PROFILE.max_completion_tokens,
+        evidence_packet_chars=PROFILE.evidence_packet_chars,
+        max_quotes=PROFILE.max_quotes,
+        rates=PROFILE.rates,
+    )
+
+
 def _git_status_short() -> list[str]:
     proc = subprocess.run(
         ["git", "status", "--short"],
@@ -884,11 +899,19 @@ def write_report(*, run_id: str, summary: dict[str, Any], validation: dict[str, 
     return report_path
 
 
-def run_experiment(*, run_id: str, cost_cap_usd: float, poll_interval_sec: float, max_wait_minutes: float, dry_run: bool = False) -> dict[str, Any]:
-    init_run(run_id=run_id, profile=PROFILE, cost_cap_usd=cost_cap_usd)
+def run_experiment(
+    *,
+    run_id: str,
+    profile: BatchProfile,
+    cost_cap_usd: float,
+    poll_interval_sec: float,
+    max_wait_minutes: float,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    init_run(run_id=run_id, profile=profile, cost_cap_usd=cost_cap_usd)
     result = submit_collect_run(
         run_id=run_id,
-        profile=PROFILE,
+        profile=profile,
         cost_cap_usd=cost_cap_usd,
         poll_interval_sec=poll_interval_sec,
         max_wait_minutes=max_wait_minutes,
@@ -925,19 +948,22 @@ def main() -> None:
     parser.add_argument("--poll-interval-sec", type=float, default=30.0)
     parser.add_argument("--max-wait-minutes", type=float, default=240.0)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--reasoning-effort", choices=["none", "minimal", "low", "medium", "high", "xhigh"], default=DEFAULT_REASONING_EFFORT)
+    parser.add_argument("--max-completion-tokens", type=int, default=MAX_COMPLETION_TOKENS)
     args = parser.parse_args()
+    profile = make_profile(reasoning_effort=args.reasoning_effort, max_completion_tokens=args.max_completion_tokens)
     if args.mode == "submit":
-        init_run(run_id=args.run_id, profile=PROFILE, cost_cap_usd=args.cost_cap_usd)
+        init_run(run_id=args.run_id, profile=profile, cost_cap_usd=args.cost_cap_usd)
         payload = submit_only(
             run_id=args.run_id,
-            profile=PROFILE,
+            profile=profile,
             cost_cap_usd=args.cost_cap_usd,
             poll_interval_sec=args.poll_interval_sec,
         )
     elif args.mode == "collect":
         payload = collect_existing_batch(
             run_id=args.run_id,
-            profile=PROFILE,
+            profile=profile,
             poll_interval_sec=args.poll_interval_sec,
             max_wait_minutes=args.max_wait_minutes,
             batch_id=args.batch_id,
@@ -968,6 +994,7 @@ def main() -> None:
             poll_interval_sec=args.poll_interval_sec,
             max_wait_minutes=args.max_wait_minutes,
             dry_run=args.dry_run,
+            profile=profile,
         )
     print(json.dumps(payload, ensure_ascii=False, indent=2))
 

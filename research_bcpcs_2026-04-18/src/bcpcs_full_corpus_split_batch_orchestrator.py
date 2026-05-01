@@ -15,7 +15,7 @@ from failure_slice_eval import decision_to_prediction, evidence_validity, load_g
 
 TODAY = time.strftime("%Y-%m-%d")
 PAPER_IDS = ["2307.05527", "2409.13738", "2511.13936", "2601.19926"]
-RUN_ID = f"bcpcs_full_corpus_split_batch_gpt54mini_recallv3_all4_{TODAY}_v1"
+RUN_ID = f"bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_{TODAY}_v1"
 
 
 @contextmanager
@@ -28,8 +28,9 @@ def scoped_papers(paper_ids: list[str]):
         full.PAPER_IDS = original
 
 
-def _paper_run_id(paper_id: str) -> str:
-    return f"bcpcs_full_corpus_batch_gpt54mini_recallv3_{paper_id}_{TODAY}_v1"
+def _paper_run_id(parent_run_id: str, paper_id: str) -> str:
+    paper_suffix = paper_id.replace(".", "_")
+    return f"{parent_run_id}__{paper_suffix}"
 
 
 def _aggregate_binary(rows: list[dict[str, Any]], *, unknown_as_negative: bool) -> dict[str, Any]:
@@ -72,13 +73,14 @@ def _write_aggregate_report(*, run_id: str, summary: dict[str, Any]) -> Path:
     lines = [
         "# BCPCS Full-Corpus Split-Batch Report",
         "",
-        "這是目前 BCPCS V3 recall-repair 架構在四篇 SR 全量 corpus 上，以較小 Batch 單位完成的 all4 run。",
+        "這是目前 BCPCS global-check / claim-packets 架構在四篇 SR 全量 corpus 上，以較小 Batch 單位完成的 all4 run。",
         "不是 current single-reviewer two-stage direct-review baseline。",
         "",
         "## Overall",
         "",
         f"- run_id: `{run_id}`",
         f"- model: `{summary['model']}`",
+        f"- reasoning_effort: `{summary['reasoning_effort']}`",
         f"- child runs: `{', '.join(summary['child_run_ids'])}`",
         f"- repo-compatible F1: `{summary['overall']['repo_compatible_f1']['f1']:.4f}`",
         f"- auto-decidable F1: `{summary['overall']['auto_decidable_f1']['f1']:.4f}`",
@@ -112,7 +114,14 @@ def _write_aggregate_report(*, run_id: str, summary: dict[str, Any]) -> Path:
     return report_path
 
 
-def run_split_batches(*, run_id: str, cost_cap_usd: float, poll_interval_sec: float, max_wait_minutes: float) -> dict[str, Any]:
+def run_split_batches(
+    *,
+    run_id: str,
+    profile: full.BatchProfile,
+    cost_cap_usd: float,
+    poll_interval_sec: float,
+    max_wait_minutes: float,
+) -> dict[str, Any]:
     top_manifest_path = run_dir(run_id) / "run_manifest.json"
     if top_manifest_path.exists():
         top_manifest = read_json(top_manifest_path)
@@ -122,11 +131,13 @@ def run_split_batches(*, run_id: str, cost_cap_usd: float, poll_interval_sec: fl
             "created_at": utc_now_iso(),
             "updated_at": utc_now_iso(),
             "status": "initializing",
-            "model": full.PROFILE.model,
-            "workflow": "bcpcs_v3_recall_repair_split_batch_full_corpus",
+            "model": profile.model,
+            "reasoning_effort": profile.reasoning_effort,
+            "workflow": "bcpcs_globalcheck_claimpackets_split_batch_full_corpus",
             "paper_ids": PAPER_IDS,
             "notes": [
                 "This top-level run uses four smaller Batch jobs after a single all4 Batch stayed in_progress with zero completed requests.",
+                "Child run ids are namespaced under the parent run id so new global-check runs do not collide with older recallv3 artifacts.",
             ],
             "child_runs": {},
         }
@@ -140,12 +151,12 @@ def run_split_batches(*, run_id: str, cost_cap_usd: float, poll_interval_sec: fl
             child_run_id = existing["child_run_id"]
             submit_result = existing["submit_result"]
         else:
-            child_run_id = _paper_run_id(paper_id)
+            child_run_id = _paper_run_id(run_id, paper_id)
             with scoped_papers([paper_id]):
-                full.init_run(run_id=child_run_id, profile=full.PROFILE, cost_cap_usd=cost_cap_usd)
+                full.init_run(run_id=child_run_id, profile=profile, cost_cap_usd=cost_cap_usd)
                 submit_result = full.submit_only(
                     run_id=child_run_id,
-                    profile=full.PROFILE,
+                    profile=profile,
                     cost_cap_usd=cost_cap_usd,
                     poll_interval_sec=poll_interval_sec,
                 )
@@ -184,7 +195,7 @@ def run_split_batches(*, run_id: str, cost_cap_usd: float, poll_interval_sec: fl
         with scoped_papers([paper_id]):
             collect_result = full.collect_existing_batch(
                 run_id=child_run_id,
-                profile=full.PROFILE,
+                profile=profile,
                 poll_interval_sec=poll_interval_sec,
                 max_wait_minutes=max_wait_minutes,
                 batch_id=batch_id,
@@ -220,8 +231,9 @@ def run_split_batches(*, run_id: str, cost_cap_usd: float, poll_interval_sec: fl
     eval_rows = _load_eval_rows(child_run_ids=child_run_ids)
     summary = {
         "run_id": run_id,
-        "model": full.PROFILE.model,
-        "workflow": "bcpcs_v3_recall_repair_split_batch_full_corpus",
+        "model": profile.model,
+        "reasoning_effort": profile.reasoning_effort,
+        "workflow": "bcpcs_globalcheck_claimpackets_split_batch_full_corpus",
         "paper_ids": PAPER_IDS,
         "child_run_ids": child_run_ids,
         "row_count": len(eval_rows),
@@ -255,9 +267,13 @@ def main() -> None:
     parser.add_argument("--cost-cap-usd", type=float, default=10.0)
     parser.add_argument("--poll-interval-sec", type=float, default=30.0)
     parser.add_argument("--max-wait-minutes", type=float, default=240.0)
+    parser.add_argument("--reasoning-effort", choices=["none", "minimal", "low", "medium", "high", "xhigh"], default=full.DEFAULT_REASONING_EFFORT)
+    parser.add_argument("--max-completion-tokens", type=int, default=full.MAX_COMPLETION_TOKENS)
     args = parser.parse_args()
+    profile = full.make_profile(reasoning_effort=args.reasoning_effort, max_completion_tokens=args.max_completion_tokens)
     payload = run_split_batches(
         run_id=args.run_id,
+        profile=profile,
         cost_cap_usd=args.cost_cap_usd,
         poll_interval_sec=args.poll_interval_sec,
         max_wait_minutes=args.max_wait_minutes,

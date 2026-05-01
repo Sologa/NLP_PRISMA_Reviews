@@ -431,6 +431,7 @@ def _prepare_stage2_review_specs(
     max_records: int | None,
     reasoning_effort: str | None,
     write_audits: bool,
+    stage2_all_cutoff_pass: bool = False,
 ) -> dict[str, Any]:
     specs: list[BatchRequestSpec] = []
     paper_summaries: dict[str, Any] = {}
@@ -457,10 +458,13 @@ def _prepare_stage2_review_specs(
         if write_audits:
             write_json(_paper_fulltext_resolution_audit_path(run_id, paper_id), resolution_audit)
 
-        selection_phase_path = _phase_output_path(run_id, paper_id, gate_policy.selection_phase)
-        if not selection_phase_path.exists():
-            raise SystemExit(f"stage2_review 需要先 collect {gate_policy.selection_phase}: {selection_phase_path}")
-        stage1_by_key = _outputs_by_key(_load_stage_records(selection_phase_path))
+        if stage2_all_cutoff_pass:
+            stage1_by_key = {}
+        else:
+            selection_phase_path = _phase_output_path(run_id, paper_id, gate_policy.selection_phase)
+            if not selection_phase_path.exists():
+                raise SystemExit(f"stage2_review 需要先 collect {gate_policy.selection_phase}: {selection_phase_path}")
+            stage1_by_key = _outputs_by_key(_load_stage_records(selection_phase_path))
         criteria_path = _paper_stage2_criteria_path(paper_id)
         criteria_payload = criteria_text_for_stage(criteria_path)
         selected_keys: list[str] = []
@@ -472,10 +476,11 @@ def _prepare_stage2_review_specs(
             if not artifact_result["decisions_by_key"][key]["gate_pass"]:
                 continue
             stage1_record = stage1_by_key.get(key)
-            if stage1_record is None:
-                continue
-            if stage1_record.decision_recommendation not in gate_policy.advance_decisions:
-                continue
+            if not stage2_all_cutoff_pass:
+                if stage1_record is None:
+                    continue
+                if stage1_record.decision_recommendation not in gate_policy.advance_decisions:
+                    continue
             resolution = resolution_by_key[key]
             if not bool(resolution.get("fulltext_gate_pass", True)):
                 continue
@@ -508,7 +513,7 @@ def _prepare_stage2_review_specs(
                 metadata=metadata_payload(record),
                 response_schema_hint=prompt_assets.schema_hints[phase_id],
                 provenance=provenance,
-                prior_stage_review=stage1_record.model_dump(mode="json"),
+                prior_stage_review=stage1_record.model_dump(mode="json") if stage1_record is not None else None,
                 fulltext_resolution=resolution,
                 fulltext_text=fulltext_text,
             )
@@ -578,11 +583,12 @@ def _phase_preparation(
     max_records: int | None,
     reasoning_effort: str | None,
     write_audits: bool,
+    stage2_all_cutoff_pass: bool = False,
 ) -> dict[str, Any]:
     builder = PHASE_BUILDERS.get(phase)
     if builder is None:
         raise ValueError(f"unsupported phase: {phase}")
-    return builder(
+    kwargs = dict(
         run_id=run_id,
         prompt_assets=prompt_assets,
         config=config,
@@ -592,6 +598,9 @@ def _phase_preparation(
         reasoning_effort=reasoning_effort,
         write_audits=write_audits,
     )
+    if phase == "stage2_review":
+        kwargs["stage2_all_cutoff_pass"] = stage2_all_cutoff_pass
+    return builder(**kwargs)
 
 
 def _init_run_manifest(
@@ -602,6 +611,7 @@ def _init_run_manifest(
     key_map_path: Path | None,
     max_records: int | None,
     reasoning_effort: str | None,
+    stage2_all_cutoff_pass: bool,
 ) -> dict[str, Any]:
     workflow_spec = _load_workflow_spec()
     return {
@@ -620,6 +630,7 @@ def _init_run_manifest(
         "max_records": max_records,
         "candidate_keys_file": relative_path(key_map_path, REPO_ROOT),
         "reasoning_effort": reasoning_effort,
+        "stage2_all_cutoff_pass": stage2_all_cutoff_pass,
         "phase_jobs": {},
     }
 
@@ -632,6 +643,7 @@ def _load_or_init_run_manifest(
     key_map_path: Path | None,
     max_records: int | None,
     reasoning_effort: str | None,
+    stage2_all_cutoff_pass: bool,
 ) -> dict[str, Any]:
     manifest_path = _run_manifest_path(run_id)
     if manifest_path.exists():
@@ -643,6 +655,7 @@ def _load_or_init_run_manifest(
         key_map_path=key_map_path,
         max_records=max_records,
         reasoning_effort=reasoning_effort,
+        stage2_all_cutoff_pass=stage2_all_cutoff_pass,
     )
     write_json(manifest_path, manifest)
     return manifest
@@ -668,6 +681,7 @@ def _submit_phase(
     key_map_path: Path | None,
     max_records: int | None,
     reasoning_effort: str | None,
+    stage2_all_cutoff_pass: bool = False,
 ) -> dict[str, Any]:
     _load_env_file()
     _run_dir(run_id).mkdir(parents=True, exist_ok=True)
@@ -678,6 +692,7 @@ def _submit_phase(
         key_map_path=key_map_path,
         max_records=max_records,
         reasoning_effort=reasoning_effort,
+        stage2_all_cutoff_pass=stage2_all_cutoff_pass,
     )
     prep = _phase_preparation(
         phase=phase,
@@ -689,6 +704,7 @@ def _submit_phase(
         max_records=max_records,
         reasoning_effort=reasoning_effort,
         write_audits=True,
+        stage2_all_cutoff_pass=stage2_all_cutoff_pass,
     )
     specs: list[BatchRequestSpec] = prep["specs"]
     artifact_dir = _batch_artifact_dir(run_id, phase, str(config["model"]))
@@ -759,6 +775,7 @@ def _collect_phase(
     reasoning_effort: str | None,
     batch_poll_interval_sec: float | None,
     batch_max_wait_minutes: float | None,
+    stage2_all_cutoff_pass: bool = False,
 ) -> dict[str, Any]:
     _load_env_file()
     run_manifest = read_json(_run_manifest_path(run_id))
@@ -772,6 +789,7 @@ def _collect_phase(
         max_records=max_records,
         reasoning_effort=reasoning_effort,
         write_audits=True,
+        stage2_all_cutoff_pass=stage2_all_cutoff_pass,
     )
     specs: list[BatchRequestSpec] = prep["specs"]
     artifact_dir = _batch_artifact_dir(run_id, phase, str(config["model"]))
@@ -954,10 +972,13 @@ def _assemble_results_and_metrics(
     key_map: dict[str, set[str]] | None,
     max_records: int | None,
     report_reasoning_effort: str | None,
+    stage2_all_cutoff_pass: bool = False,
 ) -> dict[str, Any]:
     baseline = read_json(RESULTS_MANIFEST_PATH)["papers"]
-    stage1_issue_by_paper = collect_phase_issues_by_key(
-        _batch_artifact_dir(run_id, "stage1_review", str(config["model"])) / "parsed_results.json"
+    stage1_issue_by_paper = (
+        {}
+        if stage2_all_cutoff_pass
+        else collect_phase_issues_by_key(_batch_artifact_dir(run_id, "stage1_review", str(config["model"])) / "parsed_results.json")
     )
     stage2_issue_by_paper = collect_phase_issues_by_key(
         _batch_artifact_dir(run_id, "stage2_review", str(config["model"])) / "parsed_results.json"
@@ -986,23 +1007,25 @@ def _assemble_results_and_metrics(
         stage1_issue_by_key = stage1_issue_by_paper.get(paper_id, {})
         stage2_issue_by_key = stage2_issue_by_paper.get(paper_id, {})
 
-        _write_stage1_results(
-            run_id=run_id,
-            paper_id=paper_id,
-            records=records,
-            artifact_result=artifact_result,
-            cutoff_result=cutoff_result,
-            stage1_by_key=stage1_by_key,
-            stage1_issue_by_key=stage1_issue_by_key,
-            resolution_by_key=resolution_by_key,
-        )
         keys_path = _paper_eval_keys_path(run_id, paper_id)
-        stage1_metrics = _evaluate_results(
-            paper_id=paper_id,
-            results_path=_paper_stage1_results_path(run_id, paper_id),
-            output_path=_paper_stage1_metrics_path(run_id, paper_id),
-            keys_path=keys_path if keys_path.exists() else None,
-        )
+        stage1_metrics = None
+        if not stage2_all_cutoff_pass:
+            _write_stage1_results(
+                run_id=run_id,
+                paper_id=paper_id,
+                records=records,
+                artifact_result=artifact_result,
+                cutoff_result=cutoff_result,
+                stage1_by_key=stage1_by_key,
+                stage1_issue_by_key=stage1_issue_by_key,
+                resolution_by_key=resolution_by_key,
+            )
+            stage1_metrics = _evaluate_results(
+                paper_id=paper_id,
+                results_path=_paper_stage1_results_path(run_id, paper_id),
+                output_path=_paper_stage1_metrics_path(run_id, paper_id),
+                keys_path=keys_path if keys_path.exists() else None,
+            )
 
         final_rows: list[dict[str, Any]] = []
         reviewed_count = 0
@@ -1043,53 +1066,64 @@ def _assemble_results_and_metrics(
                 resolution=resolution,
                 metadata_path=_paper_metadata_path(paper_id),
                 runtime_prompts_path=_runtime_prompts_path(),
-                criteria_path=_paper_stage1_criteria_path(paper_id),
+                criteria_path=_paper_stage2_criteria_path(paper_id) if stage2_all_cutoff_pass else _paper_stage1_criteria_path(paper_id),
                 repo_root=REPO_ROOT,
             )
 
             stage1_issue = stage1_issue_by_key.get(key)
-            if stage1_issue is not None or key not in stage1_by_key:
-                final_rows.append(
-                    _build_error_final_row(
-                        paper_id=paper_id,
-                        record=record,
-                        provenance=provenance,
-                        review_state=(stage1_issue or {}).get("review_state", "batch_unmapped"),
-                        failed_phase="stage1_review",
-                        review_output=(stage1_issue or {}).get("review_output"),
-                        fulltext_resolution_status=resolution["resolution_status"],
-                        fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
-                    ).model_dump(mode="json")
-                )
-                continue
+            stage1_record = stage1_by_key.get(key)
+            if not stage2_all_cutoff_pass:
+                if stage1_issue is not None or stage1_record is None:
+                    final_rows.append(
+                        _build_error_final_row(
+                            paper_id=paper_id,
+                            record=record,
+                            provenance=provenance,
+                            review_state=(stage1_issue or {}).get("review_state", "batch_unmapped"),
+                            failed_phase="stage1_review",
+                            review_output=(stage1_issue or {}).get("review_output"),
+                            fulltext_resolution_status=resolution["resolution_status"],
+                            fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
+                        ).model_dump(mode="json")
+                    )
+                    continue
 
-            stage1_record = stage1_by_key[key]
-            if stage1_record.decision_recommendation == "exclude":
-                reviewed_count += 1
-                final_rows.append(
-                    SingleReviewerMergedFinalRow(
-                        key=key,
-                        title=title,
-                        paper_id=paper_id,
-                        workflow_arm=_workflow_arm(),
-                        stage_model=_stage_model(),
-                        review_state="reviewed",
-                        review_skipped=False,
-                        final_verdict=stage_verdict("stage1", stage1_record.stage_score),
-                        stage1_stage_score=stage1_record.stage_score,
-                        stage1_decision_recommendation=stage1_record.decision_recommendation,
-                        stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
-                        source_record_provenance=stage1_record.source_record_provenance,
-                        review_output={"stage1_review": stage1_record.model_dump(mode="json")},
-                        fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
-                        fulltext_resolution_status=resolution["resolution_status"],
-                    ).model_dump(mode="json")
-                )
-                continue
+                if stage1_record.decision_recommendation == "exclude":
+                    reviewed_count += 1
+                    final_rows.append(
+                        SingleReviewerMergedFinalRow(
+                            key=key,
+                            title=title,
+                            paper_id=paper_id,
+                            workflow_arm=_workflow_arm(),
+                            stage_model=_stage_model(),
+                            review_state="reviewed",
+                            review_skipped=False,
+                            final_verdict=stage_verdict("stage1", stage1_record.stage_score),
+                            stage1_stage_score=stage1_record.stage_score,
+                            stage1_decision_recommendation=stage1_record.decision_recommendation,
+                            stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
+                            source_record_provenance=stage1_record.source_record_provenance,
+                            review_output={"stage1_review": stage1_record.model_dump(mode="json")},
+                            fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
+                            fulltext_resolution_status=resolution["resolution_status"],
+                        ).model_dump(mode="json")
+                    )
+                    continue
 
             if not bool(resolution.get("fulltext_gate_pass", True)):
                 fulltext_gate_failed_count += 1
                 gate_reason = str(resolution.get("fulltext_gate_reason") or "metadata_flag_false")
+                review_output = {
+                    "fulltext_gate": {
+                        "gate_pass": False,
+                        "gate_reason": gate_reason,
+                        "gate_status": resolution.get("fulltext_gate_status"),
+                    },
+                    "resolution": resolution,
+                }
+                if stage1_record is not None:
+                    review_output["stage1_review"] = stage1_record.model_dump(mode="json")
                 final_rows.append(
                     SingleReviewerMergedFinalRow(
                         key=key,
@@ -1100,20 +1134,12 @@ def _assemble_results_and_metrics(
                         review_state="fulltext_gate_failed",
                         review_skipped=True,
                         discard_reason=f"fulltext_gate:{gate_reason}",
-                        final_verdict=stage_verdict("stage1", stage1_record.stage_score),
-                        stage1_stage_score=stage1_record.stage_score,
-                        stage1_decision_recommendation=stage1_record.decision_recommendation,
-                        stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
-                        source_record_provenance=stage1_record.source_record_provenance,
-                        review_output={
-                            "fulltext_gate": {
-                                "gate_pass": False,
-                                "gate_reason": gate_reason,
-                                "gate_status": resolution.get("fulltext_gate_status"),
-                            },
-                            "resolution": resolution,
-                            "stage1_review": stage1_record.model_dump(mode="json"),
-                        },
+                        final_verdict="exclude (fulltext_gate_failed)" if stage2_all_cutoff_pass else stage_verdict("stage1", stage1_record.stage_score),
+                        stage1_stage_score=stage1_record.stage_score if stage1_record is not None else None,
+                        stage1_decision_recommendation=stage1_record.decision_recommendation if stage1_record is not None else None,
+                        stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT) if stage1_record is not None else None,
+                        source_record_provenance=stage1_record.source_record_provenance if stage1_record is not None else provenance,
+                        review_output=review_output,
                         fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
                         fulltext_resolution_status=resolution["resolution_status"],
                     ).model_dump(mode="json")
@@ -1122,6 +1148,12 @@ def _assemble_results_and_metrics(
 
             if resolution["resolution_status"] not in {"exact", "normalized"}:
                 missing_count += 1
+                review_output = {
+                    "fulltext_missing_or_unmatched": True,
+                    "resolution": resolution,
+                }
+                if stage1_record is not None:
+                    review_output["stage1_review"] = stage1_record.model_dump(mode="json")
                 final_rows.append(
                     SingleReviewerMergedFinalRow(
                         key=key,
@@ -1132,16 +1164,12 @@ def _assemble_results_and_metrics(
                         review_state="missing",
                         review_skipped=True,
                         discard_reason="fulltext_missing",
-                        final_verdict=stage_verdict("stage1", stage1_record.stage_score),
-                        stage1_stage_score=stage1_record.stage_score,
-                        stage1_decision_recommendation=stage1_record.decision_recommendation,
-                        stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
-                        source_record_provenance=stage1_record.source_record_provenance,
-                        review_output={
-                            "fulltext_missing_or_unmatched": True,
-                            "resolution": resolution,
-                            "stage1_review": stage1_record.model_dump(mode="json"),
-                        },
+                        final_verdict="exclude (fulltext_missing)" if stage2_all_cutoff_pass else stage_verdict("stage1", stage1_record.stage_score),
+                        stage1_stage_score=stage1_record.stage_score if stage1_record is not None else None,
+                        stage1_decision_recommendation=stage1_record.decision_recommendation if stage1_record is not None else None,
+                        stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT) if stage1_record is not None else None,
+                        source_record_provenance=stage1_record.source_record_provenance if stage1_record is not None else provenance,
+                        review_output=review_output,
                         fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
                         fulltext_resolution_status=resolution["resolution_status"],
                     ).model_dump(mode="json")
@@ -1176,17 +1204,21 @@ def _assemble_results_and_metrics(
                     review_state="reviewed",
                     review_skipped=False,
                     final_verdict=stage_verdict("stage2", stage2_record.stage_score),
-                    stage1_stage_score=stage1_record.stage_score,
-                    stage1_decision_recommendation=stage1_record.decision_recommendation,
+                    stage1_stage_score=stage1_record.stage_score if stage1_record is not None else None,
+                    stage1_decision_recommendation=stage1_record.decision_recommendation if stage1_record is not None else None,
                     stage2_stage_score=stage2_record.stage_score,
                     stage2_decision_recommendation=stage2_record.decision_recommendation,
-                    stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
+                    stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT) if stage1_record is not None else None,
                     stage2_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage2_review"), REPO_ROOT),
                     source_record_provenance=stage2_record.source_record_provenance,
-                    review_output={
-                        "stage1_review": stage1_record.model_dump(mode="json"),
-                        "stage2_review": stage2_record.model_dump(mode="json"),
-                    },
+                    review_output=(
+                        {"stage2_review": stage2_record.model_dump(mode="json")}
+                        if stage1_record is None
+                        else {
+                            "stage1_review": stage1_record.model_dump(mode="json"),
+                            "stage2_review": stage2_record.model_dump(mode="json"),
+                        }
+                    ),
                     fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
                     fulltext_resolution_status=resolution["resolution_status"],
                 ).model_dump(mode="json")
@@ -1222,12 +1254,12 @@ def _assemble_results_and_metrics(
                 "reviewed_count": reviewed_count,
                 "missing_count": missing_count,
                 "fulltext_gate_failed_count": fulltext_gate_failed_count,
-                "stage1_results_path": relative_path(_paper_stage1_results_path(run_id, paper_id), REPO_ROOT),
-                "stage1_metrics_path": relative_path(_paper_stage1_metrics_path(run_id, paper_id), REPO_ROOT),
-                "stage1_precision": float(stage1_metrics["metrics"]["precision"]),
-                "stage1_recall": float(stage1_metrics["metrics"]["recall"]),
-                "stage1_f1": float(stage1_metrics["metrics"]["f1"]),
-                "delta_vs_current_stage1": float(stage1_metrics["metrics"]["f1"]) - float(current_stage1["f1"]),
+                "stage1_results_path": relative_path(_paper_stage1_results_path(run_id, paper_id), REPO_ROOT) if stage1_metrics is not None else None,
+                "stage1_metrics_path": relative_path(_paper_stage1_metrics_path(run_id, paper_id), REPO_ROOT) if stage1_metrics is not None else None,
+                "stage1_precision": float(stage1_metrics["metrics"]["precision"]) if stage1_metrics is not None else None,
+                "stage1_recall": float(stage1_metrics["metrics"]["recall"]) if stage1_metrics is not None else None,
+                "stage1_f1": float(stage1_metrics["metrics"]["f1"]) if stage1_metrics is not None else None,
+                "delta_vs_current_stage1": (float(stage1_metrics["metrics"]["f1"]) - float(current_stage1["f1"])) if stage1_metrics is not None else None,
                 "results_path": relative_path(_paper_results_path(run_id, paper_id), REPO_ROOT),
                 "metrics_path": relative_path(_paper_metrics_path(run_id, paper_id), REPO_ROOT),
                 "precision": float(combined_metrics["metrics"]["precision"]),
@@ -1240,6 +1272,7 @@ def _assemble_results_and_metrics(
     run_manifest = read_json(_run_manifest_path(run_id))
     run_manifest["mode"] = "collect"
     run_manifest["reasoning_effort"] = report_reasoning_effort
+    run_manifest["stage2_all_cutoff_pass"] = stage2_all_cutoff_pass
     run_manifest["baseline"] = {
         paper_id: {
             "stage1": {
@@ -1261,25 +1294,31 @@ def _assemble_results_and_metrics(
 
 def _build_report_zh(run_manifest: dict[str, Any]) -> str:
     lines: list[str] = []
-    lines.append("# 單審查者官方 Batch 兩階段直審基線")
+    single_stage_mode = bool(run_manifest.get("stage2_all_cutoff_pass"))
+    lines.append("# 單審查者官方 Batch single-stage 直審基線" if single_stage_mode else "# 單審查者官方 Batch 兩階段直審基線")
     lines.append("")
     lines.append(f"- `run_id`：`{run_manifest['run_id']}`")
     lines.append(f"- model：`{run_manifest['model']}`")
     lines.append(f"- reasoning_effort：`{run_manifest.get('reasoning_effort') or '未顯式設定'}`")
     lines.append(f"- endpoint：`{run_manifest['endpoint']}`")
     lines.append("")
-    lines.append("## Stage 1 指標")
+    if single_stage_mode:
+        lines.append("## Stage 1 指標")
+        lines.append("")
+        lines.append("- 此 run 為 single-stage direct-review；沒有 stage1 batch，也不計 stage1 指標。")
+    else:
+        lines.append("## Stage 1 指標")
+        lines.append("")
+        lines.append("| Paper | Candidates | Cutoff pass | Stage2 selected | Stage1 F1 | Delta vs current stage1 | Precision | Recall |")
+        lines.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
+        for summary in run_manifest.get("summaries", []):
+            lines.append(
+                f"| `{summary['paper_id']}` | {summary['candidate_total']} | {summary['cutoff_pass_count']} | "
+                f"{summary['stage2_selected_count']} | {summary['stage1_f1']:.4f} | {summary['delta_vs_current_stage1']:+.4f} | "
+                f"{summary['stage1_precision']:.4f} | {summary['stage1_recall']:.4f} |"
+            )
     lines.append("")
-    lines.append("| Paper | Candidates | Cutoff pass | Stage2 selected | Stage1 F1 | Delta vs current stage1 | Precision | Recall |")
-    lines.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
-    for summary in run_manifest.get("summaries", []):
-        lines.append(
-            f"| `{summary['paper_id']}` | {summary['candidate_total']} | {summary['cutoff_pass_count']} | "
-            f"{summary['stage2_selected_count']} | {summary['stage1_f1']:.4f} | {summary['delta_vs_current_stage1']:+.4f} | "
-            f"{summary['stage1_precision']:.4f} | {summary['stage1_recall']:.4f} |"
-        )
-    lines.append("")
-    lines.append("## Combined 指標")
+    lines.append("## Final 指標" if single_stage_mode else "## Combined 指標")
     lines.append("")
     lines.append("| Paper | Candidates | Cutoff pass | Stage2 selected | Reviewed | Missing | F1 | Delta vs current combined | Precision | Recall |")
     lines.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
@@ -1411,10 +1450,13 @@ def main() -> int:
     parser.add_argument("--batch-poll-interval-sec", type=float, default=None)
     parser.add_argument("--batch-max-wait-minutes", type=float, default=None)
     parser.add_argument("--reasoning-effort", choices=["none", "minimal", "low", "medium", "high", "xhigh"], default="low")
+    parser.add_argument("--stage2-all-cutoff-pass", action="store_true")
     args = parser.parse_args()
 
     if args.phase == "all" and args.mode in {"submit", "collect"}:
         raise SystemExit("--phase all 僅支援 --mode run；stage2_review 依賴 stage1_review 的 collect 結果。")
+    if args.stage2_all_cutoff_pass and args.phase != "stage2_review":
+        raise SystemExit("--stage2-all-cutoff-pass 只支援 --phase stage2_review。")
 
     config = _config_with_model_override(config, args.model)
     run_id = args.run_id or now_run_id()
@@ -1435,6 +1477,7 @@ def main() -> int:
                 key_map_path=args.candidate_keys_file,
                 max_records=args.max_records,
                 reasoning_effort=args.reasoning_effort,
+                stage2_all_cutoff_pass=args.stage2_all_cutoff_pass,
             )
         if args.mode in {"collect", "run"}:
             _collect_phase(
@@ -1448,6 +1491,7 @@ def main() -> int:
                 reasoning_effort=args.reasoning_effort,
                 batch_poll_interval_sec=args.batch_poll_interval_sec,
                 batch_max_wait_minutes=args.batch_max_wait_minutes,
+                stage2_all_cutoff_pass=args.stage2_all_cutoff_pass,
             )
 
     if args.mode in {"collect", "run"} and (args.phase == "all" or phases[-1] == _phase_ids()[-1]):
@@ -1458,6 +1502,7 @@ def main() -> int:
             key_map=key_map,
             max_records=args.max_records,
             report_reasoning_effort=args.reasoning_effort,
+            stage2_all_cutoff_pass=args.stage2_all_cutoff_pass,
         )
         print(f"[report] {_report_path(run_id)}", flush=True)
     return 0

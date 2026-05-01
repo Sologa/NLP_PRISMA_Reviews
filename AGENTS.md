@@ -467,6 +467,22 @@ Operational rules:
 - If the graph is missing or stale after meaningful changes to the scoped files, rebuild with `graphify scripts/screening --update` or `graphify scripts/screening` for a full rebuild.
 - Do not commit or push `graphify-out/` or transient `.graphify_*` working files.
 
+### `research_bcpcs_2026-04-18` local graph
+
+This workspace may maintain a local graph under:
+
+- `research_bcpcs_2026-04-18/graphify-out/`
+
+Operational rules:
+
+- If the user explicitly scopes the task to `research_bcpcs_2026-04-18/`, consult `research_bcpcs_2026-04-18/graphify-out/GRAPH_REPORT.md` before broad raw-file search when the graph exists.
+- Use `research_bcpcs_2026-04-18/graphify-out/graph.html` for interactive navigation, `research_bcpcs_2026-04-18/graphify-out/graph.json` for machine-readable graph data, and `research_bcpcs_2026-04-18/graphify-out/GRAPH_REPORT.md` for the local audit summary.
+- Treat this graph as a local analysis artifact, not as repo-wide source of truth.
+- For repo-wide authority, current criteria, current score authority, runtime prompt authority, and production workflow truth, still rely on `AGENTS.md`, `docs/chatgpt_current_status_handoff.md`, and `screening/results/results_manifest.json`.
+- Treat `INFERRED` edges in the BCPCS local graph as leads rather than final truth; verify important claims against the underlying source files before relying on them.
+- If the graph is missing or stale after meaningful changes under `research_bcpcs_2026-04-18/`, rebuild it from inside that directory so outputs remain under `research_bcpcs_2026-04-18/`.
+- Do not commit or push `research_bcpcs_2026-04-18/graphify-out/` or transient `.graphify_*` files created under that workspace.
+
 ## 13. K-Dense note
 
 If future work expands into many concurrent experimental tracks, use `www.k-dense.ai` to manage the workflow rather than re-explaining the same context in multiple threads.

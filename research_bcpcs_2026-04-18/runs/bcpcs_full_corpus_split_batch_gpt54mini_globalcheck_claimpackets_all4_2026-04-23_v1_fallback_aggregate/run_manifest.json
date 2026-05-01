@@ -1,0 +1,43 @@
+{
+  "run_id": "bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1_fallback_aggregate",
+  "created_at": "2026-04-23T08:57:56+00:00",
+  "updated_at": "2026-04-23T08:57:56+00:00",
+  "status": "completed",
+  "model": "gpt-5.4-mini",
+  "workflow": "bcpcs_globalcheck_claimpackets_split_batch_full_corpus_fallback_aggregate",
+  "paper_ids": [
+    "2307.05527",
+    "2409.13738",
+    "2511.13936",
+    "2601.19926"
+  ],
+  "child_runs": {
+    "2307.05527": {
+      "child_run_id": "bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1__2307_05527",
+      "status": "completed"
+    },
+    "2409.13738": {
+      "child_run_id": "bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1__2409_13738",
+      "status": "completed"
+    },
+    "2511.13936": {
+      "child_run_id": "bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1__2511_13936",
+      "status": "completed"
+    },
+    "2601.19926": {
+      "child_run_id": "bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1__2601_19926_fallback_shard90b",
+      "status": "completed",
+      "replaces_stalled_run_id": "bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1__2601_19926",
+      "stalled_progress_snapshot": {
+        "completed": 357,
+        "total": 359
+      }
+    }
+  },
+  "summary_path": "research_bcpcs_2026-04-18/runs/bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1_fallback_aggregate/evaluation_summary_full_corpus_split.json",
+  "report_path": "research_bcpcs_2026-04-18/reports/bcpcs_full_corpus_split_batch_gpt54mini_globalcheck_claimpackets_all4_2026-04-23_v1_fallback_aggregate.REPORT_zh.md",
+  "notes": [
+    "2307/2409/2511 use the original split-batch child runs.",
+    "2601 uses fallback shard90b after the original 359-request child batch stalled at 357/359 completed for an extended period."
+  ]
+}
