@@ -1,0 +1,39 @@
+{
+  "asset_bundle": "primary_evidence_gate_overlay_2026-05-16",
+  "status": "experiment_only",
+  "created_date": "2026-05-16",
+  "purpose": "Run a pre-review primary-evidence gate for 2409.13738, 2511.13936, and 2601.19926, then overlay the gate onto role-review and direct-review comparator results.",
+  "scope": {
+    "included_papers": [
+      "2409.13738",
+      "2511.13936",
+      "2601.19926"
+    ],
+    "excluded_papers": [
+      "2307.05527"
+    ]
+  },
+  "workflow": {
+    "id": "primary-evidence-gate-overlay",
+    "stage_model": "pre_review_gate_overlay",
+    "production_pipeline_change": false
+  },
+  "results_root": "screening/results/primary_evidence_gate_overlay_2026-05-16",
+  "inputs": {
+    "runtime_prompts": "scripts/screening/runtime_prompts/runtime_prompts.json",
+    "stage1_criteria": "criteria_stage1/<paper_id>.json",
+    "stage2_criteria_for_exception_audit": "criteria_stage2/<paper_id>.json",
+    "metadata": "refs/<paper_id>/metadata/title_abstracts_metadata.jsonl",
+    "gold": "refs/<paper_id>/metadata/title_abstracts_metadata-annotated.jsonl",
+    "gate_key_source": "screening/results/single_reviewer_role_review_protocol_taxonomy_2026-05-15/runs/20260515_criteria_grounded_1stage_fulltext_full_gpt5nano_high/merged_retry/role_review_results.json"
+  },
+  "outputs": {
+    "gate_results": "screening/results/primary_evidence_gate_overlay_2026-05-16/runs/<run_id>/primary_gate_results.json",
+    "overlay_results": "screening/results/primary_evidence_gate_overlay_2026-05-16/runs/<run_id>/overlays/"
+  },
+  "tools": [
+    "single_reviewer_batch_experiments/primary_evidence_gate_overlay_2026-05-16/tools/run_experiment.py",
+    "scripts/screening/openai_batch_runner.py",
+    "scripts/screening/evaluate_review_f1.py"
+  ]
+}
