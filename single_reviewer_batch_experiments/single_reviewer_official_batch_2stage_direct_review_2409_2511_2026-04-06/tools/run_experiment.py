@@ -25,10 +25,15 @@ if str(SCREENING_ROOT) not in sys.path:
 
 import render_prompt  # noqa: E402
 from experiment_workflows import (  # noqa: E402
+    DEFAULT_CACHE_DIR_RELATIVE,
+    DEFAULT_SOURCE_FORM_MODEL,
+    DEFAULT_SOURCE_FORM_REASONING_EFFORT,
     DirectReviewModelOutput,
+    SOURCE_FORM_PHASE_ID,
     SingleReviewerMergedFinalRow,
     SourceRecordProvenance,
     StageDirectReviewRecord,
+    attach_source_form_gate,
     build_artifact_review_row,
     build_cutoff_review_row,
     build_direct_stage_prompt_context,
@@ -36,6 +41,10 @@ from experiment_workflows import (  # noqa: E402
     build_direct_stage_validator,
     build_fulltext_resolution_audit,
     build_source_record_provenance,
+    build_source_form_filtered_row,
+    build_source_form_gate_result,
+    build_source_form_specs_for_records,
+    cache_records_from_parsed_successes,
     collect_phase_issues_by_key,
     criteria_text_for_stage,
     custom_id,
@@ -45,12 +54,16 @@ from experiment_workflows import (  # noqa: E402
     load_artifact_gate_result,
     load_cutoff_result,
     load_direct_workflow_spec,
+    load_source_form_cache,
+    load_source_form_policy,
     metadata_payload,
     now_run_id,
     phase_success_rows_by_paper_direct,
+    policy_for_paper,
     read_json,
     relative_path,
     stage_verdict,
+    write_source_form_cache_artifacts,
     write_json,
 )
 from openai_batch_runner import BatchRequestSpec, OpenAIBatchRunner, build_json_schema_response_format  # noqa: E402
@@ -130,6 +143,10 @@ def _phase_ids() -> list[str]:
     return [phase.phase_id for phase in _load_workflow_spec().supported_phases]
 
 
+def _pipeline_phase_ids() -> list[str]:
+    return [SOURCE_FORM_PHASE_ID, *_phase_ids()]
+
+
 def _phase_spec(phase_id: str) -> Any:
     workflow_spec = _load_workflow_spec()
     for phase in workflow_spec.supported_phases:
@@ -162,6 +179,32 @@ def _paper_cutoff_path(paper_id: str) -> Path:
     return REPO_ROOT / "cutoff_jsons" / f"{paper_id}.json"
 
 
+def _source_form_policy_path() -> Path:
+    return REPO_ROOT / "screening" / "gates" / "source_form_policy.json"
+
+
+def _source_form_cache_dir(config: dict[str, Any]) -> Path:
+    configured = config.get("source_form_cache_dir")
+    if configured:
+        path = Path(str(configured))
+        return path if path.is_absolute() else REPO_ROOT / path
+    return REPO_ROOT / DEFAULT_CACHE_DIR_RELATIVE
+
+
+def _source_form_model(config: dict[str, Any]) -> str:
+    return str(config.get("source_form_model") or DEFAULT_SOURCE_FORM_MODEL)
+
+
+def _source_form_reasoning_effort(config: dict[str, Any]) -> str:
+    return str(config.get("source_form_reasoning_effort") or DEFAULT_SOURCE_FORM_REASONING_EFFORT)
+
+
+def _phase_model(config: dict[str, Any], phase: str) -> str:
+    if phase == SOURCE_FORM_PHASE_ID:
+        return _source_form_model(config)
+    return str(config["model"])
+
+
 def _runtime_prompts_path() -> Path:
     return REPO_ROOT / "scripts" / "screening" / "runtime_prompts" / "runtime_prompts.json"
 
@@ -184,6 +227,10 @@ def _paper_cutoff_audit_path(run_id: str, paper_id: str) -> Path:
 
 def _paper_artifact_gate_audit_path(run_id: str, paper_id: str) -> Path:
     return _paper_dir(run_id, paper_id) / "artifact_gate_audit.json"
+
+
+def _paper_source_form_gate_audit_path(run_id: str, paper_id: str) -> Path:
+    return _paper_dir(run_id, paper_id) / "source_form_gate_audit.json"
 
 
 def _paper_fulltext_resolution_audit_path(run_id: str, paper_id: str) -> Path:
@@ -306,6 +353,84 @@ def _build_error_final_row(
     )
 
 
+def _source_form_policy_for_paper(paper_id: str) -> Any:
+    return policy_for_paper(load_source_form_policy(_source_form_policy_path()), paper_id)
+
+
+def _source_form_stage1_criteria(paper_id: str) -> dict[str, Any]:
+    path = _paper_stage1_criteria_path(paper_id)
+    if path.exists():
+        return read_json(path)
+    return {
+        "paper_id": paper_id,
+        "stage": "stage1",
+        "criteria_missing": True,
+        "criteria_path": str(path),
+        "note": "No current criteria_stage1 file exists for this SR; source-form classification uses title, abstract, and metadata only.",
+    }
+
+
+def _source_form_gate_for_records(
+    *,
+    paper_id: str,
+    records: list[dict[str, Any]],
+    config: dict[str, Any],
+    require_cache: bool,
+) -> dict[str, Any]:
+    return build_source_form_gate_result(
+        paper_id=paper_id,
+        records=records,
+        policy=_source_form_policy_for_paper(paper_id),
+        stage1_criteria=_source_form_stage1_criteria(paper_id),
+        cache_dir=_source_form_cache_dir(config),
+        model=_source_form_model(config),
+        reasoning_effort=_source_form_reasoning_effort(config),
+        require_cache=require_cache,
+    )
+
+
+def _prepare_source_form_classification_specs(
+    *,
+    run_id: str,
+    prompt_assets: PromptAssets,
+    config: dict[str, Any],
+    selected_papers: list[str],
+    key_map: dict[str, set[str]] | None,
+    max_records: int | None,
+    reasoning_effort: str | None,
+    write_audits: bool,
+) -> dict[str, Any]:
+    del run_id, prompt_assets, reasoning_effort, write_audits
+    specs: list[BatchRequestSpec] = []
+    paper_summaries: dict[str, Any] = {}
+    ledger = load_source_form_policy(_source_form_policy_path())
+    cache_rows = load_source_form_cache(_source_form_cache_dir(config))
+    model = _source_form_model(config)
+    source_reasoning_effort = _source_form_reasoning_effort(config)
+    for paper_id in selected_papers:
+        key_allowlist = key_map.get(paper_id) if key_map is not None else None
+        records = load_candidates(_paper_metadata_path(paper_id), max_records=max_records, key_allowlist=key_allowlist)
+        policy = policy_for_paper(ledger, paper_id)
+        stage1_criteria = _source_form_stage1_criteria(paper_id)
+        paper_specs, hits_by_key = build_source_form_specs_for_records(
+            paper_id=paper_id,
+            records=records,
+            policy=policy,
+            stage1_criteria=stage1_criteria,
+            cache_rows=cache_rows,
+            model=model,
+            reasoning_effort=source_reasoning_effort,
+        )
+        specs.extend(paper_specs)
+        paper_summaries[paper_id] = {
+            "candidate_total": len(records),
+            "cache_hit_count": len(hits_by_key),
+            "request_count": len(paper_specs),
+            "allow_secondary_source_forms": policy.allow_secondary_source_forms,
+        }
+    return {"specs": specs, "paper_summaries": paper_summaries}
+
+
 def _prepare_stage1_review_specs(
     *,
     run_id: str,
@@ -349,10 +474,19 @@ def _prepare_stage1_review_specs(
         cutoff_result = load_cutoff_result(records=records, cutoff_path=_paper_cutoff_path(paper_id))
         if write_audits:
             write_json(_paper_cutoff_audit_path(run_id, paper_id), cutoff_result["audit_payload"])
+        source_form_result = _source_form_gate_for_records(
+            paper_id=paper_id,
+            records=records,
+            config=config,
+            require_cache=write_audits,
+        )
+        if write_audits:
+            write_json(_paper_source_form_gate_audit_path(run_id, paper_id), source_form_result["audit_payload"])
         stage1_records = [
             record
             for record in cutoff_result["kept_records"]
             if artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+            and source_form_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
         ]
 
         criteria_path = _paper_stage1_criteria_path(paper_id)
@@ -415,7 +549,17 @@ def _prepare_stage1_review_specs(
             "candidate_total": len(records),
             "cutoff_pass_count": len(cutoff_result["kept_records"]),
             "cutoff_excluded_count": len(cutoff_result["excluded_records"]),
-            "artifact_excluded_count": len(cutoff_result["kept_records"]) - len(stage1_records),
+            "artifact_excluded_count": sum(
+                1
+                for record in cutoff_result["kept_records"]
+                if not artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+            ),
+            "source_form_excluded_count": sum(
+                1
+                for record in cutoff_result["kept_records"]
+                if artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+                and not source_form_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+            ),
             "request_count": len(stage1_records),
         }
     return {"specs": specs, "paper_summaries": paper_summaries}
@@ -449,6 +593,14 @@ def _prepare_stage2_review_specs(
         if write_audits:
             write_json(_paper_artifact_gate_audit_path(run_id, paper_id), artifact_audit)
         cutoff_result = load_cutoff_result(records=records, cutoff_path=_paper_cutoff_path(paper_id))
+        source_form_result = _source_form_gate_for_records(
+            paper_id=paper_id,
+            records=records,
+            config=config,
+            require_cache=write_audits,
+        )
+        if write_audits:
+            write_json(_paper_source_form_gate_audit_path(run_id, paper_id), source_form_result["audit_payload"])
         resolution_by_key, resolution_audit = build_fulltext_resolution_audit(
             paper_id=paper_id,
             records=records,
@@ -474,6 +626,8 @@ def _prepare_stage2_review_specs(
             if not cutoff_result["decisions_by_key"][key]["cutoff_pass"]:
                 continue
             if not artifact_result["decisions_by_key"][key]["gate_pass"]:
+                continue
+            if not source_form_result["decisions_by_key"][key]["gate_pass"]:
                 continue
             stage1_record = stage1_by_key.get(key)
             if not stage2_all_cutoff_pass:
@@ -559,6 +713,12 @@ def _prepare_stage2_review_specs(
                 for record in cutoff_result["kept_records"]
                 if not artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
             ),
+            "source_form_excluded_count": sum(
+                1
+                for record in cutoff_result["kept_records"]
+                if artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+                and not source_form_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
+            ),
             "fulltext_gate_failed_count": int(resolution_audit.get("fulltext_gate_failed_count") or 0),
             "selected_for_stage2_count": len(selected_keys),
             "request_count": len(selected_keys),
@@ -567,6 +727,7 @@ def _prepare_stage2_review_specs(
 
 
 PHASE_BUILDERS = {
+    SOURCE_FORM_PHASE_ID: _prepare_source_form_classification_specs,
     "stage1_review": _prepare_stage1_review_specs,
     "stage2_review": _prepare_stage2_review_specs,
 }
@@ -623,6 +784,10 @@ def _init_run_manifest(
         "results_root": str(RESULTS_ROOT),
         "run_dir": str(_run_dir(run_id)),
         "model": str(config["model"]),
+        "source_form_model": _source_form_model(config),
+        "source_form_reasoning_effort": _source_form_reasoning_effort(config),
+        "source_form_cache_dir": str(_source_form_cache_dir(config)),
+        "source_form_policy_path": str(_source_form_policy_path()),
         "endpoint": str(config["endpoint"]),
         "workflow_arm": workflow_spec.workflow_arm,
         "stage_model": workflow_spec.stage_model,
@@ -707,7 +872,8 @@ def _submit_phase(
         stage2_all_cutoff_pass=stage2_all_cutoff_pass,
     )
     specs: list[BatchRequestSpec] = prep["specs"]
-    artifact_dir = _batch_artifact_dir(run_id, phase, str(config["model"]))
+    phase_model = _phase_model(config, phase)
+    artifact_dir = _batch_artifact_dir(run_id, phase, phase_model)
 
     if not specs:
         parsed_payload = {
@@ -726,6 +892,7 @@ def _submit_phase(
             "batch_id": None,
             "batch_status": "skipped_no_requests",
             "request_count": 0,
+            "model": phase_model,
             "paper_preparation": prep["paper_summaries"],
         }
         write_json(_run_manifest_path(run_id), run_manifest)
@@ -733,7 +900,7 @@ def _submit_phase(
         return run_manifest["phase_jobs"][phase]
 
     client = OpenAI()
-    model_id = client.models.retrieve(str(config["model"])).id
+    model_id = client.models.retrieve(phase_model).id
     runner = OpenAIBatchRunner(client=client, poll_interval_sec=float(config["batch_poll_interval_sec"]))
     submit_payload = runner.submit_requests(
         specs=specs,
@@ -747,13 +914,14 @@ def _submit_phase(
         },
         completion_window=str(config["completion_window"]),
     )
-    run_manifest["model_preflight_id"] = model_id
+    run_manifest.setdefault("model_preflight_ids", {})[phase] = model_id
     run_manifest["phase_jobs"][phase] = {
         "phase": phase,
         "batch_artifact_dir": str(artifact_dir),
         "batch_id": submit_payload["batch_create"]["id"],
         "batch_status": submit_payload["batch_create"]["status"],
         "request_count": len(specs),
+        "model": phase_model,
         "paper_preparation": prep["paper_summaries"],
         "upload_file_id": submit_payload["upload_file"]["id"],
     }
@@ -761,6 +929,60 @@ def _submit_phase(
     print(f"[submit:{phase}] run_id={run_id}", flush=True)
     print(f"[submit:{phase}] batch_id={submit_payload['batch_create']['id']}", flush=True)
     return run_manifest["phase_jobs"][phase]
+
+
+def _write_source_form_cache_from_parsed(
+    *,
+    run_id: str,
+    parsed_payload: dict[str, Any],
+    config: dict[str, Any],
+    selected_papers: list[str],
+    key_map: dict[str, set[str]] | None,
+    max_records: int | None,
+    artifact_dir: Path,
+) -> dict[str, Any]:
+    records_by_paper: dict[str, list[dict[str, Any]]] = {}
+    policies_by_paper = {}
+    criteria_by_paper: dict[str, dict[str, Any]] = {}
+    ledger = load_source_form_policy(_source_form_policy_path())
+    for paper_id in selected_papers:
+        key_allowlist = key_map.get(paper_id) if key_map is not None else None
+        records_by_paper[paper_id] = load_candidates(
+            _paper_metadata_path(paper_id),
+            max_records=max_records,
+            key_allowlist=key_allowlist,
+        )
+        policies_by_paper[paper_id] = policy_for_paper(ledger, paper_id)
+        criteria_by_paper[paper_id] = _source_form_stage1_criteria(paper_id)
+    new_records = cache_records_from_parsed_successes(
+        parsed_payload=parsed_payload,
+        records_by_paper=records_by_paper,
+        policies_by_paper=policies_by_paper,
+        criteria_by_paper=criteria_by_paper,
+        model=_source_form_model(config),
+        reasoning_effort=_source_form_reasoning_effort(config),
+    )
+    cache_manifest = write_source_form_cache_artifacts(
+        cache_dir=_source_form_cache_dir(config),
+        records=new_records,
+        manifest_extra={
+            "model": _source_form_model(config),
+            "reasoning_effort": _source_form_reasoning_effort(config),
+            "latest_batch_artifact_dir": str(artifact_dir),
+            "latest_success_count": len(parsed_payload.get("successes") or []),
+            "latest_failure_count": len(parsed_payload.get("failures") or []),
+            "latest_missing_count": len(parsed_payload.get("missing") or []),
+        },
+    )
+    for paper_id, records in records_by_paper.items():
+        source_form_result = _source_form_gate_for_records(
+            paper_id=paper_id,
+            records=records,
+            config=config,
+            require_cache=True,
+        )
+        write_json(_paper_source_form_gate_audit_path(run_id, paper_id), source_form_result["audit_payload"])
+    return cache_manifest
 
 
 def _collect_phase(
@@ -792,8 +1014,9 @@ def _collect_phase(
         stage2_all_cutoff_pass=stage2_all_cutoff_pass,
     )
     specs: list[BatchRequestSpec] = prep["specs"]
-    artifact_dir = _batch_artifact_dir(run_id, phase, str(config["model"]))
-    batch_payload = _load_batch_payload_for_phase(run_id, phase, str(config["model"]))
+    phase_model = _phase_model(config, phase)
+    artifact_dir = _batch_artifact_dir(run_id, phase, phase_model)
+    batch_payload = _load_batch_payload_for_phase(run_id, phase, phase_model)
 
     if batch_payload is None or batch_payload.get("id") is None:
         parsed_payload = read_json(artifact_dir / "parsed_results.json") if (artifact_dir / "parsed_results.json").exists() else {
@@ -826,6 +1049,37 @@ def _collect_phase(
             }
         )
 
+    if phase == SOURCE_FORM_PHASE_ID:
+        if parsed_payload.get("batch_status") not in {"completed", "skipped_no_requests"}:
+            raise SystemExit(f"source_form_classification ended with status={parsed_payload.get('batch_status')}")
+        if parsed_payload.get("failures") or parsed_payload.get("missing"):
+            raise SystemExit(
+                "source_form_classification parse validation failed: "
+                f"failures={len(parsed_payload.get('failures') or [])} "
+                f"missing={len(parsed_payload.get('missing') or [])}"
+            )
+        cache_manifest = _write_source_form_cache_from_parsed(
+            run_id=run_id,
+            parsed_payload=parsed_payload,
+            config=config,
+            selected_papers=selected_papers,
+            key_map=key_map,
+            max_records=max_records,
+            artifact_dir=artifact_dir,
+        )
+        run_manifest["phase_jobs"].setdefault(phase, {})
+        run_manifest["phase_jobs"][phase]["parsed_summary"] = {
+            "success_count": len(parsed_payload["successes"]),
+            "failure_count": len(parsed_payload["failures"]),
+            "missing_count": len(parsed_payload["missing"]),
+        }
+        run_manifest["phase_jobs"][phase]["cache_manifest_path"] = str(_source_form_cache_dir(config) / "manifest.json")
+        run_manifest["phase_jobs"][phase]["cache_row_count"] = cache_manifest["row_count"]
+        write_json(_run_manifest_path(run_id), run_manifest)
+        print(f"[collect:{phase}] run_id={run_id}", flush=True)
+        print(f"[collect:{phase}] batch_status={parsed_payload.get('batch_status')}", flush=True)
+        return parsed_payload
+
     spec_context = {spec.custom_id: spec.context for spec in specs}
     phase_stage = _phase_spec(phase).stage
     rows_by_paper = phase_success_rows_by_paper_direct(
@@ -856,6 +1110,7 @@ def _write_stage1_results(
     records: list[dict[str, Any]],
     artifact_result: dict[str, Any],
     cutoff_result: dict[str, Any],
+    source_form_result: dict[str, Any],
     stage1_by_key: dict[str, StageDirectReviewRecord],
     stage1_issue_by_key: dict[str, dict[str, Any]],
     resolution_by_key: dict[str, dict[str, Any]],
@@ -864,28 +1119,38 @@ def _write_stage1_results(
     for record in records:
         key = _safe_text(record.get("key"))
         title = _safe_text(record.get("title") or record.get("query_title"))
+        source_form_gate = source_form_result["decisions_by_key"][key]
         decision = cutoff_result["decisions_by_key"][key]
         if not decision["cutoff_pass"]:
-            rows.append(
-                build_cutoff_review_row(
-                    paper_id=paper_id,
-                    workflow_arm=_workflow_arm(),
-                    stage_model=_stage_model(),
-                    record=record,
-                    decision=decision,
-                ).model_dump(mode="json")
-            )
+            row = build_cutoff_review_row(
+                paper_id=paper_id,
+                workflow_arm=_workflow_arm(),
+                stage_model=_stage_model(),
+                record=record,
+                decision=decision,
+            ).model_dump(mode="json")
+            rows.append(attach_source_form_gate(row, source_form_gate))
             continue
         artifact_decision = artifact_result["decisions_by_key"][key]
         if not artifact_decision["gate_pass"]:
+            row = build_artifact_review_row(
+                paper_id=paper_id,
+                workflow_arm=_workflow_arm(),
+                stage_model=_stage_model(),
+                record=record,
+                decision=artifact_decision,
+            ).model_dump(mode="json")
+            rows.append(attach_source_form_gate(row, source_form_gate))
+            continue
+        if not source_form_gate["gate_pass"]:
             rows.append(
-                build_artifact_review_row(
+                build_source_form_filtered_row(
                     paper_id=paper_id,
                     workflow_arm=_workflow_arm(),
                     stage_model=_stage_model(),
                     record=record,
-                    decision=artifact_decision,
-                ).model_dump(mode="json")
+                    source_form_gate=source_form_gate,
+                )
             )
             continue
         resolution = resolution_by_key[key]
@@ -900,8 +1165,7 @@ def _write_stage1_results(
         )
         stage1_issue = stage1_issue_by_key.get(key)
         if stage1_issue is not None or key not in stage1_by_key:
-            rows.append(
-                _build_error_final_row(
+            row = _build_error_final_row(
                     paper_id=paper_id,
                     record=record,
                     provenance=provenance,
@@ -912,28 +1176,27 @@ def _write_stage1_results(
                     fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
                     discard_reason="stage1_review_missing",
                 ).model_dump(mode="json")
-            )
+            rows.append(attach_source_form_gate(row, source_form_gate))
             continue
         stage1_record = stage1_by_key[key]
-        rows.append(
-            SingleReviewerMergedFinalRow(
-                key=key,
-                title=title,
-                paper_id=paper_id,
-                workflow_arm=_workflow_arm(),
-                stage_model=_stage_model(),
-                review_state="reviewed",
-                review_skipped=False,
-                final_verdict=stage_verdict("stage1", stage1_record.stage_score),
-                stage1_stage_score=stage1_record.stage_score,
-                stage1_decision_recommendation=stage1_record.decision_recommendation,
-                stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
-                source_record_provenance=stage1_record.source_record_provenance,
-                review_output={"stage1_review": stage1_record.model_dump(mode="json")},
-                fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
-                fulltext_resolution_status=resolution["resolution_status"],
-            ).model_dump(mode="json")
-        )
+        row = SingleReviewerMergedFinalRow(
+            key=key,
+            title=title,
+            paper_id=paper_id,
+            workflow_arm=_workflow_arm(),
+            stage_model=_stage_model(),
+            review_state="reviewed",
+            review_skipped=False,
+            final_verdict=stage_verdict("stage1", stage1_record.stage_score),
+            stage1_stage_score=stage1_record.stage_score,
+            stage1_decision_recommendation=stage1_record.decision_recommendation,
+            stage1_review_path=relative_path(_phase_output_path(run_id, paper_id, "stage1_review"), REPO_ROOT),
+            source_record_provenance=stage1_record.source_record_provenance,
+            review_output={"stage1_review": stage1_record.model_dump(mode="json")},
+            fulltext_source_path=resolution.get("resolved_path") or resolution.get("exact_candidate_path"),
+            fulltext_resolution_status=resolution["resolution_status"],
+        ).model_dump(mode="json")
+        rows.append(attach_source_form_gate(row, source_form_gate))
     write_json(_paper_stage1_results_path(run_id, paper_id), rows)
     return rows
 
@@ -994,6 +1257,13 @@ def _assemble_results_and_metrics(
         write_json(_paper_artifact_gate_audit_path(run_id, paper_id), artifact_audit)
         cutoff_result = load_cutoff_result(records=records, cutoff_path=_paper_cutoff_path(paper_id))
         write_json(_paper_cutoff_audit_path(run_id, paper_id), cutoff_result["audit_payload"])
+        source_form_result = _source_form_gate_for_records(
+            paper_id=paper_id,
+            records=records,
+            config=config,
+            require_cache=True,
+        )
+        write_json(_paper_source_form_gate_audit_path(run_id, paper_id), source_form_result["audit_payload"])
         resolution_by_key, resolution_audit = build_fulltext_resolution_audit(
             paper_id=paper_id,
             records=records,
@@ -1016,6 +1286,7 @@ def _assemble_results_and_metrics(
                 records=records,
                 artifact_result=artifact_result,
                 cutoff_result=cutoff_result,
+                source_form_result=source_form_result,
                 stage1_by_key=stage1_by_key,
                 stage1_issue_by_key=stage1_issue_by_key,
                 resolution_by_key=resolution_by_key,
@@ -1031,32 +1302,44 @@ def _assemble_results_and_metrics(
         reviewed_count = 0
         missing_count = 0
         fulltext_gate_failed_count = 0
+        source_form_filtered_count = 0
         for record in records:
             key = _safe_text(record.get("key"))
             title = _safe_text(record.get("title") or record.get("query_title"))
+            source_form_gate = source_form_result["decisions_by_key"][key]
             decision = cutoff_result["decisions_by_key"][key]
 
             if not decision["cutoff_pass"]:
-                final_rows.append(
-                    build_cutoff_review_row(
-                        paper_id=paper_id,
-                        workflow_arm=_workflow_arm(),
-                        stage_model=_stage_model(),
-                        record=record,
-                        decision=decision,
-                    ).model_dump(mode="json")
-                )
+                row = build_cutoff_review_row(
+                    paper_id=paper_id,
+                    workflow_arm=_workflow_arm(),
+                    stage_model=_stage_model(),
+                    record=record,
+                    decision=decision,
+                ).model_dump(mode="json")
+                final_rows.append(attach_source_form_gate(row, source_form_gate))
                 continue
             artifact_decision = artifact_result["decisions_by_key"][key]
             if not artifact_decision["gate_pass"]:
+                row = build_artifact_review_row(
+                    paper_id=paper_id,
+                    workflow_arm=_workflow_arm(),
+                    stage_model=_stage_model(),
+                    record=record,
+                    decision=artifact_decision,
+                ).model_dump(mode="json")
+                final_rows.append(attach_source_form_gate(row, source_form_gate))
+                continue
+            if not source_form_gate["gate_pass"]:
+                source_form_filtered_count += 1
                 final_rows.append(
-                    build_artifact_review_row(
+                    build_source_form_filtered_row(
                         paper_id=paper_id,
                         workflow_arm=_workflow_arm(),
                         stage_model=_stage_model(),
                         record=record,
-                        decision=artifact_decision,
-                    ).model_dump(mode="json")
+                        source_form_gate=source_form_gate,
+                    )
                 )
                 continue
             resolution = resolution_by_key[key]
@@ -1224,6 +1507,10 @@ def _assemble_results_and_metrics(
                 ).model_dump(mode="json")
             )
 
+        final_rows = [
+            attach_source_form_gate(row, source_form_result["decisions_by_key"][_safe_text(row.get("key"))])
+            for row in final_rows
+        ]
         write_json(_paper_results_path(run_id, paper_id), final_rows)
         combined_metrics = _evaluate_results(
             paper_id=paper_id,
@@ -1250,6 +1537,7 @@ def _assemble_results_and_metrics(
                     for record in cutoff_result["kept_records"]
                     if not artifact_result["decisions_by_key"][_safe_text(record.get("key"))]["gate_pass"]
                 ),
+                "source_form_filtered_count": source_form_filtered_count,
                 "stage2_selected_count": selected_count,
                 "reviewed_count": reviewed_count,
                 "missing_count": missing_count,
@@ -1320,12 +1608,13 @@ def _build_report_zh(run_manifest: dict[str, Any]) -> str:
     lines.append("")
     lines.append("## Final 指標" if single_stage_mode else "## Combined 指標")
     lines.append("")
-    lines.append("| Paper | Candidates | Cutoff pass | Stage2 selected | Reviewed | Missing | F1 | Delta vs current combined | Precision | Recall |")
-    lines.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
+    lines.append("| Paper | Candidates | Cutoff pass | Source-form filtered | Stage2 selected | Reviewed | Missing | F1 | Delta vs current combined | Precision | Recall |")
+    lines.append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |")
     for summary in run_manifest.get("summaries", []):
         lines.append(
             f"| `{summary['paper_id']}` | {summary['candidate_total']} | {summary['cutoff_pass_count']} | "
-            f"{summary['stage2_selected_count']} | {summary['reviewed_count']} | {summary['missing_count']} | "
+            f"{summary.get('source_form_filtered_count', 0)} | {summary['stage2_selected_count']} | "
+            f"{summary['reviewed_count']} | {summary['missing_count']} | "
             f"{summary['f1']:.4f} | {summary['delta_vs_current_combined']:+.4f} | "
             f"{summary['precision']:.4f} | {summary['recall']:.4f} |"
         )
@@ -1334,7 +1623,7 @@ def _build_report_zh(run_manifest: dict[str, Any]) -> str:
     lines.append("")
     lines.append("| Phase | Request count | Batch status | Success | Failure | Missing |")
     lines.append("| --- | ---: | --- | ---: | ---: | ---: |")
-    for phase in _phase_ids():
+    for phase in _pipeline_phase_ids():
         job = run_manifest.get("phase_jobs", {}).get(phase, {})
         parsed = job.get("parsed_summary", {})
         lines.append(
@@ -1372,7 +1661,19 @@ def build_serialization_probe(phase: str) -> dict[str, Any]:
         selected_papers=["2409.13738", "2511.13936"],
     )
     response_model = build_direct_stage_response_model("ProbeDirectReviewOutput")
-    if phase == "stage1_review":
+    if phase == SOURCE_FORM_PHASE_ID:
+        prep = _prepare_source_form_classification_specs(
+            run_id="serialization_probe",
+            prompt_assets=prompt_assets,
+            config=config,
+            selected_papers=["2409.13738"],
+            key_map=key_map,
+            max_records=None,
+            reasoning_effort="low",
+            write_audits=False,
+        )
+        spec = prep["specs"][0]
+    elif phase == "stage1_review":
         prep = _prepare_stage1_review_specs(
             run_id="serialization_probe",
             prompt_assets=prompt_assets,
@@ -1441,7 +1742,7 @@ def main() -> int:
     workflow_spec = _load_workflow_spec()
     parser = argparse.ArgumentParser(description="執行 single reviewer official-batch 2-stage direct-review baseline。")
     parser.add_argument("--mode", choices=["submit", "collect", "run"], required=True)
-    parser.add_argument("--phase", choices=[*_phase_ids(), "all"], required=True)
+    parser.add_argument("--phase", choices=[*_pipeline_phase_ids(), "all"], required=True)
     parser.add_argument("--run-id", default=None)
     parser.add_argument("--model", default=None)
     parser.add_argument("--papers", nargs="*", choices=list(config["papers"]), default=list(config["papers"]))
@@ -1460,7 +1761,7 @@ def main() -> int:
 
     config = _config_with_model_override(config, args.model)
     run_id = args.run_id or now_run_id()
-    phases = _phase_ids() if args.phase == "all" else [args.phase]
+    phases = _pipeline_phase_ids() if args.phase == "all" else [args.phase]
     selected_papers = list(args.papers)
     key_map = _load_candidate_key_map(args.candidate_keys_file, selected_papers=selected_papers)
     prompt_assets = PromptAssets(workflow_spec)

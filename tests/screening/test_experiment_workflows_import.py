@@ -9,6 +9,8 @@ class ExperimentWorkflowsImportTests(unittest.TestCase):
         module = importlib.import_module("scripts.screening.experiment_workflows")
         self.assertTrue(hasattr(module, "build_direct_stage_prompt_context"))
         self.assertTrue(hasattr(module, "build_stage_prompt_context"))
+        self.assertTrue(hasattr(module, "SourceFormClassificationOutput"))
+        self.assertTrue(hasattr(module, "determine_source_form_gate"))
 
 
 if __name__ == "__main__":
