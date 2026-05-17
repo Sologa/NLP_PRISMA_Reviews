@@ -1,0 +1,55 @@
+{
+  "topic": "Direct Speech to Speech Translation: A Review",
+  "topic_definition": "Stage 1 observable projection of the original paper's eligibility. Use title and abstract evidence to judge whether the study focuses on direct or end-to-end Speech-to-Speech Translation (S2ST), especially neural S2ST that avoids intermediate text representations.",
+  "summary": "Stage 1 title/abstract projection of source-faithful Stage 2 criteria; publication-time filtering is handled by cutoff_jsons/2503.04799.json.",
+  "summary_topics": [
+    {
+      "id": "S1",
+      "description": "Direct Speech to Speech Translation: A Review"
+    }
+  ],
+  "inclusion_criteria": {
+    "required": [
+      {
+        "criterion": "Title/abstract indicates Speech-to-Speech Translation, S2ST, direct speech translation, end-to-end speech translation, speech-unit translation, Translatotron, UnitY, or direct neural speech translation.",
+        "source": "criteria_mds/2503.04799.md",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "Observable task signal links speech input to speech output translation rather than text-only machine translation, ASR-only, TTS-only, or audio-only processing.",
+        "source": "criteria_mds/2503.04799.md",
+        "topic_ids": [
+          "S1"
+        ]
+      },
+      {
+        "criterion": "When direct S2ST fit is plausible but experiment sufficiency, dataset currency, or direct-vs-cascade details are incomplete in title/abstract, keep maybe and defer final confirmation to Stage 2.",
+        "source": "criteria_mds/2503.04799.md",
+        "topic_ids": [
+          "S1"
+        ]
+      }
+    ]
+  },
+  "exclusion_criteria": [
+    {
+      "criterion": "Title/abstract clearly indicates cascade speech translation using intermediate text representations, such as ASR plus MT plus TTS, with no direct S2ST focus.",
+      "source": "criteria_mds/2503.04799.md",
+      "topic_ids": [
+        "S1"
+      ]
+    },
+    {
+      "criterion": "Title/abstract clearly indicates text-only machine translation, ASR-only speech-to-text, TTS-only text-to-speech, or audio-only processing without S2ST.",
+      "source": "criteria_mds/2503.04799.md",
+      "topic_ids": [
+        "S1"
+      ]
+    }
+  ],
+  "sources": [
+    "criteria_mds/2503.04799.md"
+  ]
+}
